@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Asset Hub | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        /* --- Header & Branding --- */
+        .library-header { text-align: center; margin-bottom: 40px; }
+        .branding-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+        .library-header h1 { font-size: 2.5rem; color: #0f172a; }
+        .library-header h1 span { color: var(--primary); }
+
+        /* --- Controls Toolbar --- */
+        .toolbar {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        .search-box { flex: 2; position: relative; }
+        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
+        .search-box input {
+            width: 100%; padding: 12px 20px 12px 50px; border-radius: 50px;
+            border: 1px solid var(--border); outline: none; transition: 0.3s;
+        }
+        .search-box input:focus { border-color: var(--primary); }
+
+        .sort-box { flex: 1; position: relative; }
+        .sort-box select {
+            width: 100%; padding: 12px 20px; border-radius: 50px;
+            border: 1px solid var(--border); background: var(--white);
+            font-weight: 700; cursor: pointer; appearance: none;
+        }
+
+        /* --- Compact Horizontal Grid --- */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .asset-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            padding: 12px;
+            align-items: center;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 95px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 15px rgba(37, 99, 235, 0.08);
+        }
+
+        .thumb {
+            width: 50px; height: 50px; background: #eff6ff;
+            border-radius: 8px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.2rem; color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .info { margin-left: 12px; flex-grow: 1; overflow: hidden; }
+        .info h3 { font-size: 0.85rem; color: #0f172a; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .meta { display: flex; gap: 8px; font-size: 0.65rem; font-weight: 700; color: #94a3b8; }
+        .meta .count { color: var(--accent); }
+
+        .actions { display: flex; gap: 6px; margin-top: 8px; }
+        .btn-act {
+            font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 4px; text-decoration: none; transition: 0.2s;
+        }
+        .btn-demo { background: #eff6ff; color: var(--primary); }
+        .btn-zip { background: #f1f5f9; color: #475569; }
+        .btn-demo:hover { background: var(--primary); color: white; }
+        .btn-zip:hover { background: #334155; color: white; }
+
+        /* Animation */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Scroll Observer Sentinel */
+        #sentinel { height: 50px; margin-top: 20px; }
+
+        @media (max-width: 1300px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 1000px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .asset-grid { grid-template-columns: 1fr; } .toolbar { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="library-header">
+        <p class="branding-tag">RR Web Designers & Code Craft Academic</p>
+        <h1><span>Infinite</span> Asset Library</h1>
+        <p>Explore 100+ production-ready landing pages from WebNova Studio.</p>
+    </header>
+
+    <div class="toolbar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="libSearch" placeholder="Search templates (e.g., Hospital, Finance)...">
+        </div>
+        <div class="sort-box">
+            <select id="libSort">
+                <option value="newest">Latest Assets</option>
+                <option value="popular">Most Downloaded</option>
+                <option value="az">Name A-Z</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="asset-grid" id="assetGrid">
+        <div class="asset-card" data-downloads="1200" data-name="Medicare Pro">
+            <div class="thumb"><i class="fas fa-clinic-medical"></i></div>
+            <div class="info">
+                <h3>Medicare Pro</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-download"></i> 1,200</span>
+                    <span><i class="fas fa-eye"></i> Demo Ready</span>
+                </div>
+                <div class="actions">
+                    <a href="demo1.html" class="btn-act btn-demo">Demo</a>
+                    <a href="file1.zip" class="btn-act btn-zip">ZIP</a>
+                </div>
+            </div>
+        </div>
+        <div class="asset-card" data-downloads="850" data-name="Nova Bank UI">
+            <div class="thumb"><i class="fas fa-university"></i></div>
+            <div class="info">
+                <h3>Nova Bank UI</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-download"></i> 850</span>
+                    <span><i class="fas fa-lock"></i> Secure</span>
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn-act btn-demo">Demo</a>
+                    <a href="#" class="btn-act btn-zip">ZIP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sentinel"></div>
+</div>
+
+<script>
+    const grid = document.getElementById('assetGrid');
+    const search = document.getElementById('libSearch');
+    const sort = document.getElementById('libSort');
+
+    // Simulate more cards for Infinite Scroll
+    const loadMore = () => {
+        const icons = ['fa-shopping-cart', 'fa-plane', 'fa-graduation-cap', 'fa-home', 'fa-code'];
+        const titles = ['Storefront X', 'Voyage Blog', 'LMS Player', 'Estate Portal', 'Dev Portfolio'];
+        
+        for (let i = 0; i < 5; i++) {
+            const card = document.createElement('div');
+            card.className = 'asset-card';
+            const dl = Math.floor(Math.random() * 1000);
+            const title = titles[i];
+            card.setAttribute('data-downloads', dl);
+            card.setAttribute('data-name', title);
+            card.innerHTML = `
+                <div class="thumb"><i class="fas ${icons[i]}"></i></div>
+                <div class="info">
+                    <h3>${title}</h3>
+                    <div class="meta">
+                        <span class="count"><i class="fas fa-download"></i> ${dl}</span>
+                        <span>New Release</span>
+                    </div>
+                    <div class="actions">
+                        <a href="#" class="btn-act btn-demo">Demo</a>
+                        <a href="#" class="btn-act btn-zip">ZIP</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        }
+    };
+
+    // Live Search
+    search.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('.asset-card').forEach(card => {
+            const h3 = card.querySelector('h3').innerText.toLowerCase();
+            card.style.display = h3.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    // Sorting Logic
+    sort.addEventListener('change', () => {
+        const cards = Array.from(document.querySelectorAll('.asset-card'));
+        cards.sort((a, b) => {
+            if (sort.value === 'popular') return b.dataset.downloads - a.dataset.downloads;
+            if (sort.value === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+            return 0; // Default newest
+        });
+        grid.innerHTML = '';
+        cards.forEach(c => grid.appendChild(c));
+    });
+
+    // Intersection Observer (Infinite Scroll)
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) loadMore();
+    }, { threshold: 1.0 });
+
+    observer.observe(document.getElementById('sentinel'));
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

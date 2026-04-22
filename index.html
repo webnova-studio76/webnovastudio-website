@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNova Studio | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="js-enabled">
+    <div class="weekly-alert" id="resourceAlert">
+    <div class="alert-pulse"></div>
+    <div class="alert-content">
+        <span class="alert-tag stagger-1">New Resources Weekly</span>
+        <!--<p class="stagger-2">PDF Notes | Web Templates | PPT Templates are uploaded every Sunday.</p>-->
+        <p class="stagger-2">Our website is currently under development.We’re working hard to bring you high-quality content including notes, templates, designs, and much more.
+✨ Stay tuned — everything will be uploaded soon.Thank you for your patience and support 💙.</p>
+        <a href="free-resources.html" class="alert-link stagger-3">Explore Vault <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <button class="alert-close" onclick="closeResourceAlert()">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+    
+<header class="master-header">
+        
+    <div class="nav-container">
+        <a href="index.html" class="logo">WebNova<span>Studio</span></a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
+
+            <!--<li class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown">
+                    <a href="brand-identity.html" class="dropdown-link">Brand Identity</a>
+                    <a href="ui-ux.html" class="dropdown-link">UI/UX Design</a>
+                    <a href="full-stack.html" class="dropdown-link">Full-Stack Development</a>
+                    <a href="seo-growth.html" class="dropdown-link">SEO & Digital Growth</a>
+                </div>
+            </li>-->
+            <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
+            <!--<li class="nav-item">
+                <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown">
+                    <a href="" class="dropdown-link">Technical PDF Notes</a>
+                    <a href="#" class="dropdown-link">Cheat Sheets</a>
+                    <a href="#" class="dropdown-link">Academic Slide Decks (PPTs)</a>
+                    <a href="#" class="dropdown-link">Developer Toolkit (Softwares)</a>
+                    <a href="#" class="dropdown-link">UI/UX Landing Pages</a>
+                    <a href="#" class="dropdown-link">Full-Scale Web Templates</a>
+                    <a href="tutorial-player.html" class="dropdown-link">Video Tutorials</a>
+                </div>
+            </li>-->
+
+            <!--<li class="nav-item">
+                <a href="#" class="nav-link">Success Hub <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown">
+                    <a href="career-guide.html" class="dropdown-link">Career Guide</a>
+                    <a href="freelancers-hub.html" class="dropdown-link">Freelancer's Hub</a>
+                    
+                </div>
+            </li>-->
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown">
+                    <a href="our-story.html" class="dropdown-link">Our Story</a>
+                    <a href="mission.html" class="dropdown-link">Our Mission</a>
+                    <a href="team.html" class="dropdown-link">Meet the Team</a>
+                    <a href="why-choose-us.html" class="dropdown-link">Why Choose Us</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="requests.html" class="nav-link">Request vault</a></li>
+        </ul>
+    </div>
+</header>
+  <section class="hero-animated">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="hero-content">
+        <div class="hero-slogan" data-aos="fade-down">
+            <span>Learn</span>
+            <span class="slogan-dot"></span>
+            <span>Build</span>
+            <span class="slogan-dot"></span>
+            <span>Grow</span>
+        </div>
+        <h1>Build Your Brand. <br><span class="typewriter">Master Your Craft.</span></h1>
+        <p>Premium digital services at <strong>WebNova Studio</strong> & industry-leading education at <strong>Code Craft Academic</strong>.</p>
+        <div class="hero-btns">
+            <a href="contact.html" class="btn-primary">Get a Website</a>
+            <a href="course.html" class="btn-secondary">Start Learning Free</a>
+        </div>
+    </div>
+</section>
+
+    <a href="https://t.me/CodeCraftAcademic" class="sticky-telegram" target="_blank">
+        <i class="fab fa-telegram-plane"></i> Join Telegram
+    </a>
+
+    <!--<section class="freelancer-hub">
+    <div class="container">
+        <div class="section-header">
+            <h2>Freelancers <span>Hub</span></h2>
+            <p>Everything you need to go from a beginner to a high-paid freelancer.</p>
+        </div>
+
+        <div class="hub-grid">
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Starting Guide</h3>
+                <p>Learn how to set up your profile and choose your profitable niche.</p>
+                <a href="#" class="card-link">Read More →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h3>Pricing Mastery</h3>
+                <p>Stop undercharging. Learn how to price your services for profit.</p>
+                <a href="#" class="card-link">Read More →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-comments"></i></div>
+                <h3>Client Communication</h3>
+                <p>Templates for emails, discovery calls, and closing deals.</p>
+                <a href="#" class="card-link">Read More →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Proposal Templates</h3>
+                <p>Proven templates that won projects for WebNova Studio.</p>
+                <a href="#" class="card-link">Download Free →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-tools"></i></div>
+                <h3>Freelancer Tools</h3>
+                <p>The best free tools for SEO, Design, and Project Management.</p>
+                <a href="#" class="card-link">View Tools →</a>
+            </div>
+
+            <div class="hub-card highlight-card">
+                <h3>Join the Community</h3>
+                <p>Get daily tips and network with 1000+ other freelancers.</p>
+                <a href="https://t.me/yourlink" class="btn-primary">Telegram Access</a>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<section class="branding-hub">
+    
+    <h2 class="studio-name">WebNova<span>Studio</span></h2>
+   
+    <div class="brand-flex">
+        <div class="sub-brand-box">
+            <div class="icon-wrapper"><i class="fas fa-palette"></i></div>
+            <h3>RR Web Designers</h3>
+            <div class="accent-bar"></div>
+            <p>Our creative design division dedicated to UI/UX excellence, visual storytelling, and high-conversion web aesthetics.</p>
+        </div>
+
+        <div class="sub-brand-box">
+            <div class="icon-wrapper"><i class="fas fa-code"></i></div>
+            <h3>Code Craft Academic</h3>
+            <div class="accent-bar"></div>
+            <p>The engineering core providing deep technical training in full-stack logic, system architecture, and C/C++ programming.</p>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-header">
+        <h2>About <span>WebNova Studio</span></h2>
+        <p>Bridging the gap between learning to code and launching a career.</p>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-card">
+            <i class="fas fa-book-open"></i>
+            <h3>Our Story</h3>
+            <div class="divider"></div>
+            <p>Founded with the mission to provide structured, project-based learning. We started as a small mentorship group and grew into a full-scale digital academy.</p>
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Our Mission</h3>
+            <div class="divider"></div>
+            <p>To empower aspiring developers by providing high-quality, free resources and a clear 6-Phase roadmap to full-stack mastery.</p>
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-users"></i>
+            <h3>Meet the Team</h3>
+            <div class="divider"></div>
+            <p>Our mentors are industry-active developers, UI/UX designers, and freelance experts dedicated to student success.</p>
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-award"></i>
+            <h3>Why Choose Us</h3>
+            <div class="divider"></div>
+            <p>We don't just teach code; we teach the business of code. From PDF notes to career guides, we provide the complete ecosystem.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="free-highlight">
+    <div class="container">
+        <div class="highlight-box">
+            <div class="deco-circle circle-1"></div>
+            <div class="deco-circle circle-2"></div>
+
+            <div class="highlight-content">
+                <span class="badge">Exclusive 2026 Library</span>
+                <h2>Grab Our Premium <span>Free Resources</span></h2>
+                <p>Don't start from zero. Download professional website templates, PPT slides, and coding cheat sheets used by WebNova Studio developers—completely free.</p>
+                
+                <div class="mini-grid">
+                    <div class="mini-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>10+ HTML Templates</span>
+                    </div>
+                    <div class="mini-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>50+ PPT Slides</span>
+                    </div>
+                    <div class="mini-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Coding Cheat Sheets</span>
+                    </div>
+                </div>
+
+                <a href="free-resources.html" class="btn-glow">
+                    Access Free Library <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="highlight-visual">
+                <div class="floating-icon icon-1"><i class="fas fa-file-code"></i></div>
+                <div class="floating-icon icon-2"><i class="fas fa-file-powerpoint"></i></div>
+                <div class="floating-icon icon-3"><i class="fas fa-download"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--<section class="portfolio-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="sub-title">Our Work</span>
+            <h2>Featured <span>Projects</span></h2>
+            <p>A glimpse into the digital experiences we've crafted at WebNova Studio.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" alt="Hospital Website">
+                    <div class="portfolio-overlay">
+                        <span class="category">Web Dev</span>
+                        <h3>City Care Hospital</h3>
+                        <p>Complete infrastructure & emergency portal.</p>
+                        <a href="#" class="view-project">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=600&q=80" alt="WebNova Store">
+                    <div class="portfolio-overlay">
+                        <span class="category">E-commerce</span>
+                        <h3>WebNova Pro Store</h3>
+                        <p>High-performance digital products shop.</p>
+                        <a href="#" class="view-project">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=600&q=80" alt="Admin Dashboard">
+                    <div class="portfolio-overlay">
+                        <span class="category">UI/UX Design</span>
+                        <h3>Grid Analytics Tool</h3>
+                        <p>Responsive dashboard with collapsible sidebar.</p>
+                        <a href="#" class="view-project">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="Branding Project">
+                    <div class="portfolio-overlay">
+                        <span class="category">Branding</span>
+                        <h3>Code Craft Identity</h3>
+                        <p>Logo & visual ecosystem for education.</p>
+                        <a href="#" class="view-project">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<!--<section class="founder-section">
+    <div class="container founder-flex">
+        <div class="founder-image">
+            <img src="rakesh.png" alt="Founder of WebNova">
+            <div class="experience-badge">
+                <span class="years">5+</span>
+                <span class="exp-text">Years in <br>Web Designing</span>
+            </div>
+        </div>
+        
+        <div class="founder-content">
+            <span class="sub-title">The Face Behind the Brand</span>
+            <h2>Bridging the gap between <span>Learning</span> and <span>Earning</span></h2>
+            <p>I started WebNova Studio to help businesses grow with high-converting digital solutions. But I soon realized that many beginners wanted to learn <em>how</em> I did it. That's how Code Craft Academic was born.</p>
+            
+            <div class="founder-stats">
+                <div class="stat-item">
+                    <h4>150+</h4>
+                    <p>Projects Done</p>
+                </div>
+                <div class="stat-item">
+                    <h4>5k+</h4>
+                    <p>Students Taught</p>
+                </div>
+                <div class="stat-item">
+                    <h4>10k+</h4>
+                    <p>Community</p>
+                </div>
+            </div>
+
+            <div class="founder-socials">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<!--<div class="modal-overlay" id="leadModal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+        <div class="modal-body">
+            <div class="modal-image">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="modal-text">
+                <h2>Free Starter Kit! 🚀</h2>
+                <p>Download our <strong>"Freelancer Success PDF"</strong> and get our high-converting website checklist for free.</p>
+                
+                <form id="leadForm">
+                    <input type="email" placeholder="Enter your best email" required>
+                    <button type="submit" class="btn-primary">Send Me the PDF</button>
+                </form>
+                
+                <p class="spam-text">No spam. Just value. Join 1,000+ learners.</p>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--<section class="services-pricing">
+    <div class="container">
+        <div class="section-header">
+            <span class="sub-title">WebNova Studio Services</span>
+            <h2>Professional <span>Solutions</span></h2>
+            <p>While our tutorials are free, we offer premium design and development services for businesses.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Design Essentials</h3>
+                <div class="price-value">Custom Quote</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Professional Logo Design</li>
+                    <li><i class="fas fa-check"></i> Social Media Posters</li>
+                    <li><i class="fas fa-check"></i> YouTube Thumbnails</li>
+                    <li><i class="fas fa-check"></i> UI/UX Prototypes</li>
+                </ul>
+                <a href="#" class="btn-primary">Inquire Now</a>
+            </div>
+
+            <div class="price-card featured">
+                <div class="popular-tag">Most Popular</div>
+                <h3>Web Development</h3>
+                <div class="price-value">Starts $XXX</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> High-Converting Landing Pages</li>
+                    <li><i class="fas fa-check"></i> Full WordPress Setup</li>
+                    <li><i class="fas fa-check"></i> E-commerce Store (WebNova)</li>
+                    <li><i class="fas fa-check"></i> SEO Optimization</li>
+                </ul>
+                <a href="#" class="btn-secondary">Get a Proposal</a>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<section id="academy" style="padding: 80px 0; background-color: #f8fafc; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; color: #0f172a; margin-bottom: 15px;">Code Craft Academy</h2>
+            <p style="color: #64748b; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                I believe in "Learning by Teaching." Explore my comprehensive, structured curriculum covering Computer Science, Python Programming, and Database Management.
+            </p>
+        </div>
+
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+            
+            <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; flex: 1; min-width: 300px; border: 1px solid #e2e8f0;">
+                <div style="width: 60px; height: 60px; background: #dbeafe; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 style="color: #0f172a; margin-bottom: 10px;">Full Curriculum Access</h3>
+                <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 25px;">
+                    Access 15+ modules ranging from Hardware basics to Advanced Object-Oriented Programming and SQL.
+                </p>
+                <a href="courses.html" style="display: inline-block; background: #2563eb; color: white; padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: 0.3s;">
+                    Explore Modules &rarr;
+                </a>
+            </div>
+
+            <div style="background: #0f172a; padding: 40px; border-radius: 20px; color: white; flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #38bdf8; margin-bottom: 5px;">3 Full Tracks</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">CS Fundamentals, Python, and DBMS.</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #38bdf8; margin-bottom: 5px;">Hands-on Projects</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Real-world Library and E-Commerce systems.</p>
+                </div>
+                <div>
+                    <h4 style="color: #38bdf8; margin-bottom: 5px;">Free Resources</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Integrated PDF downloads for offline study.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="footer-col branding">
+            <div class="logo">WebNova<span>Studio</span></div>
+            <p>Empowering businesses through premium design and educating the next generation of digital creators at Code Craft Academic.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>WebNova Studio</h4>
+            <ul>
+                <li><a href="course.html">Web Development</a></li>
+                <li><a href="index.html">Digital Marketing</a></li>
+                <li><a href="index.html">Branding & Design</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Code Craft Academic</h4>
+            <ul>
+                <li><a href="course.html">Free Notes</a></li>
+                <li><a href="index.html">Video Tutorials</a></li>
+                <li><a href="index.html">Freelancers Hub</a></li>
+                <li><a href="index.html">Career Guides</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="our-story.html">About Us</a></li>
+                <li><a href="contact.html">Contact Support</a></li>
+                <li><a href="index.html">Privacy Policy</a></li>
+                <li><a href="index.html">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 WebNova Studio & Code Craft Academic. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+
+<script>
+    const modal = document.getElementById('leadModal');
+
+    // Show modal after 5 seconds
+    window.onload = function() {
+        setTimeout(() => {
+            modal.style.display = 'flex';
+        }, 5000);
+    };
+
+    // Function to close modal
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // Close if user clicks outside the white box
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // Handle Form Submission
+    document.getElementById('leadForm').onsubmit = function(e) {
+        e.preventDefault();
+        alert('Success! Check your email for the PDF.');
+        closeModal();
+    }
+</script>
+
+<script>
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+let dots = [];
+const dotCount = 100;
+
+class Dot {
+    constructor() {
+        this.reset();
+    }
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.radius = Math.random() * 2 + 1;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(37, 99, 235, 1)'; // WebNova Blue
+        ctx.fill();
+    }
+}
+
+function init() {
+    dots = [];
+    for (let i = 0; i < dotCount; i++) dots.push(new Dot());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dots.forEach((dot, i) => {
+        dot.update();
+        dot.draw();
+        for (let j = i + 1; j < dots.length; j++) {
+            const dist = Math.hypot(dot.x - dots[j].x, dot.y - dots[j].y);
+            if (dist < 150) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 * (1 - dist / 150)})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(dot.x, dot.y);
+                ctx.lineTo(dots[j].x, dots[j].y);
+                ctx.stroke();
+            }
+        }
+    });
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener('scroll', () => {
+    const reveals = document.querySelectorAll('.sub-brand-box, .about-card, .portfolio-item');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+            el.classList.add('active');
+        }
+    });
+});
+</script>
+
+<script src="animations.js"></script>
+<script src="main.js"></script>
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        // Toggle the 'active' class on both elements
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    }));
+</script>
+</body>
+</html>

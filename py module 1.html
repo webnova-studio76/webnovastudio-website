@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Module 01 | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3776ab; /* Python Blue */
+            --secondary: #0f172a;
+            --accent: #ffd43b;  /* Python Gold */
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #e2e8f0;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download {
+            background: #10b981;
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        code { 
+            background: var(--code-bg); 
+            color: #f8f8f2; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-family: 'Fira Code', monospace; 
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #fffbeb;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Python Module 01: Fundamentals</h1>
+        <p>Setting up your environment and mastering the core syntax of Python.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'env')"><i class="fas fa-terminal"></i> Environment</button>
+        <button class="tab-btn" onclick="openTab(event, 'vars')"><i class="fas fa-box"></i> Variables & Types</button>
+        <button class="tab-btn" onclick="openTab(event, 'io')"><i class="fas fa-exchange-alt"></i> I/O & Strings</button>
+        
+        <a href="downloads/python-module1.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="env" class="tab-content active">
+        <h2>Installation & Package Management</h2>
+        <p>Before coding, you need a Python interpreter and a way to manage libraries.</p>
+        
+        <h3>1. Pip (Python Package Index)</h3>
+        <p>The standard package manager for Python. Use it to install external libraries.</p>
+        <div class="code-block">pip install requests</div>
+
+        <h3>2. Conda (Anaconda/Miniconda)</h3>
+        <p>A powerful environment manager used primarily in Data Science. It allows you to create isolated "containers" for different projects to avoid version conflicts.</p>
+        <div class="code-block">
+            conda create --name my-project python=3.10<br>
+            conda activate my-project
+        </div>
+
+        <div class="pro-tip">
+            <strong>Why use environments?</strong> They prevent "Dependency Hell"—where one project requires Version A of a library and another project requires Version B.
+        </div>
+    </div>
+
+    <div id="vars" class="tab-content">
+        <h2>Variables & Data Types</h2>
+        <p>Python is <strong>dynamically typed</strong>, meaning you don't need to declare a variable's type explicitly.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>int</strong></td>
+                    <td><code>age = 25</code></td>
+                    <td>Whole numbers</td>
+                </tr>
+                <tr>
+                    <td><strong>float</strong></td>
+                    <td><code>price = 99.99</code></td>
+                    <td>Decimal numbers</td>
+                </tr>
+                <tr>
+                    <td><strong>str</strong></td>
+                    <td><code>name = "Alice"</code></td>
+                    <td>Text characters</td>
+                </tr>
+                <tr>
+                    <td><strong>bool</strong></td>
+                    <td><code>is_valid = True</code></td>
+                    <td>Logical True/False</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Type Casting</h3>
+        <p>Converting one data type to another manually.</p>
+        <div class="code-block">
+            x = "10" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# This is a string<br>
+            y = int(x) &nbsp;&nbsp;&nbsp;&nbsp;# Now y is an integer 10
+        </div>
+    </div>
+
+    <div id="io" class="tab-content">
+        <h2>Input, Output & String Formatting</h2>
+        
+        <h3>Handling User Input</h3>
+        <p>The <code>input()</code> function always returns a <strong>string</strong>.</p>
+        <div class="code-block">
+            name = input("Enter your name: ")<br>
+            age = int(input("Enter your age: ")) # Casting to int immediately
+        </div>
+
+        <h3>String Formatting (f-strings)</h3>
+        <p>The modern and most readable way to format strings in Python 3.6+.</p>
+        <div class="code-block">
+            name = "John"<br>
+            score = 95<br>
+            print(f"Hello {name}, your score is {score}%")
+        </div>
+
+        <h3>String Methods</h3>
+        <ul>
+            <li><code>.upper()</code> - Converts to uppercase.</li>
+            <li><code>.strip()</code> - Removes leading/trailing whitespace.</li>
+            <li><code>.replace("old", "new")</code> - Swaps text segments.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

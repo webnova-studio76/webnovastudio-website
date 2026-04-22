@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free PPT Templates | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d24726; /* Classic PPT Orange/Red */
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        /* --- Header --- */
+        .library-header { text-align: center; margin-bottom: 40px; }
+        .ppt-badge { 
+            background: #fff1f0; color: var(--primary); padding: 4px 12px; 
+            border-radius: 20px; font-size: 0.7rem; font-weight: 800; 
+            border: 1px solid #ffccc7; margin-bottom: 10px; display: inline-block;
+        }
+        .library-header h1 { font-size: 2.5rem; color: #0f172a; }
+        .library-header h1 span { color: var(--primary); }
+
+        /* --- Toolbar --- */
+        .toolbar {
+            background: var(--white); padding: 15px 25px; border-radius: 50px;
+            border: 1px solid var(--border); display: flex; justify-content: space-between;
+            align-items: center; gap: 20px; margin-bottom: 30px;
+        }
+
+        .search-box { flex: 2; position: relative; }
+        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--primary); }
+        .search-box input {
+            width: 100%; padding: 10px 10px 10px 45px; border-radius: 30px;
+            border: 1px solid transparent; background: #f1f5f9; outline: none;
+        }
+
+        /* --- PPT Compact Grid (5-Columns) --- */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .ppt-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            padding: 12px;
+            align-items: center;
+            height: 95px;
+            transition: 0.3s ease;
+        }
+
+        .ppt-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 15px rgba(210, 71, 38, 0.1);
+        }
+
+        .thumb {
+            width: 50px; height: 50px; background: #fff1f0;
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .info { margin-left: 12px; flex-grow: 1; overflow: hidden; }
+        .info h3 { font-size: 0.85rem; color: #0f172a; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .meta { display: flex; gap: 8px; font-size: 0.6rem; font-weight: 700; color: #94a3b8; }
+        .meta b { color: var(--primary); }
+
+        .actions { display: flex; gap: 6px; margin-top: 8px; }
+        .btn-act {
+            font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 4px; text-decoration: none;
+        }
+        .btn-preview { background: #fff1f0; color: var(--primary); }
+        .btn-pptx { background: #f1f5f9; color: #475569; }
+        .btn-preview:hover { background: var(--primary); color: white; }
+
+        @media (max-width: 1300px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 800px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .asset-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="library-header">
+        <span class="ppt-badge"><i class="fas fa-file-powerpoint"></i> Presentation Assets</span>
+        <h1>Free <span>PPT</span> Designs</h1>
+        <p>Professional pitch decks and project slides for RR Web Designers & Code Craft Academic.</p>
+    </header>
+
+    <div class="toolbar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search 100+ slide decks...">
+        </div>
+        <div style="font-size: 0.8rem; font-weight: 700; color: #64748b;">
+            <i class="fas fa-desktop" style="color: var(--primary);"></i> 16:9 HD Ratio
+        </div>
+    </div>
+
+    <div class="asset-grid">
+        <div class="ppt-card">
+            <div class="thumb"><i class="fas fa-chart-pie"></i></div>
+            <div class="info">
+                <h3>Business Pitch</h3>
+                <div class="meta">
+                    <span><b>24 Slides</b></span>
+                    <span><i class="fas fa-download"></i> 2.1k</span>
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn-act btn-preview">Preview</a>
+                    <a href="deck1.pptx" download class="btn-act btn-pptx">PPTX</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ppt-card">
+            <div class="thumb"><i class="fas fa-project-diagram"></i></div>
+            <div class="info">
+                <h3>Tech Roadmap</h3>
+                <div class="meta">
+                    <span><b>15 Slides</b></span>
+                    <span><i class="fas fa-download"></i> 1.5k</span>
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn-act btn-preview">Preview</a>
+                    <a href="deck2.pptx" download class="btn-act btn-pptx">PPTX</a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+</div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

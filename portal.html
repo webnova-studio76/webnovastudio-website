@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Craft Academic | Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --python: #3776ab;
+            --dbms: #e11d48;
+            --web: #10b981;    /* Fullstack Green */
+            --design: #ec4899; /* Design Pink */
+            --cloud: #0ea5e9;  /* Cloud Sky Blue */
+            --cpp: #6366f1;    /* C++ Indigo */
+            --secondary: #0f172a;
+            --bg: #f1f5f9;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+
+        .sidebar {
+            width: 280px; height: 100vh; background: var(--secondary);
+            color: white; position: fixed; padding: 30px 20px;
+        }
+
+        .main-content { margin-left: 280px; padding: 50px; }
+
+        .logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--primary); }
+
+        .nav-link { 
+            display: flex; align-items: center; gap: 15px; color: #94a3b8;
+            padding: 12px; text-decoration: none; border-radius: 10px; transition: 0.3s;
+            margin-bottom: 5px;
+        }
+        .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.1); color: white; }
+
+        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .search-bar { 
+            background: white; border: 1px solid var(--border); padding: 10px 20px;
+            border-radius: 12px; width: 350px; display: flex; align-items: center; gap: 10px;
+        }
+        .search-bar input { border: none; outline: none; width: 100%; font-size: 0.9rem; }
+
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .course-card { 
+            background: white; border-radius: 20px; padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s;
+            border-top: 5px solid var(--primary);
+            display: flex; flex-direction: column;
+        }
+        .course-card:hover { transform: translateY(-5px); }
+        
+        /* Custom Colors */
+        .course-card.python { border-color: var(--python); }
+        .course-card.dbms { border-color: var(--dbms); }
+        .course-card.web { border-color: var(--web); }
+        .course-card.design { border-color: var(--design); }
+        .course-card.cloud { border-color: var(--cloud); }
+        .course-card.cpp { border-color: var(--cpp); }
+
+        .badge { 
+            font-size: 0.7rem; font-weight: 700; padding: 4px 10px;
+            border-radius: 20px; text-transform: uppercase; margin-bottom: 15px; display: inline-block;
+        }
+        .badge-blue { background: #dbeafe; color: var(--primary); }
+        .badge-gold { background: #fef3c7; color: #b45309; }
+        .badge-red { background: #ffe4e6; color: var(--dbms); }
+        .badge-green { background: #dcfce7; color: var(--web); }
+        .badge-pink { background: #fce7f3; color: var(--design); }
+        .badge-sky { background: #e0f2fe; color: var(--cloud); }
+
+        .module-list { margin-top: 20px; list-style: none; flex-grow: 1; }
+        .module-item { 
+            padding: 10px 0; border-bottom: 1px solid var(--bg);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem;
+        }
+        .module-item a { text-decoration: none; color: var(--text); transition: 0.2s; }
+        .module-item a:hover { color: var(--primary); }
+
+        .btn-start {
+            margin-top: 25px; width: 100%; padding: 12px; background: var(--secondary);
+            color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;
+        }
+
+        @media (max-width: 1024px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo"><i class="fas fa-code"></i> Code Craft</div>
+        <nav>
+            <a href="#" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="#" class="nav-link"><i class="fas fa-book-open"></i> My Courses</a>
+            <a href="#" class="nav-link"><i class="fas fa-graduation-cap"></i> Certifications</a>
+            <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-flex">
+            <div>
+                <h1 style="font-size: 2rem;">Student Dashboard</h1>
+                <p style="color: #64748b;">Welcome back! Ready to master a new skill today?</p>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search" style="color: #94a3b8;"></i>
+                <input type="text" placeholder="Search modules...">
+            </div>
+        </div>
+
+        <div class="course-grid">
+            
+            <div class="course-card">
+                <span class="badge badge-blue">Foundation</span>
+                <h3>CS Fundamentals</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Hardware & OS</a> <i class="fas fa-check-circle" style="color: var(--web);"></i></li>
+                    <li class="module-item"><a href="#">02. Networking Basics</a> <i class="fas fa-check-circle" style="color: var(--web);"></i></li>
+                    <li class="module-item"><a href="#">03. Cybersecurity</a> <i class="far fa-circle"></i></li>
+                </ul>
+                <button class="btn-start">Continue</button>
+            </div>
+
+            <div class="course-card web">
+                <span class="badge badge-green">Development</span>
+                <h3>Full-Stack Web</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Client-Server Logic</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">02. REST APIs</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">03. Frameworks (React/Node)</a> <i class="fas fa-lock"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--web);">Unlock Track</button>
+            </div>
+
+            <div class="course-card design">
+                <span class="badge badge-pink">Creative</span>
+                <h3>UI/UX & Web Design</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Design Principles</a> <i class="fas fa-check-circle" style="color: var(--web);"></i></li>
+                    <li class="module-item"><a href="#">02. Typography & Color</a> <i class="far fa-circle"></i></li>
+                    <li class="module-item"><a href="#">03. Responsive Layouts</a> <i class="far fa-circle"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--design);">Open Design</button>
+            </div>
+
+            <div class="course-card cloud">
+                <span class="badge badge-sky">Infrastructure</span>
+                <h3>Cloud Computing</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. IaaS, PaaS, SaaS</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">02. AWS & Azure Basics</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">03. Deployment & Scaling</a> <i class="fas fa-lock"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--cloud);">Open Cloud</button>
+            </div>
+
+            <div class="course-card python">
+                <span class="badge badge-gold">Logic</span>
+                <h3>Python Programming</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Fundamentals</a> <i class="fas fa-check-circle" style="color: var(--web);"></i></li>
+                    <li class="module-item"><a href="#">02. OOP Mastery</a> <i class="far fa-circle"></i></li>
+                    <li class="module-item"><a href="#">03. Final Project</a> <i class="fas fa-lock"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--python);">Open Python</button>
+            </div>
+
+            <div class="course-card cpp">
+                <span class="badge" style="background: #e0e7ff; color: var(--cpp);">Systems</span>
+                <h3>C & C++ Mastery</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Memory & Pointers</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">02. Data Structures in C</a> <i class="fas fa-lock"></i></li>
+                    <li class="module-item"><a href="#">03. Classes in C++</a> <i class="fas fa-lock"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--cpp);">Open C/C++</button>
+            </div>
+
+            <div class="course-card dbms">
+                <span class="badge badge-red">Data</span>
+                <h3>DBMS & SQL</h3>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#">01. Relational Model</a> <i class="far fa-circle"></i></li>
+                    <li class="module-item"><a href="#">02. Advanced Joins</a> <i class="far fa-circle"></i></li>
+                    <li class="module-item"><a href="#">03. NoSQL Foundations</a> <i class="fas fa-lock"></i></li>
+                </ul>
+                <button class="btn-start" style="background: var(--dbms);">Start DBMS</button>
+            </div>
+
+        </div>
+    </main>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

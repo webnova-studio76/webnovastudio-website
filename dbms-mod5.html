@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Module 05 | Advanced Data Ops</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e11d48; 
+            --secondary: #0f172a;
+            --accent: #fbbf24;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 20px;
+            border-radius: 10px; margin: 20px 0; font-family: 'Fira Code', monospace; overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #eff6ff; border-left: 5px solid var(--primary);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>DBMS Module 05: Advanced Data Ops</h1>
+        <p>Optimizing speed with Indexing and ensuring safety with Transaction Management.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'opt')"><i class="fas fa-bolt"></i> Optimization</button>
+        <button class="tab-btn" onclick="openTab(event, 'trans')"><i class="fas fa-sync-alt"></i> Transactions</button>
+        <button class="tab-btn" onclick="openTab(event, 'sec')"><i class="fas fa-user-shield"></i> Security & Backup</button>
+        
+        <a href="downloads/dbms-module5.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="opt" class="tab-content active">
+        <h2>Indexing & Query Optimization</h2>
+        <p>Indexing is used to speed up the retrieval of records from a database. Without an index, the DBMS must perform a "Full Table Scan."</p>
+        
+        
+
+        <h3>How it works (B-Trees):</h3>
+        <p>Most databases use a <strong>B-Tree</strong> structure. Think of it like the index at the back of a textbook; it tells the system exactly which page (or data block) to look at.</p>
+        
+
+        <div class="code-block">
+            -- Creating an index on the 'email' column<br>
+            CREATE INDEX idx_student_email ON Students(email);
+        </div>
+
+        <div class="pro-tip">
+            <strong>The Cost of Indexing:</strong> While indexes make <strong>SELECT</strong> queries faster, they make <strong>INSERT</strong> and <strong>UPDATE</strong> slower because the index must be updated every time data changes!
+        </div>
+    </div>
+
+    <div id="trans" class="tab-content">
+        <h2>Transaction & Concurrency Control</h2>
+        <p>A transaction is a unit of work that must be treated as a single operation (ACID properties).</p>
+        
+        <h3>Concurrency Problems:</h3>
+        <ul>
+            <li><strong>Dirty Read:</strong> Reading data that hasn't been "committed" yet.</li>
+            <li><strong>Lost Update:</strong> Two users update the same record at once, and one overwrites the other.</li>
+        </ul>
+
+        <h3>Deadlocks:</h3>
+        <p>A situation where Transaction A waits for a resource held by B, and B waits for a resource held by A. Neither can move forward.</p>
+        
+
+        <h3>The Solution: Locking</h3>
+        <ul>
+            <li><strong>Shared Lock (S):</strong> Allows multiple transactions to read but not write.</li>
+            <li><strong>Exclusive Lock (X):</strong> Only one transaction can access the data (no one else can even read it).</li>
+        </ul>
+    </div>
+
+    <div id="sec" class="tab-content">
+        <h2>Database Security & Backup</h2>
+        <p>Data is the most valuable asset of a company. It must be protected from loss and theft.</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>Security Strategies</h3>
+                <ul>
+                    <li><strong>Authentication:</strong> Using strong passwords and Multi-Factor Auth.</li>
+                    <li><strong>Authorization:</strong> Using the "Principle of Least Privilege" (Granting only the access needed).</li>
+                    <li><strong>Encryption:</strong> Scrambling data at rest (on the disk) and in transit (over the network).</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Backup Strategies</h3>
+                <ul>
+                    <li><strong>Full Backup:</strong> Copying the entire database.</li>
+                    <li><strong>Incremental:</strong> Only backing up data that changed since the *last* backup.</li>
+                    <li><strong>Differential:</strong> Only backing up data that changed since the last *full* backup.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

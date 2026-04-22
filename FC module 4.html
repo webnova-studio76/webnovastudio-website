@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 04 Notes | Networking Basics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: var(--secondary); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #e2e8f0;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download {
+            background: var(--accent);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        .tab-download:hover { background: #059669; transform: scale(1.02); color: white !important; }
+
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+        ul { margin-bottom: 20px; list-style: none; }
+        li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
+
+        .pro-tip {
+            background: #eff6ff;
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Module 04: Networking Basics</h1>
+        <p>From Local Area Networks to the Global Protocols of the Internet.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'types')"><i class="fas fa-network-wired"></i> Network Types</button>
+        <button class="tab-btn" onclick="openTab(event, 'topology')"><i class="fas fa-project-diagram"></i> Topologies</button>
+        <button class="tab-btn" onclick="openTab(event, 'hardware')"><i class="fas fa-server"></i> Hardware</button>
+        <button class="tab-btn" onclick="openTab(event, 'protocols')"><i class="fas fa-globe"></i> Protocols</button>
+        
+        <a href="downloads/module4-networking.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i> Download PDF
+        </a>
+    </div>
+
+    <div id="types" class="tab-content active">
+        <h2>Types of Networks (Scope)</h2>
+        <p>Networks are classified based on the geographical area they cover.</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>PAN (Personal)</h3>
+                <p>Range: ~10 meters. Used for personal devices (Bluetooth headphones to a phone).</p>
+            </div>
+            <div class="card">
+                <h3>LAN (Local)</h3>
+                <p>Range: A building or office. High speed and private (Your home Wi-Fi).</p>
+            </div>
+            <div class="card">
+                <h3>MAN (Metropolitan)</h3>
+                <p>Range: A city. Connects multiple LANs across a town (Cable TV network).</p>
+            </div>
+            <div class="card">
+                <h3>WAN (Wide)</h3>
+                <p>Range: Countries or Continents. The Internet is the world's largest WAN.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="topology" class="tab-content">
+        <h2>Network Topologies</h2>
+        <p>The geometric arrangement of how computers are connected.</p>
+        
+        <ul>
+            <li><strong>Star Topology:</strong> All nodes connect to a central Hub/Switch. (Most common today).</li>
+            <li><strong>Bus Topology:</strong> All nodes share a single main cable.</li>
+            <li><strong>Ring Topology:</strong> Nodes are connected in a closed loop.</li>
+            <li><strong>Mesh Topology:</strong> Every node is connected to every other node. (High redundancy).</li>
+        </ul>
+        <div class="pro-tip">
+            <strong>Star Power:</strong> If one cable fails in a Star network, only that computer goes down. In a Bus network, the entire network can fail!
+        </div>
+    </div>
+
+    <div id="hardware" class="tab-content">
+        <h2>Networking Hardware</h2>
+        <p>The physical devices that make communication possible.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>NIC</strong></td>
+                    <td>Network Interface Card. Connects your PC to the network.</td>
+                </tr>
+                <tr>
+                    <td><strong>Switch</strong></td>
+                    <td>Connects devices on a LAN and sends data only to the target device.</td>
+                </tr>
+                <tr>
+                    <td><strong>Router</strong></td>
+                    <td>The "Traffic Police." Connects different networks (e.g., your Home to the Internet).</td>
+                </tr>
+                <tr>
+                    <td><strong>Modem</strong></td>
+                    <td>Modulates signals from your ISP into digital data for your router.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="protocols" class="tab-content">
+        <h2>The Language of the Web</h2>
+        <p>Protocols are sets of rules that govern how data is transmitted.</p>
+
+        <h3>1. IP (Internet Protocol)</h3>
+        <p>Every device has a unique address. Think of it as a digital "Home Address."</p>
+        <ul>
+            <li><strong>IPv4:</strong> 32-bit (e.g., 192.168.1.1)</li>
+            <li><strong>IPv6:</strong> 128-bit (e.g., 2001:0db8:85a3...) - Created because we ran out of IPv4 addresses.</li>
+        </ul>
+
+        <h3>2. DNS (Domain Name System)</h3>
+        <p>The "Phonebook of the Internet." It translates human names (google.com) into IP addresses (142.250.190.46).</p>
+        
+
+        <h3>3. HTTP/HTTPS</h3>
+        <p>The protocol for transferring web pages. The <strong>'S'</strong> stands for Secure (Encryption), which is mandatory for modern websites.</p>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

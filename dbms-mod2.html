@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Module 02 | SQL Mastery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e11d48; 
+            --secondary: #0f172a;
+            --accent: #fbbf24;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 20px;
+            border-radius: 10px; margin: 20px 0; font-family: 'Fira Code', monospace; overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #f0fdf4; border-left: 5px solid #10b981;
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>DBMS Module 02: Relational Model & SQL</h1>
+        <p>Mastering DDL, DML, Joins, and complex querying logic.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'commands')"><i class="fas fa-terminal"></i> SQL Commands</button>
+        <button class="tab-btn" onclick="openTab(event, 'joins')"><i class="fas fa-link"></i> Joins</button>
+        <button class="tab-btn" onclick="openTab(event, 'functions')"><i class="fas fa-calculator"></i> Aggregates</button>
+        
+        <a href="downloads/dbms-module2.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="commands" class="tab-content active">
+        <h2>SQL Language Categories</h2>
+        <p>SQL is divided into sub-languages based on their function within the database.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Full Name</th>
+                    <th>Commands</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>DDL</strong></td>
+                    <td>Data Definition</td>
+                    <td>CREATE, ALTER, DROP</td>
+                    <td>Defining table structures.</td>
+                </tr>
+                <tr>
+                    <td><strong>DML</strong></td>
+                    <td>Data Manipulation</td>
+                    <td>INSERT, UPDATE, DELETE</td>
+                    <td>Managing data within tables.</td>
+                </tr>
+                <tr>
+                    <td><strong>DQL</strong></td>
+                    <td>Data Query</td>
+                    <td>SELECT</td>
+                    <td>Retrieving data.</td>
+                </tr>
+                <tr>
+                    <td><strong>DCL</strong></td>
+                    <td>Data Control</td>
+                    <td>GRANT, REVOKE</td>
+                    <td>Permissions and Security.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="code-block">
+            -- Example DDL: Creating a table<br>
+            CREATE TABLE Students (<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;id INT PRIMARY KEY,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;name VARCHAR(50),<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;grade CHAR(1)<br>
+            );
+        </div>
+    </div>
+
+    <div id="joins" class="tab-content">
+        <h2>Mastering Joins</h2>
+        <p>Joins are used to combine rows from two or more tables based on a related column.</p>
+        
+        
+
+        <ul>
+            <li><strong>Inner Join:</strong> Returns records that have matching values in both tables.</li>
+            <li><strong>Left Join:</strong> Returns all records from the left table, and matched records from the right.</li>
+            <li><strong>Right Join:</strong> Returns all records from the right table, and matched records from the left.</li>
+            <li><strong>Full Outer Join:</strong> Returns all records when there is a match in either left or right table.</li>
+        </ul>
+
+        <div class="code-block">
+            SELECT Orders.id, Customers.name<br>
+            FROM Orders<br>
+            INNER JOIN Customers ON Orders.customer_id = Customers.id;
+        </div>
+    </div>
+
+    <div id="functions" class="tab-content">
+        <h2>Aggregate Functions & Subqueries</h2>
+        
+        <h3>1. Aggregate Functions</h3>
+        <p>These perform a calculation on a set of values and return a single value.</p>
+        <ul>
+            <li><code>COUNT()</code>: Returns the number of rows.</li>
+            <li><code>SUM()</code>: Returns the total sum of a numeric column.</li>
+            <li><code>AVG()</code>: Returns the average value.</li>
+            <li><code>MAX() / MIN()</code>: Returns the largest/smallest value.</li>
+        </ul>
+
+        <h3>2. Subqueries</h3>
+        <p>A "Query within a Query." Used to perform complex filtering.</p>
+        <div class="code-block">
+            -- Finding students with grades above average<br>
+            SELECT name FROM Students<br>
+            WHERE score > (SELECT AVG(score) FROM Students);
+        </div>
+
+        <div class="pro-tip">
+            <strong>GROUP BY:</strong> When using aggregate functions, you often need the <code>GROUP BY</code> statement to group results by one or more columns (e.g., total sales per city).
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

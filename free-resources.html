@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Resources Hub | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #10b981; /* Emerald Green */
+            --accent: #f59e0b;  /* Amber Gold */
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+
+        /* Animated Header Section */
+        .hub-header {
+            position: relative;
+            background: var(--secondary);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #header-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.5; z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hub-header h1 { font-size: 3rem; margin-bottom: 15px; }
+        .hub-header h1 span { color: var(--primary); }
+        .hub-header p { font-size: 1.2rem; opacity: 0.8; }
+
+        /* Main Grid Section */
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: -50px; 
+            position: relative;
+            z-index: 10;
+        }
+
+        .hub-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .hub-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 70px; height: 70px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 20px;
+            background: #ecfdf5; color: var(--primary);
+        }
+
+        .hub-card h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--secondary); }
+        .hub-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; min-height: 50px; }
+
+        .card-link {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .card-link:hover { color: var(--secondary); transform: translateX(5px); }
+
+        /* Highlight Card */
+        .highlight-card {
+            background: linear-gradient(135deg, var(--primary), #059669);
+            color: white;
+            border: none;
+            justify-content: center;
+        }
+
+        .highlight-card h3 { color: white; }
+        .highlight-card p { color: #d1fae5; }
+
+        .btn-tg {
+            background: var(--white);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-tg:hover { background: var(--secondary); color: white; }
+
+        /* Footer CTA */
+        .hub-footer { text-align: center; margin-top: 60px; padding-bottom: 60px; }
+        .btn-hire {
+            background: var(--secondary); color: white;
+            padding: 15px 40px; border-radius: 12px;
+            text-decoration: none; font-weight: bold;
+            display: inline-block; transition: 0.3s;
+        }
+        .btn-hire:hover { transform: scale(1.05); background: var(--primary); }
+
+        @media (max-width: 768px) {
+            .hub-header h1 { font-size: 2.2rem; }
+            .hub-grid { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hub-header">
+        <canvas id="header-canvas"></canvas>
+        <div class="header-content">
+            <h1>Free <span>Resources</span> Library</h1>
+            <p>Premium templates, software, and presentations to accelerate your learning—100% Free.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hub-grid">
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Landing Page Templates</h3>
+                <p>High-converting HTML/CSS landing pages for portfolios, startups, and agencies.</p>
+                <a href="templates-download.html" class="card-link">Download Templates →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
+                <h3>Website Templates</h3>
+                <p>Full multi-page website templates for hospitals, stores, and personal blogs.</p>
+                <a href="free-assets.html" class="card-link">Get Free Sites →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-file-powerpoint"></i></div>
+                <h3>PPT Presentations</h3>
+                <p>Modern, professional PowerPoint slides for student projects and business pitches.</p>
+                <a href="free-ppt-hub.html" class="card-link">View PPT Slides →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-download"></i></div>
+                <h3>Software Downloads</h3>
+                <p>Curated links for the best free dev tools, design software, and IDEs.</p>
+                <a href="free-software.html" class="card-link">View Softwares →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3>Coding Cheat Sheets</h3>
+                <p>Quick reference PDFs for Python, React, SQL, and CSS Grid Mastery.</p>
+                <a href="coding-sheets.html" class="card-link">Get PDF Sheets →</a>
+            </div>
+
+            <div class="hub-card highlight-card">
+                <h3>Join the Community</h3>
+                <p>Get daily resource updates and network with 1000+ developers.</p>
+                <a href="https://t.me/CodeCraftAcademic" class="btn-tg"><i class="fab fa-telegram-plane"></i> Telegram Access</a>
+            </div>
+        </div>
+
+        <div class="hub-footer">
+            <p style="color: #64748b; margin-bottom: 20px;">Need a custom, premium website designed from scratch?</p>
+            <a href="contact.html" class="btn-hire">Hire WebNova Studio Experts</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('header-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let dots = [];
+        const count = 75;
+        const linkDist = 160;
+
+        for(let i=0; i<count; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.7,
+                vy: (Math.random() - 0.5) * 0.7
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            dots.forEach((d, i) => {
+                d.x += d.vx; d.y += d.vy;
+                if(d.x < 0 || d.x > canvas.width) d.vx *= -1;
+                if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, 2, 0, Math.PI*2);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                ctx.fill();
+
+                for(let j=i+1; j<dots.length; j++) {
+                    const d2 = dots[j];
+                    const dx = d.x - d2.x;
+                    const dy = d.y - d2.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < linkDist) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist/linkDist})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(d.x, d.y);
+                        ctx.lineTo(d2.x, d2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+    <script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

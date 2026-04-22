@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Module 02 | Compute & Virtualization</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9; 
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --bg: #f0f9ff;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #bae6fd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e0f2fe; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .compute-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .compute-card { border: 1px solid var(--border); padding: 20px; border-radius: 15px; background: #f8fafc; }
+        .compute-card b { color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 10px; }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Cloud Module 02: Virtualization & Compute</h1>
+        <p>From the power of Hypervisors to the efficiency of Serverless Functions.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'hyper')"><i class="fas fa-microchip"></i> Hypervisors</button>
+        <button class="tab-btn" onclick="openTab(event, 'vms')"><i class="fas fa-server"></i> AWS vs Azure VMs</button>
+        <button class="tab-btn" onclick="openTab(event, 'serverless')"><i class="fas fa-bolt"></i> Serverless</button>
+        
+        <a href="downloads/cloud-module2.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="hyper" class="tab-content active">
+        <h2>Virtualization: The Cloud Engine</h2>
+        <p>Virtualization is the technology that allows us to run multiple "virtual" computers on a single piece of physical hardware.</p>
+        
+        
+
+        <h3>The Hypervisor</h3>
+        <p>The software that creates and runs Virtual Machines (VMs). It sits between the physical hardware and the VMs.</p>
+        <ul>
+            <li><strong>Type 1 (Bare Metal):</strong> Runs directly on the hardware. <em>Ex: VMware ESXi, Microsoft Hyper-V.</em> Used in major data centers.</li>
+            <li><strong>Type 2 (Hosted):</strong> Runs as an app on top of an OS. <em>Ex: Oracle VirtualBox, VMware Workstation.</em> Great for personal testing.</li>
+        </ul>
+    </div>
+
+    <div id="vms" class="tab-content">
+        <h2>Virtual Machine Management</h2>
+        <p>In the cloud, you don't buy servers; you launch instances or virtual machines.</p>
+        
+        <div class="compute-grid">
+            <div class="compute-card">
+                <b>AWS EC2</b>
+                <p>Elastic Compute Cloud. AWS's flagship compute service. Highly customizable with "Instance Types" for memory, compute, or GPU needs.</p>
+            </div>
+            <div class="compute-card">
+                <b>Azure Virtual Machines</b>
+                <p>Microsoft's scalable VM service. Excellent integration for Windows-heavy environments and SQL Server workloads.</p>
+            </div>
+        </div>
+
+        <h3>Scaling Mechanisms:</h3>
+        <ul>
+            <li><strong>Vertical Scaling (Up):</strong> Making a single server "bigger" (more RAM/CPU).</li>
+            <li><strong>Horizontal Scaling (Out):</strong> Adding <em>more</em> servers to handle the load.</li>
+        </ul>
+        
+    </div>
+
+    <div id="serverless" class="tab-content">
+        <h2>Serverless Computing</h2>
+        <p>Serverless doesn't mean there are no servers; it means <strong>you don't manage them.</strong> You only provide the code.</p>
+        
+        
+
+        <h3>Function as a Service (FaaS)</h3>
+        <ul>
+            <li><strong>AWS Lambda:</strong> Runs code in response to events (like a file upload or a web request).</li>
+            <li><strong>Azure Functions:</strong> Similar event-driven compute that integrates with Microsoft's cloud ecosystem.</li>
+        </ul>
+
+        <div class="pro-tip">
+            <strong>The Pay-Per-Request Model:</strong> With VMs, you pay for every hour the server is "on." With Serverless, you only pay for the exact milliseconds your code is running. If no one visits your site, you pay $0!
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

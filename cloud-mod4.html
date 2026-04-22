@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Module 04 | Containers & K8s</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9; 
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --bg: #f0f9ff;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #bae6fd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e0f2fe; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .concept-card { border: 1px solid var(--border); padding: 25px; border-radius: 15px; background: #f8fafc; }
+        .concept-card i { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
+
+        .pro-tip {
+            background: #f0fdf4; border-left: 5px solid #10b981;
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Cloud Module 04: Containers & Orchestration</h1>
+        <p>Mastering Docker, Kubernetes, and the shift to Microservices architecture.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'docker')"><i class="fab fa-docker"></i> Docker</button>
+        <button class="tab-btn" onclick="openTab(event, 'k8s')"><i class="fas fa-dharmachakra"></i> Kubernetes</button>
+        <button class="tab-btn" onclick="openTab(event, 'micro')"><i class="fas fa-cubes"></i> Microservices</button>
+        
+        <a href="downloads/cloud-module4.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i> PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="docker" class="tab-content active">
+        <h2>What is Containerization?</h2>
+        <p>A container is a lightweight, standalone package that includes everything needed to run an application: code, runtime, system tools, and libraries.</p>
+        
+        
+
+        <h3>Docker vs. Virtual Machines</h3>
+        <ul>
+            <li><strong>VMs:</strong> Virtualize the Hardware. Each has its own Guest OS. (Heavy)</li>
+            <li><strong>Containers:</strong> Virtualize the Operating System. They share the host kernel. (Lightweight)</li>
+        </ul>
+
+        <div class="pro-tip">
+            <strong>"It works on my machine!"</strong> Docker solves this problem. Because the container includes the environment, if it runs on your laptop, it will run exactly the same in the cloud.
+        </div>
+    </div>
+
+    <div id="k8s" class="tab-content">
+        <h2>Kubernetes (K8s) Orchestration</h2>
+        <p>If Docker creates the "shipping containers," Kubernetes is the "crane and ship" that manages them. It automates deployment, scaling, and management.</p>
+        
+        
+
+        <h3>Core Concepts:</h3>
+        <ul>
+            <li><strong>Pod:</strong> The smallest unit in K8s. It holds one or more containers.</li>
+            <li><strong>Node:</strong> A physical or virtual machine that runs the pods.</li>
+            <li><strong>Cluster:</strong> A set of nodes grouped together.</li>
+            <li><strong>Auto-scaling:</strong> K8s can automatically add more pods if your website gets too much traffic.</li>
+        </ul>
+    </div>
+
+    <div id="micro" class="tab-content">
+        <h2>Microservices Architecture</h2>
+        <p>Instead of building one giant "Monolith" application, we break it into small, independent services.</p>
+        
+        
+
+[Image of monolithic vs microservices architecture diagram]
+
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Independent Deployment</h3>
+                <p>You can update the "Login" service without touching the "Payment" service.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fas fa-random"></i>
+                <h3>Technology Agnostic</h3>
+                <p>One service can be written in Python, another in C++, and they can still talk to each other.</p>
+            </div>
+        </div>
+
+        <div class="pro-tip">
+            <strong>The Trade-off:</strong> Microservices are great for scaling, but they add <strong>Complexity</strong>. You now have to manage networking and security between hundreds of small services.
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

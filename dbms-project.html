@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Final Project | E-Commerce System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e11d48; 
+            --secondary: #0f172a;
+            --accent: #fbbf24;
+            --bg: #f1f5f9;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+            --success: #059669;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .project-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 60px 40px; 
+            background: linear-gradient(135deg, var(--secondary) 0%, #312e81 100%); 
+            color: white; 
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 25px;
+            border-radius: 15px; margin: 25px 0; font-family: 'Fira Code', monospace; 
+            overflow-x: auto; line-height: 1.5; font-size: 0.9rem;
+        }
+
+        .schema-box {
+            border-left: 5px solid var(--accent); background: #fffbeb;
+            padding: 20px; border-radius: 0 15px 15px 0; margin: 20px 0;
+        }
+
+        .challenge-card {
+            background: #f0fdf4; border: 1px solid #bcf0da; padding: 20px;
+            border-radius: 15px; margin-top: 20px;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="project-header">
+        <h1>🛒 Capstone: E-Commerce DB Engine</h1>
+        <p>Design and implement a relational database for a modern digital storefront.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'design')"><i class="fas fa-pencil-ruler"></i> DB Design</button>
+        <button class="tab-btn" onclick="openTab(event, 'sql')"><i class="fas fa-database"></i> SQL Implementation</button>
+        <button class="tab-btn" onclick="openTab(event, 'ops')"><i class="fas fa-chart-line"></i> Analytics Ops</button>
+    </div>
+
+    <div id="design" class="tab-content active">
+        <h2>The Blueprint</h2>
+        <p>Before writing code, we must define our entities and their relationships. This project requires <strong>3rd Normal Form (3NF)</strong> to avoid data anomalies.</p>
+        
+        
+
+        <div class="schema-box">
+            <h3>Entities & Relationships:</h3>
+            <ul>
+                <li><strong>Users:</strong> (PK: user_id) - Stores profile data.</li>
+                <li><strong>Products:</strong> (PK: prod_id) - Stores inventory & prices.</li>
+                <li><strong>Orders:</strong> (PK: order_id, FK: user_id) - Links users to their purchases.</li>
+                <li><strong>Order_Items:</strong> (Composite PK, FKs) - A join table resolving the M:N relationship between Orders and Products.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="sql" class="tab-content">
+        <h2>Building the Schema</h2>
+        <p>Use these DDL commands to set up the relational structure with proper Foreign Key constraints.</p>
+
+        <div class="code-block">
+<pre>-- 1. Create Products Table
+CREATE TABLE Products (
+    p_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2),
+    stock INT DEFAULT 0
+);
+
+-- 2. Create Orders Table
+CREATE TABLE Orders (
+    o_id INT PRIMARY KEY AUTO_INCREMENT,
+    u_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (u_id) REFERENCES Users(u_id)
+);
+
+-- 3. Create Order_Items (Bridge Table)
+CREATE TABLE Order_Items (
+    o_id INT,
+    p_id INT,
+    quantity INT,
+    PRIMARY KEY (o_id, p_id),
+    FOREIGN KEY (o_id) REFERENCES Orders(o_id),
+    FOREIGN KEY (p_id) REFERENCES Products(p_id)
+);</pre>
+        </div>
+    </div>
+
+    <div id="ops" class="tab-content">
+        <h2>Business Intelligence Queries</h2>
+        <p>A database is only useful if you can extract insights. Try these complex queries:</p>
+
+        <h3>Query 1: Total Revenue per Product</h3>
+        <div class="code-block">
+<pre>SELECT p.name, SUM(oi.quantity * p.price) AS revenue
+FROM Products p
+JOIN Order_Items oi ON p.p_id = oi.p_id
+GROUP BY p.name
+ORDER BY revenue DESC;</pre>
+        </div>
+
+        <div class="challenge-card">
+            <h3>🏆 Mastery Challenge</h3>
+            <p><strong>The "VIP" Query:</strong> Write a SQL statement using a <strong>Subquery</strong> to find all Customers who have spent more than the <strong>Average</strong> order value across the whole store.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Courses Section */
+.courses-section {
+    padding: 100px 5%;
+    background-color: #f1f5f9;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Course Card Design */
+.course-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    transition: var(--transition);
+    position: relative;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.course-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #e2e8f0;
+    color: var(--secondary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.course-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.course-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: var(--secondary-color);
+}
+
+.course-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Pushes footer to bottom */
+}
+
+/* Course Footer */
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+.course-footer span {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.enroll-btn {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Highlighted Course (Fullstack) */
+.highlight-course {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.highlight-course h3 { color: white; }
+.highlight-course p { color: #94a3b8; }
+.highlight-course .course-tag {
+    background: var(--primary-color);
+    color: white;
+}
+    </style>
+</head>
+<body>
+
+   
+
+   <section class="courses-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="sub-title">Code Craft Academic</span>
+            <h2>Master the <span>Digital World</span></h2>
+            <p>From absolute basics to advanced full-stack engineering.</p>
+        </div>
+
+        <div class="courses-grid">
+            
+            <div class="course-card" data-category="basics">
+                <div class="course-tag">Basics</div>
+                <div class="course-icon"><i class="fas fa-desktop"></i></div>
+                <h3>Fundamentals of Computers</h3>
+                <p>Hardware, OS, and how the internet works. The perfect starting point.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 4 Weeks</span>
+                    <a href="syllabus-fundamentals.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="frontend">
+                <div class="course-tag">Frontend</div>
+                <div class="course-icon"><i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-js"></i></div>
+                <h3>Web Designer Bundle</h3>
+                <p>Master HTML5, CSS3, and UI/UX principles to build stunning sites.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 8 Weeks</span>
+                    <a href="bundle-view.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="programming">
+                <div class="course-tag">Programming</div>
+                <div class="course-icon"><i class="fab fa-python"></i></div>
+                <h3>Python Mastery</h3>
+                <p>Learn Python from scratch for Automation, Data, and Web.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 6 Weeks</span>
+                    <a href="python-syllabus.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="database">
+                <div class="course-tag">DBMS</div>
+                <div class="course-icon"><i class="fas fa-database"></i></div>
+                <h3>DBMS & SQL/NoSQL</h3>
+                <p>MySQL for relational data and MongoDB for modern scalable apps.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 5 Weeks</span>
+                    <a href="dbms-syllabus.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="frameworks">
+                <div class="course-tag">Frameworks</div>
+                <div class="course-icon"><i class="fab fa-react"></i> <i class="fab fa-node-js"></i> <i class="fab fa-angular"></i></div>
+                <h3>Modern JS Frameworks</h3>
+                <p>Deep dive into ReactJS, NodeJS, and AngularJS for dynamic apps.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 12 Weeks</span>
+                    <a href="frameworks-portal.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card highlight-course">
+                <div class="course-tag">Career Path</div>
+                <div class="course-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Fullstack Development</h3>
+                <p>The ultimate path: From Frontend to Backend + Cloud Computing.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 6 Months</span>
+                    <a href="fullstack-roadmap.html" class="btn-primary">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="cloud">
+                <div class="course-tag">Cloud</div>
+                <div class="course-icon"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud Computing</h3>
+                <p>Deployment, AWS/Azure basics, and managing scalable infrastructure.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 8 Weeks</span>
+                    <a href="cloud-syllabus.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="core">
+                <div class="course-tag">Core</div>
+                <div class="course-icon">C</div>
+                <h3>C Programming</h3>
+                <p>Master Data Structures and Algorithms with low-level languages.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 10 Weeks</span>
+                    <a href="c-mastery.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="core">
+                <div class="course-tag">Core</div>
+                <div class="course-icon">C++</div>
+                <h3>C++ Programming</h3>
+                <p>Master Data Structures and Algorithms with low-level languages.</p>
+                <div class="course-footer">
+                    <span><i class="fas fa-clock"></i> 10 Weeks</span>
+                    <a href="cpp-syllabus.html" class="enroll-btn">View Syllabus</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

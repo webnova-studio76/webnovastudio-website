@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Module 03 | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3776ab; 
+            --secondary: #0f172a;
+            --accent: #ffd43b;  
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 20px;
+            border-radius: 10px; margin: 20px 0; font-family: 'Fira Code', monospace; overflow-x: auto;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Python Module 03: Data Structures</h1>
+        <p>Organizing, storing, and manipulating data with Python's built-in collections.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'basic')"><i class="fas fa-list"></i> Lists & Tuples</button>
+        <button class="tab-btn" onclick="openTab(event, 'dict')"><i class="fas fa-key"></i> Dictionaries</button>
+        <button class="tab-btn" onclick="openTab(event, 'adv')"><i class="fas fa-magic"></i> Comprehensions</button>
+        
+        <a href="downloads/python-module3.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="basic" class="tab-content active">
+        <h2>Lists, Tuples & Sets</h2>
+        <p>Python offers several ways to group data together. The choice depends on whether you need the data to be ordered, unique, or changeable.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Structure</th>
+                    <th>Syntax</th>
+                    <th>Mutable?</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>List</strong></td>
+                    <td><code>[1, 2, 3]</code></td>
+                    <td>Yes</td>
+                    <td>Ordered, allows duplicates.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tuple</strong></td>
+                    <td><code>(1, 2, 3)</code></td>
+                    <td>No</td>
+                    <td>Ordered, immutable (fixed).</td>
+                </tr>
+                <tr>
+                    <td><strong>Set</strong></td>
+                    <td><code>{1, 2, 3}</code></td>
+                    <td>Yes</td>
+                    <td>Unordered, unique items only.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>List Slicing</h3>
+        <p>Extracting specific parts of a list using <code>[start:stop:step]</code>.</p>
+        <div class="code-block">
+            nums = [10, 20, 30, 40, 50]<br>
+            print(nums[0:2]) &nbsp;# [10, 20]<br>
+            print(nums[::-1]) # [50, 40, 30, 20, 10] (Reverse)
+        </div>
+    </div>
+
+    <div id="dict" class="tab-content">
+        <h2>Dictionaries & Key-Value Logic</h2>
+        <p>A Dictionary stores data in <strong>Key: Value</strong> pairs. It is extremely fast for looking up information.</p>
+        
+        <div class="code-block">
+            student = {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"name": "John Doe",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"course": "Python Basics",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"grade": "A"<br>
+            }<br><br>
+            print(student["name"]) # John Doe
+        </div>
+
+        <div class="pro-tip">
+            <strong>Unique Keys:</strong> Keys must be unique and immutable (like strings or numbers). Values can be anything, even other dictionaries!
+        </div>
+    </div>
+
+    <div id="adv" class="tab-content">
+        <h2>List Comprehensions</h2>
+        <p>A concise way to create lists. It combines a <code>for</code> loop and an optional <code>if</code> statement into one line.</p>
+
+        <div class="code-block">
+            # Traditional Way<br>
+            squares = []<br>
+            for x in range(5):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;squares.append(x**2)<br><br>
+            # List Comprehension Way<br>
+            squares = [x**2 for x in range(5)]
+        </div>
+
+        <h3>Filtering with Comprehensions</h3>
+        <div class="code-block">
+            # Get only even numbers<br>
+            evens = [x for x in range(10) if x % 2 == 0]
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

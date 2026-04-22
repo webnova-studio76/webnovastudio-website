@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 06: Launch | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --cloud-color: #2563eb;   /* Cloud Blue */
+            --domain-color: #7c3aed;  /* Domain Purple */
+            --monitor-color: #f43f5e; /* Alert Rose */
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .back-nav { margin-bottom: 30px; }
+        .back-nav a { text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .back-nav a:hover { color: var(--secondary); }
+
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; color: var(--secondary); }
+        .header h1 span { color: var(--cloud-color); }
+        .header p { color: #64748b; margin-top: 10px; }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 1 / 1;
+            transition: all 0.3s ease;
+            justify-content: space-between;
+        }
+
+        .module-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
+
+        .icon-box { 
+            width: 60px; height: 60px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.8rem; margin-bottom: 20px; color: white;
+        }
+
+        .cloud-card { border-top: 5px solid var(--cloud-color); }
+        .cloud-card .icon-box { background: var(--cloud-color); }
+        
+        .domain-card { border-top: 5px solid var(--domain-color); }
+        .domain-card .icon-box { background: var(--domain-color); }
+        
+        .monitor-card { border-top: 5px solid var(--monitor-color); }
+        .monitor-card .icon-box { background: var(--monitor-color); }
+
+        .module-card h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 15px; }
+        .module-card ul { list-style: none; flex-grow: 1; }
+        .module-card li { margin-bottom: 10px; font-size: 0.9rem; color: #64748b; display: flex; align-items: center; gap: 10px; }
+        .module-card li i { font-size: 0.8rem; opacity: 0.7; }
+
+        .btn-link {
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .cloud-card .btn-link { color: var(--cloud-color); border-color: var(--cloud-color); }
+        .domain-card .btn-link { color: var(--domain-color); border-color: var(--domain-color); }
+        .monitor-card .btn-link { color: var(--monitor-color); border-color: var(--monitor-color); }
+
+        .btn-link:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="back-nav">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Main Roadmap</a>
+    </nav>
+
+    <header class="header">
+        <h1>Phase 06: <span>The Launch Sequence</span></h1>
+        <p>Deploying production-ready applications with global scale and reliability.</p>
+    </header>
+
+    <div class="module-grid">
+        <div class="module-card cloud-card">
+            <div>
+                <div class="icon-box"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>Cloud Providers</h3>
+                <ul>
+                    <li><i class="fas fa-server"></i> AWS (EC2, S3, RDS)</li>
+                    <li><i class="fas fa-server"></i> Vercel (Frontend Hosting)</li>
+                    <li><i class="fas fa-server"></i> Serverless Architecture</li>
+                </ul>
+            </div>
+            <a href="cloud-mastery.html" class="btn-link">Open Cloud Syllabus</a>
+        </div>
+
+        <div class="module-card domain-card">
+            <div>
+                <div class="icon-box"><i class="fas fa-globe"></i></div>
+                <h3>Identity & SSL</h3>
+                <ul>
+                    <li><i class="fas fa-lock"></i> DNS & Domain Management</li>
+                    <li><i class="fas fa-lock"></i> SSL/TLS Certificates (HTTPS)</li>
+                    <li><i class="fas fa-lock"></i> Load Balancers & CDNs</li>
+                </ul>
+            </div>
+            <a href="cloud-mastery.html" class="btn-link">Open Domain Syllabus</a>
+        </div>
+
+        <div class="module-card monitor-card">
+            <div>
+                <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+                <h3>Ops Monitoring</h3>
+                <ul>
+                    <li><i class="fas fa-exclamation-triangle"></i> Error Logging (Sentry/LogDNA)</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Uptime & Performance Monitoring</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Database Backups & Recovery</li>
+                </ul>
+            </div>
+            <a href="cloud-mastery.html" class="btn-link">Open Monitoring Syllabus</a>
+        </div>
+    </div>
+</div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

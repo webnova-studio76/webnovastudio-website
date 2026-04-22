@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Module 01 | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e11d48; /* Database Crimson */
+            --secondary: #0f172a;
+            --accent: #fbbf24;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .acid-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .acid-card { background: #fff1f2; border: 1px solid #fda4af; padding: 15px; border-radius: 12px; text-align: center; }
+        .acid-card b { color: var(--primary); display: block; font-size: 1.2rem; }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>DBMS Module 01: Fundamentals</h1>
+        <p>Understanding data integrity, architecture, and the evolution from File Systems.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'intro')"><i class="fas fa-database"></i> Intro</button>
+        <button class="tab-btn" onclick="openTab(event, 'acid')"><i class="fas fa-vial"></i> ACID Properties</button>
+        <button class="tab-btn" onclick="openTab(event, 'arch')"><i class="fas fa-sitemap"></i> Architecture</button>
+        
+        <a href="downloads/dbms-module1.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="intro" class="tab-content active">
+        <h2>DBMS vs File Systems</h2>
+        <p>Before DBMS, data was stored in simple files (like Excel or Text files). This led to major issues that DBMS solved.</p>
+        
+        
+
+        <h3>Key Differences:</h3>
+        <ul>
+            <li><strong>Redundancy:</strong> File systems often have duplicate data; DBMS minimizes it.</li>
+            <li><strong>Inconsistency:</strong> In file systems, updating a phone number in one file might not update it in another. DBMS ensures data is consistent.</li>
+            <li><strong>Security:</strong> DBMS offers granular access control (who can see what), which is hard to manage in basic files.</li>
+            <li><strong>Concurrent Access:</strong> Multiple users can work on a DBMS at once without corrupting data.</li>
+        </ul>
+    </div>
+
+    <div id="acid" class="tab-content">
+        <h2>ACID Properties</h2>
+        <p>For a database transaction to be considered reliable, it must follow the ACID rules.</p>
+        
+        
+
+        <div class="acid-grid">
+            <div class="acid-card"><b>A</b>Atomicity<br><small>All or Nothing. A transaction either fully completes or fails entirely.</small></div>
+            <div class="acid-card"><b>C</b>Consistency<br><small>The database must move from one valid state to another valid state.</small></div>
+            <div class="acid-card"><b>I</b>Isolation<br><small>Transactions happening at the same time don't interfere with each other.</small></div>
+            <div class="acid-card"><b>D</b>Durability<br><small>Once a transaction is committed, it stays saved even if the system crashes.</small></div>
+        </div>
+
+        <div class="pro-tip">
+            <strong>Real-World Example:</strong> Think of a Bank Transfer. If money leaves your account (Step 1) but the system crashes before it hits the receiver's account (Step 2), <strong>Atomicity</strong> ensures the money is returned to you.
+        </div>
+    </div>
+
+    <div id="arch" class="tab-content">
+        <h2>Three-Schema Architecture</h2>
+        <p>This architecture is designed to hide the complexity of physical storage from the user.</p>
+        
+        
+
+        <ul>
+            <li><strong>1. External Level (View Level):</strong> What the user sees (e.g., a profile page). Users only see the parts of the data relevant to them.</li>
+            <li><strong>2. Conceptual Level (Logical Level):</strong> Describes what data is stored and the relationships between them (Tables and Columns).</li>
+            <li><strong>3. Internal Level (Physical Level):</strong> How the data is actually stored on the hard drive (blocks, bits, etc.).</li>
+        </ul>
+
+        <h3>Data Independence</h3>
+        <p>This allows you to change the physical storage (moving from HDD to SSD) without changing the way the user views the data.</p>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

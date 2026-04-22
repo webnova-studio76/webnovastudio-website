@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | WebNova Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="js-enabled">
+
+    <section class="portfolio-hero">
+    <div class="container">
+        <span class="badge reveal-up">Innovation Hub</span>
+        <h1 class="reveal-up reveal-delay-1">Our Digital <span>Showcase.</span></h1>
+        
+        <p class="reveal-up reveal-delay-2">
+            Explore our high-fidelity technical prototypes and the conceptual 
+            architecture we’ve engineered to set new standards in web development.
+        </p>
+    </div>
+</section>
+
+    <section class="portfolio-main">
+        <div class="container">
+            <div class="filter-wrapper reveal-up">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="client">Clients</button>
+                <button class="filter-btn" data-filter="template">Templates</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+            </div>
+<div class="portfolio-grid">
+            <div class="portfolio-item client reveal-up" data-category="client">
+    <div class="project-card">
+        <img src="banking-demo.jpg" alt="Fintech Demo">
+        <div class="project-overlay">
+            <span class="project-cat">Conceptual Case Study</span>
+            <h3>Fintech Dashboard 2.0</h3>
+            <p>Designed for secure transaction management and user-first banking.</p>
+            <a href="#" class="view-btn">View Documentation</a>
+        </div>
+    </div>
+</div>
+
+<div class="portfolio-item client reveal-up reveal-delay-1" data-category="client">
+    <div class="project-card">
+        <img src="hospital-demo.jpg" alt="Hospital Demo">
+        <div class="project-overlay">
+            <span class="project-cat">UI/UX Concept</span>
+            <h3>HealthTrack Portal</h3>
+            <p>A comprehensive system for pediatrics and cardiology department management.</p>
+            <a href="#" class="view-btn">View Design System</a>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section class="portfolio-starter-call">
+    <div class="container">
+        <div class="starter-box">
+            <div class="badge">Limited Offer</div>
+            <h2>Be Our First <span>Official Partner</span></h2>
+            <p>We are currently looking for 3 small businesses to partner with for our 2026 Portfolio Launch. Get a premium, custom-coded site at a special "Early Partner" rate.</p>
+            <a href="contact.html" class="btn-primary">Apply for Partnership</a>
+        </div>
+    </div>
+</section>
+
+<section class="tech-stack reveal-up">
+    <div class="container">
+        <h2 class="section-label">Our <span>Tech Stack</span></h2>
+        <div class="stack-grid">
+            <div class="stack-item"><i class="fab fa-html5"></i> <span>HTML5 / Semantic UI</span></div>
+            <div class="stack-item"><i class="fab fa-css3-alt"></i> <span>Modern CSS3 / Grid</span></div>
+            <div class="stack-item"><i class="fab fa-js"></i> <span>ES6+ JavaScript</span></div>
+            <div class="stack-item"><i class="fab fa-python"></i> <span>Python / Logic</span></div>
+            <div class="stack-item"><i class="fas fa-database"></i> <span>SQL / DBMS</span></div>
+            <div class="stack-item"><i class="fab fa-figma"></i> <span>Figma Design</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="process-section reveal-up">
+    <div class="container">
+        <div class="process-box">
+            <h2>The WebNova <span>Workflow</span></h2>
+            <div class="process-steps">
+                <div class="step">
+                    <span class="step-icon">01</span>
+                    <h4>Analysis</h4>
+                    <p>We analyze the business problem using BCA logic standards.</p>
+                </div>
+                <div class="step">
+                    <span class="step-icon">02</span>
+                    <h4>UI/UX Blueprint</h4>
+                    <p>Rashmi leads the design phase, focusing on premium aesthetics.</p>
+                </div>
+                <div class="step">
+                    <span class="step-icon">03</span>
+                    <h4>Clean Engineering</h4>
+                    <p>Rakesh architectures the code for speed and responsiveness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="portfolio-footer-cta reveal-up">
+    <div class="container">
+        <div class="cta-box-gradient">
+            <h2>Have a Vision for <span>2026?</span></h2>
+            <p>Whether you're a student looking to learn or a business looking to build, let's architect something extraordinary together.</p>
+            <div class="cta-btns">
+                <a href="contact.html" class="btn-primary">Start a Project</a>
+                <a href="courses.html" class="btn-secondary">View Academy</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.portfolio-item');
+
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // 1. Manage active button state
+                    filters.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 2. Hide all items, then show matched items
+                    const category = this.getAttribute('data-filter');
+                    
+                    items.forEach(item => {
+                        if(category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                            setTimeout(() => item.classList.add('active'), 50);
+                        } else {
+                            item.classList.remove('active');
+                            setTimeout(() => item.style.display = 'none', 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

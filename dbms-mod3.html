@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Module 03 | Database Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e11d48; 
+            --secondary: #0f172a;
+            --accent: #fbbf24;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+        ul { margin-bottom: 20px; list-style: none; }
+        li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary); }
+
+        .key-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 20px 0; }
+        .key-card { background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 12px; }
+        .key-card b { color: var(--primary); display: block; margin-bottom: 5px; }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>DBMS Module 03: Database Design</h1>
+        <p>From visual ER Modeling to the mathematical precision of Normalization.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'er')"><i class="fas fa-project-diagram"></i> ER Modeling</button>
+        <button class="tab-btn" onclick="openTab(event, 'norm')"><i class="fas fa-broom"></i> Normalization</button>
+        <button class="tab-btn" onclick="openTab(event, 'keys')"><i class="fas fa-key"></i> Key Logic</button>
+        
+        <a href="downloads/dbms-module3.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i> PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="er" class="tab-content active">
+        <h2>Entity-Relationship (ER) Diagrams</h2>
+        <p>ER Diagrams are visual blueprints used to represent the logical structure of a database.</p>
+        
+        
+
+        <h3>Core Components:</h3>
+        <ul>
+            <li><strong>Entity (Rectangle):</strong> A real-world object (e.g., Student, Teacher, Course).</li>
+            <li><strong>Attribute (Oval):</strong> Properties of an entity (e.g., Student Name, Roll No).</li>
+            <li><strong>Relationship (Diamond):</strong> How entities interact (e.g., Student *Enrolls* in Course).</li>
+        </ul>
+
+        <h3>Cardinality (Relationships):</h3>
+        <ul>
+            <li><strong>1:1 (One-to-One):</strong> A person has one Passport.</li>
+            <li><strong>1:N (One-to-Many):</strong> A Department has many Employees.</li>
+            <li><strong>M:N (Many-to-Many):</strong> Many Students enroll in many Courses.</li>
+        </ul>
+    </div>
+
+    <div id="norm" class="tab-content">
+        <h2>Normalization: Reducing Redundancy</h2>
+        <p>Normalization is the process of organizing data to minimize duplication and prevent "Anomalies" (Update, Delete, and Insert errors).</p>
+        
+        
+
+        <ul>
+            <li><strong>1NF (First Normal Form):</strong> Eliminate repeating groups. Every cell must contain a single (atomic) value.</li>
+            <li><strong>2NF (Second Normal Form):</strong> Must be in 1NF + Remove partial functional dependencies (all non-key attributes must depend on the whole primary key).</li>
+            <li><strong>3NF (Third Normal Form):</strong> Must be in 2NF + Remove transitive dependencies (non-key attributes should not depend on other non-key attributes).</li>
+            <li><strong>BCNF (Boyce-Codd Normal Form):</strong> A stricter version of 3NF for complex keys.</li>
+        </ul>
+
+        <div class="pro-tip">
+            <strong>Memory Hook:</strong> For 3NF, remember: "The data must depend on the key, the whole key, and nothing but the key, so help me Codd."
+        </div>
+    </div>
+
+    <div id="keys" class="tab-content">
+        <h2>Database Keys</h2>
+        <p>Keys are used to uniquely identify rows and establish relationships between tables.</p>
+        
+        <div class="key-grid">
+            <div class="key-card"><b>Primary Key</b>Uniquely identifies every record in a table. Cannot be NULL.</div>
+            <div class="key-card"><b>Foreign Key</b>A field in one table that links to the Primary Key of another table.</div>
+            <div class="key-card"><b>Candidate Key</b>A set of columns that *could* be the primary key.</div>
+            <div class="key-card"><b>Composite Key</b>A primary key that consists of more than one column.</div>
+        </div>
+
+        <div class="pro-tip">
+            <strong>Referential Integrity:</strong> This is the rule that a Foreign Key must always point to a valid Primary Key in another table, preventing "orphan" records.
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

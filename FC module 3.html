@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 03 Notes | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: var(--secondary); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #e2e8f0;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download {
+            background: var(--accent);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        .tab-download:hover { background: #059669; transform: scale(1.02); color: white !important; }
+
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+        ul { margin-bottom: 20px; list-style: none; }
+        li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
+
+        .pro-tip {
+            background: #eff6ff;
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Module 03: Software & Operating Systems</h1>
+        <p>Mastering the layers of System Logic, Kernel Architecture, and Boot Sequences.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'core')"><i class="fas fa-layer-group"></i> Software Types</button>
+        <button class="tab-btn" onclick="openTab(event, 'kernel')"><i class="fas fa-microchip"></i> Kernel & Memory</button>
+        <button class="tab-btn" onclick="openTab(event, 'systems')"><i class="fas fa-hdd"></i> File Systems</button>
+        <button class="tab-btn" onclick="openTab(event, 'boot')"><i class="fas fa-power-off"></i> BIOS & Booting</button>
+        
+        <a href="downloads/module3-complete.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i> Download PDF
+        </a>
+    </div>
+
+    <div id="core" class="tab-content active">
+        <h2>Software Classifications</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>System Software</h3>
+                <p>The bridge between hardware and user.</p>
+                <ul>
+                    <li>Operating Systems (Windows, Linux)</li>
+                    <li>Device Drivers</li>
+                    <li>Utilities (Antivirus, Compressors)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Application Software</h3>
+                <p>Designed for specific end-user tasks.</p>
+                <ul>
+                    <li>General Purpose (Browsers, Office)</li>
+                    <li>Bespoke/Custom (Banking Apps)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pro-tip">
+            <strong>GUI vs CLI:</strong> Most users prefer Graphical Interfaces (clicking), but professionals use Command Line Interfaces (text) for speed and automation.
+        </div>
+    </div>
+
+    <div id="kernel" class="tab-content">
+        <h2>The Kernel & Mode Management</h2>
+        <p>The <strong>Kernel</strong> is the core program of the OS that manages all hardware interactions.</p>
+        
+        <h3>Execution Modes</h3>
+        <ul>
+            <li><strong>User Mode:</strong> Restricted access for apps to prevent crashes.</li>
+            <li><strong>Kernel Mode:</strong> Full access for the OS to manage memory and CPU.</li>
+        </ul>
+
+        <h3>Advanced Memory Management</h3>
+        <ul>
+            <li><strong>Paging:</strong> Breaking programs into small blocks for efficiency.</li>
+            <li><strong>Virtual Memory:</strong> Using SSD space as "emergency RAM" when physical RAM is full.</li>
+        </ul>
+    </div>
+
+    <div id="systems" class="tab-content">
+        <h2>File Systems & Virtualization</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>System</th>
+                    <th>Platform</th>
+                    <th>Key Feature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>NTFS</strong></td>
+                    <td>Windows</td>
+                    <td>Security permissions & encryption.</td>
+                </tr>
+                <tr>
+                    <td><strong>APFS</strong></td>
+                    <td>macOS</td>
+                    <td>Optimized for Flash/SSD storage.</td>
+                </tr>
+                <tr>
+                    <td><strong>FAT32</strong></td>
+                    <td>Universal</td>
+                    <td>Compatible with everything (4GB limit).</td>
+                </tr>
+                <tr>
+                    <td><strong>EXT4</strong></td>
+                    <td>Linux</td>
+                    <td>High performance and stability.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Virtualization</h3>
+        <p>Using a <strong>Hypervisor</strong> (like VirtualBox), you can run multiple Operating Systems on a single physical machine. This is the foundation of <strong>Cloud Computing</strong>.</p>
+    </div>
+
+    <div id="boot" class="tab-content">
+        <h2>The Booting Process (POST to GUI)</h2>
+        <p>The sequence of starting a computer is called "Booting."</p>
+        
+        <h3>The BIOS/UEFI</h3>
+        <p>A firmware program on the motherboard that initializes hardware.</p>
+
+        <h3>Step-by-Step Sequence:</h3>
+        <ul>
+            <li><strong>1. POST:</strong> Power-On Self-Test checks for hardware health.</li>
+            <li><strong>2. Bootstrap Loader:</strong> Locates the OS on the SSD.</li>
+            <li><strong>3. Kernel Load:</strong> The heart of the OS is moved into RAM.</li>
+            <li><strong>4. Initialization:</strong> Drivers and GUI are launched for the user.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

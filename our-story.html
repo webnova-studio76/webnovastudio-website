@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | WebNova Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="js-enabled">
+<script>
+        window.onload = function() {
+            // This manually triggers the 'active' class on all items
+            const elements = document.querySelectorAll('.reveal, .reveal-up');
+            elements.forEach((el) => {
+                el.classList.add('active');
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+            });
+        };
+    </script>
+    <section class="story-hero-animated">
+        <div class="container">
+            <div class="hero-text-block">
+                <h1 class="reveal">Two Minds. One <span>Mission.</span></h1>
+                <h1 class="reveal-up">The Minds Behind <span>WebNova</span></h1>
+                <p class="reveal-up reveal-delay-1">Bridging the gap between academic theory and industry reality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="founders-display">
+        <div class="container">
+            <div class="founders-flex">
+                
+                <div class="founder-card-premium reveal-up">
+                    <div class="image-box">
+                         <div class="image-inner">
+                            <img src="rakesh.png" alt="Rakesh Jadhav" class="founder-img">
+                            
+                         </div>
+                         <div class="experience-tag">Tech Lead</div>
+                    </div>
+                    <div class="founder-info">
+                        <h3>Rakesh Jadhav</h3>
+                        <span class="qualification-badge">BCA Graduate</span>
+                        <p>Specializing in full-stack architecture and system logic. Rakesh leads the technical vision for Code Craft Academic.</p>
+                        <div class="founder-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founder-card-premium reveal-up reveal-delay-2">
+                    <div class="image-box">
+                         <div class="image-inner">
+                            <img src="rashmi.png" alt="Rashmi Divantgi" class="founder-img">
+                         </div>
+                         <div class="experience-tag">Design Lead</div>
+                    </div>
+                    <div class="founder-info">
+                        <h3>Rashmi Divantgi</h3>
+                        <span class="qualification-badge">BCA Graduate | MCA Scholar</span>
+                        <p>A UI/UX specialist focused on visual storytelling and aesthetics. Rashmi drives the creative core of RR Web Designers.</p>
+                        <div class="founder-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-reveal reveal-up">
+        <div class="container">
+            <div class="glass-impact-box">
+                <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
+                <h2>Our <span>Academic</span> Commitment</h2>
+                <p>As current MCA students, we understand the struggle of modern learners. We founded WebNova Studio to ensure no student starts from zero.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>

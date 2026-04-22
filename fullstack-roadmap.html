@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Roadmap | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #2563eb; /* Career Blue */
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
+        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+        .syllabus-head h1 span { color: var(--accent); }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            aspect-ratio: 1 / 1;
+            justify-content: space-between;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.05);
+        }
+
+        .phase-tag { 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
+        .module-card ul { list-style: none; flex-grow: 1; }
+        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
+        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
+
+        .phase-complete {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="syllabus-head">
+        <h1>The <span>Full-Stack</span> Blueprint</h1>
+        <p>The 6-Phase sequence required to build modern, production-grade applications.</p>
+    </header>
+
+    <div class="module-grid">
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 01: The Frontend Core</p>
+                <h3>Foundations</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> HTML5 (Semantic Structure).</li>
+                    <li><i class="fas fa-check"></i> CSS3 (Flexbox, Grid, Responsive).</li>
+                    <li><i class="fas fa-check"></i> Modern JavaScript (ES6+ Logic).</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 02: Advanced UI</p>
+                <h3>Framework Mastery</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> React.js or Angular.</li>
+                    <li><i class="fas fa-check"></i> State Management (Redux/Context).</li>
+                    <li><i class="fas fa-check"></i> Component Libraries (Tailwind/MUI).</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 03: The Server</p>
+                <h3>Backend Logic</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Node.js Runtime & Express.</li>
+                    <li><i class="fas fa-check"></i> RESTful API Design.</li>
+                    <li><i class="fas fa-check"></i> Authentication (JWT/Cookies).</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 04: Data Persistence</p>
+                <h3>Database Systems</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> SQL (PostgreSQL/MySQL).</li>
+                    <li><i class="fas fa-check"></i> NoSQL (MongoDB).</li>
+                    <li><i class="fas fa-check"></i> ORMs (Mongoose/Prisma).</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 05: Professional Flow</p>
+                <h3>DevOps & Version</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Git & GitHub (Collaboration).</li>
+                    <li><i class="fas fa-check"></i> Docker & Containerization.</li>
+                    <li><i class="fas fa-check"></i> CI/CD Pipelines.</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 06: Launch</p>
+                <h3>Cloud & Deployment</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> AWS, Azure, or Vercel.</li>
+                    <li><i class="fas fa-check"></i> Domain & SSL Management.</li>
+                    <li><i class="fas fa-check"></i> Monitoring & Error Logging.</li>
+                </ul>
+            </div>
+            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+    </div>
+</div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

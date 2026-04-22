@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 01: Frontend Core | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --html-color: #f97316;
+            --css-color: #0ea5e9;
+            --js-color: #eab308;
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .back-nav { margin-bottom: 30px; }
+        .back-nav a { text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .back-nav a:hover { color: var(--secondary); }
+
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; color: var(--secondary); }
+        .header p { color: #64748b; margin-top: 10px; }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 1 / 1;
+            transition: all 0.3s ease;
+            justify-content: space-between;
+        }
+
+        .module-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
+
+        /* Icon Styling */
+        .icon-box { 
+            width: 60px; height: 60px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.8rem; margin-bottom: 20px; color: white;
+        }
+
+        .html-card { border-top: 5px solid var(--html-color); }
+        .html-card .icon-box { background: var(--html-color); }
+        
+        .css-card { border-top: 5px solid var(--css-color); }
+        .css-card .icon-box { background: var(--css-color); }
+        
+        .js-card { border-top: 5px solid var(--js-color); }
+        .js-card .icon-box { background: var(--js-color); }
+
+        .module-card h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 15px; }
+        .module-card ul { list-style: none; flex-grow: 1; }
+        .module-card li { margin-bottom: 10px; font-size: 0.9rem; color: #64748b; display: flex; align-items: center; gap: 10px; }
+        .module-card li i { font-size: 0.8rem; opacity: 0.7; }
+
+        .btn-link {
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .html-card .btn-link { color: var(--html-color); border-color: var(--html-color); }
+        .css-card .btn-link { color: var(--css-color); border-color: var(--css-color); }
+        .js-card .btn-link { color: var(--js-color); border-color: var(--js-color); }
+
+        .btn-link:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="back-nav">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Main Roadmap</a>
+    </nav>
+
+    <header class="header">
+        <h1>Phase 01: <span>The Frontend Core</span></h1>
+        <p>Master the three essential languages of the modern web.</p>
+    </header>
+
+    <div class="module-grid">
+        <div class="module-card html-card">
+            <div>
+                <div class="icon-box"><i class="fab fa-html5"></i></div>
+                <h3>HTML5</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> Semantic Layouts</li>
+                    <li><i class="fas fa-code"></i> Forms & Validations</li>
+                    <li><i class="fas fa-code"></i> SEO & Accessibility</li>
+                </ul>
+            </div>
+            <a href="html5-mastery.html" class="btn-link">Open HTML Syllabus</a>
+        </div>
+
+        <div class="module-card css-card">
+            <div>
+                <div class="icon-box"><i class="fab fa-css3-alt"></i></div>
+                <h3>CSS3</h3>
+                <ul>
+                    <li><i class="fas fa-bezier-curve"></i> Flexbox & Grid</li>
+                    <li><i class="fas fa-bezier-curve"></i> Animations & Motion</li>
+                    <li><i class="fas fa-bezier-curve"></i> Responsive Design</li>
+                </ul>
+            </div>
+            <a href="css3-mastery.html" class="btn-link">Open CSS Syllabus</a>
+        </div>
+
+        <div class="module-card js-card">
+            <div>
+                <div class="icon-box"><i class="fab fa-js"></i></div>
+                <h3>Modern JS</h3>
+                <ul>
+                    <li><i class="fas fa-brain"></i> ES6+ Syntax</li>
+                    <li><i class="fas fa-brain"></i> DOM Manipulation</li>
+                    <li><i class="fas fa-brain"></i> Async & API Fetch</li>
+                </ul>
+            </div>
+            <a href="js-mastery.html" class="btn-link">Open JS Syllabus</a>
+        </div>
+    </div>
+</div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

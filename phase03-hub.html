@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 03: Backend Logic | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --node-color: #166534;  /* Deep Node Green */
+            --api-color: #7c3aed;   /* Purple */
+            --auth-color: #e11d48;  /* Rose Red */
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .back-nav { margin-bottom: 30px; }
+        .back-nav a { text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .back-nav a:hover { color: var(--secondary); }
+
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; color: var(--secondary); }
+        .header h1 span { color: var(--node-color); }
+        .header p { color: #64748b; margin-top: 10px; }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 1 / 1;
+            transition: all 0.3s ease;
+            justify-content: space-between;
+        }
+
+        .module-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
+
+        .icon-box { 
+            width: 60px; height: 60px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.8rem; margin-bottom: 20px; color: white;
+        }
+
+        .node-card { border-top: 5px solid var(--node-color); }
+        .node-card .icon-box { background: var(--node-color); }
+        
+        .api-card { border-top: 5px solid var(--api-color); }
+        .api-card .icon-box { background: var(--api-color); }
+        
+        .auth-card { border-top: 5px solid var(--auth-color); }
+        .auth-card .icon-box { background: var(--auth-color); }
+
+        .module-card h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 15px; }
+        .module-card ul { list-style: none; flex-grow: 1; }
+        .module-card li { margin-bottom: 10px; font-size: 0.9rem; color: #64748b; display: flex; align-items: center; gap: 10px; }
+        .module-card li i { font-size: 0.8rem; opacity: 0.7; }
+
+        .btn-link {
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .node-card .btn-link { color: var(--node-color); border-color: var(--node-color); }
+        .api-card .btn-link { color: var(--api-color); border-color: var(--api-color); }
+        .auth-card .btn-link { color: var(--auth-color); border-color: var(--auth-color); }
+
+        .btn-link:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="back-nav">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Main Roadmap</a>
+    </nav>
+
+    <header class="header">
+        <h1>Phase 03: <span>The Server Engine</span></h1>
+        <p>Mastering server-side logic, API communication, and enterprise security.</p>
+    </header>
+
+    <div class="module-grid">
+        <div class="module-card node-card">
+            <div>
+                <div class="icon-box"><i class="fab fa-node-js"></i></div>
+                <h3>Runtime Logic</h3>
+                <ul>
+                    <li><i class="fas fa-microchip"></i> Node.js Event Loop</li>
+                    <li><i class="fas fa-microchip"></i> Express Middleware Flow</li>
+                    <li><i class="fas fa-microchip"></i> Asynchronous I/O Ops</li>
+                </ul>
+            </div>
+            <a href="node-mastery.html" class="btn-link">Open Node Syllabus</a>
+        </div>
+
+        <div class="module-card api-card">
+            <div>
+                <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                <h3>API Architecture</h3>
+                <ul>
+                    <li><i class="fas fa-exchange-alt"></i> HTTP Verbs (GET, POST, etc.)</li>
+                    <li><i class="fas fa-exchange-alt"></i> MVC Design Pattern</li>
+                    <li><i class="fas fa-exchange-alt"></i> Request/Response Lifecycle</li>
+                </ul>
+            </div>
+            <a href="node-mastery.html" class="btn-link">Open API Syllabus</a>
+        </div>
+
+        <div class="module-card auth-card">
+            <div>
+                <div class="icon-box"><i class="fas fa-user-shield"></i></div>
+                <h3>Security Ops</h3>
+                <ul>
+                    <li><i class="fas fa-key"></i> JWT (JSON Web Tokens)</li>
+                    <li><i class="fas fa-key"></i> Bcrypt Password Hashing</li>
+                    <li><i class="fas fa-key"></i> Session & Cookie Handling</li>
+                </ul>
+            </div>
+            <a href="node-mastery.html" class="btn-link">Open Auth Syllabus</a>
+        </div>
+    </div>
+</div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

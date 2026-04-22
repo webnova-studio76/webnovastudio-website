@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Module 05 | Security & DevOps</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9; 
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --bg: #f0f9ff;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #bae6fd;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e0f2fe; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 20px;
+            border-radius: 10px; margin: 20px 0; font-family: 'Fira Code', monospace; overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Cloud Module 05: Security & DevOps</h1>
+        <p>Securing identities and automating the lifecycle of cloud infrastructure.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'iam')"><i class="fas fa-user-lock"></i> Identity (IAM)</button>
+        <button class="tab-btn" onclick="openTab(event, 'iac')"><i class="fas fa-code"></i> Infrastructure as Code</button>
+        <button class="tab-btn" onclick="openTab(event, 'cicd')"><i class="fas fa-infinity"></i> CI/CD Pipeline</button>
+        
+        <a href="downloads/cloud-module5.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i> PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="iam" class="tab-content active">
+        <h2>Identity & Access Management (IAM)</h2>
+        <p>IAM is the framework that ensures the right people have the right access to the right resources.</p>
+        
+        
+
+        <h3>The Three Pillars of IAM:</h3>
+        <ul>
+            <li><strong>Users:</strong> Specific individuals (like you).</li>
+            <li><strong>Groups:</strong> Collections of users (e.g., "Developers," "Admins").</li>
+            <li><strong>Roles:</strong> Temporary identities that can be assumed by users or services (e.g., allowing an EC2 instance to read from an S3 bucket).</li>
+            <li><strong>Policies:</strong> JSON documents that define what actions are allowed or denied.</li>
+        </ul>
+
+        <div class="pro-tip">
+            <strong>The Principle of Least Privilege:</strong> Always grant the minimum amount of access required to perform a task. Never use the "Root" account for daily work!
+        </div>
+    </div>
+
+    <div id="iac" class="tab-content">
+        <h2>Infrastructure as Code (IaC)</h2>
+        <p>Instead of clicking buttons in the cloud console, we write code to define our infrastructure. This makes building 100 servers as easy as building one.</p>
+        
+        
+
+        <h3>Popular Tools:</h3>
+        <ul>
+            <li><strong>Terraform (HashiCorp):</strong> Open-source and cloud-agnostic (works with AWS, Azure, and Google Cloud).</li>
+            <li><strong>AWS CloudFormation:</strong> AWS's native tool for managing resources.</li>
+        </ul>
+
+        <div class="code-block">
+            # Example Terraform Snippet<br>
+            resource "aws_instance" "web_server" {<br>
+            &nbsp;&nbsp;ami = "ami-0c55b159cbfafe1f0"<br>
+            &nbsp;&nbsp;instance_type = "t2.micro"<br>
+            }
+        </div>
+    </div>
+
+    <div id="cicd" class="tab-content">
+        <h2>CI/CD Pipelines</h2>
+        <p>Continuous Integration (CI) and Continuous Deployment (CD) automate the process of testing and shipping code to the cloud.</p>
+        
+        
+
+        <h3>The Lifecycle:</h3>
+        <ol>
+            <li><strong>Commit:</strong> Developer pushes code to GitHub.</li>
+            <li><strong>Build:</strong> The system compiles the code and builds a Docker container.</li>
+            <li><strong>Test:</strong> Automated tests run to ensure there are no bugs.</li>
+            <li><strong>Deploy:</strong> The code is automatically pushed to the cloud servers.</li>
+        </ol>
+
+        <div class="pro-tip">
+            <strong>DevOps Culture:</strong> DevOps isn't just a tool; it's a culture of collaboration between Developers (Dev) and Operations (Ops) to ship software faster and more reliably.
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

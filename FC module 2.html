@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 02 Notes | Computer Architecture</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+
+        /* Header */
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: var(--secondary); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        /* Menu Bar with Integrated Download */
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #e2e8f0;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        /* Integrated Download Tab Styling */
+        .tab-download {
+            background: var(--accent);
+            color: white;
+            transition: 0.3s;
+        }
+        .tab-download:hover { background: #059669; transform: scale(1.02); }
+
+        /* Content Area */
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+        ul { margin-bottom: 20px; list-style: none; }
+        li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
+
+        .pro-tip {
+            background: #f0fdf4;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        table th { background: #f1f5f9; color: var(--secondary); }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Module 02: Advanced Architecture</h1>
+        <p>A deep dive into CPU Logic, Memory Flow, and System Physics.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'logic')"><i class="fas fa-microchip"></i> Core Logic</button>
+        <button class="tab-btn" onclick="openTab(event, 'memory')"><i class="fas fa-memory"></i> Memory Flow</button>
+        <button class="tab-btn" onclick="openTab(event, 'physical')"><i class="fas fa-project-diagram"></i> System Physics</button>
+        <button class="tab-btn" onclick="openTab(event, 'modern')"><i class="fas fa-bolt"></i> Modern Trends</button>
+        
+        <a href="downloads/module1-notes.pdf" class="tab-btn tab-download" download>
+    <i class="fas fa-file-pdf"></i> Download PDF
+</a>
+    </div>
+
+    <div id="logic" class="tab-content active">
+        <h2>CPU & Processing Logic</h2>
+        <p>The Central Processing Unit (CPU) follows the <strong>Von Neumann Architecture</strong>, where instructions and data share the same memory space.</p>
+        
+        <h3>The Fetch-Decode-Execute Cycle</h3>
+        <ul>
+            <li><strong>Fetch:</strong> CU retrieves instructions from RAM.</li>
+            <li><strong>Decode:</strong> Instructions are translated into binary commands.</li>
+            <li><strong>Execute:</strong> ALU performs the mathematical or logical task.</li>
+            <li><strong>Store:</strong> Results are written back to registers or memory.</li>
+        </ul>
+
+        <h3>Pipelining</h3>
+        <p>In modern architecture, we use <strong>Pipelining</strong> to process multiple instructions at different stages simultaneously, acting like an assembly line.</p>
+
+        <div class="pro-tip">
+            <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Higher Clock Speed (GHz) means more cycles per second, but architecture efficiency (IPC) is often more important for real speed!
+        </div>
+    </div>
+
+    <div id="memory" class="tab-content">
+        <h2>Memory Hierarchy & Speed</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Volatility</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Registers</strong></td>
+                    <td>Volatile</td>
+                    <td>Immediate CPU data (Ultra Fast)</td>
+                </tr>
+                <tr>
+                    <td><strong>Cache (L1-L3)</strong></td>
+                    <td>Volatile</td>
+                    <td>Frequent data buffer between CPU/RAM</td>
+                </tr>
+                <tr>
+                    <td><strong>RAM</strong></td>
+                    <td>Volatile</td>
+                    <td>Active programs and OS data</td>
+                </tr>
+                <tr>
+                    <td><strong>NVMe SSD</strong></td>
+                    <td>Non-Volatile</td>
+                    <td>Permanent file and OS storage</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Virtual Memory</h3>
+        <p>When RAM is full, the OS uses a portion of the SSD as "Virtual Memory." This prevents crashes but significantly slows down performance because SSDs are slower than RAM.</p>
+    </div>
+
+    <div id="physical" class="tab-content">
+        <h2>The Physical Infrastructure</h2>
+        <h3>The Bus System</h3>
+        <ul>
+            <li><strong>Data Bus:</strong> Moves actual content between components.</li>
+            <li><strong>Address Bus:</strong> Specifies the memory location for data.</li>
+            <li><strong>Control Bus:</strong> Sends command signals (Read/Write).</li>
+        </ul>
+
+        <h3>Thermal Management & Throttling</h3>
+        <p>Processing billions of bits creates friction and heat. To protect hardware, systems use:</p>
+        <ul>
+            <li><strong>Thermal Throttling:</strong> Slowing the clock speed if heat limits are hit.</li>
+            <li><strong>Heatsinks & Paste:</strong> Pulling heat away from the silicon chip.</li>
+            <li><strong>Active Cooling:</strong> Fans or Liquid Cooling systems.</li>
+        </ul>
+    </div>
+
+    <div id="modern" class="tab-content">
+        <h2>Modern Trends in 2026</h2>
+        <h3>CPU vs GPU (Parallelism)</h3>
+        <p><strong>CPU:</strong> Few powerful cores for sequential logic.<br>
+        <strong>GPU:</strong> Thousands of simple cores for parallel tasks like AI and 3D rendering.</p>
+
+        <h3>Instruction Sets: x86 vs ARM</h3>
+        <ul>
+            <li><strong>x86 (Intel/AMD):</strong> High performance, complex (CISC), found in workstations.</li>
+            <li><strong>ARM (Apple/Snapdragon):</strong> Reduced Instruction Set (RISC), extremely power-efficient for mobile.</li>
+        </ul>
+
+        <h3>Secondary Storage</h3>
+        <p>NVMe M.2 SSDs plug directly into PCIe lanes, making them up to 10x faster than traditional SATA SSDs.</p>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

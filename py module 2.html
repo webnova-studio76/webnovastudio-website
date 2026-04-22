@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Module 02 | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3776ab; 
+            --secondary: #0f172a;
+            --accent: #ffd43b;  
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            background: #e2e8f0;
+            padding: 8px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download {
+            background: #10b981;
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg);
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #f0fdf4;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Python Module 02: Control Flow</h1>
+        <p>Mastering decision-making and repetitive logic in Python programming.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'conditionals')"><i class="fas fa-code-branch"></i> Conditionals</button>
+        <button class="tab-btn" onclick="openTab(event, 'loops')"><i class="fas fa-redo"></i> Loops</button>
+        <button class="tab-btn" onclick="openTab(event, 'control')"><i class="fas fa-stop-circle"></i> Loop Control</button>
+        
+        <a href="downloads/python-module2.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="conditionals" class="tab-content active">
+        <h2>Conditional Statements</h2>
+        <p>Python uses <code>if</code>, <code>elif</code>, and <code>else</code> to execute code only when certain conditions are met.</p>
+        
+        <div class="code-block">
+            age = 18<br><br>
+            if age >= 18:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("You are an adult.")<br>
+            elif age > 12:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("You are a teenager.")<br>
+            else:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("You are a child.")
+        </div>
+
+        <div class="pro-tip">
+            <strong>Indentation is Key!</strong> Unlike C or Java which use <code>{}</code>, Python uses 4 spaces (indentation) to define a block of code.
+        </div>
+    </div>
+
+    <div id="loops" class="tab-content">
+        <h2>Repeating Tasks: Loops</h2>
+        
+        <h3>1. The For Loop</h3>
+        <p>Used for iterating over a sequence (like a list, string, or range).</p>
+        <div class="code-block">
+            # Prints 0 to 4<br>
+            for i in range(5):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print(f"Number: {i}")
+        </div>
+
+        <h3>2. The While Loop</h3>
+        <p>Repeats as long as a condition remains <code>True</code>.</p>
+        <div class="code-block">
+            count = 0<br>
+            while count < 3:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Hello!")<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;count += 1
+        </div>
+    </div>
+
+    <div id="control" class="tab-content">
+        <h2>Loop Control Statements</h2>
+        <p>Sometimes you need to change how a loop behaves while it is running.</p>
+
+        <ul>
+            <li><strong>Break:</strong> Stops the loop entirely, even if the condition is still True.</li>
+            <li><strong>Continue:</strong> Skips the rest of the current iteration and jumps to the next one.</li>
+            <li><strong>Pass:</strong> A "do nothing" placeholder. Useful when you need a block of code syntactically but haven't written the logic yet.</li>
+        </ul>
+
+        <div class="code-block">
+            for i in range(10):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if i == 5:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break &nbsp;# Loop stops at 5<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if i % 2 == 0:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue &nbsp;# Skips even numbers<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

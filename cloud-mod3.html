@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Module 03 | Storage & Networking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9; 
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --bg: #f0f9ff;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #bae6fd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e0f2fe; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .storage-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .storage-table th, .storage-table td { padding: 15px; border: 1px solid var(--border); text-align: left; }
+        .storage-table th { background: #f8fafc; color: var(--primary); }
+
+        .pro-tip {
+            background: #fffbeb; border-left: 5px solid var(--accent);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Cloud Module 03: Storage & Networking</h1>
+        <p>Mastering how data is persisted and how traffic flows through the global cloud fabric.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'storage')"><i class="fas fa-hdd"></i> Cloud Storage</button>
+        <button class="tab-btn" onclick="openTab(event, 'vpc')"><i class="fas fa-network-wired"></i> VPC & Subnets</button>
+        <button class="tab-btn" onclick="openTab(event, 'traffic')"><i class="fas fa-project-diagram"></i> CDN & Balancing</button>
+        
+        <a href="downloads/cloud-module3.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="storage" class="tab-content active">
+        <h2>Object vs. Block Storage</h2>
+        <p>Choosing the right storage type depends on how you plan to access the data.</p>
+        
+        
+
+        <table class="storage-table">
+            <tr>
+                <th>Feature</th>
+                <th>Object Storage (S3 / Blob)</th>
+                <th>Block Storage (EBS / Managed Disk)</th>
+            </tr>
+            <tr>
+                <td><strong>Best For</strong></td>
+                <td>Photos, Videos, Static Files, Backups</td>
+                <td>Operating Systems, Databases (high I/O)</td>
+            </tr>
+            <tr>
+                <td><strong>Access</strong></td>
+                <td>Via HTTP/API (Web)</td>
+                <td>Attached directly to a VM</td>
+            </tr>
+            <tr>
+                <td><strong>Scaling</strong></td>
+                <td>Virtually Infinite</td>
+                <td>Limited to the size of the volume</td>
+            </tr>
+        </table>
+
+        <div class="pro-tip">
+            <strong>S3 (Simple Storage Service):</strong> In AWS, S3 is used to host millions of files. It is highly durable (99.999999999% durability), meaning you will almost never lose a file stored there.
+        </div>
+    </div>
+
+    <div id="vpc" class="tab-content">
+        <h2>Virtual Private Clouds (VPC)</h2>
+        <p>A VPC is your private corner of the public cloud. It’s a logically isolated network where you launch your resources.</p>
+        
+        
+
+        <h3>Key Components:</h3>
+        <ul>
+            <li><strong>Subnets:</strong> Slicing your VPC into smaller networks. 
+                <ul>
+                    <li><em>Public Subnet:</em> Accessible from the internet (e.g., your Web Server).</li>
+                    <li><em>Private Subnet:</em> Not accessible from the internet (e.g., your Database).</li>
+                </ul>
+            </li>
+            <li><strong>Internet Gateway (IGW):</strong> The "door" that allows traffic into your public subnet.</li>
+            <li><strong>Security Groups:</strong> Virtual firewalls that control traffic at the instance level.</li>
+        </ul>
+    </div>
+
+    <div id="traffic" class="tab-content">
+        <h2>Global Performance & Availability</h2>
+        
+        <h3>1. Content Delivery Networks (CDN)</h3>
+        <p>A CDN (like AWS CloudFront) caches your content in "Edge Locations" around the world. If a user in India visits your US-based site, they get the images from a server in India, making it much faster.</p>
+        
+
+        <h3>2. Load Balancing</h3>
+        <p>A Load Balancer acts as a "traffic cop." It distributes incoming web requests across multiple servers so that no single server gets overwhelmed.</p>
+        
+
+        <div class="pro-tip">
+            <strong>Health Checks:</strong> Load Balancers perform "Health Checks." If one of your servers crashes, the Load Balancer stops sending traffic to it automatically until it is fixed.
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

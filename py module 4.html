@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Module 04 | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3776ab; 
+            --secondary: #0f172a;
+            --accent: #ffd43b;  
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .notes-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 20px;
+        }
+
+        .tabs-nav {
+            display: flex; gap: 10px; background: #e2e8f0; padding: 8px;
+            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
+            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
+            text-decoration: none; white-space: nowrap;
+        }
+
+        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
+
+        .tab-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none;
+        }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); }
+
+        .code-block {
+            background: var(--code-bg); color: #f8f8f2; padding: 20px;
+            border-radius: 10px; margin: 20px 0; font-family: 'Fira Code', monospace; overflow-x: auto;
+        }
+
+        .pro-tip {
+            background: #eff6ff; border-left: 5px solid var(--primary);
+            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="notes-header">
+        <h1>Python Module 04: Functions & Modules</h1>
+        <p>Creating reusable logic and harnessing Python's powerful built-in libraries.</p>
+    </div>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'def')"><i class="fas fa-cube"></i> Defining Functions</button>
+        <button class="tab-btn" onclick="openTab(event, 'lambda')"><i class="fas fa-bolt"></i> Lambda & Scope</button>
+        <button class="tab-btn" onclick="openTab(event, 'lib')"><i class="fas fa-folder-plus"></i> Core Modules</button>
+        
+        <a href="downloads/python-module4.pdf" class="tab-btn tab-download" download>
+            <i class="fas fa-file-pdf"></i>PDF Coming Soon
+        </a>
+    </div>
+
+    <div id="def" class="tab-content active">
+        <h2>Defining Functions & Arguments</h2>
+        <p>A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function.</p>
+        
+        <div class="code-block">
+            def greet_user(name, message="Welcome"):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return f"{message}, {name}!"<br><br>
+            # Calling the function<br>
+            print(greet_user("Alice"))<br>
+            print(greet_user("Bob", "Good morning"))
+        </div>
+
+        <h3>Types of Arguments:</h3>
+        <ul>
+            <li><strong>Positional:</strong> Arguments that must be passed in the correct order.</li>
+            <li><strong>Default:</strong> Arguments that take a value if none is provided (like <code>message</code> above).</li>
+            <li><strong>*args:</strong> Allows a function to take any number of positional arguments.</li>
+            <li><strong>**kwargs:</strong> Allows a function to take any number of keyword arguments (dictionary-style).</li>
+        </ul>
+    </div>
+
+    <div id="lambda" class="tab-content">
+        <h2>Lambda Functions & Variable Scope</h2>
+        
+        <h3>Lambda (Anonymous) Functions</h3>
+        <p>Small, one-line functions defined without a name. They are used for simple logic.</p>
+        <div class="code-block">
+            # syntax: lambda arguments : expression<br>
+            square = lambda x : x * x<br>
+            print(square(5)) # 25
+        </div>
+
+        <h3>Variable Scope: Local vs Global</h3>
+        <p>Where a variable is defined determines where it can be accessed.</p>
+        <div class="code-block">
+            x = 10 # Global Scope<br><br>
+            def my_func():<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;y = 5 # Local Scope<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print(x + y) # Works!
+        </div>
+
+        <div class="pro-tip">
+            <strong>The "Global" Keyword:</strong> To modify a global variable inside a function, you must declare it using <code>global x</code> inside that function.
+        </div>
+    </div>
+
+    <div id="lib" class="tab-content">
+        <h2>Importing Standard Modules</h2>
+        <p>Python comes with "batteries included," meaning it has many built-in modules ready for use.</p>
+
+        <h3>1. Math Module</h3>
+        <p>For mathematical constants and functions.</p>
+        <div class="code-block">
+            import math<br>
+            print(math.sqrt(16)) # 4.0<br>
+            print(math.pi) # 3.1415...
+        </div>
+
+        <h3>2. Random Module</h3>
+        <p>For generating random numbers and choices.</p>
+        <div class="code-block">
+            import random<br>
+            print(random.randint(1, 10)) # Random number between 1-10<br>
+            print(random.choice(['Red', 'Green', 'Blue']))
+        </div>
+
+        <h3>3. OS Module</h3>
+        <p>For interacting with the operating system and file folders.</p>
+        <div class="code-block">
+            import os<br>
+            print(os.getcwd()) # Get current working directory<br>
+            os.mkdir("NewFolder") # Creates a new folder
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>

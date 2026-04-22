@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Mastery | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #dd0031; /* Angular Crimson */
+            --secondary: #1e1b4b; /* Deep Indigo */
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
+        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+        .syllabus-head h1 span { color: var(--accent); }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            aspect-ratio: 1 / 1;
+            justify-content: space-between;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(221, 0, 49, 0.05);
+        }
+
+        .phase-tag { 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
+        .module-card ul { list-style: none; flex-grow: 1; }
+        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
+        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
+
+        .download-zone {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-dl {
+            flex: 1;
+            padding: 3px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-align: center;
+        }
+        .btn-pdf { background: #fff1f2; color: #be123c; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="syllabus-head">
+        <h1>AngularJS <span>Architecture</span></h1>
+        <p>A 6-Phase blueprint for building scalable, enterprise-grade applications.</p>
+    </header>
+
+    <div class="module-grid">
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 01: Setup & Core</p>
+                <h3>Foundations</h3>
+                <ul>
+                    <li><i class="fas fa-cube"></i> Intro to MVC Architecture.</li>
+                    <li><i class="fas fa-cube"></i> Angular Modules & Controllers.</li>
+                    <li><i class="fas fa-cube"></i> Expressions & Basic Scopes.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 02: Templates</p>
+                <h3>Directives Mastery</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> ng-app, ng-model, and ng-bind.</li>
+                    <li><i class="fas fa-code"></i> Iterating with ng-repeat.</li>
+                    <li><i class="fas fa-code"></i> Conditional DOM with ng-if/show.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 03: Data Flow</p>
+                <h3>Data Binding</h3>
+                <ul>
+                    <li><i class="fas fa-sync"></i> Two-way vs One-way Binding.</li>
+                    <li><i class="fas fa-sync"></i> Event handling with ng-click.</li>
+                    <li><i class="fas fa-sync"></i> Deep dive into $scope & $rootScope.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 04: Logic Separation</p>
+                <h3>Services & Factory</h3>
+                <ul>
+                    <li><i class="fas fa-cogs"></i> Dependency Injection Logic.</li>
+                    <li><i class="fas fa-cogs"></i> Creating Reusable Services.</li>
+                    <li><i class="fas fa-cogs"></i> Utility Factories for Data Ops.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 05: Connectivity</p>
+                <h3>HTTP & Filters</h3>
+                <ul>
+                    <li><i class="fas fa-server"></i> $http Service for API calls.</li>
+                    <li><i class="fas fa-server"></i> Promises & Response Handling.</li>
+                    <li><i class="fas fa-server"></i> Custom Filters for Data Formatting.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div>
+                <p class="phase-tag">Phase 06: Navigation</p>
+                <h3>Routing & Validation</h3>
+                <ul>
+                    <li><i class="fas fa-route"></i> Single Page Apps with ngRoute.</li>
+                    <li><i class="fas fa-route"></i> Form Validation & $dirty states.</li>
+                    <li><i class="fas fa-route"></i> Custom Directives Architecture.</li>
+                </ul>
+            </div>
+            <div class="download-zone">
+                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="header.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>
