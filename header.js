@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </li>-->
             
             <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="practicals-library.html" class="nav-link">Practical Hub</a></li>
             <!--<li class="nav-item">
                 <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown">
