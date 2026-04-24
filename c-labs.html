@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Labs | Code Craft Academic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #64748b; /* C Slate Gray */
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --bg: #f8fafc;
+            --code-bg: #1e293b;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+
+        /* 1. SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 { font-size: 1.2rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; }
+        
+        .lab-list { list-style: none; }
+        .lab-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .lab-item:hover { background: rgba(255,255,255,0.1); }
+        .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
+
+        /* 2. MAIN CONTENT AREA */
+        .main-content { flex: 1; overflow-y: auto; padding: 40px; }
+        
+        .header-box { margin-bottom: 30px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+        .header-box h1 { font-size: 2rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #e2e8f0; border-radius: 20px; font-size: 0.75rem; font-weight: bold; margin-top: 10px; }
+
+        /* 3. CODE BLOCK */
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .code-header {
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .btn-copy {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        pre {
+            padding: 20px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Ensures code doesn't spill out */
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: 250px; }
+        }
+        .sidebar-footer {
+    margin-top: auto; /* Pushes the button to the bottom */
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-download-pdf {
+    display: block;
+    background: var(--accent); /* Emerald Green */
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.btn-download-pdf:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.logic-container {
+    margin-top: 30px;
+    background: #fefce8; /* Soft Yellow */
+    border: 1px solid #fef08a;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.logic-header {
+    background: #fef08a;
+    padding: 12px 20px;
+    font-weight: 800;
+    color: #854d0e;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.logic-body {
+    padding: 20px;
+    color: #713f12;
+    font-size: 0.95rem;
+}
+
+.logic-step {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.step-num {
+    background: #854d0e;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>C LAB PROGRAMS</h2>
+        <ul class="lab-list">
+            <li class="lab-item active" id="default-item" onclick="showCode('prog1')">01. Hello World</li>
+            <li class="lab-item" onclick="showCode('prog2')">02. Input & Output</li>
+            <li class="lab-item" onclick="showCode('prog3')">03. Addition of Two Numbers</li>
+            <li class="lab-item" onclick="showCode('prog4')">04. Swap Two Numbers</li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="assets/pdf/C-Lab-Manual-Rakesh.pdf" download class="btn-download-pdf">
+                <i class="fas fa-file-download"></i> Download Full Manual
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="content-display">
+            <div class="header-box">
+                <span class="tag">LAB PROGRAM 01</span>
+                <h1 id="prog-title">Hello World</h1>
+            </div>
+
+            <div class="logic-container">
+                <div class="logic-header">
+                    <i class="fas fa-brain"></i> Logic Mastery Breakdown
+                </div>
+                <div class="logic-body" id="logic-text">
+                    </div>
+            </div>
+
+            <div class="code-container" style="margin-top: 20px;">
+                <div class="code-header">
+                    <span style="color: #94a3b8; font-size: 0.8rem;">main.c</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                </div>
+                <pre id="code-block"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const labData = {
+            prog1: {
+                title: "Hello World",
+                tag: "LAB PROGRAM 01",
+                code: `#include <stdio.h>\n\nint main() {\n    printf("Hello, World!");\n    return 0;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Standard I/O:</b> #include &lt;stdio.h&gt; tells the compiler to include standard input/output functions.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Execution Point:</b> main() is the starting point of every C program.</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Output:</b> printf() displays the text on the screen.</p></div>`
+            },
+            prog2: {
+                title: "Input & Output",
+                tag: "LAB PROGRAM 02",
+                code: `#include <stdio.h>\n\nint main() {\n    int num;\n    printf("Enter a number: ");\n    scanf("%d", &num);\n    printf("You entered: %d", num);\n    return 0;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Declaration:</b> 'int num' creates a memory space for an integer.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Prompt:</b> printf() asks the user for input.</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Input:</b> scanf() uses %d and the address operator (&) to store the value in 'num'.</p></div>`
+            },
+            prog3: {
+                title: "Addition of Two Numbers",
+                tag: "LAB PROGRAM 03",
+                code: `#include <stdio.h>\n\nint main() {\n    int a, b, sum;\n    printf("Enter two numbers: ");\n    scanf("%d %d", &a, &b);\n    sum = a + b;\n    printf("Sum = %d", sum);\n    return 0;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Storage:</b> We declare three variables: a, b, and sum.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Operation:</b> The '+' operator calculates the total of a and b.</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Assignment:</b> The result is assigned (=) to the 'sum' variable.</p></div>`
+            },
+            prog4: {
+                title: "Swap Two Numbers",
+                tag: "LAB PROGRAM 04",
+                code: `#include <stdio.h>\n\nint main() {\n    int a = 5, b = 10, temp;\n    temp = a;\n    a = b;\n    b = temp;\n    printf("a = %d, b = %d", a, b);\n    return 0;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Backup:</b> We store 'a' in 'temp' so the value isn't lost during overwriting.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Overwrite:</b> 'b' is moved into 'a'.</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Finalize:</b> The original value of 'a' (from temp) is moved into 'b'.</p></div>`
+            }
+        };
+
+        function showCode(id) {
+            // Update Active Styling
+            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+            
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                document.getElementById('default-item').classList.add('active');
+            }
+
+            // Update Content
+            document.getElementById('prog-title').innerText = labData[id].title;
+            document.querySelector('.tag').innerText = labData[id].tag;
+            document.getElementById('code-block').innerText = labData[id].code;
+            
+            // Inject Logic Breakdown
+            document.getElementById('logic-text').innerHTML = labData[id].logic;
+        }
+
+        window.onload = function() {
+            showCode('prog1');
+        };
+
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code);
+            const btn = document.querySelector('.btn-copy');
+            btn.innerText = "Copied!";
+            btn.style.background = "#059669";
+            setTimeout(() => {
+                btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+                btn.style.background = "#10b981";
+            }, 2000);
+        }
+    </script>
