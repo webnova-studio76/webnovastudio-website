@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Query Hub | Code Craft Academic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f29111; /* SQL Orange */
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --bg: #f8fafc;
+            --code-bg: #1e293b;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 4px solid var(--primary);
+        }
+
+        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            color: #94a3b8;
+        }
+
+        .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
+
+        .sidebar-footer {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+
+        .btn-download-pdf {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content { flex: 1; overflow-y: auto; padding: 40px; }
+        
+        .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+        .header-box h1 { font-size: 2rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #fff7ed; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+
+        /* LOGIC BREAKDOWN */
+        .logic-container {
+            margin-bottom: 25px;
+            background: #fffaf5; 
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .logic-header {
+            background: #fed7aa;
+            padding: 10px 20px;
+            font-weight: 800;
+            color: #9a3412;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .logic-body { padding: 20px; color: #431407; font-size: 0.9rem; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+        .step-num {
+            background: #9a3412; color: white; width: 20px; height: 20px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
+        }
+
+        /* CODE BLOCK */
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .code-header {
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .btn-copy {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        pre {
+            padding: 25px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>SQL Database Hub</h2>
+        <ul class="lab-list">
+            <li class="lab-item active" id="default-item" onclick="showCode('sql1')">01. Create Table (DDL)</li>
+            <li class="lab-item" onclick="showCode('sql2')">02. Insert Data (DML)</li>
+            <li class="lab-item" onclick="showCode('sql3')">03. Select & Filter (DQL)</li>
+            <li class="lab-item" onclick="showCode('sql4')">04. Update & Delete</li>
+            <li class="lab-item" onclick="showCode('sql5')">05. Primary & Foreign Keys</li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="assets/pdf/SQL-Lab-Manual.pdf" download class="btn-download-pdf">
+                <i class="fas fa-file-download"></i> Download SQL Manual
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="content-display">
+            <div class="header-box">
+                <span class="tag">SQL DATABASE MASTERY</span>
+                <h1 id="prog-title">Query Title</h1>
+            </div>
+
+            <div class="logic-container">
+                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
+                <div class="logic-body" id="logic-text"></div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">database.sql</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Query</button>
+                </div>
+                <pre id="code-block"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const labData = {
+            sql1: {
+                title: "Create Table (DDL)",
+                tag: "SQL PROGRAM 01",
+                code: `CREATE TABLE Students (\n    StudentID int PRIMARY KEY,\n    Name varchar(50),\n    Course varchar(20),\n    Age int\n);`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DDL:</b> Data Definition Language is used to define the database structure.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Data Types:</b> 'int' is for numbers, 'varchar' is for text (variable character).</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Primary Key:</b> Ensures each student has a unique ID that cannot be null.</p></div>`
+            },
+            sql2: {
+                title: "Insert Data (DML)",
+                tag: "SQL PROGRAM 02",
+                code: `INSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (1, 'Rakesh', 'BCA', 33);\n\nINSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (2, 'Rashmi', 'MCA', 22);`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DML:</b> Data Manipulation Language handles the actual records.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Mapping:</b> The order of values must match the order of column names specified.</p></div>`
+            },
+            sql3: {
+                title: "Select & Filter (DQL)",
+                tag: "SQL PROGRAM 03",
+                code: `-- Select all columns\nSELECT * FROM Students;\n\n-- Select specific columns with condition\nSELECT Name, Course FROM Students\nWHERE Age > 22;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Asterisk (*):</b> A wildcard representing "all columns" in the table.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>WHERE:</b> Filters the rows. Only students older than 22 will be displayed.</p></div>`
+            },
+            sql4: {
+                title: "Update & Delete",
+                tag: "SQL PROGRAM 04",
+                code: `-- Update a record\nUPDATE Students\nSET Course = 'MCA Scholar'\nWHERE StudentID = 1;\n\n-- Delete a record\nDELETE FROM Students\nWHERE StudentID = 2;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>SET:</b> Specifies which column to change and what the new value is.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>CRITICAL:</b> Always use a WHERE clause with UPDATE/DELETE, or you will change the whole table!</p></div>`
+            },
+            sql5: {
+                title: "Primary & Foreign Keys",
+                tag: "SQL PROGRAM 05",
+                code: `-- Parent Table (Already Created Students)\n\n-- Child Table\nCREATE TABLE Fees (\n    FeeID int PRIMARY KEY,\n    Amount decimal(10,2),\n    StudentID int,\n    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)\n);`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Relationship:</b> Foreign Keys link two tables together.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Integrity:</b> This prevents adding a fee record for a student who doesn't exist in the main table.</p></div>`
+            }
+        };
+
+        function showCode(id) {
+            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                document.getElementById('default-item').classList.add('active');
+            }
+            document.getElementById('prog-title').innerText = labData[id].title;
+            document.querySelector('.tag').innerText = labData[id].tag;
+            document.getElementById('code-block').innerText = labData[id].code;
+            document.getElementById('logic-text').innerHTML = labData[id].logic;
+        }
+
+        window.onload = function() { showCode('sql1'); };
+
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = "Copied!";
+                btn.style.background = "#059669";
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Query';
+                    btn.style.background = "#10b981";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
