@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tech Hub | Code Craft Academic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e34c26; /* HTML5 Orange-Red */
+            --secondary: #0f172a;
+            --accent: #264de4; /* CSS3 Blue */
+            --bg: #f8fafc;
+            --code-bg: #1e293b;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 4px solid var(--primary);
+        }
+
+        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            color: #94a3b8;
+        }
+
+        .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
+
+        .sidebar-footer {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+
+        .btn-download-pdf {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content { flex: 1; overflow-y: auto; padding: 40px; }
+        
+        .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+        .header-box h1 { font-size: 2rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #fff1f0; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+
+        /* LOGIC BREAKDOWN */
+        .logic-container {
+            margin-bottom: 25px;
+            background: #fffafa; 
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .logic-header {
+            background: #fecaca;
+            padding: 10px 20px;
+            font-weight: 800;
+            color: #991b1b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .logic-body { padding: 20px; color: #7f1d1d; font-size: 0.9rem; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+        .step-num {
+            background: #991b1b; color: white; width: 20px; height: 20px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
+        }
+
+        /* CODE BLOCK */
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .code-header {
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .btn-copy {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        pre {
+            padding: 25px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Web Mastery Hub</h2>
+        <ul class="lab-list">
+            <li class="lab-item active" id="default-item" onclick="showCode('web1')">01. Basic Structure</li>
+            <li class="lab-item" onclick="showCode('web2')">02. Flexbox Navbar</li>
+            <li class="lab-item" onclick="showCode('web3')">03. Responsive Grid</li>
+            <li class="lab-item" onclick="showCode('web4')">04. CSS Animations</li>
+            <li class="lab-item" onclick="showCode('web5')">05. Form UI & Logic</li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="assets/pdf/Web-Design-Guide.pdf" download class="btn-download-pdf">
+                <i class="fas fa-file-download"></i> Download Web Manual
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="content-display">
+            <div class="header-box">
+                <span class="tag">FRONTEND DESIGN MASTERY</span>
+                <h1 id="prog-title">Web Example</h1>
+            </div>
+
+            <div class="logic-container">
+                <div class="logic-header"><i class="fas fa-brain"></i> Design Logic Mastery</div>
+                <div class="logic-body" id="logic-text"></div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">index.html / style.css</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                </div>
+                <pre id="code-block"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const labData = {
+            web1: {
+                title: "HTML5 Semantic Structure",
+                tag: "WEB PROGRAM 01",
+                code: `<!DOCTYPE html>\n<html>\n  <head>\n    <title>Basic Page</title>\n  </head>\n  <body>\n    <header>Header Content</header>\n    <main>Main Article</main>\n    <footer>Footer Content</footer>\n  </body>\n</html>`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DOCTYPE:</b> Tells the browser we are using HTML5.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Semantics:</b> Using tags like &lt;header&gt; and &lt;main&gt; helps SEO and screen readers.</p></div>`
+            },
+            web2: {
+                title: "Modern Flexbox Navbar",
+                tag: "WEB PROGRAM 02",
+                code: `.nav {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px;\n}\n\n.links {\n  display: flex;\n  gap: 15px;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Flex:</b> display: flex turns on the flexible box layout.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Alignment:</b> justify-content manages horizontal space; align-items manages vertical space.</p></div>`
+            },
+            web3: {
+                title: "Responsive CSS Grid",
+                tag: "WEB PROGRAM 03",
+                code: `.grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 20px;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Auto-Fit:</b> Automatically creates as many columns as will fit the container.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Fr Unit:</b> '1fr' stands for a fraction of the available space.</p></div>`
+            },
+            web4: {
+                title: "CSS Keyframe Animation",
+                tag: "WEB PROGRAM 04",
+                code: `@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(10px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n\n.card {\n  animation: fadeIn 0.8s ease-out;\n}`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Keyframes:</b> Defines the start (from) and end (to) points of the animation.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Interpolation:</b> The browser calculates the smooth transition between steps.</p></div>`
+            },
+            web5: {
+                title: "Form UI with Validation",
+                tag: "WEB PROGRAM 05",
+                code: `<form>\n  <input type="email" placeholder="Email" required>\n  <input type="password" placeholder="Password" minlength="8">\n  <button type="submit">Join WebNova</button>\n</form>`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Types:</b> Using type="email" triggers automatic mobile keyboard layouts.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Validation:</b> 'required' and 'minlength' provide instant client-side checks.</p></div>`
+            }
+        };
+
+        function showCode(id) {
+            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                document.getElementById('default-item').classList.add('active');
+            }
+            document.getElementById('prog-title').innerText = labData[id].title;
+            document.querySelector('.tag').innerText = labData[id].tag;
+            document.getElementById('code-block').innerText = labData[id].code;
+            document.getElementById('logic-text').innerHTML = labData[id].logic;
+        }
+
+        window.onload = function() { showCode('web1'); };
+
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = "Copied!";
+                btn.style.background = "#059669";
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+                    btn.style.background = "#264de4";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
