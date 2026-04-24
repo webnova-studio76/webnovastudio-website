@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Mastery Hub | Code Craft Academic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3776ab; /* Python Blue */
+            --secondary: #0f172a;
+            --accent: #ffde57; /* Python Gold */
+            --bg: #f8fafc;
+            --code-bg: #1e293b;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 4px solid var(--primary);
+        }
+
+        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            color: #94a3b8;
+        }
+
+        .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
+
+        .sidebar-footer {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+
+        .btn-download-pdf {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content { flex: 1; overflow-y: auto; padding: 40px; }
+        
+        .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+        .header-box h1 { font-size: 2rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #e0f2fe; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+
+        /* LOGIC BREAKDOWN */
+        .logic-container {
+            margin-bottom: 25px;
+            background: #fffdf0; 
+            border: 1px solid #fef08a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .logic-header {
+            background: #fef08a;
+            padding: 10px 20px;
+            font-weight: 800;
+            color: #854d0e;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .logic-body { padding: 20px; color: #713f12; font-size: 0.9rem; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+        .step-num {
+            background: #854d0e; color: white; width: 20px; height: 20px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
+        }
+
+        /* CODE BLOCK */
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .code-header {
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .btn-copy {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        pre {
+            padding: 25px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Python Logic Hub</h2>
+        <ul class="lab-list">
+            <li class="lab-item active" id="default-item" onclick="showCode('py1')">01. Dynamic Input & Format</li>
+            <li class="lab-item" onclick="showCode('py2')">02. List Transformations</li>
+            <li class="lab-item" onclick="showCode('py3')">03. Dictionary Mapping</li>
+            <li class="lab-item" onclick="showCode('py4')">04. Lambda & Filter Logic</li>
+            <li class="lab-item" onclick="showCode('py5')">05. File Handling (CSV)</li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="assets/pdf/Python-Lab-Manual.pdf" download class="btn-download-pdf">
+                <i class="fas fa-file-download"></i> Download Python Manual
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="content-display">
+            <div class="header-box">
+                <span class="tag">PYTHON LOGIC MASTERY</span>
+                <h1 id="prog-title">Program Title</h1>
+            </div>
+
+            <div class="logic-container">
+                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
+                <div class="logic-body" id="logic-text"></div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">script.py</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                </div>
+                <pre id="code-block"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const labData = {
+            py1: {
+                title: "Dynamic Input & Format",
+                tag: "PYTHON PROGRAM 01",
+                code: `name = input("Enter name: ")\nage = int(input("Enter age: "))\n\n# Modern f-string formatting\nprint(f"Hello {name}, you will be {age + 1} next year!")`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Type Casting:</b> input() always returns a string, so we use int() to convert it for math.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>f-strings:</b> A powerful way to embed variables directly into strings using {} braces.</p></div>`
+            },
+            py2: {
+                title: "List Transformations",
+                tag: "PYTHON PROGRAM 02",
+                code: `nums = [1, 2, 3, 4, 5]\n\n# List Comprehension (Phase 04 Logic)\nsquares = [x**2 for x in nums]\n\nprint(f"Original: {nums}")\nprint(f"Squared: {squares}")`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Comprehension:</b> A compact way to create new lists from existing ones in a single line.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Power Operator:</b> Python uses ** for exponentiation (x squared).</p></div>`
+            },
+            py3: {
+                title: "Dictionary Mapping",
+                tag: "PYTHON PROGRAM 03",
+                code: `user = {"name": "Rakesh", "role": "Lead Developer"}\n\n# Adding and accessing data\nuser["project"] = "WebNova"\n\nfor key, value in user.items():\n    print(f"{key.capitalize()}: {value}")`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Key-Value Pairs:</b> Dictionaries store data in a way that is easy to search by key.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Iteration:</b> .items() allows us to loop through both labels and values simultaneously.</p></div>`
+            },
+            py4: {
+                title: "Lambda & Filter Logic",
+                tag: "PYTHON PROGRAM 04",
+                code: `scores = [45, 88, 32, 91, 56, 72]\n\n# Filtering passing scores (> 50)\npass_marks = list(filter(lambda x: x > 50, scores))\n\nprint(f"Passed Students: {pass_marks}")`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Lambda:</b> An "anonymous" function used for short, one-time tasks.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Filter:</b> Higher-order function that extracts data based on a specific logical condition.</p></div>`
+            },
+            py5: {
+                title: "File Handling (Simple)",
+                tag: "PYTHON PROGRAM 05",
+                code: `data = ["Python", "Java", "C++"]\n\nwith open("labs.txt", "w") as f:\n    for item in data:\n        f.write(item + "\\n")\n\nprint("File 'labs.txt' created successfully!")`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Context Manager:</b> 'with open' automatically closes the file, preventing memory leaks.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Write Mode:</b> The 'w' flag creates a new file or overwrites an existing one.</p></div>`
+            }
+        };
+
+        function showCode(id) {
+            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                document.getElementById('default-item').classList.add('active');
+            }
+            document.getElementById('prog-title').innerText = labData[id].title;
+            document.querySelector('.tag').innerText = labData[id].tag;
+            document.getElementById('code-block').innerText = labData[id].code;
+            document.getElementById('logic-text').innerHTML = labData[id].logic;
+        }
+
+        window.onload = function() { showCode('py1'); };
+
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = "Copied!";
+                btn.style.background = "#059669";
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+                    btn.style.background = "#10b981";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
