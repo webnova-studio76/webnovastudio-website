@@ -311,6 +311,21 @@
                 }, 2000);
             });
         }
+
+        function copyCode() {
+    const code = document.getElementById('code-block').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.btn-copy');
+        btn.innerText = "Copied!";
+        
+        // Lead Dev Hint: Tell them where to paste
+        alert("Code copied! Now scroll down and paste it into the Live Playground to run it.");
+        
+        setTimeout(() => {
+            btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+        }, 2000);
+    });
+}
     </script>
 </body>
 </html>
