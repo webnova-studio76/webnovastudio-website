@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     const headerHTML = `
  
-    <header class="master-header">
-        
+    <header class="master-header">   
     <div class="nav-container">
         <a href="index.html" class="logo">WebNova<span>Studio</span></a>
-        
-        
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
