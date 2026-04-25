@@ -679,38 +679,52 @@ window.addEventListener('scroll', () => {
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const isLogicHidden = localStorage.getItem('hideLogicModal');
+        // --- 1. SAFE LOGIC MODAL ---
         const logicOverlay = document.getElementById('logicModal');
+        const isLogicHidden = localStorage.getItem('hideLogicModal');
 
-        // Trigger Logic Modal
-        if (!isLogicHidden && logicOverlay) {
+        if (logicOverlay && !isLogicHidden) {
             logicOverlay.style.display = 'flex';
             setTimeout(() => {
                 logicOverlay.classList.add('active');
-            }, 200);
+            }, 500);
         }
 
-        // Delay for your Lead Modal (Free PDF)
+        // --- 2. SAFE LEAD MODAL (The one causing errors) ---
         setTimeout(() => {
             const leadModal = document.getElementById('leadModal');
-            if (leadModal && (!logicOverlay || !logicOverlay.classList.contains('active'))) {
-                leadModal.style.display = 'flex';
+            // We check IF leadModal exists first
+            if (leadModal) {
+                // Only show if Logic Modal isn't active
+                if (!logicOverlay || !logicOverlay.classList.contains('active')) {
+                    leadModal.style.display = 'flex';
+                }
             }
-        }, 6000); 
+        }, 6000);
     });
 
+    // Handle Logic Close
     function handleLogicClose() {
-        const dontShow = document.getElementById('dontShow').checked;
         const logicOverlay = document.getElementById('logicModal');
-
-        if (dontShow) {
-            localStorage.setItem('hideLogicModal', 'true');
+        const checkbox = document.getElementById('dontShow');
+        
+        if (logicOverlay) {
+            if (checkbox && checkbox.checked) {
+                localStorage.setItem('hideLogicModal', 'true');
+            }
+            logicOverlay.classList.remove('active');
+            setTimeout(() => { logicOverlay.style.display = 'none'; }, 800);
         }
+    }
 
-        logicOverlay.classList.remove('active');
-        setTimeout(() => {
-            logicOverlay.style.display = 'none';
-        }, 800);
+    // Safe Lead Form Handler
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+        leadForm.onsubmit = function(e) {
+            e.preventDefault();
+            alert('Success! Check your email.');
+            document.getElementById('leadModal').style.display = 'none';
+        };
     }
 </script>
 </body>
