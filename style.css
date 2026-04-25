@@ -2544,3 +2544,11 @@ body.webnova-corporate-theme {
 .logic-modal-footer { padding: 0 25px 30px; display: flex; flex-direction: column; gap: 15px; }
 .logic-close-btn { background: #2563eb; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 .noshow-container { font-size: 0.8rem; color: #64748b; cursor: pointer; display: flex; align-items: center; gap: 10px; justify-content: center; }
+
+
+.logic-modal-body { 
+    padding: 20px 25px; /* Adjusting padding for the new lines */
+}
+.l-feat {
+    margin-bottom: 12px; /* Adding a bit more space between bullets */
+}
