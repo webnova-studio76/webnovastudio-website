@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const headerHTML = `
-    <div class="weekly-alert" id="resourceAlert">
+    /*<div class="weekly-alert" id="resourceAlert">
     <div class="alert-pulse"></div>
     <div class="alert-content">
         <span class="alert-tag stagger-1">New Resources Weekly</span>
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <button class="alert-close" onclick="closeResourceAlert()">
         <i class="fas fa-times"></i>
     </button>
-</div>
+</div>-->*/
     <header class="master-header">
         
     <div class="nav-container">
