@@ -1,18 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const headerHTML = `
-    /*<div class="weekly-alert" id="resourceAlert">
-    <div class="alert-pulse"></div>
-    <div class="alert-content">
-        <span class="alert-tag stagger-1">New Resources Weekly</span>
-        <p class="stagger-2">PDF Notes | Web Templates | PPT Templates are uploaded every Sunday.</p>
-        <!--<p class="stagger-2">Our website is currently under development.We’re working hard to bring you high-quality content including notes, templates, designs, and much more.
-✨ Stay tuned — everything will be uploaded soon.Thank you for your patience and support 💙.</p>-->
-        <a href="free-resources.html" class="alert-link stagger-3">Explore Vault <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <button class="alert-close" onclick="closeResourceAlert()">
-        <i class="fas fa-times"></i>
-    </button>
-</div>-->*/
+ 
     <header class="master-header">
         
     <div class="nav-container">
