@@ -98,19 +98,15 @@
 }
 .modern-badge {
     margin-top: 12px;
-    padding: 6px 12px;
-    background: rgba(16, 185, 129, 0.08);
-    border-radius: 4px;
-    border-left: 3px solid var(--accent);
+    padding: 8px 15px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+    border-left: 4px solid var(--accent);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #065f46;
-}
-
-.modern-badge i {
-    font-size: 0.85rem;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: var(--secondary);
 }
     </style>
 </head>
@@ -139,33 +135,35 @@
     </aside>
 
     <main class="main-content">
-    <div id="content-display">
-        <div class="header-box">
-            <span class="tag" id="prog-tag">SECTION: BASIC</span>
-            <h1 id="prog-title">Program Title</h1>
-            
-            <div class="modern-badge">
-                <i class="fas fa-check-circle"></i>
-                <span><b>WebNova Standards:</b> Optimized for modern compilers. Minimal lines, maximum logic.</span>
-                <span><b>Industry Standard:</b> Clean logic over lengthy code. Optimized for modern exams & Vivas.</span>
-                <span><b>Modern Standard:</b> Optimized logic. Industry-clean code.</span>
-            </div>
-        </div>
-
-        <div class="logic-container">
-            <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
-            <div class="logic-body" id="logic-text"></div>
-        </div>
-
-        <div class="code-container">
-            <div class="code-header">
-                <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">main.c</span>
-                <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
-            </div>
-            <pre id="code-block"></pre>
-        </div>
+        <div id="content-display">
+            <div class="header-box">
+    <span class="tag" id="prog-tag">SECTION: BASIC</span>
+    <h1 id="prog-title">Program Title</h1>
+    
+    <div class="modern-notice">
+        <i class="fas fa-bolt"></i> 
+        <span><b>WebNova Standards:</b> Optimized for modern compilers. Minimal lines, maximum logic.</span>
     </div>
-</main>
+    <div class="modern-badge">
+    <i class="fas fa-check-circle"></i>
+    <span><b>Industry Standard:</b> Clean logic over lengthy code. Optimized for modern exams & Vivas.</span>
+</div>
+</div>
+
+            <div class="logic-container">
+                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
+                <div class="logic-body" id="logic-text"></div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">main.c</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                </div>
+                <pre id="code-block"></pre>
+            </div>
+        </div>
+    </main>
 
     <script>
         const labData = {
