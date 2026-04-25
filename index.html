@@ -515,6 +515,36 @@
     </div>
 </footer>
 
+    <div id="logicModal" class="logic-overlay">
+    <div class="logic-modal-card">
+        <div class="logic-modal-header">
+            <i class="fas fa-microchip"></i>
+            <h3>WebNova System Logic</h3>
+        </div>
+        <div class="logic-modal-body">
+            <p class="logic-main-text">Tired of 100+ boring, outdated modules?</p>
+            <div class="logic-feature-box">
+                <div class="l-feat">
+                    <i class="fas fa-check-double"></i>
+                    <span><b>Optimized:</b> Clean logic over legacy code.</span>
+                </div>
+                <div class="l-feat">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span><b>Viva-Ready:</b> Minimal lines, max explanation.</span>
+                </div>
+            </div>
+            <p class="logic-sub-text">We provide the map, not just the forest.</p>
+        </div>
+        <div class="logic-modal-footer">
+            <label class="noshow-container">
+                <input type="checkbox" id="dontShow">
+                <span class="checkmark"></span>
+                Don't show again
+            </label>
+            <button class="logic-close-btn" onclick="handleLogicClose()">Start Learning</button>
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -644,6 +674,34 @@ window.addEventListener('scroll', () => {
         menuToggle.classList.remove('active');
         navLinks.classList.remove('active');
     }));
+
+
+    window.onload = function() {
+    const isHidden = localStorage.getItem('hideLogicModal');
+    
+    if (!isHidden) {
+        const overlay = document.getElementById('logicModal');
+        overlay.style.display = 'flex';
+        // Small delay to trigger the CSS animation
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 100);
+    }
+}
+
+function handleLogicClose() {
+    const dontShow = document.getElementById('dontShow').checked;
+    
+    if (dontShow) {
+        localStorage.setItem('hideLogicModal', 'true');
+    }
+    
+    const overlay = document.getElementById('logicModal');
+    overlay.classList.remove('active');
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 600);
+}
 </script>
 </body>
 </html>
