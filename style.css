@@ -2552,3 +2552,45 @@ body.webnova-corporate-theme {
 .l-feat {
     margin-bottom: 12px; /* Adding a bit more space between bullets */
 }
+
+/* Ensure the popup floats on top */
+.logic-overlay {
+    position: fixed; /* Fixes it to the screen, not the page */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.9); /* Darkens the background */
+    backdrop-filter: blur(10px);
+    z-index: 999999; /* Higher than footer and Telegram button */
+    display: none; /* JS will change this to 'flex' */
+    align-items: center;
+    justify-content: center;
+}
+
+/* The card itself */
+.logic-modal-card {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 24px;
+    padding: 0; /* Header takes care of padding */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    /* Slide Animation */
+    transform: translateY(-150vh);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Triggered by JS */
+.logic-overlay.active .logic-modal-card {
+    transform: translateY(0);
+}
+
+/* Formatting for the lines you added */
+.l-feat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+}
