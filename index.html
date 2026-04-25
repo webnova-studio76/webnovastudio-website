@@ -677,55 +677,35 @@ window.addEventListener('scroll', () => {
 </script>
 
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. SAFE LOGIC MODAL ---
-        const logicOverlay = document.getElementById('logicModal');
-        const isLogicHidden = localStorage.getItem('hideLogicModal');
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const logicOverlay = document.getElementById('logicModal');
+    const isLogicHidden = localStorage.getItem('hideLogicModal');
 
-        if (logicOverlay && !isLogicHidden) {
-            logicOverlay.style.display = 'flex';
-            setTimeout(() => {
-                logicOverlay.classList.add('active');
-            }, 500);
-        }
-
-        // --- 2. SAFE LEAD MODAL (The one causing errors) ---
+    if (logicOverlay && !isLogicHidden) {
+        console.log("WebNova: Displaying Logic Modal");
+        logicOverlay.style.display = 'flex';
         setTimeout(() => {
-            const leadModal = document.getElementById('leadModal');
-            // We check IF leadModal exists first
-            if (leadModal) {
-                // Only show if Logic Modal isn't active
-                if (!logicOverlay || !logicOverlay.classList.contains('active')) {
-                    leadModal.style.display = 'flex';
-                }
-            }
-        }, 6000);
-    });
+            logicOverlay.classList.add('active');
+        }, 500);
+    }
+});
 
-    // Handle Logic Close
-    function handleLogicClose() {
-        const logicOverlay = document.getElementById('logicModal');
-        const checkbox = document.getElementById('dontShow');
-        
-        if (logicOverlay) {
-            if (checkbox && checkbox.checked) {
-                localStorage.setItem('hideLogicModal', 'true');
-            }
-            logicOverlay.classList.remove('active');
-            setTimeout(() => { logicOverlay.style.display = 'none'; }, 800);
-        }
+function handleLogicClose() {
+    const logicOverlay = document.getElementById('logicModal');
+    const checkbox = document.getElementById('dontShow');
+    
+    if (checkbox && checkbox.checked) {
+        localStorage.setItem('hideLogicModal', 'true');
     }
 
-    // Safe Lead Form Handler
-    const leadForm = document.getElementById('leadForm');
-    if (leadForm) {
-        leadForm.onsubmit = function(e) {
-            e.preventDefault();
-            alert('Success! Check your email.');
-            document.getElementById('leadModal').style.display = 'none';
-        };
+    if (logicOverlay) {
+        logicOverlay.classList.remove('active');
+        setTimeout(() => {
+            logicOverlay.style.display = 'none';
+        }, 800);
     }
+}
 </script>
 </body>
 </html>
