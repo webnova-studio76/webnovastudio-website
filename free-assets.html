@@ -187,29 +187,24 @@
     </div>
 </div>
 
-<script>
-    function openVideo(videoId) {
-        const modal = document.getElementById('videoModal');
-        const player = document.getElementById('videoPlayer');
-        // Using a clean coding timelapse as a generic placeholder
-        player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Stop page scroll
+function openVideo(videoId) {
+    const modal = document.getElementById('videoModal');
+    const player = document.getElementById('videoPlayer');
+    
+    if (!videoId) {
+        console.error("WebNova Error: No Video ID provided!");
+        return;
     }
 
-    function closeVideo() {
-        const modal = document.getElementById('videoModal');
-        const player = document.getElementById('videoPlayer');
-        modal.style.display = 'none';
-        player.src = ""; // Stop the video
-        document.body.style.overflow = 'auto'; // Re-enable scroll
-    }
-
-    // Close on Escape Key
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeVideo();
-    });
-</script>
+    // Build the URL carefully
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    
+    console.log("Attempting to load video:", embedUrl);
+    
+    player.src = embedUrl;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; 
+}
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="animations.js"></script>
