@@ -72,18 +72,19 @@
         }
 .thumb-wrapper {
     width: 100%;
-    height: 320px; /* Increase this from 140px to 320px */
+    height: 180px; /* Slightly taller for a better view */
     position: relative;
     overflow: hidden;
-    background: #1e293b;
+    background: #000;
 }
 
 .thumb-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This will now show almost the whole square */
+    object-fit: cover; /* This fills the space without stretching */
+    opacity: 0.9;
     transition: 0.5s ease;
-    /* This forces the browser to sharpen the pixels */
+    /* This line is the secret to sharpness */
     image-rendering: -webkit-optimize-contrast; 
 }
 
@@ -159,7 +160,7 @@
         
         <div class="asset-card">
             <div class="thumb-wrapper">
-                <img src="restaurant.png" alt="Restaurant" class="thumb-img">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/2326760826266112614_0" alt="Premium Restaurant" class="thumb-img">
                 <div class="play-overlay" onclick="openVideo('379-W_WdE84')">
                     <i class="fas fa-play-circle"></i>
                 </div>
