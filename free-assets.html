@@ -72,22 +72,18 @@
         }
 
         .thumb-wrapper {
-            width: 100%;
-            height: 140px;
-            position: relative;
-            overflow: hidden;
-            background: #000;
-        }
+    width: 100%;
+    height: 180px; /* Increased height to match image shape better */
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
 
-        .thumb-img {
+.thumb-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    transition: 0.5s ease;
-    /* Add these two lines below */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    object-fit: contain; /* Change 'cover' to 'contain' to see the whole image */
+    background-color: #000; 
 }
 
         .asset-card:hover .thumb-img {
