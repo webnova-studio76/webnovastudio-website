@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNova | Project Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #6366f1; --secondary: #0f172a; --accent: #10b981;
+            --bg: #f8fafc; --white: #ffffff; --text-dim: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--secondary); line-height: 1.6; }
+
+        /* --- GLOBAL NAVIGATION --- 
+        .global-nav {
+            background: var(--secondary); padding: 15px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 2000;
+        }
+        .nav-logo { color: white; font-weight: 900; font-size: 1.2rem; text-decoration: none; }
+        .nav-logo span { color: var(--primary); }
+        .nav-links a {
+            color: var(--text-dim); text-decoration: none; margin-left: 20px;
+            font-size: 0.85rem; font-weight: 600; transition: 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: white; }*/
+
+        /* --- HERO SECTION --- */
+        .hero { background: var(--secondary); color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; }
+        .hero p { color: var(--text-dim); margin-top: 10px; font-size: 1.1rem; max-width: 600px; margin-inline: auto; }
+
+        /* --- PROJECT GRID --- */
+        .container { max-width: 1200px; margin: -50px auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+
+        .card { 
+            background: var(--white); border-radius: 16px; padding: 30px; 
+            border: 1px solid #e2e8f0; transition: 0.4s; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1); }
+
+        .card-icon { width: 50px; height: 50px; background: #f0f7ff; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
+        .card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--secondary); }
+        .card p { color: #64748b; font-size: 0.85rem; margin-bottom: 20px; }
+
+        .dna-tag { font-size: 0.6rem; font-weight: 800; background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; margin-right: 5px; text-transform: uppercase; }
+
+        /* --- MODAL SYSTEM --- */
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(15, 23, 42, 0.95); z-index: 3000; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .modal-content { 
+            background: var(--white); width: 100%; max-width: 1100px; max-height: 85vh; 
+            border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;
+            animation: modalIn 0.3s ease-out;
+        }
+        .modal-header { padding: 25px 40px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .close-btn { font-size: 1.8rem; cursor: pointer; color: #94a3b8; transition: 0.2s; }
+        .close-btn:hover { color: var(--secondary); }
+
+        .modal-body { padding: 40px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; }
+        
+        .blueprint-side h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 20px; }
+        .logic-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+        .logic-card b { display: block; font-size: 0.85rem; color: var(--secondary); }
+        .logic-card span { font-size: 0.8rem; color: #64748b; }
+
+        .code-window { background: #1e293b; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .code-bar { background: rgba(255,255,255,0.05); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy { background: var(--accent); color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; }
+
+        pre { padding: 30px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.6; overflow-x: auto; }
+
+        @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @media (max-width: 950px) { .modal-body { grid-template-columns: 1fr; } .container { margin-top: 20px; } }
+    </style>
+</head>
+<body>
+
+    <!--<nav class="global-nav">
+        <a href="#" class="nav-logo">WebNova<span>Academy</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cpp_hub.html">C++</a>
+            <a href="java_hub.html">Java</a>
+            <a href="python_hub.html">Python</a>
+            <a href="projects.html" class="active">Project Lab</a>
+        </div>
+    </nav>-->
+
+    <header class="hero">
+        <h1>Mini Project <span style="color: var(--primary);">Lab</span></h1>
+        <p>Where independent logic components handshake to form professional software.</p>
+    </header>
+
+    <div class="container">
+        <div class="card" onclick="openProject('p1')">
+            <div class="card-icon"><i class="fas fa-database"></i></div>
+            <span class="dna-tag">C++</span>
+            <h3>Student Database System</h3>
+            <p>Persistent storage engine using file streams to manage academic records permanently on the disk.</p>
+            <div>
+                <span class="dna-tag">File-I/O</span>
+                <span class="dna-tag">Persistence</span>
+            </div>
+        </div>
+
+        <div class="card" onclick="openProject('p2')">
+            <div class="card-icon"><i class="fab fa-java"></i></div>
+            <span class="dna-tag">Java</span>
+            <h3>Enterprise Student Manager</h3>
+            <p>A robust management tool utilizing Java Streams and Exception handling for safe data operations.</p>
+            <div>
+                <span class="dna-tag">Exceptions</span>
+                <span class="dna-tag">Streams</span>
+            </div>
+        </div>
+
+        <div class="card" onclick="openProject('p3')">
+            <div class="card-icon"><i class="fas fa-university"></i></div>
+            <span class="dna-tag">Java</span>
+            <h3>Secure Banking Engine</h3>
+            <p>Demonstrates Encapsulation and State Management through a transaction-based deposit/withdraw system.</p>
+            <div>
+                <span class="dna-tag">Encapsulation</span>
+                <span class="dna-tag">OOPs</span>
+            </div>
+        </div>
+
+        <div class="card" onclick="openProject('p4')">
+            <div class="card-icon"><i class="fab fa-python"></i></div>
+            <span class="dna-tag">Python</span>
+            <h3>Global Currency Tool</h3>
+            <p>Uses Dictionary mapping and string formatting to provide real-world conversion between global currencies.</p>
+            <div>
+                <span class="dna-tag">Dictionaries</span>
+                <span class="dna-tag">Formatting</span>
+            </div>
+        </div>
+        <div class="card" onclick="openProject('p5')">
+    <div class="card-icon"><i class="fas fa-user-secret"></i></div>
+    <span class="dna-tag">C++</span>
+    <h3>Secure File Encryptor</h3>
+    <p>Protects sensitive data by shifting ASCII values and rewriting files in an unreadable format.</p>
+    <div><span class="dna-tag">Security</span><span class="dna-tag">ASCII</span></div>
+</div>
+
+<div class="card" onclick="openProject('p6')">
+    <div class="card-icon"><i class="fas fa-cloud-sun"></i></div>
+    <span class="dna-tag">Python</span>
+    <h3>Real-Time Weather Tool</h3>
+    <p>Simulates API interaction and JSON parsing to deliver specific data points from a large dataset.</p>
+    <div><span class="dna-tag">Data-Parsing</span><span class="dna-tag">APIs</span></div>
+</div>
+
+<div class="card" onclick="openProject('p7')">
+    <div class="card-icon"><i class="fas fa-book"></i></div>
+    <span class="dna-tag">Java</span>
+    <h3>Smart Library System</h3>
+    <p>Uses advanced sorting and binary search algorithms to manage and find books in a massive inventory.</p>
+    <div><span class="dna-tag">Search</span><span class="dna-tag">Sorting</span></div>
+</div>
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="mTitle" style="font-weight: 900; color: var(--secondary);">Project Title</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="blueprint-side">
+                    <h4>Technical DNA Handshake</h4>
+                    <div id="mLogic"></div>
+                </div>
+                <div class="code-window">
+                    <div class="code-bar">
+                        <span id="mFile">source.code</span>
+                        <button class="btn-copy" onclick="copyCode()">Copy Code</button>
+                    </div>
+                    <pre id="mCode"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+    <script>
+        const projectData = {
+            p1: {
+                title: "Student Database System", file: "main.cpp",
+                logic: [
+                    { b: "File Persistence (Logic 63/64)", s: "Uses fstream to write data to 'db.txt' so it survives a reboot." },
+                    { b: "Data Grouping (Logic 41)", s: "Uses Classes to bind ID, Name, and Marks into one record." },
+                    { b: "Menu Control (Logic 44)", s: "A while-loop and switch-case create the user interface." }
+                ],
+                code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nclass Student {\n  public: int id; string name;\n};\n\nint main() {\n  Student s; ofstream out("db.txt", ios::app);\n  cout << "Enter ID & Name: "; cin >> s.id >> s.name;\n  out << s.id << " " << s.name << endl;\n  out.close();\n  return 0;\n}`
+            },
+            p2: {
+                title: "Enterprise Student Manager", file: "Main.java",
+                logic: [
+                    { b: "Safe I/O (Logic 48)", s: "Uses FileWriter to append data to the system safely." },
+                    { b: "Error Trapping (Logic 47)", s: "Try-Catch blocks prevent the system from crashing on input errors." }
+                ],
+                code: `import java.io.*;\npublic class Main {\n  public static void main(String[] args) {\n    try {\n      FileWriter fw = new FileWriter("db.txt", true);\n      fw.write("ID: 101, Name: Alex\\n"); fw.close();\n      System.out.println("Saved!");\n    } catch(Exception e) { }\n  }\n}`
+            },
+            p3: {
+                title: "Secure Banking Engine", file: "Bank.java",
+                logic: [
+                    { b: "Encapsulation (Logic 39)", s: "Balance is private; only Deposit/Withdraw methods can change it." },
+                    { b: "Arithmetic State (Logic 02)", s: "Mathematical updates ensure balance is tracked correctly." }
+                ],
+                code: `class Bank {\n  private double bal;\n  public void deposit(double a) { bal += a; }\n  public void show() { System.out.println(bal); }\n}\npublic class Main {\n  public static void main(String[] args) {\n    Bank b = new Bank(); b.deposit(500); b.show();\n  }\n}`
+            },
+            p4: {
+                title: "Global Currency Tool", file: "convert.py",
+                logic: [
+                    { b: "Data Mapping (Logic 03)", s: "Dictionaries store currency codes and rates for O(1) lookup." },
+                    { b: "f-String Formatting (Logic 01)", s: "Ensures currency is displayed with exactly 2 decimal points." }
+                ],
+                code: `def convert():\n    rates = {"INR": 83.5, "EUR": 0.92}\n    amt = float(input("USD Amount: "))\n    code = input("Currency: ")\n    print(f"Result: {amt * rates[code]:.2f} {code}")\nconvert()`
+            },
+            p5: {
+    title: "Secure File Encryptor (C++)", file: "encrypt.cpp",
+    logic: [
+        { b: "ASCII Manipulation (Logic 12)", s: "Uses character shifting (Caesar Cipher) to scramble data." },
+        { b: "File I/O (Logic 64)", s: "Reads a plain file and writes back the encrypted version." }
+    ],
+    code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() {\n    char ch; \n    fstream fin("file.txt", ios::in), fout("enc.txt", ios::out);\n    while(fin >> noskipws >> ch) fout << (char)(ch + 3); // Handshake: ASCII Shift\n    fin.close(); fout.close();\n    return 0;\n}`
+},
+p6: {
+    title: "Real-Time Weather Tool (Python)", file: "weather.py",
+    logic: [
+        { b: "Dictionary Handling (Logic 03)", s: "Parses JSON data as a Python dictionary for easy access." },
+        { b: "Float Formatting (Logic 13)", s: "Ensures temperature readings are user-friendly." }
+    ],
+    code: `# Python Weather Simulation\nweather_data = {"London": 15.5, "Mumbai": 32.2, "NYC": 22.0}\ndef get_weather():\n    city = input("Enter City: ")\n    temp = weather_data.get(city, "Unknown")\n    print(f"The temperature in {city} is {temp:.1f}°C")\nget_weather()`
+},
+p7: {
+    title: "Smart Library System (Java)", file: "Library.java",
+    logic: [
+        { b: "Sorting (Logic 44/45)", s: "Uses Bubble Sort or STL logic to arrange books alphabetically." },
+        { b: "Binary Search (Logic 43)", s: "Instantly finds a book in an O(log n) sorted list." }
+    ],
+    code: `import java.util.*;\npublic class Library {\n    public static void main(String[] args) {\n        List<String> books = new ArrayList<>();\n        books.add("Java Basics"); books.add("Algorithms");\n        Collections.sort(books); // Handshake: Sorting Logic\n        System.out.println("Search 'Java': " + Collections.binarySearch(books, "Java Basics"));\n    }\n}`
+}
+        };
+
+        function openProject(id) {
+            const data = projectData[id];
+            document.getElementById('mTitle').innerText = data.title;
+            document.getElementById('mFile').innerText = data.file;
+            document.getElementById('mCode').innerText = data.code;
+            
+            const logicDiv = document.getElementById('mLogic');
+            logicDiv.innerHTML = '';
+            data.logic.forEach(l => {
+                const div = document.createElement('div');
+                div.className = 'logic-card';
+                div.innerHTML = `<b>${l.b}</b><span>${l.s}</span>`;
+                logicDiv.appendChild(div);
+            });
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('projectModal').style.display = 'none'; }
+        function copyCode() { navigator.clipboard.writeText(document.getElementById('mCode').innerText); alert("Copied!"); }
+        window.onclick = (e) => { if(e.target == document.getElementById('projectModal')) closeModal(); }
+    </script>
+ 
+</body>
+</html>
