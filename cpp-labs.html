@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C++ Practical Hub | Code Craft Academic</title>
+    <title>C++ Master Library | WebNova Academy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2563eb; /* C++ Royal Blue */
-            --secondary: #0f172a;
-            --accent: #10b981;
-            --bg: #f8fafc;
-            --code-bg: #1e293b;
-            --white: #ffffff;
+            --primary: #2563eb; --secondary: #0f172a; --accent: #10b981;
+            --bg: #f8fafc; --code-bg: #1e293b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -20,250 +16,198 @@
 
         /* SIDEBAR */
         .sidebar {
-            width: 300px;
-            background: var(--secondary);
-            color: white;
-            padding: 30px 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            border-right: 4px solid var(--primary);
+            width: 350px; background: var(--secondary); color: white;
+            padding: 25px 15px; overflow-y: auto; display: flex;
+            flex-direction: column; border-right: 4px solid var(--primary);
         }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        .sidebar h2 { font-size: 1rem; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; padding-left: 10px; }
+        .nav-label { font-size: 0.65rem; color: #64748b; font-weight: 800; margin: 15px 0 5px 10px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3px; }
         
-        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-list { list-style: none; margin-bottom: 10px; }
         .lab-item {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            color: #94a3b8;
+            padding: 8px 12px; border-radius: 6px; margin-bottom: 2px;
+            cursor: pointer; font-size: 0.75rem; color: #94a3b8; transition: 0.2s;
         }
-
         .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
 
-        .sidebar-footer {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 20px;
-        }
-
-        .btn-download-pdf {
-            display: block;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .btn-download-pdf:hover { background: #1d4ed8; transform: translateY(-2px); }
-
-        /* MAIN CONTENT AREA */
+        /* CONTENT */
         .main-content { flex: 1; overflow-y: auto; padding: 40px; }
-        
         .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 2rem; color: var(--secondary); }
-        .tag { display: inline-block; padding: 4px 12px; background: #e2e8f0; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--secondary); }
+        .header-box h1 { font-size: 1.8rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #e2e8f0; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: var(--secondary); }
 
-        /* LOGIC BREAKDOWN */
-        .logic-container {
-            margin-bottom: 25px;
-            background: #f0f7ff; /* Light Blue tint */
-            border: 1px solid #bae6fd;
-            border-radius: 12px;
-            overflow: hidden;
-        }
+        .modern-notice { margin-top: 15px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #166534; }
+        .modern-badge { margin-top: 12px; padding: 8px 15px; background: rgba(37, 99, 235, 0.1); border-radius: 6px; border-left: 4px solid var(--primary); display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary); }
 
-        .logic-header {
-            background: #bae6fd;
-            padding: 10px 20px;
-            font-weight: 800;
-            color: #0369a1;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
+        .logic-container { margin-bottom: 25px; background: #f0f7ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 20px; }
+        .logic-header { background: #bae6fd; padding: 10px 20px; font-weight: 800; color: #0369a1; font-size: 0.8rem; text-transform: uppercase; margin: -20px -20px 20px -20px; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; font-size: 0.85rem; color: #0c4a6e; }
+        .step-num { background: #0369a1; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; }
 
-        .logic-body { padding: 20px; color: #0c4a6e; font-size: 0.9rem; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
-        .step-num {
-            background: #0369a1; color: white; width: 20px; height: 20px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
-        }
+        .code-container { background: var(--code-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .code-header { padding: 10px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy { background: var(--accent); color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; font-weight: bold; }
 
-        /* CODE BLOCK */
-        .code-container {
-            background: var(--code-bg);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .code-header {
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.03);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .btn-copy {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        pre {
-            padding: 25px;
-            color: #e2e8f0;
-            font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; }
-            .main-content { padding: 20px; }
-        }
+        pre { padding: 25px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <h2>C++ Practical Hub</h2>
-        <ul class="lab-list">
-            <li class="lab-item active" id="default-item" onclick="showCode('cpp1')">01. Hello World</li>
-            <li class="lab-item" onclick="showCode('cpp2')">02. Sum of Two Numbers</li>
-            <li class="lab-item" onclick="showCode('cpp3')">03. Even or Odd Check</li>
-            <li class="lab-item" onclick="showCode('cpp4')">04. Largest of Three</li>
-            <li class="lab-item" onclick="showCode('cpp5')">05. Classes & Objects</li>
-        </ul>
+<aside class="sidebar">
+    <h2>C++ Master Hub</h2>
+    <div id="sidebar-items"></div>
+</aside>
 
-        <div class="sidebar-footer">
-            <a href="assets/pdf/CPP-Lab-Manual-WebNova.pdf" download class="btn-download-pdf">
-                <i class="fas fa-file-download"></i> Download PDF Manual
-            </a>
+<main class="main-content">
+    <div class="header-box">
+        <span class="tag" id="prog-tag">SECTION: BASIC</span>
+        <h1 id="prog-title">Select Program</h1>
+        <div class="modern-notice">
+            <i class="fas fa-bolt"></i> 
+            <span><b>WebNova Standards:</b> Optimized for modern compilers. Minimal lines, maximum logic.</span>
         </div>
-    </aside>
-
-    <main class="main-content">
-        <div id="content-display">
-            <div class="header-box">
-                <span class="tag">C++ BEGINNER LEVEL</span>
-                <h1 id="prog-title">Program Title</h1>
-            </div>
-
-            <div class="logic-container">
-                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
-                <div class="logic-body" id="logic-text"></div>
-            </div>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">source.cpp</span>
-                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
-                </div>
-                <pre id="code-block"></pre>
-            </div>
+        <div class="modern-badge">
+            <i class="fas fa-check-circle"></i>
+            <span><b>Industry Standard:</b> Clean logic over lengthy code. Optimized for modern exams & Vivas.</span>
         </div>
-    </main>
+    </div>
 
-    <script>
-        const labData = {
-            cpp1: {
-                title: "Hello World",
-                tag: "CPP PROGRAM 01",
-                code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, WebNova Academy!";\n    return 0;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Streams:</b> We use &lt;iostream&gt; instead of stdio.h for modern C++ streams.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Namespace:</b> std namespace prevents us from typing std:: before every command.</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>Insertion:</b> The &lt;&lt; operator "inserts" the text into the output stream.</p></div>`
-            },
-            cpp2: {
-                title: "Sum of Two Numbers",
-                tag: "CPP PROGRAM 02",
-                code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int num1, num2, sum;\n    cout << "Enter first number: ";\n    cin >> num1;\n    cout << "Enter second number: ";\n    cin >> num2;\n    sum = num1 + num2;\n    cout << "Result: " << sum << endl;\n    return 0;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Extraction:</b> 'cin' extracts data from the user and stores it in variables.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Calculation:</b> Standard arithmetic operators function just like in C.</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>Formatting:</b> 'endl' is used to insert a new line and flush the buffer.</p></div>`
-            },
-            cpp3: {
-                title: "Even or Odd Check",
-                tag: "CPP PROGRAM 03",
-                code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cout << "Enter a number: ";\n    cin >> n;\n    if (n % 2 == 0) {\n        cout << n << " is Even.";\n    } else {\n        cout << n << " is Odd.";\n    }\n    return 0;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Modulus:</b> '%' finds the remainder. If remainder is 0, the number is even.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Branching:</b> If/Else logic manages the program flow based on the condition.</p></div>`
-            },
-            cpp4: {
-                title: "Largest of Three Numbers",
-                tag: "CPP PROGRAM 04",
-                code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, c;\n    cout << "Enter 3 numbers: ";\n    cin >> a >> b >> c;\n    if(a >= b && a >= c) cout << a << " is largest";\n    else if(b >= a && b >= c) cout << b << " is largest";\n    else cout << c << " is largest";\n    return 0;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Logical AND:</b> '&&' ensures both comparisons are true before picking a winner.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Efficiency:</b> Using 'else if' prevents unnecessary checks once the largest is found.</p></div>`
-            },
-            cpp5: {
-                title: "Classes & Objects",
-                tag: "CPP PROGRAM 05",
-                code: `#include <iostream>\nusing namespace std;\n\nclass Car {\n  public:\n    string brand;\n    void start() {\n      cout << brand << " engine started!";\n    }\n};\n\nint main() {\n    Car myObj;\n    myObj.brand = "Tesla";\n    myObj.start();\n    return 0;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Class:</b> A blueprint for creating objects (Data + Functions).</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Access Specifier:</b> 'public' allows access from outside the class.</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>Object:</b> 'myObj' is a real-world instance of the 'Car' class.</p></div>`
-            }
-        };
+    <div class="logic-container">
+        <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
+        <div class="logic-body" id="logic-text"></div>
+    </div>
 
-        function showCode(id) {
-            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                document.getElementById('default-item').classList.add('active');
-            }
+    <div class="code-container">
+        <div class="code-header">
+            <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">source.cpp</span>
+            <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+        </div>
+        <pre id="code-block"></pre>
+    </div>
+</main>
 
-            document.getElementById('prog-title').innerText = labData[id].title;
-            document.querySelector('.tag').innerText = labData[id].tag;
-            document.getElementById('code-block').innerText = labData[id].code;
-            document.getElementById('logic-text').innerHTML = labData[id].logic;
+<script>
+const labData = {
+    "1. BEGINNER BASICS": {
+        p1: { title: "01. Hello World", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello World";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard output using cout.</p></div>` },
+        p2: { title: "02. Print Name", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "WebNova Academy" << endl << "Student Name";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Using endl for line separation.</p></div>` },
+        p3: { title: "03. Sum of Two", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a=10, b=20;\n    cout << "Sum: " << a+b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Simple arithmetic addition.</p></div>` },
+        p4: { title: "04. Input Product", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b; cin >> a >> b;\n    cout << "Product: " << a*b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Extraction operator (>>) for input.</p></div>` },
+        p5: { title: "05. Type Sizes", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "int: " << sizeof(int) << "\\nfloat: " << sizeof(float);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>sizeof() returns memory in bytes.</p></div>` },
+        p6: { title: "06. Swap (3rd Var)", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a=5, b=10, t=a; a=b; b=t;\n    cout << a << " " << b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Using a temporary buffer variable.</p></div>` },
+        p7: { title: "07. Swap (No Var)", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a=5, b=10;\n    a=a+b; b=a-b; a=a-b;\n    cout << a << " " << b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Arithmetic rotation swap.</p></div>` },
+        p8: { title: "08. Odd or Even", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    if(n%2==0) cout << "Even"; else cout << "Odd";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Modulo check for remainder 0.</p></div>` },
+        p9: { title: "09. Leap Year", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int y; cin >> y;\n    if(y%400==0 || (y%4==0 && y%100!=0)) cout << "Leap";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Century and standard leap rules.</p></div>` },
+        p10: { title: "10. Largest of Three", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a,b,c; cin>>a>>b>>c;\n    if(a>=b && a>=c) cout<<a; else if(b>=a && b>=c) cout<<b; else cout<<c;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Logical AND (&&) comparisons.</p></div>` },
+        p11: { title: "11. Quot & Rem", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a,b; cin>>a>>b;\n    cout << "Q: " << a/b << " R: " << a%b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard division and modulo.</p></div>` },
+        p12: { title: "12. ASCII Value", tag: "BASIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char c; cin >> c;\n    cout << (int)c;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Type casting char to int.</p></div>` },
+        p13: { title: "13. Float Mult", tag: "MATH", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    float a,b; cin>>a>>b;\n    cout << a*b;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Decimal precision multiplication.</p></div>` },
+        p14: { title: "14. Vowel/Consonant", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char c; cin>>c;\n    if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') cout<<"Vowel"; else cout<<"Consonant";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Character comparison logic.</p></div>` },
+        p15: { title: "15. Quadratic Roots", tag: "MATH", code: `#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    float a,b,c,d,r1,r2; cin>>a>>b>>c;\n    d=b*b-4*a*c;\n    if(d>=0){ r1=(-b+sqrt(d))/(2*a); cout<<r1<<", "<<r2; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Discriminant based root formula.</p></div>` },
+        p16: { title: "16. 1 to N", tag: "LOOPS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin>>n;\n    for(int i=1; i<=n; i++) cout<<i<<" ";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Iterative sequence printing.</p></div>` },
+        p17: { title: "17. Fibonacci", tag: "LOOPS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a=0, b=1, c; cin>>n;\n    for(int i=0; i<n; i++){ cout<<a<<" "; c=a+b; a=b; b=c; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Summing previous two terms.</p></div>` },
+        p18: { title: "18. Factorial", tag: "MATH", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, f=1; cin>>n;\n    for(int i=1; i<=n; i++) f*=i;\n    cout<<f;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Accumulative multiplication loop.</p></div>` },
+        p19: { title: "19. Prime Factors", tag: "MATH", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin>>n;\n    for(int i=2; n>1; i++) while(n%i==0){ cout<<i<<" "; n/=i; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested while for factor reduction.</p></div>` },
+        p20: { title: "20. Prime Check", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, f=0; cin>>n;\n    for(int i=2; i<=n/2; i++) if(n%i==0) f=1;\n    if(f==0) cout<<"Prime";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Divisibility check up to N/2.</p></div>` },
+        p21: { title: "21. GCD & LCM", tag: "MATH", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a,b,t,x,y; cin>>x>>y; a=x; b=y;\n    while(b){ t=b; b=a%b; a=t; }\n    cout<<"GCD: "<<a<<" LCM: "<<(x*y)/a;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Euclidean algorithm for GCD.</p></div>` },
+        p22: { title: "22. Reverse Num", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, r=0; cin>>n;\n    while(n){ r=r*10+n%10; n/=10; }\n    cout<<r;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Modulo and multiplication shift.</p></div>` },
+        p23: { title: "23. Palindrome Check", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n,r=0,t; cin>>n; t=n;\n    while(t){ r=r*10+t%10; t/=10; }\n    if(r==n) cout<<"Yes";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Equality of reversed number.</p></div>` },
+        p24: { title: "24. Star Triangle", tag: "PATTERNS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    for(int i=1; i<=5; i++){ for(int j=1; j<=i; j++) cout<<"* "; cout<<"\\n"; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested loop row-column control.</p></div>` },
+        p25: { title: "25. Pascal Triangle", tag: "PATTERNS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n=5, c=1; \n    for(int i=0; i<n; i++) {\n        for(int k=1; k<=n-i; k++) cout<<" ";\n        for(int j=0; j<=i; j++) {\n            if(j==0||i==0) c=1; else c=c*(i-j+1)/j;\n            cout<<c<<" ";\n        } cout<<"\\n";\n    } return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Binomial coefficient logic.</p></div>` }
+    },
+    "2. INTERMEDIATE (ARRAYS/POINTERS)": {
+        p26: { title: "26. Largest in Array", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[]={1,5,3}, n=3, m=a[0];\n    for(int i=1; i<n; i++) if(a[i]>m) m=a[i];\n    cout<<m;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Linear scan comparison.</p></div>` },
+        p27: { title: "27. 2nd Largest", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[]={1,5,3,9}, n=4, l=0, s=0;\n    for(int i=0; i<n; i++) if(a[i]>l){ s=l; l=a[i]; } else if(a[i]>s && a[i]!=l) s=a[i];\n    cout<<s;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Track two champions simultaneously.</p></div>` },
+        p28: { title: "28. Sum & Average", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[]={1,2,3}, s=0; for(int i:a) s+=i;\n    cout<<"Sum: "<<s<<" Avg: "<<s/3.0;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Range-based loop accumulation.</p></div>` },
+        p29: { title: "29. Sort Array", tag: "ARRAYS", code: `#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int a[]={5,1,9}, n=3; sort(a, a+n);\n    for(int i:a) cout<<i<<" ";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>STL Sort optimization.</p></div>` },
+        p30: { title: "30. Frequency", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[]={1,2,1,3}, k=1, c=0;\n    for(int i:a) if(i==k) c++;\n    cout<<c;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Count occurrences of K.</p></div>` },
+        p31: { title: "31. Matrix Addition", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2]={1,1,1,1}, b[2][2]={2,2,2,2}, c[2][2];\n    for(int i=0; i<2; i++) for(int j=0; j<2; j++) c[i][j]=a[i][j]+b[i][j];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cell-wise addition.</p></div>` },
+        p32: { title: "32. Matrix Mult", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2]={1,2,3,4}, b[2][2]={5,6,7,8}, c[2][2]={0};\n    for(int i=0; i<2; i++) for(int j=0; j<2; j++) for(int k=0; k<2; k++) c[i][j]+=a[i][k]*b[k][j];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Triple loop dot product.</p></div>` },
+        p33: { title: "33. Str Length", tag: "STRINGS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char s[]="WebNova"; int l=0; while(s[l]) l++;\n    cout<<l;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Null terminator loop.</p></div>` },
+        p34: { title: "34. Concatenate", tag: "STRINGS", code: `#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s1="Hi ", s2="WebNova";\n    cout<<s1+s2;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>String operator overloading.</p></div>` },
+        p35: { title: "35. Reverse String", tag: "STRINGS", code: `#include <iostream>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s="Nova"; reverse(s.begin(), s.end());\n    cout<<s;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>STL reverse iterator.</p></div>` },
+        p36: { title: "36. String Palindrome", tag: "STRINGS", code: `#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s="radar", t=s; reverse(t.begin(), t.end());\n    if(s==t) cout<<"Yes";\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Compare string to reversed copy.</p></div>` },
+        p37: { title: "37. Count V/C/D", tag: "STRINGS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    string s="Nova1"; int v=0,c=0,d=0;\n    for(char i:s){ if(isdigit(i)) d++; else v++; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Character classification loop.</p></div>` },
+        p38: { title: "38. Array Pointers", tag: "POINTERS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[]={1,2}, *p=a; cout<<*p<<" "<<*(p+1);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pointer arithmetic offset.</p></div>` },
+        p39: { title: "39. Swap Pointers", tag: "POINTERS", code: `#include <iostream>\nusing namespace std;\n\nvoid swap(int *a, int *b){ int t=*a; *a=*b; *b=t; }\nint main() {\n    int x=5, y=10; swap(&x, &y);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pass by address logic.</p></div>` },
+        p40: { title: "40. Student Struct", tag: "STRUCT", code: `#include <iostream>\nusing namespace std;\n\nstruct Student { string n; int r; float m; };\nint main() {\n    Student s = {"Alex", 1, 85.5};\n    cout<<s.n;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Grouping heterogeneous data.</p></div>` },
+        p41: { title: "41. Dynamic Array", tag: "MEMORY", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int *a = new int[5]; delete[] a;\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Heap allocation/deallocation.</p></div>` },
+        p42: { title: "42. 2D Array Pointers", tag: "POINTERS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2]={1,2,3,4}; int (*p)[2]=a;\n    cout<<p[0][0];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pointer to array of size N.</p></div>` },
+        p43: { title: "43. Transpose", tag: "ARRAYS", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2]={1,2,3,4}, t[2][2];\n    for(int i=0;i<2;i++) for(int j=0;j<2;j++) t[j][i]=a[i][j];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Swap rows with columns.</p></div>` },
+        p44: { title: "44. Menu Calc", tag: "LOGIC", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int op; cin>>op; switch(op){ case 1: cout<<"Add"; break; }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Switch-case menu logic.</p></div>` },
+        p45: { title: "45. Dec to Binary", tag: "MATH", code: `#include <iostream>\nusing namespace std;\n\nvoid bin(int n){ if(n>1) bin(n/2); cout<<n%2; }\nint main() { bin(10); return 0; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Recursive base-2 conversion.</p></div>` }
+    },
+    "3. ADVANCED (OOP/STL)": {
+        p46: { title: "46. Rectangle Class", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass Rect { public: int l,b; int area(){return l*b;} };\nint main(){ Rect r; r.l=10; r.b=5; cout<<r.area(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Object encapsulation.</p></div>` },
+        p47: { title: "47. Constructor Overload", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass Box { public: Box(){cout<<"A";} Box(int s){cout<<s;} };\nint main(){ Box b1; Box b2(5); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Static polymorphism.</p></div>` },
+        p48: { title: "48. Destructors", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass X { public: ~X(){cout<<"Gone";} };\nint main(){ X obj; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Automatic cleanup call.</p></div>` },
+        p49: { title: "49. Friend Function", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass A { int x=10; friend void show(A); };\nvoid show(A obj){ cout<<obj.x; }\nint main(){ A o; show(o); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Accessing private members.</p></div>` },
+        p50: { title: "50. Single Inheritance", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass P { public: void f(){cout<<"P";} };\nclass C : public P {};\nint main(){ C obj; obj.f(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Parent-child feature sharing.</p></div>` },
+        p51: { title: "51. Multi Inheritance", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass A {}; class B {}; class C : public A, public B {};\nint main(){ C obj; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Merging multiple bases.</p></div>` },
+        p52: { title: "52. Func Overloading", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nvoid f(int i){cout<<i;} void f(double d){cout<<d;}\nint main(){ f(5); f(5.5); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Compile-time signatures.</p></div>` },
+        p53: { title: "53. Operator Overload", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass C { public: int r; C operator+(C o){ C t; t.r=r+o.r; return t; } };\nint main(){ C c1,c2,c3; c1.r=1; c2.r=2; c3=c1+c2; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Defining + for objects.</p></div>` },
+        p54: { title: "54. Virtual Functions", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass B { public: virtual void s(){cout<<"B";} };\nclass D : public B { public: void s(){cout<<"D";} };\nint main(){ B *p; D obj; p=&obj; p->s(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Runtime dynamic binding.</p></div>` },
+        p55: { title: "55. Abstract Class", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass S { public: virtual void draw()=0; };\nclass C : public S { public: void draw(){cout<<"C";} };\nint main(){ C obj; obj.draw(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pure virtual function rules.</p></div>` },
+        p56: { title: "56. Copy Constructor", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass X { public: int a; X(int i){a=i;} X(const X &o){a=o.a;} };\nint main(){ X x1(5); X x2=x1; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Member-wise initialization.</p></div>` },
+        p57: { title: "57. Exceptions", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nint main(){ try{ throw 5; } catch(int e){ cout<<e; } }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Runtime error trapping.</p></div>` },
+        p58: { title: "58. STL Vector", tag: "STL", code: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main(){ vector<int> v={1,2}; v.push_back(3); cout<<v.size(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Dynamic growth array.</p></div>` },
+        p59: { title: "59. STL Map", tag: "STL", code: `#include <iostream>\n#include <map>\nusing namespace std;\n\nint main(){ map<string,int> m; m["A"]=1; cout<<m["A"]; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Key-value associative pairs.</p></div>` },
+        p60: { title: "60. Linked List", tag: "POINTERS", code: `#include <iostream>\nusing namespace std;\n\nstruct N { int d; N *n; };\nint main(){ N *h = new N; h->d=1; h->n=NULL; cout<<h->d; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Node chaining via pointers.</p></div>` },
+        p61: { title: "61. Stack Class", tag: "OOP", code: `#include <iostream>\nusing namespace std;\n\nclass S { int a[10],t=-1; public: void p(int i){a[++t]=i;} };\nint main(){ S s; s.p(1); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>LIFO data structure.</p></div>` },
+        p62: { title: "62. Templates", tag: "ADVANCED", code: `#include <iostream>\nusing namespace std;\n\ntemplate <typename T> T mx(T a, T b){ return a>b?a:b; }\nint main(){ cout<<mx(5,2); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Generic programming.</p></div>` },
+        p63: { title: "63. File Read", tag: "FILE", code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main(){ string s; ifstream f("a.txt"); while(getline(f,s)) cout<<s; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Input file stream extraction.</p></div>` },
+        p64: { title: "64. File Write", tag: "FILE", code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main(){ ofstream f("a.txt"); f<<"Hi"; f.close(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Output file stream insertion.</p></div>` },
+        p65: { title: "65. Bank Project", tag: "PROJECT", code: `#include <iostream>\nusing namespace std;\n\nclass Bank { float b=0; public: void d(float a){b+=a;} void s(){cout<<b;} };\nint main(){ Bank u; u.d(500); u.s(); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Private data management.</p></div>` }
+    }
+};
+
+function initSidebar() {
+    const container = document.getElementById('sidebar-items');
+    for (const [group, items] of Object.entries(labData)) {
+        const label = document.createElement('div');
+        label.className = 'nav-label';
+        label.innerText = group;
+        container.appendChild(label);
+
+        const ul = document.createElement('ul');
+        ul.className = 'lab-list';
+        for (const [id, data] of Object.entries(items)) {
+            const li = document.createElement('li');
+            li.className = 'lab-item';
+            li.innerText = data.title;
+            li.onclick = (e) => {
+                document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+                li.classList.add('active');
+                showCode(data);
+            };
+            ul.appendChild(li);
         }
+        container.appendChild(ul);
+    }
+}
 
-        window.onload = function() {
-            showCode('cpp1');
-        };
+function showCode(data) {
+    document.getElementById('prog-title').innerText = data.title;
+    document.getElementById('prog-tag').innerText = "SECTION: " + data.tag;
+    document.getElementById('code-block').innerText = data.code;
+    document.getElementById('logic-text').innerHTML = data.logic;
+}
 
-        function copyCode() {
-            const code = document.getElementById('code-block').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.querySelector('.btn-copy');
-                btn.innerText = "Copied!";
-                btn.style.background = "#059669";
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
-                    btn.style.background = "#10b981";
-                }, 2000);
-            });
-        }
-    </script>
+function copyCode() {
+    navigator.clipboard.writeText(document.getElementById('code-block').innerText).then(() => alert("Copied!"));
+}
+
+window.onload = () => {
+    initSidebar();
+    const firstGroup = Object.keys(labData)[0];
+    const firstProg = Object.values(labData[firstGroup])[0];
+    showCode(firstProg);
+    document.querySelector('.lab-item').classList.add('active');
+};
+</script>
 </body>
 </html>
