@@ -13,6 +13,7 @@
             --bg: #f8fafc;
             --code-bg: #1e293b;
             --white: #ffffff;
+            --success: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -20,162 +21,78 @@
 
         /* SIDEBAR */
         .sidebar {
-            width: 300px;
-            background: var(--secondary);
-            color: white;
-            padding: 30px 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            border-right: 4px solid var(--primary);
+            width: 320px; background: var(--secondary); color: white;
+            padding: 30px 15px; overflow-y: auto; display: flex;
+            flex-direction: column; border-right: 4px solid var(--primary);
         }
-
-        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
-        
+        .sidebar h2 { font-size: 1rem; margin-bottom: 25px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; padding-left: 10px; }
         .lab-list { list-style: none; flex-grow: 1; }
         .lab-item {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            color: #94a3b8;
+            padding: 10px 15px; border-radius: 8px; margin-bottom: 5px;
+            cursor: pointer; font-size: 0.8rem; transition: 0.3s;
+            color: #94a3b8; border: 1px solid transparent;
         }
-
         .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
 
-        .sidebar-footer {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 20px;
-        }
-
-        .btn-download-pdf {
-            display: block;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        /* MAIN CONTENT AREA */
+        /* MAIN CONTENT */
         .main-content { flex: 1; overflow-y: auto; padding: 40px; }
-        
         .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 2rem; color: var(--secondary); }
-        .tag { display: inline-block; padding: 4px 12px; background: #e0f2fe; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+        .header-box h1 { font-size: 1.8rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #e0f2fe; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+
+        /* BRAND BADGES */
+        .modern-notice { margin-top: 15px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #166534; }
+        .modern-badge { margin-top: 12px; padding: 8px 15px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; border-left: 4px solid var(--primary); display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary); }
 
         /* LOGIC BREAKDOWN */
-        .logic-container {
-            margin-bottom: 25px;
-            background: #fffdf0; 
-            border: 1px solid #fef08a;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .logic-header {
-            background: #fef08a;
-            padding: 10px 20px;
-            font-weight: 800;
-            color: #854d0e;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
-
+        .logic-container { margin-bottom: 25px; background: #fffdf0; border: 1px solid #fef08a; border-radius: 12px; overflow: hidden; }
+        .logic-header { background: #fef08a; padding: 10px 20px; font-weight: 800; color: #854d0e; font-size: 0.8rem; text-transform: uppercase; }
         .logic-body { padding: 20px; color: #713f12; font-size: 0.9rem; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
-        .step-num {
-            background: #854d0e; color: white; width: 20px; height: 20px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
-        }
+        .logic-step { margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; }
+        .step-num { background: #854d0e; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; margin-top: 2px; }
 
         /* CODE BLOCK */
-        .code-container {
-            background: var(--code-bg);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
+        .code-container { background: var(--code-bg); border-radius: 12px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .code-header { padding: 12px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy { background: var(--success); color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
 
-        .code-header {
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.03);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 12px 12px 0 0;
-        }
+        pre { padding: 25px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; white-space: pre-wrap; }
 
-        .btn-copy {
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        pre {
-            padding: 25px;
-            color: #e2e8f0;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; }
-        }
+        @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: 300px; } }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
         <h2>Python Logic Hub</h2>
-        <ul class="lab-list">
-            <li class="lab-item active" id="default-item" onclick="showCode('py1')">01. Dynamic Input & Format</li>
-            <li class="lab-item" onclick="showCode('py2')">02. List Transformations</li>
-            <li class="lab-item" onclick="showCode('py3')">03. Dictionary Mapping</li>
-            <li class="lab-item" onclick="showCode('py4')">04. Lambda & Filter Logic</li>
-            <li class="lab-item" onclick="showCode('py5')">05. File Handling (CSV)</li>
-        </ul>
-
-        <div class="sidebar-footer">
-            <a href="assets/pdf/Python-Lab-Manual.pdf" download class="btn-download-pdf">
-                <i class="fas fa-file-download"></i> Download Python Manual
-            </a>
-        </div>
+        <ul class="lab-list" id="sidebar-list"></ul>
     </aside>
 
     <main class="main-content">
         <div id="content-display">
             <div class="header-box">
-                <span class="tag">PYTHON LOGIC MASTERY</span>
+                <span class="tag" id="prog-tag">SECTION: BASIC</span>
                 <h1 id="prog-title">Program Title</h1>
+                
+                <div class="modern-notice">
+                    <i class="fas fa-bolt"></i> 
+                    <span><b>WebNova Standards:</b> Pythonic code style. Minimal lines, maximum readable logic.</span>
+                </div>
+                <div class="modern-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span><b>Industry Standard:</b> Uses modern f-strings and built-in methods for efficiency.</span>
+                </div>
             </div>
 
             <div class="logic-container">
-                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
+                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
                 <div class="logic-body" id="logic-text"></div>
             </div>
 
             <div class="code-container">
                 <div class="code-header">
-                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">script.py</span>
+                    <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">script.py</span>
                     <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
                 </div>
                 <pre id="code-block"></pre>
@@ -185,62 +102,48 @@
 
     <script>
         const labData = {
-            py1: {
-                title: "Dynamic Input & Format",
-                tag: "PYTHON PROGRAM 01",
-                code: `name = input("Enter name: ")\nage = int(input("Enter age: "))\n\n# Modern f-string formatting\nprint(f"Hello {name}, you will be {age + 1} next year!")`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Type Casting:</b> input() always returns a string, so we use int() to convert it for math.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>f-strings:</b> A powerful way to embed variables directly into strings using {} braces.</p></div>`
-            },
-            py2: {
-                title: "List Transformations",
-                tag: "PYTHON PROGRAM 02",
-                code: `nums = [1, 2, 3, 4, 5]\n\n# List Comprehension (Phase 04 Logic)\nsquares = [x**2 for x in nums]\n\nprint(f"Original: {nums}")\nprint(f"Squared: {squares}")`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Comprehension:</b> A compact way to create new lists from existing ones in a single line.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Power Operator:</b> Python uses ** for exponentiation (x squared).</p></div>`
-            },
-            py3: {
-                title: "Dictionary Mapping",
-                tag: "PYTHON PROGRAM 03",
-                code: `user = {"name": "Rakesh", "role": "Lead Developer"}\n\n# Adding and accessing data\nuser["project"] = "WebNova"\n\nfor key, value in user.items():\n    print(f"{key.capitalize()}: {value}")`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Key-Value Pairs:</b> Dictionaries store data in a way that is easy to search by key.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Iteration:</b> .items() allows us to loop through both labels and values simultaneously.</p></div>`
-            },
-            py4: {
-                title: "Lambda & Filter Logic",
-                tag: "PYTHON PROGRAM 04",
-                code: `scores = [45, 88, 32, 91, 56, 72]\n\n# Filtering passing scores (> 50)\npass_marks = list(filter(lambda x: x > 50, scores))\n\nprint(f"Passed Students: {pass_marks}")`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Lambda:</b> An "anonymous" function used for short, one-time tasks.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Filter:</b> Higher-order function that extracts data based on a specific logical condition.</p></div>`
-            },
-            py5: {
-                title: "File Handling (Simple)",
-                tag: "PYTHON PROGRAM 05",
-                code: `data = ["Python", "Java", "C++"]\n\nwith open("labs.txt", "w") as f:\n    for item in data:\n        f.write(item + "\\n")\n\nprint("File 'labs.txt' created successfully!")`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Context Manager:</b> 'with open' automatically closes the file, preventing memory leaks.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Write Mode:</b> The 'w' flag creates a new file or overwrites an existing one.</p></div>`
-            }
+            p1: { title: "01. Hello World", tag: "BASIC", code: `print("Hello, World!")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Output:</b> Uses Python's built-in print() function to display text on the console.</p></div>` },
+            p2: { title: "02. Basic Arithmetic", tag: "MATH", code: `a, b = 10, 5\nprint(f"Sum: {a+b}, Diff: {a-b}, Prod: {a*b}, Quot: {a/b}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Operators:</b> Uses standard +, -, *, and / symbols for mathematical operations.</p></div>` },
+            p3: { title: "03. Swap Numbers", tag: "LOGIC", code: `a, b = 5, 10\na, b = b, a\nprint(f"a: {a}, b: {b}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Tuple Unpacking:</b> Python allows swapping in one line without a temporary variable.</p></div>` },
+            p4: { title: "04. Positive/Negative", tag: "CONDITIONALS", code: `n = int(input("Enter: "))\nif n > 0: print("Positive")\nelif n < 0: print("Negative")\nelse: print("Zero")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Conditional Branching:</b> Uses if-elif-else to evaluate the state of the number.</p></div>` },
+            p5: { title: "05. Max of Three", tag: "MATH", code: `nums = [10, 45, 22]\nprint(f"Max: {max(nums)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Built-in Functions:</b> Utilizes max() to find the highest value in a collection instantly.</p></div>` },
+            p6: { title: "06. Leap Year", tag: "LOGIC", code: `y = 2024\nif (y % 400 == 0) or (y % 4 == 0 and y % 100 != 0): print("Leap Year")\nelse: print("Not Leap")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Boolean Logic:</b> Combines modulo operations to verify century and standard leap rules.</p></div>` },
+            p7: { title: "07. Multiplication Table", tag: "LOOPS", code: `n = 5\nfor i in range(1, 11): print(f"{n} x {i} = {n*i}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Range Control:</b> range(1, 11) creates a sequence from 1 to 10 for iteration.</p></div>` },
+            p8: { title: "08. Factorial", tag: "MATH", code: `import math\nn = 5\nprint(f"Factorial: {math.factorial(n)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Library Import:</b> Uses the math module for optimized mathematical computations.</p></div>` },
+            p9: { title: "09. Fibonacci Series", tag: "LOOPS", code: `n, a, b = 10, 0, 1\nfor _ in range(n):\n    print(a, end=" ")\n    a, b = b, a + b`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Iterative Sum:</b> Continuously updates variables to form the sequence (a = b, b = a+b).</p></div>` },
+            p10: { title: "10. Sum of Digits", tag: "LOGIC", code: `n = 12345\nprint(sum(int(d) for d in str(n)))`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Generator Expression:</b> Converts to string, iterates digits, and sums them in one line.</p></div>` },
+            p11: { title: "11. Reverse Number", tag: "LOGIC", code: `n = 12345\nrev = int(str(n)[::-1])\nprint(rev)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Slicing:</b> Uses [::-1] string slicing, the fastest way to reverse a sequence in Python.</p></div>` },
+            p12: { title: "12. Divisibility Logic", tag: "LOOPS", code: `res = [x for x in range(1500, 2701) if x % 7 == 0 and x % 5 == 0]\nprint(res)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>List Comprehension:</b> Filters the range efficiently using conditional logic.</p></div>` },
+            p13: { title: "13. Temp Converter", tag: "MATH", code: `c = 37\nf = (c * 9/5) + 32\nprint(f"{c}C is {f}F")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Formula Implementation:</b> Direct application of the algebraic conversion constant.</p></div>` },
+            p14: { title: "14. Guessing Game", tag: "INTERACTIVE", code: `import random\ntarget, guess = random.randint(1, 9), 0\nwhile guess != target:\n    guess = int(input("Guess (1-9): "))\nprint("Correct!")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Randomization:</b> Uses random.randint to set a dynamic target for the while loop.</p></div>` },
+            p15: { title: "15. Nested Patterns", tag: "LOOPS", code: `for i in range(1, 6): print("* " * i)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>String Multiplication:</b> Python allows multiplying strings by integers to repeat characters.</p></div>` },
+            p16: { title: "16. Even/Odd Count", tag: "LOOPS", code: `nums = [1, 2, 3, 4, 5, 6]\neven = len([x for x in nums if x % 2 == 0])\nprint(f"Even: {even}, Odd: {len(nums)-even}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Modulo Filter:</b> Identifies even numbers via x % 2 == 0 check.</p></div>` },
+            p17: { title: "17. ASCII Value", tag: "BASIC", code: `char = 'A'\nprint(f"ASCII of {char} is {ord(char)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Built-in Helper:</b> ord() returns the integer Unicode code point of a character.</p></div>` },
+            p18: { title: "18. Palindrome String", tag: "STRINGS", code: `s = "radar"\nif s == s[::-1]: print("Palindrome")\nelse: print("Not")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Equality Check:</b> Compares the string to its sliced reverse version.</p></div>` },
+            p19: { title: "19. String Length", tag: "STRINGS", code: `s, count = "Hello", 0\nfor _ in s: count += 1\nprint(count)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Manual Iteration:</b> Loops through each character to increment a counter manually.</p></div>` },
+            p20: { title: "20. Remove N-th Char", tag: "STRINGS", code: `s, n = "Python", 2\nres = s[:n] + s[n+1:]\nprint(res)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Slicing concatenation:</b> Joins the parts before and after the index to "cut" the character.</p></div>` }
         };
 
-        function showCode(id) {
+        function showCode(id, element) {
             document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                document.getElementById('default-item').classList.add('active');
-            }
-            document.getElementById('prog-title').innerText = labData[id].title;
-            document.querySelector('.tag').innerText = labData[id].tag;
-            document.getElementById('code-block').innerText = labData[id].code;
-            document.getElementById('logic-text').innerHTML = labData[id].logic;
+            if (element) element.classList.add('active');
+            const data = labData[id];
+            document.getElementById('prog-title').innerText = data.title;
+            document.getElementById('prog-tag').innerText = "SECTION: " + data.tag;
+            document.getElementById('code-block').innerText = data.code;
+            document.getElementById('logic-text').innerHTML = data.logic;
         }
 
-        window.onload = function() { showCode('py1'); };
+        function initSidebar() {
+            const list = document.getElementById('sidebar-list');
+            Object.keys(labData).forEach((key, index) => {
+                const li = document.createElement('li');
+                li.className = `lab-item ${index === 0 ? 'active' : ''}`;
+                li.innerText = labData[key].title;
+                li.onclick = (e) => showCode(key, e.target);
+                list.appendChild(li);
+            });
+        }
 
         function copyCode() {
             const code = document.getElementById('code-block').innerText;
@@ -254,6 +157,8 @@
                 }, 2000);
             });
         }
+
+        window.onload = () => { initSidebar(); showCode('p1', document.querySelector('.lab-item')); };
     </script>
 </body>
 </html>
