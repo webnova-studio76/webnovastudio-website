@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Practical Hub | Code Craft Academic</title>
+    <title>Java Master Hub | WebNova Academy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #f89820; /* Java Orange */
-            --secondary: #0f172a;
-            --accent: #10b981;
-            --bg: #f8fafc;
-            --code-bg: #1e293b;
-            --white: #ffffff;
+            --primary: #f89820; --secondary: #0f172a; --accent: #10b981;
+            --bg: #f8fafc; --code-bg: #1e293b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -20,242 +16,169 @@
 
         /* SIDEBAR */
         .sidebar {
-            width: 300px;
-            background: var(--secondary);
-            color: white;
-            padding: 30px 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            border-right: 4px solid var(--primary);
+            width: 320px; background: var(--secondary); color: white;
+            padding: 25px 15px; overflow-y: auto; display: flex;
+            flex-direction: column; border-right: 4px solid var(--primary);
         }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        .sidebar h2 { font-size: 1rem; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; padding-left: 10px; }
         
-        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-list { list-style: none; margin-bottom: 15px; }
         .lab-item {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            color: #94a3b8;
+            padding: 10px 15px; border-radius: 8px; margin-bottom: 4px;
+            cursor: pointer; font-size: 0.8rem; color: #94a3b8; transition: 0.2s;
         }
-
         .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
 
-        .sidebar-footer {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 20px;
-        }
-
-        .btn-download-pdf {
-            display: block;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        /* MAIN CONTENT AREA */
+        /* CONTENT */
         .main-content { flex: 1; overflow-y: auto; padding: 40px; }
-        
         .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 2rem; color: var(--secondary); }
-        .tag { display: inline-block; padding: 4px 12px; background: #ffeeda; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+        .header-box h1 { font-size: 1.8rem; color: var(--secondary); }
+        .tag { display: inline-block; padding: 4px 12px; background: #ffeeda; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
 
-        /* LOGIC BREAKDOWN */
-        .logic-container {
-            margin-bottom: 25px;
-            background: #fffaf5; 
-            border: 1px solid #fed7aa;
-            border-radius: 12px;
-            overflow: hidden;
-        }
+        .modern-notice { margin-top: 15px; background: #fffaf5; border: 1px solid #fed7aa; padding: 10px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #9a3412; }
+        .modern-badge { margin-top: 12px; padding: 8px 15px; background: rgba(248, 152, 32, 0.1); border-radius: 6px; border-left: 4px solid var(--primary); display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary); }
 
-        .logic-header {
-            background: #fed7aa;
-            padding: 10px 20px;
-            font-weight: 800;
-            color: #9a3412;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
+        .logic-container { margin-bottom: 25px; background: #fffaf5; border: 1px solid #fed7aa; border-radius: 12px; padding: 20px; }
+        .logic-header { background: #fed7aa; padding: 10px 20px; font-weight: 800; color: #9a3412; font-size: 0.8rem; text-transform: uppercase; margin: -20px -20px 20px -20px; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; font-size: 0.85rem; color: #431407; }
+        .step-num { background: #9a3412; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; }
 
-        .logic-body { padding: 20px; color: #431407; font-size: 0.9rem; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
-        .step-num {
-            background: #9a3412; color: white; width: 20px; height: 20px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
-        }
+        .code-container { background: var(--code-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .code-header { padding: 10px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy { background: var(--accent); color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; font-weight: bold; }
 
-        /* CODE BLOCK */
-        .code-container {
-            background: var(--code-bg);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .code-header {
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.03);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .btn-copy {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        pre {
-            padding: 25px;
-            color: #e2e8f0;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; }
-        }
+        pre { padding: 25px; color: #e2e8f0; font-family: monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <h2>Java Enterprise Hub</h2>
-        <ul class="lab-list">
-            <li class="lab-item active" id="default-item" onclick="showCode('java1')">01. Hello Java</li>
-            <li class="lab-item" onclick="showCode('java2')">02. User Input (Scanner)</li>
-            <li class="lab-item" onclick="showCode('java3')">03. Factorial (Recursion)</li>
-            <li class="lab-item" onclick="showCode('java4')">04. Method Overloading</li>
-            <li class="lab-item" onclick="showCode('java5')">05. Inheritance Logic</li>
-        </ul>
+<aside class="sidebar">
+    <h2>Java Master Hub</h2>
+    <ul class="lab-list" id="sidebar-list"></ul>
+</aside>
 
-        <div class="sidebar-footer">
-            <a href="assets/pdf/Java-Lab-Manual.pdf" download class="btn-download-pdf">
-                <i class="fas fa-file-download"></i> Download Java PDF
-            </a>
+<main class="main-content">
+    <div class="header-box">
+        <span class="tag" id="prog-tag">JAVA MASTER LIBRARY</span>
+        <h1 id="prog-title">Select Program</h1>
+        <div class="modern-notice">
+            <i class="fas fa-bolt"></i> 
+            <span><b>WebNova Standards:</b> Optimized for modern compilers. Minimal lines, maximum logic.</span>
         </div>
-    </aside>
-
-    <main class="main-content">
-        <div id="content-display">
-            <div class="header-box">
-                <span class="tag">JAVA CORE LEVEL</span>
-                <h1 id="prog-title">Program Title</h1>
-            </div>
-
-            <div class="logic-container">
-                <div class="logic-header"><i class="fas fa-brain"></i> Logic Mastery Breakdown</div>
-                <div class="logic-body" id="logic-text"></div>
-            </div>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">Main.java</span>
-                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
-                </div>
-                <pre id="code-block"></pre>
-            </div>
+        <div class="modern-badge">
+            <i class="fas fa-check-circle"></i>
+            <span><b>Industry Standard:</b> Clean logic over lengthy code. Optimized for modern exams & Vivas.</span>
         </div>
-    </main>
+    </div>
 
-    <script>
-        const labData = {
-            java1: {
-                title: "Hello Java",
-                tag: "JAVA PROGRAM 01",
-                code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Code Craft Academy!");\n    }\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Class:</b> In Java, every line of code must be inside a class.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Main Method:</b> 'public static void main' is the entry point for the JVM.</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>System.out:</b> System is a class, out is an object, and println() is the method.</p></div>`
-            },
-            java2: {
-                title: "User Input (Scanner)",
-                tag: "JAVA PROGRAM 02",
-                code: `import java.util.Scanner;\n\npublic class InputDemo {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print("Enter your age: ");\n        int age = sc.nextInt();\n        System.out.println("Age is: " + age);\n    }\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Import:</b> java.util.Scanner is needed to read keyboard input.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Object:</b> 'new Scanner(System.in)' creates an object to listen to system input.</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>Buffer:</b> sc.nextInt() pauses the program until the user types a number.</p></div>`
-            },
-            java3: {
-                title: "Factorial (Recursion)",
-                tag: "JAVA PROGRAM 03",
-                code: `public class Factorial {\n    static int fact(int n) {\n        if (n == 0) return 1;\n        return n * fact(n-1);\n    }\n    public static void main(String[] args) {\n        System.out.println("Fact of 5: " + fact(5));\n    }\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Base Case:</b> 'if (n == 0)' stops the function from calling itself forever.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Stack:</b> Each recursive call is pushed onto the memory stack until it hits the base case.</p></div>`
-            },
-            java4: {
-                title: "Method Overloading",
-                tag: "JAVA PROGRAM 04",
-                code: `public class MathOps {\n    int add(int a, int b) { return a + b; }\n    double add(double a, double b) { return a + b; }\n\n    public static void main(String[] args) {\n        MathOps obj = new MathOps();\n        System.out.println(obj.add(5, 10));\n        System.out.println(obj.add(5.5, 2.2));\n    }\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Compile-time Polymorphism:</b> Methods have the same name but different parameters.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Signature:</b> Java identifies which method to run based on the data type you pass.</p></div>`
-            },
-            java5: {
-                title: "Inheritance Logic",
-                tag: "JAVA PROGRAM 05",
-                code: `class Animal {\n    void eat() { System.out.println("Eating..."); }\n}\nclass Dog extends Animal {\n    void bark() { System.out.println("Barking..."); }\n}\npublic class Test {\n    public static void main(String[] args) {\n        Dog d = new Dog();\n        d.eat();\n        d.bark();\n    }\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>extends:</b> This keyword creates a relationship between a Parent and Child class.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Reusability:</b> The Dog object can use the eat() method without rewriting it.</p></div>`
-            }
-        };
+    <div class="logic-container">
+        <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
+        <div class="logic-body" id="logic-text"></div>
+    </div>
 
-        function showCode(id) {
+    <div class="code-container">
+        <div class="code-header">
+            <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">Main.java</span>
+            <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+        </div>
+        <pre id="code-block"></pre>
+    </div>
+</main>
+
+<script>
+const labData = {
+    p1: { title: "01. Hello World", tag: "BASIC", code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard output stream usage.</p></div>` },
+    p2: { title: "02. Add Two Numbers", tag: "MATH", code: `int a=10, b=20; System.out.println(a+b);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Binary addition operation.</p></div>` },
+    p3: { title: "03. Swap (3rd Var)", tag: "LOGIC", code: `int a=5, b=10, t=a; a=b; b=t;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Temporary buffer swap.</p></div>` },
+    p4: { title: "04. Swap (No Var)", tag: "LOGIC", code: `a=a+b; b=a-b; a=a-b;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Arithmetic rotation swap.</p></div>` },
+    p5: { title: "05. Even or Odd", tag: "LOGIC", code: `if(n%2==0) "Even" else "Odd";`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Modulo remainder check.</p></div>` },
+    p6: { title: "06. Largest of Three", tag: "LOGIC", code: `if(a>b && a>c) return a;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Logical AND comparison.</p></div>` },
+    p7: { title: "07. Prime Number", tag: "LOGIC", code: `for(int i=2; i<=n/2; i++) if(n%i==0) return false;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Divisibility scan up to N/2.</p></div>` },
+    p8: { title: "08. Factorial", tag: "MATH", code: `for(int i=1;i<=n;i++) f*=i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cumulative product loop.</p></div>` },
+    p9: { title: "09. Fibonacci Series", tag: "LOOPS", code: `c=a+b; a=b; b=c;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Previous term summation.</p></div>` },
+    p10: { title: "10. Reverse Number", tag: "LOGIC", code: `while(n!=0){ r=r*10+n%10; n/=10; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Digit extraction and shift.</p></div>` },
+    p11: { title: "11. Palindrome Check", tag: "LOGIC", code: `if(original == reversed) "Yes";`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Equality of reversed value.</p></div>` },
+    p12: { title: "12. Armstrong Number", tag: "MATH", code: `sum += Math.pow(digit, 3);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sum of cubes check.</p></div>` },
+    p13: { title: "13. Simple Interest", tag: "MATH", code: `(p * r * t) / 100;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard SI formula.</p></div>` },
+    p14: { title: "14. Compound Interest", tag: "MATH", code: `p * Math.pow(1+r/100, t) - p;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Exponential growth formula.</p></div>` },
+    p15: { title: "15. Celsius/Fahr", tag: "MATH", code: `(c * 9/5) + 32;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Linear temperature conversion.</p></div>` },
+    p16: { title: "16. ASCII Value", tag: "BASIC", code: `int v = (int)character;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Explicit type casting.</p></div>` },
+    p17: { title: "17. Basic Calculator", tag: "BASIC", code: `switch(op){ case '+': res=a+b; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Operator char branching.</p></div>` },
+    p18: { title: "18. Array Sum/Avg", tag: "ARRAYS", code: `for(int i:a) s+=i; avg=s/n;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Array traversal accumulation.</p></div>` },
+    p19: { title: "19. Array Max/Min", tag: "ARRAYS", code: `if(a[i]>max) max=a[i];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Linear comparison scan.</p></div>` },
+    p20: { title: "20. Reverse Array", tag: "ARRAYS", code: `swap(a[i], a[n-1-i]);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Two-pointer swap logic.</p></div>` },
+    p21: { title: "21. Matrix Sum", tag: "ARRAYS", code: `C[i][j] = A[i][j] + B[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cell-wise matrix addition.</p></div>` },
+    p22: { title: "22. Matrix Mult", tag: "ARRAYS", code: `C[i][j] += A[i][k] * B[k][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Triple loop dot product.</p></div>` },
+    p23: { title: "23. Transpose Matrix", tag: "ARRAYS", code: `T[j][i] = A[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Row-column index swap.</p></div>` },
+    p24: { title: "24. String Palindrome", tag: "STRINGS", code: `s.equals(rev);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Buffer comparison check.</p></div>` },
+    p25: { title: "25. Reverse String", tag: "STRINGS", code: `for(int i=n-1; i>=0; i--) r+=s[i];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Backward character iteration.</p></div>` },
+    p26: { title: "26. Vowel/Consonant", tag: "STRINGS", code: `if("aeiou".contains(c)) v++;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Char set membership test.</p></div>` },
+    p27: { title: "27. Anagram Check", tag: "STRINGS", code: `Arrays.sort(a1); Arrays.sort(a2);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sorted char array comparison.</p></div>` },
+    p28: { title: "28. 1st Non-Repeat", tag: "STRINGS", code: `if(map.get(c)==1) return c;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Frequency map lookup.</p></div>` },
+    p29: { title: "29. Remove Whitespace", tag: "STRINGS", code: `s.replaceAll("\\s", "");`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Regex pattern substitution.</p></div>` },
+    p30: { title: "30. Char Frequency", tag: "STRINGS", code: `count[s.charAt(i)]++;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Integer array mapping.</p></div>` },
+    p31: { title: "31. String to Int", tag: "STRINGS", code: `Integer.parseInt(s);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Wrapper class conversion.</p></div>` },
+    p32: { title: "32. Class & Object", tag: "OOPs", code: `Main obj = new Main();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Instantiation and memory allocation.</p></div>` },
+    p33: { title: "33. Constructor Overload", tag: "OOPs", code: `Box() { } Box(int s) { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Static polymorphism.</p></div>` },
+    p34: { title: "34. Method Overload", tag: "OOPs", code: `add(int a) { } add(double a) { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Compile-time signature choice.</p></div>` },
+    p35: { title: "35. Method Override", tag: "OOPs", code: `@Override void show() { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Runtime dynamic binding.</p></div>` },
+    p36: { title: "36. Inheritance", tag: "OOPs", code: `class Dog extends Animal { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Hierarchical reusability.</p></div>` },
+    p37: { title: "37. Interface/Multi-Inherit", tag: "OOPs", code: `class C implements I1, I2 { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Multiple contract adherence.</p></div>` },
+    p38: { title: "38. Abstract Class", tag: "OOPs", code: `abstract class Shape { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Template for derived classes.</p></div>` },
+    p39: { title: "39. Encapsulation", tag: "OOPs", code: `private int x; public int getX();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Data hiding and access control.</p></div>` },
+    p40: { title: "40. super Keyword", tag: "OOPs", code: `super.parentMethod();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Base class reference access.</p></div>` },
+    p41: { title: "41. this Keyword", tag: "OOPs", code: `this.var = var;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Current instance referencing.</p></div>` },
+    p42: { title: "42. Linear Search", tag: "DS", code: `if(a[i]==k) return i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sequential key comparison.</p></div>` },
+    p43: { title: "43. Binary Search", tag: "DS", code: `while(l<=h) { mid=(l+h)/2; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Divide and conquer search.</p></div>` },
+    p44: { title: "44. Bubble Sort", tag: "DS", code: `if(a[j]>a[j+1]) swap();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Adjacent element sinking.</p></div>` },
+    p45: { title: "45. Selection Sort", tag: "DS", code: `min_idx = i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Minimum element finding sort.</p></div>` },
+    p46: { title: "46. Custom Exception", tag: "EXCEPTION", code: `class MyEx extends Exception { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Specific error definition.</p></div>` },
+    p47: { title: "47. try-catch-finally", tag: "EXCEPTION", code: `try { } catch { } finally { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Guaranteed cleanup logic.</p></div>` },
+    p48: { title: "48. File Write/Read", tag: "FILE", code: `FileWriter fw = new FileWriter();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Stream-based data storage.</p></div>` },
+    p49: { title: "49. ArrayList CRUD", tag: "COLLECTION", code: `list.add(); list.remove();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Dynamic list management.</p></div>` },
+    p50: { title: "50. HashMap Iterate", tag: "COLLECTION", code: `map.forEach((k,v)->...);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Lambda-based pair traversal.</p></div>` },
+    p51: { title: "51. Runnable Thread", tag: "THREADS", code: `new Thread(new MyRun()).start();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Functional thread definition.</p></div>` },
+    p52: { title: "52. Synchronization", tag: "THREADS", code: `synchronized void update();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Resource locking mechanism.</p></div>` },
+    p53: { title: "53. Stream API", tag: "JAVA8", code: `list.stream().filter().collect();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pipeline functional processing.</p></div>` },
+    p54: { title: "54. Singly Linked List", tag: "DS", code: `class Node { int d; Node n; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Heap pointer node chaining.</p></div>` },
+    p55: { title: "55. Stack using Array", tag: "DS", code: `a[++top] = data;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>LIFO pointer management.</p></div>` },
+    p56: { title: "56. Pyramid Pattern", tag: "PATTERN", code: `for(i=1;i<=n;i++) { print("*"); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested iteration pattern.</p></div>` },
+    p57: { title: "57. Floyd's Triangle", tag: "PATTERN", code: `print(k++);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sequential integer triangle.</p></div>` },
+    p58: { title: "58. Diamond Pattern", tag: "PATTERN", code: `// Upper and Lower halves logic`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Symmetric nested loop control.</p></div>` },
+    p59: { title: "59. Missing Number", tag: "LOGIC", code: `expectedSum - actualSum;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Mathematical total difference.</p></div>` },
+    p60: { title: "60. Magic Number", tag: "LOGIC", code: `while(n>9) n = sumDigits(n);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Recursive sum until unit digit.</p></div>` }
+};
+
+function initSidebar() {
+    const list = document.getElementById('sidebar-list');
+    Object.keys(labData).forEach(key => {
+        const li = document.createElement('li');
+        li.className = 'lab-item';
+        li.innerText = labData[key].title;
+        li.onclick = (e) => {
             document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                document.getElementById('default-item').classList.add('active');
-            }
-            document.getElementById('prog-title').innerText = labData[id].title;
-            document.querySelector('.tag').innerText = labData[id].tag;
-            document.getElementById('code-block').innerText = labData[id].code;
-            document.getElementById('logic-text').innerHTML = labData[id].logic;
-        }
+            li.classList.add('active');
+            showCode(labData[key]);
+        };
+        list.appendChild(li);
+    });
+}
 
-        window.onload = function() { showCode('java1'); };
+function showCode(data) {
+    document.getElementById('prog-title').innerText = data.title;
+    document.getElementById('code-block').innerText = data.code;
+    document.getElementById('logic-text').innerHTML = data.logic;
+}
 
-        function copyCode() {
-            const code = document.getElementById('code-block').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.querySelector('.btn-copy');
-                btn.innerText = "Copied!";
-                btn.style.background = "#059669";
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
-                    btn.style.background = "#10b981";
-                }, 2000);
-            });
-        }
-    </script>
+function copyCode() {
+    navigator.clipboard.writeText(document.getElementById('code-block').innerText).then(() => alert("Copied!"));
+}
+
+window.onload = () => { initSidebar(); document.querySelector('.lab-item').click(); };
+</script>
 </body>
 </html>
