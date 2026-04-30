@@ -2557,3 +2557,84 @@ body.webnova-corporate-theme {
 .noshow-container {
     font-size: 0.75rem; color: #64748b; display: flex; align-items: center; gap: 8px; cursor: pointer;
 }
+/* --- ANIMATION CONTAINER --- */
+.animation-container {
+    padding: 60px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff; /* Matches your white-themed index */
+}
+
+/* --- MARQUEE STYLES --- */
+.marquee-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
+    /* Smooth fade on the edges */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    padding: 20px 0;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: scrollMarquee 25s linear infinite;
+}
+
+/* Pause marquee on hover */
+.marquee-wrapper:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-content i {
+    font-size: 3.5rem;
+    color: #94a3b8; /* Muted slate */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.marquee-content i:hover {
+    color: #2563eb; /* WebNova Blue */
+    transform: scale(1.2);
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- FLOATING BOX STYLES --- */
+.floating-box {
+    margin-top: 30px;
+    padding: 25px 50px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    animation: floatElement 5s ease-in-out infinite;
+}
+
+.floating-box i {
+    font-size: 2.5rem;
+    color: #f59e0b; /* WebNova Accent Orange/Gold */
+    margin-bottom: 10px;
+}
+
+.floating-box p {
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+@keyframes floatElement {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
