@@ -47,24 +47,47 @@ header.master-header {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Ensure the container behaves as a flexbox */
 .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* This centers the logo vertically */
     height: var(--header-height);
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 0 5%;
 }
 
+/* --- UPDATED LOGO TEXT ALIGNMENT --- */
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between the PNG logo and the text */
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--secondary-color) !important;
 }
 
-.logo span { color: var(--primary-color); }
+.logo-text {
+    font-size: 1.4rem; /* Slightly smaller to fit the full name comfortably */
+    font-weight: 800;
+    color: #0f172a; /* WebNova Navy */
+    white-space: nowrap; /* Prevents the name from breaking into two lines */
+    display: flex;
+    gap: 5px;
+}
+
+.logo-text span {
+    color: #2563eb; /* WebNova Royal Blue for the word 'Studio' */
+}
+
+.brand-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+.logo:hover .brand-logo {
+    /* Only scale is applied; rotation is removed */
+    transform: scale(0.95); 
+    transition: transform 0.3s ease; 
 
 .nav-links {
     display: flex;
