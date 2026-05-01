@@ -88,6 +88,13 @@ header.master-header {
     /* Only scale is applied; rotation is removed */
     transform: scale(0.95); 
     transition: transform 0.3s ease; 
+   }
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a; /* WebNova Navy */
+    letter-spacing: -0.5px;
+}
 
 .nav-links {
     display: flex;
