@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 WebNova Studio & Code Craft Academic. All Rights Reserved.</p>
+            <p>&copy; 2026 WebNova Studio | Designed & Developed by Rakesh Jadhav | Rashmi Divantgi</p>
         </div>
     </footer>
     `;
