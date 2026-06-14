@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* High-Premium Modern Teal & Slate Tech Palette */
-            --primary: #0d9488;       /* Crisp Professional Teal */
-            --primary-hover: #0f766e; /* Deep Teal for active focus */
-            --accent: #f59e0b;        /* Amber Gold for metrics and counters */
-            --bg: #f8fafc;            /* Light premium slate background */
+            /* High-Premium Modern Teal, Slate, & Code-Dark Palette */
+            --primary: #0d9488;       /* Crisp Professional Teal Accent */
+            --primary-hover: #0f766e; /* Deep Teal for active focus hover states */
+            --accent: #f59e0b;        /* Amber Gold for analytical metrics */
+            --bg: #f8fafc;            /* Off-white premium light gray dashboard background */
             --white: #ffffff;         
-            --text-main: #0f172a;     /* Deep charcoal black for superior typography */
-            --text-muted: #64748b;    /* Slate grey for secondary tags */
+            --text-main: #0f172a;     /* Deep charcoal slate for highly readable typography */
+            --text-muted: #64748b;    /* Elegant Slate gray for system metadata lines */
             --border: #e2e8f0;        
             --card-radius: 16px;      
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Color-Coding System Labels for Tech Diagnostics */
+            --diag-critical: #ef4444; /* Pro Red: Critical procedures */
+            --diag-common: #f59e0b;   /* Pro Yellow: Daily diagnostics */
+            --diag-student: #10b981;  /* Pro Green: Academic instructional metrics */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
 
         /* --- Header Section --- */
         .library-header { text-align: center; margin-bottom: 40px; }
@@ -43,7 +48,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             position: sticky;
             top: 20px;
             z-index: 100;
@@ -73,11 +78,26 @@
             color: var(--primary); pointer-events: none; font-size: 0.8rem;
         }
 
-        /* --- Horizontal Grid Layout --- */
+        /* --- Section Category Separators --- */
+        .section-divider {
+            grid-column: 1 / -1;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 25px 0 10px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-divider i { color: var(--primary); }
+
+        /* --- Compact Horizontal Grid --- */
         .asset-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
         .asset-card {
@@ -85,19 +105,15 @@
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
             display: flex;
-            padding: 12px;
+            padding: 14px;
             align-items: center;
             transition: var(--transition);
-            height: 95px;
+            height: 100px;
             opacity: 0;
             transform: translateY(15px);
         }
 
-        /* Staggered Entrance Class triggered by JS */
-        .asset-card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .asset-card.show { opacity: 1; transform: translateY(0); }
 
         .asset-card:hover {
             transform: translateY(-4px);
@@ -106,11 +122,22 @@
         }
 
         .thumb {
-            width: 50px; height: 50px; background: #f0fdfa; 
-            border-radius: 10px; display: flex; align-items: center;
+            width: 52px; height: 52px; background: #f0fdfa; 
+            border-radius: 12px; display: flex; align-items: center;
             justify-content: center; font-size: 1.3rem; color: var(--primary);
             flex-shrink: 0; transition: var(--transition);
+            position: relative;
         }
+
+        /* Visual indicator dots based on color-coding logic rules */
+        .indicator-dot {
+            position: absolute; top: -3px; right: -3px;
+            width: 10px; height: 10px; border-radius: 50%;
+            border: 2px solid var(--white);
+        }
+        .dot-critical { background: var(--diag-critical); }
+        .dot-common { background: var(--diag-common); }
+        .dot-student { background: var(--diag-student); }
 
         .asset-card:hover .thumb {
             background: var(--primary);
@@ -118,7 +145,7 @@
             transform: scale(1.05) rotate(4deg);
         }
 
-        .info { margin-left: 12px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+        .info { margin-left: 14px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
         .info h3 { font-size: 0.85rem; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
         
         .meta { display: flex; gap: 8px; font-size: 0.65rem; font-weight: 700; color: var(--text-muted); align-items: center; }
@@ -127,7 +154,7 @@
         .actions { display: flex; gap: 6px; margin-top: 6px; }
         .btn-act {
             font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;
-            padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: var(--transition);
+            padding: 5px 10px; border-radius: 6px; text-decoration: none; transition: var(--transition);
             text-align: center; cursor: pointer; border: none;
         }
         .btn-demo { background: #f1f5f9; color: #475569; }
@@ -136,60 +163,48 @@
         .btn-demo:hover { background: #e2e8f0; color: var(--text-main); }
         .btn-zip:hover { background: var(--primary-hover); }
 
-        /* --- Premium Interactive Code Explorer Modal --- */
+        /* --- Terminal View Instruction Code Popups --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.4s ease;
+            background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
         }
 
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-window {
-            background: #0f172a; /* Dark Tech Terminal View */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 90%; max-width: 600px;
-            border-radius: 20px; padding: 25px;
+            background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%; max-width: 650px; border-radius: 20px; padding: 25px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9) translateY(20px);
-            transition: var(--transition);
-            color: #f8fafc;
+            transform: scale(0.9) translateY(20px); transition: var(--transition); color: #f8fafc;
         }
 
         .modal-overlay.active .modal-window { transform: scale(1) translateY(0); }
-
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h2 { font-size: 1.2rem; display: flex; align-items: center; gap: 10px; color: #34d399; }
+        .modal-header h2 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; color: #34d399; }
         .close-modal { background: none; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
         .close-modal:hover { color: #f43f5e; }
 
         .code-container {
-            background: #020617; border-radius: 12px; padding: 16px;
+            background: #020617; border-radius: 12px; padding: 18px;
             position: relative; border: 1px solid #1e293b; margin-bottom: 20px;
         }
-        .code-container pre { font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; color: #38bdf8; white-space: pre-wrap; }
+        .code-container pre { font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; color: #38bdf8; white-space: pre-wrap; line-height: 1.5; }
         
         .btn-copy {
             background: var(--primary); color: white; border: none;
-            padding: 10px 20px; border-radius: 8px; font-size: 0.8rem;
+            padding: 12px 20px; border-radius: 8px; font-size: 0.8rem;
             font-weight: 700; cursor: pointer; width: 100%; transition: var(--transition);
         }
         .btn-copy:hover { background: var(--primary-hover); }
 
-        /* Scroll Observer Sentinel */
-        #sentinel { height: 50px; margin-top: 20px; }
+        #sentinel { height: 40px; }
 
-        @media (max-width: 1400px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 1100px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 850px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { 
+        @media (max-width: 1300px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 950px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { 
             .asset-grid { grid-template-columns: 1fr; } 
             .toolbar { flex-direction: column; align-items: stretch; } 
             .library-header h1 { font-size: 2rem; }
@@ -200,98 +215,336 @@
 
 <div class="container">
     <header class="library-header">
-        <p class="branding-tag">Code Craft Academic</p>
-        <h1>Sysadmin & <span>Tech Toolkit</span></h1>
-        <p>Instant command deployments, diagnostic manuals, and system troubleshooting scripts.</p>
+        <p class="branding-tag">Code Craft Academic Workspace</p>
+        <h1>Sysadmin & <span>Tech Hub</span></h1>
+        <p>Operational execution panels, core command syntaxes, and real-time laboratory blueprints.</p>
     </header>
 
     <div class="toolbar">
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" id="libSearch" placeholder="Search fixes, utilities, commands (e.g., DISM, DNS)...">
+            <input type="text" id="libSearch" placeholder="Search parameters (e.g., ipconfig, BSOD, spooler, bios)...">
         </div>
         <div class="sort-box">
             <select id="libSort">
                 <option value="newest">Latest Protocols</option>
                 <option value="popular">Most Utilized</option>
-                <option value="az">Name A-Z</option>
+                <option value="az">Alphabetic (A-Z)</option>
             </select>
         </div>
     </div>
 
     <div class="asset-grid" id="assetGrid">
         
-        <div class="asset-card" data-downloads="2400" data-name="Windows System Image Repair DISM">
-            <div class="thumb"><i class="fas fa-terminal"></i></div>
+        <div class="section-divider"><i class="fas fa-terminal"></i> Section 1: The Essential Command Cheat Sheet</div>
+
+        <div class="asset-card" data-downloads="3400" data-name="ping connection network packet troubleshooting testing switch router target connectivity reachability">
+            <div class="thumb"><i class="fas fa-network-wired"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
-                <h3>Windows Image Repair (DISM)</h3>
+                <h3>Ping Connectivity Tester</h3>
                 <div class="meta">
-                    <span class="count"><i class="fas fa-bolt"></i> 2.4k Uses</span>
-                    <span><i class="fas fa-file-code"></i> CMD Stack</span>
+                    <span class="count"><i class="fas fa-bolt"></i> 3.4k Uses</span>
+                    <span><i class="fas fa-globe"></i> Network ICMP</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Windows Image Repair', 'DISM /Online /Cleanup-Image /RestoreHealth\n\nsfc /scannow')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Windows Image Repair', 'DISM /Online /Cleanup-Image /RestoreHealth\n\nsfc /scannow')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Ping Tester Usage', 'DIAGNOSTIC ARCHITECTURE:\nSends low-level ICMP echo request packets to target destinations.\n\nAPPLICATION ENVIRONMENT:\nUse to isolate if a specific target local desktop server workstation or internet landing node gateway is physically responsive.\n\nEXECUTION COMMAND:\nping 8.8.8.8')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Ping Target Execution', 'ping ')">Run Stack</button>
                 </div>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="1910" data-name="Network Flush DNS Adapter Reset">
-            <div class="thumb"><i class="fas fa-network-wired"></i></div>
+        <div class="asset-card" data-downloads="4100" data-name="ipconfig /all network configuration mac address adapter dns details subnets gateway">
+            <div class="thumb"><i class="fas fa-sliders-h"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
-                <h3>IP Config & DNS Flush Stack</h3>
+                <h3>IPConfig Adapter Audit</h3>
                 <div class="meta">
-                    <span class="count"><i class="fas fa-bolt"></i> 1.9k Uses</span>
-                    <span><i class="fas fa-network-wired"></i> Net Utility</span>
+                    <span class="count"><i class="fas fa-bolt"></i> 4.1k Uses</span>
+                    <span><i class="fas fa-network-wired"></i> Interface Mapping</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('DNS & IP Flush', 'ipconfig /release\nipconfig /flushdns\nipconfig /renew\nnetsh int ip reset')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('DNS & IP Flush', 'ipconfig /release\nipconfig /flushdns\nipconfig /renew\nnetsh int ip reset')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('IPConfig All Details', 'DIAGNOSTIC ARCHITECTURE:\nOutputs comprehensive information for all network interfaces, including active and disconnected adapters.\n\nAPPLICATION ENVIRONMENT:\nUse to identify physical hardware MAC addresses, active IP address allocations, leases, and assigned local DNS servers.\n\nEXECUTION COMMAND:\nipconfig /all')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('IPConfig Audit Execution', 'ipconfig /all')">Run Stack</button>
                 </div>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="1430" data-name="Inaccessible Boot Device BSOD Repair">
-            <div class="thumb"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="asset-card" data-downloads="2900" data-name="ipconfig /release /renew dynamic lease dhcp lease drops limited internet assignment allocation">
+            <div class="thumb"><i class="fas fa-sync-alt"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
-                <h3>Inaccessible Boot Device Fix</h3>
+                <h3>DHCP IP Lease Reset</h3>
                 <div class="meta">
-                    <span class="count"><i class="fas fa-wrench"></i> 1.4k Solved</span>
-                    <span><i class="fas fa-bug"></i> BSOD Patch</span>
+                    <span class="count"><i class="fas fa-bolt"></i> 2.9k Uses</span>
+                    <span><i class="fas fa-ethernet"></i> DHCP Stack</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('BSOD Boot Storage Fix', '1. Boot into Recovery CMD\n2. Run: chkdsk C: /f /r\n3. Run: bootrec /fixmbr\n4. Run: bootrec /rebuildbcd')">Read Fix</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('BSOD Boot Storage Fix', 'chkdsk C: /f /r\nbootrec /fixmbr\nbootrec /rebuildbcd')">Get Steps</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('DHCP Lease Re-allocation', 'DIAGNOSTIC ARCHITECTURE:\nDrops active DHCP dynamically allocated configuration mappings and immediately broadcasts a renewal solicitation packet to the network server.\n\nAPPLICATION ENVIRONMENT:\nUse when a school lab machine drops network access or prompts \'No Internet\' / \'Limited Connection\' validation flags.\n\nEXECUTION COMMAND:\nipconfig /release\nipconfig /renew')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DHCP Reset Execution', 'ipconfig /release\nipconfig /renew')">Run Stack</button>
                 </div>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="1120" data-name="Memory Leak Diagnostics Analyzer">
-            <div class="thumb"><i class="fas fa-microchip"></i></div>
+        <div class="asset-card" data-downloads="3800" data-name="ipconfig /flushdns clear dns resolver cache route updates load domain mismatch host mapping">
+            <div class="thumb"><i class="fas fa-broom"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
-                <h3>Memory Leak Diagnostics</h3>
+                <h3>DNS Resolver Cache Flush</h3>
                 <div class="meta">
-                    <span class="count"><i class="fas fa-wrench"></i> 1.1k Solved</span>
-                    <span><i class="fas fa-memory"></i> Diagnostic</span>
+                    <span class="count"><i class="fas fa-bolt"></i> 3.8k Uses</span>
+                    <span><i class="fas fa-route"></i> Core DNS</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Memory Analyzer Check', '1. Open PowerShell Admin\n2. Run: Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 10')">Read Fix</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Memory Analyzer Check', 'Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 10')">Get Steps</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('DNS Cache Clear Architecture', 'DIAGNOSTIC ARCHITECTURE:\nPurges the local system DNS resolver cache data arrays, forcing new outbound destination domain alignments to re-query active tracking tables.\n\nAPPLICATION ENVIRONMENT:\nDeploy when targeted local nodes or websites fail to render following gateway configurations or server layout structural shifts.\n\nEXECUTION COMMAND:\nipconfig /flushdns')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DNS Cache Flush Execution', 'ipconfig /flushdns')">Run Stack</button>
                 </div>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="1680" data-name="Active Directory Domain Controller Manual">
-            <div class="thumb"><i class="fas fa-server"></i></div>
+        <div class="asset-card" data-downloads="2100" data-name="tracert trace route switch router failure location hop latency ping track path packets">
+            <div class="thumb"><i class="fas fa-project-diagram"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
-                <h3>Domain Controller Setup</h3>
+                <h3>Tracert Route Analyzer</h3>
                 <div class="meta">
-                    <span class="count"><i class="fas fa-book"></i> 1.6k Docs</span>
-                    <span><i class="fas fa-folder-tree"></i> Sysadmin</span>
+                    <span class="count"><i class="fas fa-bolt"></i> 2.1k Uses</span>
+                    <span><i class="fas fa-route"></i> Path Discovery</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Active Directory Deployment', '1. Install-WindowsFeature AD-Domain-Services -IncludeManagementTools\n2. Import-Module ADDSDeployment\n3. Install-ADDSForest -DomainName local.domain')">Open Manual</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Active Directory Deployment', 'Install-WindowsFeature AD-Domain-Services -IncludeManagementTools')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Trace Route Discovery Manual', 'DIAGNOSTIC ARCHITECTURE:\nMaps the explicit structural layer hops and routers traversed by data payloads on route to target structural destinations.\n\nAPPLICATION ENVIRONMENT:\nUse to isolate the explicit point of packet drops, routing failure blocks, or hardware layer switches failing inside campus parameters.\n\nEXECUTION COMMAND:\ntracert 8.8.8.8')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Trace Path Execution', 'tracert ')">Run Stack</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="4800" data-name="sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch">
+            <div class="thumb"><i class="fas fa-shield-alt"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="info">
+                <h3>SFC File System Scanner</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 4.8k Uses</span>
+                    <span><i class="fas fa-check-circle"></i> Os Integrity</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('System File Checker Manual', 'DIAGNOSTIC ARCHITECTURE:\nScans system deployment binaries, tracking system configuration files for file corruption patterns and automatically replacing corrupted layers.\n\nAPPLICATION ENVIRONMENT:\nRun when OS operations present unstable structural execution trends, spontaneous software closes, or system file alerts.\n\nEXECUTION COMMAND:\nsfc /scannow')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('SFC Scan Execution', 'sfc /scannow')">Run Stack</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="4600" data-name="dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure">
+            <div class="thumb"><i class="fas fa-cogs"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>DISM System Image Patch</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 4.6k Uses</span>
+                    <span><i class="fas fa-box-open"></i> Deployment Recovery</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('DISM Deployment Architecture', 'DIAGNOSTIC ARCHITECTURE:\nScans internal servicing store architectures for discrepancies and repairs deep system layout component structures directly via verified data packets.\n\nAPPLICATION ENVIRONMENT:\nExecute when sfc /scannow fails structural remediation steps or drops parsing access codes.\n\nEXECUTION COMMAND:\nDISM /Online /Cleanup-Image /RestoreHealth')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DISM Restore Execution', 'DISM /Online /Cleanup-Image /RestoreHealth')">Run Stack</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="3200" data-name="chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing">
+            <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>Chkdsk Volume Analyzer</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 3.2k Uses</span>
+                    <span><i class="fas fa-database"></i> Storage Diagnostics</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Chkdsk Disk Manual Check', 'DIAGNOSTIC ARCHITECTURE:\nScans targeted device metadata sectors for corruption, isolates bad block clusters, and restores readable volume layers.\n\nAPPLICATION ENVIRONMENT:\nDeploy if computers display intense interface freezes, sector loss tracking faults, or system indexing delay structures.\n\nEXECUTION COMMAND:\nchkdsk C: /f /r')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Chkdsk Operational Mount', 'chkdsk C: /f /r')">Run Stack</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="2700" data-name="gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks">
+            <div class="thumb"><i class="fas fa-user-shield"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="info">
+                <h3>Gpupdate Group Policy Push</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 2.7k Uses</span>
+                    <span><i class="fas fa-users-cog"></i> Server Sync</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Group Policy Update Sync', 'DIAGNOSTIC ARCHITECTURE:\nBypasses background execution timers to immediately sync policy trees down to destination endpoints from the central domain server database.\n\nAPPLICATION ENVIRONMENT:\nCrucial lab procedure. Run immediately when domain profile structural rules user tracking locks or configurations adapt.\n\nEXECUTION COMMAND:\ngpupdate /force')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Gpupdate Execution Push', 'gpupdate /force')">Run Stack</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"><i class="fas fa-bolt"></i> Section 1.2: Core Windows Management consoles (Win + R)</div>
+
+        <div class="asset-card" data-downloads="3100" data-name="devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers">
+            <div class="thumb"><i class="fas fa-microchip"></i><div class="indicator-dot dot-student"></div></div>
+            <div class="info">
+                <h3>Device Manager Launcher</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-play"></i> Run Console</span>
+                    <span><i class="fas fa-desktop"></i> Hardware Node</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Device Management Console', 'CONSOLE EXECUTION OVERVIEW:\nDirect path initialization command to bypass standard app controls.\n\nOPERATIONAL PURPOSE:\nTarget controller layers to trace system failures, missing host network device driver targets, or unrecognized audio/video configurations.\n\nRUN PATTERN EXECUTOR:\ndevmgmt.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Device Manager', 'devmgmt.msc')">Execute Run</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="2500" data-name="diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations">
+            <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-student"></div></div>
+            <div class="info">
+                <h3>Disk Management Console</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-play"></i> Run Console</span>
+                    <span><i class="fas fa-layer-group"></i> Logical Partitions</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Disk Management Controller', 'CONSOLE EXECUTION OVERVIEW:\nDirect execution parameter mapping path for logical storage array maps.\n\nOPERATIONAL PURPOSE:\nUse to resolve unindexed physical raw sectors, initialize dynamic volumes, clear flash device nodes, or create disk arrays.\n\nRUN PATTERN EXECUTOR:\ndiskmgmt.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Disk Management', 'diskmgmt.msc')">Execute Run</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="2800" data-name="services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager">
+            <div class="thumb"><i class="fas fa-server"></i><div class="indicator-dot dot-student"></div></div>
+            <div class="info">
+                <h3>Services Core Controller</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-play"></i> Run Console</span>
+                    <span><i class="fas fa-microchip"></i> Daemon Matrix</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Services Infrastructure View', 'CONSOLE EXECUTION OVERVIEW:\nDirect path mapping parameter to audit background framework operations.\n\nOPERATIONAL PURPOSE:\nTarget frozen print spool layers, restart host background processes, or adapt local activation parameters.\n\nRUN PATTERN EXECUTOR:\nservices.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Services Console', 'services.msc')">Execute Run</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="1900" data-name="sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options">
+            <div class="thumb"><i class="fas fa-window-restore"></i><div class="indicator-dot dot-student"></div></div>
+            <div class="info">
+                <h3>System Identity Manager</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-play"></i> Run Console</span>
+                    <span><i class="fas fa-passport"></i> Identity Layer</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('System Properties Architecture', 'CONSOLE EXECUTION OVERVIEW:\nDirect pointer framework initializer to bypass advanced platform interfaces.\n\nOPERATIONAL PURPOSE:\nUse to change local asset identity strings, define primary system environmental variables, or join system nodes to active directory tracking setups.\n\nRUN PATTERN EXECUTOR:\nsysdm.cpl')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Launch System Properties', 'sysdm.cpl')">Execute Run</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section-divider"><i class="fas fa-wrench"></i> Section 2: Step-by-Step Troubleshooting Workflows</div>
+
+        <div class="asset-card" data-downloads="3400" data-name="power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins">
+            <div class="thumb"><i class="fas fa-plug"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>PSU Diagnostic Pipeline</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-list"></i> 4 Stage Flow</span>
+                    <span><i class="fas fa-charging-station"></i> Power Matrix</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('PSU Hardware Diagnostics Framework', 'STAGE 1: PRIMARY FEED VERIFICATION\nConfirm live outlet configuration metrics via secondary check equipment. Verify terminal status of line distribution rails.\n\nSTAGE 2: PSU SWITCH VERIFICATION\nEnsure physical rear rocker control orientation matches standard operational path \'I\' (Active) over state \'O\' (Power Cut).\n\nSTAGE 3: RECOVERY DISCHARGE (STATIC DRAIN)\nIsolate AC line inputs from physical equipment. Depress the mechanical power link button element for exactly 30 seconds to dissolve storage capacitance grids inside internal subcomponents. Re-engage AC feeds.\n\nSTAGE 4: MAINBOARD RAIL INSPECTION\nInspect state of internal infrastructure. Reseat 24-Pin deployment array structure and secondary 4/8-Pin internal processing distribution cables.')">Read Workflow</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Copy Code Patch', 'echo PSU Diagnostic Script Initialized')">Get Docs</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="4200" data-name="no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors">
+            <div class="thumb"><i class="fas fa-eye-slash"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>Display Extraction Engine</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-list"></i> 4 Stage Flow</span>
+                    <span><i class="fas fa-tv"></i> Signal Path</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Signal Path Processing Recovery', 'STAGE 1: HARDWARE FEED AUDIT\nVerify tracking indicators on targeted video displays. Isolate physical interconnect arrays (HDMI / VGA / DisplayPort configurations).\n\nSTAGE 2: PORT ALIGNMENT ROUTING\nIdentify if secondary discrete processing hardware tracking extensions exist. If found force line distributions down to discrete base interface nodes away from high integrated system paths.\n\nSTAGE 3: RESEAT SYSTEM RAM STRIPS (80% RESOLUTION RULE)\nCut mainboard current arrays. Extract tracking RAM memory devices. Apply non-conductive dynamic scrubbing steps over copper bus traces using precision abrasive materials. Evacuate array slot lines. Press items down until structural clips click.\n\nSTAGE 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nUnplug primary line values. Extract CR2032 memory data array power node for exactly 5 minutes to sweep register settings back to manufacturing profiles.')">Read Workflow</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Copy Code Patch', 'echo Display Diagnostic Pipeline Running')">Get Docs</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section-divider"><i class="fas fa-school"></i> Section 3: School Lab Management Tactics</div>
+
+        <div class="asset-card" data-downloads="5100" data-name="print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair">
+            <div class="thumb"><i class="fas fa-print"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="info">
+                <h3>Print Spooler Jam Fixer</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 5.1k Uses</span>
+                    <span><i class="fas fa-print"></i> Queue Purge</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Print Spooler Remediation Protocol', 'DIAGNOSTIC ARCHITECTURE:\nForces terminal suspension of target print systems, clears localized data directory queues containing broken file processing definitions, and re-engages print engines.\n\nAPPLICATION ENVIRONMENT:\nDeploy immediately when client machines flood server communication links or processing displays freeze.\n\nOPERATIONAL SEQUENCE:\n1. Open CMD with Elevated Privileges\n2. Run: net stop spooler\n3. Clear files within: C:\\Windows\\System32\\spool\\PRINTERS\\*\n4. Run: net start spooler')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Print Queue Clear automated Script', 'net stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler')">Get Script</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="3600" data-name="deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration">
+            <div class="thumb"><i class="fas fa-snowflake"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="info">
+                <h3>Lab Configuration Locker</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-shield-alt"></i> Active Lock</span>
+                    <span><i class="fas fa-lock"></i> Sandbox Layer</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Lab Profile Security Manual', 'SECURITY ARCHITECTURE:\nDeploys programmatic write filters above processing volume nodes. Intercepts file adjustment sequences and redirects them to temporary sector overlays.\n\nAPPLICATION ENVIRONMENT:\nPrevents student file changes, systemic file adjustments, malware installs, or persistent configuration drifts by executing automated total volume rolls back to production lines on system reboot cycle updates.\n\nDEPLOYMENT SYNTAX (UWF CLI):\nuwfmgrmgmt filter enable\nuwfmgrmgmt volume protect C:')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('UWF Integration Configuration Script', 'uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">Get Script</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="2900" data-name="standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution">
+            <div class="thumb"><i class="fas fa-user-lock"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="info">
+                <h3>Standard Privilege Enforcer</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-user-shield"></i> Deployment</span>
+                    <span><i class="fas fa-key"></i> IAM Node</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('IAM Restructuring Directives', 'SECURITY ARCHITECTURE:\nRestructures user permissions to drop authorization keys for deep registry access, directory write operations, or critical driver actions.\n\nAPPLICATION ENVIRONMENT:\nEssential instructional standard constraint pattern. Keeps target laboratory accounts mapped to Standard groupings to isolate base environments from unauthorized modifications.\n\nDEPLOYMENT EXECUTION STACK:\nnet localgroup Users StudentAccount /add\nnet localgroup Administrators StudentAccount /delete')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('User Rights Standardization Script', 'net localgroup Users Student /add\net localgroup Administrators Student /delete')">Get Script</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section-divider"><i class="fas fa-download"></i> Section 4: Advanced Labs Deployment Module (Added)</div>
+
+        <div class="asset-card" data-downloads="3900" data-name="diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation">
+            <div class="thumb"><i class="fas fa-compact-disc"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>Bootable OS Media Maker</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 3.9k Uses</span>
+                    <span><i class="fas fa-usb"></i> Deployment Drive</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Bootable Media Build Instructions', 'OPERATIONAL PIPELINE:\nManually transforms generic target flash storage devices into master active boot sector targets capable of deploying recovery file images.\n\nAPPLICATION ENVIRONMENT:\nDeploy when configuring mass imaging tasks across fresh lab builds or rebuilding bricked desktop clusters.\n\nDISKPART LOGICAL STACK:\n1. Open CMD -> diskpart\n2. list disk -> select disk [X]\n3. clean\n4. create partition primary\n5. format fs=ntfs quick\n6. active\n7. assign')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Diskpart Generation Automation Script', 'select disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign')">Get Script</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card" data-downloads="5400" data-name="automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub">
+            <div class="thumb"><i class="fas fa-magic"></i><div class="indicator-dot dot-critical"></div></div>
+            <div class="info">
+                <h3>Automated Lab Maintenance</h3>
+                <div class="meta">
+                    <span class="count"><i class="fas fa-bolt"></i> 5.4k Uses</span>
+                    <span><i class="fas fa-file-invoice"></i> Batch Automation</span>
+                </div>
+                <div class="actions">
+                    <button class="btn-act btn-demo" onclick="openTechModal('Mass Automation Operational Specs', 'OPERATIONAL PIPELINE:\nConsolidates temp structures index files browser file buffers error record data tables and cache partitions into a one-click clean utility.\n\nAPPLICATION ENVIRONMENT:\nRun as a scheduled server chore across academic environments every Friday evening to clean dynamic systems.\n\nAUTOMATED OPERATIONS MATRIX:\nPurges local system temp pathways, cleans dynamic variables, clears DNS mapping lines, resets storage pools, and flushes event trace data sheets.')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Full Stack Script Solution', 'del /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\ndel /q /f /s %systemdrive%\\Windows\\Prefetch\\*\nipconfig /flushdns\nwsreset.exe')">Get Script</button>
                 </div>
             </div>
         </div>
@@ -318,19 +571,90 @@
     const search = document.getElementById('libSearch');
     const sort = document.getElementById('libSort');
 
-    // Staggered Entrance Motion Logic
+    // Staggered Entrance Motion Logic Animation Execution
     document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll('.asset-card');
         cards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('show');
-            }, index * 80); 
+            }, index * 40); // Optimized rapid animation loop
         });
     });
 
     // Instant Search Logic Filter
     search.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
+        let activeDividers = new Set();
+        
+        // Dynamic visibility evaluation
         document.querySelectorAll('.asset-card').forEach(card => {
-            const text = card.querySelector('h3').innerText.toLowerCase();
-            card.style.display = text.includes(term) ? 'flex' : 'none';
+            const searchIndex = card.dataset.name.toLowerCase();
+            const h3Text = card.querySelector('h3').innerText.toLowerCase();
+            
+            if (searchIndex.includes(term) || h3Text.includes(term)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Sorting Engine
+    sort.addEventListener('change', () => {
+        const items = Array.from(document.getElementById('assetGrid').children);
+        const dividers = items.filter(el => el.classList.contains('section-divider'));
+        const cards = items.filter(el => el.classList.contains('asset-card'));
+        
+        if (sort.value === 'popular') {
+            cards.sort((a, b) => parseInt(b.dataset.downloads || 0) - parseInt(a.dataset.downloads || 0));
+        } else if (sort.value === 'az') {
+            cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+        } else {
+            // Restore default view sequence natively
+            location.reload();
+            return;
+        }
+
+        // Reconstruct inner layout content streams cleanly
+        grid.innerHTML = '';
+        dividers.forEach(div => grid.appendChild(div)); // Keeps contextual labels positioned
+        cards.forEach(card => grid.appendChild(card));
+    });
+
+    /* --- Modal Controller Functions --- */
+    function openTechModal(title, executionCode) {
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-terminal"></i> ${title}`;
+        document.getElementById('modalCode').innerText = executionCode;
+        document.getElementById('copyBtn').innerText = "Copy Syntax Stack";
+        document.getElementById('techModal').classList.add('active');
+    }
+
+    function closeTechModal() {
+        document.getElementById('techModal').classList.remove('active');
+    }
+
+    function copyTechCode() {
+        const codeElement = document.getElementById('modalCode').innerText;
+        
+        // Strip documentation text lines on code acquisition actions if string contains standard scripts
+        let filteredText = codeElement;
+        if(codeElement.includes('TERMINAL AUTOMATION SYNTAX:')) {
+            filteredText = codeElement.split('TERMINAL AUTOMATION SYNTAX:')[1].trim();
+        } else if(codeElement.includes('EXECUTION COMMAND:')) {
+            filteredText = codeElement.split('EXECUTION COMMAND:')[1].trim();
+        }
+
+        navigator.clipboard.writeText(filteredText).then(() => {
+            document.getElementById('copyBtn').innerText = "✓ Copied Code Stack to Clipboard!";
+        });
+    }
+
+    document.getElementById('techModal').addEventListener('click', function(e) {
+        if(e.target === this) closeTechModal();
+    });
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+</body>
+</html>
