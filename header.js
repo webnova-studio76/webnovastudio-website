@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             </li>
             
-            
+            <li class="nav-item"><a href="free-assets.html" class="nav-link">Premium Vault</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             <li class="nav-item"><a href="requests.html" class="nav-link">Request vault</a></li>
         </ul>
