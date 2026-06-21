@@ -14,6 +14,7 @@
             --code-bg: #1e293b;
             --white: #ffffff;
             --success: #10b981;
+            --border: #e2e8f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -24,6 +25,7 @@
             width: 320px; background: var(--secondary); color: white;
             padding: 30px 15px; overflow-y: auto; display: flex;
             flex-direction: column; border-right: 4px solid var(--primary);
+            flex-shrink: 0;
         }
         .sidebar h2 { font-size: 1rem; margin-bottom: 25px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; padding-left: 10px; }
         .lab-list { list-style: none; flex-grow: 1; }
@@ -31,6 +33,7 @@
             padding: 10px 15px; border-radius: 8px; margin-bottom: 5px;
             cursor: pointer; font-size: 0.8rem; transition: 0.3s;
             color: #94a3b8; border: 1px solid transparent;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
@@ -45,12 +48,21 @@
         .modern-notice { margin-top: 15px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #166534; }
         .modern-badge { margin-top: 12px; padding: 8px 15px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; border-left: 4px solid var(--primary); display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary); }
 
+        /* MULTI-PANEL VIEW GRID */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+
         /* LOGIC BREAKDOWN */
-        .logic-container { margin-bottom: 25px; background: #fffdf0; border: 1px solid #fef08a; border-radius: 12px; overflow: hidden; }
+        .logic-container { background: #fffdf0; border: 1px solid #fef08a; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
         .logic-header { background: #fef08a; padding: 10px 20px; font-weight: 800; color: #854d0e; font-size: 0.8rem; text-transform: uppercase; }
-        .logic-body { padding: 20px; color: #713f12; font-size: 0.9rem; }
+        .logic-body { padding: 20px; color: #713f12; font-size: 0.9rem; flex-grow: 1; }
         .logic-step { margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; }
         .step-num { background: #854d0e; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; margin-top: 2px; }
+
+        /* TERMINAL OUTPUT BOX */
+        .terminal-container { background: #0f172a; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+        .terminal-header { background: #1e293b; padding: 10px 20px; font-weight: 800; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .terminal-header .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .terminal-body { padding: 20px; color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 0.85rem; white-space: pre-wrap; line-height: 1.5; background: #020617; flex-grow: 1; }
 
         /* CODE BLOCK */
         .code-container { background: var(--code-bg); border-radius: 12px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
@@ -59,7 +71,8 @@
 
         pre { padding: 25px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; white-space: pre-wrap; }
 
-        @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: 300px; } }
+        @media (max-width: 1100px) { .content-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { body { flex-direction: column; overflow: auto; height: auto; } .sidebar { width: 100%; height: 300px; } .main-content { overflow: visible; } }
     </style>
 </head>
 <body>
@@ -85,9 +98,21 @@
                 </div>
             </div>
 
-            <div class="logic-container">
-                <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
-                <div class="logic-body" id="logic-text"></div>
+            <div class="content-grid">
+                <div class="logic-container">
+                    <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
+                    <div class="logic-body" id="logic-text"></div>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <span class="dot" style="background: #ef4444;"></span>
+                        <span class="dot" style="background: #eab308;"></span>
+                        <span class="dot" style="background: #22c55e;"></span>
+                        <span style="margin-left: 5px;"><i class="fas fa-terminal"></i> Terminal Output Preview</span>
+                    </div>
+                    <div class="terminal-body" id="output-text"></div>
+                </div>
             </div>
 
             <div class="code-container">
@@ -102,26 +127,146 @@
 
     <script>
         const labData = {
-            p1: { title: "01. Hello World", tag: "BASIC", code: `print("Hello, World!")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Output:</b> Uses Python's built-in print() function to display text on the console.</p></div>` },
-            p2: { title: "02. Basic Arithmetic", tag: "MATH", code: `a, b = 10, 5\nprint(f"Sum: {a+b}, Diff: {a-b}, Prod: {a*b}, Quot: {a/b}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Operators:</b> Uses standard +, -, *, and / symbols for mathematical operations.</p></div>` },
-            p3: { title: "03. Swap Numbers", tag: "LOGIC", code: `a, b = 5, 10\na, b = b, a\nprint(f"a: {a}, b: {b}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Tuple Unpacking:</b> Python allows swapping in one line without a temporary variable.</p></div>` },
-            p4: { title: "04. Positive/Negative", tag: "CONDITIONALS", code: `n = int(input("Enter: "))\nif n > 0: print("Positive")\nelif n < 0: print("Negative")\nelse: print("Zero")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Conditional Branching:</b> Uses if-elif-else to evaluate the state of the number.</p></div>` },
-            p5: { title: "05. Max of Three", tag: "MATH", code: `nums = [10, 45, 22]\nprint(f"Max: {max(nums)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Built-in Functions:</b> Utilizes max() to find the highest value in a collection instantly.</p></div>` },
-            p6: { title: "06. Leap Year", tag: "LOGIC", code: `y = 2024\nif (y % 400 == 0) or (y % 4 == 0 and y % 100 != 0): print("Leap Year")\nelse: print("Not Leap")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Boolean Logic:</b> Combines modulo operations to verify century and standard leap rules.</p></div>` },
-            p7: { title: "07. Multiplication Table", tag: "LOOPS", code: `n = 5\nfor i in range(1, 11): print(f"{n} x {i} = {n*i}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Range Control:</b> range(1, 11) creates a sequence from 1 to 10 for iteration.</p></div>` },
-            p8: { title: "08. Factorial", tag: "MATH", code: `import math\nn = 5\nprint(f"Factorial: {math.factorial(n)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Library Import:</b> Uses the math module for optimized mathematical computations.</p></div>` },
-            p9: { title: "09. Fibonacci Series", tag: "LOOPS", code: `n, a, b = 10, 0, 1\nfor _ in range(n):\n    print(a, end=" ")\n    a, b = b, a + b`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Iterative Sum:</b> Continuously updates variables to form the sequence (a = b, b = a+b).</p></div>` },
-            p10: { title: "10. Sum of Digits", tag: "LOGIC", code: `n = 12345\nprint(sum(int(d) for d in str(n)))`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Generator Expression:</b> Converts to string, iterates digits, and sums them in one line.</p></div>` },
-            p11: { title: "11. Reverse Number", tag: "LOGIC", code: `n = 12345\nrev = int(str(n)[::-1])\nprint(rev)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Slicing:</b> Uses [::-1] string slicing, the fastest way to reverse a sequence in Python.</p></div>` },
-            p12: { title: "12. Divisibility Logic", tag: "LOOPS", code: `res = [x for x in range(1500, 2701) if x % 7 == 0 and x % 5 == 0]\nprint(res)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>List Comprehension:</b> Filters the range efficiently using conditional logic.</p></div>` },
-            p13: { title: "13. Temp Converter", tag: "MATH", code: `c = 37\nf = (c * 9/5) + 32\nprint(f"{c}C is {f}F")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Formula Implementation:</b> Direct application of the algebraic conversion constant.</p></div>` },
-            p14: { title: "14. Guessing Game", tag: "INTERACTIVE", code: `import random\ntarget, guess = random.randint(1, 9), 0\nwhile guess != target:\n    guess = int(input("Guess (1-9): "))\nprint("Correct!")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Randomization:</b> Uses random.randint to set a dynamic target for the while loop.</p></div>` },
-            p15: { title: "15. Nested Patterns", tag: "LOOPS", code: `for i in range(1, 6): print("* " * i)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>String Multiplication:</b> Python allows multiplying strings by integers to repeat characters.</p></div>` },
-            p16: { title: "16. Even/Odd Count", tag: "LOOPS", code: `nums = [1, 2, 3, 4, 5, 6]\neven = len([x for x in nums if x % 2 == 0])\nprint(f"Even: {even}, Odd: {len(nums)-even}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Modulo Filter:</b> Identifies even numbers via x % 2 == 0 check.</p></div>` },
-            p17: { title: "17. ASCII Value", tag: "BASIC", code: `char = 'A'\nprint(f"ASCII of {char} is {ord(char)}")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Built-in Helper:</b> ord() returns the integer Unicode code point of a character.</p></div>` },
-            p18: { title: "18. Palindrome String", tag: "STRINGS", code: `s = "radar"\nif s == s[::-1]: print("Palindrome")\nelse: print("Not")`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Equality Check:</b> Compares the string to its sliced reverse version.</p></div>` },
-            p19: { title: "19. String Length", tag: "STRINGS", code: `s, count = "Hello", 0\nfor _ in s: count += 1\nprint(count)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Manual Iteration:</b> Loops through each character to increment a counter manually.</p></div>` },
-            p20: { title: "20. Remove N-th Char", tag: "STRINGS", code: `s, n = "Python", 2\nres = s[:n] + s[n+1:]\nprint(res)`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Slicing concatenation:</b> Joins the parts before and after the index to "cut" the character.</p></div>` }
+            p1: { 
+                title: "01. Hello World", 
+                tag: "BASIC", 
+                code: `print("Hello, World!")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Output:</b> Uses Python's built-in print() function to display explicit string sequences onto standard output streams.</p></div>`,
+                output: `Hello, World!`
+            },
+            p2: { 
+                title: "02. Basic Arithmetic", 
+                tag: "MATH", 
+                code: `a, b = 10, 5\nprint(f"Sum: {a+b}, Diff: {a-b}, Prod: {a*b}, Quot: {a/b}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Operators:</b> Evaluates numerical attributes via standard arithmetic processing signs (+, -, *, /).</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>String Interpolation:</b> Uses premium f-strings to inject real-time calculation blocks directly inside characters variables.</p></div>`,
+                output: `Sum: 15, Diff: 5, Prod: 50, Quot: 2.0`
+            },
+            p3: { 
+                title: "03. Swap Numbers", 
+                tag: "LOGIC", 
+                code: `a, b = 5, 10\na, b = b, a\nprint(f"a: {a}, b: {b}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Tuple Unpacking:</b> Python groups targets on the right side into temporary tuple frames before mapping fields back down onto left targets, executing a fast swap without temp files.</p></div>`,
+                output: `a: 10, b: 5`
+            },
+            p4: { 
+                title: "04. Positive/Negative Check", 
+                tag: "CONDITIONALS", 
+                code: `n = int(input("Enter number: "))\nif n > 0:\n    print("Positive")\nelif n < 0:\n    print("Negative")\nelse:\n    print("Zero")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Type Casting:</b> Wraps standard raw string inputs inside an int() converter block.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Branching:</b> Runs conditional logic checks using if-elif-else statements to screen number signs.</p></div>`,
+                output: `Enter number: -12\nNegative`
+            },
+            p5: { 
+                title: "05. Max of Three Numbers", 
+                tag: "MATH", 
+                code: `nums = [10, 45, 22]\nprint(f"Max Value: {max(nums)}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Built-in Functions:</b> Bypasses tedious loops by utilizing the native max() aggregate function to return the highest scalar value from an array.</p></div>`,
+                output: `Max Value: 45`
+            },
+            p6: { 
+                title: "06. Leap Year Validator", 
+                tag: "LOGIC", 
+                code: `year = 2026\nif (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):\n    print(f"{year} is a Leap Year")\nelse:\n    print(f"{year} is not a Leap Year")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Modulo Logic:</b> Uses operator % to extract remainders, combining conditions with logical operators (and, or) to verify century rules.</p></div>`,
+                output: `2026 is not a Leap Year`
+            },
+            p7: { 
+                title: "07. Multiplication Table", 
+                tag: "LOOPS", 
+                code: `num = 7\nfor i in range(1, 11):\n    print(f"{num} x {i} = {num * i}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Range Controller:</b> range(1, 11) builds an index memory stream starting from 1 up to exactly 10.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Loop Projection:</b> Iterates row actions continuously, updating the multiplicand variables sequentially.</p></div>`,
+                output: `7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70`
+            },
+            p8: { 
+                title: "08. Factorial Calculator", 
+                tag: "MATH", 
+                code: `import math\nn = 5\nprint(f"Factorial of {n} is {math.factorial(n)}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Module Imports:</b> Pulls the core C-optimized math module into the runtime scope to execute high-performance arithmetic.</p></div>`,
+                output: `Factorial of 5 is 120`
+            },
+            p9: { 
+                title: "09. Fibonacci Sequence", 
+                tag: "LOOPS", 
+                code: `n, a, b = 8, 0, 1\nfor _ in range(n):\n    print(a, end=" ")\n    a, b = b, a + b`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Sequence Swapping:</b> Continuously advances structural values via concurrent variable unpacking (a = b, b = a + b).</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Print Modifiers:</b> Sets end=" " to prevent default system newline characters during display.</p></div>`,
+                output: `0 1 1 2 3 5 8 13 `
+            },
+            p10: { 
+                title: "10. Sum of Digits", 
+                tag: "LOGIC", 
+                code: `num = 54321\ntotal = sum(int(digit) for digit in str(num))\nprint(f"Sum of digits: {total}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Generator Comprehension:</b> Converts numbers into string elements, loops through individual digits, casts them back to integers, and sums the array fields instantly.</p></div>`,
+                output: `Sum of digits: 15`
+            },
+            p11: { 
+                title: "11. Reverse a Number", 
+                tag: "LOGIC", 
+                code: `num = 98765\nreversed_num = int(str(num)[::-1])\nprint(f"Reversed: {reversed_num}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Slicing Matrix:</b> Translates integers to strings and runs a fast native memory step slice stride [::-1] to reverse characters layouts.</p></div>`,
+                output: `Reversed: 56789`
+            },
+            p12: { 
+                title: "12. Range Filtering Logic", 
+                tag: "LOOPS", 
+                code: `matching_items = [x for x in range(10, 51) if x % 3 == 0 and x % 2 == 0]\nprint(matching_items)`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>List Comprehension:</b> Filters a numeric sequence directly within single-line array builders using internal conditional logic tracks.</p></div>`,
+                output: `[12, 18, 24, 30, 36, 42, 48]`
+            },
+            p13: { 
+                title: "13. Celsius to Fahrenheit", 
+                tag: "MATH", 
+                code: `celsius = 37\nfahrenheit = (celsius * 9/5) + 32\nprint(f"{celsius}°C matches {fahrenheit}°F")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Expression Mapping:</b> Evaluates physical formula metrics using raw floating-point calculations.</p></div>`,
+                output: `37°C matches 98.6°F`
+            },
+            p14: { 
+                title: "14. Loop Guessing Simulator", 
+                tag: "INTERACTIVE", 
+                code: `import random\ntarget, guess = random.randint(1, 5), 0\nwhile guess != target:\n    guess = int(input("Guess (1-5): "))\nprint("Target intercepted successfully!")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Indefinite Loops:</b> Deploys a while block configuration that locks active execution scripts until conditions clear.</p></div>`,
+                output: `Guess (1-5): 2\nGuess (1-5): 4\nTarget intercepted successfully!`
+            },
+            p15: { 
+                title: "15. Matrix Star Pattern", 
+                tag: "LOOPS", 
+                code: `for i in range(1, 6):\n    print("* " * i)`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>String Overloading:</b> Multiplies string components by integers to dynamically extend active character layouts without nested loop processing layers.</p></div>`,
+                output: `* \n* * \n* * * \n* * * * \n* * * * * `
+            },
+            p16: { 
+                title: "16. Even & Odd Counter", 
+                tag: "LOOPS", 
+                code: `dataset = [14, 23, 45, 62, 88]\neven_count = len([x for x in dataset if x % 2 == 0])\nprint(f"Evens: {even_count}, Odds: {len(dataset) - even_count}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Array Measurement:</b> Uses len() on inline list-filtered outputs to return even items counts, using standard subtraction to derive the remainder totals.</p></div>`,
+                output: `Evens: 3, Odds: 2`
+            },
+            p17: { 
+                title: "17. Unicode ASCII Finder", 
+                tag: "BASIC", 
+                code: `character_target = 'Z'\nprint(f"Unicode point: {ord(character_target)}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Character Encoding Mapping:</b> Uses native helper ord() to fetch the explicit base integer mapping value assigned inside active encoding systems.</p></div>`,
+                output: `Unicode point: 90`
+            },
+            p18: { 
+                title: "18. Palindrome Verifier", 
+                tag: "STRINGS", 
+                code: `payload = "malayalam"\nis_palindrome = payload == payload[::-1]\nprint(f"Is Palindrome: {is_palindrome}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Boolean Projection:</b> Checks absolute equivalence values directly against reversed string memory addresses to output clean truth parameters.</p></div>`,
+                output: `Is Palindrome: True`
+            },
+            p19: { 
+                title: "19. Character Matrix Loop", 
+                tag: "STRINGS", 
+                code: `target_string, string_length = "Nova", 0\nfor char in target_string:\n    string_length += 1\nprint(f"Manual metrics output count: {string_length}")`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Iterable Traversal loops:</b> Loops manually over string collection indexes to step counters, demonstrating basic string indexing metrics.</p></div>`,
+                output: `Manual metrics output count: 4`
+            },
+            p20: { 
+                title: "20. Substring Position Stripper", 
+                tag: "STRINGS", 
+                code: `source_string, target_index = "WebNova", 3\nmodified_string = source_string[:target_index] + source_string[target_index+1:]\nprint(modified_string)`, 
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Array Concatenation slices:</b> Cuts strings into isolated slices right before and right after target index constraints, stitching remaining data tracks back together securely.</p></div>`,
+                output: `WebOva`
+            }
         };
 
         function showCode(id, element) {
@@ -132,6 +277,7 @@
             document.getElementById('prog-tag').innerText = "SECTION: " + data.tag;
             document.getElementById('code-block').innerText = data.code;
             document.getElementById('logic-text').innerHTML = data.logic;
+            document.getElementById('output-text').innerText = data.output;
         }
 
         function initSidebar() {
