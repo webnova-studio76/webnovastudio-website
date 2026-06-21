@@ -8,85 +8,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* Ultra-Premium Cyber-Tech Palette */
+            /* High-Premium Modern Teal & Slate Palette */
             --primary: #0d9488;       /* Clean, Professional Teal */
             --primary-hover: #0f766e; /* Deep Teal for crisp interactive focus */
             --accent: #f59e0b;        /* Soft Gold/Amber for metrics and counts */
-            --secondary: #090d16;     /* Deep Space Dark Matte */
-            --card-surface: #111827;  /* High-Contrast Charcoal Slate */
-            --bg: #030712;            /* True Obsidian Background */
+            --bg: #f8fafc;            /* Light premium slate-tint background */
             --white: #ffffff;         
-            --text-main: #f1f5f9;     /* Off-White Crisp Typography */
-            --text-muted: #94a3b8;    /* Muted Cool Gray Metadata */
-            --border: rgba(255, 255, 255, 0.05); /* Soft structural line */
-            --card-radius: 20px;      
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-main: #0f172a;     /* Deep charcoal black for perfect text contrast */
+            --text-muted: #64748b;    /* Elegant slate grey for metadata and counts */
+            --border: #e2e8f0;        /* Subtle clean borders */
+            --card-radius: 16px;      /* Modern, elegant softened card corners */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
-        .container { max-width: 1440px; margin: 0 auto; padding: 40px 24px; position: relative; z-index: 20; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
         /* --- Header & Branding --- */
-        .library-header { 
-            position: relative; 
-            text-align: center; 
-            padding: 80px 20px 40px; 
-            overflow: hidden; 
-        }
-        
-        /* Subtle cyber grid ambient layout rule */
-        .library-header::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none; top: 20px;
-        }
-
-        .branding-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; text-shadow: 0 0 20px rgba(13, 148, 136, 0.3); }
-        .library-header h1 { font-size: 3rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
-        .library-header h1 span { color: var(--primary); text-shadow: 0 0 30px rgba(13, 148, 136, 0.2); }
-        .library-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .library-header { text-align: center; margin-bottom: 40px; }
+        .branding-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+        .library-header h1 { font-size: 2.5rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.02em; }
+        .library-header h1 span { color: var(--primary); }
+        .library-header p { color: var(--text-muted); font-size: 1rem; margin-top: 8px; font-weight: 500; }
 
         /* --- Controls Toolbar --- */
         .toolbar {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--white);
             padding: 20px;
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             position: sticky;
             top: 20px;
             z-index: 100;
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
         }
 
         .search-box { flex: 2; position: relative; }
-        .search-box i { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1.05rem; }
+        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
         .search-box input {
-            width: 100%; padding: 14px 20px 14px 60px; border-radius: 50px;
+            width: 100%; padding: 12px 20px 12px 50px; border-radius: 50px;
             border: 1px solid var(--border); background: var(--bg); outline: none; transition: var(--transition);
-            color: var(--white); font-weight: 500; font-size: 0.95rem;
+            color: var(--text-main); font-weight: 500; font-size: 0.9rem;
         }
-        .search-box input:focus { border-color: var(--primary); background: rgba(255, 255, 255, 0.02); box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15); }
+        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1); }
 
         .sort-box { flex: 1; position: relative; }
         .sort-box select {
-            width: 100%; padding: 14px 24px; border-radius: 50px;
-            border: 1px solid var(--border); background: var(--bg);
-            font-weight: 700; color: var(--white); cursor: pointer; appearance: none; outline: none;
+            width: 100%; padding: 12px 20px; border-radius: 50px;
+            border: 1px solid var(--border); background: var(--white);
+            font-weight: 700; color: var(--text-main); cursor: pointer; appearance: none; outline: none;
             font-size: 0.9rem; transition: var(--transition);
         }
         .sort-box select:hover { border-color: var(--primary); }
         .sort-box::after {
             content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
-            position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+            position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
             color: var(--primary); pointer-events: none; font-size: 0.8rem;
         }
 
@@ -94,78 +77,84 @@
         .asset-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
+            gap: 15px;
         }
 
         .asset-card {
-            background: var(--card-surface);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
             display: flex;
-            padding: 14px;
+            padding: 12px;
             align-items: center;
             transition: var(--transition);
-            height: 105px;
-            animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+            height: 95px;
+            animation: fadeIn 0.5s ease forwards;
         }
 
         .asset-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: var(--primary);
-            box-shadow: 0 20px 35px -10px rgba(13, 148, 136, 0.2);
+            box-shadow: 0 10px 20px -5px rgba(13, 148, 136, 0.1);
         }
 
         .thumb {
-            width: 52px; height: 52px; background: rgba(255, 255, 255, 0.02); 
-            border: 1px solid var(--border);
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.25rem; color: var(--primary);
+            width: 50px; height: 50px; background: #f0fdfa; 
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; color: var(--primary);
             flex-shrink: 0; transition: var(--transition);
         }
 
         .asset-card:hover .thumb {
             background: var(--primary);
             color: var(--white);
-            transform: scale(1.05) rotate(4deg);
-            box-shadow: 0 0 15px rgba(13, 148, 136, 0.4);
         }
 
-        .info { margin-left: 14px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
-        .info h3 { font-size: 0.9rem; color: var(--white); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; }
+        .info { margin-left: 12px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+        .info h3 { font-size: 0.85rem; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
         
-        .meta { display: flex; gap: 10px; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); align-items: center; }
-        .meta .count { color: var(--accent); display: flex; align-items: center; gap: 4px; }
+        .meta { display: flex; gap: 8px; font-size: 0.65rem; font-weight: 700; color: var(--text-muted); align-items: center; }
+        .meta .count { color: var(--accent); display: flex; align-items: center; gap: 3px; }
 
-        .actions { display: flex; gap: 6px; margin-top: 8px; }
+        .actions { display: flex; gap: 6px; margin-top: 6px; }
         .btn-act {
-            font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 5px 12px; border-radius: 6px; text-decoration: none; transition: var(--transition);
-            text-align: center; display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;
+            padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: var(--transition);
+            text-align: center;
         }
-        .btn-demo { background: rgba(255, 255, 255, 0.04); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-demo { background: #f1f5f9; color: #475569; }
         .btn-zip { background: var(--primary); color: var(--white); }
         
-        .btn-demo:hover { background: rgba(255, 255, 255, 0.08); color: var(--white); border-color: rgba(255, 255, 255, 0.15); }
-        .btn-zip:hover { background: var(--primary-hover); box-shadow: 0 0 15px rgba(13, 148, 136, 0.3); }
+        .btn-demo:hover { background: #e2e8f0; color: var(--text-main); }
+        .btn-zip:hover { background: var(--primary-hover); }
 
-        /* Smooth Entrance Core Animations Keyframe setup */
-        @keyframes cardEntrance { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        /* PAGINATION INTERACTION CONTROLS */
+        .pagination-box { text-align: center; margin: 40px 0; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        .btn-load-more {
+            background: var(--secondary); color: var(--white); border: none; padding: 14px 36px;
+            border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
+            transition: var(--transition); box-shadow: 0 10px 20px rgba(15,23,42,0.1); display: inline-flex; align-items: center; gap: 10px;
         }
+        .btn-load-more:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(13,148,136,0.2); }
+        .btn-load-more.hidden { display: none; }
+
+        .item-counter-tag { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
+
+        /* Hidden Backlog Pipeline Data Box */
+        #backlogStorage { display: none; }
+
+        /* Animation */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Scroll Observer Sentinel */
-        #sentinel { height: 50px; margin-top: 20px; }
+        #sentinel { height: 10px; margin-top: 10px; }
 
-        @media (max-width: 1400px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 1100px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 850px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1300px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 1000px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { 
-            .asset-grid { grid-template-columns: 1fr; gap: 12px; } 
-            .toolbar { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 15px; } 
-            .library-header h1 { font-size: 2.2rem; }
-            .container { padding: 20px 16px; }
+            .asset-grid { grid-template-columns: 1fr; } 
+            .toolbar { flex-direction: column; align-items: stretch; } 
+            .library-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -344,6 +333,9 @@
             </div>
         </div>
 
+    </div>     
+
+    <div id="backlogStorage">
         <div class="asset-card" data-downloads="1320" data-name="Tours and Travels">
             <div class="thumb"><i class="fas fa-map-marked-alt"></i></div>
             <div class="info">
@@ -493,8 +485,13 @@
                 </div>
             </div>
         </div>
+    </div>
 
-    </div>     
+    <div class="pagination-box">
+        <span class="item-counter-tag" id="countDisplay">Showing 10 of 20 Items</span>
+        <button class="btn-load-more" id="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More Templates</button>
+    </div>
+
     <div id="sentinel"></div>
 </div>
 
@@ -502,27 +499,104 @@
     const grid = document.getElementById('assetGrid');
     const search = document.getElementById('libSearch');
     const sort = document.getElementById('libSort');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const countDisplay = document.getElementById('countDisplay');
+    const backlogStorage = document.getElementById('backlogStorage');
 
-    // Live Search Filter
-    search.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        document.querySelectorAll('.asset-card').forEach(card => {
-            const h3 = card.querySelector('h3').innerText.toLowerCase();
-            card.style.display = h3.includes(term) ? 'flex' : 'none';
+    // Pagination State Engine Variables
+    const totalBacklogCards = Array.from(backlogStorage.children);
+    const activePageLimit = 10; 
+
+    function updateCounterDisplay() {
+        const totalRendered = grid.querySelectorAll('.asset-card').length;
+        const totalHiddenStock = backlogStorage.children.length;
+        const totalOverall = totalRendered + totalHiddenStock;
+        countDisplay.innerText = `Showing ${totalRendered} of ${totalOverall} Templates`;
+        
+        if (totalHiddenStock === 0) {
+            loadMoreBtn.classList.add('hidden');
+        } else {
+            loadMoreBtn.classList.remove('hidden');
+        }
+    }
+
+    // Load More Activation Pipeline
+    loadMoreBtn.addEventListener('click', () => {
+        const batchToLoad = totalBacklogCards.splice(0, activePageLimit);
+        batchToLoad.forEach(card => {
+            grid.appendChild(card);
         });
+        updateCounterDisplay();
+        
+        // Re-trigger global sort arrays if actively chosen
+        if (sort.value !== 'newest') sort.dispatchEvent(new Event('change'));
     });
 
-    // Sorting Engine
+    // Live Search Filter Matrix
+    search.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        
+        if (term.trim() !== "") {
+            // Temporary reveal all components across backlog pipelines for search precision
+            loadMoreBtn.classList.add('hidden');
+            countDisplay.classList.add('hidden');
+            
+            document.querySelectorAll('.asset-card').forEach(card => {
+                const searchIndex = card.dataset.name.toLowerCase();
+                if (searchIndex.includes(term)) {
+                    grid.appendChild(card); // pull directly into structural visibility
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            totalBacklogCards.forEach(card => {
+                const searchIndex = card.dataset.name.toLowerCase();
+                if (searchIndex.includes(term)) {
+                    grid.appendChild(card);
+                    card.style.display = 'flex';
+                }
+            });
+        } else {
+            // Restore structural paginated view slices upon query deletion
+            grid.innerHTML = "";
+            document.querySelectorAll('body > .container > .asset-card').forEach(c => grid.appendChild(c));
+            
+            // Re-stack backlog
+            backlogStorage.innerHTML = "";
+            totalBacklogCards.forEach(c => backlogStorage.appendChild(c));
+            
+            // Loop through existing elements to verify page boundaries
+            const currentGridCards = Array.from(grid.children);
+            if(currentGridCards.length > activePageLimit) {
+                const overflow = currentGridCards.slice(activePageLimit);
+                overflow.forEach(c => {
+                    backlogStorage.appendChild(c);
+                    totalBacklogCards.push(c);
+                });
+            }
+            
+            // Set visibility states back to flex
+            document.querySelectorAll('.asset-card').forEach(c => c.style.display = 'flex');
+            countDisplay.classList.remove('hidden');
+            updateCounterDisplay();
+        }
+    });
+
+    // Sorting Engine Module Matrix
     sort.addEventListener('change', () => {
-        const cards = Array.from(document.querySelectorAll('.asset-card'));
+        const cards = Array.from(grid.querySelectorAll('.asset-card'));
         cards.sort((a, b) => {
             if (sort.value === 'popular') return parseInt(b.dataset.downloads || 0) - parseInt(a.dataset.downloads || 0);
             if (sort.value === 'az') return a.dataset.name.localeCompare(b.dataset.name);
-            return 0; // Default ordering
+            return 0; // Default newest tracking order sequence
         });
         grid.innerHTML = '';
         cards.forEach(c => grid.appendChild(c));
     });
+
+    // Run structural calibration variables on initial load
+    updateCounterDisplay();
 </script>
 <script src="header.js"></script>
 <script src="footer.js"></script>
