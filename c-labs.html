@@ -150,4 +150,66 @@
             p4: { title: "04. Compound Interest", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float p, r, t, ci;\n    scanf("%f %f %f", &p, &r, &t);\n    ci = p * (pow((1 + r / 100), t)) - p;\n    printf("%.2f", ci);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Applies standard formula using <b>pow()</b> function.</p></div>`, output: "5000 6 3\n955.08" },
             p5: { title: "05. Swap (No Var)", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int a=10, b=20;\n    a=a+b; b=a-b; a=a-b;\n    printf("%d %d", a, b);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Arithmetic rotation of values between two variables.</p></div>`, output: "20 10" },
             p6: { title: "06. Replace 0 with 1", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, p=1, d;\n    scanf("%d", &n);\n    while(n){ d=n%10; if(d==0) d=1; r=r+d*p; p*=10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Processes digits individually to substitute zeros.</p></div>`, output: "10203\n11213" },
-            p
+            p7: { title: "07. Binary to Decimal", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, dec=0, i=0;\n    scanf("%d", &n);\n    while(n){ dec+=(n%10)*pow(2,i++); n/=10; }\n    printf("%d", dec);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Converts base-2 to base-10 using positional weight.</p></div>`, output: "1010\n10" },
+            p8: { title: "08. Leap Year", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int y;\n    scanf("%d", &y);\n    if(y%400==0 || (y%4==0 && y%100!=0)) printf("Leap Year");\n    else printf("Not");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Evaluation of century and standard year divisibility.</p></div>`, output: "2024\nLeap Year" },
+            p9: { title: "09. Factorial", tag: "RECURSION", code: `#include <stdio.h>\nlong fact(int n){ return (n==0)?1:n*fact(n-1); }\nint main() {\n    int n; scanf("%d", &n);\n    printf("%ld", fact(n));\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Self-calling function using base case 0.</p></div>`, output: "5\n120" },
+            p10: { title: "10. Armstrong Num", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    int n, t, s=0, d;\n    scanf("%d", &n); t=n;\n    while(t){ d=t%10; s+=d*d*d; t/=10; }\n    if(s==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cubic sum of individual digits.</p></div>`, output: "153\nYes" },
+            p11: { title: "11. Quadratic Eq", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float a,b,c,d,r1,r2;\n    scanf("%f %f %f",&a,&b,&c);\n    d=b*b-4*a*c;\n    if(d>=0){ r1=(-b+sqrt(d))/(2*a); r2=(-b-sqrt(d))/(2*a); printf("%.2f %.2f", r1, r2); }\n    else printf("Imaginary");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Root calculation via discriminant analysis.</p></div>`, output: "1 -5 6\n3.00 2.00" },
+            p12: { title: "12. Reverse Number", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0;\n    scanf("%d", &n);\n    while(n){ r=r*10+n%10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Iterative reconstruction using modulo and multiplication.</p></div>`, output: "12345\n54321" },
+            p13: { title: "13. Palindrome Check", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, t;\n    scanf("%d", &n); t=n;\n    while(t){ r=r*10+t%10; t/=10; }\n    if(r==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Comparison of original value vs reversed value.</p></div>`, output: "121\nYes" },
+            p14: { title: "14. GCD of Two", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    int a,b,i,g;\n    scanf("%d %d", &a, &b);\n    for(i=1; i<=a && i<=b; ++i){ if(a%i==0 && b%i==0) g=i; }\n    printf("%d", g);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Finding the highest common factor through iteration.</p></div>`, output: "12 18\n6" },
+            p15: { title: "15. Area of Circle", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    float r;\n    scanf("%f", &r);\n    printf("%.2f", 3.14 * r * r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard geometric area calculation.</p></div>`, output: "5\n78.50" },
+            p16: { title: "16. Pyramid Pattern", tag: "PATTERNS", code: `#include <stdio.h>\n\nint main() {\n    int i, j;\n    for(i=1; i<=5; i++){\n        for(j=1; j<=i; j++) printf("* ");\n        printf("\\n");\n    }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested loop control for spatial distribution.</p></div>`, output: "* \n* * \n* * * \n* * * * \n* * * * * " },
+            p17: { title: "17. Reverse Array", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, t, i;\n    for(i=0; i<n/2; i++){\n        t=a[i]; a[i]=a[n-i-1]; a[n-i-1]=t;\n    }\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Two-Pointer Technique:</b> Swaps values until center is reached.</p></div>`, output: "5 4 3 2 1 " },
+            p18: { title: "18. Max/Min Array", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={10,5,20,8}, n=4, max=a[0], min=a[0], i;\n    for(i=1; i<n; i++){\n        if(a[i]>max) max=a[i];\n        if(a[i]<min) min=a[i];\n    }\n    printf("Max: %d Min: %d", max, min);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Scan:</b> Compares each element against current champions.</p></div>`, output: "Max: 20 Min: 5" },
+            p19: { title: "19. Cyclic Rotation", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, last, i;\n    last=a[n-1];\n    for(i=n-1; i>0; i--) a[i]=a[i-1];\n    a[0]=last;\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Single element offset with array-wide shifting.</p></div>`, output: "5 1 2 3 4 " },
+            p20: { title: "20. Matrix Multiply", tag: "MATRICES", code: `#include <stdio.h>\n\nint main() {\n    int a[2][2]={1,2,3,4}, b[2][2]={5,6,7,8}, c[2][2]={0}, i, j, k;\n    for(i=0; i<2; i++)\n        for(j=0; j<2; j++)\n            for(k=0; k<2; k++) c[i][j] += a[i][k] * b[k][j];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Triple nested loop for row-by-column summation.</p></div>`, output: "[Matrix Multiplication Completed Successfully]" },
+            p21: { title: "21. Largest (DMA)", tag: "MEMORY", code: `#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, *p, max, i;\n    scanf("%d", &n);\n    p=(int*)malloc(n*sizeof(int));\n    for(i=0; i<n; i++) scanf("%d", p+i);\n    max=*p;\n    for(i=1; i<n; i++) if(*(p+i)>max) max=*(p+i);\n    printf("%d", max); free(p);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Heap memory management for flexible array sizing.</p></div>`, output: "3\n10 55 21\n55" },
+            p22: { title: "22. Vowel/Consonant", tag: "STRINGS", code: `#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char s[50], c;\n    int v=0, co=0, i;\n    scanf("%s", s);\n    for(i=0; s[i]; i++){\n        c=tolower(s[i]);\n        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') v++;\n        else if(c>='a'&&c<='z') co++;\n    }\n    printf("V:%d C:%d", v, co);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Character filtering with case normalization.</p></div>`, output: "WebNova\nV:3 C:4" },
+            p23: { title: "23. Student Info", tag: "STRUCTURES", code: `#include <stdio.h>\n\nstruct Student { char n[20]; int r; float m; };\nint main() {\n    struct Student s = {"Alex", 101, 85.5};\n    printf("%s %d %.1f", s.n, s.r, s.m);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Logical grouping of multi-type variables.</p></div>`, output: "Alex 101 85.5" },
+            p24: { title: "24. String Palindrome", tag: "STRINGS", code: `#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[]="madam"; int n=strlen(s), i, f=0;\n    for(i=0; i<n/2; i++) { if(s[i]!=s[n-i-1]){ f=1; break; } }\n    if(f==0) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Simultaneous string comparison from opposite ends.</p></div>`, output: "Yes" }
+        };
+
+        function showCode(id, element) {
+            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            const data = labData[id];
+            document.getElementById('prog-title').innerText = data.title;
+            document.getElementById('prog-tag').innerText = "SECTION: " + data.tag;
+            document.getElementById('code-block').innerText = data.code;
+            document.getElementById('logic-text').innerHTML = data.logic;
+            document.getElementById('output-text').innerText = data.output;
+        }
+
+        function initSidebar() {
+            const list = document.getElementById('sidebar-list');
+            Object.keys(labData).forEach((key, index) => {
+                const li = document.createElement('li');
+                li.className = `lab-item ${index === 0 ? 'active' : ''}`;
+                li.innerText = labData[key].title;
+                li.onclick = (e) => showCode(key, e.target);
+                list.appendChild(li);
+            });
+        }
+
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = "Copied!";
+                btn.style.background = "#059669";
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+                    btn.style.background = "#10b981";
+                }, 2000);
+            });
+        }
+
+        window.onload = () => {
+            initSidebar();
+            showCode('p1', document.querySelector('.lab-item'));
+        };
+    </script>
+</body>
+</html>
