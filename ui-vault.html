@@ -30,7 +30,7 @@
             --hover-shadow: 0 25px 30px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(13, 148, 136, 0.08), inset 0 1px 0 var(--white);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
         .container { max-width: 1440px; margin: 0 auto; padding: 40px 20px; }
@@ -42,7 +42,7 @@
         .library-header h1 span { color: var(--primary); }
         .library-header p { color: var(--text-muted); font-size: 1rem; margin-top: 8px; font-weight: 500; }
 
-        /* --- Controls Toolbar (Skeuomorphic Inset Tray) --- */
+        /* --- Controls Toolbar --- */
         .toolbar {
             background: #e2e8f0;
             padding: 12px;
@@ -131,7 +131,6 @@
             box-shadow: var(--hover-shadow);
         }
 
-        /* Tactile Icon Containers */
         .thumb {
             width: 56px; height: 56px; 
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
@@ -143,7 +142,6 @@
             box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 4px 6px -1px rgba(0,0,0,0.04);
         }
 
-        /* Indicator dots layered cleanly onto skeuomorphic borders */
         .indicator-dot {
             position: absolute; top: -4px; right: -4px;
             width: 12px; height: 10px; border-radius: 50%;
@@ -166,7 +164,7 @@
         .info h3 { font-size: 0.88rem; color: var(--text-main); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; }
         
         .meta { display: flex; gap: 8px; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); align-items: center; }
-        .meta .count { color: var(--accent); display: flex; align-items: center; gap: 3px; }
+        .meta .count { color: var(--accent); display: flex; align-items: center; gap: 4px; }
 
         .actions { display: flex; gap: 6px; margin-top: 8px; }
         .btn-act {
@@ -258,6 +256,7 @@
         
         <div class="section-divider"><i class="fas fa-terminal"></i> Section 1: The Essential Command Cheat Sheet</div>
 
+        <!-- PING -->
         <div class="asset-card" data-downloads="3400" data-name="ping connection network packet troubleshooting testing switch router target connectivity reachability">
             <div class="thumb"><i class="fas fa-network-wired"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -267,12 +266,13 @@
                     <span><i class="fas fa-globe"></i> Network ICMP</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Ping Tester Usage', 'DIAGNOSTIC ARCHITECTURE:\nSends low-level ICMP echo request packets to target destinations.\n\nAPPLICATION ENVIRONMENT:\nUse to isolate if a specific target local desktop server workstation or internet landing node gateway is physically responsive.\n\nEXECUTION COMMAND:\nping 8.8.8.8')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Ping Target Execution', 'ping ')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Ping Tester Guide', 'STEP 1: WHAT IT DOES\nThis command sends small test signals (packets) to a target computer or website to see if it is online.\n\nSTEP 2: WHEN TO USE IT\nUse this when a lab computer cannot open a website or cannot connect to the local lab server.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nping 8.8.8.8')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Ping Command Syntax', 'ping 8.8.8.8')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- IPCONFIG ALL -->
         <div class="asset-card" data-downloads="4100" data-name="ipconfig /all network configuration mac address adapter dns details subnets gateway">
             <div class="thumb"><i class="fas fa-sliders-h"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -282,12 +282,13 @@
                     <span><i class="fas fa-network-wired"></i> Interface Mapping</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('IPConfig All Details', 'DIAGNOSTIC ARCHITECTURE:\nOutputs comprehensive information for all network interfaces, including active and disconnected adapters.\n\nAPPLICATION ENVIRONMENT:\nUse to identify physical hardware MAC addresses, active IP address allocations, leases, and assigned local DNS servers.\n\nEXECUTION COMMAND:\nipconfig /all')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('IPConfig Audit Execution', 'ipconfig /all')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('IPConfig Adapter Guide', 'STEP 1: WHAT IT DOES\nThis command shows detailed information about your computer network connections and network cards.\n\nSTEP 2: WHEN TO USE IT\nUse this to find your computer physical address (MAC Address), local IP address, or server DNS details.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nipconfig /all')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('IPConfig Command Syntax', 'ipconfig /all')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- IPCONFIG RELEASE RENEW -->
         <div class="asset-card" data-downloads="2900" data-name="ipconfig /release /renew dynamic lease dhcp lease drops limited internet assignment allocation">
             <div class="thumb"><i class="fas fa-sync-alt"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -297,14 +298,15 @@
                     <span><i class="fas fa-ethernet"></i> DHCP Stack</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('DHCP Lease Re-allocation', 'DIAGNOSTIC ARCHITECTURE:\nDrops active DHCP dynamically allocated configuration mappings and immediately broadcasts a renewal solicitation packet to the network server.\n\nAPPLICATION ENVIRONMENT:\nUse when a school lab machine drops network access or prompts \'No Internet\' / \'Limited Connection\' validation flags.\n\nEXECUTION COMMAND:\nipconfig /release\nipconfig /renew')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('DHCP Reset Execution', 'ipconfig /release\nipconfig /renew')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('DHCP Reset Guide', 'STEP 1: WHAT IT DOES\nThis combination drops your current network IP connection and requests a brand new one from the lab server.\n\nSTEP 2: WHEN TO USE IT\nUse this when a computer says \'No Internet Access\' or has a yellow exclamation mark on the network icon.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type these two commands one by one, pressing Enter after each:\nipconfig /release\nipconfig /renew')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DHCP Reset Command Syntax', 'ipconfig /release\nipconfig /renew')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- IPCONFIG FLUSHDNS -->
         <div class="asset-card" data-downloads="3800" data-name="ipconfig /flushdns clear dns resolver cache route updates load domain mismatch host mapping">
-            <div class="thumb"><i class="fas fa-broom"></i><div class="indicator-dot dot-common"></div></div>
+            <div class="thumb"><i class=" Broom icon Class"></i><i class="fas fa-broom"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
                 <h3>DNS Resolver Cache Flush</h3>
                 <div class="meta">
@@ -312,12 +314,13 @@
                     <span><i class="fas fa-route"></i> Core DNS</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('DNS Cache Clear Architecture', 'DIAGNOSTIC ARCHITECTURE:\nPurges the local system DNS resolver cache data arrays, forcing new outbound destination domain alignments to re-query active tracking tables.\n\nAPPLICATION ENVIRONMENT:\nDeploy when targeted local nodes or websites fail to render following gateway configurations or server layout structural shifts.\n\nEXECUTION COMMAND:\nipconfig /flushdns')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('DNS Cache Flush Execution', 'ipconfig /flushdns')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('DNS Flush Guide', 'STEP 1: WHAT IT DOES\nThis clears the computer internal address book memory of saved website names and servers.\n\nSTEP 2: WHEN TO USE IT\nUse this when a website server changed its IP address, but your computer keeps trying to connect to the old broken address.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nipconfig /flushdns')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DNS Flush Command Syntax', 'ipconfig /flushdns')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- TRACERT -->
         <div class="asset-card" data-downloads="2100" data-name="tracert trace route switch router failure location hop latency ping track path packets">
             <div class="thumb"><i class="fas fa-project-diagram"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -327,12 +330,13 @@
                     <span><i class="fas fa-route"></i> Path Discovery</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Trace Route Discovery Manual', 'DIAGNOSTIC ARCHITECTURE:\nMaps the explicit structural layer hops and routers traversed by data payloads on route to target structural destinations.\n\nAPPLICATION ENVIRONMENT:\nUse to isolate the explicit point of packet drops, routing failure blocks, or hardware layer switches failing inside campus parameters.\n\nEXECUTION COMMAND:\ntracert 8.8.8.8')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Trace Path Execution', 'tracert ')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Tracert Path Guide', 'STEP 1: WHAT IT DOES\nThis command maps out the exact pathway and router paths your internet signals take to reach a destination website.\n\nSTEP 2: WHEN TO USE IT\nUse this to pinpoint exactly which internet router or switch inside the school campus is dropping network signals.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ntracert 8.8.8.8')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Tracert Command Syntax', 'tracert 8.8.8.8')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- SFC SCANNOW -->
         <div class="asset-card" data-downloads="4800" data-name="sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch">
             <div class="thumb"><i class="fas fa-shield-alt"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -342,12 +346,13 @@
                     <span><i class="fas fa-check-circle"></i> Os Integrity</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('System File Checker Manual', 'DIAGNOSTIC ARCHITECTURE:\nScans system deployment binaries, tracking system configuration files for file corruption patterns and automatically replacing corrupted layers.\n\nAPPLICATION ENVIRONMENT:\nRun when OS operations present unstable structural execution trends, spontaneous software closes, or system file alerts.\n\nEXECUTION COMMAND:\nsfc /scannow')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('SFC Scan Execution', 'sfc /scannow')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('SFC Scanner Guide', 'STEP 1: WHAT IT DOES\nThis checks your core Windows operating system files for errors and automatically repairs corrupted items.\n\nSTEP 2: WHEN TO USE IT\nUse this when Windows is behaving strangely, lagging, crashing, or throwing missing system file errors.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator (Right-click CMD -> Run as Administrator).\n2. Type the command below and press Enter:\nsfc /scannow')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('SFC Scanner Command Syntax', 'sfc /scannow')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- DISM -->
         <div class="asset-card" data-downloads="4600" data-name="dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure">
             <div class="thumb"><i class="fas fa-cogs"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
@@ -357,12 +362,13 @@
                     <span><i class="fas fa-box-open"></i> Deployment Recovery</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('DISM Deployment Architecture', 'DIAGNOSTIC ARCHITECTURE:\nScans internal servicing store architectures for discrepancies and repairs deep system layout component structures directly via verified data packets.\n\nAPPLICATION ENVIRONMENT:\nExecute when sfc /scannow fails structural remediation steps or drops parsing access codes.\n\nEXECUTION COMMAND:\nDISM /Online /Cleanup-Image /RestoreHealth')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('DISM Restore Execution', 'DISM /Online /Cleanup-Image /RestoreHealth')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('DISM Patch Guide', 'STEP 1: WHAT IT DOES\nThis downloads healthy core system repair files straight from official Windows updates to fix broken local files.\n\nSTEP 2: WHEN TO USE IT\nUse this when the previous \'sfc /scannow\' command fails to fix the computer errors or gets stuck.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter:\nDISM /Online /Cleanup-Image /RestoreHealth')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('DISM Patch Command Syntax', 'DISM /Online /Cleanup-Image /RestoreHealth')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- CHKDSK -->
         <div class="asset-card" data-downloads="3200" data-name="chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing">
             <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
@@ -372,12 +378,13 @@
                     <span><i class="fas fa-database"></i> Storage Diagnostics</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Chkdsk Disk Manual Check', 'DIAGNOSTIC ARCHITECTURE:\nScans targeted device metadata sectors for corruption, isolates bad block clusters, and restores readable volume layers.\n\nAPPLICATION ENVIRONMENT:\nDeploy if computers display intense interface freezes, sector loss tracking faults, or system indexing delay structures.\n\nEXECUTION COMMAND:\nchkdsk C: /f /r')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Chkdsk Operational Mount', 'chkdsk C: /f /r')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Chkdsk Disk Guide', 'STEP 1: WHAT IT DOES\nThis scans your physical hard drive for storage sector errors and attempts to fix unreadable data areas.\n\nSTEP 2: WHEN TO USE IT\nUse this when the computer freezes completely when loading files, or if opening directories feels extremely slow.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter (Press Y if prompted to scan on next reboot):\nchkdsk C: /f /r')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Chkdsk Command Syntax', 'chkdsk C: /f /r')">Run Stack</button>
                 </div>
             </div>
         </div>
 
+        <!-- GPUPDATE -->
         <div class="asset-card" data-downloads="2700" data-name="gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks">
             <div class="thumb"><i class="fas fa-user-shield"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -387,14 +394,15 @@
                     <span><i class="fas fa-users-cog"></i> Server Sync</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Group Policy Update Sync', 'DIAGNOSTIC ARCHITECTURE:\nBypasses background execution timers to immediately sync policy trees down to destination endpoints from the central domain server database.\n\nAPPLICATION ENVIRONMENT:\nCrucial lab procedure. Run immediately when domain profile structural rules user tracking locks or configurations adapt.\n\nEXECUTION COMMAND:\ngpupdate /force')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Gpupdate Execution Push', 'gpupdate /force')">Run Stack</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Gpupdate Policy Guide', 'STEP 1: WHAT IT DOES\nThis forces your local computer to synchronize and download the latest permissions rules from the lab main server.\n\nSTEP 2: WHEN TO USE IT\nUse this when the lab administrator assigns new network permissions or updates user security profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ngpupdate /force')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Gpupdate Command Syntax', 'gpupdate /force')">Run Stack</button>
                 </div>
             </div>
         </div>
 
         <div class="section-divider"><i class="fas fa-bolt"></i> Section 1.2: Core Windows Management consoles (Win + R)</div>
 
+        <!-- DEVMGMT -->
         <div class="asset-card" data-downloads="3100" data-name="devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers">
             <div class="thumb"><i class="fas fa-microchip"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -404,12 +412,13 @@
                     <span><i class="fas fa-desktop"></i> Hardware Node</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Device Management Console', 'CONSOLE EXECUTION OVERVIEW:\nDirect path initialization command to bypass standard app controls.\n\nOPERATIONAL PURPOSE:\nTarget controller layers to trace system failures, missing host network device driver targets, or unrecognized audio/video configurations.\n\nRUN PATTERN EXECUTOR:\ndevmgmt.msc')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Device Manager', 'devmgmt.msc')">Execute Run</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Device Manager Guide', 'STEP 1: WHAT IT DOES\nThis pops open the window panel used to manage your physical hardware and driver files.\n\nSTEP 2: WHEN TO USE IT\nUse this to install sound card drivers, update display graphics, or check if the network card is working properly.\n\nSTEP 3: HOW TO EXECUTE\n1. Press the \'Windows Key + R\' on your keyboard to open the Run box.\n2. Type the command below and click OK:\ndevmgmt.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Device Manager Shortcut', 'devmgmt.msc')">Execute Run</button>
                 </div>
             </div>
         </div>
 
+        <!-- DISKMGMT -->
         <div class="asset-card" data-downloads="2500" data-name="diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations">
             <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -419,12 +428,13 @@
                     <span><i class="fas fa-layer-group"></i> Logical Partitions</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Disk Management Controller', 'CONSOLE EXECUTION OVERVIEW:\nDirect execution parameter mapping path for logical storage array maps.\n\nOPERATIONAL PURPOSE:\nUse to resolve unindexed physical raw sectors, initialize dynamic volumes, clear flash device nodes, or create disk arrays.\n\nRUN PATTERN EXECUTOR:\ndiskmgmt.msc')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Disk Management', 'diskmgmt.msc')">Execute Run</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Disk Management Guide', 'STEP 1: WHAT IT DOES\nThis opens the console interface used to format drives and partition storage volumes.\n\nSTEP 2: WHEN TO USE IT\nUse this when a new USB drive doesn\'t show up in File Explorer, or if you need to create a new D: drive partition.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to launch the Run box.\n2. Type the command below and click OK:\ndiskmgmt.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Disk Management Shortcut', 'diskmgmt.msc')">Execute Run</button>
                 </div>
             </div>
         </div>
 
+        <!-- SERVICES -->
         <div class="asset-card" data-downloads="2800" data-name="services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager">
             <div class="thumb"><i class="fas fa-server"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -434,12 +444,13 @@
                     <span><i class="fas fa-microchip"></i> Daemon Matrix</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Services Infrastructure View', 'CONSOLE EXECUTION OVERVIEW:\nDirect path mapping parameter to audit background framework operations.\n\nOPERATIONAL PURPOSE:\nTarget frozen print spool layers, restart host background processes, or adapt local activation parameters.\n\nRUN PATTERN EXECUTOR:\nservices.msc')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Launch Services Console', 'services.msc')">Execute Run</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Services Console Guide', 'STEP 1: WHAT IT DOES\nThis displays all background apps, programs, and daemons that start up automatically behind the scenes in Windows.\n\nSTEP 2: WHEN TO USE IT\nUse this to toggle windows automatic updates off, turn on print processes, or stop diagnostic logging apps.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nservices.msc')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Services Shortcut Syntax', 'services.msc')">Execute Run</button>
                 </div>
             </div>
         </div>
 
+        <!-- SYSDM -->
         <div class="asset-card" data-downloads="1900" data-name="sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options">
             <div class="thumb"><i class="fas fa-window-restore"></i><div class="indicator-dot dot-student"></div></div>
             <div class="info">
@@ -449,14 +460,15 @@
                     <span><i class="fas fa-passport"></i> Identity Layer</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('System Properties Architecture', 'CONSOLE EXECUTION OVERVIEW:\nDirect pointer framework initializer to bypass advanced platform interfaces.\n\nOPERATIONAL PURPOSE:\nUse to change local asset identity strings, define primary system environmental variables, or join system nodes to active directory tracking setups.\n\nRUN PATTERN EXECUTOR:\nsysdm.cpl')">View Info</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Launch System Properties', 'sysdm.cpl')">Execute Run</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('System Identity Guide', 'STEP 1: WHAT IT DOES\nThis launches the legacy Advanced System Properties screen to view compute settings.\n\nSTEP 2: WHEN TO USE IT\nUse this to adjust Environment Variables for Java/Python setups, or change the computer network name.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nsysdm.cpl')">View Info</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('System Properties Shortcut', 'sysdm.cpl')">Execute Run</button>
                 </div>
             </div>
         </div>
 
         <div class="section-divider"><i class="fas fa-wrench"></i> Section 2: Step-by-Step Troubleshooting Workflows</div>
 
+        <!-- {PSU} -->
         <div class="asset-card" data-downloads="3400" data-name="power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins">
             <div class="thumb"><i class="fas fa-plug"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
@@ -466,29 +478,31 @@
                     <span><i class="fas fa-charging-station"></i> Power Matrix</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('PSU Hardware Diagnostics Framework', 'STAGE 1: PRIMARY FEED VERIFICATION\nConfirm live outlet configuration metrics via secondary check equipment. Verify terminal status of line distribution rails.\n\nSTAGE 2: PSU SWITCH VERIFICATION\nEnsure physical rear rocker control orientation matches standard operational path \'I\' (Active) over state \'O\' (Power Cut).\n\nSTAGE 3: RECOVERY DISCHARGE (STATIC DRAIN)\nIsolate AC line inputs from physical equipment. Depress the mechanical power link button element for exactly 30 seconds to dissolve storage capacitance grids inside internal subcomponents. Re-engage AC feeds.\n\nSTAGE 4: MAINBOARD RAIL INSPECTION\nInspect state of internal infrastructure. Reseat 24-Pin deployment array structure and secondary 4/8-Pin internal processing distribution cables.')">Read Workflow</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Copy Code Patch', 'echo PSU Diagnostic Script Initialized')">Get Docs</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('PSU Hardware Diagnostics Workflow', 'STEP 1: INSPECT CABLE CONNECTIONS\nCheck if the primary wall socket outlet is active. Swap out the black power cable to ensure the cord isn\'t broken.\n\nSTEP 2: CHECK THE PSU HARDWARE REAR TOGGLE\nLook at the back of the computer CPU. Ensure the physical rocker switch sits on \'I\' (Power Engaged) instead of \'O\' (Power Cut).\n\nSTEP 3: DRAIN SURGE STATIC ELECTRICITY\nUnplug the power cable from the wall. Hold down the main power button on the front panel for 30 seconds to drain remaining electricity. Plug it back in and try turning it on.\n\nSTEP 4: INSPECT INTERNAL MOTHERBOARD PIN ALIGNMENTS\nOpen the case chassis layer. Disconnect and firmly click back down the large 24-Pin main power rail block and the small 4/8-Pin internal processor power tracks.')">Read Workflow</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('PSU Script Logger', 'echo PSU Diagnostic Check Completed Successfully')">Get Docs</button>
                 </div>
             </div>
         </div>
 
+        <!-- DISPLAY -->
         <div class="asset-card" data-downloads="4200" data-name="no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors">
             <div class="thumb"><i class="fas fa-eye-slash"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
                 <h3>Display Extraction Engine</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-list"></i> 4 Stage Flow</span>
-                    <span><i class="fas fa-tv"></i> Signal Path</span>
+                    <span><i class="fas fa TV"></i> Signal Path</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Signal Path Processing Recovery', 'STAGE 1: HARDWARE FEED AUDIT\nVerify tracking indicators on targeted video displays. Isolate physical interconnect arrays (HDMI / VGA / DisplayPort configurations).\n\nSTAGE 2: PORT ALIGNMENT ROUTING\nIdentify if secondary discrete processing hardware tracking extensions exist. If found force line distributions down to discrete base interface nodes away from high integrated system paths.\n\nSTAGE 3: RESEAT SYSTEM RAM STRIPS (80% RESOLUTION RULE)\nCut mainboard current arrays. Extract tracking RAM memory devices. Apply non-conductive dynamic scrubbing steps over copper bus traces using precision abrasive materials. Evacuate array slot lines. Press items down until structural clips click.\n\nSTAGE 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nUnplug primary line values. Extract CR2032 memory data array power node for exactly 5 minutes to sweep register settings back to manufacturing profiles.')">Read Workflow</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Copy Code Patch', 'echo Display Diagnostic Pipeline Running')">Get Docs</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Display Signal Path Recovery Workflow', 'STEP 1: AUDIT MONITOR SECTOR CODES\nEnsure the screen monitor is turned on. Verify the cable link cords (HDMI/VGA) are connected tightly to the monitor ports.\n\nSTEP 2: PORT ALIGNMENT ROUTING\nIf the CPU has a dedicated Graphics Card (GPU), ensure your display monitor cable is plugged into the GPU ports down below, NOT the upper motherboard ports.\n\nSTEP 3: CLEAN RAM GOLD CONTACTS (80% PRO RESOLUTION RULE)\nTurn off the power. Open the computer case. Pop out the internal RAM memory sticks. Gently clean the shiny gold contact pins using a soft rubber eraser to remove dust grid layers. Click them back into the slots tightly.\n\nSTEP 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nRemove the round silver lithium coin battery (CR2032) from the motherboard. Wait 5 minutes to restore default motherboard options, put it back in, and start the system.')">Read Workflow</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Display Tester Script', 'echo Display Diagnostic Scanner Initiated')">Get Docs</button>
                 </div>
             </div>
         </div>
 
         <div class="section-divider"><i class="fas fa-school"></i> Section 3: School Lab Management Tactics</div>
 
+        <!-- PRINT SPOOLER -->
         <div class="asset-card" data-downloads="5100" data-name="print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair">
             <div class="thumb"><i class="fas fa-print"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -498,12 +512,13 @@
                     <span><i class="fas fa-print"></i> Queue Purge</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Print Spooler Remediation Protocol', 'DIAGNOSTIC ARCHITECTURE:\nForces terminal suspension of target print systems, clears localized data directory queues containing broken file processing definitions, and re-engages print engines.\n\nAPPLICATION ENVIRONMENT:\nDeploy immediately when client machines flood server communication links or processing displays freeze.\n\nOPERATIONAL SEQUENCE:\n1. Open CMD with Elevated Privileges\n2. Run: net stop spooler\n3. Clear files within: C:\\Windows\\System32\\spool\\PRINTERS\\*\n4. Run: net start spooler')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Print Queue Clear automated Script', 'net stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Print Spooler Clear Guide', 'STEP 1: WHAT IT DOES\nThis stops your frozen computer printing software, completely wipes out stuck print jobs, and restarts the printer cleanly.\n\nSTEP 2: WHEN TO USE IT\nUse this when students submit document print requests but the printing machine completely freezes up or jams.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Run these commands sequentially to clear the system:\nnet stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Print Spooler Purge Batch Script', 'net stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler')">Get Script</button>
                 </div>
             </div>
         </div>
 
+        <!-- DEEP FREEZE -->
         <div class="asset-card" data-downloads="3600" data-name="deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration">
             <div class="thumb"><i class="fas fa-snowflake"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -513,12 +528,13 @@
                     <span><i class="fas fa-lock"></i> Sandbox Layer</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Lab Profile Security Manual', 'SECURITY ARCHITECTURE:\nDeploys programmatic write filters above processing volume nodes. Intercepts file adjustment sequences and redirects them to temporary sector overlays.\n\nAPPLICATION ENVIRONMENT:\nPrevents student file changes, systemic file adjustments, malware installs, or persistent configuration drifts by executing automated total volume rolls back to production lines on system reboot cycle updates.\n\nDEPLOYMENT SYNTAX (UWF CLI):\nuwfmgrmgmt filter enable\nuwfmgrmgmt volume protect C:')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('UWF Integration Configuration Script', 'uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Unified Write Filter Protection Guide', 'STEP 1: WHAT IT DOES\nThis creates a virtual protective barrier over the hard drive. Any files added or modified vanish completely on reboot.\n\nSTEP 2: WHEN TO USE IT\nUse this to prevent student computers from catching viruses, downloading junk software, or messing up baseline lab profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Run these commands to freeze the operational system state:\nuwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('UWF Activation Filter Batch Script', 'uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">Get Script</button>
                 </div>
             </div>
         </div>
 
+        <!-- STANDARD USER -->
         <div class="asset-card" data-downloads="2900" data-name="standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution">
             <div class="thumb"><i class="fas fa-user-lock"></i><div class="indicator-dot dot-common"></div></div>
             <div class="info">
@@ -528,14 +544,15 @@
                     <span><i class="fas fa-key"></i> IAM Node</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('IAM Restructuring Directives', 'SECURITY ARCHITECTURE:\nRestructures user permissions to drop authorization keys for deep registry access, directory write operations, or critical driver actions.\n\nAPPLICATION ENVIRONMENT:\nEssential instructional standard constraint pattern. Keeps target laboratory accounts mapped to Standard groupings to isolate base environments from unauthorized modifications.\n\nDEPLOYMENT EXECUTION STACK:\nnet localgroup Users StudentAccount /add\nnet localgroup Administrators StudentAccount /delete')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('User Rights Standardization Script', 'net localgroup Users Student /add\net localgroup Administrators Student /delete')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Standard Account Privilege Guide', 'STEP 1: WHAT IT DOES\nThis demotes a local student computer profile to a basic account, blocking them from installing software or accessing core folders.\n\nSTEP 2: WHEN TO USE IT\nUse this on classroom computers so students cannot change system registry tracks, uninstall programs, or delete windows files.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Type these commands to remove absolute system access keys:\nnet localgroup Users Student /add\nnet localgroup Administrators Student /delete')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Account Modification Batch Script', 'net localgroup Users Student /add\nnet localgroup Administrators Student /delete')">Get Script</button>
                 </div>
             </div>
         </div>
 
         <div class="section-divider"><i class="fas fa-download"></i> Section 4: Advanced Labs Deployment Module (Added)</div>
 
+        <!-- BOOTABLE USB -->
         <div class="asset-card" data-downloads="3900" data-name="diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation">
             <div class="thumb"><i class="fas fa-compact-disc"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
@@ -545,12 +562,13 @@
                     <span><i class="fas fa-usb"></i> Deployment Drive</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Bootable Media Build Instructions', 'OPERATIONAL PIPELINE:\nManually transforms generic target flash storage devices into master active boot sector targets capable of deploying recovery file images.\n\nAPPLICATION ENVIRONMENT:\nDeploy when configuring mass imaging tasks across fresh lab builds or rebuilding bricked desktop clusters.\n\nDISKPART LOGICAL STACK:\n1. Open CMD -> diskpart\n2. list disk -> select disk [X]\n3. clean\n4. create partition primary\n5. format fs=ntfs quick\n6. active\n7. assign')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Diskpart Generation Automation Script', 'select disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Bootable Media Build Guide', 'STEP 1: WHAT IT DOES\nThis wipes a standard USB flash drive clean and formats its internal architecture to make it a bootable OS installation medium.\n\nSTEP 2: WHEN TO USE IT\nUse this when preparing setup drives to reinstall Windows or recovery files across broken lab computers.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator, type \'diskpart\' and hit Enter.\n2. Execute these steps one by one to configure the media storage rails:\nselect disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Diskpart Formatter Script', 'select disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign')">Get Script</button>
                 </div>
             </div>
         </div>
 
+        <!-- MAINTENANCE -->
         <div class="asset-card" data-downloads="5400" data-name="automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub">
             <div class="thumb"><i class="fas fa-magic"></i><div class="indicator-dot dot-critical"></div></div>
             <div class="info">
@@ -560,8 +578,8 @@
                     <span><i class="fas fa-file-invoice"></i> Batch Automation</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Mass Automation Operational Specs', 'OPERATIONAL PIPELINE:\nConsolidates temp structures index files browser file buffers error record data tables and cache partitions into a one-click clean utility.\n\nAPPLICATION ENVIRONMENT:\nRun as a scheduled server chore across academic environments every Friday evening to clean dynamic systems.\n\nAUTOMATED OPERATIONS MATRIX:\nPurges local system temp pathways, cleans dynamic variables, clears DNS mapping lines, resets storage pools, and flushes event trace data sheets.')">View Guide</button>
-                    <button class="btn-act btn-zip" onclick="openTechModal('Full Stack Script Solution', 'del /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\ndel /q /f /s %systemdrive%\\Windows\\Prefetch\\*\nipconfig /flushdns\nwsreset.exe')">Get Script</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Lab Cleaning Script Guide', 'STEP 1: WHAT IT DOES\nThis runs an automated batch sweep that clears out temporary cache folders, logs, prefetch entries, and browser buffers in one click.\n\nSTEP 2: WHEN TO USE IT\nRun this maintenance chore on lab computer clusters every week to free up storage space and speed up operation speeds.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Notepad, paste the syntax script below, and save the file as \'clean.bat\'.\n2. Right-click the file and choose \'Run as Administrator\':\ndel /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\nipconfig /flushdns')">View Guide</button>
+                    <button class="btn-act btn-zip" onclick="openTechModal('Automated Maintenance Script Solution', 'del /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\ndel /q /f /s %systemdrive%\\Windows\\Prefetch\\*\nipconfig /flushdns\nwsreset.exe')">Get Script</button>
                 </div>
             </div>
         </div>
@@ -601,7 +619,6 @@
     // Instant Search Logic Filter
     search.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        let activeDividers = new Set();
         
         // Dynamic visibility evaluation
         document.querySelectorAll('.asset-card').forEach(card => {
@@ -627,7 +644,6 @@
         } else if (sort.value === 'az') {
             cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
         } else {
-            // Restore default view sequence natively
             location.reload();
             return;
         }
@@ -653,12 +669,18 @@
     function copyTechCode() {
         const codeElement = document.getElementById('modalCode').innerText;
         
-        // Strip documentation text lines on code acquisition actions if string contains standard scripts
+        // Strip out instructions automatically when clicking "Copy Syntax Stack" if markers exist
         let filteredText = codeElement;
-        if(codeElement.includes('TERMINAL AUTOMATION SYNTAX:')) {
-            filteredText = codeElement.split('TERMINAL AUTOMATION SYNTAX:')[1].trim();
-        } else if(codeElement.includes('EXECUTION COMMAND:')) {
+        if(codeElement.includes('EXECUTION COMMAND:')) {
             filteredText = codeElement.split('EXECUTION COMMAND:')[1].trim();
+        } else if(codeElement.includes('OPERATIONAL SEQUENCE:')) {
+            filteredText = codeElement.split('OPERATIONAL SEQUENCE:')[1].trim();
+        } else if(codeElement.includes('DISKPART LOGICAL STACK:')) {
+            filteredText = codeElement.split('DISKPART LOGICAL STACK:')[1].trim();
+        } else if(codeElement.includes('AUTOMATED OPERATIONS MATRIX:')) {
+            filteredText = codeElement.split('AUTOMATED OPERATIONS MATRIX:')[1].trim();
+        } else if(codeElement.includes('DEPLOYMENT EX_STACK:')) {
+            filteredText = codeElement.split('DEPLOYMENT EXECUTION STACK:')[1].trim();
         }
 
         navigator.clipboard.writeText(filteredText).then(() => {
