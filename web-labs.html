@@ -3,58 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Tech Hub | Code Craft Academic</title>
+    <title>Academic Lab Hub | Code Craft Academic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #e34c26; /* HTML5 Orange-Red */
+            --primary: #f29111; /* SQL Orange / Theme Accent */
+            --web-accent: #38bdf8; /* Web Dev Neon Cyan Blue */
             --secondary: #0f172a;
-            --accent: #264de4; /* CSS3 Blue */
+            --accent: #10b981;
             --bg: #f8fafc;
             --code-bg: #1e293b;
             --white: #ffffff;
+            --border: #e2e8f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
 
-        /* SIDEBAR */
+        /* SIDEBAR WITH SUBJECT CATEGORIES */
         .sidebar {
-            width: 300px;
+            width: 340px;
             background: var(--secondary);
             color: white;
-            padding: 30px 20px;
+            padding: 30px 15px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             border-right: 4px solid var(--primary);
+            flex-shrink: 0;
         }
 
-        .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        .sidebar h2 { font-size: 1.1rem; margin-bottom: 20px; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+        .sidebar h2 span { color: var(--primary); }
+
+        .subject-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            margin: 20px 0 10px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .subject-title.web-dev-title { color: var(--web-accent); }
+        .subject-title.sql-title { color: var(--primary); }
         
-        .lab-list { list-style: none; flex-grow: 1; }
+        .lab-list { list-style: none; margin-bottom: 10px; }
         .lab-item {
-            padding: 12px 15px;
+            padding: 10px 14px;
             border-radius: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
+            font-size: 0.8rem;
+            transition: 0.2s;
             color: #94a3b8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
-        .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
+        .lab-item:hover { background: rgba(255,255,255,0.04); color: white; }
+        .lab-item.sql-active { background: var(--primary); color: white; font-weight: bold; }
+        .lab-item.web-active { background: #0284c7; color: white; font-weight: bold; }
 
         .sidebar-footer {
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 20px;
+            margin-top: auto;
         }
 
         .btn-download-pdf {
             display: block;
-            background: var(--primary);
+            background: rgba(255,255,255,0.05);
             color: white;
             text-align: center;
             padding: 12px;
@@ -63,47 +85,84 @@
             font-weight: bold;
             font-size: 0.8rem;
             transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
+        .btn-download-pdf:hover { background: var(--primary); border-color: var(--primary); }
 
         /* MAIN CONTENT AREA */
         .main-content { flex: 1; overflow-y: auto; padding: 40px; }
         
-        .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 2rem; color: var(--secondary); }
-        .tag { display: inline-block; padding: 4px 12px; background: #fff1f0; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
+        .header-box { margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
+        .header-box h1 { font-size: 1.8rem; color: var(--secondary); letter-spacing: -0.02em; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: white; }
+        .tag.tag-sql { background: var(--primary); }
+        .tag.tag-web { background: #0284c7; }
+
+        /* GRID FOR SYSTEM BOXES */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
 
         /* LOGIC BREAKDOWN */
         .logic-container {
-            margin-bottom: 25px;
-            background: #fffafa; 
-            border: 1px solid #fecaca;
+            background: #fffaf5; 
+            border: 1px solid #fed7aa;
             border-radius: 12px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
+        .logic-container.web-logic { background: #f0f9ff; border-color: #bae6fd; }
 
         .logic-header {
-            background: #fecaca;
+            background: #fed7aa;
             padding: 10px 20px;
             font-weight: 800;
-            color: #991b1b;
+            color: #9a3412;
             font-size: 0.85rem;
             text-transform: uppercase;
         }
+        .logic-container.web-logic .logic-header { background: #bae6fd; color: #0369a1; }
 
-        .logic-body { padding: 20px; color: #7f1d1d; font-size: 0.9rem; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+        .logic-body { padding: 20px; color: #431407; font-size: 0.9rem; flex-grow: 1; }
+        .logic-container.web-logic .logic-body { color: #0c4a6e; }
+        
+        .logic-step { margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start; }
         .step-num {
-            background: #991b1b; color: white; width: 20px; height: 20px;
+            background: #9a3412; color: white; width: 20px; height: 20px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
         }
+        .logic-container.web-logic .step-num { background: #0369a1; }
+
+        /* LIVE DATA PREVIEW BOX */
+        .example-container {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .example-header {
+            background: #bbf7d0;
+            padding: 10px 20px;
+            font-weight: 800;
+            color: #14532d;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .example-body { padding: 20px; height: 100%; min-height: 200px; overflow-x: auto; background: white; }
+
+        /* DATA TABLES */
+        table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #334155; color: white; font-weight: bold; }
+        tr:last-child td { border-bottom: none; }
+        .empty-null { color: #94a3b8; font-style: italic; font-weight: 500; }
 
         /* CODE BLOCK */
         .code-container {
             background: var(--code-bg);
             border-radius: 12px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) ;
         }
 
         .code-header {
@@ -124,39 +183,64 @@
             cursor: pointer;
             font-size: 0.75rem;
             font-weight: bold;
+            transition: 0.2s;
         }
+        .btn-copy:hover { background: #059669; }
 
         pre {
             padding: 25px;
             color: #e2e8f0;
             font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             overflow-x: auto;
             line-height: 1.6;
             white-space: pre-wrap;
         }
 
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; }
+        @media (max-width: 1200px) { .content-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            body { flex-direction: column; overflow: auto; height: auto; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 4px solid var(--primary); height: 380px; }
+            .main-content { overflow: visible; }
         }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <h2>Web Mastery Hub</h2>
+        <h2>Lab<span>Manual</span> Hub</h2>
+        
+        <div class="subject-title web-dev-title"><i class="fas fa-laptop-code"></i> HTML5 & CSS3 Manual</div>
         <ul class="lab-list">
-            <li class="lab-item active" id="default-item" onclick="showCode('web1')">01. Basic Structure</li>
-            <li class="lab-item" onclick="showCode('web2')">02. Flexbox Navbar</li>
-            <li class="lab-item" onclick="showCode('web3')">03. Responsive Grid</li>
-            <li class="lab-item" onclick="showCode('web4')">04. CSS Animations</li>
-            <li class="lab-item" onclick="showCode('web5')">05. Form UI & Logic</li>
+            <li class="lab-item" id="default-item" onclick="showCode('web1', this, 'web')">01. HTML5 Structure & Headings</li>
+            <li class="lab-item" onclick="showCode('web2', this, 'web')">02. Form Inputs & Validations</li>
+            <li class="lab-item" onclick="showCode('web3', this, 'web')">03. Table Layout Alignments</li>
+            <li class="lab-item" onclick="showCode('web4', this, 'web')">04. CSS Selectors Mastery</li>
+            <li class="lab-item" onclick="showCode('web5', this, 'web')">05. The Box Model Framework</li>
+            <li class="lab-item" onclick="showCode('web6', this, 'web')">06. Flexbox Centering Matrix</li>
+            <li class="lab-item" onclick="showCode('web7', this, 'web')">07. CSS Grid Responsive System</li>
+            <li class="lab-item" onclick="showCode('web8', this, 'web')">08. Glassmorphism Card Hover</li>
+            <li class="lab-item" onclick="showCode('web9', this, 'web')">09. Infinite Text Marquee</li>
+            <li class="lab-item" onclick="showCode('web10', this, 'web')">10. Keyframe Glow Animations</li>
+        </ul>
+
+        <div class="subject-title sql-title"><i class="fas fa-database"></i> SQL Database Manual</div>
+        <ul class="lab-list">
+            <li class="lab-item" onclick="showCode('sql1', this, 'sql')">11. Create Table (DDL)</li>
+            <li class="lab-item" onclick="showCode('sql2', this, 'sql')">12. Insert Data (DML)</li>
+            <li class="lab-item" onclick="showCode('sql3', this, 'sql')">13. Select & Filter (DQL)</li>
+            <li class="lab-item" onclick="showCode('sql4', this, 'sql')">14. Update & Delete</li>
+            <li class="lab-item" onclick="showCode('sql5', this, 'sql')">15. Primary & Foreign Keys</li>
+            <li class="lab-item" onclick="showCode('sql6', this, 'sql')">16. Check & Unique Constraints</li>
+            <li class="lab-item" onclick="showCode('sql7', this, 'sql')">17. Order By & Limit Sorting</li>
+            <li class="lab-item" onclick="showCode('sql8', this, 'sql')">18. Aggregate Functions</li>
+            <li class="lab-item" onclick="showCode('sql9', this, 'sql')">19. Group By Aggregation</li>
+            <li class="lab-item" onclick="showCode('sql10', this, 'sql')">20. Having Filter Clause</li>
         </ul>
 
         <div class="sidebar-footer">
-            <a href="assets/pdf/Web-Design-Guide.pdf" download class="btn-download-pdf">
-                <i class="fas fa-file-download"></i> Download Web Manual
+            <a href="#" class="btn-download-pdf">
+                <i class="fas fa-file-download"></i> Master Manual PDF
             </a>
         </div>
     </aside>
@@ -164,19 +248,26 @@
     <main class="main-content">
         <div id="content-display">
             <div class="header-box">
-                <span class="tag">FRONTEND DESIGN MASTERY</span>
-                <h1 id="prog-title">Web Example</h1>
+                <span class="tag" id="prog-tag">SQL DATABASE MASTERY</span>
+                <h1 id="prog-title">Query Title</h1>
             </div>
 
-            <div class="logic-container">
-                <div class="logic-header"><i class="fas fa-brain"></i> Design Logic Mastery</div>
-                <div class="logic-body" id="logic-text"></div>
+            <div class="content-grid">
+                <div class="logic-container" id="logicContainerBox">
+                    <div class="logic-header"><i class="fas fa-brain"></i> System Logic Mastery</div>
+                    <div class="logic-body" id="logic-text"></div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example-header" id="preview-header"><i class="fas fa-table"></i> Execution Preview Output</div>
+                    <div class="example-body" id="example-table-view"></div>
+                </div>
             </div>
 
             <div class="code-container">
                 <div class="code-header">
-                    <span style="color: #64748b; font-size: 0.75rem; font-weight: bold;">index.html / style.css</span>
-                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                    <span id="file-label-text" style="color: #64748b; font-size: 0.75rem; font-weight: bold;">database.sql</span>
+                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Source</button>
                 </div>
                 <pre id="code-block"></pre>
             </div>
@@ -185,72 +276,224 @@
 
     <script>
         const labData = {
+            // --- NEW FRONTEND LABS SUITE ---
             web1: {
-                title: "HTML5 Semantic Structure",
-                tag: "WEB PROGRAM 01",
-                code: `<!DOCTYPE html>\n<html>\n  <head>\n    <title>Basic Page</title>\n  </head>\n  <body>\n    <header>Header Content</header>\n    <main>Main Article</main>\n    <footer>Footer Content</footer>\n  </body>\n</html>`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>DOCTYPE:</b> Tells the browser we are using HTML5.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Semantics:</b> Using tags like &lt;header&gt; and &lt;main&gt; helps SEO and screen readers.</p></div>`
+                title: "HTML5 Structure & Semantic Headings",
+                tag: "WEB DEV LAB 01",
+                file: "index.html",
+                code: `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Academic Structure</title>\n</head>\n<body>\n    <header>\n        <h1>WebNova Studio Academy</h1>\n        <p>Mastering Frontend Frameworks</p>\n    </header>\n</body>\n</html>`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>&lt;!DOCTYPE html&gt;:</b> Informs processing browsers to interpret compilation rules via HTML5 specs.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Semantic Tags:</b> &lt;header&gt; provides crawlable interface landmarks for web search optimization algorithms.</p></div>`,
+                table: `<div style="padding: 10px; border: 1px dashed #cbd5e1; border-radius: 8px;">\n<h1 style="font-family: sans-serif; color:#0f172a; margin-bottom:5px;">WebNova Studio Academy</h1>\n<p style="font-family: sans-serif; color:#64748b;">Mastering Frontend Frameworks</p>\n</div>`
             },
             web2: {
-                title: "Modern Flexbox Navbar",
-                tag: "WEB PROGRAM 02",
-                code: `.nav {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px;\n}\n\n.links {\n  display: flex;\n  gap: 15px;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Flex:</b> display: flex turns on the flexible box layout.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Alignment:</b> justify-content manages horizontal space; align-items manages vertical space.</p></div>`
+                title: "Form Elements & Client-Side Verification",
+                tag: "WEB DEV LAB 02",
+                file: "register.html",
+                code: `<form action="/save" method="POST">\n    <label>Student Name:</label>\n    <input type="text" required placeholder="Enter Full Name">\n    \n    <label>Email ID:</label>\n    <input type="email" required>\n    <button type="submit">Submit Entry</button>\n</form>`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Type Constraints:</b> setting type="email" auto-triggers built-in regex syntax parsing structures internally.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Required Key:</b> Restricts execution chains if form validation metrics fail structural parameters.</p></div>`,
+                table: `<form style="font-family:sans-serif; display:flex; flex-direction:column; gap:8px; max-width:260px;" onsubmit="event.preventDefault(); alert('Validation Complete!');">\n<input type="text" placeholder="Enter Full Name" required style="padding:6px; border:1px solid #cbd5e1; border-radius:4px;">\n<input type="email" placeholder="student@academy.com" required style="padding:6px; border:1px solid #cbd5e1; border-radius:4px;">\n<button style="background:#0284c7; color:white; border:none; padding:8px; border-radius:4px; font-weight:bold; cursor:pointer;">Submit Entry</button>\n</form>`
             },
             web3: {
-                title: "Responsive CSS Grid",
-                tag: "WEB PROGRAM 03",
-                code: `.grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 20px;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Auto-Fit:</b> Automatically creates as many columns as will fit the container.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Fr Unit:</b> '1fr' stands for a fraction of the available space.</p></div>`
+                title: "Table Structuring & Cell Alignment Matrices",
+                tag: "WEB DEV LAB 03",
+                file: "timetable.html",
+                code: `<table border="1">\n    <tr>\n        <th>Lab Session</th>\n        <th>Subject Core</th>\n    </tr>\n    <tr>\n        <td>01</td>\n        <td>Computer Networks</td>\n    </tr>\n</table>`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Data Layouts:</b> &lt;tr&gt; creates horizontal array nodes, while &lt;td&gt; maps row attributes cell by cell.</p></div>`,
+                table: `<table><tr><th>Lab Session</th><th>Subject Core</th></tr><tr><td>01</td><td>Computer Networks</td></tr><tr><td>02</td><td>Relational Databases</td></tr></table>`
             },
             web4: {
-                title: "CSS Keyframe Animation",
-                tag: "WEB PROGRAM 04",
-                code: `@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(10px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n\n.card {\n  animation: fadeIn 0.8s ease-out;\n}`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Keyframes:</b> Defines the start (from) and end (to) points of the animation.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Interpolation:</b> The browser calculates the smooth transition between steps.</p></div>`
+                title: "CSS Selectors & Direct Target Styling Rule Maps",
+                tag: "WEB DEV LAB 04",
+                file: "selectors.css",
+                code: `/* Class Selector */\n.academic-alert {\n    color: #ef4444;\n    font-weight: 700;\n}\n\n/* Direct Attribute Match Selector */\ninput[type="submit"] {\n    background: #10b981;\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Specificity Array:</b> Class selectors (.) process faster than complex structural selectors because of optimal lookup loops inside the rendering engine.</p></div>`,
+                table: `<div style="font-family:sans-serif;">\n<p class="academic-alert" style="color:#ef4444; font-weight:700; margin-bottom:10px;"><i class="fas fa-exclamation-triangle"></i> Lab Alert: Connection Lost</p>\n<button style="background:#10b981; color:white; border:none; padding:6px 12px; border-radius:4px; font-weight:bold;">Submit Code</button>\n</div>`
             },
             web5: {
-                title: "Form UI with Validation",
-                tag: "WEB PROGRAM 05",
-                code: `<form>\n  <input type="email" placeholder="Email" required>\n  <input type="password" placeholder="Password" minlength="8">\n  <button type="submit">Join WebNova</button>\n</form>`,
-                logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Types:</b> Using type="email" triggers automatic mobile keyboard layouts.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Validation:</b> 'required' and 'minlength' provide instant client-side checks.</p></div>`
+                title: "The CSS Box Model Border Configuration Grid",
+                tag: "WEB DEV LAB 05",
+                file: "boxmodel.css",
+                code: `.tech-box {\n    width: 200px;\n    padding: 20px;\n    border: 2px solid #0f172a;\n    margin: 15px;\n    box-sizing: border-box;\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>box-sizing: border-box:</b> Forces both internal padding loops and active tracking lines to fit *inside* the defined width bounding limits.</p></div>`,
+                table: `<div style="font-family:sans-serif; width:180px; padding:20px; border:2px solid #0f172a; margin:5px; background:#f1f5f9; text-align:center; font-weight:bold; font-size:0.8rem;">Box Model Canvas</div>`
+            },
+            web6: {
+                title: "Flexbox Flexible Alignment Centering Mechanics",
+                tag: "WEB DEV LAB 06",
+                file: "flexbox.css",
+                code: `.flex-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 15px;\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Flex Axis Alignment:</b> justify-content centers elements horizontally along the main row direction, while align-items aligns them perfectly along the cross vertical axis.</p></div>`,
+                table: `<div style="display:flex; justify-content:center; align-items:center; gap:10px; background:#f8fafc; padding:15px; border:1px solid #e2e8f0; border-radius:8px;">\n<div style="background:#0284c7; color:white; padding:8px 12px; border-radius:4px; font-size:0.75rem; font-weight:bold;">Flex Item A</div>\n<div style="background:#0284c7; color:white; padding:8px 12px; border-radius:4px; font-size:0.75rem; font-weight:bold;">Flex Item B</div>\n</div>`
+            },
+            web7: {
+                title: "CSS Grid Multidimensional Adaptive Framework layouts",
+                tag: "WEB DEV LAB 07",
+                file: "grid.css",
+                code: `.responsive-grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));\n    gap: 12px;\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Auto-Fit:</b> Automatically wraps card arrays down to new lines as container widths scale down, without needing hardcoded @media overrides.</p></div>`,
+                table: `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap:10px;">\n<div style="background:#64748b; color:white; text-align:center; padding:15px 5px; font-size:0.7rem; font-weight:bold; border-radius:4px;">Grid 1</div>\n<div style="background:#64748b; color:white; text-align:center; padding:15px 5px; font-size:0.7rem; font-weight:bold; border-radius:4px;">Grid 2</div>\n<div style="background:#64748b; color:white; text-align:center; padding:15px 5px; font-size:0.7rem; font-weight:bold; border-radius:4px;">Grid 3</div>\n</div>`
+            },
+            web8: {
+                title: "Glassmorphism Card Interfaces with Backdrop Blur Layers",
+                tag: "WEB DEV LAB 08",
+                file: "glass.css",
+                code: `.glass-card {\n    background: rgba(255, 255, 255, 0.4);\n    backdrop-filter: blur(12px);\n    border: 1px solid rgba(255, 255, 255, 0.2);\n    border-radius: 16px;\n    transition: transform 0.3s ease;\n}\n.glass-card:hover { transform: scale(1.05); }`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>backdrop-filter: blur:</b> Applies frosted graphical rendering steps directly to the color pixels sitting underneath the card surface container layer.</p></div>`,
+                table: `<div style="background: linear-gradient(135deg, #38bdf8 0%, #ec4899 100%); padding:30px; border-radius:12px; display:flex; justify-content:center;">\n<div style="background:rgba(255,255,255,0.25); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2); padding:15px 25px; border-radius:12px; color:white; font-family:sans-serif; text-align:center; font-weight:bold; font-size:0.85rem; box-shadow:0 8px 32px rgba(0,0,0,0.15);">Premium Glass Card</div>\n</div>`
+            },
+            web9: {
+                title: "Infinite Continuous Text Marquee Loops",
+                tag: "WEB DEV LAB 09",
+                file: "marquee.css",
+                code: `.marquee-content {\n    display: flex;\n    white-space: nowrap;\n    animation: scrollMarquee 15s linear infinite;\n}\n@keyframes scrollMarquee {\n    0% { transform: translateX(0%); }\n    100% { transform: translateX(-50%); }\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Loop:</b> Translating exactly to -50% creates a continuous, unbroken wrapping loop when duplicate text tracks are placed side-by-side.</p></div>`,
+                table: `<div style="background:#0f172a; padding:10px; border-radius:6px; overflow:hidden; white-space:nowrap; position:relative;">\n<span style="color:#f29111; font-family:monospace; font-weight:bold; font-size:0.8rem; display:inline-block; animation:sampleMarquee 6s linear infinite; padding-left:100%;">⚡ WEBOVA STUDIO PRODUCTION TRACK INTERFACES RUNNING LIVE ⚡</span>\n<style>@keyframes sampleMarquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }</style>\n</div>`
+            },
+            web10: {
+                title: "Keyframe Radial Glow & Animation Shifts",
+                tag: "WEB DEV LAB 10",
+                file: "animation.css",
+                code: `.pulse-glow {\n    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);\n    animation: pulseGlowKey 2s infinite;\n}\n@keyframes pulseGlowKey {\n    70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }\n    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }\n}`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Box-Shadow Steps:</b> Dynamically changes box-shadow radius calculations while dropping opacity parameters down to zero to simulate expanding energy waves.</p></div>`,
+                table: `<div style="display:flex; justify-content:center; padding:20px;">\n<div style="width:20px; height:20px; background:#10b981; border-radius:50%; animation: samplePulse 1.5s infinite; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);"></div>\n<style>@keyframes samplePulse { 70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }</style>\n</div>`
+            },
+
+            // --- RESTORED SQL DATA STACK ---
+            sql1: {
+                title: "Create Table (DDL)",
+                tag: "SQL PROGRAM 01",
+                file: "database.sql",
+                code: `CREATE TABLE Students (\n    StudentID int PRIMARY KEY,\n    Name varchar(50) NOT NULL,\n    Course varchar(20),\n    Age int\n);`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>DDL:</b> Builds structural schema containers table layers.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Primary Key:</b> Blocks duplication entries and NULL allocations inside identity row parameters.</p></div>`,
+                table: `<table><tr><th>Column</th><th>Type</th><th>Null</th><th>Key</th></tr><tr><td>StudentID</td><td>int</td><td>NO</td><td>PRI</td></tr><tr><td>Name</td><td>varchar(50)</td><td>NO</td><td></td></tr><tr><td>Course</td><td>varchar(20)</td><td>YES</td><td></td></tr><tr><td>Age</td><td>int</td><td>YES</td><td></td></tr></table>`
+            },
+            sql2: {
+                title: "Insert Data (DML)",
+                tag: "SQL PROGRAM 02",
+                file: "database.sql",
+                code: `INSERT INTO Students (StudentID, Name, Course, Age)\nVALUES \n(1, 'Rakesh', 'BCA', 21),\n(2, 'Rashmi', 'MCA', 22),\n(3, 'Suresh', 'BCA', 20);`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>DML Matrix:</b> Maps actual value rows inside the structural storage grid.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>String Formatting:</b> Text attributes must sit completely within single quotation marks.</p></div>`,
+                table: `<table><tr><th>StudentID</th><th>Name</th><th>Course</th><th>Age</th></tr><tr><td>1</td><td>Rakesh</td><td>BCA</td><td>21</td></tr><tr><td>2</td><td>Rashmi</td><td>MCA</td><td>22</td></tr><tr><td>3</td><td>Suresh</td><td>BCA</td><td>20</td></tr></table>`
+            },
+            sql3: {
+                title: "Select & Filter (DQL)",
+                tag: "SQL PROGRAM 03",
+                file: "database.sql",
+                code: `SELECT Name, Course FROM Students \nWHERE Age >= 21;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Projection:</b> Targets specific subset fields, isolating outputs from processing full rows.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Evaluation Filter:</b> Keeps records that match conditional comparison rules.</p></div>`,
+                table: `<table><tr><th>Name</th><th>Course</th></tr><tr><td>Rakesh</td><td>BCA</td></tr><tr><td>Rashmi</td><td>MCA</td></tr></table>`
+            },
+            sql4: {
+                title: "Update & Delete",
+                tag: "SQL PROGRAM 04",
+                file: "database.sql",
+                code: `UPDATE Students SET Course = 'MCA Scholar' WHERE StudentID = 2;\n\nDELETE FROM Students WHERE StudentID = 3;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>UPDATE:</b> Changes targeted table data properties within specific records.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>DELETE:</b> Drops individual row tuples completely without clearing structural table bounds.</p></div>`,
+                table: `<table><tr><th>StudentID</th><th>Name</th><th>Course</th><th>Age</th></tr><tr><td>1</td><td>Rakesh</td><td>BCA</td><td>21</td></tr><tr><td>2</td><td>Rashmi</td><td>MCA Scholar</td><td>22</td></tr></table>`
+            },
+            sql5: {
+                title: "Primary & Foreign Keys",
+                tag: "SQL PROGRAM 05",
+                file: "database.sql",
+                code: `CREATE TABLE Fees (\n    FeeID int PRIMARY KEY,\n    Amount decimal(10,2),\n    StudentID int,\n    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)\n);`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Foreign Key Mapping:</b> Creates data connections across distinct relational sheets.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>Referential Safety:</b> Blocks orphaned entries by validating child records against parents.</p></div>`,
+                table: `<table><tr><th>FeeID</th><th>Amount</th><th>StudentID</th></tr><tr><td>101</td><td>45000.00</td><td>1</td></tr><tr><td>102</td><td>52000.00</td><td>2</td></tr></table>`
+            },
+            sql6: {
+                title: "Check & Unique Constraints",
+                tag: "SQL PROGRAM 06",
+                file: "database.sql",
+                code: `CREATE TABLE Staff (\n    StaffID int PRIMARY KEY,\n    Email varchar(50) UNIQUE,\n    Salary int CHECK (Salary >= 15000)\n);`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>UNIQUE:</b> Ensures distinct string entries across attributes without building formal index keys.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>CHECK evaluation:</b> Screens inputs against user-defined boolean expressions before running save workflows.</p></div>`,
+                table: `<table><tr><th>StaffID</th><th>Email</th><th>Salary</th></tr><tr><td>1</td><td>admin@webnova.com</td><td>32000</td></tr><tr><td>2</td><td>tech@webnova.com</td><td>15500</td></tr></table>`
+            },
+            sql7: {
+                title: "Order By & Limit Sorting",
+                tag: "SQL PROGRAM 07",
+                file: "database.sql",
+                code: `SELECT Name, Age FROM Students \nORDER BY Age DESC \nLIMIT 2;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>ORDER BY:</b> Re-orders dynamic result sets using target columns in ascending or descending steps.</p></div>\n<div class="logic-step"><div class="step-num">2</div><p><b>LIMIT:</b> Caps final display matrices at a maximum row count for clean performance.</p></div>`,
+                table: `<table><tr><th>Name</th><th>Age</th></tr><tr><td>Rashmi</td><td>22</td></tr><tr><td>Rakesh</td><td>21</td></tr></table>`
+            },
+            sql8: {
+                title: "Aggregate Functions",
+                tag: "SQL PROGRAM 08",
+                file: "database.sql",
+                code: `SELECT COUNT(StudentID) as TotalCount, \n       SUM(Amount) as TotalCollected \nFROM Fees;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Mathematical Blocks:</b> Processes full vertical column rows to output a single consolidated scalar evaluation block.</p></div>`,
+                table: `<table><tr><th>TotalCount</th><th>TotalCollected</th></tr><tr><td>2</td><td>97000.00</td></tr></table>`
+            },
+            sql9: {
+                title: "Group By Aggregation",
+                tag: "SQL PROGRAM 09",
+                file: "database.sql",
+                code: `SELECT Course, COUNT(StudentID) as Enrollment \nFROM Students \nGROUP BY Course;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>GROUP BY:</b> Combines row elements into unique categories before running aggregation tasks.</p></div>`,
+                table: `<table><tr><th>Course</th><th>Enrollment</th></tr><tr><td>BCA</td><td>2</td></tr><tr><td>MCA</td><td>1</td></tr></table>`
+            },
+            sql10: {
+                title: "Having Filter Clause",
+                tag: "SQL PROGRAM 10",
+                file: "database.sql",
+                code: `SELECT Course, COUNT(StudentID) as ClassCount \nFROM Students \nGROUP BY Course \nHAVING COUNT(StudentID) >= 2;`,
+                logic: `<div class="logic-step"><div class="step-num">1</div><p><b>HAVING evaluation:</b> Filters aggregated group data outputs. Unlike WHERE, this evaluates values *after* groups are formed.</p></div>`,
+                table: `<table><tr><th>Course</th><th>ClassCount</th></tr><tr><td>BCA</td><td>2</td></tr></table>`
             }
         };
 
-        function showCode(id) {
-            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            } else {
-                document.getElementById('default-item').classList.add('active');
+        function showCode(id, element, type) {
+            // Detach old active assignments metrics
+            document.querySelectorAll('.lab-item').forEach(el => {
+                el.classList.remove('active', 'sql-active', 'web-active');
+            });
+
+            // Assign contextual focus variables dynamically
+            if (element) {
+                element.classList.add('active');
+                if(type === 'sql') element.classList.add('sql-active');
+                if(type === 'web') element.classList.add('web-active');
             }
-            document.getElementById('prog-title').innerText = labData[id].title;
-            document.querySelector('.tag').innerText = labData[id].tag;
-            document.getElementById('code-block').innerText = labData[id].code;
-            document.getElementById('logic-text').innerHTML = labData[id].logic;
+
+            // Fetch template parameters
+            const dataNode = labData[id];
+            
+            // Adjust panel descriptors based on current subject focus
+            const tagElement = document.getElementById('prog-tag');
+            tagElement.className = "tag"; // Reset
+            if(type === 'sql') {
+                tagElement.innerText = dataNode.tag;
+                tagElement.classList.add('tag-sql');
+                document.getElementById('preview-header').innerHTML = '<i class="fas fa-table"></i> Database Query Row Result';
+                document.getElementById('logicContainerBox').className = "logic-container";
+            } else {
+                tagElement.innerText = dataNode.tag;
+                tagElement.classList.add('tag-web');
+                document.getElementById('preview-header').innerHTML = '<i class="fas fa-desktop"></i> Real-Time Component Visual UI';
+                document.getElementById('logicContainerBox').className = "logic-container web-logic";
+            }
+
+            // Sync text buffers
+            document.getElementById('prog-title').innerText = dataNode.title;
+            document.getElementById('file-label-text').innerText = dataNode.file;
+            document.getElementById('code-block').innerText = dataNode.code;
+            document.getElementById('logic-text').innerHTML = dataNode.logic;
+            document.getElementById('example-table-view').innerHTML = dataNode.table;
         }
 
-        window.onload = function() { showCode('web1'); };
+        // Initialize layout sequence targeting first web component on load
+        window.onload = function() { 
+            showCode('web1', document.getElementById('default-item'), 'web'); 
+        };
 
         function copyCode() {
             const code = document.getElementById('code-block').innerText;
             navigator.clipboard.writeText(code).then(() => {
                 const btn = document.querySelector('.btn-copy');
-                btn.innerText = "Copied!";
+                btn.innerText = "Source Copied!";
                 btn.style.background = "#059669";
                 setTimeout(() => {
-                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
-                    btn.style.background = "#264de4";
+                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Source';
+                    btn.style.background = "#10b981";
                 }, 2000);
             });
         }
