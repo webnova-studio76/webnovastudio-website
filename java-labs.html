@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #f89820; --secondary: #0f172a; --accent: #10b981;
-            --bg: #f8fafc; --code-bg: #1e293b;
+            --primary: #f89820; /* Java Orange */
+            --secondary: #0f172a; 
+            --accent: #10b981;
+            --bg: #f8fafc; 
+            --code-bg: #1e293b;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -19,16 +24,18 @@
             width: 320px; background: var(--secondary); color: white;
             padding: 25px 15px; overflow-y: auto; display: flex;
             flex-direction: column; border-right: 4px solid var(--primary);
+            flex-shrink: 0;
         }
         .sidebar::-webkit-scrollbar { width: 4px; }
         .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
         .sidebar h2 { font-size: 1rem; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; padding-left: 10px; }
         
-        .lab-list { list-style: none; margin-bottom: 15px; }
+        .lab-list { list-style: none; flex-grow: 1; }
         .lab-item {
             padding: 10px 15px; border-radius: 8px; margin-bottom: 4px;
             cursor: pointer; font-size: 0.8rem; color: #94a3b8; transition: 0.2s;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .lab-item.active { background: var(--primary); color: white; font-weight: bold; }
@@ -36,22 +43,38 @@
         /* CONTENT */
         .main-content { flex: 1; overflow-y: auto; padding: 40px; }
         .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 1.8rem; color: var(--secondary); }
+        .header-box h1 { font-size: 1.8rem; color: var(--secondary); letter-spacing: -0.02em; }
         .tag { display: inline-block; padding: 4px 12px; background: #ffeeda; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: var(--primary); }
 
         .modern-notice { margin-top: 15px; background: #fffaf5; border: 1px solid #fed7aa; padding: 10px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #9a3412; }
         .modern-badge { margin-top: 12px; padding: 8px 15px; background: rgba(248, 152, 32, 0.1); border-radius: 6px; border-left: 4px solid var(--primary); display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary); }
 
-        .logic-container { margin-bottom: 25px; background: #fffaf5; border: 1px solid #fed7aa; border-radius: 12px; padding: 20px; }
+        /* TWO-COLUMN GRID FOR RUNTIME DETAILS */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+
+        /* LOGIC BREAKDOWN */
+        .logic-container { background: #fffaf5; border: 1px solid #fed7aa; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
         .logic-header { background: #fed7aa; padding: 10px 20px; font-weight: 800; color: #9a3412; font-size: 0.8rem; text-transform: uppercase; margin: -20px -20px 20px -20px; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; font-size: 0.85rem; color: #431407; }
-        .step-num { background: #9a3412; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; }
+        .logic-body { flex-grow: 1; }
+        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; font-size: 0.85rem; color: #431407; align-items: flex-start; }
+        .step-num { background: #9a3412; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; margin-top: 2px; }
 
+        /* TERMINAL DISPLAY PANEL */
+        .terminal-container { background: #020617; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+        .terminal-header { background: #1e293b; padding: 10px 20px; font-weight: 800; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+        .terminal-header .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .terminal-body { padding: 20px; color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 0.85rem; white-space: pre-wrap; line-height: 1.5; flex-grow: 1; }
+
+        /* CODE BLOCK */
         .code-container { background: var(--code-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .code-header { padding: 10px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
-        .btn-copy { background: var(--accent); color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; font-weight: bold; }
+        .code-header { padding: 12px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy { background: var(--accent); color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: bold; transition: 0.2s; }
+        .btn-copy:hover { background: #059669; }
 
-        pre { padding: 25px; color: #e2e8f0; font-family: monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; }
+        pre { padding: 25px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; white-space: pre-wrap; }
+
+        @media (max-width: 1200px) { .content-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { body { flex-direction: column; overflow: auto; height: auto; } .sidebar { width: 100%; height: 350px; } .main-content { overflow: visible; } }
     </style>
 </head>
 <body>
@@ -75,14 +98,26 @@
         </div>
     </div>
 
-    <div class="logic-container">
-        <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
-        <div class="logic-body" id="logic-text"></div>
+    <div class="content-grid">
+        <div class="logic-container">
+            <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
+            <div class="logic-body" id="logic-text"></div>
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <span class="dot" style="background: #ef4444;"></span>
+                <span class="dot" style="background: #eab308;"></span>
+                <span class="dot" style="background: #22c55e;"></span>
+                <span style="margin-left: 5px;"><i class="fas fa-terminal"></i> Terminal Runtime Output</span>
+            </div>
+            <div class="terminal-body" id="output-text"></div>
+        </div>
     </div>
 
     <div class="code-container">
         <div class="code-header">
-            <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">Main.java</span>
+            <span id="file-label" style="color: #64748b; font-size: 0.7rem; font-weight: bold;">Main.java</span>
             <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
         </div>
         <pre id="code-block"></pre>
@@ -91,94 +126,219 @@
 
 <script>
 const labData = {
-    p1: { title: "01. Hello World", tag: "BASIC", code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard output stream usage.</p></div>` },
-    p2: { title: "02. Add Two Numbers", tag: "MATH", code: `int a=10, b=20; System.out.println(a+b);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Binary addition operation.</p></div>` },
-    p3: { title: "03. Swap (3rd Var)", tag: "LOGIC", code: `int a=5, b=10, t=a; a=b; b=t;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Temporary buffer swap.</p></div>` },
-    p4: { title: "04. Swap (No Var)", tag: "LOGIC", code: `a=a+b; b=a-b; a=a-b;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Arithmetic rotation swap.</p></div>` },
-    p5: { title: "05. Even or Odd", tag: "LOGIC", code: `if(n%2==0) "Even" else "Odd";`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Modulo remainder check.</p></div>` },
-    p6: { title: "06. Largest of Three", tag: "LOGIC", code: `if(a>b && a>c) return a;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Logical AND comparison.</p></div>` },
-    p7: { title: "07. Prime Number", tag: "LOGIC", code: `for(int i=2; i<=n/2; i++) if(n%i==0) return false;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Divisibility scan up to N/2.</p></div>` },
-    p8: { title: "08. Factorial", tag: "MATH", code: `for(int i=1;i<=n;i++) f*=i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cumulative product loop.</p></div>` },
-    p9: { title: "09. Fibonacci Series", tag: "LOOPS", code: `c=a+b; a=b; b=c;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Previous term summation.</p></div>` },
-    p10: { title: "10. Reverse Number", tag: "LOGIC", code: `while(n!=0){ r=r*10+n%10; n/=10; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Digit extraction and shift.</p></div>` },
-    p11: { title: "11. Palindrome Check", tag: "LOGIC", code: `if(original == reversed) "Yes";`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Equality of reversed value.</p></div>` },
-    p12: { title: "12. Armstrong Number", tag: "MATH", code: `sum += Math.pow(digit, 3);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sum of cubes check.</p></div>` },
-    p13: { title: "13. Simple Interest", tag: "MATH", code: `(p * r * t) / 100;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard SI formula.</p></div>` },
-    p14: { title: "14. Compound Interest", tag: "MATH", code: `p * Math.pow(1+r/100, t) - p;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Exponential growth formula.</p></div>` },
-    p15: { title: "15. Celsius/Fahr", tag: "MATH", code: `(c * 9/5) + 32;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Linear temperature conversion.</p></div>` },
-    p16: { title: "16. ASCII Value", tag: "BASIC", code: `int v = (int)character;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Explicit type casting.</p></div>` },
-    p17: { title: "17. Basic Calculator", tag: "BASIC", code: `switch(op){ case '+': res=a+b; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Operator char branching.</p></div>` },
-    p18: { title: "18. Array Sum/Avg", tag: "ARRAYS", code: `for(int i:a) s+=i; avg=s/n;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Array traversal accumulation.</p></div>` },
-    p19: { title: "19. Array Max/Min", tag: "ARRAYS", code: `if(a[i]>max) max=a[i];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Linear comparison scan.</p></div>` },
-    p20: { title: "20. Reverse Array", tag: "ARRAYS", code: `swap(a[i], a[n-1-i]);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Two-pointer swap logic.</p></div>` },
-    p21: { title: "21. Matrix Sum", tag: "ARRAYS", code: `C[i][j] = A[i][j] + B[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cell-wise matrix addition.</p></div>` },
-    p22: { title: "22. Matrix Mult", tag: "ARRAYS", code: `C[i][j] += A[i][k] * B[k][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Triple loop dot product.</p></div>` },
-    p23: { title: "23. Transpose Matrix", tag: "ARRAYS", code: `T[j][i] = A[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Row-column index swap.</p></div>` },
-    p24: { title: "24. String Palindrome", tag: "STRINGS", code: `s.equals(rev);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Buffer comparison check.</p></div>` },
-    p25: { title: "25. Reverse String", tag: "STRINGS", code: `for(int i=n-1; i>=0; i--) r+=s[i];`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Backward character iteration.</p></div>` },
-    p26: { title: "26. Vowel/Consonant", tag: "STRINGS", code: `if("aeiou".contains(c)) v++;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Char set membership test.</p></div>` },
-    p27: { title: "27. Anagram Check", tag: "STRINGS", code: `Arrays.sort(a1); Arrays.sort(a2);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sorted char array comparison.</p></div>` },
-    p28: { title: "28. 1st Non-Repeat", tag: "STRINGS", code: `if(map.get(c)==1) return c;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Frequency map lookup.</p></div>` },
-    p29: { title: "29. Remove Whitespace", tag: "STRINGS", code: `s.replaceAll("\\s", "");`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Regex pattern substitution.</p></div>` },
-    p30: { title: "30. Char Frequency", tag: "STRINGS", code: `count[s.charAt(i)]++;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Integer array mapping.</p></div>` },
-    p31: { title: "31. String to Int", tag: "STRINGS", code: `Integer.parseInt(s);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Wrapper class conversion.</p></div>` },
-    p32: { title: "32. Class & Object", tag: "OOPs", code: `Main obj = new Main();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Instantiation and memory allocation.</p></div>` },
-    p33: { title: "33. Constructor Overload", tag: "OOPs", code: `Box() { } Box(int s) { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Static polymorphism.</p></div>` },
-    p34: { title: "34. Method Overload", tag: "OOPs", code: `add(int a) { } add(double a) { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Compile-time signature choice.</p></div>` },
-    p35: { title: "35. Method Override", tag: "OOPs", code: `@Override void show() { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Runtime dynamic binding.</p></div>` },
-    p36: { title: "36. Inheritance", tag: "OOPs", code: `class Dog extends Animal { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Hierarchical reusability.</p></div>` },
-    p37: { title: "37. Interface/Multi-Inherit", tag: "OOPs", code: `class C implements I1, I2 { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Multiple contract adherence.</p></div>` },
-    p38: { title: "38. Abstract Class", tag: "OOPs", code: `abstract class Shape { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Template for derived classes.</p></div>` },
-    p39: { title: "39. Encapsulation", tag: "OOPs", code: `private int x; public int getX();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Data hiding and access control.</p></div>` },
-    p40: { title: "40. super Keyword", tag: "OOPs", code: `super.parentMethod();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Base class reference access.</p></div>` },
-    p41: { title: "41. this Keyword", tag: "OOPs", code: `this.var = var;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Current instance referencing.</p></div>` },
-    p42: { title: "42. Linear Search", tag: "DS", code: `if(a[i]==k) return i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sequential key comparison.</p></div>` },
-    p43: { title: "43. Binary Search", tag: "DS", code: `while(l<=h) { mid=(l+h)/2; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Divide and conquer search.</p></div>` },
-    p44: { title: "44. Bubble Sort", tag: "DS", code: `if(a[j]>a[j+1]) swap();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Adjacent element sinking.</p></div>` },
-    p45: { title: "45. Selection Sort", tag: "DS", code: `min_idx = i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Minimum element finding sort.</p></div>` },
-    p46: { title: "46. Custom Exception", tag: "EXCEPTION", code: `class MyEx extends Exception { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Specific error definition.</p></div>` },
-    p47: { title: "47. try-catch-finally", tag: "EXCEPTION", code: `try { } catch { } finally { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Guaranteed cleanup logic.</p></div>` },
-    p48: { title: "48. File Write/Read", tag: "FILE", code: `FileWriter fw = new FileWriter();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Stream-based data storage.</p></div>` },
-    p49: { title: "49. ArrayList CRUD", tag: "COLLECTION", code: `list.add(); list.remove();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Dynamic list management.</p></div>` },
-    p50: { title: "50. HashMap Iterate", tag: "COLLECTION", code: `map.forEach((k,v)->...);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Lambda-based pair traversal.</p></div>` },
-    p51: { title: "51. Runnable Thread", tag: "THREADS", code: `new Thread(new MyRun()).start();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Functional thread definition.</p></div>` },
-    p52: { title: "52. Synchronization", tag: "THREADS", code: `synchronized void update();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Resource locking mechanism.</p></div>` },
-    p53: { title: "53. Stream API", tag: "JAVA8", code: `list.stream().filter().collect();`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Pipeline functional processing.</p></div>` },
-    p54: { title: "54. Singly Linked List", tag: "DS", code: `class Node { int d; Node n; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Heap pointer node chaining.</p></div>` },
-    p55: { title: "55. Stack using Array", tag: "DS", code: `a[++top] = data;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>LIFO pointer management.</p></div>` },
-    p56: { title: "56. Pyramid Pattern", tag: "PATTERN", code: `for(i=1;i<=n;i++) { print("*"); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested iteration pattern.</p></div>` },
-    p57: { title: "57. Floyd's Triangle", tag: "PATTERN", code: `print(k++);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Sequential integer triangle.</p></div>` },
-    p58: { title: "58. Diamond Pattern", tag: "PATTERN", code: `// Upper and Lower halves logic`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Symmetric nested loop control.</p></div>` },
-    p59: { title: "59. Missing Number", tag: "LOGIC", code: `expectedSum - actualSum;`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Mathematical total difference.</p></div>` },
-    p60: { title: "60. Magic Number", tag: "LOGIC", code: `while(n>9) n = sumDigits(n);`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Recursive sum until unit digit.</p></div>` }
+    p1: { title: "01. Hello World", tag: "BASIC", code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Output Matrix:</b> Utilizes the static standard system out print stream descriptor.</p></div>`, output: `Hello World` },
+    p2: { title: "02. Add Two Numbers", tag: "MATH", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 10, b = 20;\n        System.out.println("Sum: " + (a + b));\n    }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Binary Operators:</b> Evaluates standard sum properties natively inside statement blocks.</p></div>`, output: `Sum: 30` },
+    p3: { title: "03. Swap (3rd Var)", tag: "LOGIC", code: `int a = 5, b = 10;\nint t = a;\na = b;\nb = t;`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Temporary Buffer:</b> Allocates an interim stack variable to protect target data from overwritten sweeps.</p></div>`, output: `[System State: Swapped Completed]` },
+    p4: { title: "04. Swap (No Var)", tag: "LOGIC", code: `int a = 5, b = 10;\na = a + b;\nb = a - b;\na = a - b;`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Arithmetic Inversion:</b> Runs sequence accumulators and differences to alternate register states without space overhead.</p></div>`, output: `[System State: Variables Inverted]` },
+    p5: { title: "05. Even or Odd", tag: "LOGIC", code: `int n = 15;\nif(n % 2 == 0) {\n    System.out.println("Even");\n} else {\n    System.out.println("Odd");\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Modulo Operator:</b> Computes divisions metrics tracking if absolute remainders match zero targets.</p></div>`, output: `Odd` },
+    p6: { title: "06. Largest of Three", tag: "LOGIC", code: `int a=12, b=45, c=22;\nint max = (a > b) ? (a > c ? a : c) : (b > c ? b : c);\nSystem.out.println("Max: " + max);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Ternary Operators:</b> Nest expressions inline to eliminate lengthy sequential conditional branch operations.</p></div>`, output: `Max: 45` },
+    p7: { title: "07. Prime Number", tag: "LOGIC", code: `int n = 29;\nboolean isPrime = true;\nfor(int i = 2; i <= Math.sqrt(n); i++) {\n    if(n % i == 0) { isPrime = false; break; }\n}\nSystem.out.println("Is Prime: " + isPrime);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Optimized Lookups:</b> Caps calculation loops at the square root limit of N to speed up execution.</p></div>`, output: `Is Prime: true` },
+    p8: { title: "08. Factorial", tag: "MATH", code: `int n = 5, f = 1;\nfor(int i = 1; i <= n; i++) f *= i;\nSystem.out.println("Factorial: " + f);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Iterative Products:</b> Multiplies cumulative products tracking step-wise variable loops.</p></div>`, output: `Factorial: 120` },
+    p9: { title: "09. Fibonacci Series", tag: "LOOPS", code: `int n = 5, a = 0, b = 1;\nfor(int i = 0; i < n; i++) {\n    System.out.print(a + " ");\n    int c = a + b; a = b; b = c;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Pointer Shifts:</b> Aggregates index frames progressively by dropping previous references.</p></div>`, output: `0 1 1 2 3 ` },
+    p10: { title: "10. Reverse Number", tag: "LOGIC", code: `int n = 12345, r = 0;\nwhile(n != 0) {\n    r = r * 10 + n % 10;\n    n /= 10;\n}\nSystem.out.println("Reversed: " + r);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Radix Base Shift:</b> Extracts lowest digits via modulo loops and shifts them to a higher position level.</p></div>`, output: `Reversed: 54321` },
+    p11: { title: "11. Palindrome Check", tag: "LOGIC", code: `int num = 121, rem, rev = 0, temp = num;\nwhile(temp > 0) { rem = temp % 10; rev = rev * 10 + rem; temp /= 10; }\nSystem.out.println(num == rev ? "Palindrome" : "Not");`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Equivalence Audit:</b> Checks the generated reverse number layout directly against original references.</p></div>`, output: `Palindrome` },
+    p12: { title: "12. Armstrong Number", tag: "MATH", code: `int n = 153, s = 0, t = n;\nwhile(t > 0) { s += Math.pow(t % 10, 3); t /= 10; }\nSystem.out.println(n == s ? "Armstrong" : "Not");`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Exponential Sums:</b> Cubes extracted values and sums them to test total number structures.</p></div>`, output: `Armstrong` },
+    p13: { title: "13. Simple Interest", tag: "MATH", code: `double p=10000, r=5, t=2;\ndouble si = (p * r * t) / 100;\nSystem.out.println("SI: " + si);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Computations:</b> Evaluates financial return trends using double precision formats.</p></div>`, output: `SI: 1000.0` },
+    p14: { title: "14. Compound Interest", tag: "MATH", code: `double p=5000, r=6, t=3;\ndouble ci = p * Math.pow(1 + r/100, t) - p;\nSystem.out.println("CI: " + ci);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Exponent Logic Models:</b> Uses Math.pow() equations to compile structural compound trends.</p></div>`, output: `CI: 955.08` },
+    p15: { title: "15. Celsius/Fahr", tag: "MATH", code: `double c = 37;\ndouble f = (c * 9/5) + 32;\nSystem.out.println("Fahrenheit: " + f);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Scalar Conversions:</b> Transforms physical temperature points using strict division constraints.</p></div>`, output: `Fahrenheit: 98.6` },
+    p16: { title: "16. ASCII Value", tag: "BASIC", code: `char ch = 'A';\nint ascii = (int) ch;\nSystem.out.println("ASCII: " + ascii);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Widening Casting:</b> Automatically steps char byte values up into integer array data frameworks.</p></div>`, output: `ASCII: 65` },
+    p17: { title: "17. Basic Calculator", tag: "BASIC", code: `char op = '+'; int a = 10, b = 20;\nswitch(op) {\n    case '+': System.out.println(a + b); break;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Switch Architecture:</b> Runs high-performance hash branching routes mapped directly to operator tokens.</p></div>`, output: `30` },
+    p18: { title: "18. Array Sum/Avg", tag: "ARRAYS", code: `int[] arr = {1, 2, 3, 4};\nint sum = 0;\nfor(int i : arr) sum += i;\nSystem.out.println("Avg: " + (double)sum/arr.length);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Enhanced Loops:</b> Traverses continuous collection indices sequentially without tracking pointer values.</p></div>`, output: `Avg: 2.5` },
+    p19: { title: "19. Array Max/Min", tag: "ARRAYS", code: `int[] a = {14, 5, 89, 2};\nint max = a[0];\nfor(int i : a) if(i > max) max = i;\nSystem.out.println("Max: " + max);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Scans:</b> Updates tracking monitors dynamically whenever loop records beat previous metrics.</p></div>`, output: `Max: 89` },
+    p20: { title: "20. Reverse Array", tag: "ARRAYS", code: `int[] a = {1, 2, 3, 4};\nfor(int i = 0; i < a.length/2; i++) {\n    int t = a[i]; a[i] = a[a.length-1-i]; a[a.length-1-i] = t;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Two-Pointer Inversion:</b> Swaps boundary elements inwardly, stopping at the exact midpoint to protect arrays.</p></div>`, output: `[Array Symmetrically Inverted]` },
+    
+    // --- POPULATED INTERMEDIATE / OOP STACK ---
+    p21: { title: "21. Matrix Sum", tag: "ARRAYS", code: `int[][] A={{1,2},{3,4}}, B={{5,6},{7,8}}, C=new int[2][2];\nfor(int i=0;i<2;i++)\n    for(int j=0;j<2;j++) C[i][j]=A[i][j]+B[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Nested Coordinates:</b> Matches indices step-by-step across multidimensional matrix rows.</p></div>`, output: `[Matrix Added]` },
+    p22: { title: "22. Matrix Mult", tag: "ARRAYS", code: `// Triple nested loop implementation\nfor(int i=0;i<2;i++)\n    for(int j=0;j<2;j++)\n        for(int k=0;k<2;k++) C[i][j]+=A[i][k]*B[k][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Dot Products:</b> Runs deep row-by-column combinations inside isolated calculation frames.</p></div>`, output: `[Matrix Multiplied]` },
+    p23: { title: "23. Transpose Matrix", tag: "ARRAYS", code: `int[][] A={{1,2},{3,4}}, T=new int[2][2];\nfor(int i=0;i<2;i++)\n    for(int j=0;j<2;j++) T[j][i]=A[i][j];`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Index Rotation:</b> Swaps horizontal rows directly with vertical column layouts inside schemas.</p></div>`, output: `[Matrix Transposed]` },
+    p24: { title: "24. String Palindrome", tag: "STRINGS", code: `String s = "racecar";\nString r = new StringBuilder(s).reverse().toString();\nSystem.out.println(s.equals(r));`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Heap Allocation:</b> Uses the mutable StringBuilder class helper to run fast character flips.</p></div>`, output: `true` },
+    p25: { title: "25. Reverse String", tag: "STRINGS", code: `String s = "Nova", r = "";\nfor(int i = s.length()-1; i >= 0; i--) r += s.charAt(i);\nSystem.out.println(r);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Backward Extraction Loops:</b> Loops through character string bounds in reverse to compile alternative string sequences.</p></div>`, output: `avoN` },
+    p26: { title: "26. Vowel/Consonant", tag: "STRINGS", code: `char c = 'e';\nboolean isVowel = "aeiouAEIOU".indexOf(c) != -1;\nSystem.out.println(isVowel ? "Vowel" : "Consonant");`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Sequence Membership:</b> Queries pattern collections to verify target item intersections.</p></div>`, output: `Vowel` },
+    p27: { title: "27. Anagram Check", tag: "STRINGS", code: `char[] c1 = "listen".toCharArray(), c2 = "silent".toCharArray();\njava.util.Arrays.sort(c1); java.util.Arrays.sort(c2);\nSystem.out.println(java.util.Arrays.equals(c1, c2));`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Sort Normalization:</b> Sorts character lists alphabetically to run uniform structure checks.</p></div>`, output: `true` },
+    p28: { title: "28. 1st Non-Repeat", tag: "STRINGS", code: `String s = "swiss";\nfor(char c : s.toCharArray()) {\n    if(s.indexOf(c) == s.lastIndexOf(c)) { System.out.println(c); break; }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Boundary Intersection Tracing:</b> Matches earliest search pointers directly against final occurrences to spot unique data.</p></div>`, output: `w` },
+    p29: { title: "29. Remove Whitespace", tag: "STRINGS", code: `String s = " J a v a ";\nString clean = s.replaceAll("\\\\s", "");\nSystem.out.println(clean);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Regex Engine compilation:</b> Evaluates space markers (\\s) using regex expressions to clean string metrics.</p></div>`, output: `Java` },
+    p30: { title: "30. Char Frequency", tag: "STRINGS", code: `String s = "apple"; int[] count = new int[256];\nfor(int i=0; i<s.length(); i++) count[s.charAt(i)]++;\nSystem.out.println("p: " + count['p']);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Direct Array Hashing:</b> Uses absolute ASCII integers directly as array index positions to instantly log item counts.</p></div>`, output: `p: 2` },
+    p31: { title: "31. String to Int", tag: "STRINGS", code: `String s = "404";\nint val = Integer.parseInt(s);\nSystem.out.println(val);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Parsing Handlers:</b> Triggers wrapper modules to parse string rows into raw numeric fields.</p></div>`, output: `404` },
+    p32: { title: "32. Class & Object", tag: "OOPs", code: `class Demo { void hi() { System.out.println("Hi"); } }\n// Inside main\nDemo obj = new Demo(); obj.hi();`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Object Construction:</b> Reserves memory blocks inside system heap layers using new handles.</p></div>`, output: `Hi` },
+    p33: { title: "33. Constructor Overload", tag: "OOPs", code: `class Box {\n    Box() { }\n    Box(int side) { }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Static Polymorphism:</b> Sets up alternative object building routes based on custom parameter listings.</p></div>`, output: `[Instance Initialized Over Loaded Signatures]` },
+    p34: { title: "34. Method Overload", tag: "OOPs", code: `int add(int a) { return a+a; }\nint add(int a, int b) { return a+b; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Compile-Time Binding:</b> Routes calls to matching method blueprints based on argument list formats.</p></div>`, output: `[Compiler Resolved Signatures Natively]` },
+    p35: { title: "35. Method Override", tag: "OOPs", code: `class Parent { void show() { } }\nclass Child extends Parent {\n    @Override void show() { }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Runtime Polymorphism:</b> Resolves and executes custom sub-class overrides using dynamic dispatch lookups.</p></div>`, output: `[Runtime Method Bound Successfully]` },
+    p36: { title: "36. Inheritance", tag: "OOPs", code: `class Animal { void eat() { } }\nclass Cat extends Animal { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Blueprint Extensions:</b> Links structural code bases using parent-child trees to promote reusability.</p></div>`, output: `[Base Properties Inherited]` },
+    p37: { title: "37. Interface/Multi-Inherit", tag: "OOPs", code: `interface I1 {} interface I2 {}\nclass Node implements I1, I2 { }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Contract Management:</b> Bypasses multiple inheritance restrictions by linking classes to multiple interfaces.</p></div>`, output: `[Multiple Interface Contracts Unified]` },
+    p38: { title: "38. Abstract Class", tag: "OOPs", code: `abstract class Base {\n    abstract void run();\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Template Architecture:</b> Enforces standard structural blueprints that all derived classes must implement.</p></div>`, output: `[Abstract Enforcement Set]` },
+    p39: { title: "39. Encapsulation", tag: "OOPs", code: `class Safe { private int key;\npublic int getKey() { return key; } }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Data Isolation:</b> Protects internal variables behind private flags, allowing access only through public getter/setter checkpoints.</p></div>`, output: `[Variables Encapsulated Safely]` },
+    p40: { title: "40. super Keyword", tag: "OOPs", code: `class Child extends Parent {\n    Child() { super(); }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Parent Scoping Paths:</b> Directs code engines to call parent constructors or access hidden parent variables.</p></div>`, output: `[Parent Constructor Triggered]` },
+    p41: { title: "41. this Keyword", tag: "OOPs", code: `class Item { int id;\nItem(int id) { this.id = id; } }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Instance Context Mapping:</b> Clarifies name conflicts by explicitly mapping values to the current object instance.</p></div>`, output: `[Instance Scope Mapped]` },
+    p42: { title: "42. Linear Search", tag: "DS", code: `int[] a={1,2,3}; int k=2;\nfor(int i=0;i<a.length;i++) if(a[i]==k) return i;`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Sequential Iterations:</b> Steps through item lists sequentially to match values, running at $O(n)$ efficiency.</p></div>`, output: `1` },
+    p43: { title: "43. Binary Search", tag: "DS", code: `int l=0, h=a.length-1;\nwhile(l<=h) {\n    int m=(l+h)/2;\n    if(a[m]==k) return m; if(a[m]<k) l=m+1; else h=m-1;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Logarithmic Splits:</b> Halves search zones continuously to locate keys, running at an optimized $O(\log n)$ runtime pace.</p></div>`, output: `Target Index Located Logarithmically` },
+    p44: { title: "44. Bubble Sort", tag: "DS", code: `// Adjacent sort passes\nfor(int i=0;i<n-1;i++)\n    for(int j=0;j<n-i-1;j++)\n        if(a[j]>a[j+1]) { int t=a[j]; a[j]=a[j+1]; a[j+1]=t; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Adjacent Comparisons:</b> Swaps neighboring elements step-by-step to push high values towards the array end.</p></div>`, output: `[Array Elements Sorted via Bubble Sequence]` },
+    p45: { title: "45. Selection Sort", tag: "DS", code: `for(int i=0;i<n-1;i++) {\n    int min=i; for(int j=i+1;j<n;j++) if(a[j]<a[min]) min=j;\n    int t=a[min]; a[min]=a[i]; a[i]=t;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Minimum Element Scans:</b> Sweeps through unsorted items to isolate the smallest value, swapping it directly into place.</p></div>`, output: `[Array Sorted via Selection Partitioning]` },
+    p46: { title: "46. Custom Exception", tag: "EXCEPTION", code: `class CoreException extends Exception {\n    CoreException(String s) { super(s); }\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Error Architecture Extensions:</b> Extends base exception frameworks to configure explicit domain error handling routines.</p></div>`, output: `[Custom Exception Map Configured]` },
+    p47: { title: "47. try-catch-finally", tag: "EXCEPTION", code: `try { int res = 10/0; } \ncatch(ArithmeticException e) { System.out.println(e); }\nfinally { System.out.println("Cleanup"); }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Guaranteed Blocks:</b> Runs the finally block no matter what, making it ideal for resetting file streams or closing sockets.</p></div>`, output: `java.lang.ArithmeticException: / by zero\nCleanup` },
+    p48: { title: "48. File Write/Read", tag: "FILE", code: `java.io.FileWriter fw = new java.io.FileWriter("log.txt");\nfw.write("Java Data"); fw.close();`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Disk Output Buffers:</b> Interacts directly with kernel file entry blocks to write tracking lines safely.</p></div>`, output: `[I/O Operations Flush to Disk Storage]` },
+    p49: { title: "49. ArrayList CRUD", tag: "COLLECTION", code: `java.util.ArrayList<String> l = new java.util.ArrayList<>();\nl.add("A"); l.remove(0); System.out.println(l.isEmpty());`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Dynamic Array Management:</b> Manages dynamic arrays behind the scenes, resizing automatically when elements scale.</p></div>`, output: `true` },
+    p50: { title: "50. HashMap Iterate", tag: "COLLECTION", code: `java.util.HashMap<String, Integer> map = new java.util.HashMap<>();\nmap.put("Key", 100); map.forEach((k,v) -> System.out.println(k+":"+v));`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Functional Bi-Consumer Lambdas:</b> Uses efficient internal array buckets to loop through key-value mappings rapidly.</p></div>`, output: `Key:100` },
+    p51: { title: "51. Runnable Thread", tag: "THREADS", code: `Runnable r = () -> System.out.println("Running");\nnew Thread(r).start();`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Asynchronous Tasks:</b> Spawns isolated execution contexts inside system threads using functional lambda expressions.</p></div>`, output: `Running` },
+    p52: { title: "52. Synchronization", tag: "THREADS", code: `class Counter { synchronized void add() { /* thread safe */ } }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Mutual Exclusion Locks:</b> Locks method execution paths to let only one thread enter at a time, avoiding data race issues.</p></div>`, output: `[Monitor Lock Active on Target Object]` },
+    p53: { title: "53. Stream API", tag: "JAVA8", code: `java.util.List<Integer> list = java.util.Arrays.asList(1,2,3,4);\nlist.stream().filter(x -> x%2==0).forEach(System.out::println);`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Functional Pipely Pipeline Arrays:</b> Passes array objects through a pipeline of functional steps without mutating the source list data.</p></div>`, output: `2\n4` },
+    p54: { title: "54. Singly Linked List", tag: "DS", code: `class Node { int data; Node next; }\n// Reference point links pointer adjustments`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Dynamic Pointer Chaining:</b> Links runtime heap instances together sequentially using reference addresses.</p></div>`, output: `[Linked List Nodes Formed in Heap Memory]` },
+    p55: { title: "55. Stack using Array", tag: "DS", code: `int[] stack = new int[5]; int top = -1;\nvoid push(int x) { stack[++top] = x; }`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>LIFO Architecture:</b> Updates an explicit array index tracker to manage a strict Last-In, First-Out sequence.</p></div>`, output: `[Element Pushed onto Top of Stack]` },
+    p56: { title: "56. Pyramid Pattern", tag: "PATTERN", code: `for(int i=1;i<=3;i++) {\n    for(int j=3;j>i;j--) System.out.print(" ");\n    for(int k=1;k<=(2*i-1);k++) System.out.print("*");\n    System.out.println();\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Nested Coordinate Loops:</b> Maps spaces and characters row by row using nested loop configurations.</p></div>`, output: `  *\n ***\n*****` },
+    p57: { title: "57. Floyd's Triangle", tag: "PATTERN", code: `int k=1;\nfor(int i=1;i<=3;i++) {\n    for(int j=1;j<=i;j++) System.out.print((k++) + " ");\n    System.out.println();\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Step Triangles:</b> Prints numbers continuously across a stepped row-by-row structure.</p></div>`, output: `1 \n2 3 \n4 5 6 ` },
+    p58: { title: "58. Diamond Pattern", tag: "PATTERN", code: `// Symmetrical upper/lower loop structures`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Reflective Loops:</b> Mirrors loop counts after passing the middle row to form symmetric designs.</p></div>`, output: `  *\n ***\n  *` },
+    p59: { title: "59. Missing Number", tag: "LOGIC", code: `int[] a = {1, 2, 4, 5}; int n = 5;\nint expected = n * (n + 1) / 2, actual = 0;\nfor(int i : a) actual += i;\nSystem.out.println("Missing: " + (expected - actual));`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Summation Arithmetic:</b> Finds array gaps instantly by checking actual sums against the standard formula total.</p></div>`, output: `Missing: 3` },
+    p60: { title: "60. Magic Number", tag: "LOGIC", code: `int n = 1729; // Loops until unit digit remains\nwhile (n > 9) { int sum = 0; while(n > 0) { sum += n % 10; n /= 10; } n = sum; }\nSystem.out.println(n == 1 ? "Magic Number" : "Not");`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Recursive Digit Condensing:</b> Continuously breaks down and sums digits until only a single figure remains.</p></div>`, output: `Magic Number` },
+
+    // --- NEW ADVANCED INDUSTRIAL ADDITIONS (61-75) ---
+    p61: {
+        title: "61. Thread Pool Executor",
+        tag: "CONCURRENCY",
+        code: `import java.util.concurrent.*;\n\nExecutorService pool = Executors.newFixedThreadPool(3);\nfor(int i=0; i<5; i++) {\n    pool.execute(() -> System.out.println(Thread.currentThread().getName()));\n}\npool.shutdown();`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Resource Recycling:</b> Reuses a fixed set of existing worker threads to run incoming tasks, preventing memory thrashing from constant thread creation.</p></div>`,
+        output: `pool-1-thread-1\npool-1-thread-2\npool-1-thread-3\ pool-1-thread-1\npool-1-thread-2`
+    },
+    p62: {
+        title: "62. Deadlock Simulation",
+        tag: "CONCURRENCY",
+        code: `String r1 = "R1", r2 = "R2";\nnew Thread(() -> {\n    synchronized(r1) {\n        try { Thread.sleep(50); } catch(Exception e) {}\n        synchronized(r2) {}\n    }\n}).start();\nnew Thread(() -> {\n    synchronized(r2) {\n        synchronized(r1) {}\n    }\n}).start();`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Circular Dependency locks:</b> Occurs when two threads lock separate resources and end up waiting indefinitely for each other to release them.</p></div>`,
+        output: `[System Warning: Circular Lock Contention Triggered - Threads Frozen]`
+    },
+    p63: {
+        title: "63. Optional Container API",
+        tag: "JAVA8",
+        code: `import java.util.Optional;\n\nString name = null;\nOptional<String> check = Optional.ofNullable(name);\nSystem.out.println(check.orElse("Fallback Default Value"));`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Null Safety Wrapper:</b> Encapsulates objects inside a container wrapper to handle empty values cleanly and avoid crashes.</p></div>`,
+        output: `Fallback Default Value`
+    },
+    p64: {
+        title: "64. Lambda Functional Mapping",
+        tag: "JAVA8",
+        code: `java.util.List<String> codes = java.util.Arrays.asList("abc", "web", "nova");\ncodes.stream().map(String::toUpperCase).forEach(System.out::println);`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Immutable Mutations:</b> Passes string elements through functional transformations, spawning modified outputs without touching the source array elements.</p></div>`,
+        output: `ABC\nWEB\nNOVA`
+    },
+    p65: {
+        title: "65. Method Reference Pointers",
+        tag: "JAVA8",
+        code: `java.util.List<String> list = java.util.Arrays.asList("Sys", "Admin");\nlist.forEach(System.out::println); // Double colon structural shorthand`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Syntax Pointers:</b> Uses double colon (::) shortcuts to reference existing functional methods directly, keeping code concise.</p></div>`,
+        output: `Sys\nAdmin`
+    },
+    p66: {
+        title: "66. Regex Pattern Matching",
+        tag: "STRINGS",
+        code: `import java.util.regex.*;\n\nPattern p = Pattern.compile("^[a-z0-9]+$");\nMatcher m = p.matcher("webnova76");\nSystem.out.println("Matches: " + m.matches());`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>DFA Automata compilation:</b> Compiles pattern requirements into state machines to scan strings instantly for exact text matches.</p></div>`,
+        output: `Matches: true`
+    },
+    p67: {
+        title: "67. Reflection Inspect Engine",
+        tag: "ADVANCED",
+        code: `import java.lang.reflect.*;\n\nClass<?> c = Class.forName("java.util.ArrayList");\nMethod[] methods = c.getDeclaredMethods();\nSystem.out.println("Methods count: " + methods.length);`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Metadata Inspections:</b> Opens up private object definitions at runtime, allowing code to inspect classes, methods, and fields on the fly.</p></div>`,
+        output: `Methods count: 114`
+    },
+    p68: {
+        title: "68. JDBC Connectivity Matrix",
+        tag: "DATABASE",
+        code: `// Simulation database handshake loop\n// Connection conn = DriverManager.getConnection(URL, USER, PASS);\n// ResultSet rs = conn.createStatement().executeQuery("SELECT name FROM systems");\nSystem.out.println("DB Subsystem Handshake: Connected");`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Bridge Drivers:</b> Opens up TCP socket pipelines to relational database engines to send SQL commands and process data.</p></div>`,
+        output: `DB Subsystem Handshake: Connected`
+    },
+    p69: {
+        title: "69. Serialization Registry",
+        tag: "FILE",
+        code: `// Save current object memory graph directly onto persistent files\n// ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("obj.ser"));\n// out.writeObject(serializableObjectInstance);\nSystem.out.println("Memory state serialized successfully.");`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Object Flattening:</b> flattens complex runtime heap objects into binary byte streams so they can be saved to disk or sent over a network.</p></div>`,
+        output: `Memory state serialized successfully.`
+    },
+    p70: {
+        title: "70. Generics Data Container",
+        tag: "OOPs",
+        code: `class Pocket<T> { private T data; void put(T item) { this.data = item; } }\nPocket<Integer> p = new Pocket<>(); p.put(76);\nSystem.out.println("Generic Compile-safe Assignment Completed");`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Type Erasure parameters:</b> Enforces strict data type validation at compile time, removing the need for messy manual casting later on.</p></div>`,
+        output: `Generic Compile-safe Assignment Completed`
+    },
+    p71: {
+        title: "71. Enum State Engine",
+        tag: "OOPs",
+        code: `enum NodeState { ACTIVE, DISCONNECTED, ERROR }\nNodeState current = NodeState.ACTIVE;\nSystem.out.println("Active Environment Code: " + current);`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Type-Safe Constants:</b> Groups fixed sets of constants into custom types to eliminate validation errors from random text inputs.</p></div>`,
+        output: `Active Environment Code: ACTIVE`
+    },
+    p72: {
+        title: "72. Date & Time API",
+        tag: "JAVA8",
+        code: `import java.time.LocalDateTime;\nimport java.time.format.DateTimeFormatter;\n\nSystem.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Immutable Chrono Timers:</b> Uses thread-safe calendar tools that fix the messy time zone and offset bugs of the older date models.</p></div>`,
+        output: `2026-06-21`
+    },
+    p73: {
+        title: "73. File Walker API",
+        tag: "FILE",
+        code: `import java.nio.file.*;\n\n// Stream-based structural directory path iterations\nlong filesCount = Files.walk(Paths.get(".")).filter(Files::isRegularFile).count();\nSystem.out.println("Working entries checked: " + filesCount);`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>NIO Storage Crawlers:</b> Traverses complex directory trees efficiently by treating path hierarchies as a clean stream of file objects.</p></div>`,
+        output: `Working entries checked: 4`
+    },
+    p74: {
+        title: "74. StringJoiner Aggregation",
+        tag: "STRINGS",
+        code: `import java.util.StringJoiner;\n\nStringJoiner sj = new StringJoiner(", ", "[", "]");\nsj.add("Web").add("Nova");\nSystem.out.println(sj.toString());`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Sequence Aggregations:</b> Simplifies formatting by automatically handling delimiters, prefixes, and suffixes when joining character sequences.</p></div>`,
+        output: `[Web, Nova]`
+    },
+    p75: {
+        title: "75. Read Console Buffer",
+        tag: "BASIC",
+        code: `import java.io.*;\n\nBufferedReader br = new BufferedReader(new InputStreamReader(System.in));\nSystem.out.print("System ID: "); // String parameter capture simulation\nSystem.out.println("Read complete: webnova-node01");`,
+        logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Character Buffering:</b> Wraps low-level byte readers inside an input buffer array to prevent costly direct disk read delays.</p></div>`,
+        output: `System ID: \nRead complete: webnova-node01`
+    }
 };
 
 function initSidebar() {
     const list = document.getElementById('sidebar-list');
-    Object.keys(labData).forEach(key => {
+    Object.keys(labData).forEach((key, index) => {
         const li = document.createElement('li');
-        li.className = 'lab-item';
+        li.className = `lab-item ${index === 0 ? 'active' : ''}`;
+        li.id = key === 'p1' ? 'default-item' : '';
         li.innerText = labData[key].title;
         li.onclick = (e) => {
             document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
             li.classList.add('active');
-            showCode(labData[key]);
+            showCode(key);
         };
         list.appendChild(li);
     });
 }
 
-function showCode(data) {
+function showCode(id) {
+    const data = labData[id];
     document.getElementById('prog-title').innerText = data.title;
+    document.getElementById('prog-tag').innerText = "JAVA SUB-MODULE: " + data.tag;
     document.getElementById('code-block').innerText = data.code;
     document.getElementById('logic-text').innerHTML = data.logic;
+    document.getElementById('output-text').innerText = data.output;
 }
 
 function copyCode() {
-    navigator.clipboard.writeText(document.getElementById('code-block').innerText).then(() => alert("Copied!"));
+    const code = document.getElementById('code-block').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.btn-copy');
+        btn.innerText = "Copied!";
+        btn.style.background = "#059669";
+        setTimeout(() => {
+            btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
+            btn.style.background = "#10b981";
+        }, 2000);
+    });
 }
 
-window.onload = () => { initSidebar(); document.querySelector('.lab-item').click(); };
+window.onload = () => { 
+    initSidebar(); 
+    showCode('p1'); 
+};
 </script>
 </body>
 </html>
