@@ -7,109 +7,220 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Courses Section */
-.courses-section {
-    padding: 100px 5%;
-    background-color: #f1f5f9;
-}
+        :root {
+            /* High-Premium Dark Tactile Palette Variables */
+            --primary: #0d9488;       /* Clean, Professional Teal */
+            --primary-glow: rgba(13, 148, 136, 0.25);
+            --secondary: #090d16;     /* Deep Space Matte Dark */
+            --card-surface: #111827;  /* High-Contrast Charcoal Slate */
+            --bg: #030712;            /* True Obsidian Background */
+            --white: #ffffff;         
+            --text-main: #f1f5f9;     /* Off-White Crisp Typography */
+            --text-muted: #94a3b8;    /* Muted Cool Gray Details */
+            --border: rgba(255, 255, 255, 0.05); /* Subtle cyber split line */
+            --card-radius: 20px;      
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Inertial physics curve */
+            
+            /* Skeuomorphic Inset & Drop Shadow Tokens */
+            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.7), 0 10px 20px -5px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-.courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
-/* Course Card Design */
-.course-card {
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #e2e8f0;
-    transition: var(--transition);
-    position: relative;
-}
+        /* Courses Section Canvas Setup */
+        .courses-section {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--bg) 100%);
+            position: relative;
+        }
 
-.course-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-}
+        /* Subtle background tech grid lines */
+        .courses-section::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none; z-index: 1;
+        }
 
-.course-tag {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #e2e8f0;
-    color: var(--secondary-color);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+        .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
 
-.course-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .sub-title { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
+        .section-header h2 { font-size: 2.8rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+        .section-header h2 span { color: var(--primary); text-shadow: 0 0 30px rgba(13, 148, 136, 0.2); }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 500; }
 
-.course-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: var(--secondary-color);
-}
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
 
-.course-card p {
-    color: #64748b;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    flex-grow: 1; /* Pushes footer to bottom */
-}
+        /* --- High-Premium Tactile Card Architecture --- */
+        .course-card {
+            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            border-radius: var(--card-radius);
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: var(--tactile-shadow);
+            transition: var(--transition);
+        }
 
-/* Course Footer */
-.course-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 20px;
-}
+        .course-card:hover {
+            transform: translateY(-6px) scale(1.015); /* Snappy real-world physics pop */
+            border-color: rgba(13, 148, 136, 0.3);
+            box-shadow: var(--hover-shadow);
+        }
 
-.course-footer span {
-    font-size: 0.85rem;
-    color: #94a3b8;
-}
+        .course-tag {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
 
-.enroll-btn {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 0.9rem;
-}
+        .course-card:hover .course-tag {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+        }
 
-/* Highlighted Course (Fullstack) */
-.highlight-course {
-    background: var(--secondary-color);
-    color: white;
-}
+        /* Skeuomorphic Glossy Macro-Control Box */
+        .course-icon {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            font-weight: 900;
+        }
 
-.highlight-course h3 { color: white; }
-.highlight-course p { color: #94a3b8; }
-.highlight-course .course-tag {
-    background: var(--primary-color);
-    color: white;
-}
+        .course-card:hover .course-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
+            border-color: #0f766e;
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px -4px var(--primary-glow);
+        }
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--white);
+            letter-spacing: -0.01em;
+        }
+
+        .course-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            flex-grow: 1;
+            font-weight: 500;
+        }
+
+        /* Course Footer Split Area */
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+
+        .course-footer span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .enroll-btn {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .enroll-btn:hover { color: var(--primary); }
+
+        /* Highlighted Core Path Career Module (Fullstack overrides) */
+        .course-card.highlight-course {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 15px 35px -10px rgba(4, 120, 87, 0.3);
+        }
+        .course-card.highlight-course:hover {
+            box-shadow: 0 25px 45px -10px rgba(4, 120, 87, 0.5), 0 10px 20px -5px var(--primary-glow);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .highlight-course h3 { color: var(--white); }
+        .highlight-course p { color: #a7f3d0; }
+        .highlight-course .course-tag {
+            background: var(--white);
+            color: #065f46;
+            border: 1px solid var(--white);
+        }
+        .highlight-course:hover .course-tag {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .highlight-course .course-icon {
+            color: #a7f3d0;
+            border-color: rgba(165, 243, 208, 0.2);
+        }
+        .highlight-course:hover .course-icon {
+            background: linear-gradient(135deg, var(--white) 0%, #e2e8f0 100%);
+            color: #065f46;
+            border-color: var(--white);
+        }
+        .highlight-course .btn-primary {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .highlight-course .btn-primary:hover { color: #a7f3d0; }
+
+        @media (max-width: 768px) {
+            .courses-section { padding: 80px 16px; }
+            .section-header h2 { font-size: 2.2rem; }
+            .courses-grid { margin-top: 30px; gap: 20px; }
+            .course-card { padding: 35px 25px; }
+        }
     </style>
 </head>
 <body>
 
-   
-
-   <section class="courses-section">
+<section class="courses-section">
     <div class="container">
         <div class="section-header">
             <span class="sub-title">Code Craft Academic</span>
