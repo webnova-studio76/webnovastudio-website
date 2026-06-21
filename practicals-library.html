@@ -3,144 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practical Hub | Code Craft Academic</title>
+    <title>C-Labs Master Library | Code Craft Academic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 1. CSS VARIABLES & RESET */
+        /* 1. PREMIUM DARK CYBER VARIABLES & RESET */
         :root {
-            --primary: #10b981;
-            --secondary: #0f172a;
-            --bg: #f8fafc;
+            --primary: #10b981;       /* Vibrant Emerald Green */
+            --secondary: #090d16;     /* Deep Space Dark Matte */
+            --card-surface: #111827;  /* High-Contrast Charcoal Slate */
+            --bg: #030712;            /* True Obsidian Background */
             --white: #ffffff;
-            --border: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --border: rgba(255, 255, 255, 0.05); /* Soft structural line */
+            --text-main: #f1f5f9;     /* Off-White Crisp Typography */
+            --text-muted: #94a3b8;    /* Muted Cool Gray Metadata */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-        /* 2. HEADER & SEARCH SECTION */
+        /* 2. HEADER & GLOWING SEARCH SECTION */
         .hub-header {
-            background: var(--secondary);
-            color: white;
-            padding: 80px 20px;
+            position: relative;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--bg) 100%);
+            padding: 100px 20px 120px;
             text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
         }
 
-        .hub-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hub-header h1 span { color: var(--primary); }
+        /* Subtle cyber grid ambient design effect */
+        .hub-header::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+
+        .hub-header h1 { font-size: 3rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.03em; color: var(--white); }
+        .hub-header h1 span { color: var(--primary); text-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+        .hub-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
         
         .search-container {
-            max-width: 600px;
-            margin: 30px auto 0;
+            max-width: 540px;
+            margin: 40px auto 0;
             position: relative;
+            z-index: 10;
         }
 
         .search-container i {
             position: absolute;
-            left: 20px;
+            left: 24px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
+            font-size: 1.05rem;
+            transition: var(--transition);
         }
 
         #hubSearch {
             width: 100%;
-            padding: 15px 15px 15px 50px;
+            padding: 16px 20px 16px 60px;
             border-radius: 50px;
-            border: none;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             outline: none;
-            font-size: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
-        /* 3. GRID SYSTEM */
-        .container { max-width: 1200px; margin: -40px auto 60px; padding: 0 20px; }
+        #hubSearch:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        #hubSearch:focus + i { color: var(--primary); }
+
+        /* 3. GRID SYSTEM & CONTAINER STRUCTURAL POSITIONS */
+        .container { max-width: 1300px; margin: -50px auto 80px; padding: 0 24px; position: relative; z-index: 20; }
 
         .lab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
         }
 
-        /* 4. CARD STYLING */
+        /* 4. HIGH-PREMIUM GLASSMORPHIC CARD STYLING */
         .lab-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
+            background: var(--card-surface);
+            border-radius: 24px;
+            padding: 40px;
             border: 1px solid var(--border);
-            border-left: 6px solid #cbd5e1; /* Default border */
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .lab-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+            background: #cbd5e1; /* Fallback default background */
+            transition: var(--transition);
         }
 
         .lab-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
         }
 
         .phase-tag { 
             font-size: 0.75rem; 
             font-weight: 800; 
             text-transform: uppercase; 
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: inline-block;
         }
 
-        .lab-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .lab-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; }
+        .lab-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.01em; }
+        .lab-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; }
 
-        /* Footer of Card */
+        /* Footer of Card Elements */
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 20px;
+            padding-top: 24px;
             border-top: 1px solid var(--border);
         }
 
         .btn-view {
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--secondary);
-    transition: 0.3s;
-    
-    /* ADD THIS LINE */
-    cursor: pointer; 
-    
-    /* This prevents the text-selection cursor from appearing */
-    user-select: none; 
-}
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer; 
+            user-select: none; 
+        }
 
-        .btn-view:hover { color: var(--primary); padding-left: 5px; }
+        .btn-view i { transition: var(--transition); font-size: 0.8rem; }
+        .btn-view:hover { color: var(--primary); }
+        .btn-view:hover i { transform: translateX(6px); }
 
-        /* 5. LANGUAGE SPECIFIC COLORS */
-        .card-c { border-left-color: #64748b; }
-        .card-cpp { border-left-color: #00599c; }
-        .card-java { border-left-color: #f89820; }
-        .card-python { border-left-color: #3776ab; }
-        .card-sql { border-left-color: #f29111; }
-        .card-web { border-left-color: #e34c26; }
+        /* 5. VIBRANT NEON TECH COLOR ASSIGNMENTS */
+        .card-c::before { background: #64748b; }
+        .card-c:hover { border-color: rgba(100, 116, 139, 0.4); box-shadow: 0 20px 40px -15px rgba(100, 116, 139, 0.15); }
+        .card-c:hover .btn-view { color: #64748b; }
+
+        .card-cpp::before { background: #00599c; }
+        .card-cpp:hover { border-color: rgba(0, 89, 156, 0.4); box-shadow: 0 20px 40px -15px rgba(0, 89, 156, 0.15); }
+        .card-cpp:hover .btn-view { color: #38bdf8; }
+
+        .card-java::before { background: #f89820; }
+        .card-java:hover { border-color: rgba(248, 152, 32, 0.4); box-shadow: 0 20px 40px -15px rgba(248, 152, 32, 0.15); }
+        .card-java:hover .btn-view { color: #f89820; }
+
+        .card-python::before { background: #3776ab; }
+        .card-python:hover { border-color: rgba(55, 118, 171, 0.4); box-shadow: 0 20px 40px -15px rgba(55, 118, 171, 0.15); }
+        .card-python:hover .btn-view { color: #3776ab; }
+
+        .card-sql::before { background: #f29111; }
+        .card-sql:hover { border-color: rgba(242, 145, 17, 0.4); box-shadow: 0 20px 40px -15px rgba(242, 145, 17, 0.15); }
+        .card-sql:hover .btn-view { color: #f29111; }
+
+        .card-web::before { background: #e34c26; }
+        .card-web:hover { border-color: rgba(227, 76, 38, 0.4); box-shadow: 0 20px 40px -15px rgba(227, 76, 38, 0.15); }
+        .card-web:hover .btn-view { color: #e34c26; }
+
+        /* Smooth Entrance Animations Keyframes */
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         @media (max-width: 768px) {
-            .hub-header h1 { font-size: 2rem; }
-            .container { margin-top: 20px; }
+            .hub-header { padding: 80px 16px 100px; }
+            .hub-header h1 { font-size: 2.2rem; }
+            .container { margin-top: -30px; padding: 0 16px; }
+            .lab-card { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
     <header class="hub-header">
-        <h1>Programming <span>Practical Hub</span></h1>
-        <p>Verified source code and lab manuals for the WebNova community.</p>
-        
         <div class="search-container">
+            <h1>Programming <span>Practical Hub</span></h1>
+            <p>Verified source code and lab manuals for the WebNova community.</p>
+            
             <i class="fas fa-search"></i>
             <input type="text" id="hubSearch" placeholder="Search by language (e.g. Java, Python)..." onkeyup="filterHub()">
         </div>
@@ -150,29 +214,29 @@
         <div class="lab-grid" id="labGrid">
 
             <div class="lab-card card-c" data-lang="c">
-    <div>
-        <p class="phase-tag" style="color: #64748b;">Procedural Core</p>
-        <h3>C Programming</h3>
-        <p>Essential lab programs: Pointers, Structures, File I/O, and sorting algorithms.</p>
-    </div>
-    <div class="card-footer">
-        <a href="c-labs.html" class="btn-view" style="text-decoration: none;">
-            View C Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
-</div>
+                <div>
+                    <p class="phase-tag" style="color: #64748b;">Procedural Core</p>
+                    <h3>C Programming</h3>
+                    <p>Essential lab programs: Pointers, Structures, File I/O, and sorting algorithms.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="c-labs.html" class="btn-view" style="text-decoration: none;">
+                        View C Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
 
             <div class="lab-card card-cpp" data-lang="c++">
                 <div>
-                    <p class="phase-tag" style="color: #00599c;">Object Oriented</p>
+                    <p class="phase-tag" style="color: #38bdf8;">Object Oriented</p>
                     <h3>C++ Architecture</h3>
                     <p>Practical implementation of Classes, Inheritance, Polymorphism, and Templates.</p>
                 </div>
                 <div class="card-footer">
-        <a href="cpp-labs.html" class="btn-view" style="text-decoration: none;">
-            View C++ Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+                    <a href="cpp-labs.html" class="btn-view" style="text-decoration: none;">
+                        View C++ Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="lab-card card-java" data-lang="java">
@@ -182,10 +246,10 @@
                     <p>Multithreading, Exception Handling, JDBC Connectivity, and Applets.</p>
                 </div>
                 <div class="card-footer">
-        <a href="java-labs.html" class="btn-view" style="text-decoration: none;">
-            View Java Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+                    <a href="java-labs.html" class="btn-view" style="text-decoration: none;">
+                        View Java Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="lab-card card-python" data-lang="python">
@@ -195,10 +259,10 @@
                     <p>List comprehensions, Dictionary methods, File handling, and Data logic.</p>
                 </div>
                 <div class="card-footer">
-        <a href="python-labs.html" class="btn-view" style="text-decoration: none;">
-            View Python Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+                    <a href="python-labs.html" class="btn-view" style="text-decoration: none;">
+                        View Python Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="lab-card card-sql" data-lang="sql">
@@ -208,10 +272,10 @@
                     <p>Database normalization, Complex Joins, Triggers, and Stored Procedures.</p>
                 </div>
                 <div class="card-footer">
-        <a href="sql-labs.html" class="btn-view" style="text-decoration: none;">
-            View SQL Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+                    <a href="sql-labs.html" class="btn-view" style="text-decoration: none;">
+                        View SQL Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="lab-card card-web" data-lang="html css">
@@ -221,10 +285,10 @@
                     <p>Responsive Grid/Flexbox layouts, Form validations, and UI components.</p>
                 </div>
                 <div class="card-footer">
-        <a href="web-labs.html" class="btn-view" style="text-decoration: none;">
-            View HTML & CSS Labs <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
+                    <a href="web-labs.html" class="btn-view" style="text-decoration: none;">
+                        View HTML & CSS Labs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
