@@ -20,7 +20,7 @@
 
         /* SIDEBAR */
         .sidebar {
-            width: 300px;
+            width: 320px;
             background: var(--secondary);
             color: white;
             padding: 30px 20px;
@@ -28,6 +28,7 @@
             display: flex;
             flex-direction: column;
             border-right: 4px solid var(--primary);
+            flex-shrink: 0;
         }
 
         .sidebar h2 { font-size: 1.1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
@@ -136,9 +137,10 @@
             white-space: pre-wrap;
         }
 
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; }
+        @media (max-width: 900px) {
+            body { flex-direction: column; overflow: auto; height: auto; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 4px solid var(--primary); height: 400px; }
+            .main-content { overflow: visible; }
         }
     </style>
 </head>
@@ -146,12 +148,27 @@
 
     <aside class="sidebar">
         <h2>SQL Database Hub</h2>
-        <ul class="lab-list">
-            <li class="lab-item active" id="default-item" onclick="showCode('sql1')">01. Create Table (DDL)</li>
-            <li class="lab-item" onclick="showCode('sql2')">02. Insert Data (DML)</li>
-            <li class="lab-item" onclick="showCode('sql3')">03. Select & Filter (DQL)</li>
-            <li class="lab-item" onclick="showCode('sql4')">04. Update & Delete</li>
-            <li class="lab-item" onclick="showCode('sql5')">05. Primary & Foreign Keys</li>
+        <ul class="lab-list" id="labListMenu">
+            <li class="lab-item active" onclick="showCode('sql1', this)">01. Create Table (DDL)</li>
+            <li class="lab-item" onclick="showCode('sql2', this)">02. Insert Data (DML)</li>
+            <li class="lab-item" onclick="showCode('sql3', this)">03. Select & Filter (DQL)</li>
+            <li class="lab-item" onclick="showCode('sql4', this)">04. Update & Delete</li>
+            <li class="lab-item" onclick="showCode('sql5', this)">05. Primary & Foreign Keys</li>
+            <li class="lab-item" onclick="showCode('sql6', this)">06. Check & Unique Constraints</li>
+            <li class="lab-item" onclick="showCode('sql7', this)">07. Order By & Limit Sorting</li>
+            <li class="lab-item" onclick="showCode('sql8', this)">08. Aggregate Functions (COUNT, SUM)</li>
+            <li class="lab-item" onclick="showCode('sql9', this)">09. Group By Aggregation</li>
+            <li class="lab-item" onclick="showCode('sql10', this)">10. Having Filter Clause</li>
+            <li class="lab-item" onclick="showCode('sql11', this)">11. Inner Join Mappings</li>
+            <li class="lab-item" onclick="showCode('sql12', this)">12. Left Outer Join</li>
+            <li class="lab-item" onclick="showCode('sql13', this)">13. Right Outer Join</li>
+            <li class="lab-item" onclick="showCode('sql14', this)">14. Wildcard Filtering (LIKE)</li>
+            <li class="lab-item" onclick="showCode('sql15', this)">15. Subqueries & Nested SELECT</li>
+            <li class="lab-item" onclick="showCode('sql16', this)">16. Alter Table Architecture</li>
+            <li class="lab-item" onclick="showCode('sql17', this)">17. Drop vs Truncate Structures</li>
+            <li class="lab-item" onclick="showCode('sql18', this)">18. View Window Configurations</li>
+            <li class="lab-item" onclick="showCode('sql19', this)">19. Between & In Operators</li>
+            <li class="lab-item" onclick="showCode('sql20', this)">20. Distinct Value Queries</li>
         </ul>
 
         <div class="sidebar-footer">
@@ -188,60 +205,185 @@
             sql1: {
                 title: "Create Table (DDL)",
                 tag: "SQL PROGRAM 01",
-                code: `CREATE TABLE Students (\n    StudentID int PRIMARY KEY,\n    Name varchar(50),\n    Course varchar(20),\n    Age int\n);`,
+                code: `CREATE TABLE Students (\n    StudentID int PRIMARY KEY,\n    Name varchar(50) NOT NULL,\n    Course varchar(20),\n    Age int\n);`,
                 logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>DDL:</b> Data Definition Language is used to define the database structure.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Data Types:</b> 'int' is for numbers, 'varchar' is for text (variable character).</p></div>
-                    <div class="logic-step"><div class="step-num">3</div><p><b>Primary Key:</b> Ensures each student has a unique ID that cannot be null.</p></div>`
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DDL:</b> Data Definition Language constructs table blueprints inside the schema storage layer.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Data Types:</b> allocates numeric storage blocks using 'int' and dynamic characters string layouts via 'varchar'.</p></div>
+                    <div class="logic-step"><div class="step-num">3</div><p><b>Constraints:</b> 'PRIMARY KEY' explicitly forces values to be unique and checks for null inputs natively.</p></div>`
             },
             sql2: {
                 title: "Insert Data (DML)",
                 tag: "SQL PROGRAM 02",
-                code: `INSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (1, 'Rakesh', 'BCA', 33);\n\nINSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (2, 'Rashmi', 'MCA', 22);`,
+                code: `INSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (1, 'Rakesh', 'BCA', 21);\n\nINSERT INTO Students (StudentID, Name, Course, Age)\nVALUES (2, 'Rashmi', 'MCA', 22);`,
                 logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>DML:</b> Data Manipulation Language handles the actual records.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Mapping:</b> The order of values must match the order of column names specified.</p></div>`
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DML:</b> Data Manipulation Language inserts, modifies, or purges active tuple data records.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Tuple Mapping:</b> Explicit array indices matching values perfectly against target structural field columns.</p></div>`
             },
             sql3: {
                 title: "Select & Filter (DQL)",
                 tag: "SQL PROGRAM 03",
                 code: `-- Select all columns\nSELECT * FROM Students;\n\n-- Select specific columns with condition\nSELECT Name, Course FROM Students\nWHERE Age > 22;`,
                 logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Asterisk (*):</b> A wildcard representing "all columns" in the table.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>WHERE:</b> Filters the rows. Only students older than 22 will be displayed.</p></div>`
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Wildcard (*):</b> Evaluates database data schemas to extract all column configurations.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>WHERE Clause:</b> Sets conditional evaluation constraints to screen and filter dynamic records during projection operations.</p></div>`
             },
             sql4: {
                 title: "Update & Delete",
                 tag: "SQL PROGRAM 04",
-                code: `-- Update a record\nUPDATE Students\nSET Course = 'MCA Scholar'\nWHERE StudentID = 1;\n\n-- Delete a record\nDELETE FROM Students\nWHERE StudentID = 2;`,
+                code: `-- Update a record safely\nUPDATE Students\nSET Course = 'MCA Scholar'\nWHERE StudentID = 1;\n\n-- Delete a record safely\nDELETE FROM Students\nWHERE StudentID = 2;`,
                 logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>SET:</b> Specifies which column to change and what the new value is.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>CRITICAL:</b> Always use a WHERE clause with UPDATE/DELETE, or you will change the whole table!</p></div>`
+                    <div class="logic-step"><div class="step-num">1</div><p><b>SET Statement:</b> Re-allocates storage values inside the target record cells.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>CRITICAL RULE:</b> Always apply matching WHERE targets to isolate specific data scopes and avoid full table wipes.</p></div>`
             },
             sql5: {
                 title: "Primary & Foreign Keys",
                 tag: "SQL PROGRAM 05",
-                code: `-- Parent Table (Already Created Students)\n\n-- Child Table\nCREATE TABLE Fees (\n    FeeID int PRIMARY KEY,\n    Amount decimal(10,2),\n    StudentID int,\n    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)\n);`,
+                code: `CREATE TABLE Fees (\n    FeeID int PRIMARY KEY,\n    Amount decimal(10,2),\n    StudentID int,\n    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)\n);`,
                 logic: `
-                    <div class="logic-step"><div class="step-num">1</div><p><b>Relationship:</b> Foreign Keys link two tables together.</p></div>
-                    <div class="logic-step"><div class="step-num">2</div><p><b>Integrity:</b> This prevents adding a fee record for a student who doesn't exist in the main table.</p></div>`
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Foreign Key:</b> Maps pointer paths to construct data normalization connections between tables.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Referential Integrity:</b> Rejects orphaned key allocations by validating all child data against parent keys.</p></div>`
+            },
+            sql6: {
+                title: "Check & Unique Constraints",
+                tag: "SQL PROGRAM 06",
+                code: `CREATE TABLE Employees (\n    EmpID int PRIMARY KEY,\n    Email varchar(100) UNIQUE,\n    Age int CHECK (Age >= 18),\n    Status varchar(20) DEFAULT 'Active'\n);`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>UNIQUE Constraint:</b> Guarantees distinct data entries across specific columns without mapping primary keys.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>CHECK Expression:</b> Filters dynamic inputs against customized boolean constraints before saving data entries.</p></div>`
+            },
+            sql7: {
+                title: "Order By & Limit Sorting",
+                tag: "SQL PROGRAM 07",
+                code: `SELECT Name, Age FROM Students\nWHERE Course = 'BCA'\nORDER BY Age DESC\nLIMIT 5;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>ORDER BY:</b> Intercepts data rows to sort table records using ascending (ASC) or descending (DESC) logic paths.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>LIMIT / TOP:</b> Sets explicit query limits to constrain final payload rows for optimized performance.</p></div>`
+            },
+            sql8: {
+                title: "Aggregate Functions (COUNT, SUM)",
+                tag: "SQL PROGRAM 08",
+                code: `SELECT COUNT(StudentID) as TotalStudents,\n       SUM(Amount) as TotalRevenue,\n       AVG(Amount) as AverageFee\nFROM Fees;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Aggregation:</b> Performs mathematical processing loops across vertical column datasets to present summarized outputs.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Aliases (AS):</b> Maps clear column descriptor names to programmatic aggregate calculation headers.</p></div>`
+            },
+            sql9: {
+                title: "Group By Aggregation",
+                tag: "SQL PROGRAM 09",
+                code: `SELECT Course, COUNT(StudentID) as StudentCount,\n       AVG(Age) as AverageAge\nFROM Students\nGROUP BY Course;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>GROUP BY:</b> Groups non-aggregated matrix columns into logical categories before running aggregate processing sweeps.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Grouping Rule:</b> Every unaggregated item target inside the SELECT array must match your structural GROUP BY arguments.</p></div>`
+            },
+            sql10: {
+                title: "Having Filter Clause",
+                tag: "SQL PROGRAM 10",
+                code: `SELECT Course, COUNT(StudentID) as Total\nFROM Students\nGROUP BY Course\nHAVING COUNT(StudentID) > 10;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>HAVING Clause:</b> Screens post-aggregated calculations. Unlike WHERE, this filters aggregated results after sorting groups.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Pipeline Sequencing:</b> SQL runs the WHERE statement to filter rows first, constructs categories using GROUP BY, and finally applies HAVING filters.</p></div>`
+            },
+            sql11: {
+                title: "Inner Join Mappings",
+                tag: "SQL PROGRAM 11",
+                code: `SELECT Students.Name, Fees.Amount, Fees.FeeID\nFROM Students\nINNER JOIN Fees ON Students.StudentID = Fees.StudentID;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>INNER JOIN:</b> Combines tables by evaluating overlapping logic loops, returning rows only when keys match in both datasets.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>ON Predicate:</b> Specifies the matching key evaluation paths used to align relational parent and child tables.</p></div>`
+            },
+            sql12: {
+                title: "Left Outer Join",
+                tag: "SQL PROGRAM 12",
+                code: `SELECT Students.Name, Fees.Amount\nFROM Students\nLEFT JOIN Fees ON Students.StudentID = Fees.StudentID;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>LEFT JOIN:</b> Prioritizes the primary left dataset, pulling every record from it regardless of matches in the right table.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>NULL Padding:</b> Automatically maps non-matching cells in the right column array with empty NULL data values.</p></div>`
+            },
+            sql13: {
+                title: "Right Outer Join",
+                tag: "SQL PROGRAM 13",
+                code: `SELECT Students.Name, Fees.Amount\nFROM Students\nRIGHT JOIN Fees ON Students.StudentID = Fees.StudentID;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>RIGHT JOIN:</b> Reverses join priority, guaranteeing the extraction of all data records from the secondary right table mapping area.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Relational Sync:</b> Useful for identifying orphaned entries or tracking child metrics that lack parent structural references.</p></div>`
+            },
+            sql14: {
+                title: "Wildcard Filtering (LIKE)",
+                tag: "SQL PROGRAM 14",
+                code: `-- Matches names starting with 'R'\nSELECT * FROM Students WHERE Name LIKE 'R%';\n\n-- Matches names with 'a' in second position\nSELECT * FROM Students WHERE Name LIKE '_a%';`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Percent Wildcard (%):</b> Acts as a dynamic placeholder mapping to string streams of any length during evaluations.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Underscore (_):</b> Configures an exact single-character evaluation frame to isolate target positional strings.</p></div>`
+            },
+            sql15: {
+                title: "Subqueries & Nested SELECT",
+                tag: "SQL PROGRAM 15",
+                code: `SELECT Name, Age FROM Students\nWHERE StudentID IN (\n    SELECT StudentID FROM Fees \n    WHERE Amount > 5000\n);`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Subquery Isolation:</b> Runs internal nested queries first, outputting a data vector that the outer query uses as filter arguments.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>IN Predicate:</b> Compares target records against compiled array listings returned by nested internal evaluation routines.</p></div>`
+            },
+            sql16: {
+                title: "Alter Table Architecture",
+                tag: "SQL PROGRAM 16",
+                code: `-- Add new column\nALTER TABLE Students ADD Email varchar(100);\n\n-- Drop column\nALTER TABLE Students DROP COLUMN Age;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>ALTER Architecture:</b> Adjusts existing schema setups without needing to drop structural elements or clear current cell data entries.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Modifications:</b> Dynamically appends, modifies, or drops row fields while keeping storage layer states intact.</p></div>`
+            },
+            sql17: {
+                title: "Drop vs Truncate Structures",
+                tag: "SQL PROGRAM 17",
+                code: `-- Clear records keeping schema structural parameters\nTRUNCATE TABLE Logs;\n\n-- Total obliteration of object from schema storage layers\nDROP TABLE LegacyStudents;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>TRUNCATE:</b> Runs a fast, non-logged DDL command that purges all internal records while keeping the table structure intact.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>DROP:</b> Completely deletes both records and table schema indexes from the database engine dictionary.</p></div>`
+            },
+            sql18: {
+                title: "View Window Configurations",
+                tag: "SQL PROGRAM 18",
+                code: `CREATE VIEW ActiveGraduates AS\nSELECT StudentID, Name, Course \nFROM Students\nWHERE Age >= 21;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>Virtual View:</b> Saves a named select query inside the system schema as a logical pointer table instead of a physical storage volume.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Abstraction Layer:</b> Hides underlying relational joins and schemas behind simple, pre-filtered access views.</p></div>`
+            },
+            sql19: {
+                title: "Between & In Operators",
+                tag: "SQL PROGRAM 19",
+                code: `-- Range filtering\nSELECT * FROM Students WHERE Age BETWEEN 18 AND 24;\n\n-- Set matching\nSELECT * FROM Students WHERE Course IN ('BCA', 'MCA', 'B-Tech');`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>BETWEEN Range:</b> Evaluates data values within closed boundaries using an inclusive $(\ge \text{ and } \le)$ logic routine.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>IN Set Clause:</b> Cleans up complex queries by replacing messy chain sequences of OR constraints with a single clean evaluation list.</p></div>`
+            },
+            sql20: {
+                title: "Distinct Value Queries",
+                tag: "SQL PROGRAM 20",
+                code: `SELECT DISTINCT Course FROM Students;`,
+                logic: `
+                    <div class="logic-step"><div class="step-num">1</div><p><b>DISTINCT Keyword:</b> Identifies and deduplicates rows during processing sweeps, returning only unique instance entries.</p></div>
+                    <div class="logic-step"><div class="step-num">2</div><p><b>Optimization Rule:</b> Evaluates target field rows to eliminate matching duplicates before rendering output arrays.</p></div>`
             }
         };
 
-        function showCode(id) {
+        function showCode(id, element) {
+            // Update active menu items securely
             document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
+            if (element) {
+                element.classList.add('active');
             } else {
                 document.getElementById('default-item').classList.add('active');
             }
+            
+            // Re-render core component content nodes
             document.getElementById('prog-title').innerText = labData[id].title;
             document.querySelector('.tag').innerText = labData[id].tag;
             document.getElementById('code-block').innerText = labData[id].code;
             document.getElementById('logic-text').innerHTML = labData[id].logic;
         }
 
-        window.onload = function() { showCode('sql1'); };
+        window.onload = function() { 
+            showCode('sql1', document.getElementById('default-item')); 
+        };
 
         function copyCode() {
             const code = document.getElementById('code-block').innerText;
