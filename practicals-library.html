@@ -40,7 +40,15 @@
             background-size: 40px 40px; pointer-events: none;
         }
 
-        .hub-header h1 { font-size: 3rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.03em; color: var(--white); }
+        /* Fixed Title Wrapper: Allows headline to span in one single row line */
+        .header-title-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hub-header h1 { font-size: 3rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.03em; color: var(--white); white-space: nowrap; }
         .hub-header h1 span { color: var(--primary); text-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
         .hub-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
         
@@ -111,7 +119,7 @@
 
         .lab-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
-            background: #cbd5e1; /* Fallback default background */
+            background: #cbd5e1; 
             transition: var(--transition);
         }
 
@@ -192,7 +200,7 @@
 
         @media (max-width: 768px) {
             .hub-header { padding: 80px 16px 100px; }
-            .hub-header h1 { font-size: 2.2rem; }
+            .hub-header h1 { font-size: 1.8rem; white-space: normal; } /* Normal wrap safety for smaller smartphones */
             .container { margin-top: -30px; padding: 0 16px; }
             .lab-card { padding: 30px; }
         }
@@ -201,10 +209,12 @@
 <body>
 
     <header class="hub-header">
-        <div class="search-container">
+        <div class="header-title-container">
             <h1>Programming <span>Practical Hub</span></h1>
             <p>Verified source code and lab manuals for the WebNova community.</p>
-            
+        </div>
+        
+        <div class="search-container">
             <i class="fas fa-search"></i>
             <input type="text" id="hubSearch" placeholder="Search by language (e.g. Java, Python)..." onkeyup="filterHub()">
         </div>
