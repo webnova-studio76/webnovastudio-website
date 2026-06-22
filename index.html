@@ -9,6 +9,7 @@
 </head>
 <body class="js-enabled">
 
+    <!-- WEEKLY FLUID ALERT BLOCK -->
     <div class="weekly-alert" id="resourceAlert">
         <div class="alert-pulse"></div>
         <div class="alert-content">
@@ -21,6 +22,7 @@
         </button>
     </div>
         
+    <!-- SKEUOMORPHIC MASTER FIXED NAVIGATION (Logo Position Left) -->
     <header class="master-header">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -54,6 +56,7 @@
         </div>
     </header>
 
+    <!-- CYBER RADIAL HERO TIMELINE -->
     <section class="hero-animated">
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
@@ -73,6 +76,7 @@
         </div>
     </section>
 
+    <!-- CONTINUOUS LOGO MARQUEE & WIDGET TRACKS -->
     <div class="animation-container">
         <div class="marquee-wrapper">
             <div class="marquee-content">
@@ -84,6 +88,7 @@
                 <i class="fab fa-css3-alt"></i>
                 <i class="fab fa-java"></i>
                 <i class="fab fa-php"></i>
+                <!-- Loop Duplication Track -->
                 <i class="fab fa-react"></i>
                 <i class="fab fa-js"></i>
                 <i class="fab fa-python"></i>
@@ -101,6 +106,7 @@
         </div>
     </div>
 
+    <!-- SUB-BRAND STRUCTURE MATRIX SECTION -->
     <section class="branding-hub">
         <h2 class="studio-name">WebNova <span>Studio</span></h2>
         <div class="brand-flex">
@@ -120,6 +126,7 @@
         </div>
     </section>
 
+    <!-- CORE ABOUT TIMELINE BLOCKS -->
     <section class="about-section">
         <div class="about-header">
             <h2>About <span>WebNova Studio</span></h2>
@@ -154,6 +161,7 @@
         </div>
     </section>
 
+    <!-- NEO-GLASS DIGITAL ASSET VAULT DISPLAY CARD -->
     <section class="free-highlight">
         <div class="container">
             <div class="highlight-box">
@@ -183,6 +191,7 @@
         </div>
     </section>
 
+    <!-- ACADEMY INFRASTRUCTURE OVERVIEW CORE -->
     <section id="academy">
         <div class="container">
             <div class="academy-intro">
@@ -216,6 +225,7 @@
         </div>
     </section>
 
+    <!-- SYSTEM LOGIC MODAL POPUP OVERLAY -->
     <div id="logicModal" class="logic-overlay">
         <div class="logic-modal-card">
             <div class="logic-modal-header">
@@ -242,12 +252,13 @@
         </div>
     </div>
 
+    <!-- STICKY SIDE TELEGRAM ACTION ELEMENT -->
     <a href="https://t.me/CodeCraftAcademic" class="sticky-telegram" target="_blank"><i class="fab fa-telegram-plane"></i> Join Telegram</a>
 
     <script src="animations.js"></script>
     <script src="main.js"></script>
     <script>
-        // CLIENT SCOPE REVEAL SCRIPT INTERACTION LOGIC
+        // CLIENT BACKGROUND CANVAS CONSTELLATION SIMULATION ENGINE
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -277,7 +288,7 @@
         }
         init(); animate();
 
-        // SCROLL REVEAL BINDINGS MODULE
+        // INTERACTIVE ELEMENT SCROLL REVEAL BINDINGS
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.sub-brand-box, .about-card');
             reveals.forEach(el => {
@@ -286,13 +297,13 @@
             });
         });
 
-        // MENU INTERACTION ROUTINES
+        // RESPONSIVE BURGER BAR TOGGLE ROUTINES
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => { menuToggle.classList.remove('active'); navLinks.classList.remove('active'); }));
 
-        // MODAL CONFIGURATION ROUTINES
+        // STORAGE HANDSHAKE DIALOG ROUTINES
         window.onload = function() {
             if (!localStorage.getItem('hideLogicModal')) {
                 const overlay = document.getElementById('logicModal');
