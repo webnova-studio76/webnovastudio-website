@@ -73,8 +73,21 @@ header.master-header {
 }
 
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand-logo { height: 54px; width: auto; object-fit: contain; transition: var(--transition); }
-.logo:hover .brand-logo { transform: scale(1.08); filter: drop-shadow(0 0 8px var(--primary-glow)); }
+.brand-logo {
+    height: 54px;
+    width: 54px;               /* Force a clean 1:1 aspect ratio square */
+    object-fit: cover;
+    border-radius: 50%;        /* Mask out the white square corners completely into a perfect circle */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Add a premium cyber edge ring around the circular badge */
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.2); /* Give the logo a subtle native neon aura glow */
+    transition: var(--transition);
+}
+
+.logo:hover .brand-logo {
+    transform: scale(1.06);
+    border-color: var(--primary); /* Glow ring turns vibrant blue on hover */
+    box-shadow: 0 0 20px var(--primary-glow);
+}
 
 .logo-text { font-size: 1.4rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; white-space: nowrap; display: flex; gap: 6px; }
 .logo-text span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
