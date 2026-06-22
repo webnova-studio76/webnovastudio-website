@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* ==========================================================================
-           1. CORE VARIANT DICTIONARY & HIGH-END OVERRIDES
+           1. CORE VARIANT DICTIONARY & ULTRA-PREMIUM OVERRIDES
            ========================================================================== */
         :root {
             --primary: #2563eb;        /* WebNova Royal Blue */
@@ -21,10 +21,12 @@
             --text-main: #f1f5f9;      /* Off-White Crisp Typography */
             --text-muted: #94a3b8;     /* Muted Cool Gray Details */
             --border: rgba(255, 255, 255, 0.05);
+            --card-radius: 24px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Inertial physics curve */
             
             /* Skeuomorphic Real-World Depth Shadow Blueprints */
             --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 10px 20px -5px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -85,32 +87,52 @@
         .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
 
         /* ==========================================================================
-           4. MACRO-DOCK MODULE SYLLABUS GRID
+           4. UPGRADED MACRO-DECK INDEX SYLLABUS GRID
            ========================================================================== */
         .module-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
         }
 
         .module-card {
             background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
-            border: 1px solid var(--border); padding: 35px; border-radius: var(--card-radius);
+            border: 1px solid var(--border); padding: 30px; border-radius: var(--card-radius);
             box-shadow: var(--tactile-shadow); display: flex; flex-direction: column;
-            transition: var(--transition); position: relative;
+            transition: var(--transition); position: relative; overflow: hidden;
         }
-        .module-card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(37, 99, 235, 0.3); box-shadow: var(--hover-shadow); }
+        .module-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(37, 99, 235, 0.3); box-shadow: var(--hover-shadow); }
 
-        .mod-header { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
-        .mod-pill { background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 4px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .module-card h3 { font-size: 1.35rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em; }
+        /* Modernized Dual Horizontal Layout Container */
+        .mod-identity-block { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
         
-        .module-card ul { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .module-card li { margin-bottom: 12px; font-size: 0.92rem; color: var(--text-muted); padding-left: 20px; position: relative; font-weight: 500; }
-        .module-card li::before { content: "\f105"; font-family: "Font Awesome 5 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; }
+        .mod-thumb-deck {
+            width: 54px; height: 54px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
+            border: 1px solid var(--border); border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; color: var(--primary); flex-shrink: 0;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        .module-card:hover .mod-thumb-deck {
+            background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+            border-color: #1d4ed8; color: var(--white); transform: scale(1.05);
+            box-shadow: 0 8px 20px -4px var(--primary-glow);
+        }
 
-        .download-btns { display: flex; gap: 10px; }
-        .btn-dl { flex: 1; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; }
-        .btn-dl.pdf { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #f87171; }
-        .btn-dl.pdf:hover { background: #ef4444; color: var(--white); border-color: #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
+        .mod-header-text { display: flex; flex-direction: column; gap: 2px; }
+        .mod-pill { font-size: 0.65rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .module-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em; }
+        
+        .module-card ul { list-style: none; margin-bottom: 25px; flex-grow: 1; }
+        .module-card li { margin-bottom: 12px; font-size: 0.92rem; color: var(--text-muted); padding-left: 24px; position: relative; font-weight: 500; transition: var(--transition); }
+        .module-card li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; position: absolute; left: 0; color: rgba(16, 185, 129, 0.4); font-weight: 900; font-size: 0.8rem; transition: var(--transition); }
+        .module-card:hover li { color: rgba(255,255,255,0.85); }
+        .module-card:hover li::before { color: var(--success); filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.4)); }
+
+        .download-btns { display: flex; border-top: 1px solid var(--border); padding-top: 20px; }
+        .btn-dl { flex: 1; text-align: center; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; }
+        .btn-dl.pdf { background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.15); color: #60a5fa; }
+        .btn-dl.pdf:hover { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 6px 15px var(--primary-glow); }
 
         /* ==========================================================================
            5. LOWER METRIC SUMMARY & CORPORATE CTA CARD
@@ -146,6 +168,7 @@
             .filter-btns { justify-content: stretch; }
             .filter-btn { flex: 1; text-align: center; padding: 10px; }
             .course-header h1 { font-size: 2.2rem; }
+            .module-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -178,9 +201,12 @@
     <div class="module-grid" id="moduleGrid">
         
         <div class="module-card" data-category="software">
-            <div class="mod-header">
-                <span class="mod-pill">Module 01</span>
-                <h3>Intro & History</h3>
+            <div class="mod-identity-block">
+                <div class="mod-thumb-deck"><i class="fas fa-history"></i></div>
+                <div class="mod-header-text">
+                    <span class="mod-pill">Module 01</span>
+                    <h3>Intro & History</h3>
+                </div>
             </div>
             <ul>
                 <li>Evolution of Computers</li>
@@ -188,14 +214,17 @@
                 <li>Digital Characteristics</li>
             </ul>
             <div class="download-btns">
-                <a href="FC module 1.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
+                <a href="FC module 1.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read Syllabus</a>
             </div>
         </div>
 
         <div class="module-card" data-category="hardware">
-            <div class="mod-header">
-                <span class="mod-pill">Module 02</span>
-                <h3>Architecture</h3>
+            <div class="mod-identity-block">
+                <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
+                <div class="mod-header-text">
+                    <span class="mod-pill">Module 02</span>
+                    <h3>Architecture</h3>
+                </div>
             </div>
             <ul>
                 <li>CPU & ALU Logic</li>
@@ -203,14 +232,17 @@
                 <li>Input/Output Interaction</li>
             </ul>
             <div class="download-btns">
-                <a href="FC module 2.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
+                <a href="FC module 2.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read Syllabus</a>
             </div>
         </div>
 
         <div class="module-card" data-category="software">
-            <div class="mod-header">
-                <span class="mod-pill">Module 03</span>
-                <h3>Software & OS</h3>
+            <div class="mod-identity-block">
+                <div class="mod-thumb-deck"><i class="fas fa-compact-disc"></i></div>
+                <div class="mod-header-text">
+                    <span class="mod-pill">Module 03</span>
+                    <h3>Software & OS</h3>
+                </div>
             </div>
             <ul>
                 <li>System vs Application Software</li>
@@ -218,14 +250,17 @@
                 <li>BIOS & Booting Process</li>
             </ul>
             <div class="download-btns">
-                <a href="FC module 3.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
+                <a href="FC module 3.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read Syllabus</a>
             </div>
         </div>
 
         <div class="module-card" data-category="network">
-            <div class="mod-header">
-                <span class="mod-pill">Module 04</span>
-                <h3>Networking Basics</h3>
+            <div class="mod-identity-block">
+                <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
+                <div class="mod-header-text">
+                    <span class="mod-pill">Module 04</span>
+                    <h3>Networking Basics</h3>
+                </div>
             </div>
             <ul>
                 <li>LAN, WAN, MAN, PAN</li>
@@ -233,14 +268,17 @@
                 <li>IP, DNS, & HTTP Protocols</li>
             </ul>
             <div class="download-btns">
-                <a href="FC module 4.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
+                <a href="FC module 4.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read Syllabus</a>
             </div>
         </div>
 
         <div class="module-card" data-category="network">
-            <div class="mod-header">
-                <span class="mod-pill">Module 05</span>
-                <h3>Cybersecurity & AI</h3>
+            <div class="mod-identity-block">
+                <div class="mod-thumb-deck"><i class="fas fa-user-shield"></i></div>
+                <div class="mod-header-text">
+                    <span class="mod-pill">Module 05</span>
+                    <h3>Cybersecurity & AI</h3>
+                </div>
             </div>
             <ul>
                 <li>Malware & Virus Defense</li>
@@ -248,7 +286,7 @@
                 <li>AI & Digital Privacy</li>
             </ul>
             <div class="download-btns">
-                <a href="FC module 5.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
+                <a href="FC module 5.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read Syllabus</a>
             </div>
         </div>
     </div>
