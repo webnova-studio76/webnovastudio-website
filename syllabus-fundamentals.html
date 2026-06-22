@@ -7,163 +7,145 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ==========================================================================
+           1. CORE VARIANT DICTIONARY & HIGH-END OVERRIDES
+           ========================================================================== */
         :root {
-            --primary: #2563eb;
-            --secondary: #0f172a;
-            --bg: #f8fafc;
+            --primary: #2563eb;        /* WebNova Royal Blue */
+            --primary-glow: rgba(37, 99, 235, 0.25);
+            --secondary: #090d16;      /* Deep Space Dark Matte */
+            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
+            --bg: #030712;             /* True Obsidian Background Canvas */
+            --accent: #f59e0b;         /* Amber Gold */
             --white: #ffffff;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --text-main: #f1f5f9;      /* Off-White Crisp Typography */
+            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
+            --border: rgba(255, 255, 255, 0.05);
+            
+            /* Skeuomorphic Real-World Depth Shadow Blueprints */
+            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* 1. Animated Header */
+        /* ==========================================================================
+           2. GLOSSY CYBER HERO CURRICULUM HEADER
+           ========================================================================== */
         .course-header {
             position: relative;
-            background: var(--secondary);
-            color: white;
             padding: 100px 0;
             text-align: center;
             overflow: hidden;
+            background: radial-gradient(circle at center, var(--secondary) 0%, var(--bg) 100%);
+            border-bottom: 1px solid var(--border);
         }
 
         #header-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.4;
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.3; z-index: 1; pointer-events: none;
         }
 
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
+        .header-content { position: relative; z-index: 2; }
+        .breadcrumb { font-size: 0.8rem; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+        .breadcrumb a:hover { color: var(--white); }
+        .course-header h1 { font-size: 3rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--white); }
+        .course-header h1 span { color: var(--primary); text-shadow: 0 0 25px var(--primary-glow); }
+        .course-header p { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
 
-        .breadcrumb { font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8; }
-        .breadcrumb a { color: white; text-decoration: none; }
-        .course-header h1 { font-size: 3rem; margin-bottom: 10px; }
-        .course-header h1 span { color: var(--primary); }
-
-        /* 2. Search & Filter Section */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
+        /* ==========================================================================
+           3. TACTILE SEARCH & FILTER CONTROL TRAY
+           ========================================================================== */
         .filter-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            margin: 40px 0;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 20px; margin: 50px 0 35px; flex-wrap: wrap;
+            background: rgba(17, 24, 39, 0.6); border: 1px solid var(--border);
+            padding: 14px 20px; border-radius: 24px; box-shadow: var(--tactile-shadow);
         }
 
-        .search-box {
-            position: relative;
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .search-box { position: relative; flex: 1; min-width: 300px; }
+        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
         .search-box input {
-            width: 100%;
-            padding: 14px 15px 14px 45px;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            outline: none;
-            transition: 0.3s;
+            width: 100%; padding: 14px 20px 14px 52px; border-radius: 14px;
+            border: 1px solid var(--border); background: var(--bg); outline: none;
+            color: var(--white); font-weight: 500; font-size: 0.95rem; transition: var(--transition);
         }
+        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
-        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
-
-        .filter-btns { display: flex; gap: 10px; }
+        .filter-btns { display: flex; gap: 10px; flex-wrap: wrap; }
         .filter-btn {
-            padding: 10px 20px;
-            border: none;
-            background: var(--white);
-            color: var(--text-muted);
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            border: 1px solid var(--border);
+            padding: 12px 24px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02); color: var(--text-muted);
+            border-radius: 12px; cursor: pointer; font-weight: 700;
+            font-size: 0.88rem; transition: var(--transition);
         }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
 
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
-
-        /* 3. Module Grid */
+        /* ==========================================================================
+           4. MACRO-DOCK MODULE SYLLABUS GRID
+           ========================================================================== */
         .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px;
         }
 
         .module-card {
-            background: var(--white);
-            border-top: 5px solid var(--primary);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            transition: 0.3s ease;
+            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            border: 1px solid var(--border); padding: 35px; border-radius: var(--card-radius);
+            box-shadow: var(--tactile-shadow); display: flex; flex-direction: column;
+            transition: var(--transition); position: relative;
         }
+        .module-card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(37, 99, 235, 0.3); box-shadow: var(--hover-shadow); }
 
-        .module-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
-        .mod-pill { background: #e0e7ff; color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; }
-        .module-card h3 { margin: 15px 0; font-size: 1.3rem; color: var(--secondary); }
+        .mod-header { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
+        .mod-pill { background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); color: #60a5fa; padding: 4px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .module-card h3 { font-size: 1.35rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em; }
         
-        .module-card ul { list-style: none; margin-bottom: 25px; flex-grow: 1; }
-        .module-card li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); padding-left: 20px; position: relative; }
-        .module-card li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+        .module-card ul { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .module-card li { margin-bottom: 12px; font-size: 0.92rem; color: var(--text-muted); padding-left: 20px; position: relative; font-weight: 500; }
+        .module-card li::before { content: "\f105"; font-family: "Font Awesome 5 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; }
 
         .download-btns { display: flex; gap: 10px; }
-        .btn-dl { flex: 1; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-dl.pdf { background: #fee2e2; color: #ef4444; }
-        .btn-dl.ppt { background: #ffedd5; color: #f97316; }
+        .btn-dl { flex: 1; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; }
+        .btn-dl.pdf { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #f87171; }
+        .btn-dl.pdf:hover { background: #ef4444; color: var(--white); border-color: #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
 
-        /* 4. Bottom Centered Section */
+        /* ==========================================================================
+           5. LOWER METRIC SUMMARY & CORPORATE CTA CARD
+           ========================================================================== */
         .syllabus-footer { margin-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
 
         .resource-summary {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            background: white;
-            padding: 25px 50px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            width: 100%;
+            display: flex; justify-content: space-around; align-items: center;
+            gap: 20px; background: var(--card-surface); padding: 30px 40px;
+            border-radius: 24px; border: 1px solid var(--border); width: 100%; box-shadow: var(--tactile-shadow);
         }
 
         .summary-item { display: flex; align-items: center; gap: 15px; }
-        .summary-item i { font-size: 1.5rem; color: var(--primary); }
-        .summary-item span { display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
-        .summary-item strong { color: var(--secondary); }
+        .summary-item i { font-size: 1.4rem; color: var(--primary); filter: drop-shadow(0 0 8px var(--primary-glow)); }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+        .summary-item strong { color: var(--white); font-size: 1.05rem; font-weight: 800; }
 
         .webnova-bottom-card {
-            background: var(--secondary);
-            color: white;
-            padding: 50px;
-            border-radius: 25px;
-            text-align: center;
-            width: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, var(--secondary) 0%, #030712 100%);
+            color: var(--white); padding: 60px 40px; border-radius: 28px; text-align: center;
+            width: 100%; border: 1px solid var(--border); box-shadow: var(--tactile-shadow);
         }
 
-        .webnova-bottom-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .webnova-bottom-card p { color: #94a3b8; max-width: 600px; margin: 0 auto 30px; }
-        .btn-cta { background: var(--primary); color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block; }
-        .btn-cta:hover { transform: scale(1.05); background: #1d4ed8; }
+        .webnova-bottom-card h3 { font-size: 2rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .webnova-bottom-card p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-weight: 500; font-size: 1.05rem; }
+        .btn-cta { background: var(--primary); color: var(--white); padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: var(--transition); display: inline-block; box-shadow: 0 4px 14px var(--primary-glow); }
+        .btn-cta:hover { transform: translateY(-2px); background: #1d4ed8; box-shadow: 0 8px 22px var(--primary-glow); }
 
         @media (max-width: 768px) {
-            .resource-summary { flex-direction: column; gap: 20px; }
-            .filter-wrapper { flex-direction: column; }
+            .resource-summary { flex-direction: column; align-items: flex-start; gap: 24px; padding: 30px; }
+            .filter-wrapper { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 15px; }
+            .filter-btns { justify-content: stretch; }
+            .filter-btn { flex: 1; text-align: center; padding: 10px; }
+            .course-header h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -179,20 +161,22 @@
 </header>
 
 <div class="container">
+    
     <div class="filter-wrapper">
         <div class="search-box">
             <i class="fas fa-search"></i>
             <input type="text" id="moduleSearch" placeholder="Search modules..." onkeyup="filterModules()">
         </div>
         <div class="filter-btns">
-    <button class="filter-btn active" onclick="filterCategory('all')">All</button>
-    <button class="filter-btn" onclick="filterCategory('hardware')">Hardware</button>
-    <button class="filter-btn" onclick="filterCategory('software')">Software</button>
-    <button class="filter-btn" onclick="filterCategory('network')">Network</button>
-</div>
+            <button class="filter-btn active" onclick="filterCategory(this, 'all')">All</button>
+            <button class="filter-btn" onclick="filterCategory(this, 'hardware')">Hardware</button>
+            <button class="filter-btn" onclick="filterCategory(this, 'software')">Software</button>
+            <button class="filter-btn" onclick="filterCategory(this, 'network')">Network</button>
+        </div>
     </div>
 
     <div class="module-grid" id="moduleGrid">
+        
         <div class="module-card" data-category="software">
             <div class="mod-header">
                 <span class="mod-pill">Module 01</span>
@@ -220,7 +204,6 @@
             </ul>
             <div class="download-btns">
                 <a href="FC module 2.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
-                <!--<a href="#" class="btn-dl ppt"><i class="fas fa-file-powerpoint"></i> PPT Coming Soon</a>-->
             </div>
         </div>
 
@@ -251,7 +234,6 @@
             </ul>
             <div class="download-btns">
                 <a href="FC module 4.html" class="btn-dl pdf"><i class="fas fa-file-pdf"></i>Read More</a>
-                <!--<a href="#" class="btn-dl ppt"><i class="fas fa-file-powerpoint"></i>Coming Soon</a>-->
             </div>
         </div>
 
@@ -279,7 +261,7 @@
             </div>
             <div class="summary-item">
                 <i class="fas fa-file-alt"></i>
-                <div><span>Formats</span><strong>PDF & PPT</strong></div>
+                <div><span>Formats</span><strong>PDF Notes</strong></div>
             </div>
             <div class="summary-item">
                 <i class="fas fa-certificate"></i>
@@ -293,71 +275,55 @@
             <a href="contact.html" class="btn-cta">Hire WebNova Studio</a>
         </div>
     </div>
+</div>
+
 <script>
+    // NETWORKING BACKGROUND CONSTELLATION MESH
     const canvas = document.getElementById('header-canvas');
     const ctx = canvas.getContext('2d');
+    function setCanvasSize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+    window.addEventListener('resize', setCanvasSize); setCanvasSize();
 
-    // Ensure canvas matches the header size perfectly
-    function setCanvasSize() {
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
-    }
-    window.addEventListener('resize', setCanvasSize);
-    setCanvasSize();
-
-    let dots = [];
-    const dotCount = 100; // Total number of dots
-    const connectionDistance = 80; // Increased distance so lines show up easier
-
+    let dots = []; const dotCount = 45; const connectionDistance = 85;
     for(let i=0; i < dotCount; i++) {
-        dots.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.8,
-            vy: (Math.random() - 0.5) * 0.8
-        });
+        dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 });
     }
-
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
         dots.forEach((d, i) => {
-            // Move dots
-            d.x += d.vx;
-            d.y += d.vy;
-
-            // Bounce off walls
-            if(d.x < 0 || d.x > canvas.width) d.vx *= -1;
-            if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
-
-            // Draw the Dot
-            ctx.beginPath();
-            ctx.arc(d.x, d.y, 2.5, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
-            ctx.fill();
-
-            // Draw the Lines
+            d.x += d.vx; d.y += d.vy;
+            if(d.x < 0 || d.x > canvas.width) d.vx *= -1; if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
             for(let j = i + 1; j < dots.length; j++) {
-                const d2 = dots[j];
-                const dx = d.x - d2.x;
-                const dy = d.y - d2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
+                const d2 = dots[j]; const dist = Math.hypot(d.x - d2.x, d.y - d2.y);
                 if(dist < connectionDistance) {
-                    ctx.beginPath();
-                    // This makes lines brighter as they get closer
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / connectionDistance})`; 
-                    ctx.lineWidth = 1; // Increased line width
-                    ctx.moveTo(d.x, d.y);
-                    ctx.lineTo(d2.x, d2.y);
-                    ctx.stroke();
+                    ctx.beginPath(); ctx.strokeStyle = `rgba(37, 99, 235, ${0.2 * (1 - dist / connectionDistance)})`;
+                    ctx.lineWidth = 1; ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
                 }
             }
         });
         requestAnimationFrame(animate);
     }
     animate();
+
+    // LIVE RUNTIME FILTER AND SEARCH SYSTEMS
+    function filterModules() {
+        const query = document.getElementById('moduleSearch').value.toLowerCase();
+        document.querySelectorAll('.module-card').forEach(card => {
+            const h3 = card.querySelector('h3').innerText.toLowerCase();
+            const text = card.querySelector('ul').innerText.toLowerCase();
+            card.style.display = (h3.includes(query) || text.includes(query)) ? 'flex' : 'none';
+        });
+    }
+
+    function filterCategory(btn, category) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        if(btn) btn.classList.add('active');
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+        });
+    }
 </script>
+
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="animations.js"></script>
