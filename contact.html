@@ -237,9 +237,9 @@
             <div class="success-icon" style="font-size: 3.5rem; color: var(--success); margin-bottom: 15px;">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h2>Message Received!</h2>
-            <p>Your request has been piped directly to <strong>Rakesh's</strong> terminal. Expect an immediate dispatch execution trace.</p>
-            <button onclick="closeSuccessModal()" class="btn-primary">Great!</button>
+            <h2>Email Composer Ready!</h2>
+            <p>Your request configuration metrics have been generated. Click below if your system email client did not automatically launch.</p>
+            <button onclick="closeSuccessModal()" class="btn-primary">Got it!</button>
         </div>
     </div>
 
@@ -252,10 +252,6 @@
             if (modal) { modal.style.display = 'none'; }
         }
 
-        // TELEGRAM BOT DISPATCH PARAMS
-        const BOT_TOKEN = "8603246194:AAEFDw2y3hH3NihearnGsRHyJ-qykRbqU1s";
-        const RAKESH_ID = "6091162254"; 
-
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -263,29 +259,30 @@
             const service = document.getElementById('contactService').value;
             const message = document.getElementById('contactMessage').value;
 
-            // Markdown payload generation
-            const telegramText = `💼 *NEW BUSINESS INQUIRY* %0A%0A` +
-                                 `👤 *Client:* ${name} %0A` +
-                                 `🛠️ *Service:* ${service} %0A` +
-                                 `💬 *Message:* ${message}`;
+            // Target Email Destination Blueprint
+            const targetEmail = "dev.webnovastudio@gmail.com";
+            
+            // Format parameters for system email composition
+            const subject = encodeURIComponent(`💼 WebNova Lead - ${name} (${service})`);
+            const body = encodeURIComponent(
+                `NEW BUSINESS INQUIRY\n\n` +
+                `Client Name: ${name}\n` +
+                `Service Required: ${service}\n\n` +
+                `Message / Scope Details:\n${message}`
+            );
 
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${RAKESH_ID}&text=${telegramText}&parse_mode=Markdown`;
+            // Execute client mailto dispatch trace
+            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
 
-            fetch(url)
-            .then(res => {
-                if(res.ok) {
-                    // Reset inputs
-                    document.getElementById('contactForm').reset(); 
-                    
-                    // Show confirmation matrix modal
-                    const modal = document.getElementById('successModal');
-                    if(modal) { modal.style.display = 'flex'; }
-                    
-                    // Automate window cleanup trace after 5000ms
-                    setTimeout(() => { closeSuccessModal(); }, 5000);
-                }
-            })
-            .catch(err => console.error("Error sending to Telegram API layer:", err));
+            // Launch status modal feedback overlay
+            const modal = document.getElementById('successModal');
+            if(modal) { modal.style.display = 'flex'; }
+            
+            // Reset fields
+            document.getElementById('contactForm').reset(); 
+            
+            // Automatic structural view-cleanup
+            setTimeout(() => { closeSuccessModal(); }, 6000);
         });
     </script>
 </body>
