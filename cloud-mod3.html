@@ -7,72 +7,155 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ==========================================================================
+           1. CORE CYBER PALETTE VARIABLE DICTIONARY & ANTI-BLUR OVERRIDES
+           ========================================================================== */
         :root {
-            --primary: #0ea5e9; 
-            --secondary: #0f172a;
-            --accent: #f59e0b;
-            --bg: #f0f9ff;
+            --primary: #0ea5e9;        /* Cloud Sky Blue */
+            --primary-glow: rgba(14, 165, 233, 0.25);
+            --secondary: #090d16;      /* Deep Space Dark Matte */
+            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
+            --bg: #030712;             /* True Obsidian Background Canvas */
             --white: #ffffff;
-            --text: #334155;
-            --border: #bae6fd;
+            --text-main: #cbd5e1;      /* Anti-Halation Cool Off-White Text */
+            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
+            --border: rgba(255, 255, 255, 0.05);
+            --accent: #f59e0b;         /* Amber Gold Accent */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Skeuomorphic Depth Shadows */
+            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 22px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 10; }
 
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-
+        /* ==========================================================================
+           2. SKEUOMORPHIC CLOUD HERO SEGMENT
+           ========================================================================== */
         .notes-header { 
             text-align: center; 
             margin-bottom: 40px; 
-            padding: 40px; 
-            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
-            color: white; 
-            border-radius: 20px;
+            padding: 50px 40px; 
+            background: linear-gradient(135deg, var(--card-surface) 0%, var(--secondary) 100%); 
+            color: var(--white); 
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
         }
+        .notes-header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--white); }
+        .notes-header p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; }
 
+        /* ==========================================================================
+           3. ACCENTUATED TAB NAVIGATION DOCK
+           ========================================================================== */
         .tabs-nav {
-            display: flex; gap: 10px; background: #e0f2fe; padding: 8px;
-            border-radius: 15px; margin-bottom: 30px; align-items: center; overflow-x: auto;
+            display: flex;
+            gap: 10px;
+            background: rgba(17, 24, 39, 0.6);
+            padding: 8px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            align-items: center;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
+            overflow-x: auto;
         }
 
         .tab-btn {
-            flex: 1; padding: 12px 15px; border: none; background: none; cursor: pointer;
-            font-weight: 600; color: var(--secondary); border-radius: 10px; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
-            text-decoration: none; white-space: nowrap;
+            flex: 1;
+            padding: 14px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-radius: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            white-space: nowrap;
         }
+        .tab-btn:hover { color: var(--white); background: rgba(255, 255, 255, 0.02); }
+        .tab-btn.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 14px var(--primary-glow); }
 
-        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        /* Glowing Green Download Trigger */
+        .tab-download {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34d399 !important;
+            text-decoration: none !important;
+        }
+        .tab-download:hover { background: #10b981; color: var(--white) !important; border-color: #10b981; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4); transform: translateY(-1px); }
 
-        .tab-download { background: #10b981; color: white !important; text-decoration: none !important; }
-
+        /* ==========================================================================
+           4. FROSTED GLASS CONSOLE CONTENT MODULES
+           ========================================================================== */
         .tab-content {
-            background: var(--white); padding: 40px; border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1); display: none;
+            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: var(--tactile-shadow);
+            border: 1px solid var(--border);
+            display: none;
         }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
-        h3 { margin: 25px 0 10px; color: var(--primary); }
+        h2 { color: var(--white); font-weight: 900; font-size: 1.8rem; letter-spacing: -0.01em; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); font-weight: 800; }
+        p { color: var(--text-muted); font-size: 1.02rem; margin-bottom: 25px; font-weight: 500; letter-spacing: 0.015em; }
 
-        .storage-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        .storage-table th, .storage-table td { padding: 15px; border: 1px solid var(--border); text-align: left; }
-        .storage-table th { background: #f8fafc; color: var(--primary); }
+        /* Nested children strict targets */
+        .tab-content ul { margin-bottom: 20px; list-style: none; }
+        .tab-content li { margin-bottom: 14px; padding-left: 28px; position: relative; color: var(--text-muted); font-weight: 500; transition: var(--transition); letter-spacing: 0.015em; }
+        .tab-content li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary); font-size: 0.95rem; filter: drop-shadow(0 0 4px var(--primary-glow)); }
+        .tab-content:hover li { color: rgba(255, 255, 255, 0.85); }
+        .tab-content strong { color: var(--white); font-weight: 700; }
 
+        /* Premium Dark Storage Grid Table Matrices */
+        .storage-table { width: 100%; border-collapse: collapse; margin: 25px 0 10px; box-shadow: var(--tactile-shadow); }
+        .storage-table th, .storage-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .storage-table th { background: #0c101b; color: var(--white); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75rem; }
+        .storage-table td { color: var(--text-muted); font-weight: 500; }
+        .storage-table tr:hover td { color: var(--white); background: rgba(255,255,255,0.01); }
+
+        /* High-Gloss Alert callout */
         .pro-tip {
-            background: #fffbeb; border-left: 5px solid var(--accent);
-            padding: 20px; margin: 20px 0; border-radius: 0 10px 10px 0;
+            background: rgba(245, 158, 11, 0.04);
+            border-left: 5px solid var(--accent);
+            padding: 24px;
+            margin: 35px 0 10px;
+            border-radius: 0 16px 16px 0;
+            border-top: 1px solid rgba(245,158,11,0.1);
+            border-right: 1px solid rgba(245,158,11,0.1);
+            border-bottom: 1px solid rgba(245,158,11,0.1);
         }
+        .pro-tip strong { color: #fbbf24; font-weight: 800; font-size: 1.05rem; display: block; margin-bottom: 6px; }
 
-        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+        @media (max-width: 768px) { 
+            .tabs-nav { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 12px; } 
+            .tab-btn { padding: 12px; }
+            .tab-content { padding: 25px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    
     <div class="notes-header">
         <h1>Cloud Module 03: Storage & Networking</h1>
         <p>Mastering how data is persisted and how traffic flows through the global cloud fabric.</p>
@@ -82,10 +165,7 @@
         <button class="tab-btn active" onclick="openTab(event, 'storage')"><i class="fas fa-hdd"></i> Cloud Storage</button>
         <button class="tab-btn" onclick="openTab(event, 'vpc')"><i class="fas fa-network-wired"></i> VPC & Subnets</button>
         <button class="tab-btn" onclick="openTab(event, 'traffic')"><i class="fas fa-project-diagram"></i> CDN & Balancing</button>
-        
-        <a href="downloads/cloud-module3.pdf" class="tab-btn tab-download" download>
-            <i class="fas fa-file-pdf"></i>PDF Coming Soon
-        </a>
+        <a href="downloads/cloud-module3.pdf" class="tab-btn tab-download" download><i class="fas fa-file-pdf"></i> PDF Coming Soon</a>
     </div>
 
     <div id="storage" class="tab-content active">
@@ -95,26 +175,30 @@
         
 
         <table class="storage-table">
-            <tr>
-                <th>Feature</th>
-                <th>Object Storage (S3 / Blob)</th>
-                <th>Block Storage (EBS / Managed Disk)</th>
-            </tr>
-            <tr>
-                <td><strong>Best For</strong></td>
-                <td>Photos, Videos, Static Files, Backups</td>
-                <td>Operating Systems, Databases (high I/O)</td>
-            </tr>
-            <tr>
-                <td><strong>Access</strong></td>
-                <td>Via HTTP/API (Web)</td>
-                <td>Attached directly to a VM</td>
-            </tr>
-            <tr>
-                <td><strong>Scaling</strong></td>
-                <td>Virtually Infinite</td>
-                <td>Limited to the size of the volume</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Object Storage (S3 / Blob)</th>
+                    <th>Block Storage (EBS / Managed Disk)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Best For</strong></td>
+                    <td>Photos, Videos, Static Files, Backups</td>
+                    <td>Operating Systems, Databases (high I/O)</td>
+                </tr>
+                <tr>
+                    <td><strong>Access</strong></td>
+                    <td>Via HTTP/API (Web)</td>
+                    <td>Attached directly to a VM</td>
+                </tr>
+                <tr>
+                    <td><strong>Scaling</strong></td>
+                    <td>Virtually Infinite</td>
+                    <td>Limited to the size of the volume</td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="pro-tip">
@@ -147,9 +231,11 @@
         <h3>1. Content Delivery Networks (CDN)</h3>
         <p>A CDN (like AWS CloudFront) caches your content in "Edge Locations" around the world. If a user in India visits your US-based site, they get the images from a server in India, making it much faster.</p>
         
+        
 
         <h3>2. Load Balancing</h3>
         <p>A Load Balancer acts as a "traffic cop." It distributes incoming web requests across multiple servers so that no single server gets overwhelmed.</p>
+        
         
 
         <div class="pro-tip">
@@ -159,6 +245,7 @@
 </div>
 
 <script>
+    // CORE SYSTEM RUNTIME TAB ENGINE
     function openTab(evt, tabName) {
         var i, tabContent, tabBtns;
         tabContent = document.getElementsByClassName("tab-content");
@@ -173,6 +260,7 @@
         evt.currentTarget.classList.add("active");
     }
 </script>
+
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="animations.js"></script>
