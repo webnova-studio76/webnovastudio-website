@@ -550,3 +550,34 @@ header.master-header {
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   ANTI-BLUR ACCEPTS & ANTI-HALATION TYPOGRAPHY TRICKS
+   ========================================================================== */
+body {
+    /* 1. Sharpen font subpixel rendering for WebKit and Firefox browsers */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+p, li, td {
+    /* 2. Drop pure white (#fff) to an off-white/cool gray tint to reduce light bleed */
+    color: #cbd5e1 !important; 
+    
+    /* 3. Drop font weight slightly so letters have more breathing room */
+    font-weight: 400 !important;
+    
+    /* 4. Increase tracking slightly so individual letters don't bleed into each other */
+    letter-spacing: 0.015em;
+    
+    /* 5. Bump line-height to reduce screen congestion */
+    line-height: 1.8;
+}
+
+strong, h1, h2, h3, h4 {
+    /* Keep important emphasis crisp and clean */
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
