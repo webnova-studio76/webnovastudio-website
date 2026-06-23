@@ -470,3 +470,82 @@ header.master-header {
         gap: 30px;
     }
 }
+/* ==========================================================================
+   GLOBAL MESH NAVIGATION FIXES (Fix for image_d3b0f1.png)
+   ========================================================================== */
+
+/* Prevent core layout links from inheriting content indicators */
+.nav-links li::before,
+.dropdown li::before {
+    content: none !important;
+    display: none !important;
+    padding-right: 0 !important;
+}
+
+/* Force header item elements to float horizontally */
+.nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: inline-flex !important;
+    align-items: center;
+    position: relative;
+}
+
+/* ==========================================================================
+   GRID RESTORATION BLUEPRINTS (Fix for image_8e9085.png)
+   ========================================================================== */
+
+/* Structure about blocks into crisp equal columns */
+.about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+    gap: 24px !important;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Wrap the highlight box into a premium horizontal layout container */
+.highlight-box {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #065f46 0%, #022c22 100%);
+    border-radius: 32px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Map resource metrics into clear column matrices */
+.mini-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 16px !important;
+    margin: 25px 0;
+}
+
+.mini-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+}
+
+/* Media Query Responsive Adjustments */
+@media (max-width: 992px) {
+    .highlight-box {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 40px 24px;
+    }
+    .highlight-visual {
+        display: none !important;
+    }
+}
