@@ -8,131 +8,149 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* ==========================================================================
-           1. PREMIUM BRIGHT LIGHT-MODE PALETTE & PHYSICS SPRING VARIABLES
+           1. CORE CYBER PALETTE VARIABLE DICTIONARY & ANTI-BLUR OVERRIDES
            ========================================================================== */
         :root {
             --primary: #0ea5e9;        /* Cloud Sky Blue */
-            --primary-light: #e0f2fe;  /* Frosted Sky Accent */
-            --secondary: #0f172a;      /* Sleek Slate Heading Accent */
-            --accent: #f59e0b;         /* Tip Warning Gold */
-            --bg: #f8fafc;             /* Bright Crisp Studio Canvas */
-            --white: #ffffff;          /* Clear Glass Cards */
-            --text-main: #334155;      /* Smooth Slate Content Text */
-            --text-muted: #64748b;     /* Light Muted Supporting Strings */
-            --border: #e2e8f0;         /* Clean Divider Tracks */
+            --primary-glow: rgba(14, 165, 233, 0.25);
+            --secondary: #090d16;      /* Deep Space Dark Matte */
+            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
+            --bg: #030712;             /* True Obsidian Background Canvas */
+            --white: #ffffff;
+            --text-main: #cbd5e1;      /* Anti-Halation Cool Off-White Text */
+            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
+            --border: rgba(255, 255, 255, 0.05);
+            --accent: #f59e0b;         /* Amber Gold Accent */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             
-            /* High-Fidelity Physics Curves & Smooth Elevation Depth Shadows */
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 16px -6px rgba(15, 23, 42, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(14, 165, 233, 0.12), 0 10px 20px -8px rgba(14, 165, 233, 0.06);
+            /* Skeuomorphic Depth Shadows */
+            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 22px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 10; }
 
         /* ==========================================================================
-           2. VIBRANT COGNITIVE INTERACTIVE HEADER SHIELD
+           2. SKEUOMORPHIC CLOUD HERO SEGMENT
            ========================================================================== */
         .notes-header { 
             text-align: center; 
-            margin-bottom: 45px; 
-            padding: 60px 40px; 
-            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 50%, var(--primary) 100%); 
+            margin-bottom: 40px; 
+            padding: 50px 40px; 
+            background: linear-gradient(135deg, var(--card-surface) 0%, var(--secondary) 100%); 
             color: var(--white); 
             border-radius: 24px;
-            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
         }
-        /* Gloss overlay reflection stripe */
-        .notes-header::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0.06), rgba(255,255,255,0));
-            pointer-events: none;
-        }
-        .notes-header h1 { font-size: 2.6rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .notes-header p { color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; font-weight: 500; max-width: 600px; margin: 0 auto; }
+        .notes-header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--white); }
+        .notes-header p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; }
 
         /* ==========================================================================
-           3. FLOATING GLASS BAR CONTROL INTERACTIVE NAVIGATION TRAY
+           3. ACCENTUATED TAB NAVIGATION DOCK
            ========================================================================== */
         .tabs-nav {
-            display: flex; gap: 10px; background: var(--white); padding: 8px;
-            border-radius: 18px; margin-bottom: 35px; align-items: center; 
-            border: 1px solid var(--border); box-shadow: var(--card-shadow); overflow-x: auto;
+            display: flex;
+            gap: 10px;
+            background: rgba(17, 24, 39, 0.6);
+            padding: 8px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            align-items: center;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
+            overflow-x: auto;
         }
 
         .tab-btn {
-            flex: 1; padding: 14px 20px; border: none; background: transparent; cursor: pointer;
-            font-weight: 700; color: var(--text-muted); border-radius: 12px; transition: var(--transition);
-            display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.92rem;
-            text-decoration: none; white-space: nowrap; position: relative;
+            flex: 1;
+            padding: 14px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-radius: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            white-space: nowrap;
         }
-        .tab-btn:hover { color: var(--secondary); background: var(--bg); }
-        
-        .tab-btn.active { 
-            background: var(--primary-light); color: var(--primary); 
-            box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.15);
-        }
+        .tab-btn:hover { color: var(--white); background: rgba(255, 255, 255, 0.02); }
+        .tab-btn.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 14px var(--primary-glow); }
 
-        /* Fluid Download Link Mechanism */
-        .tab-download { background: #10b981; color: var(--white) !important; text-decoration: none !important; }
-        .tab-download:hover { background: #059669; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
+        /* Glowing Green Download Trigger */
+        .tab-download {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34d399 !important;
+            text-decoration: none !important;
+        }
+        .tab-download:hover { background: #10b981; color: var(--white) !important; border-color: #10b981; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4); transform: translateY(-1px); }
 
         /* ==========================================================================
-           4. SMOOTH ACCELERATING WORKSPACE SLOTS
+           4. FROSTED GLASS CONSOLE CONTENT MODULES
            ========================================================================== */
         .tab-content {
-            background: var(--white); padding: 50px; border-radius: 24px;
-            border: 1px solid var(--border); box-shadow: var(--card-shadow); display: none;
+            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: var(--tactile-shadow);
+            border: 1px solid var(--border);
+            display: none;
         }
-        /* Inertial slide and fade transition rule */
-        .tab-content.active { display: block; animation: smoothSlideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes smoothSlideIn { 
-            from { opacity: 0; transform: translateY(16px) scale(0.99); } 
-            to { opacity: 1; transform: translateY(0) scale(1); } 
-        }
+        h2 { color: var(--white); font-weight: 900; font-size: 1.8rem; letter-spacing: -0.01em; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin: 25px 0 10px; color: var(--primary); font-weight: 800; }
+        p { color: var(--text-muted); font-size: 1.02rem; margin-bottom: 25px; font-weight: 500; letter-spacing: 0.015em; }
 
-        h2 { color: var(--secondary); font-weight: 800; font-size: 1.8rem; letter-spacing: -0.01em; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 15px; }
-        h3 { margin: 30px 0 12px; color: var(--secondary); font-weight: 800; font-size: 1.3rem; }
-        .tab-content p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px; font-weight: 400; }
+        /* Nested children strict targets */
+        .tab-content ul { margin-bottom: 20px; list-style: none; }
+        .tab-content li { margin-bottom: 14px; padding-left: 28px; position: relative; color: var(--text-muted); font-weight: 500; transition: var(--transition); letter-spacing: 0.015em; }
+        .tab-content li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary); font-size: 0.95rem; filter: drop-shadow(0 0 4px var(--primary-glow)); }
+        .tab-content:hover li { color: rgba(255, 255, 255, 0.85); }
+        .tab-content strong { color: var(--white); font-weight: 700; }
 
-        /* Scoped list logic isolation structures */
-        .tab-content ul { margin-bottom: 25px; list-style: none; }
-        .tab-content li { margin-bottom: 14px; padding-left: 28px; position: relative; color: var(--text-main); font-weight: 500; transition: var(--transition); }
-        .tab-content li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; top: 1px; color: var(--primary); font-size: 0.95rem; transition: var(--transition); }
-        .tab-content:hover li { color: var(--secondary); }
-        .tab-content li strong { color: var(--secondary); font-weight: 700; }
+        /* Premium Microservice Concepts Layout Cards Grid */
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 25px 0 10px; }
+        .concept-card { background: rgba(3, 7, 18, 0.3); border: 1px solid var(--border); padding: 30px; border-radius: 18px; transition: var(--transition); box-shadow: var(--tactile-shadow); }
+        .concept-card:hover { border-color: var(--primary); box-shadow: var(--hover-shadow); transform: translateY(-4px); }
+        .concept-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; display: block; filter: drop-shadow(0 0 8px var(--primary-glow)); }
+        .concept-card h3 { margin: 0 0 8px 0; color: var(--white); font-size: 1.25rem; font-weight: 800; }
+        .concept-card p { font-size: 0.92rem; margin-bottom: 0; color: var(--text-muted); }
 
-        /* ==========================================================================
-           5. MATRICES & TIP ALERTS RIGGING
-           ========================================================================== */
-        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 30px 0 15px; }
-        .concept-card { border: 1px solid var(--border); padding: 35px 30px; border-radius: 20px; background: var(--white); box-shadow: var(--card-shadow); transition: var(--transition); }
-        .concept-card:hover { transform: translateY(-6px); border-color: rgba(14, 165, 233, 0.3); box-shadow: var(--hover-shadow); }
-        .concept-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 18px; display: block; transition: var(--transition); }
-        .concept-card:hover i { transform: scale(1.08); }
-        .concept-card h3 { margin: 0 0 10px 0; font-size: 1.25rem; font-weight: 800; color: var(--secondary); }
-        .concept-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; }
-
-        /* Crisp Alert box styling profiles */
+        /* High-Gloss Alert callout */
         .pro-tip {
-            background: #fffbeb; border-left: 5px solid var(--accent);
-            padding: 24px; margin: 35px 0 10px; border-radius: 0 16px 16px 0;
-            border-top: 1px solid rgba(245,158,11,0.15);
-            border-right: 1px solid rgba(245,158,11,0.15);
-            border-bottom: 1px solid rgba(245,158,11,0.15);
+            background: rgba(245, 158, 11, 0.04);
+            border-left: 5px solid var(--accent);
+            padding: 24px;
+            margin: 35px 0 10px;
+            border-radius: 0 16px 16px 0;
+            border-top: 1px solid rgba(245, 158, 11, 0.1);
+            border-right: 1px solid rgba(245, 158, 11, 0.1);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.1);
         }
-        .pro-tip strong { color: #b45309; font-weight: 800; font-size: 1.05rem; display: block; margin-bottom: 6px; }
+        .pro-tip strong { color: #fbbf24; font-weight: 800; font-size: 1.05rem; display: block; margin-bottom: 6px; }
 
         @media (max-width: 768px) { 
             .tabs-nav { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 12px; } 
             .tab-btn { padding: 12px; }
-            .tab-content { padding: 30px 20px; }
+            .tab-content { padding: 25px; }
             .concept-grid { grid-template-columns: 1fr; gap: 16px; }
-            .notes-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -160,33 +178,33 @@
 
         <h3>Docker vs. Virtual Machines</h3>
         <ul>
-            <li><strong>VMs:</strong> Virtualize the Hardware. Each has its own Guest OS layer. (Heavy, slow initialization cycle)</li>
-            <li><strong>Containers:</strong> Virtualize the Operating System. They share the host kernel directly. (Lightweight, instant sub-second boot boundaries)</li>
+            <li><strong>VMs:</strong> Virtualize the Hardware. Each has its own Guest OS. (Heavy)</li>
+            <li><strong>Containers:</strong> Virtualize the Operating System. They share the host kernel. (Lightweight)</li>
         </ul>
 
         <div class="pro-tip">
-            <strong>"It works on my machine!"</strong> Docker solves this problem. Because the container includes the environment, if it runs on your laptop, it will run exactly the same in the cloud deployment cluster.
+            <strong>"It works on my machine!"</strong> Docker solves this problem. Because the container includes the environment, if it runs on your laptop, it will run exactly the same in the cloud.
         </div>
     </div>
 
     <div id="k8s" class="tab-content">
         <h2>Kubernetes (K8s) Orchestration</h2>
-        <p>If Docker creates the "shipping containers," Kubernetes is the "crane and ship" that manages them. It automates deployment, scaling, and runtime load routing.</p>
+        <p>If Docker creates the "shipping containers," Kubernetes is the "crane and ship" that manages them. It automates deployment, scaling, and management.</p>
         
         
 
         <h3>Core Concepts:</h3>
         <ul>
-            <li><strong>Pod:</strong> The smallest processing unit in K8s. It encapsulates one or more execution containers.</li>
-            <li><strong>Node:</strong> A physical compute rig or virtual instance machine that hosts and runs the active pods.</li>
-            <li><strong>Cluster:</strong> A collaborative unified set of execution nodes grouped together under control tracking rules.</li>
-            <li><strong>Auto-scaling:</strong> K8s can automatically scale additional active pods into play if incoming metrics surge.</li>
+            <li><strong>Pod:</strong> The smallest unit in K8s. It holds one or more containers.</li>
+            <li><strong>Node:</strong> A physical or virtual machine that runs the pods.</li>
+            <li><strong>Cluster:</strong> A set of nodes grouped together.</li>
+            <li><strong>Auto-scaling:</strong> K8s can automatically add more pods if your website gets too much traffic.</li>
         </ul>
     </div>
 
     <div id="micro" class="tab-content">
         <h2>Microservices Architecture</h2>
-        <p>Instead of building one giant "Monolith" system core, we break the system design boundaries into discrete, isolated services.</p>
+        <p>Instead of building one giant "Monolith" application, we break it into small, independent services.</p>
         
         
 
@@ -197,23 +215,23 @@
             <div class="concept-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>Independent Deployment</h3>
-                <p>You can push code updates straight to the "Login" block without interrupting data streams inside the "Payment" gate.</p>
+                <p>You can update the "Login" service without touching the "Payment" service.</p>
             </div>
             <div class="concept-card">
                 <i class="fas fa-random"></i>
                 <h3>Technology Agnostic</h3>
-                <p>One transaction tracker can use Python while your logic layer maps to C++, chatting securely over basic network APIs.</p>
+                <p>One service can be written in Python, another in C++, and they can still talk to each other.</p>
             </div>
         </div>
 
         <div class="pro-tip">
-            <strong>The Trade-off:</strong> Microservices offer excellent elastic scaling potential but introduce <strong>Operational Complexity</strong>. You must account for intricate internal data syncs and routing pipelines across your network mesh.
+            <strong>The Trade-off:</strong> Microservices are great for scaling, but they add <strong>Complexity</strong>. You now have to manage networking and security between hundreds of small services.
         </div>
     </div>
 </div>
 
 <script>
-    // ACCELERATED DESCTOP RUNTIME CONTROLLER
+    // CORE SYSTEM RUNTIME TAB ENGINE
     function openTab(evt, tabName) {
         var i, tabContent, tabBtns;
         tabContent = document.getElementsByClassName("tab-content");
@@ -225,7 +243,7 @@
             tabBtns[i].classList.remove("active");
         }
         document.getElementById(tabName).style.display = "block";
-        if(evt) { evt.currentTarget.classList.add("active"); }
+        evt.currentTarget.classList.add("active");
     }
 </script>
 
