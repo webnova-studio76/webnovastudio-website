@@ -7,9 +7,128 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-</head>
-<body class="webnova-corporate-theme">
+    <style>
+        /* ==========================================================================
+           1. PREMIUM CYBER VARIABLES & SERVICE PAGE INSULATION
+           ========================================================================== */
+        :root {
+            --primary: #2563eb;        /* WebNova Royal Blue */
+            --primary-glow: rgba(37, 99, 235, 0.25);
+            --secondary: #090d16;      /* Deep Space Dark Matte */
+            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
+            --bg: #030712;             /* True Obsidian Background Canvas */
+            --accent: #f59e0b;         /* Amber Gold Accent */
+            --white: #ffffff;
+            --text-main: #f1f5f9;      /* Off-White Crisp Typography */
+            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
+            --border: rgba(255, 255, 255, 0.05);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Skeuomorphic Shadow Layers */
+            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
+
+        /* ==========================================================================
+           2. SKEUOMORPHIC HERO COMPONENT
+           ========================================================================== */
+        .dev-hero-corp {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, var(--secondary) 0%, var(--bg) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-content-corp { max-width: 800px; margin: 0 auto; }
+        
+        .corp-badge {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: #60a5fa;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .dev-hero-corp h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; color: var(--white); }
+        .dev-hero-corp h1 .highlight { color: var(--primary); text-shadow: 0 0 30px var(--primary-glow); }
+        .dev-hero-corp p { font-size: 1.15rem; color: var(--text-muted); font-weight: 500; max-width: 650px; margin: 0 auto 35px; }
+
+        .hero-btns-corp { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn-primary-corp { background: var(--primary); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); box-shadow: 0 4px 14px var(--primary-glow); }
+        .btn-primary-corp:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(37, 99, 235, 0.5); }
+        .btn-secondary-corp { background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); }
+        .btn-secondary-corp:hover { background: var(--white); color: var(--bg); }
+
+        /* ==========================================================================
+           3. THREE-PILLAR MATRIX GRID
+           ========================================================================== */
+        .pillars-corp { padding: 90px 0; background: var(--bg); }
+        .pillars-grid-corp { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .p-card-corp {
+            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            padding: 45px 35px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
+            transition: var(--transition);
+        }
+        .p-card-corp:hover { transform: translateY(-6px); border-color: rgba(37, 99, 235, 0.3); box-shadow: var(--hover-shadow); }
+        
+        .p-icon-corp {
+            width: 56px; height: 56px; background: rgba(37, 99, 235, 0.05); border: 1px solid rgba(37, 99, 235, 0.1);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 25px; color: var(--primary); transition: var(--transition);
+        }
+        .p-card-corp:hover .p-icon-corp { background: var(--primary); color: var(--white); box-shadow: 0 0 20px var(--primary-glow); }
+        .p-card-corp h3 { font-size: 1.35rem; font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.01em; }
+        .p-card-corp p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; line-height: 1.6; }
+
+        /* ==========================================================================
+           4. FULL-STACK BRAND KIT showcase
+           ========================================================================== */
+        .tech-section-corp { padding: 90px 0; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .section-header-corp { text-align: center; margin-bottom: 60px; }
+        .section-header-corp h2 { font-size: 2.5rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; }
+        .section-header-corp h2 span { color: var(--accent); text-shadow: 0 0 25px rgba(245, 158, 11, 0.2); }
+        .section-header-corp p { color: var(--text-muted); font-size: 1.05rem; margin-top: 8px; font-weight: 500; }
+        
+        .tech-grid-corp { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        
+        .tech-item {
+            background: var(--card-surface);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--tactile-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .tech-item:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 15px 30px -10px rgba(245, 158, 11, 0.15); }
+        .tech-item i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; display: block; filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.2)); }
+        .tech-item strong { font-size: 1.2rem; font-weight: 800; color: var(--white); display: block; margin-bottom: 8px; }
+        .tech-item p { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+
+        @media (max-width: 768px) {
+            .dev-hero-corp h1 { font-size: 2.4rem; }
+            .section-header-corp h2 { font-size: 2rem; }
+            .p-card-corp, .tech-item { padding: 30px 20px; }
+            .hero-btns-corp { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SKEUOMORPHIC BRAND HERO CANVAS -->
     <section class="dev-hero-corp">
         <div class="container">
             <div class="hero-content-corp" data-aos="fade-up">
@@ -24,50 +143,67 @@
         </div>
     </section>
 
+    <!-- CORE STRATEGY CARD MATRIX -->
     <section class="pillars-corp">
         <div class="container">
             <div class="pillars-grid-corp">
+                
+                <!-- PILLAR 01 -->
                 <div class="p-card-corp" data-aos="fade-up">
                     <div class="p-icon-corp"><i class="fas fa-bezier-curve"></i></div>
                     <h3>Logo Architecture</h3>
                     <p>Creating versatile, timeless marks engineered to work perfectly from favicons to billboards.</p>
                 </div>
+
+                <!-- PILLAR 02 -->
                 <div class="p-card-corp" data-aos="fade-up" data-aos-delay="150">
-                    <div class="p-icon-corp"><i class="fas fa-swatches"></i></div>
+                    <div class="p-icon-corp"><i class="fas fa-palette"></i></div>
                     <h3>Color Strategy</h3>
                     <p>Using behavioral science to select a palette that triggers the right emotional response from your audience.</p>
                 </div>
+
+                <!-- PILLAR 03 -->
                 <div class="p-card-corp" data-aos="fade-up" data-aos-delay="300">
-                    <div class="p-icon-corp"><i class="fas fa-typography"></i></div>
+                    <div class="p-icon-corp"><i class="fas fa-font"></i></div>
                     <h3>Visual Guidelines</h3>
                     <p>A comprehensive "Brand Bible" ensuring consistency across Instagram, web, and print materials.</p>
                 </div>
+                
             </div>
         </div>
     </section>
 
+    <!-- TRANSLUCENT ASSET KIT DISPLAY SLOTS -->
     <section id="kit" class="tech-section-corp">
         <div class="container">
             <div class="section-header-corp">
                 <h2>The <span>Full-Stack Brand Kit</span></h2>
-                <p>Equipping your business for 2026 digital dominance.</p>
+                <p>Equipping your business for digital dominance.</p>
             </div>
+            
             <div class="tech-grid-corp">
+                
+                <!-- KIT ITEM 01 -->
                 <div class="tech-item" data-aos="zoom-in">
                     <i class="fas fa-image"></i>
                     <strong>Posters & Thumbnails</strong>
                     <p>High-CTR graphics for Social Media</p>
                 </div>
+
+                <!-- KIT ITEM 02 -->
                 <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fab fa-instagram"></i>
                     <strong>Social Templates</strong>
                     <p>Custom Instagram & Story Brand Kits</p>
                 </div>
+
+                <!-- KIT ITEM 03 -->
                 <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-video"></i>
                     <strong>Motion Identity</strong>
                     <p>Cinematic Short Videos & Reels</p>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -77,7 +213,7 @@
         AOS.init({ duration: 1000, once: true });
     </script>
     <script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
