@@ -7,17 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="js-enabled">
-
-    <div class="cyber-glow-1"></div>
-    <div class="cyber-glow-2"></div>
+<body>
 
     <div class="weekly-alert" id="resourceAlert">
-        <div class="alert-pulse"></div>
         <div class="alert-content">
-            <span class="alert-tag stagger-1">New Resources Weekly</span>
-            <p class="stagger-2">PDF Notes | Web Templates | UI Designs are uploaded every Sunday.</p>
-            <a href="free-resources.html" class="alert-link stagger-3">Explore Vault <i class="fas fa-arrow-right"></i></a>
+            <span class="alert-tag">New Resources Weekly</span>
+            <p>PDF Notes | Web Templates | UI Designs are uploaded every Sunday.</p>
+            <a href="free-resources.html" class="alert-link">Explore Vault <i class="fas fa-arrow-right"></i></a>
         </div>
         <button class="alert-close" onclick="closeResourceAlert()">
             <i class="fas fa-times"></i>
@@ -67,7 +63,7 @@
                 <span class="slogan-dot"></span>
                 <span>Grow</span>
             </div>
-            <h1>Build Your Brand. <br><span class="typewriter">Master Your Craft.</span></h1>
+            <h1>Build Your Brand. <br><span>Master Your Craft.</span></h1>
             <p>Premium digital services at <strong>WebNova Studio</strong> & industry-leading education at <strong>Code Craft Academic</strong>.</p>
             <div class="hero-btns">
                 <a href="projects.html" class="btn-primary">Mini Projects</a>
@@ -97,7 +93,6 @@
                 <i class="fab fa-php"></i>
             </div>
         </div>
-
         <div class="floating-box">
             <i class="fas fa-rocket"></i>
             <p>Ignite Your Career</p>
@@ -160,9 +155,6 @@
     <section class="free-highlight">
         <div class="container">
             <div class="highlight-box">
-                <div class="deco-circle circle-1"></div>
-                <div class="deco-circle circle-2"></div>
-
                 <div class="highlight-content">
                     <span class="badge">Exclusive 2026 Library</span>
                     <h2>Grab Our Premium <span>Free Resources</span></h2>
@@ -237,13 +229,32 @@
             </div>
             <div class="logic-modal-footer">
                 <label class="noshow-container">
-                    <input type="checkbox" id="dontShow">
-                    <span class="checkmark"></span>Don't show again
+                    <input type="checkbox" id="dontShow"> Don't show again
                 </label>
                 <button class="logic-close-btn" onclick="handleLogicClose()">Start Learning</button>
             </div>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>WebNova Studio</h4>
+                <p>Enterprise full-stack development and sleek UI/UX design roadmaps engineered for student and client success.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 WebNova Studio & Code Craft Academic. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <a href="https://t.me/CodeCraftAcademic" class="sticky-telegram" target="_blank"><i class="fab fa-telegram-plane"></i> Join Telegram</a>
 
@@ -251,18 +262,18 @@
     <script src="footer.js"></script>
     <script src="animations.js"></script>
     <script>
-        // CLIENT SCOPE CANVAS INTERACTION LOGIC
+        // BACKDROP CANVAS INTERACTION ENGINE
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-        let dots = []; const dotCount = 80;
+        let dots = []; const dotCount = 60;
         class Dot {
             constructor() { this.reset(); }
-            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.6; this.vy = (Math.random() - 0.5) * 0.6; this.radius = Math.random() * 2 + 1; }
+            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
             update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
-            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(37, 99, 235, 0.4)'; ctx.fill(); }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(37, 99, 235, 0.2)'; ctx.fill(); }
         }
         function init() { for (let i = 0; i < dotCount; i++) dots.push(new Dot()); }
         function animate() {
@@ -271,8 +282,8 @@
                 dot.update(); dot.draw();
                 for (let j = i + 1; j < dots.length; j++) {
                     const dist = Math.hypot(dot.x - dots[j].x, dot.y - dots[j].y);
-                    if (dist < 150) {
-                        ctx.beginPath(); ctx.strokeStyle = `rgba(37, 99, 235, ${0.15 * (1 - dist / 150)})`;
+                    if (dist < 130) {
+                        ctx.beginPath(); ctx.strokeStyle = `rgba(37, 99, 235, ${0.1 * (1 - dist / 130)})`;
                         ctx.lineWidth = 1; ctx.moveTo(dot.x, dot.y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke();
                     }
                 }
@@ -281,7 +292,7 @@
         }
         init(); animate();
 
-        // SCROLL REVEAL BINDINGS MODULE
+        // SCROLL REVEAL RUNTIME MATRIX
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.sub-brand-box, .about-card');
             reveals.forEach(el => {
@@ -290,19 +301,26 @@
             });
         });
 
-        // MENU INTERACTION ROUTINES
+        // ALERTS MANIPULATION INTERFACES
+        function closeResourceAlert() {
+            const alertBox = document.getElementById('resourceAlert');
+            if (alertBox) { alertBox.style.display = 'none'; }
+        }
+
+        // MOBILE NAVIGATION CONTROL BINDINGS
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => { menuToggle.classList.remove('active'); navLinks.classList.remove('active'); }));
 
-        // MODAL CONFIGURATION ROUTINES
+        // CORE RUNTIME SYSTEM POPUP LIFECYCLES
         window.onload = function() {
             if (!localStorage.getItem('hideLogicModal')) {
                 const overlay = document.getElementById('logicModal');
                 overlay.style.display = 'flex';
                 setTimeout(() => { overlay.classList.add('active'); }, 100);
             }
+            const reveals = document.querySelectorAll('.sub-brand-box, .about-card');
+            reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active'); });
         }
         function handleLogicClose() {
             if (document.getElementById('dontShow').checked) localStorage.setItem('hideLogicModal', 'true');
