@@ -257,3 +257,128 @@ header.master-header {
     .nav-links.active { right: 0 !important; }
     .nav-item { height: auto; margin: 15px 0; width: 100%; justify-content: center; }
 }
+
+/* ==========================================================================
+   PREMIUM CONTRACTED FOOTER SYSTEM (AS SEEN IN IMAGE_8BB7A8.PNG)
+   ========================================================================== */
+.main-footer {
+    background: #040814 !important; /* Rich Dark Matte Ground from screenshot */
+    border-top: 2px solid #2563eb; 
+    padding: 70px 5% 30px !important;
+    position: relative;
+    z-index: 999;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 40px !important;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-col h4 {
+    color: #ffffff !important; /* Vibrant White Headers */
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 22px !important;
+    letter-spacing: -0.01em;
+}
+
+/* Optional premium blue highlight dot for "WebNova Studio" brand heading */
+.footer-brand-title::after {
+    content: ' .';
+    color: #2563eb;
+}
+
+.footer-col p {
+    color: #94a3b8 !important; /* Soft anti-glare gray text */
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
+    font-weight: 400 !important;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px !important;
+    padding-left: 0 !important;
+}
+
+.footer-col ul li::before {
+    content: none !important; /* Prevent global layout arrows from leaking in */
+}
+
+.footer-col ul li a {
+    color: #94a3b8 !important;
+    text-decoration: none !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff !important; /* Highlights to pure white on hover */
+    transform: translateX(4px);
+}
+
+/* Social Media Channels Interface */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-socials a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb !important; /* Pure Electric Blue Icons as requested */
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background: #2563eb;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Lower Developer Credits Row */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom p {
+    color: #475569 !important; /* Classic steel text color */
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .main-footer { padding: 40px 20px 20px !important; }
+}
