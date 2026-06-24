@@ -1,10 +1,10 @@
 // ==========================================================================
-// CODE CRAFT GLOBAL GLOBAL ARCHITECTURE SYSTEM - MAIN.JS
+// MASTER CORE CENTRAL APPLICATION SYSTEM - MAIN.JS
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. DYNAMIC HEADER INJECTION
+    // 1. MASTER HEADER AUTOMATIC UTILITY INJECTION
     const headerContainer = document.getElementById('global-header');
     if (headerContainer) {
         headerContainer.innerHTML = `
@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-   
-    // 3. UNIFIED MOBILE NAVIGATION TOGGLE ENGINE
+    // 2. UNIFIED MOBILE DRAWER ACCESSIBILITY TOGGLE ENGINE
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -41,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
+        // Safe auto-closing handler when clicking structural background coordinates
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
                 menuToggle.classList.remove('active');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. LOGIC MODAL CONFIGURATION LINKAGE
+    // 3. PERSISTENT REGISTRATION MODAL CONTROLLER
     if (!localStorage.getItem('hideLogicModal')) {
         const overlay = document.getElementById('logicModal');
         if (overlay) {
@@ -58,24 +58,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 5. WINDOW LOAD / SCROLL REVEALS ENGINE
-    const reveals = document.querySelectorAll('.sub-brand-box, .about-card, .course-card');
-    function checkReveal() {
+    // 4. UNIFIED CONSOLIDATED RUNTIME SCROLL ENGINE (REVEALS & PROGRESS BAR)
+    const reveals = document.querySelectorAll('.sub-brand-box, .about-card, .course-card, .portfolio-item, .module-card, .phase-card, .guide-card');
+    const progressBar = document.getElementById("myBar"); 
+
+    function handleGlobalScrollRoutines() {
+        // A. Dynamic Scroll Reveal Animation Calculations
+        const windowHeight = window.innerHeight;
         reveals.forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+            if (el.getBoundingClientRect().top < windowHeight - 100) {
                 el.classList.add('active');
             }
         });
+
+        // B. Re-Engineered Real-Time Reading Progress Track Calculations
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            progressBar.style.width = scrolled + "%";
+        }
     }
-    window.addEventListener('scroll', checkReveal);
-    checkReveal(); // Trigger immediately to catch elements above-the-fold
+
+    window.addEventListener('scroll', handleGlobalScrollRoutines);
+    handleGlobalScrollRoutines(); // Execute layout check immediately on viewport entry
 });
 
 // ==========================================================================
-// OUTSIDE CORES - DYNAMIC GLOBAL SCOPE ROUTINES
+// GLOBAL TARGET BOUNDARIES - STANDALONE ATTRIBUTE ROUTINES
 // ==========================================================================
 
-// 6. GLOBAL LOGIC CLOSE TRIGGERS
+// 5. REGISTRATION MODAL OPT-OUT DISPATCH INTERCEPTOR
 function handleLogicClose() {
     const dontShowOpt = document.getElementById('dontShow');
     if (dontShowOpt && dontShowOpt.checked) {
@@ -88,22 +101,27 @@ function handleLogicClose() {
     }
 }
 
-// 7. CORNER ALERT WIDGET CLOSER
+// 6. FLOATING TELEGRAM ACTION ALERT CORNER CARD CLOSER
 function closeResourceAlert() {
     const alertBox = document.getElementById('resourceAlert');
-    if (alertBox) { 
-        alertBox.style.setProperty('display', 'none', 'important'); 
+    if (alertBox) {
+        alertBox.style.opacity = '0';
+        alertBox.style.transform = 'translateY(20px)';
+        alertBox.style.transition = 'all 0.4s ease';
+        setTimeout(() => {
+            alertBox.style.setProperty('display', 'none', 'important');
+        }, 400);
     }
 }
 
-// 8. UNIFIED HIGH-PERFORMANCE PARTICLE CANVAS ENGINE
+// 7. HIGH-PERFORMANCE FLUID HARMONIC HERO CANVAS ENGAGEMENT SYSTEM
 (function() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
     let particles = [];
-    const particleCount = 120;
+    const particleCount = 120; // Rebalanced processing threshold allocation footprint
 
     function resize() {
         const parent = canvas.parentElement;
