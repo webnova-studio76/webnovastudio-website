@@ -732,7 +732,13 @@ header.master-header {
    13. FIXED RESPONSIVE MOBILE BREAKDOWN VIEWS
    ========================================================================== */
 .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 5px; }
-.menu-toggle .bar { width: 25px; height: 3px; background-color: var(--secondary-color); transition: var(--transition); border-radius: 3px; }
+.menu-toggle .bar {
+    width: 25px !important;
+    height: 3px !important;
+    background-color: #ffffff !important; /* FORCES VISIBILITY OVER THE DARK NAVY BAR */
+    transition: var(--transition) !important; /*[cite: 2] */
+    border-radius: 3px !important; /*[cite: 2] */
+}
 
 @media (max-width: 768px) {
     .menu-toggle { display: flex; z-index: 100002; }
