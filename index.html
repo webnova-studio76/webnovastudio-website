@@ -245,25 +245,44 @@
         </div>
     </div>
 
-    <!-- ASYNCHRONOUS COMPONENT SCRIPTS RUNTIME -->
+    <!-- CORPORATE FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>WebNova Studio</h4>
+                <p>Enterprise full-stack development and sleek UI/UX design roadmaps engineered for student and client success.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 WebNova Studio & Code Craft Academic. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ACTION CHANNELS -->
     <a href="https://t.me/CodeCraftAcademic" class="sticky-telegram" target="_blank"><i class="fab fa-telegram-plane"></i> Join Telegram</a>
 
     <script src="header.js"></script>
-    <script src="footer.js"></script> <!-- This dynamically appends your clean academic light-mode footer layout! -->
     <script src="animations.js"></script>
     <script>
-        // BACKDROP CANVAS INTERACTION ENGINE
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-        let dots = []; const dotCount = 60;
+        let dots = []; const dotCount = 45;
         class Dot {
             constructor() { this.reset(); }
             reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
             update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
-            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(37, 99, 235, 0.2)'; ctx.fill(); }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(37, 99, 235, 0.15)'; ctx.fill(); }
         }
         function init() { for (let i = 0; i < dotCount; i++) dots.push(new Dot()); }
         function animate() {
@@ -273,7 +292,7 @@
                 for (let j = i + 1; j < dots.length; j++) {
                     const dist = Math.hypot(dot.x - dots[j].x, dot.y - dots[j].y);
                     if (dist < 130) {
-                        ctx.beginPath(); ctx.strokeStyle = `rgba(37, 99, 235, ${0.1 * (1 - dist / 130)})`;
+                        ctx.beginPath(); ctx.strokeStyle = `rgba(37, 99, 235, ${0.08 * (1 - dist / 130)})`;
                         ctx.lineWidth = 1; ctx.moveTo(dot.x, dot.y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke();
                     }
                 }
@@ -282,27 +301,22 @@
         }
         init(); animate();
 
-        // SCROLL REVEAL RUNTIME MATRIX
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.sub-brand-box, .about-card');
             reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                if (el.getBoundingClientRect().top < windowHeight - 100) el.classList.add('active');
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
             });
         });
 
-        // ALERTS MANIPULATION INTERFACES
         function closeResourceAlert() {
             const alertBox = document.getElementById('resourceAlert');
             if (alertBox) { alertBox.style.display = 'none'; }
         }
 
-        // MOBILE NAVIGATION CONTROL BINDINGS
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
 
-        // CORE RUNTIME SYSTEM POPUP LIFECYCLES
         window.onload = function() {
             if (!localStorage.getItem('hideLogicModal')) {
                 const overlay = document.getElementById('logicModal');
