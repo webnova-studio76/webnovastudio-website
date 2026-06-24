@@ -70,7 +70,7 @@
             <p>Premium digital services at <strong>WebNova Studio</strong> & industry-leading education at <strong>Code Craft Academic</strong>.</p>
             <div class="hero-btns">
                 <a href="projects.html" class="btn-primary">Mini Projects</a>
-                <a href="course.html" class="btn-secondary">Start Learning Free</a>
+                <a href="#academy" class="link-free-text">Start Learning Free &rarr;</a>
             </div>
         </div>
     </section>
@@ -289,10 +289,12 @@
             });
         });
 
-        function closeResourceAlert() {
-            const alertBox = document.getElementById('resourceAlert');
-            if (alertBox) { alertBox.style.display = 'none'; }
-        }
+function closeResourceAlert() {
+    const alertBox = document.getElementById('resourceAlert');
+    if (alertBox) { 
+        alertBox.style.setProperty('display', 'none', 'important'); 
+    }
+}
 
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
@@ -376,6 +378,94 @@
     // Append safely straight to the body stream
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 })();
+
+
+    (function() {
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const particleCount = 120; // Perfect optimization density for hero box bounding fields
+
+        // Dynamic resize engine to track only parent hero constraints
+        function resize() {
+            const parent = canvas.parentElement;
+            canvas.width = parent.offsetWidth;
+            canvas.height = parent.offsetHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class HeroParticle {
+            constructor() {
+                this.init(true); // Random starting height distributions on load loop
+            }
+
+            init(isFirstLoad = false) {
+    this.x = Math.random() * canvas.width;
+    this.y = isFirstLoad ? (Math.random() * canvas.height) : (canvas.height + 20); 
+    this.size = Math.random() * 1.5 + 0.4; // Made particles smaller and sharper
+    this.speedY = Math.random() * -0.6 - 0.2; // Slowed drift down for an elegant look
+    this.speedX = Math.random() * 0.3 - 0.15;  
+    this.opacity = Math.random() * 0.4 + 0.1; // Reduced opacity max from 0.6 to 0.4 so they blend softer
+    
+    // Smooth, unified palette matching the digital stack theme
+    const colors = ['#3a86ff', '#38bdf8', '#00f2ff', '#10b981']; 
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+}
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+
+                // Loop reset mechanics when nodes leave viewport top line boundary
+                if (this.y < -10) {
+                    this.init(false);
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                
+                // Embedded Hardware Glow Matrix Rendering
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.color;
+                
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new HeroParticle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Turn off shadows for calculations to maintain smooth frame rendering loops
+            ctx.shadowBlur = 0; 
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        createParticles();
+        animate();
+    })();
+
     </script>
 </body>
 </html>
