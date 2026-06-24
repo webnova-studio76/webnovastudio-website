@@ -8,217 +8,156 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* High-Premium Dark Tactile Palette Variables */
-            --primary: #0d9488;       /* Clean, Professional Teal */
-            --primary-glow: rgba(13, 148, 136, 0.25);
-            --secondary: #090d16;     /* Deep Space Matte Dark */
-            --card-surface: #111827;  /* High-Contrast Charcoal Slate */
-            --bg: #030712;            /* True Obsidian Background */
-            --white: #ffffff;         
-            --text-main: #f1f5f9;     /* Off-White Crisp Typography */
-            --text-muted: #94a3b8;    /* Muted Cool Gray Details */
-            --border: rgba(255, 255, 255, 0.05); /* Subtle cyber split line */
-            --card-radius: 20px;      
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Inertial physics curve */
-            
-            /* Skeuomorphic Inset & Drop Shadow Tokens */
-            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.7), 0 10px 20px -5px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            /* High-Premium Unified Light Canvas Style Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --secondary: #0f172a;     /* WebNova Master Deep Navy */
+            --card-surface: #ffffff;  /* High-Performance White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Background */
+            --text-main: #334155;     /* Dark Sapphire Headings Typography */
+            --text-muted: #64748b;    /* Muted Gray Secondary Text */
+            --border: rgba(37, 99, 235, 0.08); 
+            --card-radius: 16px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: subpixel-antialiased; 
+            padding-top: 85px; /* Fixed header offset buffer boundary */
+        }
 
-        /* Courses Section Canvas Setup */
+        /* Courses Section Canvas Setup - Light Clean Background Mesh */
         .courses-section {
-            padding: 100px 5%;
-            background: linear-gradient(180deg, var(--secondary) 0%, var(--bg) 100%);
+            padding: 60px 20px;
+            background: var(--bg);
             position: relative;
         }
 
-        /* Subtle background tech grid lines */
+        /* Subtle background tech grid lines matching the index pattern */
         .courses-section::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none; z-index: 1;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; z-index: 1;
         }
 
         .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
 
-        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
         .sub-title { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
-        .section-header h2 span { color: var(--primary); text-shadow: 0 0 30px rgba(13, 148, 136, 0.2); }
+        .section-header h2 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.02em; }
+        .section-header h2 span { color: var(--primary); }
         .section-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 500; }
 
+        /* Unified Master Structural Grid Layout Engine */
         .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: 24px !important;
+            margin-top: 40px !important;
         }
 
-        /* --- High-Premium Tactile Card Architecture --- */
+        /* --- Premium Compact Volumetric Card Architecture --- */
         .course-card {
-            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
+            background: var(--card-surface) !important;
             border-radius: var(--card-radius);
-            padding: 40px 35px;
+            padding: 28px 24px !important; /* Premium unified compact spacing scale */
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border) !important;
+            border-bottom: 4px solid var(--border) !important;
             position: relative;
-            box-shadow: var(--tactile-shadow);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.04) !important;
             transition: var(--transition);
         }
 
         .course-card:hover {
-            transform: translateY(-6px) scale(1.015); /* Snappy real-world physics pop */
-            border-color: rgba(13, 148, 136, 0.3);
-            box-shadow: var(--hover-shadow);
+            transform: translateY(-5px) scale(1.01) !important;
+            border-color: rgba(16, 185, 129, 0.25) !important;
+            border-bottom-color: var(--primary) !important;
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.12) !important;
         }
 
+        /* Small Category Tags */
         .course-tag {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
+            position: absolute; top: 22px; right: 24px;
+            background: #eff6ff; border: 1px solid var(--border);
+            color: #2563eb; padding: 4px 12px; border-radius: 6px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .course-card:hover .course-tag {
-            color: var(--white);
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        /* Skeuomorphic Glossy Macro-Control Box */
+        /* Rounded Icon Boxes with Smooth Micro-Floating Animation Triggers */
         .course-icon {
-            width: 64px; height: 64px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.2);
-            transition: var(--transition);
-            font-weight: 900;
+            width: 48px; height: 48px;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 10px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; color: var(--primary); margin-bottom: 20px;
+            transition: var(--transition); font-weight: 900;
         }
 
         .course-card:hover .course-icon {
-            background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
-            border-color: #0f766e;
-            color: var(--white);
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px -4px var(--primary-glow);
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+            color: var(--white); transform: scale(1.05);
+            box-shadow: 0 6px 12px var(--primary-glow);
         }
 
-        .course-card h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: var(--white);
-            letter-spacing: -0.01em;
-        }
+        .course-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 10px; color: var(--secondary); text-align: left; }
+        .course-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 25px; flex-grow: 1; font-weight: 500; text-align: left; }
 
-        .course-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            flex-grow: 1;
-            font-weight: 500;
+        /* Card Split Area Rule Line */
+        .course-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 18px; }
+        .course-footer span { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        
+        /* Unified Minimal Hyperlink View Buttons */
+        .enroll-btn { 
+            text-decoration: none !important; 
+            color: #2563eb !important; 
+            font-weight: 800 !important; 
+            font-size: 0.85rem !important; 
+            display: inline-flex !important; 
+            align-items: center !important; 
+            cursor: pointer !important; 
+            transition: var(--transition) !important; 
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            box-shadow: none !important;
         }
+        .enroll-btn:hover { color: var(--secondary) !important; text-decoration: underline !important; }
 
-        /* Course Footer Split Area */
-        .course-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border);
-            padding-top: 24px;
-        }
-
-        .course-footer span {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .enroll-btn {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .enroll-btn:hover { color: var(--primary); }
-
-        /* Highlighted Core Path Career Module (Fullstack overrides) */
+        /* Highlighted Premium Career Module Overrides (Converts dark background card into a premium Emerald left-border block card) */
         .course-card.highlight-course {
-            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 15px 35px -10px rgba(4, 120, 87, 0.3);
+            border-left: 6px solid #10b981 !important;
+            border-bottom: 4px solid var(--border) !important;
         }
-        .course-card.highlight-course:hover {
-            box-shadow: 0 25px 45px -10px rgba(4, 120, 87, 0.5), 0 10px 20px -5px var(--primary-glow);
-            border-color: rgba(16, 185, 129, 0.4);
+        .course-card.highlight-course .course-tag {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            color: var(--white) !important; border: none !important;
         }
-
-        .highlight-course h3 { color: var(--white); }
-        .highlight-course p { color: #a7f3d0; }
-        .highlight-course .course-tag {
-            background: var(--white);
-            color: #065f46;
-            border: 1px solid var(--white);
+        .course-card.highlight-course .enroll-btn {
+            color: #10b981 !important;
         }
-        .highlight-course:hover .course-tag {
-            background: rgba(255, 255, 255, 0.9);
+        .course-card.highlight-course .enroll-btn:hover {
+            color: var(--secondary) !important;
         }
-        .highlight-course .course-icon {
-            color: #a7f3d0;
-            border-color: rgba(165, 243, 208, 0.2);
-        }
-        .highlight-course:hover .course-icon {
-            background: linear-gradient(135deg, var(--white) 0%, #e2e8f0 100%);
-            color: #065f46;
-            border-color: var(--white);
-        }
-        .highlight-course .btn-primary {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: var(--transition);
-        }
-        .highlight-course .btn-primary:hover { color: #a7f3d0; }
 
         @media (max-width: 768px) {
-            .courses-section { padding: 80px 16px; }
-            .section-header h2 { font-size: 2.2rem; }
-            .courses-grid { margin-top: 30px; gap: 20px; }
-            .course-card { padding: 35px 25px; }
+            .courses-section { padding: 40px 10px; }
+            .section-header h2 { font-size: 2rem; }
+            .courses-grid { gap: 20px !important; padding: 0 !important; }
         }
     </style>
 </head>
 <body>
+
+<div id="global-header"></div>
 
 <section class="courses-section">
     <div class="container">
@@ -237,18 +176,18 @@
                 <p>Hardware, OS, and how the internet works. The perfect starting point.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 4 Weeks</span>
-                    <a href="syllabus-fundamentals.html" class="enroll-btn">View Syllabus</a>
+                    <a href="syllabus-fundamentals.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
             <div class="course-card" data-category="frontend">
                 <div class="course-tag">Frontend</div>
-                <div class="course-icon"><i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-js"></i></div>
+                <div class="course-icon"><i class="fab fa-html5"></i></div>
                 <h3>Web Designer Bundle</h3>
                 <p>Master HTML5, CSS3, and UI/UX principles to build stunning sites.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                    <a href="bundle-view.html" class="enroll-btn">View Syllabus</a>
+                    <a href="bundle-view.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
@@ -259,7 +198,7 @@
                 <p>Learn Python from scratch for Automation, Data, and Web.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 6 Weeks</span>
-                    <a href="python-syllabus.html" class="enroll-btn">View Syllabus</a>
+                    <a href="python-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
@@ -270,18 +209,18 @@
                 <p>MySQL for relational data and MongoDB for modern scalable apps.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 5 Weeks</span>
-                    <a href="dbms-syllabus.html" class="enroll-btn">View Syllabus</a>
+                    <a href="dbms-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
             <div class="course-card" data-category="frameworks">
                 <div class="course-tag">Frameworks</div>
-                <div class="course-icon"><i class="fab fa-react"></i> <i class="fab fa-node-js"></i> <i class="fab fa-angular"></i></div>
+                <div class="course-icon"><i class="fab fa-react"></i></div>
                 <h3>Modern JS Frameworks</h3>
                 <p>Deep dive into ReactJS, NodeJS, and AngularJS for dynamic apps.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 12 Weeks</span>
-                    <a href="frameworks-portal.html" class="enroll-btn">View Syllabus</a>
+                    <a href="frameworks-portal.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
@@ -292,7 +231,7 @@
                 <p>The ultimate path: From Frontend to Backend + Cloud Computing.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 6 Months</span>
-                    <a href="fullstack-roadmap.html" class="btn-primary">View Syllabus</a>
+                    <a href="fullstack-roadmap.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
@@ -303,29 +242,29 @@
                 <p>Deployment, AWS/Azure basics, and managing scalable infrastructure.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                    <a href="cloud-syllabus.html" class="enroll-btn">View Syllabus</a>
+                    <a href="cloud-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
             <div class="course-card" data-category="core">
                 <div class="course-tag">Core</div>
-                <div class="course-icon">C</div>
+                <div class="course-icon"><strong style="color: inherit;">C</strong></div>
                 <h3>C Programming</h3>
                 <p>Master Data Structures and Algorithms with low-level languages.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                    <a href="c-mastery.html" class="enroll-btn">View Syllabus</a>
+                    <a href="c-mastery.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
             <div class="course-card" data-category="core">
                 <div class="course-tag">Core</div>
-                <div class="course-icon">C++</div>
+                <div class="course-icon"><strong style="color: inherit;">C++</strong></div>
                 <h3>C++ Programming</h3>
                 <p>Master Data Structures and Algorithms with low-level languages.</p>
                 <div class="course-footer">
                     <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                    <a href="cpp-syllabus.html" class="enroll-btn">View Syllabus</a>
+                    <a href="cpp-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
                 </div>
             </div>
 
@@ -333,8 +272,9 @@
     </div>
 </section>
 
-<script src="header.js"></script>
+<div id="global-footer"></div>
+
+<script src="main.js"></script>
 <script src="footer.js"></script>
-<script src="animations.js"></script>
 </body>
 </html>
