@@ -331,6 +331,70 @@
             const overlay = document.getElementById('logicModal');
             overlay.classList.remove('active'); setTimeout(() => { overlay.style.display = 'none'; }, 400);
         }
+
+        // DYNAMIC FOOTER RENDER MATRIX INSULATOR
+(function injectProfessionalFooter() {
+    const footerHTML = `
+    <footer class="main-footer">
+        <div class="footer-grid">
+            
+            <!-- COLUMN 1: BRAND SUMMARY & SOCIALS -->
+            <div class="footer-col">
+                <h4 class="footer-brand-title">WebNova Studio</h4>
+                <p>Empowering businesses through premium design and educating the next generation of digital creators at Code Craft Academic.</p>
+                <div class="footer-socials">
+                    <a href="https://t.me/CodeCraftAcademic" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: STUDIO SERVICES -->
+            <div class="footer-col">
+                <h4>WebNova Studio</h4>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                    <li><a href="#">Branding & Design</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMN 3: ACADEMY EDITIONS -->
+            <div class="footer-col">
+                <h4>Code Craft Academic</h4>
+                <ul>
+                    <li><a href="free-resources.html">Free Notes</a></li>
+                    <li><a href="#">Video Tutorials</a></li>
+                    <li><a href="#">Freelancers Hub</a></li>
+                    <li><a href="#">Career Guides</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMN 4: NAV UTILITIES -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- LOWER CREDITS RUNTIME -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 WebNova Studio | Designed & Developed by Rakesh Jadhav | Rashmi Divantgi</p>
+        </div>
+    </footer>
+    `;
+
+    // Append safely straight to the body stream
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
+})();
     </script>
 </body>
 </html>
