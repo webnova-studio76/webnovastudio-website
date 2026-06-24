@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <ul class="nav-links">
                         <li><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="courses.html" class="nav-link">Courses</a></li>
+                        <li><a href="course.html" class="nav-link">Courses</a></li>
                         <li><a href="vault.html" class="nav-link">Premium Vault</a></li>
                     </ul>
                 </div>
