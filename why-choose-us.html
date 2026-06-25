@@ -6,204 +6,124 @@
     <title>Why Choose Us | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Next-Gen Premium Typography -->
+    <!-- Premium Professional Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Ultra-Premium Glassmorphism Palette Tokens */
+            /* High-End Minimalist Studio Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #0f172a;     /* Deep Slate Main Typography */
-            --bg: #f8fafc;            /* Crisp Off-White Light Canvas Background */
-            --card-surface: rgba(255, 255, 255, 0.8); /* Frosted Glass Base */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Details */
-            --border: rgba(15, 23, 42, 0.06); /* Razor Thin Structural Hairline */
-            --card-radius: 20px;      
+            --secondary: #0f172a;     /* Deep Jet Onyx */
+            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
+            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
+            --text-muted: #57534e;    /* Deep Muted Stone Blue */
+            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            
-            /* High-Fidelity Volumetric Shadows */
-            --tactile-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
-            --hover-shadow: 0 35px 60px -15px rgba(15, 23, 42, 0.08), 0 0 30px -5px rgba(16, 185, 129, 0.1);
+            --transition: all 0.3s ease;
         }
 
-        h1, h2, h3, h4, .matrix-title, .btn-action { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4, .stat-num, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
             padding-top: 85px;
-            overflow-x: hidden;
+            letter-spacing: -0.01em;
         }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 32px; width: 100%; }
 
-        /* --- 1. Premium Ambient Grid Mesh Hero --- */
+        /* --- 1. Institutional Hero Section --- */
         .choice-hero {
-            position: relative;
-            padding: 120px 0 90px;
-            text-align: center;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%), #ffffff;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* Subtle technical workspace structural alignment grid background lines */
-        .choice-hero::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
-            background-size: 50px 50px; pointer-events: none; z-index: 1;
-        }
-
-        .hero-meta-tag {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.12);
-            padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .choice-hero h1 { font-size: 3.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; line-height: 1.15; }
-        .choice-hero h1 span { color: var(--primary); }
-        .choice-hero p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; max-width: 750px; margin: 0 auto; line-height: 1.7; }
-
-        /* --- 2. Advanced Asymmetric Light Bento Grid --- */
-        .features-comparison { padding: 90px 0 50px; }
-        
-        .bento-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            grid-template-rows: auto auto;
-            gap: 30px;
-            width: 100%;
-        }
-
-        .bento-card {
+            padding: 130px 0 90px;
+            border-bottom: 1px solid var(--border-line);
             background: var(--white);
-            border: 1px solid var(--border);
-            border-bottom: 4px solid #e2e8f0;
-            border-radius: var(--card-radius);
-            padding: 45px;
-            position: relative;
-            overflow: hidden;
+        }
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-end;
+        }
+        .hero-left h1 { font-size: 3.8rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; }
+        .hero-left h1 span { color: var(--primary); }
+        .hero-right p { color: var(--text-muted); font-size: 1.15rem; font-weight: 400; line-height: 1.7; max-width: 520px; }
+
+        /* --- 2. Editorial Architectural Grid Layout --- */
+        .features-comparison { padding: 0; background: var(--white); }
+        
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .grid-cell {
+            padding: 70px 50px;
+            border-right: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-line);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            transition: var(--transition);
-            box-shadow: var(--tactile-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* Bento structure rules fixing broken alignments */
-        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; }
-        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; }
-        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; }
-
-        /* Dynamic soft cursor trace glow mesh */
-        .bento-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(16, 185, 129, 0.05), transparent 60%);
-            z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.4s ease;
-        }
-        .bento-card:hover::before { opacity: 1; }
-
-        .bento-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.25);
-            border-bottom-color: var(--primary);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .bento-card i {
-            font-size: 1.3rem; color: var(--primary);
-            margin-bottom: 24px; display: inline-flex;
-            width: 46px; height: 44px; background: rgba(16, 185, 129, 0.05);
-            border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 12px;
-            align-items: center; justify-content: center;
+            justify-content: space-between;
             transition: var(--transition);
         }
-        .bento-card:hover i { background: var(--primary); color: var(--white); border-color: var(--primary); }
+        /* Remove double borders systematically */
+        .editorial-grid .grid-cell:nth-child(2n) { border-right: none; }
+        .editorial-grid .grid-cell:nth-child(3), .editorial-grid .grid-cell:nth-child(4) { border-bottom: none; }
 
-        .bento-card h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .bento-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; font-weight: 500; text-align: left; }
+        .grid-cell:hover { background: #fdfdfd; }
 
-        /* --- 3. Value Check Matrix Blocks --- */
-        .value-matrix-section { padding: 40px 0 80px; }
-        .matrix-container {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
-            padding: 55px 60px;
-            box-shadow: var(--tactile-shadow);
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .matrix-title { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 45px; letter-spacing: -0.02em; }
-        .matrix-title span { color: var(--primary); }
+        .cell-top { margin-bottom: 40px; }
+        .cell-tag { font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 24px; }
+        .grid-cell h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; line-height: 1.2; }
+        .grid-cell p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; font-weight: 400; text-align: left; }
+
+        .cell-icon-wrap { font-size: 1.1rem; color: var(--secondary); display: inline-flex; margin-top: auto; }
+
+        /* --- 3. Pure Metric Proof Blueprint Block --- */
+        .value-matrix-section { padding: 100px 0; border-bottom: 1px solid var(--border-line); }
+        .matrix-split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
+        .matrix-left h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
+        .matrix-left h2 span { color: var(--primary); }
         
-        .matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .matrix-item {
-            display: flex; align-items: center; gap: 16px; padding: 20px 24px;
-            background: #f8fafc; border-radius: 14px; border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-        .matrix-item:hover { background: var(--white); border-color: rgba(16, 185, 129, 0.2); transform: translateX(4px); }
-        .matrix-item i { color: var(--primary); font-size: 1.15rem; flex-shrink: 0; }
+        .matrix-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .matrix-item { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--border-line); }
+        .matrix-item i { color: var(--primary); font-size: 0.9rem; }
         .matrix-item span { font-size: 0.95rem; font-weight: 600; color: var(--secondary); }
 
-        /* --- 4. Sleek Interactive Call-To-Action Inset Card --- */
-        .choice-cta { padding-bottom: 120px; }
-        .cta-inner {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-left: 6px solid var(--primary);
-            padding: 60px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
-            box-shadow: var(--tactile-shadow); text-align: center;
-            max-width: 1000px; margin: 0 auto; display: flex;
-            flex-direction: column; align-items: center;
-        }
-        .cta-inner h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .cta-inner h2 span { color: var(--primary); }
-        .cta-inner p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 750px; margin-bottom: 40px; }
+        /* --- 4. Premium Studio Conversion Block --- */
+        .choice-cta { padding: 120px 0; background: var(--white); text-align: left; }
+        .cta-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
+        .cta-left h2 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .cta-left h2 span { color: var(--primary); }
+        .cta-left p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; max-width: 620px; }
         
-        .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
-        .btn-action-route { 
-            padding: 14px 30px; border-radius: 8px; text-decoration: none; 
+        .cta-right-actions { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 320px; margin-left: auto; }
+        .btn-studio { 
+            padding: 14px 28px; border-radius: 6px; text-decoration: none; 
             font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
-            letter-spacing: 0.5px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; 
+            letter-spacing: 1px; transition: var(--transition); display: inline-flex; 
+            align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent;
         }
-        .btn-courses { background: var(--secondary); color: var(--white); box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.1); }
-        .btn-courses:hover { background: var(--primary); box-shadow: 0 8px 20px -4px var(--primary-glow); transform: translateY(-1px); }
-        .btn-contact { background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border); }
-        .btn-contact:hover { background: #e2e8f0; color: var(--secondary); transform: translateY(-1px); }
+        .btn-black { background: var(--secondary); color: var(--white); }
+        .btn-black:hover { background: var(--primary); }
+        .btn-outline { background: transparent; color: var(--text-main); border-color: var(--secondary); }
+        .btn-outline:hover { background: #f1f5f9; }
 
         /* ==========================================================================
            --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
            ========================================================================== */
-        @media (max-width: 1100px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .card-large-1, .card-small, .card-large-2 { grid-column: 1 / -1; }
-            .card-large-2 { grid-template-columns: 1fr; gap: 24px; }
-            .matrix-grid { grid-template-columns: 1fr; }
-            .choice-hero h1 { font-size: 2.6rem; }
-            .bento-card { padding: 40px 30px; }
-        }
-        @media (max-width: 640px) {
-            .choice-hero { padding: 80px 0 60px; }
-            .choice-hero h1 { font-size: 2.2rem; }
-            .matrix-container { padding: 35px 24px; }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .btn-action-route { width: 100%; justify-content: center; }
-            .container { padding: 0 20px; }
+        @media (max-width: 1024px) {
+            .hero-layout, .editorial-grid, .matrix-split, .cta-layout { grid-template-columns: 1fr; gap: 40px; }
+            .hero-left h1 { font-size: 3rem; }
+            .editorial-grid .grid-cell { border-right: none !important; border-bottom: 1px solid var(--border-line) !important; padding: 50px 20px; }
+            .editorial-grid .grid-cell:last-child { border-bottom: none !important; }
+            .matrix-list { grid-template-columns: 1fr; }
+            .cta-right-actions { margin-left: 0; }
         }
     </style>
 </head>
@@ -214,96 +134,95 @@
 
 <section class="choice-hero">
     <div class="container">
-        <span class="hero-meta-tag">The WebNova Advantage</span>
-        <h1>What Makes Us <span>Different?</span></h1>
-        <p>At WebNova Studio and Code Craft Academic, we go beyond traditional learning and website development. Our goal is to create a complete ecosystem where education, technology, creativity, and real-world application come together to help individuals learn, build, and grow with confidence.</p>
+        <div class="hero-layout">
+            <div class="hero-left">
+                <h1>The WebNova<br><span>Advantage.</span></h1>
+            </div>
+            <div class="hero-right">
+                <p>We build production-ready digital architectures and high-conversion enterprise interfaces backed by rigorous, master-grade technical logic.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="features-comparison">
-    <div class="container">
-        <div class="bento-grid">
+    <div class="container" style="padding:0;">
+        <div class="editorial-grid">
             
-            <!-- BENTO CARD 1: DESIGN & DEVELOPMENT EXCELLENCE -->
-            <div class="bento-card card-large-1">
-                <div>
-                    <i class="fas fa-layer-group"></i>
+            <!-- CELL 1 -->
+            <div class="grid-cell">
+                <div class="cell-top">
+                    <span class="cell-tag">01 // Architecture</span>
                     <h3>Design &amp; Development Excellence</h3>
-                    <p>Many platforms focus solely on design or coding. We combine modern design principles with practical development expertise to create digital solutions that are visually engaging, user-friendly, and built on strong technical foundations.</p>
+                    <p>We systematically bridge structural layout layouts with clean client source code execution tracks. Every layout is highly optimized for fast page loads and custom corporate identity conversions.</p>
                 </div>
+                <div class="cell-icon-wrap"><i class="fas fa-layer-group"></i></div>
             </div>
 
-            <!-- BENTO CARD 2: STRUCTURED APPROACH -->
-            <div class="bento-card card-small">
-                <div>
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Structured Learning Approach</h3>
-                    <p>Our educational resources are designed to provide clear learning pathways rather than fragmented information. Through carefully organized modules, practical exercises, and project-based learning, students gain both theoretical knowledge and real-world skills.</p>
+            <!-- CELL 2 -->
+            <div class="grid-cell">
+                <div class="cell-top">
+                    <span class="cell-tag">02 // Engineering</span>
+                    <h3>Structured Blueprint Systems</h3>
+                    <p>We don't deploy loose script components or fragmented styles. Our platforms run on robust web architecture frameworks designed to align fluidly across complex network monitors and screen arrays.</p>
                 </div>
+                <div class="cell-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
             </div>
 
-            <!-- BENTO CARD 3: OPEN-SOURCE LIBRARY -->
-            <div class="bento-card card-large-2">
-                <div>
-                    <i class="fas fa-file-pdf"></i>
-                    <h3>Open-Source &amp; Resource Ecosystem</h3>
+            <!-- CELL 3 -->
+            <div class="grid-cell">
+                <div class="cell-top">
+                    <span class="cell-tag">03 // Open-Source</span>
+                    <h3>Resource-Driven Ecosystem</h3>
+                    <p>We sustain an open-source technical directory of lecture files, cheat cards, and reusable landing layouts to maximize development deployment speed for the next generation.</p>
                 </div>
-                <div>
-                    <p>We believe quality learning resources should be accessible to everyone. Our ecosystem provides study materials, development resources, templates, guides, cheat sheets, and open-source projects that help learners accelerate their growth and productivity.</p>
-                </div>
+                <div class="cell-icon-wrap"><i class="fas fa-file-pdf"></i></div>
             </div>
 
-            <!-- BENTO CARD 4: INDUSTRY FIRST TRACK -->
-            <div class="bento-card card-large-1" style="grid-column: 1 / -1;">
-                <div>
-                    <i class="fas fa-rocket"></i>
+            <!-- CELL 4 -->
+            <div class="grid-cell">
+                <div class="cell-top">
+                    <span class="cell-tag">04 // Business DNA</span>
                     <h3>Industry &amp; Career Focus</h3>
-                    <p>Learning technology is only the first step. We help learners understand how to apply their skills through real-world projects, portfolio development, freelancing opportunities, and industry-relevant workflows that prepare them for professional success.</p>
+                    <p>We focus directly on deployment mechanics and project logistics. Our execution strategies turn code syntax paths into functional commercial systems built to capture freelance leads.</p>
                 </div>
-            </div>
-
-            <!-- BENTO CARD 5: COMMUNITY DRIVEN MATRIX -->
-            <div class="bento-card card-small" style="grid-column: 1 / -1;">
-                <div>
-                    <i class="fas fa-seedling"></i>
-                    <h3>Community-Centered Growth</h3>
-                    <p>We foster a collaborative environment where students, developers, designers, and creators can connect, share knowledge, contribute to projects, and support each other's journey toward continuous learning and innovation.</p>
-                </div>
+                <div class="cell-icon-wrap"><i class="fas fa-rocket"></i></div>
             </div>
 
         </div>
     </div>
 </section>
 
-<!-- Value Summary Matrix Block Layer -->
 <section class="value-matrix-section">
     <div class="container">
-        <div class="matrix-container">
-            <h2 class="matrix-title">Why Choose <span>WebNova?</span></h2>
-            
-            <div class="matrix-grid">
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Practical, project-based learning</span></div>
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Modern web design and development expertise</span></div>
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Open-source resources and community support</span></div>
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Structured educational roadmaps</span></div>
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Career and portfolio development guidance</span></div>
-                <div class="matrix-item"><i class="fas fa-check-circle"></i><span>Continuous innovation and skill growth</span></div>
+        <div class="matrix-split">
+            <div class="matrix-left">
+                <h2>Why Core Teams<br>Choose <span>WebNova.</span></h2>
+            </div>
+            <div class="matrix-right">
+                <div class="matrix-list">
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Practical, project-based arrays</span></div>
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Modern corporate layout scaling</span></div>
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Verified open-source system notes</span></div>
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Structured framework roadmap tracks</span></div>
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Freelance &amp; portfolio design tokens</span></div>
+                    <div class="matrix-item"><i class="fas fa-check"></i><span>Continuous system configuration growth</span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- High-Volume Action Call Trigger Block -->
 <section class="choice-cta">
     <div class="container">
-        <div class="cta-inner">
-            <h2>Ready to Experience the <span>Difference?</span></h2>
-            <p>Whether you're looking to learn, build, collaborate, or launch your next digital project, WebNova Studio and Code Craft Academic provide the resources, guidance, and community to help you succeed.</p>
-            <div class="hero-btns">
-                <a href="courses.html" class="btn-action-route btn-courses">Explore Courses</a>
-                <a href="free-resources.html" class="btn-action-route btn-contact">Discover Resources</a>
-                <a href="contact.html" class="btn-action-route btn-courses">Start Your Project</a>
-                <a href="contact.html" class="btn-action-route btn-contact">Contact Us</a>
+        <div class="cta-layout">
+            <div class="cta-left">
+                <h2>Deploy Your <span>Next Project.</span></h2>
+                <p>Whether you're an enterprise client looking to design a high-conversion system framework or an academic looking to master structured syntax logic routes, we have the scaffolding ready.</p>
+            </div>
+            <div class="cta-right-actions">
+                <a href="contact.html" class="btn-studio btn-black">Start Your Project</a>
+                <a href="courses.html" class="btn-studio btn-outline">Explore Academy</a>
             </div>
         </div>
     </div>
@@ -315,17 +234,5 @@
 <!-- Core System Application Engine Injections -->
 <script src="main.js"></script>
 <script src="footer.js"></script>
-<script>
-    // Light-Theme Mouse Positioning Glow Vector Variable Engine Tracker
-    document.querySelectorAll('.bento-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-</script>
 </body>
 </html>
