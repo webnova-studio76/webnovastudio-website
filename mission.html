@@ -6,79 +6,270 @@
     <title>Our Mission | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* High-Premium Soft Light Workspace Palette Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Extremely soft structural outline */
+            --card-radius: 20px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.06), 0 4px 15px -2px var(--primary-glow);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed navbar padding buffer constraint */
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+
+        /* --- 1. Soft Ambient Hero Section --- */
+        .mission-hero-minimal {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            padding: 90px 0 70px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Technical accent background mesh design */
+        .mission-hero-minimal::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 45px 40px; pointer-events: none; z-index: 1;
+        }
+
+        .mission-hero-minimal h1 { font-size: 2.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 15px; line-height: 1.25; }
+        .mission-hero-minimal h1 span { color: var(--primary); }
+        .mission-hero-minimal p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- 2. Tactile Pillar Row Architecture --- */
+        .mission-pillars { padding: 60px 0 40px; }
+        
+        .pillar-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            width: 100%;
+        }
+
+        .pillar-card {
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            border-bottom: 4px solid #cbd5e1;
+            border-radius: var(--card-radius);
+            padding: 40px 30px;
+            box-shadow: var(--tactile-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Large watermarked decorative back-numbers inside each card block */
+        .pillar-card::after {
+            position: absolute; bottom: -10px; right: 10px;
+            font-size: 5.5rem; font-weight: 900; color: rgba(148, 163, 184, 0.04);
+            font-family: monospace; transition: var(--transition); pointer-events: none;
+        }
+        .pillar-card:nth-child(1)::after { content: '01'; }
+        .pillar-card:nth-child(2)::after { content: '02'; }
+        .pillar-card:nth-child(3)::after { content: '03'; }
+        .pillar-card:hover::after { color: rgba(16, 185, 129, 0.06); transform: scale(1.05) translateY(-5px); }
+
+        .pillar-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        
+        .pillar-header i {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: rgba(16, 185, 129, 0.05); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem; transition: var(--transition);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        .pillar-card:hover .pillar-header i { background: var(--primary); color: var(--white); }
+
+        .pillar-header h2 { font-size: 1.3rem; font-weight: 800; color: #0f172a; letter-spacing: -0.01em; }
+        .pillar-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
+
+        /* --- 3. Premium Interactive Roadmap Pipeline --- */
+        .mission-roadmap { padding: 40px 0 80px; }
+        
+        .roadmap-container {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 50px 60px;
+            box-shadow: var(--tactile-shadow);
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap-container h2 { font-size: 1.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 45px; text-align: center; }
+        .roadmap-container h2 span { color: var(--primary); }
+
+        /* Centralized baseline track layout connectors */
+        .roadmap-track { position: relative; display: flex; flex-direction: column; gap: 35px; }
+        .roadmap-track::before {
+            content: ''; position: absolute; top: 0; left: 24px; width: 2px; height: 100%;
+            background: #e2e8f0; z-index: 1;
+        }
+
+        .roadmap-step { display: flex; gap: 24px; position: relative; z-index: 5; align-items: flex-start; }
+        
+        .step-num {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: #f8fafc; border: 2px solid #e2e8f0;
+            color: var(--text-muted); font-family: monospace; font-size: 0.95rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            transition: var(--transition); z-index: 10;
+        }
+        .roadmap-step:hover .step-num { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); transform: scale(1.05); }
+
+        .step-content {
+            background: #f8fafc; border: 1px solid var(--border);
+            padding: 24px 30px; border-radius: 12px; flex-grow: 1;
+            transition: var(--transition); text-align: left;
+        }
+        .roadmap-step:hover .step-content { background: var(--white); border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04); }
+
+        .step-content h4 { font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.01em; }
+        .step-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; }
+
+        /* ==========================================================================
+           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .pillar-row { grid-template-columns: 1fr; gap: 20px; }
+            .pillar-card { padding: 35px 25px; }
+            .roadmap-container { padding: 40px 30px; }
+        }
+        @media (max-width: 640px) {
+            .mission-hero-minimal { padding: 70px 0 50px; }
+            .mission-hero-minimal h1 { font-size: 2rem; }
+            .step-num { width: 40px; height: 40px; font-size: 0.85rem; }
+            .roadmap-track::before { left: 19px; }
+            .step-content { padding: 20px; }
+            .container { padding: 0 16px; }
+        }
+    </style>
 </head>
-<body class="js-enabled">
+<body>
 
-    <section class="mission-hero-minimal">
-        <div class="container">
-            <h1 class="reveal-up">Bridging the Gap Between <br><span>Theory & Industry.</span></h1>
-            <p class="reveal-up reveal-delay-1">Founded by <strong>Rakesh (BCA)</strong> & <strong>Rashmi (MCA Scholar)</strong> to redefine digital education.</p>
-        </div>
-    </section>
+<!-- Dynamic Universal Header Mount Anchor Slot -->
+<div id="global-header"></div>
 
-    <section class="mission-pillars">
-        <div class="container">
-            <div class="pillar-row">
-                
-                <div class="pillar-card reveal-up">
-                    <div class="pillar-header">
-                        <i class="fas fa-terminal"></i>
-                        <h3>Code Logic First</h3>
-                    </div>
-                    <p>At <strong>Code Craft Academic</strong>, our mission is to move beyond "copy-pasting." We teach the deep logic of C/C++, Python, and Full-Stack development.</p>
+<section class="mission-hero-minimal">
+    <div class="container">
+        <h1 class="reveal-up">Bridging the Gap Between <br><span>Theory & Industry.</span></h1>
+        <p class="reveal-up reveal-delay-1">Founded by <strong>Rakesh (MCA Scholar)</strong> & <strong>Rashmi (MCA Scholar)</strong> to redefine digital education and production-ready architecture.</p>
+    </div>
+</section>
+
+<section class="mission-pillars">
+    <div class="container">
+        <div class="pillar-row">
+            
+            <!-- PILLAR 1 -->
+            <div class="pillar-card reveal-up">
+                <div class="pillar-header">
+                    <i class="fas fa-terminal"></i>
+                    <h2>Code Logic First</h2>
                 </div>
-
-                <div class="pillar-card reveal-up reveal-delay-1">
-                    <div class="pillar-header">
-                        <i class="fas fa-layer-group"></i>
-                        <h3>Design with Purpose</h3>
-                    </div>
-                    <p>At <strong>RR Web Designers</strong>, we believe design isn't just about colors—it's about conversions. We aim to build high-performance brand identities.</p>
-                </div>
-
-                <div class="pillar-card reveal-up reveal-delay-2">
-                    <div class="pillar-header">
-                        <i class="fas fa-seedling"></i>
-                        <h3>Community Growth</h3>
-                    </div>
-                    <p>Our goal is to impact 10,000+ beginners by 2026, providing the resources and mentorship needed to launch successful freelance careers.</p>
-                </div>
-
+                <p>At <strong>Code Craft Academic</strong>, our core mission is to eliminate basic copy-paste logic. We educate students in the analytical structure of low-level compilation architectures, dynamic data logic arrays, and scalable structural system programming patterns.</p>
             </div>
-        </div>
-    </section>
 
-    <section class="mission-roadmap reveal-up">
-        <div class="container">
-            <div class="roadmap-container">
-                <h2>The 2026 <span>Roadmap</span></h2>
+            <!-- PILLAR 2 -->
+            <div class="pillar-card reveal-up reveal-delay-1">
+                <div class="pillar-header">
+                    <i class="fas fa-layer-group"></i>
+                    <h2>Design with Purpose</h2>
+                </div>
+                <p>At <strong>WebNova Studio</strong>, we balance wireframe blueprint layouts with user interactions. We aim to deploy lightweight digital architectures and cohesive brand models optimized for real-world interface performance.</p>
+            </div>
+
+            <!-- PILLAR 3 -->
+            <div class="pillar-card reveal-up reveal-delay-2">
+                <div class="pillar-header">
+                    <i class="fas fa-seedling"></i>
+                    <h2>Community Growth</h2>
+                </div>
+                <p>Our focus is to provide verified open-source scripts, actionable terminal workflows, and comprehensive developer assets. We deliver the precise scaffolding needed by entry-level learners to launch balanced freelance systems.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="mission-roadmap reveal-up">
+    <div class="container">
+        <div class="roadmap-container">
+            <h2>The Consolidated <span>Ecosystem Roadmap</span></h2>
+            
+            <div class="roadmap-track">
+                
+                <!-- STEP 1 -->
                 <div class="roadmap-step">
                     <div class="step-num">01</div>
                     <div class="step-content">
                         <h4>Educational Standardization</h4>
-                        <p>Completing our 15+ master modules for CS, Python, and DBMS.</p>
+                        <p>Completing our specialized repository decks across database management system engines, full-stack programming nodes, and technical automation logic guides.</p>
                     </div>
                 </div>
+                
+                <!-- STEP 2 -->
                 <div class="roadmap-step">
                     <div class="step-num">02</div>
                     <div class="step-content">
-                        <h4>Agency Scaling</h4>
-                        <p>Expanding RR Web Designers into a premier UI/UX agency for global clients.</p>
+                        <h4>Platform Deployment</h4>
+                        <p>Scaling WebNova Studio assets to supply structured interface modules, operational pipelines, and technical blueprints for modern visual developers.</p>
                     </div>
                 </div>
+                
+                <!-- STEP 3 -->
                 <div class="roadmap-step">
                     <div class="step-num">03</div>
                     <div class="step-content">
-                        <h4>Full-Stack Ecosystem</h4>
-                        <p>Launching the WebNova Student Portal for project-based collaboration.</p>
+                        <h4>Collaborative Workspaces</h4>
+                        <p>Launching project-driven online frameworks where students and active creators synchronize code stacks on live production environments.</p>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
-    </section>
+    </div>
+</section>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="animations.js"></script>
+<!-- Dynamic Universal Footer Mount Anchor Slot -->
+<div id="global-footer"></div>
+
+<!-- Core System Application Engine Injections -->
+<script src="main.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>
