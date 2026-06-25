@@ -1,305 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Vault | WebNova Studio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Premium Editorial Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* High-End Minimalist Studio Tokens */
-            --primary: #10b981;        /* Global Academic Emerald Green */
-            --secondary: #0f172a;     /* Deep Jet Onyx */
-            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
-            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
-            --text-muted: #57534e;    /* Deep Muted Stone Blue */
-            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
+/* --- PREMIUM SAAS PORTFOLIO CARD ENGINE (REF: REQ_SHOWCASE) --- */
+.feed-container { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 32px; 
+}
+.feed-title { 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    letter-spacing: -0.03em; 
+    padding-bottom: 16px; 
+    border-bottom: 1px solid var(--border-line); 
+    margin-bottom: 20px; 
+}
+.feed-title span { color: var(--primary); }
 
-        h1, h2, h3, h4, label, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px;
-            letter-spacing: -0.01em;
-        }
+/* The Base Premium Showcase Card Layout */
+.request-item-card {
+    position: relative;
+    padding: 45px;
+    border-radius: 24px; /* Soft, modern rounded corners matching your reference */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.1);
+    z-index: 1;
+}
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; width: 100%; }
+/* Hover Physics */
+.request-item-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15);
+}
 
-        /* --- 1. Institutional Hero Section --- */
-        .dev-hero-corp {
-            padding: 120px 0 80px;
-            border-bottom: 1px solid var(--border-line);
-            background: var(--white);
-        }
-        .hero-content-corp { text-align: left; }
-        .corp-badge { 
-            font-family: monospace; font-size: 0.72rem; font-weight: 700; 
-            color: var(--primary); text-transform: uppercase; letter-spacing: 2px; 
-            display: inline-block; margin-bottom: 16px;
-        }
-        .hero-content-corp h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px; }
-        .hero-content-corp h1 span { color: var(--primary); }
-        .hero-content-corp p { color: var(--text-muted); font-size: 1.1rem; font-weight: 400; line-height: 1.65; max-width: 600px; }
+/* Background Gradients Mapped to Match Your Image Themes */
+.request-item-card.admin-post {
+    background: linear-gradient(135deg, #063c33 0%, #031e19 100%); /* Deep Studycast Emerald Teal */
+}
+.request-item-card.card-theme-purple {
+    background: linear-gradient(135deg, #1e113a 0%, #0d061f 100%); /* Mosai Deep Indigo Violet */
+}
+.request-item-card.card-theme-blue {
+    background: linear-gradient(135deg, #094775 0%, #04233b 100%); /* Alithea Genomics Rich Sea Blue */
+}
 
-        /* --- 2. Interactive Structural Workspace Content --- */
-        .pillars-corp { padding: 80px 0; }
-        
-        .vault-input-card {
-            background: var(--white);
-            border: 1px solid var(--border-line);
-            padding: 50px;
-            border-radius: 8px;
-            margin-bottom: 60px;
-        }
+/* Decorative Geometric Line Overlays (Bottom-Right Anchored Artwork) */
+.request-item-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 2;
+    transition: var(--transition);
+}
+.request-item-card.admin-post::after {
+    border: 3px solid #ffffff;
+    border-radius: 50% 0 0 0;
+}
+.request-item-card.card-theme-purple::after {
+    background-image: radial-gradient(#ffffff 2px, transparent 2px);
+    background-size: 16px 16px;
+}
+.request-item-card.card-theme-blue::after {
+    border: 2px dashed #ffffff;
+    transform: rotate(45deg);
+}
+.request-item-card:hover::after {
+    transform: scale(1.08) rotate(5deg);
+    opacity: 0.25;
+}
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        
-        .input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-        .input-group:last-of-type { margin-bottom: 32px; }
-        .input-group label { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .input-group input, .input-group select, .input-group textarea {
-            width: 100%; padding: 14px 16px; border-radius: 6px; 
-            border: 1px solid var(--border-line); background: var(--bg);
-            color: var(--text-main); font-size: 0.95rem; font-weight: 500; transition: var(--transition);
-        }
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
-            outline: none; border-color: var(--secondary); background: var(--white);
-        }
+/* Typography Overrides for Dark Background Elements */
+.request-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-bottom: 20px; 
+    position: relative;
+    z-index: 5;
+}
+.header-badge-stack { 
+    display: flex; 
+    gap: 8px; 
+}
 
-        .btn-studio { 
-            padding: 14px 32px; border-radius: 6px; text-decoration: none; 
-            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
-            letter-spacing: 1px; transition: var(--transition); display: inline-flex; 
-            align-items: center; justify-content: center; gap: 10px; border: none; cursor: pointer;
-            background: var(--secondary); color: var(--white); width: 100%;
-        }
-        .btn-studio:hover { background: var(--primary); }
+/* Minimalist Pill Badges from Reference Image */
+.pill-tag {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--secondary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.pill-tag.status-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
 
-        /* --- 3. Dynamic Editorial Pipeline Feed --- */
-        .feed-container { display: flex; flex-direction: column; gap: 24px; }
-        .feed-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; padding-bottom: 16px; border-bottom: 1px solid var(--border-line); margin-bottom: 12px; }
-        .feed-title span { color: var(--primary); }
+.user-name { 
+    font-family: 'Space Grotesk', sans-serif; 
+    font-size: 2.2rem; /* Large, bold minimalist titles */
+    font-weight: 700; 
+    color: #ffffff !important; 
+    letter-spacing: -0.03em;
+    margin-top: 16px;
+    display: block;
+}
 
-        .request-item-card {
-            background: var(--white);
-            border: 1px solid var(--border-line);
-            border-left: 4px solid var(--border-line);
-            padding: 30px;
-            border-radius: 6px;
-            transition: var(--transition);
-        }
-        .request-item-card:hover { background: #fdfdfd; }
-        .request-item-card.admin-post { border-left-color: var(--secondary); background: #fdfdfd; }
-        .request-item-card.new-entry { border-left-color: var(--primary); animation: cellReveal 0.5s ease-out; }
+.request-item-card p { 
+    font-size: 0.95rem; 
+    color: #cbd5e1 !important; /* Metallic off-white text for clean contrast */
+    line-height: 1.6; 
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 5;
+    max-width: 80%;
+}
 
-        @keyframes cellReveal {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .request-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .user-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 6px; }
-        .user-name i { color: #2563eb; font-size: 0.95rem; }
-        
-        .header-right { display: flex; align-items: center; gap: 12px; }
-        .status-badge { font-family: monospace; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; }
-        .status-uploaded { background: rgba(16, 185, 129, 0.08); color: var(--primary); }
-        .status-pending { background: #fff7ed; color: #c2410c; }
-        .request-category { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: #f1f5f9; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; }
-
-        .request-item-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
-        .request-footer { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); font-family: monospace; }
-
-        /* --- 4. System Modals Overlays --- */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: center; z-index: 99999;
-        }
-        .modal-content {
-            background: var(--white); padding: 40px; border-radius: 8px;
-            max-width: 440px; width: 90%; text-align: center; border: 1px solid var(--border-line);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-        }
-        .modal-content h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
-        .modal-content p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px; }
-
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 768px) {
-            .hero-content-corp h1 { font-size: 2.8rem; }
-            .form-row { grid-template-columns: 1fr; gap: 0; }
-            .vault-input-card { padding: 30px 20px; }
-            .request-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .header-right { width: 100%; justify-content: space-between; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Universal Structural Navigation Frame Slot Mount -->
-    <div id="global-header"></div>
-
-    <section class="dev-hero-corp">
-        <div class="container">
-            <div class="hero-content-corp">
-                <span class="corp-badge">Live Pipeline</span>
-                <h1>The <span>Request Vault.</span></h1>
-                <p>Collaborative notes and template development. Submit your requirements below to see them in our Sunday updates.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pillars-corp">
-        <div class="container">
-            
-            <!-- Structural Request Input Form Card Element -->
-            <div class="vault-input-card">
-                <form id="vaultForm">
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label for="userName">Name</label>
-                            <input type="text" id="userName" placeholder="Rakesh" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="requestType">Request Category</label>
-                            <select id="requestType">
-                                <option value="Academic Notes">Academic Notes</option>
-                                <option value="Web Template">Web Template</option>
-                                <option value="PPT Slide Deck">PPT Slide Deck</option>
-                                <option value="Career Guide">Career Guide</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="userMessage">Details</label>
-                        <textarea id="userMessage" rows="4" placeholder="Describe the specific topic or design you need..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-studio">
-                        Post to Pipeline <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Dynamic Pipeline Status Activity Feed Track -->
-            <div id="requestFeed" class="feed-container">
-                <h3 class="feed-title">Current <span>Pipeline</span> Status</h3>
-                
-                <div class="request-item-card admin-post">
-                    <div class="request-header">
-                        <span class="user-name">WebNova Admin <i class="fas fa-check-circle"></i></span>
-                        <span class="status-badge status-uploaded">Live</span>
-                    </div>
-                    <p>Welcome to the Request Vault! We review every post. If you see your request marked as <strong>"In Progress,"</strong> it will be available this Sunday.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Pipeline Notification Feedback Overlay -->
-    <div id="successModal" class="modal-overlay" style="display:none;">
-        <div class="modal-content" style="border-top: 4px solid var(--primary);">
-            <div style="font-size: 3.5rem; color: var(--primary); margin-bottom: 16px;">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2>Message Received!</h2>
-            <p>Your request has been piped directly to our production terminal. Expect an update soon.</p>
-            <button onclick="closeSuccessModal()" class="btn-studio" style="width: 100%;">Great!</button>
-        </div>
-    </div>
-
-    <!-- Universal Footer Container Anchor Placement Slot -->
-    <div id="global-footer"></div>
-
-    <!-- Integrated Production Application Scripts Logic Loops -->
-    <script src="main.js"></script>
-    <script src="footer.js"></script>
-    <script>
-        const form = document.getElementById('vaultForm');
-        const feed = document.getElementById('requestFeed');
-        const successModal = document.getElementById('successModal');
-
-        // 1. Core Production Telegram Configuration Channel Secure Assets
-        const TELEGRAM_BOT_TOKEN = "8603246194:AAEFDw2y3hH3NihearnGsRHyJ-qykRbqU1s";
-        const RAKESH_CHAT_ID = "6091162254"; 
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('userName').value;
-            const type = document.getElementById('requestType').value;
-            const message = document.getElementById('userMessage').value;
-            const now = new Date();
-            const timeStr = now.toLocaleDateString();
-
-            // Professional Telegram Markdown Text Formatting Layer
-            const messageText = `🚀 *NEW VAULT REQUEST*%0A%0A` +
-                                `👤 *User:* ${name}%0A` +
-                                `📂 *Category:* ${type}%0A` +
-                                `📝 *Details:* ${message}`;
-
-            const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${RAKESH_CHAT_ID}&text=${messageText}&parse_mode=Markdown`;
-
-            // Execute the Live Production Network Pipeline Post
-            fetch(telegramUrl)
-            .then(response => {
-                if(response.ok) {
-                    // Trigger Local UI Injection Update Append Sequence
-                    const card = document.createElement('div');
-                    card.className = 'request-item-card new-entry';
-                    
-                    card.innerHTML = `
-                        <div class="request-header">
-                            <span class="user-name">${name}</span>
-                            <div class="header-right">
-                                <span class="status-badge status-pending">Pending Audit</span>
-                                <span class="request-category">${type}</span>
-                            </div>
-                        </div>
-                        <p>${message}</p>
-                        <div class="request-footer">
-                            <span>Date: ${timeStr}</span>
-                        </div>
-                    `;
-
-                    // Prepend card safely under Title + Admin Post elements
-                    feed.insertBefore(card, feed.childNodes[4]);
-                    
-                    // Display Modern Clean Success Alert Modal Override Layout
-                    successModal.style.display = 'flex';
-                    form.reset();
-                } else {
-                    alert("Pipeline Transmission Friction Encountered. Verify configuration.");
-                }
-            })
-            .catch(error => {
-                console.error('Error Architecture Trace:', error);
-                alert("Connection handshake failed. Are you online?");
-            });
-        });
-
-        function closeSuccessModal() {
-            successModal.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+.request-footer { 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    color: rgba(255, 255, 255, 0.4) !important; 
+    font-family: monospace;
+    position: relative;
+    z-index: 5;
+}
