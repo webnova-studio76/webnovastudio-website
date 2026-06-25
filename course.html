@@ -6,275 +6,449 @@
     <title>Courses | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* High-Premium Unified Light Canvas Style Tokens */
-            --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.15);
-            --secondary: #0f172a;     /* WebNova Master Deep Navy */
-            --card-surface: #ffffff;  /* High-Performance White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Background */
-            --text-main: #334155;     /* Dark Sapphire Headings Typography */
-            --text-muted: #64748b;    /* Muted Gray Secondary Text */
-            --border: rgba(37, 99, 235, 0.08); 
-            --card-radius: 16px;      
+            /* Compact Data-Dense Theming Alignment Map */
+            --primary: #10b981;
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-line: #e2e8f0;
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* Channel Difficult Tracking Accents */
+            --track-basics: #0ea5e9;
+            --track-frontend: #6366f1;
+            --track-programming: #f59e0b;
+            --track-dbms: #0284c7;
+            --track-frameworks: #ec4899;
+            --track-career: #10b981;
+            --track-cloud: #8b5cf6;
+            --track-core: #ef4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: subpixel-antialiased; 
-            padding-top: 85px; /* Fixed header offset buffer boundary */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        /* --- 1. Course Directory Hero --- */
+        .course-header {
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-line);
+            background: var(--white);
+        }
+        .sub-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
+
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
         }
 
-        /* Courses Section Canvas Setup - Light Clean Background Mesh */
-        .courses-section {
-            padding: 60px 20px;
-            background: var(--bg);
-            position: relative;
-        }
-
-        /* Subtle background tech grid lines matching the index pattern */
-        .courses-section::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
-            background-size: 50px 50px; pointer-events: none; z-index: 1;
-        }
-
-        .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
-
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .sub-title { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.02em; }
-        .section-header h2 span { color: var(--primary); }
-        .section-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; font-weight: 500; }
-
-        /* Unified Master Structural Grid Layout Engine */
-        .courses-grid {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-            gap: 24px !important;
-            margin-top: 40px !important;
-        }
-
-        /* --- Premium Compact Volumetric Card Architecture --- */
-        .course-card {
-            background: var(--card-surface) !important;
-            border-radius: var(--card-radius);
-            padding: 28px 24px !important; /* Premium unified compact spacing scale */
+        /* --- 2. Integrated Search & Filter Array --- */
+        .filter-wrapper {
             display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border) !important;
-            border-bottom: 4px solid var(--border) !important;
-            position: relative;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.04) !important;
-            transition: var(--transition);
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
         }
-
-        .course-card:hover {
-            transform: translateY(-5px) scale(1.01) !important;
-            border-color: rgba(16, 185, 129, 0.25) !important;
-            border-bottom-color: var(--primary) !important;
-            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.12) !important;
+        .search-box { position: relative; width: 320px; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: all 0.2s ease;
         }
+        .search-box input:focus { border-color: var(--text-main); }
 
-        /* Small Category Tags */
-        .course-tag {
-            position: absolute; top: 22px; right: 24px;
-            background: #eff6ff; border: 1px solid var(--border);
-            color: #2563eb; padding: 4px 12px; border-radius: 6px;
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+        .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 8px 16px; border: 1px solid var(--border-line); background: var(--white);
+            color: var(--text-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
         }
+        .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* Rounded Icon Boxes with Smooth Micro-Floating Animation Triggers */
-        .course-icon {
-            width: 48px; height: 48px;
-            background: rgba(16, 185, 129, 0.05);
-            border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 10px;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 1.25rem; color: var(--primary); margin-bottom: 20px;
-            transition: var(--transition); font-weight: 900;
-        }
-
-        .course-card:hover .course-icon {
-            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
-            color: var(--white); transform: scale(1.05);
-            box-shadow: 0 6px 12px var(--primary-glow);
-        }
-
-        .course-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 10px; color: var(--secondary); text-align: left; }
-        .course-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 25px; flex-grow: 1; font-weight: 500; text-align: left; }
-
-        /* Card Split Area Rule Line */
-        .course-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 18px; }
-        .course-footer span { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        /* --- 3. Protected Wide List Row Architecture --- */
+        .learning-modules-section { padding: 24px 0; }
         
-        /* Unified Minimal Hyperlink View Buttons */
-        .enroll-btn { 
-            text-decoration: none !important; 
-            color: #2563eb !important; 
-            font-weight: 800 !important; 
-            font-size: 0.85rem !important; 
-            display: inline-flex !important; 
-            align-items: center !important; 
-            cursor: pointer !important; 
-            transition: var(--transition) !important; 
-            background: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            box-shadow: none !important;
-        }
-        .enroll-btn:hover { color: var(--secondary) !important; text-decoration: underline !important; }
-
-        /* Highlighted Premium Career Module Overrides (Converts dark background card into a premium Emerald left-border block card) */
-        .course-card.highlight-course {
-            border-left: 6px solid #10b981 !important;
-            border-bottom: 4px solid var(--border) !important;
-        }
-        .course-card.highlight-course .course-tag {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-            color: var(--white) !important; border: none !important;
-        }
-        .course-card.highlight-course .enroll-btn {
-            color: #10b981 !important;
-        }
-        .course-card.highlight-course .enroll-btn:hover {
-            color: var(--secondary) !important;
+        .wide-list-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 14px !important;
+            width: 100% !important;
         }
 
-        @media (max-width: 768px) {
-            .courses-section { padding: 40px 10px; }
-            .section-header h2 { font-size: 2rem; }
-            .courses-grid { gap: 20px !important; padding: 0 !important; }
+        .wide-list-row {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 20px 32px !important;
+            border-radius: 8px !important;
+            display: grid !important;
+            grid-template-columns: 280px 1fr 160px !important;
+            align-items: center !important;
+            gap: 32px !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            transition: border-color 0.2s ease;
+        }
+        .wide-list-row:hover { border-color: #cbd5e1 !important; }
+
+        /* Category Left-Border Color Tracks */
+        .wide-list-row.cat-basics { border-left: 5px solid var(--track-basics) !important; }
+        .wide-list-row.cat-frontend { border-left: 5px solid var(--track-frontend) !important; }
+        .wide-list-row.cat-programming { border-left: 5px solid var(--track-programming) !important; }
+        .wide-list-row.cat-database { border-left: 5px solid var(--track-dbms) !important; }
+        .wide-list-row.cat-frameworks { border-left: 5px solid var(--track-frameworks) !important; }
+        .wide-list-row.cat-career { border-left: 5px solid var(--track-career) !important; }
+        .wide-list-row.cat-cloud { border-left: 5px solid var(--track-cloud) !important; }
+        .wide-list-row.cat-core { border-left: 5px solid var(--track-core) !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
+        }
+        .wide-list-row.cat-basics .mod-thumb-deck { color: var(--track-basics); }
+        .wide-list-row.cat-frontend .mod-thumb-deck { color: var(--track-frontend); }
+        .wide-list-row.cat-programming .mod-thumb-deck { color: var(--track-programming); }
+        .wide-list-row.cat-database .mod-thumb-deck { color: var(--track-dbms); }
+        .wide-list-row.cat-frameworks .mod-thumb-deck { color: var(--track-frameworks); }
+        .wide-list-row.cat-career .mod-thumb-deck { color: var(--track-career); }
+        .wide-list-row.cat-cloud .mod-thumb-deck { color: var(--track-cloud); }
+        .wide-list-row.cat-core .mod-thumb-deck { color: var(--track-core); }
+
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        .wide-list-row p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
+
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+        }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* Empty State */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* --- 4. Value Propositions Matrix --- */
+        .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
+        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: var(--primary); margin-top: 2px; font-size: 0.9rem; }
+        .outcome-item div strong { display: block; color: var(--secondary); margin-bottom: 2px; }
+
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .download-btns { width: 100%; }
+            .outcomes-grid { grid-template-columns: 1fr; gap: 16px; }
+            .search-box { width: 100%; }
+            .filter-wrapper { flex-direction: column; align-items: stretch; gap: 14px; }
+            .filter-btns { width: 100%; justify-content: space-between; }
+            .filter-btn { flex: 1; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<section class="courses-section">
-    <div class="container">
-        <div class="section-header">
+    <section class="course-header">
+        <div class="container">
             <span class="sub-title">Code Craft Academic</span>
-            <h2>Master the <span>Digital World</span></h2>
-            <p>From absolute basics to advanced full-stack engineering.</p>
+            <h1>Master the <span>Digital World</span></h1>
+            <p>From core fundamental computer literacy structures to complex, corporate-scale systems full-stack engineering roadmaps.</p>
+            <div class="hero-stats">
+                <span>09 Active Tracks</span>
+                <span>200+ Core Chapters</span>
+                <span>Project Driven Modules</span>
+                <span>100% Free Resources</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <div class="filter-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="moduleSearch" placeholder="Search courses, stacks, or keywords..." onkeyup="applyFilters()">
+            </div>
+            <div class="filter-btns">
+                <button class="filter-btn active" onclick="filterCategory(this, 'all')">All Paths</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'basics')">Basics</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'frontend')">Frontend</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'programming')">Programming</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'database')">DBMS</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'cloud')">Cloud</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'core')">Core Tech</button>
+            </div>
         </div>
 
-        <div class="courses-grid">
-            
-            <div class="course-card" data-category="basics">
-                <div class="course-tag">Basics</div>
-                <div class="course-icon"><i class="fas fa-desktop"></i></div>
-                <h3>Fundamentals of Computers</h3>
-                <p>Hardware, OS, and how the internet works. The perfect starting point.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 4 Weeks</span>
-                    <a href="syllabus-fundamentals.html" class="enroll-btn">View Syllabus &rarr;</a>
+        <section class="learning-modules-section">
+            <div class="wide-list-container" id="moduleGrid">
+                
+                <div class="wide-list-row cat-basics" data-category="basics">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-desktop"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Fundamentals of Computers</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">4 Weeks</span>
+                                <span class="meta-chip">Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Master basic computing blocks, physical processing hardware parameters, operating systems configurations, and internet protocol framework logic.</p>
+                    <div class="download-btns">
+                        <a href="syllabus-fundamentals.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-frontend" data-category="frontend">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-html5"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Web Designer Bundle</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">8 Weeks</span>
+                                <span class="meta-chip">Frontend</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Complete interface engineering pipeline mapping. Author clean semantic HTML5 structures, modular CSS3 grids, and responsive user experience interfaces.</p>
+                    <div class="download-btns">
+                        <a href="bundle-view.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-programming" data-category="programming">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-python"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Python Mastery</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">6 Weeks</span>
+                                <span class="meta-chip">Core Logic</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Learn programming syntax structures from scratch. Build background tasks scripts, parse data objects, and initialize foundational engine applications.</p>
+                    <div class="download-btns">
+                        <a href="python-syllabus.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-database" data-category="database">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-database"></i></div>
+                        <div class="mod-header-text">
+                            <h3>DBMS &amp; SQL / NoSQL</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">5 Weeks</span>
+                                <span class="meta-chip">Data Layer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Architect robust datastores. Design highly optimal Relational MySQL environments alongside unstructured, document-oriented scalable MongoDB clusters.</p>
+                    <div class="download-btns">
+                        <a href="dbms-syllabus.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-frameworks" data-category="frameworks">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-react"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Modern JS Frameworks</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">12 Weeks</span>
+                                <span class="meta-chip">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Construct dynamic, single-page client engines. Comprehensive application integration paradigms using ReactJS components, NodeJS runtimes, and AngularJS structures.</p>
+                    <div class="download-btns">
+                        <a href="frameworks-portal.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-career" data-category="career">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-layer-group"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Fullstack Development</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">6 Months</span>
+                                <span class="meta-chip">Career Track</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>The total structural ecosystem map. Link frontend presentation nodes seamlessly to robust server architectures, cloud clusters, and automated distribution loops.</p>
+                    <div class="download-btns">
+                        <a href="fullstack-roadmap.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-cloud" data-category="cloud">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-cloud"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Cloud Computing</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">8 Weeks</span>
+                                <span class="meta-chip">Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Manage serverless code distributions. Learn isolated server containment, load balancer algorithms, deployment tracks, and core management inside AWS and Azure spaces.</p>
+                    <div class="download-btns">
+                        <a href="cloud-syllabus.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-core" data-category="core">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><strong>C</strong></div>
+                        <div class="mod-header-text">
+                            <h3>C Programming</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Weeks</span>
+                                <span class="meta-chip">Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Master low-level resource tracking pointers, memory array mappings, sorting structures, efficiency calculation tracking formulas, and data structures logic blocks.</p>
+                    <div class="download-btns">
+                        <a href="c-mastery.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row cat-core" data-category="core">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><strong>C++</strong></div>
+                        <div class="mod-header-text">
+                            <h3>C++ Programming</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Weeks</span>
+                                <span class="meta-chip">Object Logic</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Deep dive into Object-Oriented system architecture definitions, polymorphism compilation trees, abstract engineering channels, and low-level data patterns execution paths.</p>
+                    <div class="download-btns">
+                        <a href="cpp-syllabus.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="empty-state-node" id="noResults">
+                    <i class="fas fa-folder-open"></i>
+                    <h4>No Training Paths Matching Your Search</h4>
+                    <p>Adjust your input keyword parameters or choose another target technology filter track button tab above.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Why Academic Tracks with Code Craft?</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item">
+                        <i class="fas fa-route"></i>
+                        <div>
+                            <strong>Linear Trajectories</strong>
+                            <p>No loose topics. Every track is built directly as a step-by-step ladder connecting to your target technical outcome milestone.</p>
+                        </div>
+                    </div>
+                    <div class="outcome-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <div>
+                            <strong>Free Blueprint Notes</strong>
+                            <p>Access high-quality structural text summaries, verification manuals, code samples repositories, and clean checklist notes completely free.</p>
+                        </div>
+                    </div>
+                    <div class="outcome-item">
+                        <i class="fas fa-sliders-h"></i>
+                        <div>
+                            <strong>Granular Filter Tracks</strong>
+                            <p>Seamlessly pivot across layout stacks, computing infrastructure parameters, background system logics, or absolute basics modules instantly.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="course-card" data-category="frontend">
-                <div class="course-tag">Frontend</div>
-                <div class="course-icon"><i class="fab fa-html5"></i></div>
-                <h3>Web Designer Bundle</h3>
-                <p>Master HTML5, CSS3, and UI/UX principles to build stunning sites.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                    <a href="bundle-view.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="programming">
-                <div class="course-tag">Programming</div>
-                <div class="course-icon"><i class="fab fa-python"></i></div>
-                <h3>Python Mastery</h3>
-                <p>Learn Python from scratch for Automation, Data, and Web.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 6 Weeks</span>
-                    <a href="python-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="database">
-                <div class="course-tag">DBMS</div>
-                <div class="course-icon"><i class="fas fa-database"></i></div>
-                <h3>DBMS & SQL/NoSQL</h3>
-                <p>MySQL for relational data and MongoDB for modern scalable apps.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 5 Weeks</span>
-                    <a href="dbms-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="frameworks">
-                <div class="course-tag">Frameworks</div>
-                <div class="course-icon"><i class="fab fa-react"></i></div>
-                <h3>Modern JS Frameworks</h3>
-                <p>Deep dive into ReactJS, NodeJS, and AngularJS for dynamic apps.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 12 Weeks</span>
-                    <a href="frameworks-portal.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card highlight-course">
-                <div class="course-tag">Career Path</div>
-                <div class="course-icon"><i class="fas fa-layer-group"></i></div>
-                <h3>Fullstack Development</h3>
-                <p>The ultimate path: From Frontend to Backend + Cloud Computing.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 6 Months</span>
-                    <a href="fullstack-roadmap.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="cloud">
-                <div class="course-tag">Cloud</div>
-                <div class="course-icon"><i class="fas fa-cloud"></i></div>
-                <h3>Cloud Computing</h3>
-                <p>Deployment, AWS/Azure basics, and managing scalable infrastructure.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 8 Weeks</span>
-                    <a href="cloud-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="core">
-                <div class="course-tag">Core</div>
-                <div class="course-icon"><strong style="color: inherit;">C</strong></div>
-                <h3>C Programming</h3>
-                <p>Master Data Structures and Algorithms with low-level languages.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                    <a href="c-mastery.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-            <div class="course-card" data-category="core">
-                <div class="course-tag">Core</div>
-                <div class="course-icon"><strong style="color: inherit;">C++</strong></div>
-                <h3>C++ Programming</h3>
-                <p>Master Data Structures and Algorithms with low-level languages.</p>
-                <div class="course-footer">
-                    <span><i class="fas fa-clock"></i> 10 Weeks</span>
-                    <a href="cpp-syllabus.html" class="enroll-btn">View Syllabus &rarr;</a>
-                </div>
-            </div>
-
-        </div>
     </div>
-</section>
 
-<div id="global-footer"></div>
+    <div id="global-footer"></div>
 
-<script src="main.js"></script>
-<script src="footer.js"></script>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script>
+        // COMPREHENSIVE CONFLICT-FREE DIRECTORY CATALOG RUNTIME FILTER CONTROLLER ENGINE
+        let currentCategory = 'all';
+
+        function applyFilters() {
+            const query = document.getElementById('moduleSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.wide-list-row');
+            const noResults = document.getElementById('noResults');
+            let matchCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const description = card.querySelector('p').innerText.toLowerCase();
+
+                const searchMatch = title.includes(query) || description.includes(query);
+                
+                // Track exceptions mapping criteria fallback checks
+                const isCoreSubmatch = currentCategory === 'core' && card.dataset.category === 'core';
+                const categoryMatch = currentCategory === 'all' || 
+                                      card.dataset.category === currentCategory || 
+                                      (currentCategory === 'programming' && card.dataset.category === 'career') ||
+                                      isCoreSubmatch;
+
+                if (searchMatch && categoryMatch) {
+                    card.style.setProperty('display', 'grid', 'important');
+                    matchCount++;
+                } else {
+                    card.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            noResults.style.display = (matchCount === 0) ? 'flex' : 'none';
+        }
+
+        function filterCategory(btn, category) {
+            currentCategory = category;
+
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+
+            applyFilters();
+        }
+    </script>
 </body>
 </html>
