@@ -11,17 +11,17 @@
     
     <style>
         /* ==========================================================================
-           ⚓ 1. DESIGN THEME VARIABLES & GLOBAL RESETS
+           ⚓ 1. DESIGN THEMING VARIABLES & GLOBAL RESETS
            ========================================================================== */
         :root {
-            --nav-bg: #0b132a;        /* Deep Dark Blue from image_8f0f5e.png */
-            --page-bg: #f8fafc;       /* Clean Light Gray Content Background */
-            --text-main: #0f172a;     /* Dark Charcoal for Content Text */
+            --nav-bg: #0b132a;        /* Simple Dark Navy from image_8f1a45.png */
+            --page-bg: #f8fafc;       /* Clean Light Content Background */
+            --text-main: #0f172a;     /* Dark Charcoal for Text */
             --text-muted: #475569;    /* Slate Gray for Subtext */
-            --border-line: #e2e8f0;   /* Light Framework Lines */
+            --border-line: #e2e8f0;   /* Light Split Lines */
             --white: #ffffff;
             
-            /* Category Accent Colors */
+            /* Left side Border Colors */
             --uiux-accent: #6366f1;
             --html-accent: #ef4444;
             --css-accent: #0284c7;
@@ -33,7 +33,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
         /* ==========================================================================
-           ⚓ 2. STABLE DARK NAVBAR STYLES (Matches image_8f0f5e.png)
+           ⚓ 2. STABLE DARK NAVBAR STYLES (Matches image_8f1a45.png exactly)
            ========================================================================== */
         .main-navbar {
             background-color: var(--nav-bg);
@@ -67,7 +67,7 @@
         .menu-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: color 0.2s ease; }
         .menu-links a:hover { color: #ffffff; }
 
-        /* Hover Submenu System */
+        /* Simple Hover Submenu System */
         .dropdown-item { position: relative; }
         .arrow-icon { font-size: 0.7rem; margin-left: 2px; opacity: 0.7; }
         .submenu {
@@ -81,7 +81,7 @@
         .dropdown-item:hover .submenu { display: block; }
 
         /* ==========================================================================
-           ⚓ 3. CONTENT HERO BANNER & MAIN TRACKS
+           ⚓ 3. COURSE TITLE BANNER
            ========================================================================== */
         .course-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
         .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-muted); }
@@ -97,7 +97,9 @@
         .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
         .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- 4. COMPACT HORIZONTAL DATA ROWS --- */
+        /* ==========================================================================
+           ⚓ 4. COMPACT WIDE LIST LAYOUT (Simple & Protected from overlaps)
+           ========================================================================== */
         .learning-modules-section { padding: 24px 0; }
         .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
 
@@ -108,7 +110,7 @@
         }
         .wide-list-row:hover { border-color: #cbd5e1; }
 
-        /* Colored Structural Left Borders */
+        /* Colored Left-side Borders */
         .wide-list-row.track-uiux { border-left: 5px solid var(--uiux-accent); }
         .wide-list-row.track-html { border-left: 5px solid var(--html-accent); }
         .wide-list-row.track-css { border-left: 5px solid var(--css-accent); }
@@ -138,7 +140,9 @@
         }
         .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- 5. FOOTER STATS & BOTTOM DETAILS --- */
+        /* ==========================================================================
+           ⚓ 5. SUMMARY FOOTER STATS
+           ========================================================================== */
         .syllabus-footer { padding: 16px 0 60px; }
         .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
         .summary-item { display: flex; align-items: center; gap: 12px; }
@@ -156,7 +160,6 @@
 </head>
 <body>
 
-    <!-- ⚓ STABLE DARK NAVBAR BLOCK (Ref: image_8f0f5e.png) -->
     <header class="main-navbar">
         <div class="nav-wrapper">
             
@@ -188,7 +191,6 @@
         </div>
     </header>
 
-    <!-- CONTENT BODY LAYER -->
     <section class="course-header">
         <div class="container">
             <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Journeys</a> / Web Designer</div>
@@ -213,7 +215,6 @@
         <section class="learning-modules-section">
             <div class="wide-list-container" id="moduleGrid">
                 
-                <!-- PHASE 1: UI/UX -->
                 <div class="wide-list-row track-uiux" data-category="uiux">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-palette"></i></div>
@@ -235,7 +236,6 @@
                     </div>
                 </div>
 
-                <!-- PHASE 2: HTML5 -->
                 <div class="wide-list-row track-html" data-category="html">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-html5"></i></div>
@@ -257,7 +257,6 @@
                     </div>
                 </div>
 
-                <!-- PHASE 3: CSS3 -->
                 <div class="wide-list-row track-css" data-category="css">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-css3-alt"></i></div>
@@ -279,7 +278,6 @@
                     </div>
                 </div>
 
-                <!-- PHASE 4: JAVASCRIPT -->
                 <div class="wide-list-row track-js" data-category="js">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-js"></i></div>
