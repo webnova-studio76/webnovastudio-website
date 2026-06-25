@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Designer Bundle | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,78 +12,26 @@
     
     <style>
         /* ==========================================================================
-           ⚓ 1. DESIGN THEMING VARIABLES & GLOBAL RESETS
+           ⚓ MINI-STYLES FOR THE WEB DESIGNER ROWS ONLY
            ========================================================================== */
         :root {
-            --nav-bg: #0b132a;        /* Simple Dark Navy from image_8f1a45.png */
-            --page-bg: #f8fafc;       /* Clean Light Content Background */
-            --text-main: #0f172a;     /* Dark Charcoal for Text */
-            --text-muted: #475569;    /* Slate Gray for Subtext */
-            --border-line: #e2e8f0;   /* Light Split Lines */
+            --page-bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-line: #e2e8f0;
             --white: #ffffff;
             
-            /* Left side Border Colors */
+            /* Left side border accent colors */
             --uiux-accent: #6366f1;
             --html-accent: #ef4444;
             --css-accent: #0284c7;
             --js-accent: #f59e0b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--page-bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        body { background-color: var(--page-bg); color: var(--text-main); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* ==========================================================================
-           ⚓ 2. STABLE DARK NAVBAR STYLES (Matches image_8f1a45.png exactly)
-           ========================================================================== */
-        .main-navbar {
-            background-color: var(--nav-bg);
-            width: 100%;
-            height: 72px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            z-index: 9999;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-wrapper {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-identity { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 32px; width: auto; }
-        .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; white-space: nowrap; }
-        .logo-highlight { color: #38bdf8; }
-
-        .menu-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .menu-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: color 0.2s ease; }
-        .menu-links a:hover { color: #ffffff; }
-
-        /* Simple Hover Submenu System */
-        .dropdown-item { position: relative; }
-        .arrow-icon { font-size: 0.7rem; margin-left: 2px; opacity: 0.7; }
-        .submenu {
-            position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-            background-color: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 8px 0; min-width: 160px; border-radius: 6px; list-style: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); display: none;
-        }
-        .submenu li a { display: block; padding: 8px 16px; font-size: 0.85rem; color: #94a3b8; text-align: left; }
-        .submenu li a:hover { background-color: rgba(255, 255, 255, 0.05); color: #ffffff; }
-        .dropdown-item:hover .submenu { display: block; }
-
-        /* ==========================================================================
-           ⚓ 3. COURSE TITLE BANNER
-           ========================================================================== */
+        /* --- Content Title Banner --- */
         .course-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
         .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-muted); }
         .breadcrumb a { color: var(--text-muted); text-decoration: none; }
@@ -97,20 +46,16 @@
         .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
         .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* ==========================================================================
-           ⚓ 4. COMPACT WIDE LIST LAYOUT (Simple & Protected from overlaps)
-           ========================================================================== */
+        /* --- Wide Card Row Architecture --- */
         .learning-modules-section { padding: 24px 0; }
         .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
 
         .wide-list-row {
             background: var(--white); border: 1px solid var(--border-line); padding: 24px 32px; border-radius: 8px;
             display: grid; grid-template-columns: 260px 1fr 160px; align-items: center; gap: 32px; width: 100%;
-            transition: border-color 0.2s ease;
         }
-        .wide-list-row:hover { border-color: #cbd5e1; }
 
-        /* Colored Left-side Borders */
+        /* Border accents */
         .wide-list-row.track-uiux { border-left: 5px solid var(--uiux-accent); }
         .wide-list-row.track-html { border-left: 5px solid var(--html-accent); }
         .wide-list-row.track-css { border-left: 5px solid var(--css-accent); }
@@ -136,60 +81,19 @@
         .btn-dl { 
             width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; text-decoration: none; 
             font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
-            display: inline-flex; align-items: center; justify-content: center; background: var(--page-bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--page-bg); border: 1px solid var(--border-line); color: var(--text-main);
         }
-        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
-
-        /* ==========================================================================
-           ⚓ 5. SUMMARY FOOTER STATS
-           ========================================================================== */
-        .syllabus-footer { padding: 16px 0 60px; }
-        .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
-        .summary-item { display: flex; align-items: center; gap: 12px; }
-        .summary-item i { font-size: 1rem; color: #10b981; }
-        .summary-item div { display: flex; flex-direction: column; }
-        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-        .summary-item strong { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
+        .btn-dl:hover { background: #0f172a; color: #ffffff; }
 
         @media (max-width: 960px) {
             .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
             .download-btns { width: 100%; }
-            .resource-summary { grid-template-columns: 1fr; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="main-navbar">
-        <div class="nav-wrapper">
-            
-            <a href="index.html" class="brand-identity">
-                <img src="webnova-logo.png" alt="Logo" class="logo-img">
-                <span class="logo-text">WebNova <span class="logo-highlight">Studio</span></span>
-            </a>
-            
-            <ul class="menu-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="course.html">Courses</a></li>
-                <li><a href="free-resources.html">Resources</a></li>
-                <li><a href="practical-hub.html">Practical Hub</a></li>
-                
-                <li class="dropdown-item">
-                    <a href="#" class="dropdown-trigger">About <i class="fas fa-chevron-down arrow-icon"></i></a>
-                    <ul class="submenu">
-                        <li><a href="our-story.html">Our Story</a></li>
-                        <li><a href="mission.html">Our Mission</a></li>
-                        <li><a href="team.html">Meet the Team</a></li>
-                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="requests.html">Request Vault</a></li>
-            </ul>
-            
-        </div>
-    </header>
+    <div id="global-header"></div>
 
     <section class="course-header">
         <div class="container">
@@ -215,7 +119,7 @@
         <section class="learning-modules-section">
             <div class="wide-list-container" id="moduleGrid">
                 
-                <div class="wide-list-row track-uiux" data-category="uiux">
+                <div class="wide-list-row track-uiux">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-palette"></i></div>
                         <div class="mod-header-text">
@@ -236,7 +140,7 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-html" data-category="html">
+                <div class="wide-list-row track-html">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-html5"></i></div>
                         <div class="mod-header-text">
@@ -257,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-css" data-category="css">
+                <div class="wide-list-row track-css">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-css3-alt"></i></div>
                         <div class="mod-header-text">
@@ -278,7 +182,7 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-js" data-category="js">
+                <div class="wide-list-row track-js">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-js"></i></div>
                         <div class="mod-header-text">
@@ -301,24 +205,12 @@
 
             </div>
         </section>
-
-        <section class="syllabus-footer">
-            <div class="resource-summary">
-                <div class="summary-item">
-                    <i class="fas fa-layer-group"></i>
-                    <div><span>Syllabus Milestone</span><strong>04 Core Phases</strong></div>
-                </div>
-                <div class="summary-item">
-                    <i class="fas fa-code-branch"></i>
-                    <div><span>Compiled Chapters</span><strong>60+ Deep Topics</strong></div>
-                </div>
-                <div class="summary-item">
-                    <i class="fas fa-unlock-alt"></i>
-                    <div><span>Portal Framework</span><strong>100% Free Access</strong></div>
-                </div>
-            </div>
-        </section>
     </div>
 
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>
