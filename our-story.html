@@ -6,86 +6,238 @@
     <title>Our Story | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* High-Premium Soft Light Workspace Palette Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --card-radius: 16px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed header offset buffer boundary */
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+
+        /* --- 1. Soft Ambient Hero Section --- */
+        .story-hero-animated {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100__);
+            padding: 80px 0 60px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Ambient background technology grid lines matching your design system */
+        .story-hero-animated::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none; z-index: 1;
+        }
+
+        .hero-text-block { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; }
+        .story-hero-animated h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0; transform: translateY(12px); }
+        .story-hero-animated h1 span { color: var(--primary); }
+        .story-hero-animated p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; opacity: 0; transform: translateY(12px); }
+
+        /* Animation class states applied via script engine loops */
+        .story-hero-animated h1.active, .story-hero-animated p.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
+        .reveal-delay-1 { transition-delay: 0.15s !important; }
+        .reveal-delay-2 { transition-delay: 0.3s !important; }
+
+        /* --- 2. Founders Cards Workspace Grid --- */
+        .founders-display { padding: 60px 0; }
+        
+        .founders-flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .founder-card-premium {
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 35px;
+            text-align: center;
+            box-shadow: var(--tactile-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        .founder-card-premium.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
+        .founder-card-premium:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: rgba(16, 185, 129, 0.2); }
+
+        .image-box { position: relative; margin-bottom: 24px; }
+        
+        .image-inner {
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f1f5f9;
+            border: 4px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+        
+        .founder-img { width: 100%; height: 100%; object-fit: cover; }
+
+        .experience-tag {
+            position: absolute; bottom: -5px; left: 50%;
+            transform: translateX(-50%);
+            background: #eff6ff; color: #2563eb;
+            padding: 4px 14px; border-radius: 50px;
+            font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.5px; border: 1px solid rgba(37, 99, 235, 0.1);
+            white-space: nowrap;
+        }
+
+        .founder-info h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 6px; font-weight: 800; letter-spacing: -0.01em; }
+        
+        .qualification-badge {
+            background: var(--primary-glow); color: #059669;
+            padding: 3px 10px; border-radius: 6px;
+            font-size: 0.72rem; font-weight: 700; display: inline-block;
+            margin-bottom: 16px; border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .founder-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; margin-bottom: 20px; }
+
+        .founder-social { display: flex; gap: 12px; justify-content: center; }
+        .founder-social a {
+            width: 34px; height: 34px; border-radius: 8px;
+            background: #f1f5f9; color: var(--text-muted);
+            display: inline-flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: var(--transition); font-size: 0.9rem;
+        }
+        .founder-social a:hover { background: #0f172a; color: var(--white); }
+
+        /* --- 3. Corporate Mission Glass Box --- */
+        .mission-reveal { padding-bottom: 60px; opacity: 0; transform: translateY(15px); }
+        .mission-reveal.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
+        
+        .glass-impact-box {
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            padding: 40px; border-radius: var(--card-radius);
+            box-shadow: var(--tactile-shadow); text-align: center;
+            max-width: 850px; margin: 0 auto; display: flex;
+            flex-direction: column; align-items: center;
+        }
+        
+        .icon-circle {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: #fef3c7; color: #d97706;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 20px;
+        }
+
+        .glass-impact-box h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .glass-impact-box h2 span { color: var(--primary); }
+        .glass-impact-box p { font-size: 0.92rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; max-width: 600px; }
+
+        @media (max-width: 768px) {
+            .story-hero-animated { padding: 60px 0 40px; }
+            .story-hero-animated h1 { font-size: 2rem; }
+            .founders-flex { gap: 20px; }
+            .founder-card-premium { padding: 25px; }
+            .glass-impact-box { padding: 30px 20px; }
+        }
+    </style>
 </head>
-<body class="js-enabled">
-<script>
-        window.onload = function() {
-            // This manually triggers the 'active' class on all items
-            const elements = document.querySelectorAll('.reveal, .reveal-up');
-            elements.forEach((el) => {
-                el.classList.add('active');
-                el.style.opacity = "1";
-                el.style.transform = "translateY(0)";
-            });
-        };
-    </script>
-    <section class="story-hero-animated">
-        <div class="container">
-            <div class="hero-text-block">
-                <h1 class="reveal">Two Minds. One <span>Mission.</span></h1>
-                <h1 class="reveal-up">The Minds Behind <span>WebNova</span></h1>
-                <p class="reveal-up reveal-delay-1">Bridging the gap between academic theory and industry reality.</p>
-            </div>
-        </div>
-    </section>
+<body>
 
-    <section class="founders-display">
-        <div class="container">
-            <div class="founders-flex">
-                
-                <div class="founder-card-premium reveal-up">
-                    <div class="image-box">
-                         <div class="image-inner">
-                            <img src="rakesh.png" alt="Rakesh Jadhav" class="founder-img">
-                            
-                         </div>
-                         <div class="experience-tag">Tech Lead</div>
-                    </div>
-                    <div class="founder-info">
-                        <h3>Rakesh Jadhav</h3>
-                        <span class="qualification-badge">BCA Graduate</span>
-                        <p>Specializing in full-stack architecture and system logic. Rakesh leads the technical vision for Code Craft Academic.</p>
-                        <div class="founder-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
+<div id="global-header"></div>
+
+<section class="story-hero-animated">
+    <div class="container">
+        <div class="hero-text-block">
+            <h1 class="reveal active">Two Minds. One <span>Mission.</span></h1>
+            <p class="reveal-up reveal-delay-1 active">Bridging the gap between academic theory and industry reality.</p>
+        </div>
+    </div>
+</section>
+
+<section class="founders-display">
+    <div class="container">
+        <div class="founders-flex">
+            
+            <div class="founder-card-premium reveal-up active">
+                <div class="image-box">
+                     <div class="image-inner">
+                        <img src="rakesh.png" alt="Rakesh Jadhav" class="founder-img">
+                     </div>
+                     <div class="experience-tag">Tech Lead</div>
+                </div>
+                <div class="founder-info">
+                    <h3>Rakesh Jadhav</h3>
+                    <span class="qualification-badge">MCA Scholar</span>
+                    <p>Specializing in full-stack architecture, database clustering, and advanced systems deployment tracks. Rakesh commands the technical pipeline for Code Craft Academic.</p>
+                    <div class="founder-social">
+                        <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+            </div>
 
-                <div class="founder-card-premium reveal-up reveal-delay-2">
-                    <div class="image-box">
-                         <div class="image-inner">
-                            <img src="rashmi.png" alt="Rashmi Divantgi" class="founder-img">
-                         </div>
-                         <div class="experience-tag">Design Lead</div>
-                    </div>
-                    <div class="founder-info">
-                        <h3>Rashmi Divantgi</h3>
-                        <span class="qualification-badge">BCA Graduate | MCA Scholar</span>
-                        <p>A UI/UX specialist focused on visual storytelling and aesthetics. Rashmi drives the creative core of RR Web Designers.</p>
-                        <div class="founder-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
+            <div class="founder-card-premium reveal-up reveal-delay-1 active">
+                <div class="image-box">
+                     <div class="image-inner">
+                        <img src="rashmi.png" alt="Rashmi Divantgi" class="founder-img">
+                     </div>
+                     <div class="experience-tag">Design Lead</div>
+                </div>
+                <div class="founder-info">
+                    <h3>Rashmi Divantgi</h3>
+                    <span class="qualification-badge">MCA Scholar</span>
+                    <p>A UI/UX designer specialized in wireframe blueprinting, vector components, and system micro-interactions. Rashmi anchors the creative design vision for WebNova Studio.</p>
+                    <div class="founder-social">
+                        <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
 
-    <section class="mission-reveal reveal-up">
-        <div class="container">
-            <div class="glass-impact-box">
-                <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
-                <h2>Our <span>Academic</span> Commitment</h2>
-                <p>As current MCA students, we understand the struggle of modern learners. We founded WebNova Studio to ensure no student starts from zero.</p>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="animations.js"></script>
+<section class="mission-reveal reveal-up active">
+    <div class="container">
+        <div class="glass-impact-box">
+            <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
+            <h2>Our <span>Academic</span> Commitment</h2>
+            <p>As Master of Computer Applications students, we directly encounter the changing parameters of modern technological training. We maintain WebNova Studio to guarantee that students and entry-level freelancers are equipped with stable digital blueprints.</p>
+        </div>
+    </div>
+</section>
+
+<div id="global-footer"></div>
+
+<script src="main.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>
