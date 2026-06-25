@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sysadmin & Tech Hub | Code Craft Academic</title>
-    <link class="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* High-Premium Soft Light UI Workspace Palette Tokens */
+            /* High-Premium Soft Light DevOps Dashboard Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.12);
+            --primary-glow: rgba(16, 185, 129, 0.08);
             --secondary: #334155;     /* Professional Slate Gray */
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
             --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
@@ -22,10 +22,10 @@
             --accent: #f59e0b;        
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             
-            /* Color-Coding System Labels for Tech Diagnostics */
-            --diag-critical: #ef4444; /* Pro Red: Critical procedures */
-            --diag-common: #f59e0b;   /* Pro Yellow: Daily diagnostics */
-            --diag-student: #10b981;  /* Pro Green: Academic metrics */
+            /* High-Fidelity Diagnostic Categories */
+            --diag-critical: #ef4444; 
+            --diag-common: #f59e0b;   
+            --diag-student: #2563eb;  /* Premium Cobalt Blue for Academic Tools */
 
             /* Clean Minimalist Depth Shadows */
             --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
@@ -38,7 +38,7 @@
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Injected fixed navbar padding buffer constraint */
+            padding-top: 85px; /* Fixed navbar padding buffer constraint */
         }
 
         .container { max-width: 1440px; margin: 0 auto; padding: 40px 24px; }
@@ -50,7 +50,7 @@
         .library-header h1 span { color: var(--primary); }
         .library-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 10px; font-weight: 500; }
 
-        /* --- Controls Toolbar --- */
+        /* --- Dashboard Toolbar controls --- */
         .toolbar {
             background: var(--white);
             padding: 10px;
@@ -91,7 +91,7 @@
             color: var(--text-muted); pointer-events: none; font-size: 0.75rem;
         }
 
-        /* --- Section Category Separators --- */
+        /* --- Section Category Dividers --- */
         .section-divider {
             grid-column: 1 / -1;
             font-size: 0.85rem;
@@ -108,7 +108,7 @@
         }
         .section-divider i { color: var(--primary); }
 
-        /* --- Macro-Dock Grid System --- */
+        /* --- Soft Pro Asset Grid Architecture --- */
         .asset-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -118,13 +118,12 @@
         .asset-card {
             background: var(--card-surface);
             border: 1px solid var(--border);
-            border-bottom: 3px solid #e2e8f0;
             border-radius: var(--card-radius);
             display: flex;
             padding: 20px;
             align-items: center;
             transition: var(--transition);
-            height: 130px;
+            height: 140px;
             opacity: 0;
             transform: translateY(12px);
             box-shadow: var(--tactile-shadow);
@@ -135,34 +134,27 @@
 
         .asset-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(16, 185, 129, 0.2);
-            border-bottom-color: var(--primary);
             box-shadow: var(--hover-shadow);
         }
 
+        /* Color-Coded Structural Card Top Highlights */
+        .asset-card.card-student { border-top: 4px solid var(--diag-student); }
+        .asset-card.card-common { border-top: 4px solid var(--diag-common); }
+        .asset-card.card-critical { border-top: 4px solid var(--diag-critical); }
+
         .thumb {
             width: 54px; height: 54px; 
-            background: #f8fafc;
-            border: 1px solid var(--border);
             border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.25rem; color: var(--text-muted);
+            justify-content: center; font-size: 1.25rem;
             flex-shrink: 0; transition: var(--transition);
-            position: relative;
         }
 
-        .indicator-dot {
-            position: absolute; top: -2px; right: -2px;
-            width: 10px; height: 10px; border-radius: 50%;
-            border: 2px solid var(--white);
-        }
-        .dot-critical { background: var(--diag-critical); }
-        .dot-common { background: var(--diag-common); }
-        .dot-student { background: var(--diag-student); }
+        /* Custom Soft Pastel Icon Backings */
+        .card-student .thumb { color: var(--diag-student); background: rgba(37, 99, 235, 0.05); }
+        .card-common .thumb { color: var(--diag-common); background: rgba(245, 158, 11, 0.05); }
+        .card-critical .thumb { color: var(--diag-critical); background: rgba(239, 68, 68, 0.05); }
 
         .asset-card:hover .thumb {
-            background: var(--primary-glow);
-            border-color: transparent;
-            color: var(--primary);
             transform: scale(1.04);
         }
 
@@ -172,6 +164,12 @@
         .meta { display: flex; gap: 12px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); align-items: center; }
         .meta .count { color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
 
+        /* Diagnostic Micro Status Badges */
+        .status-badge { padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 800; }
+        .card-student .status-badge { background: rgba(37, 99, 235, 0.08); color: var(--diag-student); }
+        .card-common .status-badge { background: rgba(245, 158, 11, 0.08); color: var(--diag-common); }
+        .card-critical .status-badge { background: rgba(239, 68, 68, 0.08); color: var(--diag-critical); }
+
         .actions { display: flex; gap: 8px; margin-top: 12px; }
         .btn-act {
             font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;
@@ -179,16 +177,21 @@
             text-align: center; cursor: pointer; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
         }
         .btn-demo { background: #f1f5f9; color: var(--secondary); border: 1px solid rgba(0,0,0,0.02); }
-        .btn-zip { background: var(--secondary); color: var(--white); }
-        
         .btn-demo:hover { background: #e2e8f0; color: #0f172a; }
-        .btn-zip:hover { background: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+        
+        /* Matching operational buttons instead of generic teal gradients */
+        .card-student .btn-zip { background: var(--diag-student); color: var(--white); }
+        .card-student .btn-zip:hover { background: #1d4ed8; }
+        .card-common .btn-zip { background: var(--diag-common); color: var(--white); }
+        .card-common .btn-zip:hover { background: #d97706; }
+        .card-critical .btn-zip { background: var(--diag-critical); color: var(--white); }
+        .card-critical .btn-zip:hover { background: #b91c1c; }
 
-        /* --- Terminal View Overlay Popups --- */
+        /* --- Terminal Popups (Soft Light Pro Modal Window) --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.15); backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.2); backdrop-filter: blur(8px);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
             opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
         }
@@ -196,31 +199,33 @@
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-window {
-            background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--white); border: 1px solid var(--border);
             width: 90%; max-width: 650px; border-radius: 20px; padding: 30px;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
-            transform: scale(0.9) translateY(20px); transition: var(--transition); color: #f8fafc;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9) translateY(20px); transition: var(--transition); color: var(--text-main);
         }
 
         .modal-overlay.active .modal-window { transform: scale(1) translateY(0); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h2 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; color: #34d399; }
-        .close-modal { background: none; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+        .modal-header h2 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; color: #059669; font-weight: 800; }
+        .close-modal { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
         .close-modal:hover { color: #f43f5e; }
 
         .code-container {
-            background: #020617; border-radius: 14px; padding: 20px;
-            position: relative; border: 1px solid #1e293b; margin-bottom: 20px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+            background: #f8fafc; border-radius: 12px; padding: 20px;
+            position: relative; border: 1px solid var(--border); margin-bottom: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
         }
-        .code-container pre { font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; color: #38bdf8; white-wrap: pre-wrap; line-height: 1.5; text-align: left; }
+        .code-container pre { font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.88rem; overflow-x: auto; color: #2563eb; white-space: pre-wrap; line-height: 1.6; text-align: left; font-weight: 600; }
         
         .btn-copy {
-            background: var(--primary); color: white; border: none;
+            background: var(--secondary); color: white; border: none;
             padding: 14px 20px; border-radius: 10px; font-size: 0.88rem;
             font-weight: 700; cursor: pointer; width: 100%; transition: var(--transition);
         }
-        .btn-copy:hover { background: #059669; box-shadow: 0 4px 12px var(--primary-glow); }
+        .btn-copy:hover { background: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+
+        #sentinel { height: 40px; }
 
         @media (max-width: 1280px) { .asset-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
         @media (max-width: 960px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -234,19 +239,20 @@
 </head>
 <body>
 
+<!-- Dynamic Universal Header Mount Component -->
 <div id="global-header"></div>
 
 <div class="container">
     <header class="library-header">
-        <p class="branding-tag">WebNova Studio & Code Craft Academic</p>
-        <h1><span>Sysadmin</span> & Tech Hub</h1>
-        <p>Essential command stacks, troubleshooting configurations, and system scripts.</p>
+        <p class="branding-tag">Code Craft Academic Workspace</p>
+        <h1>Sysadmin & <span>Tech Hub</span></h1>
+        <p>Operational execution panels, core command syntaxes, and real-time laboratory blueprints.</p>
     </header>
 
     <div class="toolbar">
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" id="libSearch" placeholder="Search operational matrices (e.g., PSU, spooler, bios)...">
+            <input type="text" id="libSearch" placeholder="Search parameters (e.g., ipconfig, BSOD, spooler, bios)...">
         </div>
         <div class="sort-box">
             <select id="libSort">
@@ -261,13 +267,14 @@
         
         <div class="section-divider"><i class="fas fa-terminal"></i> Section 1: The Essential Command Cheat Sheet</div>
 
-        <div class="asset-card" data-downloads="3400" data-name="ping connection network packet troubleshooting testing switch router target connectivity reachability">
-            <div class="thumb"><i class="fas fa-network-wired"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- PING -->
+        <div class="asset-card card-student" data-downloads="3400" data-name="ping connection network packet troubleshooting testing switch router target connectivity reachability">
+            <div class="thumb"><i class="fas fa-network-wired"></i></div>
             <div class="info">
                 <h3>Ping Connectivity Tester</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 3.4k Uses</span>
-                    <span class="tag-badge">Network ICMP</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Ping Tester Guide', 'STEP 1: WHAT IT DOES\nThis command sends small test signals (packets) to a target computer or website to see if it is online.\n\nSTEP 2: WHEN TO USE IT\nUse this when a lab computer cannot open a website or cannot connect to the local lab server.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nping 8.8.8.8')">View Info</button>
@@ -276,13 +283,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="4100" data-name="ipconfig /all network configuration mac address adapter dns details subnets gateway">
-            <div class="thumb"><i class="fas fa-sliders-h"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- IPCONFIG ALL -->
+        <div class="asset-card card-student" data-downloads="4100" data-name="ipconfig /all network configuration mac address adapter dns details subnets gateway">
+            <div class="thumb"><i class="fas fa-sliders-h"></i></div>
             <div class="info">
                 <h3>IPConfig Adapter Audit</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 4.1k Uses</span>
-                    <span class="tag-badge">Interface Mapping</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('IPConfig Adapter Guide', 'STEP 1: WHAT IT DOES\nThis command shows detailed information about your computer network connections and network cards.\n\nSTEP 2: WHEN TO USE IT\nUse this to find your computer physical address (MAC Address), local IP address, or server DNS details.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nipconfig /all')">View Info</button>
@@ -291,13 +299,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2900" data-name="ipconfig /release /renew dynamic lease dhcp lease drops limited internet assignment allocation">
-            <div class="thumb"><i class="fas fa-sync-alt"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- IPCONFIG RELEASE RENEW -->
+        <div class="asset-card card-common" data-downloads="2900" data-name="ipconfig /release /renew dynamic lease dhcp lease drops limited internet assignment allocation">
+            <div class="thumb"><i class="fas fa-sync-alt"></i></div>
             <div class="info">
                 <h3>DHCP IP Lease Reset</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 2.9k Uses</span>
-                    <span class="tag-badge">DHCP Stack</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('DHCP Reset Guide', 'STEP 1: WHAT IT DOES\nThis combination drops your current network IP connection and requests a brand new one from the lab server.\n\nSTEP 2: WHEN TO USE IT\nUse this when a computer says \'No Internet Access\' or has a yellow exclamation mark on the network icon.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type these two commands one by one, pressing Enter after each:\nipconfig /release\nipconfig /renew')">View Info</button>
@@ -306,13 +315,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="3800" data-name="ipconfig /flushdns clear dns resolver cache route updates load domain mismatch host mapping">
-            <div class="thumb"><i class="fas fa-broom"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- IPCONFIG FLUSHDNS -->
+        <div class="asset-card card-common" data-downloads="3800" data-name="ipconfig /flushdns clear dns resolver cache route updates load domain mismatch host mapping">
+            <div class="thumb"><i class="fas fa-broom"></i></div>
             <div class="info">
                 <h3>DNS Resolver Cache Flush</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 3.8k Uses</span>
-                    <span class="tag-badge">Core DNS</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('DNS Flush Guide', 'STEP 1: WHAT IT DOES\nThis clears the computer internal address book memory of saved website names and servers.\n\nSTEP 2: WHEN TO USE IT\nUse this when a website server changed its IP address, but your computer keeps trying to connect to the old broken address.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\nipconfig /flushdns')">View Info</button>
@@ -321,13 +331,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2100" data-name="tracert trace route switch router failure location hop latency ping track path packets">
-            <div class="thumb"><i class="fas fa-project-diagram"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- TRACERT -->
+        <div class="asset-card card-student" data-downloads="2100" data-name="tracert trace route switch router failure location hop latency ping track path packets">
+            <div class="thumb"><i class="fas fa-project-diagram"></i></div>
             <div class="info">
                 <h3>Tracert Route Analyzer</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 2.1k Uses</span>
-                    <span class="tag-badge">Path Discovery</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Tracert Path Guide', 'STEP 1: WHAT IT DOES\nThis command maps out the exact pathway and router paths your internet signals take to reach a destination website.\n\nSTEP 2: WHEN TO USE IT\nUse this to pinpoint exactly which internet router or switch inside the school campus is dropping network signals.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ntracert 8.8.8.8')">View Info</button>
@@ -336,13 +347,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="4800" data-name="sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch">
-            <div class="thumb"><i class="fas fa-shield-alt"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- SFC SCANNOW -->
+        <div class="asset-card card-common" data-downloads="4800" data-name="sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch">
+            <div class="thumb"><i class="fas fa-shield-alt"></i></div>
             <div class="info">
                 <h3>SFC File System Scanner</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 4.8k Uses</span>
-                    <span class="tag-badge">Os Integrity</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('SFC Scanner Guide', 'STEP 1: WHAT IT DOES\nThis checks your core Windows operating system files for errors and automatically repairs corrupted items.\n\nSTEP 2: WHEN TO USE IT\nUse this when Windows is behaving strangely, lagging, crashing, or throwing missing system file errors.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator (Right-click CMD -> Run as Administrator).\n2. Type the command below and press Enter:\nsfc /scannow')">View Info</button>
@@ -351,13 +363,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="4600" data-name="dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure">
-            <div class="thumb"><i class="fas fa-cogs"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- DISM -->
+        <div class="asset-card card-critical" data-downloads="4600" data-name="dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure">
+            <div class="thumb"><i class="fas fa-cogs"></i></div>
             <div class="info">
                 <h3>DISM System Image Patch</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 4.6k Uses</span>
-                    <span class="tag-badge">Deployment Recovery</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('DISM Patch Guide', 'STEP 1: WHAT IT DOES\nThis downloads healthy core system repair files straight from official Windows updates to fix broken local files.\n\nSTEP 2: WHEN TO USE IT\nUse this when the previous \'sfc /scannow\' command fails to fix the computer errors or gets stuck.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter:\nDISM /Online /Cleanup-Image /RestoreHealth')">View Info</button>
@@ -366,13 +379,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="3200" data-name="chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing">
-            <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- CHKDSK -->
+        <div class="asset-card card-critical" data-downloads="3200" data-name="chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing">
+            <div class="thumb"><i class="fas fa-hdd"></i></div>
             <div class="info">
                 <h3>Chkdsk Volume Analyzer</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 3.2k Uses</span>
-                    <span class="tag-badge">Storage Diagnostics</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Chkdsk Disk Guide', 'STEP 1: WHAT IT DOES\nThis scans your physical hard drive for storage sector errors and attempts to fix unreadable data areas.\n\nSTEP 2: WHEN TO USE IT\nUse this when the computer freezes completely when loading files, or if opening directories feels extremely slow.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter (Press Y if prompted to scan on next reboot):\nchkdsk C: /f /r')">View Info</button>
@@ -381,13 +395,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2700" data-name="gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks">
-            <div class="thumb"><i class="fas fa-user-shield"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- GPUPDATE -->
+        <div class="asset-card card-common" data-downloads="2700" data-name="gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks">
+            <div class="thumb"><i class="fas fa-user-shield"></i></div>
             <div class="info">
                 <h3>Gpupdate Group Policy Push</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 2.7k Uses</span>
-                    <span class="tag-badge">Server Sync</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Gpupdate Policy Guide', 'STEP 1: WHAT IT DOES\nThis forces your local computer to synchronize and download the latest permissions rules from the lab main server.\n\nSTEP 2: WHEN TO USE IT\nUse this when the lab administrator assigns new network permissions or updates user security profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ngpupdate /force')">View Info</button>
@@ -398,13 +413,14 @@
 
         <div class="section-divider"><i class="fas fa-bolt"></i> Section 1.2: Core Windows Management consoles (Win + R)</div>
 
-        <div class="asset-card" data-downloads="3100" data-name="devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers">
-            <div class="thumb"><i class="fas fa-microchip"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- DEVMGMT -->
+        <div class="asset-card card-student" data-downloads="3100" data-name="devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers">
+            <div class="thumb"><i class="fas fa-microchip"></i></div>
             <div class="info">
                 <h3>Device Manager Launcher</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-play"></i> Run Console</span>
-                    <span class="tag-badge">Hardware Node</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Device Manager Guide', 'STEP 1: WHAT IT DOES\nThis pops open the window panel used to manage your physical hardware and driver files.\n\nSTEP 2: WHEN TO USE IT\nUse this to install sound card drivers, update display graphics, or check if the network card is working properly.\n\nSTEP 3: HOW TO EXECUTE\n1. Press the \'Windows Key + R\' on your keyboard to open the Run box.\n2. Type the command below and click OK:\ndevmgmt.msc')">View Info</button>
@@ -413,13 +429,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2500" data-name="diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations">
-            <div class="thumb"><i class="fas fa-hdd"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- DISKMGMT -->
+        <div class="asset-card card-student" data-downloads="2500" data-name="diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations">
+            <div class="thumb"><i class="fas fa-hdd"></i></div>
             <div class="info">
                 <h3>Disk Management Console</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-play"></i> Run Console</span>
-                    <span class="tag-badge">Logical Partitions</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Disk Management Guide', 'STEP 1: WHAT IT DOES\nThis opens the console interface used to format drives and partition storage volumes.\n\nSTEP 2: WHEN TO USE IT\nUse this when a new USB drive doesn\'t show up in File Explorer, or if you need to create a new D: drive partition.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to launch the Run box.\n2. Type the command below and click OK:\ndiskmgmt.msc')">View Info</button>
@@ -428,13 +445,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2800" data-name="services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager">
-            <div class="thumb"><i class="fas fa-server"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- SERVICES -->
+        <div class="asset-card card-student" data-downloads="2800" data-name="services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager">
+            <div class="thumb"><i class="fas fa-server"></i></div>
             <div class="info">
                 <h3>Services Core Controller</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-play"></i> Run Console</span>
-                    <span class="tag-badge">Daemon Matrix</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Services Console Guide', 'STEP 1: WHAT IT DOES\nThis displays all background apps, programs, and daemons that start up automatically behind the scenes in Windows.\n\nSTEP 2: WHEN TO USE IT\nUse this to toggle windows automatic updates off, turn on print processes, or stop diagnostic logging apps.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nservices.msc')">View Info</button>
@@ -443,13 +461,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="1900" data-name="sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options">
-            <div class="thumb"><i class="fas fa-window-restore"></i><div class="indicator-dot dot-student"></div></div>
+        <!-- SYSDM -->
+        <div class="asset-card card-student" data-downloads="1900" data-name="sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options">
+            <div class="thumb"><i class="fas fa-window-restore"></i></div>
             <div class="info">
                 <h3>System Identity Manager</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-play"></i> Run Console</span>
-                    <span class="tag-badge">Identity Layer</span>
+                    <span class="status-badge">Instructional</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('System Identity Guide', 'STEP 1: WHAT IT DOES\nThis launches the legacy Advanced System Properties screen to view compute settings.\n\nSTEP 2: WHEN TO USE IT\nUse this to adjust Environment Variables for Java/Python setups, or change the computer network name.\n\nSTEP 3: HOW TO EXECUTE\n1. Press \'Windows Key + R\' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nsysdm.cpl')">View Info</button>
@@ -460,13 +479,14 @@
 
         <div class="section-divider"><i class="fas fa-wrench"></i> Section 2: Step-by-Step Troubleshooting Workflows</div>
 
-        <div class="asset-card" data-downloads="3400" data-name="power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins">
-            <div class="thumb"><i class="fas fa-plug"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- {PSU} -->
+        <div class="asset-card card-critical" data-downloads="3400" data-name="power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins">
+            <div class="thumb"><i class="fas fa-plug"></i></div>
             <div class="info">
                 <h3>PSU Diagnostic Pipeline</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-list"></i> 4 Stage Flow</span>
-                    <span class="tag-badge">Power Matrix</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('PSU Hardware Diagnostics Workflow', 'STEP 1: INSPECT CABLE CONNECTIONS\nCheck if the primary wall socket outlet is active. Swap out the black power cable to ensure the cord isn\'t broken.\n\nSTEP 2: CHECK THE PSU HARDWARE REAR TOGGLE\nLook at the back of the computer CPU. Ensure the physical rocker switch sits on \'I\' (Power Engaged) instead of \'O\' (Power Cut).\n\nSTEP 3: DRAIN SURGE STATIC ELECTRICITY\nUnplug the power cable from the wall. Hold down the main power button on the front panel for 30 seconds to drain remaining electricity. Plug it back in and try turning it on.\n\nSTEP 4: INSPECT INTERNAL MOTHERBOARD PIN ALIGNMENTS\nOpen the case chassis layer. Disconnect and firmly click back down the large 24-Pin main power rail block and the small 4/8-Pin internal processor power tracks.')">Read Workflow</button>
@@ -475,13 +495,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="4200" data-name="no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors">
-            <div class="thumb"><i class="fas fa-eye-slash"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- DISPLAY -->
+        <div class="asset-card card-critical" data-downloads="4200" data-name="no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors">
+            <div class="thumb"><i class="fas fa-eye-slash"></i></div>
             <div class="info">
                 <h3>Display Extraction Engine</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-list"></i> 4 Stage Flow</span>
-                    <span class="tag-badge">Signal Path</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Display Signal Path Recovery Workflow', 'STEP 1: AUDIT MONITOR SECTOR CODES\nEnsure the screen monitor is turned on. Verify the cable link cords (HDMI/VGA) are connected tightly to the monitor ports.\n\nSTEP 2: PORT ALIGNMENT ROUTING\nIf the CPU has a dedicated Graphics Card (GPU), ensure your display monitor cable is plugged into the GPU ports down below, NOT the upper motherboard ports.\n\nSTEP 3: CLEAN RAM GOLD CONTACTS (80% PRO RESOLUTION RULE)\nTurn off the power. Open the computer case. Pop out the internal RAM memory sticks. Gently clean the shiny gold contact pins using a soft rubber eraser to remove dust grid layers. Click them back into the slots tightly.\n\nSTEP 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nRemove the round silver lithium coin battery (CR2032) from the motherboard. Wait 5 minutes to restore default motherboard options, put it back in, and start the system.')">Read Workflow</button>
@@ -492,13 +513,14 @@
 
         <div class="section-divider"><i class="fas fa-school"></i> Section 3: School Lab Management Tactics</div>
 
-        <div class="asset-card" data-downloads="5100" data-name="print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair">
-            <div class="thumb"><i class="fas fa-print"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- PRINT SPOOLER -->
+        <div class="asset-card card-common" data-downloads="5100" data-name="print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair">
+            <div class="thumb"><i class="fas fa-print"></i></div>
             <div class="info">
                 <h3>Print Spooler Jam Fixer</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 5.1k Uses</span>
-                    <span class="tag-badge">Queue Purge</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Print Spooler Clear Guide', 'STEP 1: WHAT IT DOES\nThis stops your frozen computer printing software, completely wipes out stuck print jobs, and restarts the printer cleanly.\n\nSTEP 2: WHEN TO USE IT\nUse this when students submit document print requests but the printing machine completely freezes up or jams.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Run these commands sequentially to clear the system:\nnet stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler')">View Guide</button>
@@ -507,28 +529,30 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="3600" data-name="deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration">
-            <div class="thumb"><i class="fas fa-snowflake"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- DEEP FREEZE -->
+        <div class="asset-card card-common" data-downloads="3600" data-name="deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration">
+            <div class="thumb"><i class="fas fa-snowflake"></i></div>
             <div class="info">
                 <h3>Lab Configuration Locker</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-shield-alt"></i> Active Lock</span>
-                    <span class="tag-badge">Sandbox Layer</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
-                    <button class="btn-act btn-demo" onclick="openTechModal('Unified Write Filter Protection Guide', 'STEP 1: WHAT IT DOES\nThis creates a virtual protective barrier over the hard drive. Any files added or modified vanish completely on reboot.\n\nSTEP 2: WHEN TO USE IT\nUse this to prevent student computers from catching viruses, downloading junk software, or messing up baseline lab profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Run these commands to freeze the operational system state:\u0009uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">View Guide</button>
+                    <button class="btn-act btn-demo" onclick="openTechModal('Unified Write Filter Protection Guide', 'STEP 1: WHAT IT DOES\nThis creates a virtual protective barrier over the hard drive. Any files added or modified vanish completely on reboot.\n\nSTEP 2: WHEN TO USE IT\nUse this to prevent student computers from catching viruses, downloading junk software, or messing up baseline lab profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Run these commands to freeze the operational system state:\nuwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">View Guide</button>
                     <button class="btn-act btn-zip" onclick="openTechModal('UWF Activation Filter Batch Script', 'uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0')">Get Script</button>
                 </div>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="2900" data-name="standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution">
-            <div class="thumb"><i class="fas fa-user-lock"></i><div class="indicator-dot dot-common"></div></div>
+        <!-- STANDARD USER -->
+        <div class="asset-card card-common" data-downloads="2900" data-name="standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution">
+            <div class="thumb"><i class="fas fa-user-lock"></i></div>
             <div class="info">
                 <h3>Standard Privilege Enforcer</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-user-shield"></i> Deployment</span>
-                    <span class="tag-badge">IAM Node</span>
+                    <span class="status-badge">System Diagnostic</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Standard Account Privilege Guide', 'STEP 1: WHAT IT DOES\nThis demotes a local student computer profile to a basic account, blocking them from installing software or accessing core folders.\n\nSTEP 2: WHEN TO USE IT\nUse this on classroom computers so students cannot change system registry tracks, uninstall programs, or delete windows files.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Type these commands to remove absolute system access keys:\nnet localgroup Users Student /add\nnet localgroup Administrators Student /delete')">View Guide</button>
@@ -539,13 +563,14 @@
 
         <div class="section-divider"><i class="fas fa-download"></i> Section 4: Advanced Labs Deployment Module</div>
 
-        <div class="asset-card" data-downloads="3900" data-name="diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation">
-            <div class="thumb"><i class="fas fa-compact-disc"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- BOOTABLE USB -->
+        <div class="asset-card card-critical" data-downloads="3900" data-name="diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation">
+            <div class="thumb"><i class="fas fa-compact-disc"></i></div>
             <div class="info">
                 <h3>Bootable OS Media Maker</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 3.9k Uses</span>
-                    <span class="tag-badge">Deployment Drive</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Bootable Media Build Guide', 'STEP 1: WHAT IT DOES\nThis wipes a standard USB flash drive clean and formats its internal architecture to make it a bootable OS installation medium.\n\nSTEP 2: WHEN TO USE IT\nUse this when preparing setup drives to reinstall Windows or recovery files across broken lab computers.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator, type \'diskpart\' and hit Enter.\n2. Execute these steps one by one to configure the media storage rails:\nselect disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign')">View Guide</button>
@@ -554,13 +579,14 @@
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="5400" data-name="automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub">
-            <div class="thumb"><i class="fas fa-magic"></i><div class="indicator-dot dot-critical"></div></div>
+        <!-- MAINTENANCE -->
+        <div class="asset-card card-critical" data-downloads="5400" data-name="automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub">
+            <div class="thumb"><i class="fas fa-magic"></i></div>
             <div class="info">
                 <h3>Automated Lab Maintenance</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-bolt"></i> 5.4k Uses</span>
-                    <span class="tag-badge">Batch Automation</span>
+                    <span class="status-badge">Critical Fix</span>
                 </div>
                 <div class="actions">
                     <button class="btn-act btn-demo" onclick="openTechModal('Lab Cleaning Script Guide', 'STEP 1: WHAT IT DOES\nThis runs an automated batch sweep that clears out temporary cache folders, logs, prefetch entries, and browser buffers in one click.\n\nSTEP 2: WHEN TO USE IT\nRun this maintenance chore on lab computer clusters every week to free up storage space and speed up operation speeds.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Notepad, paste the syntax script below, and save the file as \'clean.bat\'.\n2. Right-click the file and choose \'Run as Administrator\':\ndel /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\nipconfig /flushdns')">View Guide</button>
@@ -573,6 +599,7 @@
     <div id="sentinel"></div>
 </div>
 
+<!-- Modal Target Wrapper Container Block element -->
 <div class="modal-overlay" id="techModal">
     <div class="modal-window">
         <div class="modal-header">
@@ -585,6 +612,9 @@
         <button class="btn-copy" id="copyBtn" onclick="copyTechCode()">Copy Syntax Stack</button>
     </div>
 </div>
+
+<!-- Universal Footer Injection Anchor -->
+<div id="global-footer"></div>
 
 <script>
     const grid = document.getElementById('assetGrid');
