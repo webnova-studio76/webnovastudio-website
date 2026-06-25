@@ -6,79 +6,277 @@
     <title>Why Choose Us | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* High-Premium Soft Light Workspace Palette Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --card-radius: 20px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.06), 0 4px 15px -2px var(--primary-glow);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed header offset buffer boundary */
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+
+        /* --- 1. Soft Ambient Advantage Hero --- */
+        .choice-hero {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            padding: 95px 0 75px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Technical background grid design lines */
+        .choice-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 45px 45px; pointer-events: none; z-index: 1;
+        }
+
+        .badge { 
+            background: rgba(16, 185, 129, 0.06); 
+            color: var(--primary); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-size: 0.72rem; 
+            font-weight: 800; 
+            border: 1px solid rgba(16, 185, 129, 0.12); 
+            margin-bottom: 15px; 
+            display: inline-block;
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+        }
+        .choice-hero h1 { font-size: 2.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .choice-hero h1 span { color: var(--primary); }
+        .choice-hero p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- 2. Asymmetric Features Workspace Grid --- */
+        .features-comparison { padding: 70px 0; }
+        
+        .feature-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .feature-item {
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            box-shadow: var(--tactile-shadow);
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        
+        .feature-item.show { opacity: 1; transform: translateY(0); transition: var(--transition); }
+
+        /* Subtle numbering back-watermarks inside cards */
+        .feature-item::after {
+            position: absolute; bottom: -10px; right: 15px;
+            font-size: 5rem; font-weight: 900; color: rgba(148, 163, 184, 0.03);
+            font-family: monospace; pointer-events: none; transition: var(--transition);
+        }
+        .feature-layout > div:nth-child(1)::after { content: '// 01'; }
+        .feature-layout > div:nth-child(2)::after { content: '// 02'; }
+        .feature-layout > div:nth-child(3)::after { content: '// 03'; }
+        .feature-layout > div:nth-child(4)::after { content: '// 04'; }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        .feature-item:hover::after { color: rgba(16, 185, 129, 0.05); }
+
+        .feature-icon-box {
+            width: 46px; height: 44px; border-radius: 10px;
+            background: rgba(16, 185, 129, 0.05); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem; flex-shrink: 0;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            transition: var(--transition);
+        }
+        .feature-item:hover .feature-icon-box { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+        .feature-text { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+        .feature-text h3 { font-size: 1.2rem; color: #0f172a; margin-bottom: 8px; font-weight: 800; letter-spacing: -0.01em; }
+        .feature-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; }
+
+        /* --- 3. Floating Call To Action Action Card --- */
+        .choice-cta { padding-bottom: 70px; }
+        
+        .cta-inner {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 50px; border-radius: var(--card-radius);
+            box-shadow: var(--tactile-shadow); text-align: center;
+            max-width: 900px; margin: 0 auto; display: flex;
+            flex-direction: column; align-items: center;
+        }
+
+        .cta-inner h2 { font-size: 1.6rem; font-weight: 900; color: #0f172a; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .cta-inner h2 span { color: var(--primary); }
+        
+        .hero-btns { display: flex; gap: 14px; justify-content: center; width: auto; }
+        
+        .btn-action-route {
+            padding: 12px 30px; border-radius: 8px;
+            text-decoration: none; font-weight: 800; font-size: 0.85rem;
+            display: inline-flex; align-items: center; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-courses {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.1);
+        }
+        .btn-courses:hover { background: var(--primary); transform: translateY(-1px); box-shadow: 0 6px 15px var(--primary-glow); }
+        
+        .btn-contact { background: #f1f5f9; color: var(--text-main); border: 1px solid rgba(0,0,0,0.02); }
+        .btn-contact:hover { background: #e2e8f0; color: #0f172a; }
+
+        /* ==========================================================================
+           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 960px) {
+            .feature-layout { grid-template-columns: 1fr; gap: 24px; }
+            .feature-item { padding: 35px 25px; }
+            .cta-inner { padding: 40px 24px; }
+        }
+        @media (max-width: 640px) {
+            .choice-hero { padding: 75px 0 55px; }
+            .choice-hero h1 { font-size: 2rem; }
+            .feature-item { flex-direction: column; gap: 16px; align-items: flex-start; }
+            .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+            .btn-action-route { width: 100%; justify-content: center; }
+            .container { padding: 0 16px; }
+        }
+    </style>
 </head>
-<body class="js-enabled">
+<body>
 
-    <section class="choice-hero">
-        <div class="container">
-            <span class="badge reveal-up">The WebNova Advantage</span>
-            <h1 class="reveal-up reveal-delay-1">What Makes Us <span>Different?</span></h1>
-            <p class="reveal-up reveal-delay-2">We don't just build websites; we build the future of digital creators through structured expertise.</p>
-        </div>
-    </section>
+<!-- Dynamic Universal Navigation Header Mount Anchor Slot -->
+<div id="global-header"></div>
 
-    <section class="features-comparison">
-        <div class="container">
-            <div class="feature-layout">
-                
-                <div class="feature-item reveal-up">
-                    <div class="feature-icon-box">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>Design & Logic Fusion</h3>
-                        <p>Most agencies focus only on looks. We combine <strong>RR Web Designers'</strong> premium aesthetics with <strong>Code Craft Academic's</strong> deep technical logic.</p>
-                    </div>
+<section class="choice-hero">
+    <div class="container">
+        <span class="badge">The WebNova Advantage</span>
+        <h1>What Makes Us <span>Different?</span></h1>
+        <p>We don't just build websites; we build the future of digital creators through structured expertise.</p>
+    </div>
+</section>
+
+<section class="features-comparison">
+    <div class="container">
+        <div class="feature-layout" id="featureGrid">
+            
+            <!-- FEATURE 1 -->
+            <div class="feature-item">
+                <div class="feature-icon-box">
+                    <i class="fas fa-layer-group"></i>
                 </div>
-
-                <div class="feature-item reveal-up reveal-delay-1">
-                    <div class="feature-icon-box">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>Academic Foundation</h3>
-                        <p>Our curriculum is built on professional BCA/MCA standards. You aren't learning from "random tutorials"—you're following a structured university-grade roadmap.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item reveal-up reveal-delay-2">
-                    <div class="feature-icon-box">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>Premium Free Ecosystem</h3>
-                        <p>From 50+ PPT slides to 10+ HTML templates, we provide the highest quality free resource library in the industry to ensure no student starts from zero.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item reveal-up">
-                    <div class="feature-icon-box">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>Career-First Approach</h3>
-                        <p>We teach the "Business of Code." Our mission is to move you from Phase 01 to becoming a high-paid freelancer with our Success Hub tools.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="choice-cta reveal-up">
-        <div class="container">
-            <div class="cta-inner">
-                <h2>Ready to experience the <span>difference?</span></h2>
-                <div class="hero-btns">
-                    <a href="course.html" class="btn-primary">Explore Courses</a>
-                    <a href="contact.html" class="btn-secondary">Contact Us</a>
+                <div class="feature-text">
+                    <h3>Design & Logic Fusion</h3>
+                    <p>Most design groups focus on visuals alone. We merge WebNova Studio's sleek modern layout interfaces with Code Craft Academic's structured software development logic patterns.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="animations.js"></script>
+            <!-- FEATURE 2 -->
+            <div class="feature-item">
+                <div class="feature-icon-box">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>Academic Foundation</h3>
+                    <p>Our study programs are designed around university Computer Applications curriculums. Instead of following fragmented clips, users follow structured architectural technology roadmaps.</p>
+                </div>
+            </div>
+
+            <!-- FEATURE 3 -->
+            <div class="feature-item">
+                <div class="feature-icon-box">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>Premium Free Ecosystem</h3>
+                    <p>We supply a massive selection of verified lecture decks, coding cheat books, and responsive components through the open-source platform, ensuring no student has to start from scratch.</p>
+                </div>
+            </div>
+
+            <!-- FEATURE 4 -->
+            <div class="feature-item">
+                <div class="feature-icon-box">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>Career-First Approach</h3>
+                    <p>We explore the business backend of software development. Our workflow shifts developers from core syntax mechanics into deploying executable, custom projects for freelance success.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="choice-cta">
+    <div class="container">
+        <div class="cta-inner">
+            <h2>Ready to experience the <span>difference?</span></h2>
+            <div class="hero-btns">
+                <a href="courses.html" class="btn-action-route btn-courses">Explore Courses</a>
+                <a href="contact.html" class="btn-action-route btn-contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dynamic Universal Footer Mount Anchor Slot -->
+<div id="global-footer"></div>
+
+<!-- Core System Application Engine Injections -->
+<script src="main.js"></script>
+<script src="footer.js"></script>
+<script>
+    // Staggered Entrance Animation Deployment Engine Loader
+    document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.feature-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('show');
+            }, index * 80); 
+        });
+    });
+</script>
 </body>
 </html>
