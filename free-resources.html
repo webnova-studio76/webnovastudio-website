@@ -6,191 +6,173 @@
     <title>Free Resources Hub | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* High-Premium Unified Light Canvas Style Tokens */
+            /* Compact Data-Dense Theming Alignment Map */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.15);
             --secondary: #0f172a;     /* WebNova Master Deep Navy */
             --card-surface: #ffffff;  /* High-Performance White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Background */
-            --text-main: #334155;     /* Dark Sapphire Headings Typography */
-            --text-muted: #64748b;    /* Muted Gray Secondary Text */
-            --border: rgba(37, 99, 235, 0.08); 
-            --card-radius: 16px;      
+            --bg: #f8fafc;            /* Clean Light Content Background */
+            --text-main: #0f172a;     /* Dark Charcoal Content Headings */
+            --text-muted: #475569;    /* Slate Gray for Subtext */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: subpixel-antialiased; 
-            padding-top: 85px; /* Fixed header offset buffer boundary */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        /* --- 1. Course Directory Hero --- */
+        .hub-header {
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-line);
+            background: var(--white);
         }
-
-        /* 1. Light Ambient Resource Header */
-     .hub-header {
-    position: relative;
-    background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
-    color: var(--text-main);
-    /* Changed top padding from 80px to 30px to remove the massive gap */
-    padding: 20px 0 100px; 
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-}
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hub-header h1 { font-size: 2.8rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.02em; margin-bottom: 15px; }
+        .sub-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .hub-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
         .hub-header h1 span { color: var(--primary); }
-        .hub-header p { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; max-width: 600px; margin: 0 auto; }
+        .hub-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        /* 2. Grid System and Elevated Container Alignment */
-        .container { max-width: 1200px; margin: -40px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
-
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
         }
 
-        /* 3. Compact Volumetric Card Architecture */
-        .hub-card {
-            background: var(--card-surface) !important;
-            border-radius: var(--card-radius);
-            padding: 35px 28px !important; /* Balanced structural padding rules */
-            text-align: center;
-            border: 1px solid var(--border) !important;
-            border-top: 5px solid #cbd5e1 !important; 
-            transition: var(--transition);
+        /* --- 2. Integrated Search & Filter Array --- */
+        .filter-wrapper {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.04) !important;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .search-box { position: relative; width: 320px; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: all 0.2s ease;
+        }
+        .search-box input:focus { border-color: var(--text-main); }
+
+        .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 8px 16px; border: 1px solid var(--border-line); background: var(--white);
+            color: var(--text-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* --- 3. Clean Square Grid Layout Engine (4 in a row) --- */
+        .learning-modules-section { padding: 24px 0; }
+        
+        .hub-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+            width: 100% !important;
         }
 
-        .hub-card:hover {
-            transform: translateY(-5px) scale(1.01) !important;
-            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.12) !important;
+        .hub-card {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            width: 100% !important;
+            min-height: 320px !important; /* Uniform square height scaling footprint */
+            transition: border-color 0.2s ease;
         }
+        .hub-card:hover { border-color: #cbd5e1 !important; }
 
+        /* Colored Border Top Category Anchors */
+        .hub-card.border-sky { border-top: 5px solid #38bdf8 !important; }
+        .hub-card.border-teal { border-top: 5px solid #0d9488 !important; }
+        .hub-card.border-pink { border-top: 5px solid #ec4899 !important; }
+        .hub-card.border-purple { border-top: 5px solid #a855f7 !important; }
+        .hub-card.border-orange { border-top: 5px solid #f29111 !important; }
+        .hub-card.border-emerald { border-top: 5px solid #10b981 !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
         .card-icon {
-            width: 54px; height: 54px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.35rem; margin-bottom: 20px;
-            background: rgba(37, 99, 235, 0.03); 
-            border: 1px solid var(--border);
-            color: var(--primary);
-            transition: var(--transition);
+            width: 36px; height: 34px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
         }
+        .hub-card.border-sky .card-icon { color: #38bdf8; }
+        .hub-card.border-teal .card-icon { color: #0d9488; }
+        .hub-card.border-pink .card-icon { color: #ec4899; }
+        .hub-card.border-purple .card-icon { color: #a855f7; }
+        .hub-card.border-orange .card-icon { color: #f29111; }
+        .hub-card.border-emerald .card-icon { color: #10b981; }
 
-        .hub-card:hover .card-icon {
-            transform: scale(1.05);
-            color: var(--white) !important;
-            box-shadow: 0 6px 12px var(--primary-glow);
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        .hub-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; flex-grow: 1; }
+
+        .download-btns { width: 100%; margin-top: auto; }
+        .card-link, .btn-tg { 
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
+        .card-link:hover, .btn-tg:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        .hub-card h3 { margin-bottom: 10px; font-size: 1.25rem; color: var(--secondary); font-weight: 800; letter-spacing: -0.01em; }
-        .hub-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 25px; min-height: 44px; font-weight: 500; line-height: 1.5; }
+        /* Empty Search State Block */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
 
-        .card-link {
-            text-decoration: none !important;
-            font-weight: 800;
-            color: #2563eb;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-        .card-link:hover { color: var(--secondary) !important; text-decoration: underline !important; }
-
-        /* Dynamic Custom Color Assignments for Side Accent Lines */
-        .hub-grid > div:nth-child(1) { border-top-color: #38bdf8 !important; } 
-        .hub-grid > div:nth-child(1) .card-icon { color: #38bdf8; background: rgba(56, 189, 248, 0.06); }
-        .hub-grid > div:nth-child(1):hover .card-icon { background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); }
-        .hub-grid > div:nth-child(1) .card-link { color: #0284c7; }
-
-        .hub-grid > div:nth-child(2) { border-top-color: #0d9488 !important; } 
-        .hub-grid > div:nth-child(2) .card-icon { color: #0d9488; background: rgba(13, 148, 136, 0.06); }
-        .hub-grid > div:nth-child(2):hover .card-icon { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); }
-        .hub-grid > div:nth-child(2) .card-link { color: #0d9488; }
-
-        .hub-grid > div:nth-child(3) { border-top-color: #ec4899 !important; } 
-        .hub-grid > div:nth-child(3) .card-icon { color: #ec4899; background: rgba(236, 72, 153, 0.06); }
-        .hub-grid > div:nth-child(3):hover .card-icon { background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); }
-        .hub-grid > div:nth-child(3) .card-link { color: #ec4899; }
-
-        .hub-grid > div:nth-child(4) { border-top-color: #a855f7 !important; } 
-        .hub-grid > div:nth-child(4) .card-icon { color: #a855f7; background: rgba(168, 85, 247, 0.06); }
-        .hub-grid > div:nth-child(4):hover .card-icon { background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%); }
-        .hub-grid > div:nth-child(4) .card-link { color: #a855f7; }
-
-        .hub-grid > div:nth-child(5) { border-top-color: #f29111 !important; } 
-        .hub-grid > div:nth-child(5) .card-icon { color: #f29111; background: rgba(242, 145, 17, 0.06); }
-        .hub-grid > div:nth-child(5):hover .card-icon { background: linear-gradient(135deg, #f29111 0%, #c2410c 100%); }
-        .hub-grid > div:nth-child(5) .card-link { color: #f29111; }
-
-        /* Highlight Block Card Override (Practical Hub left-border configuration) */
-        .hub-grid .highlight-card {
-            border-left: 6px solid #10b981 !important;
-            border-top: 1px solid var(--border) !important;
-            background: var(--card-surface) !important;
-        }
-        .highlight-card h3 { color: var(--secondary); }
-        .highlight-card p { color: var(--text-muted); }
-        .highlight-card .card-icon { color: #10b981; background: rgba(16, 185, 129, 0.06); }
-        .highlight-card:hover .card-icon { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-
-        .btn-tg {
-            text-decoration: none !important;
-            font-weight: 800 !important;
-            color: #10b981 !important;
-            font-size: 0.85rem !important;
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            transition: var(--transition);
-            background: transparent !important;
-            border: none !important;
-            width: auto !important;
-            padding: 0 !important;
-            box-shadow: none !important;
-        }
-        .btn-tg:hover { color: var(--secondary) !important; text-decoration: underline !important; }
+        /* --- 4. Value Propositions Section --- */
+        .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
+        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: var(--primary); margin-top: 2px; font-size: 0.9rem; }
+        .outcome-item div .outcome-heading-text { display: block; color: var(--secondary); margin-bottom: 2px; font-weight: 700; }
 
         /* Footer Call To Action Module */
-        .hub-footer { text-align: center; margin-top: 60px; padding-top: 40px; }
+        .hub-footer { text-align: center; margin-top: 40px; padding: 32px; background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; }
         .hub-footer p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; margin-bottom: 20px; }
         
         .btn-hire {
-            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
-            color: var(--white); padding: 14px 35px; border-radius: 10px;
-            text-decoration: none; font-weight: 800; font-size: 0.9rem;
-            display: inline-block; transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+            background: var(--secondary);
+            color: var(--white); padding: 12px 28px; border-radius: 4px;
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem;
+            display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; transition: var(--transition);
         }
-        .btn-hire:hover { transform: translateY(-2px); background: var(--primary); box-shadow: 0 6px 20px var(--primary-glow); }
+        .btn-hire:hover { background: var(--primary); }
 
+        @media (max-width: 1024px) {
+            .hub-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
         @media (max-width: 768px) {
-            .hub-header { padding: 50px 0 70px; }
-            .hub-header h1 { font-size: 2rem; }
-            .container { margin-top: -20px; }
-            .hub-grid { gap: 20px !important; }
-            .hub-card { padding: 30px 20px !important; }
+            .hub-grid { grid-template-columns: 1fr !important; }
+            .outcomes-grid { grid-template-columns: 1fr; gap: 16px; }
+            .search-box { width: 100%; }
+            .filter-wrapper { flex-direction: column; align-items: stretch; gap: 14px; }
+            .filter-btns { width: 100%; justify-content: space-between; }
+            .filter-btn { flex: 1; text-align: center; }
         }
     </style>
 </head>
@@ -199,62 +181,182 @@
     <div id="global-header"></div>
 
     <header class="hub-header">
-        <canvas id="header-canvas"></canvas>
-        <div class="header-content">
+        <div class="container">
+            <span class="sub-title">Code Craft Academic</span>
             <h1>Free <span>Resources</span> Library</h1>
-            <p>Premium templates, software, and presentations to accelerate your learning—100% Free.</p>
+            <p>Premium templates, software tool bundles, structural checklists, and engineering presentations to accelerate your performance learning tracks—100% Free.</p>
+            <div class="hero-stats">
+                <span>500+ Resource Assets</span>
+                <span>100% Free Access</span>
+                <span>Verified Code Labs</span>
+                <span>Weekly Update Sync</span>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="hub-grid">
-            
-            <div class="hub-card">
-                <div class="card-icon"><i class="fas fa-layer-group"></i></div>
-                <h3>Landing Page Templates</h3>
-                <p>High-converting HTML/CSS landing pages for portfolios, startups, and agencies.</p>
-                <a href="templates-download.html" class="card-link">Download Templates &rarr;</a>
+        
+        <div class="filter-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="moduleSearch" placeholder="Search templates, cheat sheets, or manuals..." onkeyup="applyFilters()">
             </div>
-
-            <div class="hub-card">
-                <div class="card-icon"><i class="fas fa-terminal"></i></div>
-                <h3>Sysadmin & Tech Hub</h3>
-                <p>Essential command stacks, custom codes, troubleshooting instructions, and hardware fixes.</p>
-                <a href="ui-vault.html" class="card-link">Access Tech Toolkit &rarr;</a>
+            <div class="filter-btns">
+                <button class="filter-btn active" onclick="filterCategory(this, 'all')">All Assets</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'templates')">Templates</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'tech-hub')">Tech Hub</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'ui-design')">UI Design</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'software')">Software</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'cheat-sheets')">Cheat Sheets</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'practical')">Practical Hub</button>
             </div>
-
-            <div class="hub-card">
-                <div class="card-icon"><i class="fas fa-swatchbook"></i></div>
-                <h3>UI Design Vault</h3>
-                <p>Premium HTML5 & CSS3 components, landing pages, and responsive layouts. Clean source code ready for your projects.</p>
-                <a href="ui-designs.html" class="card-link">Explore Assets &rarr;</a>
-            </div>
-
-            <div class="hub-card">
-                <div class="card-icon"><i class="fas fa-download"></i></div>
-                <h3>Software Downloads</h3>
-                <p>Curated links for the best free dev tools, design software, and IDEs.</p>
-                <a href="free-software.html" class="card-link">View Softwares &rarr;</a>
-            </div>
-
-            <div class="hub-card">
-                <div class="card-icon"><i class="fas fa-code"></i></div>
-                <h3>Coding Cheat Sheets</h3>
-                <p>Quick reference PDFs for Python, React, SQL, and CSS Grid Mastery.</p>
-                <a href="coding-sheets.html" class="card-link">Get PDF Sheets &rarr;</a>
-            </div>
-
-            <div class="hub-card highlight-card">
-                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                <h3>Programming Practical Hub</h3>
-                <p>Hand-crafted lab manuals and executable code for BCA/MCA practical exams.</p>
-                <a href="practicals-library.html" class="btn-tg">Explore Lab Code &rarr;</a>
-            </div>
-
         </div>
 
+        <section class="learning-modules-section">
+            <div class="hub-grid" id="moduleGrid">
+                
+                <div class="hub-card border-sky" data-category="templates">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Landing Page Templates</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">25 Files</span>
+                                <span class="meta-chip">HTML / CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>High-converting layout landing page components built for portfolio showroom sites, startups, design agencies, and custom frameworks.</p>
+                    <div class="download-btns">
+                        <a href="templates-download.html" class="card-link">Download Assets</a>
+                    </div>
+                </div>
+
+                <div class="hub-card border-teal" data-category="tech-hub">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Sysadmin &amp; Tech Hub</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Terminal</span>
+                                <span class="meta-chip">Scripts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Essential low-level execution command stacks, custom automation scripts, hardware debugging rules, and troubleshooting instructions profiles.</p>
+                    <div class="download-btns">
+                        <a href="ui-vault.html" class="card-link">Access Toolkit</a>
+                    </div>
+                </div>
+
+                <div class="hub-card border-pink" data-category="ui-design">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-swatchbook"></i></div>
+                        <div class="mod-header-text">
+                            <h3>UI Design Vault</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Figma / CSS</span>
+                                <span class="meta-chip">Assets</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Premium modern components UI kits, wireframe elements, color palettes matrix mappings, and editable canvas vector design packages.</p>
+                    <div class="download-btns">
+                        <a href="ui-designs.html" class="card-link">Explore Vault</a>
+                    </div>
+                </div>
+
+                <div class="hub-card border-purple" data-category="software">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-download"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Software Downloads</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">IDE / Tools</span>
+                                <span class="meta-chip">Dev Build</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Verified installation pipelines tracking the best open-source IDE editors, graphic engines package links, and full-stack runtime management nodes.</p>
+                    <div class="download-btns">
+                        <a href="free-software.html" class="card-link">View Packages</a>
+                    </div>
+                </div>
+
+                <div class="hub-card border-orange" data-category="cheat-sheets">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-code"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Coding Cheat Sheets</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">42 PDFs</span>
+                                <span class="meta-chip">Syntax</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>High-density swift technical reference summaries covering Python structures, React components tree, SQL scripting, and advanced CSS Flexbox logic maps.</p>
+                    <div class="download-btns">
+                        <a href="coding-sheets.html" class="card-link">Get Blueprint PDFs</a>
+                    </div>
+                </div>
+
+                <div class="hub-card border-emerald highlight-card" data-category="practical">
+                    <div class="mod-identity-block">
+                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Programming Practical Hub</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">BCA / MCA</span>
+                                <span class="meta-chip">Lab Manuals</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Hand-crafted physical programming implementation sheets, executable problem codes solutions, and algorithmic structures built for university practical exams verification.</p>
+                    <div class="download-btns">
+                        <a href="practicals-library.html" class="btn-tg">Explore Lab Manuals</a>
+                    </div>
+                </div>
+
+                <div class="empty-state-node" id="noResults">
+                    <i class="fas fa-folder-open"></i>
+                    <h4>No Resources Match Your Criteria</h4>
+                    <p>Refine your input character keyword strings or reset the target system tracking categories buttons above.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Open Source Library Parameters</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <span class="outcome-heading-text">Audited Security Integrity</span>
+                            <p>Every download bundle script or automation instruction map is completely analyzed and verified clean before structural indexing.</p>
+                        </div>
+                    </div>
+                    <div class="outcome-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <span class="outcome-heading-text">Continuous Synchronization</span>
+                            <p>Syllabus modules change, and so do our libraries. Assets are updated weekly matching active software and college parameters.</p>
+                        </div>
+                    </div>
+                    <div class="outcome-item">
+                        <i class="fas fa-external-link-alt"></i>
+                        <div>
+                            <span class="outcome-heading-text">Zero Gatekeeping Locks</span>
+                            <p>No paywalls, hidden activation parameters, or account requirements. Open the index segment and extract the target files instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="hub-footer">
-            <p>Need a custom, premium website designed from scratch?</p>
+            <p>Need custom application infrastructure or premium commercial platforms created from scratch?</p>
             <a href="contact.html" class="btn-hire">Hire WebNova Studio Experts</a>
         </div>
     </div>
@@ -263,5 +365,42 @@
 
     <script src="main.js"></script>
     <script src="footer.js"></script>
+    <script>
+        // ENGINE CONTROL ARRAY ACTION FILTER ROUTINES TRACK CONFIGURATION
+        let currentCategory = 'all';
+
+        function applyFilters() {
+            const query = document.getElementById('moduleSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.hub-card');
+            const noResults = document.getElementById('noResults');
+            let matchCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const description = card.querySelector('p').innerText.toLowerCase();
+
+                const searchMatch = title.includes(query) || description.includes(query);
+                const categoryMatch = currentCategory === 'all' || card.dataset.category === currentCategory;
+
+                if (searchMatch && categoryMatch) {
+                    card.style.setProperty('display', 'flex', 'important');
+                    matchCount++;
+                } else {
+                    card.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            noResults.style.display = (matchCount === 0) ? 'flex' : 'none';
+        }
+
+        function filterCategory(btn, category) {
+            currentCategory = category;
+
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+
+            applyFilters();
+        }
+    </script>
 </body>
 </html>
