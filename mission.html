@@ -13,88 +13,90 @@
     
     <style>
         :root {
-            /* Next-Gen Cyber-Workspace Theme Tokens */
+            /* High-Premium Light Workspace Theme Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.15);
+            --primary-glow: rgba(16, 185, 129, 0.06);
             --secondary: #0f172a;     /* Deep Slate Main Typography */
-            --bg: #030712;            /* True Dark Matrix Obsidian Background Canvas */
-            --card-surface: #0b0f19;  /* Frosted Tech-Deck Slate Panels */
-            --text-main: #f8fafc;     /* Pristine Off-White Font Grid */
-            --text-muted: #94a3b8;    /* Muted Steel-Gray Explanations */
-            --border: rgba(255, 255, 255, 0.05); /* Cyber Fine Hairline Divider */
-            --border-glow: rgba(16, 185, 129, 0.25);
-            --card-radius: 16px;      
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --card-radius: 20px;      
             --white: #ffffff;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Elastic Linear Drag Physics Curve */
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04), 0 1px 3px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 30px 50px -10px rgba(15, 23, 42, 0.06), 0 4px 20px -2px var(--primary-glow);
         }
 
-        h1, h2, h3, h4, .bento-num { font-family: 'Space Grotesk', sans-serif; color: var(--text-main); }
+        h1, h2, h3, h4, .bento-num { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
-            padding-top: 100px;
+            padding-top: 85px;
             overflow-x: hidden;
         }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; width: 100%; }
 
-        /* --- 1. Cyber Mesh Ambient Hero Canvas --- */
+        /* --- 1. Ambient Dynamic Hero Canvas --- */
         .mission-hero-minimal {
             position: relative;
-            padding: 140px 0 100px;
+            padding: 100px 0 80px;
             text-align: center;
             overflow: hidden;
-            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Subtle Dark Grid Alignment Blueprint Matrix */
+        /* Subtle Light Grid Alignment Blueprint Matrix */
         .mission-hero-minimal::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 60px 60px; pointer-events: none; z-index: 1;
+                linear-gradient(to right, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; z-index: 1;
         }
 
         .hero-meta-tag {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+            background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.12);
             padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 2px; color: var(--primary);
-            margin-bottom: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+            margin-bottom: 24px;
         }
 
         .mission-hero-minimal h1 { 
-            font-size: 4rem; 
+            font-size: 3.5rem; 
             font-weight: 700; 
-            letter-spacing: -0.04em; 
+            letter-spacing: -0.03em; 
             margin-bottom: 24px; 
-            line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1.15;
         }
-        .mission-hero-minimal h1 span { background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mission-hero-minimal h1 span { color: var(--primary); }
         
         .mission-hero-minimal p { 
             color: var(--text-muted); 
-            font-size: 1.15rem; 
-            font-weight: 400; 
+            font-size: 1.1rem; 
+            font-weight: 500; 
             max-width: 850px; 
             margin: 0 auto; 
             line-height: 1.7;
         }
 
         /* --- 2. Advanced Asymmetric Bento Grid Deck --- */
-        .mission-pillars { padding: 40px 0; }
+        .mission-pillars { padding: 80px 0; }
         
         .bento-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             grid-template-rows: auto auto;
-            gap: 24px;
+            gap: 28px;
             width: 100%;
         }
 
@@ -102,52 +104,54 @@
             background: var(--card-surface);
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
-            padding: 50px;
+            padding: 45px;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             transition: var(--transition);
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+            box-shadow: var(--tactile-shadow);
         }
 
         /* Unique Asymmetric Grid Layout Locks */
-        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; background: linear-gradient(225deg, rgba(16, 185, 129, 0.03) 0%, var(--card-surface) 60%); }
-        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; }
-        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
+        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
+        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; border-bottom: 4px solid #cbd5e1; }
 
+        /* Smooth Light Mouseglow Track Overlay */
         .bento-card::before {
             content: ''; position: absolute; inset: 0;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.04), transparent 40%);
+            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(16, 185, 129, 0.04), transparent 60%);
             z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
         }
         .bento-card:hover::before { opacity: 1; }
 
         .bento-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(16, 185, 129, 0.05);
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.2);
+            border-bottom-color: var(--primary);
+            box-shadow: var(--hover-shadow);
         }
 
         .bento-card i {
-            font-size: 1.5rem; color: var(--primary);
-            margin-bottom: 30px; display: inline-flex;
-            width: 48px; height: 48px; background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border); border-radius: 12px;
+            font-size: 1.3rem; color: var(--primary);
+            margin-bottom: 24px; display: inline-flex;
+            width: 46px; height: 44px; background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 12px;
             align-items: center; justify-content: center;
             transition: var(--transition);
         }
-        .bento-card:hover i { background: var(--primary); color: var(--bg); border-color: var(--primary); transform: scale(1.05); }
+        .bento-card:hover i { background: var(--primary); color: var(--white); border-color: var(--primary); }
 
-        .bento-card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .bento-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; font-weight: 400; }
+        .bento-card h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .bento-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; font-weight: 500; text-align: left; }
 
         /* --- 3. Sleek SaaS Execution Timeline --- */
-        .mission-roadmap { padding: 100px 0; }
+        .mission-roadmap { padding: 60px 0 90px; }
         .roadmap-container { position: relative; width: 100%; }
         
-        .roadmap-container h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 60px; text-align: left; }
+        .roadmap-container h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 60px; text-align: center; }
         .roadmap-container h2 span { color: var(--primary); }
 
         .roadmap-linear-track {
@@ -159,58 +163,52 @@
 
         /* Connecting horizontal technical wireframe axis line */
         .roadmap-linear-track::before {
-            content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, var(--border) 0%, rgba(16, 185, 129, 0.3) 50%, var(--border) 100%);
+            content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px;
+            background: #e2e8f0;
             z-index: 1;
         }
 
         .roadmap-node { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; }
         
         .bento-num {
-            font-size: 0.85rem; font-weight: 700; color: var(--primary);
-            background: var(--bg); border: 1px solid var(--border-glow);
-            width: 40px; height: 40px; border-radius: 50%;
+            font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
+            background: #f8fafc; border: 2px solid #e2e8f0;
+            width: 42px; height: 42px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 24px; transition: var(--transition);
-            box-shadow: 0 0 15px var(--primary-glow);
         }
-        .roadmap-node:hover .bento-num { background: var(--primary); color: var(--bg); transform: scale(1.1); box-shadow: 0 0 25px var(--primary); }
+        .roadmap-node:hover .bento-num { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); transform: scale(1.05); }
 
-        .node-content h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-        .node-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+        .node-content { background: var(--white); border: 1px solid var(--border); padding: 26px 28px; border-radius: 14px; box-shadow: var(--tactile-shadow); transition: var(--transition); }
+        .roadmap-node:hover .node-content { border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04); }
+        
+        .node-content h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .node-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
 
         /* --- 4. Holographic Inset Vision Callout --- */
-        .vision-reveal { padding-bottom: 140px; }
+        .vision-reveal { padding-bottom: 100px; }
         
         .hologram-vision-card {
-            background: linear-gradient(135deg, rgba(11, 15, 25, 0.8) 0%, rgba(3, 7, 18, 0.9) 100%);
+            background: var(--white);
             border: 1px solid var(--border);
-            border-top: 2px solid var(--primary);
-            padding: 60px; border-radius: var(--card-radius);
-            box-shadow: 0 40px 80px -25px rgba(0,0,0,0.8);
-            text-align: center; max-width: 1000px; margin: 0 auto;
+            border-left: 6px solid var(--primary);
+            padding: 50px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
+            box-shadow: var(--tactile-shadow);
+            text-align: center; max-width: 900px; margin: 0 auto;
             display: flex; flex-direction: column; align-items: center;
-            position: relative;
-        }
-
-        .hologram-vision-card::after {
-            content: ''; position: absolute; top: -2px; left: 10%; width: 80%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            filter: blur(4px);
         }
 
         .vision-avatar {
-            width: 56px; height: 56px; border-radius: 14px;
-            background: rgba(16, 185, 129, 0.05); color: var(--primary);
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--primary-glow); color: var(--primary);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 28px;
+            font-size: 1.3rem; margin-bottom: 24px;
             border: 1px solid rgba(16, 185, 129, 0.1);
-            box-shadow: 0 0 20px var(--primary-glow);
         }
 
-        .hologram-vision-card h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .hologram-vision-card h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
         .hologram-vision-card h2 span { color: var(--primary); }
-        .hologram-vision-card p { font-size: 1.1rem; color: #cbd5e1; font-weight: 400; line-height: 1.7; max-width: 760px; }
+        .hologram-vision-card p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 700px; }
 
         /* ==========================================================================
            --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
@@ -221,13 +219,13 @@
             .card-large-2 { grid-template-columns: 1fr; gap: 24px; }
             .roadmap-linear-track { grid-template-columns: 1fr; gap: 40px; }
             .roadmap-linear-track::before { display: none; }
-            .mission-hero-minimal h1 { font-size: 3rem; }
+            .mission-hero-minimal h1 { font-size: 2.6rem; }
             .bento-card { padding: 40px 30px; }
         }
         @media (max-width: 640px) {
-            .mission-hero-minimal { padding: 100px 0 60px; }
-            .mission-hero-minimal h1 { font-size: 2.4rem; }
-            .hologram-vision-card { padding: 40px 24px; }
+            .mission-hero-minimal { padding: 75px 0 55px; }
+            .mission-hero-minimal h1 { font-size: 2.2rem; }
+            .hologram-vision-card { padding: 35px 24px; }
             .container { padding: 0 20px; }
         }
     </style>
@@ -321,10 +319,10 @@
     </div>
 </section>
 
-<!-- Vision Next-Gen Layout Frame Block -->
+<!-- Vision Section -->
 <section class="vision-reveal">
     <div class="container">
-        <div class="hologram-vision-card">
+        <div class="glass-impact-box">
             <div class="vision-avatar"><i class="fas fa-eye"></i></div>
             <h2>Our <span>Vision</span></h2>
             <p>To create a unified ecosystem where education, innovation, and digital creation work together seamlessly—empowering the next generation of developers, designers, and technology leaders to learn, build, and grow with confidence.</p>
