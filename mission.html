@@ -6,232 +6,229 @@
     <title>Our Mission | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Premium Fonts Injection -->
+    <!-- Next-Gen Typography Engines -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* High-Premium Soft Light Workspace Palette Tokens */
+            /* Next-Gen Cyber-Workspace Theme Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #0f172a;     /* Deep Slate / Charcoal Headings */
-            --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Extremely soft structural outline */
-            --card-radius: 20px;      
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --secondary: #0f172a;     /* Deep Slate Main Typography */
+            --bg: #030712;            /* True Dark Matrix Obsidian Background Canvas */
+            --card-surface: #0b0f19;  /* Frosted Tech-Deck Slate Panels */
+            --text-main: #f8fafc;     /* Pristine Off-White Font Grid */
+            --text-muted: #94a3b8;    /* Muted Steel-Gray Explanations */
+            --border: rgba(255, 255, 255, 0.05); /* Cyber Fine Hairline Divider */
+            --border-glow: rgba(16, 185, 129, 0.25);
+            --card-radius: 16px;      
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.03), 0 2px 6px -2px rgba(15, 23, 42, 0.01);
-            --hover-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.06), 0 4px 15px -2px var(--primary-glow);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Elastic Linear Drag Physics Curve */
         }
 
-        h1, h2, h3, h4, .step-num { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .bento-num { font-family: 'Space Grotesk', sans-serif; color: var(--text-main); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Fixed navbar padding buffer constraint[cite: 2] */
+            padding-top: 100px;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; width: 100%; }
 
-        /* --- 1. Soft Ambient Hero Section --- */
+        /* --- 1. Cyber Mesh Ambient Hero Canvas --- */
         .mission-hero-minimal {
             position: relative;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100__);
-            padding: 100px 0 80px;
+            padding: 140px 0 100px;
             text-align: center;
             overflow: hidden;
-            border-bottom: 1px solid var(--border);
+            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
         }
 
-        /* Technical accent background mesh design[cite: 2] */
+        /* Subtle Dark Grid Alignment Blueprint Matrix */
         .mission-hero-minimal::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(to right, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
-            background-size: 45px 40px; pointer-events: none; z-index: 1;
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px; pointer-events: none; z-index: 1;
+        }
+
+        .hero-meta-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+            padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px; color: var(--primary);
+            margin-bottom: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
         .mission-hero-minimal h1 { 
-            font-size: 3.2rem; 
+            font-size: 4rem; 
             font-weight: 700; 
-            letter-spacing: -0.02em; 
-            margin-bottom: 20px; 
-            line-height: 1.2; 
-            animation: safeFadeIn 0.8s ease-out forwards;
+            letter-spacing: -0.04em; 
+            margin-bottom: 24px; 
+            line-height: 1.1;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .mission-hero-minimal h1 span { color: var(--primary); }
+        .mission-hero-minimal h1 span { background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .mission-hero-minimal p { 
             color: var(--text-muted); 
-            font-size: 1.1rem; 
-            font-weight: 500; 
-            max-width: 750px; 
+            font-size: 1.15rem; 
+            font-weight: 400; 
+            max-width: 850px; 
             margin: 0 auto; 
-            line-height: 1.65;
-            animation: safeFadeIn 0.8s ease-out 0.15s forwards;
-            opacity: 0;
+            line-height: 1.7;
         }
 
-        @keyframes safeFadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- 2. Tactile Pillar Row Architecture --- */
-        .mission-pillars { padding: 90px 0 50px; }
+        /* --- 2. Advanced Asymmetric Bento Grid Deck --- */
+        .mission-pillars { padding: 40px 0; }
         
-        .pillar-row {
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-rows: auto auto;
+            gap: 24px;
             width: 100%;
         }
 
-        .pillar-card {
+        .bento-card {
             background: var(--card-surface);
             border: 1px solid var(--border);
-            border-bottom: 4px solid #cbd5e1;
             border-radius: var(--card-radius);
-            padding: 45px 35px;
-            box-shadow: var(--tactile-shadow);
-            transition: var(--transition);
+            padding: 50px;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            animation: safeFadeIn 0.8s ease-out 0.3s forwards;
-            opacity: 0;
+            justify-content: flex-end;
+            transition: var(--transition);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
         }
 
-        .pillar-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--hover-shadow);
-            border-bottom-color: var(--primary);
+        /* Unique Asymmetric Grid Layout Locks */
+        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; background: linear-gradient(225deg, rgba(16, 185, 129, 0.03) 0%, var(--card-surface) 60%); }
+        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+        .bento-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.04), transparent 40%);
+            z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
+        }
+        .bento-card:hover::before { opacity: 1; }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(16, 185, 129, 0.05);
         }
 
-        /* Large watermarked decorative back-numbers inside each card block[cite: 2] */
-        .pillar-card::after {
-            position: absolute; bottom: -10px; right: 10px;
-            font-size: 5.5rem; font-weight: 900; color: rgba(148, 163, 184, 0.04);
-            font-family: monospace; transition: var(--transition); pointer-events: none;
+        .bento-card i {
+            font-size: 1.5rem; color: var(--primary);
+            margin-bottom: 30px; display: inline-flex;
+            width: 48px; height: 48px; background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border); border-radius: 12px;
+            align-items: center; justify-content: center;
+            transition: var(--transition);
         }
-        .pillar-card:nth-child(1)::after { content: '01'; }
-        .pillar-card:nth-child(2)::after { content: '02'; }
-        .pillar-card:nth-child(3)::after { content: '03'; }
-        .pillar-card:hover::after { color: rgba(16, 185, 129, 0.06); transform: scale(1.05) translateY(-5px); }
+        .bento-card:hover i { background: var(--primary); color: var(--bg); border-color: var(--primary); transform: scale(1.05); }
 
-        .pillar-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .bento-card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .bento-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; font-weight: 400; }
+
+        /* --- 3. Sleek SaaS Execution Timeline --- */
+        .mission-roadmap { padding: 100px 0; }
+        .roadmap-container { position: relative; width: 100%; }
         
-        .pillar-header i {
-            width: 46px; height: 46px; border-radius: 10px;
-            background: rgba(16, 185, 129, 0.05); color: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; transition: var(--transition);
-            border: 1px solid rgba(16, 185, 129, 0.1);
-        }
-        .pillar-card:hover .pillar-header i { background: var(--primary); color: var(--white); }
-
-        .pillar-header h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
-        .pillar-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
-
-        /* --- 3. Premium Interactive Roadmap Pipeline --- */
-        .mission-roadmap { padding: 40px 0 90px; }
-        
-        .roadmap-container {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
-            padding: 55px 60px;
-            box-shadow: var(--tactile-shadow);
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            animation: safeFadeIn 0.8s ease-out 0.45s forwards;
-            opacity: 0;
-        }
-
-        .roadmap-container h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 50px; text-align: center; }
+        .roadmap-container h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 60px; text-align: left; }
         .roadmap-container h2 span { color: var(--primary); }
 
-        /* Centralized baseline track layout connectors[cite: 2] */
-        .roadmap-track { position: relative; display: flex; flex-direction: column; gap: 35px; }
-        .roadmap-track::before {
-            content: ''; position: absolute; top: 0; left: 24px; width: 2px; height: 100%;
-            background: #e2e8f0; z-index: 1;
+        .roadmap-linear-track {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
         }
 
-        .roadmap-step { display: flex; gap: 24px; position: relative; z-index: 5; align-items: flex-start; }
+        /* Connecting horizontal technical wireframe axis line */
+        .roadmap-linear-track::before {
+            content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, var(--border) 0%, rgba(16, 185, 129, 0.3) 50%, var(--border) 100%);
+            z-index: 1;
+        }
+
+        .roadmap-node { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; }
         
-        .step-num {
-            width: 50px; height: 50px; border-radius: 50%;
-            background: #f8fafc; border: 2px solid #e2e8f0;
-            color: var(--text-muted); font-size: 0.95rem; font-weight: 700;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-            transition: var(--transition); z-index: 10;
-        }
-        .roadmap-step:hover .step-num { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); transform: scale(1.05); }
-
-        .step-content {
-            background: #f8fafc; border: 1px solid var(--border);
-            padding: 26px 30px; border-radius: 14px; flex-grow: 1;
-            transition: var(--transition); text-align: left;
-        }
-        .roadmap-step:hover .step-content { background: var(--white); border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04); }
-
-        .step-content h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-        .step-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; }
-
-        /* --- 4. Premium Vision Structural Block --- */
-        .vision-reveal { padding-bottom: 100px; }
-        .glass-impact-box {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-left: 6px solid var(--primary);
-            padding: 50px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
-            box-shadow: var(--tactile-shadow); text-align: center;
-            max-width: 900px; margin: 0 auto; display: flex;
-            flex-direction: column; align-items: center;
-            animation: safeFadeIn 0.8s ease-out 0.6s forwards;
-            opacity: 0;
-        }
-        .vision-icon {
-            width: 52px; height: 52px; border-radius: 14px;
-            background: var(--primary-glow); color: var(--primary);
+        .bento-num {
+            font-size: 0.85rem; font-weight: 700; color: var(--primary);
+            background: var(--bg); border: 1px solid var(--border-glow);
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.1);
+            margin-bottom: 24px; transition: var(--transition);
+            box-shadow: 0 0 15px var(--primary-glow);
         }
-        .glass-impact-box h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .glass-impact-box h2 span { color: var(--primary); }
-        .glass-impact-box p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 700px; }
+        .roadmap-node:hover .bento-num { background: var(--primary); color: var(--bg); transform: scale(1.1); box-shadow: 0 0 25px var(--primary); }
+
+        .node-content h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .node-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* --- 4. Holographic Inset Vision Callout --- */
+        .vision-reveal { padding-bottom: 140px; }
+        
+        .hologram-vision-card {
+            background: linear-gradient(135deg, rgba(11, 15, 25, 0.8) 0%, rgba(3, 7, 18, 0.9) 100%);
+            border: 1px solid var(--border);
+            border-top: 2px solid var(--primary);
+            padding: 60px; border-radius: var(--card-radius);
+            box-shadow: 0 40px 80px -25px rgba(0,0,0,0.8);
+            text-align: center; max-width: 1000px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center;
+            position: relative;
+        }
+
+        .hologram-vision-card::after {
+            content: ''; position: absolute; top: -2px; left: 10%; width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            filter: blur(4px);
+        }
+
+        .vision-avatar {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: rgba(16, 185, 129, 0.05); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 28px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .hologram-vision-card h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .hologram-vision-card h2 span { color: var(--primary); }
+        .hologram-vision-card p { font-size: 1.1rem; color: #cbd5e1; font-weight: 400; line-height: 1.7; max-width: 760px; }
 
         /* ==========================================================================
            --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
            ========================================================================== */
-        @media (max-width: 1024px) {
-            .pillar-row { grid-template-columns: 1fr; gap: 24px; }
-            .pillar-card { padding: 35px 25px; }
-            .roadmap-container { padding: 40px 30px; }
+        @media (max-width: 1100px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large-1, .card-small, .card-large-2 { grid-column: 1 / -1; }
+            .card-large-2 { grid-template-columns: 1fr; gap: 24px; }
+            .roadmap-linear-track { grid-template-columns: 1fr; gap: 40px; }
+            .roadmap-linear-track::before { display: none; }
+            .mission-hero-minimal h1 { font-size: 3rem; }
+            .bento-card { padding: 40px 30px; }
         }
         @media (max-width: 640px) {
-            .mission-hero-minimal { padding: 75px 0 55px; }
-            .mission-hero-minimal h1 { font-size: 2.2rem; }
-            .step-num { width: 40px; height: 40px; font-size: 0.85rem; }
-            .roadmap-track::before { left: 19px; }
-            .step-content { padding: 20px; }
-            .glass-impact-box { padding: 35px 24px; }
-            .container { padding: 0 16px; }
+            .mission-hero-minimal { padding: 100px 0 60px; }
+            .mission-hero-minimal h1 { font-size: 2.4rem; }
+            .hologram-vision-card { padding: 40px 24px; }
+            .container { padding: 0 20px; }
         }
     </style>
 </head>
@@ -242,6 +239,7 @@
 
 <section class="mission-hero-minimal">
     <div class="container">
+        <span class="hero-meta-tag">Ecosystem Core</span>
         <h1>Bridging the Gap Between <br><span>Theory &amp; Industry.</span></h1>
         <p>Founded by Rakesh (BCA Graduate) and Rashmi (MCA Scholar), our mission is to bridge the gap between academic learning and real-world industry practices. Through education, innovation, and collaboration, we empower students, developers, and businesses with the knowledge, skills, and digital solutions needed to succeed in a rapidly evolving technological world.</p>
     </div>
@@ -249,33 +247,35 @@
 
 <section class="mission-pillars">
     <div class="container">
-        <div class="pillar-row">
+        <div class="bento-grid">
             
-            <!-- PILLAR 1 -->
-            <div class="pillar-card">
-                <div class="pillar-header">
+            <!-- BENTO CARD 1: LARGE ASYMMETRIC -->
+            <div class="bento-card card-large-1">
+                <div>
                     <i class="fas fa-terminal"></i>
                     <h3>Code Logic First</h3>
+                    <p>At Code Craft Academic, we believe that strong fundamentals create exceptional developers. Rather than encouraging copy-paste learning, we focus on programming logic, problem-solving methodologies, system design concepts, and practical development workflows. Our goal is to help learners build a deep understanding of technology and develop the confidence to create solutions independently.</p>
                 </div>
-                <p>At Code Craft Academic, we believe that strong fundamentals create exceptional developers. Rather than encouraging copy-paste learning, we focus on programming logic, problem-solving methodologies, system design concepts, and practical development workflows. Our goal is to help learners build a deep understanding of technology and develop the confidence to create solutions independently.</p>
             </div>
 
-            <!-- PILLAR 2 -->
-            <div class="pillar-card">
-                <div class="pillar-header">
+            <!-- BENTO CARD 2: COMPACT AXIS -->
+            <div class="bento-card card-small">
+                <div>
                     <i class="fas fa-layer-group"></i>
                     <h3>Design with Purpose</h3>
+                    <p>At WebNova Studio, we combine creativity with functionality to craft meaningful digital experiences. From modern websites and user interfaces to scalable digital solutions, we prioritize usability, performance, accessibility, and visual excellence. Every project is designed to serve a purpose and deliver measurable value.</p>
                 </div>
-                <p>At WebNova Studio, we combine creativity with functionality to craft meaningful digital experiences. From modern websites and user interfaces to scalable digital solutions, we prioritize usability, performance, accessibility, and visual excellence. Every project is designed to serve a purpose and deliver measurable value.</p>
             </div>
 
-            <!-- PILLAR 3 -->
-            <div class="pillar-card">
-                <div class="pillar-header">
+            <!-- BENTO CARD 3: FULL GRID ROW HORIZON -->
+            <div class="bento-card card-large-2">
+                <div>
                     <i class="fas fa-seedling"></i>
                     <h3>Community Growth</h3>
                 </div>
-                <p>We are committed to fostering a collaborative ecosystem where learners, creators, and developers can grow together. Through open-source resources, practical learning materials, project-based experiences, and community-driven initiatives, we provide the tools and opportunities needed to transform knowledge into real-world impact.</p>
+                <div>
+                    <p>We are committed to fostering a collaborative ecosystem where learners, creators, and developers can grow together. Through open-source resources, practical learning materials, project-based experiences, and community-driven initiatives, we provide the tools and opportunities needed to transform knowledge into real-world impact.</p>
+                </div>
             </div>
 
         </div>
@@ -287,30 +287,30 @@
         <div class="roadmap-container">
             <h2>The Consolidated <span>Ecosystem Roadmap</span></h2>
             
-            <div class="roadmap-track">
+            <div class="roadmap-linear-track">
                 
-                <!-- STEP 1 -->
-                <div class="roadmap-step">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
+                <!-- NODE 1 -->
+                <div class="roadmap-node">
+                    <div class="bento-num">01</div>
+                    <div class="node-content">
                         <h4>Educational Standardization</h4>
                         <p>Developing structured learning pathways, comprehensive study materials, and project-based curricula covering programming, databases, web technologies, software development, and emerging digital skills to ensure consistent and industry-relevant education.</p>
                     </div>
                 </div>
                 
-                <!-- STEP 2 -->
-                <div class="roadmap-step">
-                    <div class="step-num">02</div>
-                    <div class="step-content">
+                <!-- NODE 2 -->
+                <div class="roadmap-node">
+                    <div class="bento-num">02</div>
+                    <div class="node-content">
                         <h4>Platform Deployment</h4>
                         <p>Expanding the WebNova Studio ecosystem with modern design systems, development frameworks, digital products, reusable resources, and innovative solutions that support students, freelancers, creators, and businesses.</p>
                     </div>
                 </div>
                 
-                <!-- STEP 3 -->
-                <div class="roadmap-step">
-                    <div class="step-num">03</div>
-                    <div class="step-content">
+                <!-- NODE 3 -->
+                <div class="roadmap-node">
+                    <div class="bento-num">03</div>
+                    <div class="node-content">
                         <h4>Collaborative Workspaces</h4>
                         <p>Building collaborative environments where students, developers, and creative professionals can work together on real-world projects, exchange knowledge, strengthen practical skills, and gain valuable industry experience.</p>
                     </div>
@@ -321,11 +321,11 @@
     </div>
 </section>
 
-<!-- Vision Canvas Callout Unit Block -->
+<!-- Vision Next-Gen Layout Frame Block -->
 <section class="vision-reveal">
     <div class="container">
-        <div class="glass-impact-box">
-            <div class="vision-icon"><i class="fas fa-eye"></i></div>
+        <div class="hologram-vision-card">
+            <div class="vision-avatar"><i class="fas fa-eye"></i></div>
             <h2>Our <span>Vision</span></h2>
             <p>To create a unified ecosystem where education, innovation, and digital creation work together seamlessly—empowering the next generation of developers, designers, and technology leaders to learn, build, and grow with confidence.</p>
         </div>
@@ -338,5 +338,18 @@
 <!-- System Production Script Hooks -->
 <script src="main.js"></script>
 <script src="footer.js"></script>
+
+<!-- Cursor Tracking Light Effect Interaction Code -->
+<script>
+    document.querySelectorAll('.bento-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
 </body>
 </html>
