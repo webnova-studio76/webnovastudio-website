@@ -6,73 +6,290 @@
     <title>Meet the Team | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* High-Premium Soft Light Workspace Palette Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --card-radius: 20px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.06), 0 4px 15px -2px var(--primary-glow);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed navbar padding buffer constraint */
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+
+        /* --- 1. Soft Ambient Hero Section --- */
+        .team-hero {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            padding: 90px 0 70px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Ambient background technology grid lines matching your design system */
+        .team-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 45px 45px; pointer-events: none; z-index: 1;
+        }
+
+        .team-hero h1 { font-size: 2.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .team-hero h1 span { color: var(--primary); }
+        .team-hero p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- 2. Team Grid Section --- */
+        .team-grid-section { padding: 60px 0 40px; text-align: center; }
+        
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.06);
+            padding: 4px 14px;
+            border-radius: 50px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .team-flex {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            width: 100%;
+        }
+
+        .team-card {
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            box-shadow: var(--tactile-shadow);
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+            gap: 35px;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        .team-card.show { opacity: 1; transform: translateY(0); transition: var(--transition); }
+
+        /* Asymmetric structural watermarks */
+        .team-card::after {
+            position: absolute; top: 25px; right: 30px;
+            font-family: monospace; font-size: 0.7rem; font-weight: 700;
+            color: rgba(148, 163, 184, 0.3); letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .team-card-rakesh::after { content: '[ DIR // 01 ]'; }
+        .team-card-rashmi::after { content: '[ DIR // 02 ]'; }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        .team-card-rakesh:hover { border-color: rgba(37, 99, 235, 0.2); border-left: 5px solid #2563eb; }
+        .team-card-rakesh:hover::after { color: #2563eb; }
+        
+        .team-card-rashmi:hover { border-color: rgba(16, 185, 129, 0.2); border-left: 5px solid #10b981; }
+        .team-card-rashmi:hover::after { color: #10b981; }
+
+        .member-image {
+            width: 150px; height: 165px;
+            border-radius: 14px;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--text-muted);
+            position: relative; overflow: hidden;
+            transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+        }
+        
+        /* Modern icon fallback states setup safely */
+        .team-card-rakesh .member-image { color: #2563eb; background: rgba(37, 99, 235, 0.03); }
+        .team-card-rashmi .member-image { color: #10b981; background: rgba(16, 185, 129, 0.03); }
+
+        .team-card:hover .member-image {
+            transform: scale(1.02);
+        }
+        .team-card-rakesh:hover .member-image { background: #2563eb; color: var(--white); }
+        .team-card-rashmi:hover .member-image { background: #10b981; color: var(--white); }
+
+        .member-info { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+        .member-info h3 { font-size: 1.35rem; color: #0f172a; margin-bottom: 4px; font-weight: 800; letter-spacing: -0.02em; }
+        
+        .role { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+        .edu { 
+            font-size: 0.72rem; font-weight: 800; color: var(--text-muted); 
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
+            background: #f1f5f9; padding: 2px 8px; border-radius: 4px; display: inline-block;
+        }
+        .team-card-rakesh:hover .edu { background: rgba(37, 99, 235, 0.06); color: #2563eb; }
+        .team-card-rashmi:hover .edu { background: rgba(16, 185, 129, 0.06); color: #059669; }
+
+        .member-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; margin-bottom: 18px; }
+
+        .social-icons { display: flex; gap: 10px; }
+        .social-icons a {
+            width: 32px; height: 32px; border-radius: 6px;
+            background: #f1f5f9; color: var(--text-muted);
+            display: inline-flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: var(--transition); font-size: 0.85rem;
+        }
+        .social-icons a:hover { background: #0f172a; color: var(--white); transform: scale(1.05); }
+
+        /* --- 3. Mentor Action Box --- */
+        .mentors-section { padding-bottom: 80px; }
+        
+        .hiring-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 45px; border-radius: var(--card-radius);
+            box-shadow: var(--tactile-shadow); text-align: center;
+            max-width: 900px; margin: 0 auto; display: flex;
+            flex-direction: column; align-items: center;
+        }
+
+        .hiring-box h3 { font-size: 1.5rem; font-weight: 900; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .hiring-box p { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; max-width: 600px; margin-bottom: 24px; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white); padding: 12px 32px; border-radius: 8px;
+            text-decoration: none; font-weight: 800; font-size: 0.85rem;
+            display: inline-block; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.1);
+        }
+        .btn-primary:hover { background: var(--primary); transform: translateY(-1px); box-shadow: 0 6px 15px var(--primary-glow); }
+
+        /* ==========================================================================
+           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 1100px) {
+            .team-flex { grid-template-columns: 1fr; gap: 24px; }
+            .team-card { padding: 35px; }
+        }
+        @media (max-width: 640px) {
+            .team-hero { padding: 70px 0 50px; }
+            .team-hero h1 { font-size: 2.2rem; }
+            .team-card { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 35px 24px; gap: 25px; }
+            .member-info { align-items: center; text-align: center; }
+            .hiring-box { padding: 35px 20px; }
+            .btn-primary { width: 100%; text-align: center; }
+            .container { padding: 0 16px; }
+        }
+    </style>
 </head>
-<body class="js-enabled">
+<body>
 
-    <section class="team-hero">
-        <div class="container">
-            <h1 class="reveal-up">The Experts Behind <span>WebNova</span></h1>
-            <p class="reveal-up reveal-delay-1">A dedicated team of developers, designers, and scholars committed to your success.</p>
-        </div>
-    </section>
+<!-- Dynamic Universal Navigation Header Mount Anchor Slot -->
+<div id="global-header"></div>
 
-    <section class="team-grid-section">
-        <div class="container">
-            <h2 class="section-label reveal-up">Founding Leadership</h2>
-            <div class="team-flex">
-                
-                <div class="team-card reveal-up">
-                    <div class="member-image">
-                        <i class="fas fa-user-tie"></i>
-                        <div class="member-overlay">
-                            <div class="social-icons">
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Rakesh Jadhav</h3>
-                        <span class="role">Chief Technical Architect</span>
-                        <span class="edu">BCA Graduate</span>
-                        <p>Leading the engineering core and syllabus logic at Code Craft Academic.</p>
+<section class="team-hero">
+    <div class="container">
+        <h1 class="reveal-up">The Experts Behind <span>WebNova</span></h1>
+        <p class="reveal-up reveal-delay-1">A dedicated team of developers, designers, and scholars committed to your success.</p>
+    </div>
+</section>
+
+<section class="team-grid-section">
+    <div class="container">
+        <h2 class="section-label reveal-up">Founding Leadership</h2>
+        <div class="team-flex">
+            
+            <!-- MEMBER 1: Rakesh -->
+            <div class="team-card team-card-rakesh reveal-up">
+                <div class="member-image">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Rakesh Jadhav</h3>
+                    <span class="role">Chief Technical Architect</span>
+                    <span class="edu">BCA Graduate</span>
+                    <p>Leading the engineering core, database setups, and codebase syllabus architectures at Code Craft Academic.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="LinkedIn Account Connection"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub Repository Space"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+            </div>
 
-                <div class="team-card reveal-up reveal-delay-1">
-                    <div class="member-image">
-                        <i class="fas fa-user-graduate"></i>
-                        <div class="member-overlay">
-                            <div class="social-icons">
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Rashmi Divantgi</h3>
-                        <span class="role">Creative Director</span>
-                        <span class="edu">MCA Scholar</span>
-                        <p>Driving the visual aesthetics and UI/UX standards at RR Web Designers.</p>
+            <!-- MEMBER 2: Rashmi -->
+            <div class="team-card team-card-rashmi reveal-up reveal-delay-1">
+                <div class="member-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Rashmi Divantgi</h3>
+                    <span class="role">Creative Director</span>
+                    <span class="edu">MCA Scholar</span>
+                    <p>Driving full wireframe blueprints, graphic assets, and digital UI/UX layout standards across WebNova Studio.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="LinkedIn Account Connection"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram Profile Portfolio"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
 
-    <section class="mentors-section reveal-up">
-        <div class="container">
-            <div class="hiring-box">
-                <h3>Want to Join Our Mission?</h3>
-                <p>We are always looking for passionate MCA/BCA students and developers to join our mentor network.</p>
-                <a href="contact.html" class="btn-primary">Become a Mentor</a>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="animations.js"></script>
+<section class="mentors-section reveal-up">
+    <div class="container">
+        <div class="hiring-box">
+            <h3>Want to Join Our Mission?</h3>
+            <p style="margin-bottom: 20px;">We are always looking for passionate MCA/BCA students, system administrators, and web developers to join our open-source mentor network.</p>
+            <a href="contact.html" class="btn-primary">Become a Mentor</a>
+        </div>
+    </div>
+</section>
+
+<!-- Dynamic Universal Footer Mount Anchor Slot -->
+<div id="global-footer"></div>
+
+<!-- Core System Application Engine Injections -->
+<script src="main.js"></script>
+<script src="footer.js"></script>
+<script>
+    // Staggered Entrance Animation Deployment Loader
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.team-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 80); 
+        });
+    });
+</script>
 </body>
 </html>
