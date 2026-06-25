@@ -8,244 +8,167 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* High-End Minimalist Studio Design Tokens */
-            --primary: #10b981;        /* Global Academic Emerald Green */
-            --secondary: #0f172a;     /* Deep Jet Onyx */
-            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
-            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
-            --text-muted: #57534e;    /* Deep Muted Stone Blue */
-            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
+            /* Tight, Professional UI Tokens */
+            --primary: #10b981;
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-line: #e2e8f0;
             --white: #ffffff;
-            --success: #10b981;       /* checklist system variable token mapping */
-            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        h1, h2, h3, h4, label, .filter-btn, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 76px; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 76px;
-            letter-spacing: -0.01em;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 32px; width: 100%; }
-
-        /* --- 1. Institutional Editorial Platform Hero --- */
+        /* --- 1. Compact Minimalist Hero Banner --- */
         .course-header {
-            padding: 110px 0 80px;
+            padding: 40px 0;
             border-bottom: 1px solid var(--border-line);
             background: var(--white);
-            position: relative;
         }
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .breadcrumb { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
-        .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
-        .breadcrumb a:hover { color: var(--primary); }
-        
-        .hero-left h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px; }
-        .hero-left h1 span { color: var(--primary); }
-        .hero-left p { color: var(--text-muted); font-size: 1.15rem; line-height: 1.65; max-width: 560px; margin-bottom: 24px; }
-        
-        /* Platform Meta Quick-Badges */
-        .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
-        .hero-badges span {
-            font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            background: var(--bg); border: 1px solid var(--border-line); padding: 6px 14px; border-radius: 4px; color: var(--text-muted);
-        }
+        .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
 
-        /* --- 2. Advanced Control & Universal Filter Tray --- */
+        /* --- 2. Dense Control & Filter Row --- */
         .filter-wrapper {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 24px;
+            display: flex;
             align-items: center;
-            padding: 40px 0 32px;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 24px 0;
             border-bottom: 1px solid var(--border-line);
         }
-        .search-box { position: relative; width: 100%; }
-        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; }
+        .search-box { position: relative; width: 350px; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
         .search-box input {
-            width: 100%; padding: 14px 20px 14px 48px; border-radius: 6px;
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
             border: 1px solid var(--border-line); background: var(--white); outline: none;
-            color: var(--secondary); font-weight: 500; font-size: 0.95rem; transition: var(--transition);
+            font-size: 0.88rem; font-weight: 500; transition: all 0.2s ease;
         }
-        .search-box input:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.05); }
+        .search-box input:focus { border-color: var(--text-main); }
 
-        .filter-btns { display: flex; gap: 8px; }
+        .filter-btns { display: flex; gap: 6px; }
         .filter-btn {
-            padding: 12px 24px; border: 1px solid var(--border-line);
-            background: var(--white); color: var(--text-muted);
-            border-radius: 6px; cursor: pointer; font-weight: 700;
-            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; transition: var(--transition);
+            padding: 8px 16px; border: 1px solid var(--border-line); background: var(--white);
+            color: var(--text-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
         }
         .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- 3. Platform Module Showcase Grid Workspace --- */
-        .learning-modules-section { padding: 60px 0; min-height: 400px; }
+        /* --- 3. High-Density Row-Based Module Grid --- */
+        .learning-modules-section { padding: 32px 0; }
         .module-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; /* Greatly reduced gap spacing */
         }
 
         .module-card {
             background: var(--white);
             border: 1px solid var(--border-line);
-            padding: 45px;
-            border-radius: 12px;
+            padding: 24px; /* Significantly tighter internal padding */
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: var(--transition);
-            position: relative;
+            transition: all 0.2s ease;
         }
-        .module-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px -10px rgba(15,23,42,0.06); border-color: rgba(16, 185, 129, 0.2); }
+        .module-card:hover { border-color: var(--primary); }
 
-        .mod-identity-block { display: flex; align-items: start; gap: 20px; margin-bottom: 24px; }
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .mod-thumb-deck {
-            width: 48px; height: 44px; background: var(--bg); border: 1px solid var(--border-line);
-            border-radius: 6px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; color: var(--primary); flex-shrink: 0; transition: var(--transition);
+            width: 36px; height: 34px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; color: var(--primary); flex-shrink: 0;
         }
-        .module-card:hover .mod-thumb-deck { background: var(--primary); color: var(--white); border-color: var(--primary); }
 
-        .mod-header-text { display: flex; flex-direction: column; gap: 2px; }
-        .mod-pill { font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .module-card h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--secondary); }
         
-        /* Learning Interface Metadata Chips Layout */
-        .module-meta-chips { display: flex; gap: 8px; margin: 12px 0 20px; flex-wrap: wrap; }
-        .meta-chip { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .module-meta-chips { display: flex; gap: 6px; margin: 4px 0 12px; }
+        .meta-chip { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        .module-card ul { list-style: none; margin-bottom: 32px; }
-        .module-card li { margin-bottom: 12px; font-size: 0.92rem; color: var(--text-muted); padding-left: 24px; position: relative; font-weight: 500; text-align: left; }
-        .module-card li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: rgba(16, 185, 129, 0.4); font-weight: 900; font-size: 0.8rem; }
-        .module-card:hover li::before { color: var(--success); }
+        .module-card ul { list-style: none; margin-bottom: 16px; }
+        .module-card li { margin-bottom: 6px; font-size: 0.85rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; }
+        .module-card li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
-        .download-btns { border-top: 1px solid var(--border-line); padding-top: 24px; }
+        .download-btns { border-top: 1px solid var(--border-line); padding-top: 14px; }
         .btn-dl { 
-            width: 100%; text-align: center; padding: 12px; border-radius: 6px; 
-            text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
-            display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; 
+            width: 100%; text-align: center; padding: 10px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
-        .btn-dl.pdf { background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); }
-        .btn-dl.pdf:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* Unified Empty State UI Component */
-        .empty-state-node {
-            grid-column: 1 / -1; text-align: center; padding: 80px 0; display: none;
-            flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-        }
-        .empty-state-node i { font-size: 2.5rem; color: var(--text-muted); }
-        .empty-state-node h4 { font-size: 1.3rem; font-weight: 700; }
-        .empty-state-node p { font-size: 0.95rem; color: var(--text-muted); }
+        /* Empty State */
+        .empty-state-node { grid-column: 1 / -1; text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* --- 4. Persuasive Summary Statistics Block --- */
-        .syllabus-footer { padding: 40px 0 120px; }
+        /* --- 4. Tight Framework Footer Deck --- */
+        .syllabus-footer { padding: 16px 0 60px; }
         .resource-summary {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 30px; background: var(--white); padding: 40px;
-            border-radius: 12px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 60px;
+            gap: 16px; background: var(--white); padding: 20px 24px;
+            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 32px;
         }
-        .summary-item { display: flex; align-items: center; gap: 20px; }
-        .summary-item i { font-size: 1.3rem; color: var(--primary); }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: var(--primary); }
         .summary-item div { display: flex; flex-direction: column; }
-        .summary-item span { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
-        .summary-item strong { color: var(--secondary); font-size: 1.1rem; font-weight: 700; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
 
-        /* --- 5. High-Conversion Continuous Learning CTA --- */
         .webnova-bottom-card {
-            background: var(--white); border-left: 6px solid var(--primary);
-            padding: 60px; border-radius: 4px 12px 12px 4px; text-align: left;
-            width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
-            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
+            background: var(--white); border-left: 4px solid var(--primary);
+            padding: 32px; border-radius: 0 8px 8px 0; width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
+            display: flex; justify-content: space-between; align-items: center; gap: 40px;
         }
-        .webnova-bottom-card h3 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; }
-        .webnova-bottom-card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.65; max-width: 580px; }
+        .webnova-bottom-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+        .webnova-bottom-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; max-width: 600px; }
         .btn-studio { 
-            padding: 14px 32px; border-radius: 6px; text-decoration: none; 
-            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
-            letter-spacing: 1px; transition: var(--transition); display: inline-flex; 
-            align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer;
-            background: var(--secondary); color: var(--white); width: auto; max-width: 280px; margin-left: auto;
+            padding: 12px 24px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap;
         }
         .btn-studio:hover { background: var(--primary); }
 
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1024px) {
-            .hero-layout, .filter-wrapper, .module-grid, .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 40px; }
-            .hero-left h1 { font-size: 2.8rem; }
-            .btn-studio { margin-left: 0; width: 100%; max-width: 100%; }
-            .resource-summary { padding: 30px 24px; }
-            .summary-item { border-bottom: 1px solid var(--border-line); padding-bottom: 20px; }
-            .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
+        @media (max-width: 960px) {
+            .module-grid, .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
+            .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .search-box { width: 100%; }
+            .filter-wrapper { flex-direction: column; align-items: stretch; gap: 14px; }
+            .filter-btns { width: 100%; justify-content: space-between; }
+            .filter-btn { flex: 1; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <header class="master-header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="webnova-logo.png" alt="WebNova Studio Logo" class="brand-logo">
-                <span class="logo-text">WebNova <span>Studio</span></span>
-            </a>
-            <ul class="nav-links">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
-                <li class="nav-item dropdown-hitbox">
-                    <a href="#" class="nav-link">About <i class="fas fa-chevron-down nav-arrow"></i></a>
-                    <div class="dropdown-matrix">
-                        <a href="our-story.html" class="dropdown-node">Our Story</a>
-                        <a href="mission.html" class="dropdown-node">Our Mission</a>
-                        <a href="team.html" class="dropdown-node">Meet the Team</a>
-                        <a href="why-choose-us.html" class="dropdown-node">Why Choose Us</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="free-resources.html" class="nav-link">Premium Vault</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="requests.html" class="nav-link nav-btn-accent">Request vault</a></li>
-            </ul>
-        </div>
-    </header>
+    <!-- Unified Master Navigation Frame Slot Mount -->
+    <div id="global-header"></div>
 
     <section class="course-header">
         <div class="container">
-            <div class="hero-layout">
-                <div class="hero-left">
-                    <nav class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / Fundamentals</nav>
-                    <h1>Fundamentals of <br><span>Computers</span></h1>
-                    <p>A university-grade technical roadmap covering physical computing logic arrays, application layers, networks, and modular security profiles.</p>
-                    <div class="hero-badges">
-                        <span>05 Learning Modules</span>
-                        <span>50+ Core Topics</span>
-                        <span>100% Beginner Friendly</span>
-                        <span>Verified Lab Manuals</span>
-                    </div>
-                </div>
-            </div>
+            <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / Fundamentals</div>
+            <h1>Fundamentals of <span>Computers</span></h1>
+            <p>A university-grade technical roadmap covering computing logic arrays, application layers, networks, and security profiles.</p>
         </div>
     </section>
 
     <div class="container">
         
+        <!-- Dense Control Tray Layer -->
         <div class="filter-wrapper">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="moduleSearch" placeholder="Search modules or structural sub-topics..." onkeyup="applyFilters()">
+                <input type="text" id="moduleSearch" placeholder="Search modules or sub-topics..." onkeyup="applyFilters()">
             </div>
             <div class="filter-btns">
                 <button class="filter-btn active" onclick="filterCategory(this, 'all')">All tracks</button>
@@ -255,128 +178,135 @@
             </div>
         </div>
 
+        <!-- Academic Module Feed Area Grid -->
         <section class="learning-modules-section">
             <div class="module-grid" id="moduleGrid">
                 
+                <!-- MODULE 1 -->
                 <div class="module-card" data-category="software">
-                    <div class="mod-identity-block">
-                        <div class="mod-thumb-deck"><i class="fas fa-history"></i></div>
-                        <div class="mod-header-text">
-                            <span class="mod-pill">Module 01</span>
-                            <h3>Intro &amp; History</h3>
+                    <div>
+                        <div class="mod-identity-block">
+                            <div class="mod-thumb-deck"><i class="fas fa-history"></i></div>
+                            <div class="mod-header-text">
+                                <h3>01 // Intro &amp; History</h3>
+                            </div>
                         </div>
+                        <div class="module-meta-chips">
+                            <span class="meta-chip">5 Lessons</span>
+                            <span class="meta-chip">45 Mins</span>
+                        </div>
+                        <ul>
+                            <li>Evolution of Computers &amp; Generations</li>
+                            <li>System Classifications &amp; Micro-architectures</li>
+                            <li>Digital Characteristics &amp; Compilation Logic</li>
+                        </ul>
                     </div>
-                    <div class="module-meta-chips">
-                        <span class="meta-chip">5 Lessons</span>
-                        <span class="meta-chip">45 Mins</span>
-                        <span class="meta-chip">Core Logic</span>
-                    </div>
-                    <ul>
-                        <li>Evolution of Computers &amp; Generations</li>
-                        <li>System Classifications &amp; Micro-architectures</li>
-                        <li>Digital Characteristics &amp; Compilation Logic</li>
-                    </ul>
                     <div class="download-btns">
-                        <a href="FC module 1.html" class="btn-dl pdf">Access Module Blueprint</a>
+                        <a href="FC module 1.html" class="btn-dl">Access Notes</a>
                     </div>
                 </div>
 
+                <!-- MODULE 2 -->
                 <div class="module-card" data-category="hardware">
-                    <div class="mod-identity-block">
-                        <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
-                        <div class="mod-header-text">
-                            <span class="mod-pill">Module 02</span>
-                            <h3>Architecture</h3>
+                    <div>
+                        <div class="mod-identity-block">
+                            <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
+                            <div class="mod-header-text">
+                                <h3>02 // Architecture</h3>
+                            </div>
                         </div>
+                        <div class="module-meta-chips">
+                            <span class="meta-chip">8 Lessons</span>
+                            <span class="meta-chip">120 Mins</span>
+                        </div>
+                        <ul>
+                            <li>CPU execution paths &amp; ALU Logic Gates</li>
+                            <li>Memory Hierarchy (L1 Cache, RAM, NVMe SSD)</li>
+                            <li>Input/Output Interaction &amp; System Interrupts</li>
+                        </ul>
                     </div>
-                    <div class="module-meta-chips">
-                        <span class="meta-chip">8 Lessons</span>
-                        <span class="meta-chip">120 Mins</span>
-                        <span class="meta-chip">Hardware</span>
-                    </div>
-                    <ul>
-                        <li>CPU execution paths &amp; ALU Logic Gates</li>
-                        <li>Memory Hierarchy (L1 Cache, RAM, NVMe SSD)</li>
-                        <li>Input/Output Interaction &amp; System Interrupts</li>
-                    </ul>
                     <div class="download-btns">
-                        <a href="FC module 2.html" class="btn-dl pdf">Access Module Blueprint</a>
+                        <a href="FC module 2.html" class="btn-dl">Access Notes</a>
                     </div>
                 </div>
 
+                <!-- MODULE 3 -->
                 <div class="module-card" data-category="software">
-                    <div class="mod-identity-block">
-                        <div class="mod-thumb-deck"><i class="fas fa-compact-disc"></i></div>
-                        <div class="mod-header-text">
-                            <span class="mod-pill">Module 03</span>
-                            <h3>Software &amp; OS</h3>
+                    <div>
+                        <div class="mod-identity-block">
+                            <div class="mod-thumb-deck"><i class="fas fa-compact-disc"></i></div>
+                            <div class="mod-header-text">
+                                <h3>03 // Software &amp; OS</h3>
+                            </div>
                         </div>
+                        <div class="module-meta-chips">
+                            <span class="meta-chip">6 Lessons</span>
+                            <span class="meta-chip">90 Mins</span>
+                        </div>
+                        <ul>
+                            <li>System Kernels vs Application Software</li>
+                            <li>OS Thread Management (Windows/Linux Kernels)</li>
+                            <li>BIOS, UEFI, &amp; Post Booting Execution Sequences</li>
+                        </ul>
                     </div>
-                    <div class="module-meta-chips">
-                        <span class="meta-chip">6 Lessons</span>
-                        <span class="meta-chip">90 Mins</span>
-                        <span class="meta-chip">OS Layer</span>
-                    </div>
-                    <ul>
-                        <li>System Kernels vs Application Software</li>
-                        <li>OS Thread Management (Windows/Linux Kernels)</li>
-                        <li>BIOS, UEFI, &amp; Post Booting Execution Sequences</li>
-                    </ul>
                     <div class="download-btns">
-                        <a href="FC module 3.html" class="btn-dl pdf">Access Module Blueprint</a>
+                        <a href="FC module 3.html" class="btn-dl">Access Notes</a>
                     </div>
                 </div>
 
+                <!-- MODULE 4 -->
                 <div class="module-card" data-category="network">
-                    <div class="mod-identity-block">
-                        <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
-                        <div class="mod-header-text">
-                            <span class="mod-pill">Module 04</span>
-                            <h3>Networking Basics</h3>
+                    <div>
+                        <div class="mod-identity-block">
+                            <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
+                            <div class="mod-header-text">
+                                <h3>04 // Networking Basics</h3>
+                            </div>
                         </div>
+                        <div class="module-meta-chips">
+                            <span class="meta-chip">7 Lessons</span>
+                            <span class="meta-chip">105 Mins</span>
+                        </div>
+                        <ul>
+                            <li>Topology Architectures (LAN, WAN, Mesh Networks)</li>
+                            <li>Hardware Routing, Switches, &amp; Fiber OSI Layers</li>
+                            <li>TCP/IP Stack, DNS Mapping, &amp; HTTP Protocol Paths</li>
+                        </ul>
                     </div>
-                    <div class="module-meta-chips">
-                        <span class="meta-chip">7 Lessons</span>
-                        <span class="meta-chip">105 Mins</span>
-                        <span class="meta-chip">Networks</span>
-                    </div>
-                    <ul>
-                        <li>Topology Architectures (LAN, WAN, Mesh Networks)</li>
-                        <li>Hardware Routing, Switches, &amp; Fiber OSI Layers</li>
-                        <li>TCP/IP Stack, DNS Mapping, &amp; HTTP Protocol Paths</li>
-                    </ul>
                     <div class="download-btns">
-                        <a href="FC module 4.html" class="btn-dl pdf">Access Module Blueprint</a>
+                        <a href="FC module 4.html" class="btn-dl">Access Notes</a>
                     </div>
                 </div>
 
+                <!-- MODULE 5 -->
                 <div class="module-card" data-category="network">
-                    <div class="mod-identity-block">
-                        <div class="mod-thumb-deck"><i class="fas fa-user-shield"></i></div>
-                        <div class="mod-header-text">
-                            <span class="mod-pill">Module 05</span>
-                            <h3>Cybersecurity &amp; AI</h3>
+                    <div>
+                        <div class="mod-identity-block">
+                            <div class="mod-thumb-deck"><i class="fas fa-user-shield"></i></div>
+                            <div class="mod-header-text">
+                                <h3>05 // Cybersecurity &amp; AI</h3>
+                            </div>
                         </div>
+                        <div class="module-meta-chips">
+                            <span class="meta-chip">5 Lessons</span>
+                            <span class="meta-chip">60 Mins</span>
+                        </div>
+                        <ul>
+                            <li>Malware Vector Mitigations &amp; Cryptographic Defense</li>
+                            <li>Cloud Virtualization &amp; Distributed Server Logic</li>
+                            <li>Neural Networks Basics &amp; Encrypted Digital Privacy</li>
+                        </ul>
                     </div>
-                    <div class="module-meta-chips">
-                        <span class="meta-chip">5 Lessons</span>
-                        <span class="meta-chip">60 Mins</span>
-                        <span class="meta-chip">SecOps</span>
-                    </div>
-                    <ul>
-                        <li>Malware Vector Mitigations &amp; Cryptographic Defense</li>
-                        <li>Cloud Virtualization &amp; Distributed Server Logic</li>
-                        <li>Neural Networks Basics &amp; Encrypted Digital Privacy</li>
-                    </ul>
                     <div class="download-btns">
-                        <a href="FC module 5.html" class="btn-dl pdf">Access Module Blueprint</a>
+                        <a href="FC module 5.html" class="btn-dl">Access Notes</a>
                     </div>
                 </div>
 
+                <!-- Empty State Node -->
                 <div class="empty-state-node" id="noResults">
                     <i class="fas fa-folder-open"></i>
-                    <h4>No Learning Modules Found</h4>
-                    <p>Adjust your text query parameters or select another engineering category track tab above.</p>
+                    <h4>No Modules Found</h4>
+                    <p>Try adjusting your keywords or select another filter tab above.</p>
                 </div>
 
             </div>
@@ -386,34 +316,34 @@
             <div class="resource-summary">
                 <div class="summary-item">
                     <i class="fas fa-cubes"></i>
-                    <div><span>Ecosystem Syllabus</span><strong>05 Core Tracks</strong></div>
+                    <div><span>Syllabus</span><strong>05 Core Tracks</strong></div>
                 </div>
                 <div class="summary-item">
                     <i class="fas fa-book-open"></i>
-                    <div><span>Granular Topics</span><strong>50+ Deep Chapters</strong></div>
+                    <div><span>Chapters</span><strong>50+ Deep Topics</strong></div>
                 </div>
                 <div class="summary-item">
                     <i class="fas fa-graduation-cap"></i>
-                    <div><span>Academic Support</span><strong>100% Free Access</strong></div>
+                    <div><span>Access</span><strong>100% Free Resources</strong></div>
                 </div>
             </div>
 
             <div class="webnova-bottom-card">
                 <div>
                     <h3>Continue Your Learning Journey</h3>
-                    <p>Expand your knowledge base. Explore our advanced programming models, system manual indexes, and resource repositories at Code Craft Academic.</p>
+                    <p>Expand your tech skillset. Browse our complete collection of advanced programming paths and academic engineering modules.</p>
                 </div>
-                <a href="courses.html" class="btn-studio">Browse Academy Tracks</a>
+                <a href="courses.html" class="btn-studio">Browse Academy</a>
             </div>
         </section>
     </div>
 
+    <!-- Dynamic Universal Footer Mount Anchor -->
     <div id="global-footer"></div>
 
     <script src="main.js"></script>
     <script src="footer.js"></script>
     <script>
-        // COMPREHENSIVE CONFLICT-FREE RUNTIME GLOBAL FILTER ENGINE 
         let currentCategory = 'all';
 
         function applyFilters() {
@@ -437,20 +367,13 @@
                 }
             });
 
-            // Toggle empty state node visibility fluidly
             noResults.style.display = (matchCount === 0) ? 'flex' : 'none';
-        }
-
-        function filterModules() {
-            applyFilters();
         }
 
         function filterCategory(btn, category) {
             currentCategory = category;
-
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             if(btn) btn.classList.add('active');
-
             applyFilters();
         }
     </script>
