@@ -6,29 +6,29 @@
     <title>Why Choose Us | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Next-Gen Typography Engines -->
+    <!-- Next-Gen Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* High-Premium Light Workspace Theme Tokens */
+            /* Ultra-Premium Glassmorphism Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.06);
+            --primary-glow: rgba(16, 185, 129, 0.08);
             --secondary: #0f172a;     /* Deep Slate Main Typography */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f8fafc;            /* Crisp Off-White Light Canvas Background */
+            --card-surface: rgba(255, 255, 255, 0.8); /* Frosted Glass Base */
             --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --text-muted: #64748b;    /* Muted Blue-Gray Details */
+            --border: rgba(15, 23, 42, 0.06); /* Razor Thin Structural Hairline */
             --card-radius: 20px;      
             --white: #ffffff;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04), 0 1px 3px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 30px 50px -10px rgba(15, 23, 42, 0.06), 0 4px 20px -2px var(--primary-glow);
+            /* High-Fidelity Volumetric Shadows */
+            --tactile-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+            --hover-shadow: 0 35px 60px -15px rgba(15, 23, 42, 0.08), 0 0 30px -5px rgba(16, 185, 129, 0.1);
         }
 
         h1, h2, h3, h4, .matrix-title, .btn-action { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
@@ -42,23 +42,24 @@
             overflow-x: hidden;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; width: 100%; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
 
-        /* --- 1. Ambient Dynamic Hero Canvas --- */
+        /* --- 1. Premium Ambient Grid Mesh Hero --- */
         .choice-hero {
             position: relative;
-            padding: 100px 0 80px;
+            padding: 120px 0 90px;
             text-align: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%), #ffffff;
             border-bottom: 1px solid var(--border);
         }
 
+        /* Subtle technical workspace structural alignment grid background lines */
         .choice-hero::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            content: ''; position: absolute; inset: 0;
             background-image: 
-                linear-gradient(to right, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+                linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
             background-size: 50px 50px; pointer-events: none; z-index: 1;
         }
 
@@ -66,28 +67,29 @@
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.12);
             padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 2px; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary);
             margin-bottom: 24px;
         }
 
-        .choice-hero h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.15; }
+        .choice-hero h1 { font-size: 3.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; line-height: 1.15; }
         .choice-hero h1 span { color: var(--primary); }
-        .choice-hero p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; max-width: 850px; margin: 0 auto; line-height: 1.7; }
+        .choice-hero p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; max-width: 750px; margin: 0 auto; line-height: 1.7; }
 
-        /* --- 2. Advanced Asymmetric Bento Grid Deck --- */
-        .features-comparison { padding: 80px 0 40px; }
+        /* --- 2. Advanced Asymmetric Light Bento Grid --- */
+        .features-comparison { padding: 90px 0 50px; }
         
         .bento-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.1fr 0.9fr;
             grid-template-rows: auto auto;
-            gap: 28px;
+            gap: 30px;
             width: 100%;
         }
 
         .bento-card {
-            background: var(--card-surface);
+            background: var(--white);
             border: 1px solid var(--border);
+            border-bottom: 4px solid #e2e8f0;
             border-radius: var(--card-radius);
             padding: 45px;
             position: relative;
@@ -97,22 +99,26 @@
             justify-content: flex-end;
             transition: var(--transition);
             box-shadow: var(--tactile-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
-        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
-        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; border-bottom: 4px solid #cbd5e1; }
+        /* Bento structure rules fixing broken alignments */
+        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; }
 
+        /* Dynamic soft cursor trace glow mesh */
         .bento-card::before {
             content: ''; position: absolute; inset: 0;
-            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(16, 185, 129, 0.04), transparent 60%);
-            z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
+            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(16, 185, 129, 0.05), transparent 60%);
+            z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.4s ease;
         }
         .bento-card:hover::before { opacity: 1; }
 
         .bento-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.25);
             border-bottom-color: var(--primary);
             box-shadow: var(--hover-shadow);
         }
@@ -130,7 +136,7 @@
         .bento-card h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
         .bento-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; font-weight: 500; text-align: left; }
 
-        /* --- 3. Value Matrix Summary Layout --- */
+        /* --- 3. Value Check Matrix Blocks --- */
         .value-matrix-section { padding: 40px 0 80px; }
         .matrix-container {
             background: var(--white);
@@ -144,44 +150,35 @@
         .matrix-title { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 45px; letter-spacing: -0.02em; }
         .matrix-title span { color: var(--primary); }
         
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
+        .matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
         .matrix-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid var(--border);
+            display: flex; align-items: center; gap: 16px; padding: 20px 24px;
+            background: #f8fafc; border-radius: 14px; border: 1px solid var(--border);
             transition: var(--transition);
         }
-        .matrix-item:hover { background: var(--white); border-color: rgba(16, 185, 129, 0.2); transform: translateX(3px); }
-        .matrix-item i { color: var(--primary); font-size: 1.1rem; margin-top: 2px; }
+        .matrix-item:hover { background: var(--white); border-color: rgba(16, 185, 129, 0.2); transform: translateX(4px); }
+        .matrix-item i { color: var(--primary); font-size: 1.15rem; flex-shrink: 0; }
         .matrix-item span { font-size: 0.95rem; font-weight: 600; color: var(--secondary); }
 
-        /* --- 4. High-Conversion CTA Closing Space --- */
-        .choice-cta { padding-bottom: 100px; }
+        /* --- 4. Sleek Interactive Call-To-Action Inset Card --- */
+        .choice-cta { padding-bottom: 120px; }
         .cta-inner {
             background: var(--white);
             border: 1px solid var(--border);
             border-left: 6px solid var(--primary);
-            padding: 50px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
+            padding: 60px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
             box-shadow: var(--tactile-shadow); text-align: center;
-            max-width: 950px; margin: 0 auto; display: flex;
+            max-width: 1000px; margin: 0 auto; display: flex;
             flex-direction: column; align-items: center;
         }
-        .cta-inner h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .cta-inner h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
         .cta-inner h2 span { color: var(--primary); }
-        .cta-inner p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 750px; margin-bottom: 35px; }
+        .cta-inner p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 750px; margin-bottom: 40px; }
         
-        .hero-btns { display: flex; gap: 16px; justify-content: center; align-items: center; width: auto; }
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
         .btn-action-route { 
-            padding: 14px 32px; border-radius: 8px; text-decoration: none; 
-            font-weight: 700; font-size: 0.88rem; text-transform: uppercase; 
+            padding: 14px 30px; border-radius: 8px; text-decoration: none; 
+            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
             letter-spacing: 0.5px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; 
         }
         .btn-courses { background: var(--secondary); color: var(--white); box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.1); }
@@ -201,10 +198,10 @@
             .bento-card { padding: 40px 30px; }
         }
         @media (max-width: 640px) {
-            .choice-hero { padding: 75px 0 55px; }
+            .choice-hero { padding: 80px 0 60px; }
             .choice-hero h1 { font-size: 2.2rem; }
             .matrix-container { padding: 35px 24px; }
-            .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+            .hero-btns { flex-direction: column; width: 100%; }
             .btn-action-route { width: 100%; justify-content: center; }
             .container { padding: 0 20px; }
         }
@@ -227,7 +224,7 @@
     <div class="container">
         <div class="bento-grid">
             
-            <!-- BENTO CARD 1: DESIGN & DEVELOPMENT -->
+            <!-- BENTO CARD 1: DESIGN & DEVELOPMENT EXCELLENCE -->
             <div class="bento-card card-large-1">
                 <div>
                     <i class="fas fa-layer-group"></i>
@@ -236,7 +233,7 @@
                 </div>
             </div>
 
-            <!-- BENTO CARD 2: STRUCTURED LEARNING -->
+            <!-- BENTO CARD 2: STRUCTURED APPROACH -->
             <div class="bento-card card-small">
                 <div>
                     <i class="fas fa-graduation-cap"></i>
@@ -245,23 +242,32 @@
                 </div>
             </div>
 
-            <!-- BENTO CARD 3: ECOSYSTEM OPEN-SOURCE -->
+            <!-- BENTO CARD 3: OPEN-SOURCE LIBRARY -->
             <div class="bento-card card-large-2">
                 <div>
                     <i class="fas fa-file-pdf"></i>
-                    <h3>Open-Source &amp; Resource-Driven Ecosystem</h3>
+                    <h3>Open-Source &amp; Resource Ecosystem</h3>
                 </div>
                 <div>
                     <p>We believe quality learning resources should be accessible to everyone. Our ecosystem provides study materials, development resources, templates, guides, cheat sheets, and open-source projects that help learners accelerate their growth and productivity.</p>
                 </div>
             </div>
 
-            <!-- BENTO CARD 4: INDUSTRY FIRST (REUSED GRID FLOOR AXIS) -->
+            <!-- BENTO CARD 4: INDUSTRY FIRST TRACK -->
             <div class="bento-card card-large-1" style="grid-column: 1 / -1;">
                 <div>
                     <i class="fas fa-rocket"></i>
                     <h3>Industry &amp; Career Focus</h3>
                     <p>Learning technology is only the first step. We help learners understand how to apply their skills through real-world projects, portfolio development, freelancing opportunities, and industry-relevant workflows that prepare them for professional success.</p>
+                </div>
+            </div>
+
+            <!-- BENTO CARD 5: COMMUNITY DRIVEN MATRIX -->
+            <div class="bento-card card-small" style="grid-column: 1 / -1;">
+                <div>
+                    <i class="fas fa-seedling"></i>
+                    <h3>Community-Centered Growth</h3>
+                    <p>We foster a collaborative environment where students, developers, designers, and creators can connect, share knowledge, contribute to projects, and support each other's journey toward continuous learning and innovation.</p>
                 </div>
             </div>
 
@@ -291,7 +297,6 @@
 <section class="choice-cta">
     <div class="container">
         <div class="cta-inner">
-            <div class="matrix-item" style="background:transparent; border:none; padding:0; margin-bottom:20px; display:inline-flex;"><i class="fas fa-users" style="font-size:1.3rem;"></i></div>
             <h2>Ready to Experience the <span>Difference?</span></h2>
             <p>Whether you're looking to learn, build, collaborate, or launch your next digital project, WebNova Studio and Code Craft Academic provide the resources, guidance, and community to help you succeed.</p>
             <div class="hero-btns">
