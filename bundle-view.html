@@ -6,218 +6,361 @@
     <title>Web Designer Bundle | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Premium Professional Typography Injections -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* ==========================================================================
-           1. UNIQUE COLOR CODING MATRICES & ISOLATED VARIABLES
-           ========================================================================== */
         :root {
-            --primary: #2563eb;        /* WebNova Royal Blue */
-            --secondary: #090d16;      /* Deep Space Dark Matte */
-            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
-            --bg: #030712;             /* True Obsidian Background Canvas */
+            /* Compact Data-Dense Tokens */
+            --primary: #10b981;
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-line: #e2e8f0;
             --white: #ffffff;
-            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
-            --border: rgba(255, 255, 255, 0.05);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-            /* Multi-Topic Accent Keys */
-            --uiux: #6366f1;           /* Figma Indigo */
-            --html: #ef4444;           /* HTML5 Crimson */
-            --css: #0284c7;            /* CSS3 Sky Blue */
-            --js: #f59e0b;             /* JavaScript Amber Gold */
             
-            /* Shadows Layout Base */
-            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            /* Structural Specialized Accent Tracks */
+            --uiux-accent: #6366f1;
+            --html-accent: #ef4444;
+            --css-accent: #0284c7;
+            --js-accent: #f59e0b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: #f1f5f9; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 76px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 10; }
-
-        /* ==========================================================================
-           2. SKEUOMORPHIC CANVAS HEADERS
-           ========================================================================== */
-        .header { 
-            text-align: center; 
-            margin-bottom: 50px; 
-            padding: 50px 40px;
-            background: linear-gradient(135deg, var(--card-surface) 0%, var(--secondary) 100%);
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--tactile-shadow);
+        /* --- 1. Institutional Editorial Platform Hero --- */
+        .course-header {
+            padding: 45px 0 35px;
+            border-bottom: 1px solid var(--border-line);
+            background: var(--white);
         }
-        .header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; color: var(--white); margin-bottom: 15px; }
-        .header h1 span { color: var(--primary); text-shadow: 0 0 25px rgba(37, 99, 235, 0.25); }
-        .header p { color: var(--text-muted); font-size: 1.05rem; max-width: 700px; margin: 0 auto; font-weight: 500; }
+        .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; margin-bottom: 16px; }
 
-        /* ==========================================================================
-           3. ROADMAP NEON GLOW TRAYS
-           ========================================================================== */
-        .bundle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
+        /* Platform Curriculum Badges */
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
         }
 
-        .phase-card {
-            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+        /* --- 2. Step-by-Step Milestone Connection Sub-Header --- */
+        .section-headline-bar {
+            padding: 32px 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        .section-headline-bar h2 span { color: var(--primary); }
+        .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* --- 3. Immune Wide List Row Architecture --- */
+        .learning-modules-section { padding: 24px 0; }
+        .wide-list-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            box-shadow: var(--tactile-shadow);
-        }
-
-        .icon-circle {
-            width: 74px;
-            height: 74px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
-            transition: var(--transition);
-        }
-
-        /* Dedicated Custom Color Theme Injections */
-        .uiux-card .icon-circle { background: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.3); color: var(--uiux); }
-        .html-card .icon-circle { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: var(--html); }
-        .css-card .icon-circle { background: rgba(2, 132, 199, 0.1); border-color: rgba(2, 132, 199, 0.3); color: var(--css); }
-        .js-card .icon-circle { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); color: var(--js); }
-
-        .phase-card h3 { margin-bottom: 12px; font-size: 1.35rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em; }
-        .phase-card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; line-height: 1.6; }
-
-        .btn-view {
-            padding: 12px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            border: 1px solid transparent;
+            gap: 14px;
             width: 100%;
         }
 
-        /* Button Variant Framework Maps */
-        .uiux-card .btn-view { background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.2); color: #818cf8; }
-        .html-card .btn-view { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.2); color: #f87171; }
-        .css-card .btn-view { background: rgba(2, 132, 199, 0.08); border-color: rgba(2, 132, 199, 0.2); color: #38bdf8; }
-        .js-card .btn-view { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-
-        /* Dynamic Hover Transitions Matrix */
-        .uiux-card:hover { transform: translateY(-8px); border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), 0 0 25px -4px rgba(99, 102, 241, 0.3); }
-        .html-card:hover { transform: translateY(-8px); border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), 0 0 25px -4px rgba(239, 68, 68, 0.3); }
-        .css-card:hover { transform: translateY(-8px); border-color: rgba(2, 132, 199, 0.4); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), 0 0 25px -4px rgba(2, 132, 199, 0.3); }
-        .js-card:hover { transform: translateY(-8px); border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), 0 0 25px -4px rgba(245, 158, 11, 0.3); }
-
-        .phase-card:hover .btn-view { background: var(--white); color: var(--bg); border-color: var(--white); }
-
-        /* Journey Pipeline Connectors */
-        .journey-connector {
-            text-align: center;
-            margin: 50px 0;
-            color: #1e293b;
-            font-size: 1.8rem;
-            filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.1));
+        .wide-list-row {
+            background: var(--white);
+            border: 1px solid var(--border-line);
+            padding: 20px 32px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 260px 1fr 160px; /* Locked alignment widths */
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            position: relative;
         }
+        .wide-list-row:hover { border-color: #cbd5e1; transform: translateX(2px); }
 
-        .cta-box-center {
-            text-align: center;
-            background: linear-gradient(135deg, var(--secondary) 0%, #030712 100%);
-            border: 1px solid var(--border);
-            padding: 50px;
-            border-radius: 24px;
-            box-shadow: var(--tactile-shadow);
+        /* Left-Side Colored Structural Borders */
+        .wide-list-row.track-uiux { border-left: 5px solid var(--uiux-accent); }
+        .wide-list-row.track-html { border-left: 5px solid var(--html-accent); }
+        .wide-list-row.track-css { border-left: 5px solid var(--css-accent); }
+        .wide-list-row.track-js { border-left: 5px solid var(--js-accent); }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
         }
-        .cta-box-center p { font-weight: 600; color: var(--text-muted); margin-bottom: 25px; }
-        .btn-cta-call { background: var(--primary); color: var(--white); padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.95rem; display: inline-block; transition: var(--transition); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); }
-        .btn-cta-call:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(37, 99, 235, 0.5); }
+        .wide-list-row.track-uiux .mod-thumb-deck { color: var(--uiux-accent); }
+        .wide-list-row.track-html .mod-thumb-deck { color: var(--html-accent); }
+        .wide-list-row.track-css .mod-thumb-deck { color: var(--css-accent); }
+        .wide-list-row.track-js .mod-thumb-deck { color: var(--js-accent); }
 
-        @media (max-width: 768px) {
-            .bundle-grid { grid-template-columns: 1fr; gap: 20px; }
-            .header { padding: 40px 20px; }
-            .header h1 { font-size: 2rem; }
-            .cta-box-center { padding: 35px 20px; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .meta-chip.start-indicator { background: rgba(16, 185, 129, 0.08); color: var(--primary); border-color: rgba(16, 185, 129, 0.2); font-weight: 700; }
+
+        .wide-list-row ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .wide-list-row li { font-size: 0.88rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
+
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+        }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* --- 4. Learning Outcomes Block --- */
+        .outcomes-block {
+            padding: 24px 0;
+            margin-bottom: 24px;
+        }
+        .outcomes-container {
+            background: var(--white); border: 1px solid var(--border-line);
+            border-radius: 8px; padding: 32px;
+        }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: var(--primary); margin-top: 3px; font-size: 0.85rem; }
+
+        /* --- 5. Compact Statistics Footer Deck --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px; background: var(--white); padding: 16px 24px;
+            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px;
+        }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: var(--primary); }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
+
+        .webnova-bottom-card {
+            background: var(--white); border-left: 4px solid var(--primary);
+            padding: 24px 32px; border-radius: 0 8px 8px 0; width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
+            display: flex; justify-content: space-between; align-items: center; gap: 40px;
+        }
+        .webnova-bottom-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 2px; }
+        .webnova-bottom-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .btn-studio { 
+            padding: 10px 20px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap;
+        }
+        .btn-studio:hover { background: var(--primary); }
+
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .download-btns { width: 100%; }
+            .outcomes-grid, .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
+            .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Global Framework Fixed Dropdown Component Navigation Header Mount -->
+    <header class="master-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="webnova-logo.png" alt="WebNova Studio Logo" class="brand-logo">
+                <span class="logo-text">WebNova <span>Studio</span></span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
+                <li class="nav-item dropdown-hitbox">
+                    <a href="#" class="nav-link">About <i class="fas fa-chevron-down nav-arrow"></i></a>
+                    <div class="dropdown-matrix">
+                        <a href="our-story.html" class="dropdown-node">Our Story</a>
+                        <a href="mission.html" class="dropdown-node">Our Mission</a>
+                        <a href="team.html" class="dropdown-node">Meet the Team</a>
+                        <a href="why-choose-us.html" class="dropdown-node">Why Choose Us</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="free-resources.html" class="nav-link">Premium Vault</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="requests.html" class="nav-link nav-btn-accent">Request Vault</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Journeys</a> / Web Designer</div>
+            <h1>The <span>Web Designer</span> Journey</h1>
+            <p>A structured, master-grade roadmap compiled into focused execution phases to transition from fundamentals into professional production environments.</p>
+            <div class="hero-stats">
+                <span>4 Core Learning Phases</span>
+                <span>60+ Syllabus Topics</span>
+                <span>Project-Driven Tracks</span>
+                <span>Free Notes &amp; Assets</span>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
         
-        <!-- DYNAMIC PIPELINE HEADER -->
-        <header class="header">
-            <h1>The <span>Web Designer</span> Journey</h1>
-            <p>We’ve broken down the path to becoming a professional developer into 4 focused phases. Click a phase to explore the full syllabus and download notes.</p>
-        </header>
-
-        <!-- 4-PHASE MULTI-GLOW GRID -->
-        <div class="bundle-grid">
-            
-            <!-- PHASE 1: UI/UX -->
-            <div class="phase-card uiux-card">
-                <div class="icon-circle"><i class="fas fa-palette"></i></div>
-                <h3>Phase 1: UI/UX</h3>
-                <p>Master design thinking, wireframing, and Figma prototyping.</p>
-                <a href="uiux-mastery.html" class="btn-view">Explore Syllabus</a>
-            </div>
-
-            <!-- PHASE 2: HTML5 -->
-            <div class="phase-card html-card">
-                <div class="icon-circle"><i class="fab fa-html5"></i></div>
-                <h3>Phase 2: HTML5</h3>
-                <p>Build the semantic structure and SEO-friendly foundations.</p>
-                <a href="html5-mastery.html" class="btn-view">Explore Syllabus</a>
-            </div>
-
-            <!-- PHASE 3: CSS3 -->
-            <div class="phase-card css-card">
-                <div class="icon-circle"><i class="fab fa-css3-alt"></i></div>
-                <h3>Phase 3: CSS3</h3>
-                <p>Learn advanced styling, Flexbox, Grid, and Animations.</p>
-                <a href="css3-mastery.html" class="btn-view">Explore Syllabus</a>
-            </div>
-
-            <!-- PHASE 4: JAVASCRIPT -->
-            <div class="phase-card js-card">
-                <div class="icon-circle"><i class="fab fa-js"></i></div>
-                <h3>Phase 4: JS</h3>
-                <p>Add logic, interactivity, and dynamic data to your sites.</p>
-                <a href="js-mastery.html" class="btn-view">Explore Syllabus</a>
-            </div>
-            
+        <div class="section-headline-bar">
+            <h2>Journey <span>Curriculum Track</span></h2>
+            <span class="track-total-count">04 Linked Milestones</span>
         </div>
 
-        <!-- PIPELINE INTERSECTION TRANSITION ARROW -->
-        <div class="journey-connector">
-            <i class="fas fa-arrow-down"></i>
-        </div>
+        <!-- Standalone Immune Horizontal Data Row Grid List -->
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <!-- PHASE 1: UI/UX -->
+                <div class="wide-list-row track-uiux">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-palette"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 1 // UI/UX Design</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip start-indicator">Start Here</span>
+                                <span class="meta-chip">14 Topics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Design Thinking Foundations &amp; User Research Systems</li>
+                        <li>High-Fidelity Wireframing &amp; Auto-Layout Components</li>
+                        <li>Figma Interactive Prototyping &amp; Design Token Handoffs</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="uiux-mastery.html" class="btn-dl">Explore Phase</a>
+                    </div>
+                </div>
 
-        <!-- CORPORATE STUDIO ACTION BOX -->
-        <div class="cta-box-center">
-            <p>Ready to start your first project?</p>
-            <a href="contact.html" class="btn-cta-call">Contact WebNova Studio</a>
-        </div>
-        
+                <!-- PHASE 2: HTML5 -->
+                <div class="wide-list-row track-html">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-html5"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 2 // Semantic HTML5</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">12 Topics</span>
+                                <span class="meta-chip">Structure</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Semantic Document Scaffolding &amp; Metadata Elements</li>
+                        <li>Form Configurations, Validation Vectors, &amp; Input Controls</li>
+                        <li>SEO-Friendly Code Standards &amp; Accessibility (ARIA) Rules</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="html5-mastery.html" class="btn-dl">Explore Phase</a>
+                    </div>
+                </div>
+
+                <!-- PHASE 3: CSS3 -->
+                <div class="wide-list-row track-css">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-css3-alt"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 3 // Advanced CSS3</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">18 Topics</span>
+                                <span class="meta-chip">Style Layer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Volumetric Box Models, Flexbox, &amp; Custom Asymmetric Grids</li>
+                        <li>CSS Variable Engines &amp; Responsive Media Query Viewports</li>
+                        <li>Bezier Animation Timelines, Transitions, &amp; Keyframe Filters</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="css3-mastery.html" class="btn-dl">Explore Phase</a>
+                    </div>
+                </div>
+
+                <!-- PHASE 4: JAVASCRIPT -->
+                <div class="wide-list-row track-js">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-js"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 4 // Core JavaScript</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">16 Topics</span>
+                                <span class="meta-chip">Logic Logic</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Data Types, Variable Scopes, &amp; Syntax Control Structures</li>
+                        <li>Asynchronous Event Handling Loops &amp; DOM Manipulation Trees</li>
+                        <li>Fetch API Implementations, JSON Streams, &amp; Live Data Interactivity</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="js-mastery.html" class="btn-dl">Explore Phase</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Academic Milestones & Outcomes Display Panel -->
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Target Learning Outcomes</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Construct conversion-optimized visual interfaces inside Figma.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Author clean, valid, semantic HTML5 layouts matching SEO parameters.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Architect modular, responsive, fast-loading CSS3 presentation files.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Inject runtime functional programming logic routes into document elements.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Syllabus Milestone</span><strong>04 Core Phases</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-code-branch"></i>
+                    <div><span>Compiled Chapters</span><strong>60+ Deep Topics</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-unlock-alt"></i>
+                    <div><span>Portal Framework</span><strong>100% Free Access</strong></div>
+                </div>
+            </div>
+
+            <!-- Student Academy Inset Actions Card -->
+            <div class="webnova-bottom-card">
+                <div>
+                    <h3>Begin Your Technical Education</h3>
+                    <p>Unlock more specialized syllabus paths, programming documentation resources, and open-source lab sheets at Code Craft Academic.</p>
+                </div>
+                <a href="courses.html" class="btn-studio">Browse Academy</a>
+            </div>
+        </section>
     </div>
 
-    <!-- MODULE DEPLOYMENT LIFECYCLES -->
-    <script src="header.js"></script>
+    <!-- Dynamic Universal Footer Slot Mount Anchor -->
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
     <script src="footer.js"></script>
-    <script src="animations.js"></script>
 </body>
 </html>
