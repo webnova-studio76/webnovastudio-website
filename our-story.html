@@ -15,8 +15,7 @@
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
             --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
             --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --text-muted: #64748b;    --border: rgba(148, 163, 184, 0.14);
             --card-radius: 24px;      
             --white: #ffffff;
             --transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
@@ -35,31 +34,6 @@
             padding-top: 85px; /* Fixed header offset buffer boundary */
         }
 
-.story-hero-animated h1, 
-        .story-hero-animated p,
-        .founder-card-premium,
-        .mission-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.33, 1), 
-                        transform 0.8s cubic-bezier(0.25, 1, 0.33, 1);
-            will-change: opacity, transform;
-        }
-
-        .story-hero-animated h1.active, 
-        .story-hero-animated p.active,
-        .founder-card-premium.active,
-        .mission-reveal.active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        .reveal-delay-1 { transition-delay: 0.2s !important; }
-        .reveal-delay-2 { transition-delay: 0.4s !important; }
-        /* ========================================================================== */
-
-        /* ... your remaining existing styles for cards, containers, etc. ... */
-        
         .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
 
         /* --- 1. Ambient Dynamic Hero Header --- */
@@ -82,13 +56,33 @@
         }
 
         .hero-text-block { position: relative; z-index: 10; max-width: 850px; margin: 0 auto; }
-        .story-hero-animated h1 { font-size: 3rem; font-weight: 900; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 12px; opacity: 0; transform: translateY(15px); }
+        
+        /* Direct Pure CSS Animations to guarantee visibility without custom script dependencies */
+        .story-hero-animated h1 { 
+            font-size: 3rem; 
+            font-weight: 900; 
+            color: #0f172a; 
+            letter-spacing: -0.03em; 
+            margin-bottom: 12px;
+            animation: cleanFadeIn 0.8s cubic-bezier(0.25, 1, 0.33, 1) forwards;
+        }
         .story-hero-animated h1 span { color: var(--primary); }
-        .story-hero-animated p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; opacity: 0; transform: translateY(15px); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .story-hero-animated p { 
+            color: var(--text-muted); 
+            font-size: 1.1rem; 
+            font-weight: 500; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            line-height: 1.6;
+            animation: cleanFadeIn 0.8s cubic-bezier(0.25, 1, 0.33, 1) 0.15s forwards;
+            opacity: 0; /* Starts invisible, then animations reveal it */
+        }
 
-        /* Activation trigger rules for unified entrance script loops */
-        .story-hero-animated h1.active, .story-hero-animated p.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
-        .reveal-delay-1 { transition-delay: 0.15s !important; }
+        @keyframes cleanFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* --- 2. Interactive Premium Profile Workspace Grid --- */
         .founders-display { padding: 80px 0; }
@@ -110,13 +104,11 @@
             grid-template-columns: 180px 1fr;
             align-items: center;
             gap: 40px;
-            opacity: 0;
-            transform: translateY(20px);
             position: relative;
             transition: var(--transition);
+            animation: cleanFadeIn 0.8s cubic-bezier(0.25, 1, 0.33, 1) 0.3s forwards;
+            opacity: 0;
         }
-        
-        .founder-card-premium.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
 
         /* Asymmetric identity metric markers at upper background borders */
         .founder-card-premium::after {
@@ -193,8 +185,12 @@
         .founder-social a:hover { background: #0f172a; color: var(--white); transform: scale(1.05); }
 
         /* --- 3. Academic Mission Corporate Grid Canvas --- */
-        .mission-reveal { padding-bottom: 80px; opacity: 0; transform: translateY(20px); }
-        .mission-reveal.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
+        .mission-reveal { 
+            padding-bottom: 80px; 
+            position: relative;
+            animation: cleanFadeIn 0.8s cubic-bezier(0.25, 1, 0.33, 1) 0.45s forwards;
+            opacity: 0;
+        }
         
         .glass-impact-box {
             background: var(--white);
@@ -238,14 +234,13 @@
 </head>
 <body>
 
-<!-- Dynamic Universal Navigation Header Mount Anchor Slot -->
 <div id="global-header"></div>
 
 <section class="story-hero-animated">
     <div class="container">
         <div class="hero-text-block">
-            <h1 class="reveal active">Two Minds. One <span>Mission.</span></h1>
-            <p class="reveal-up reveal-delay-1 active">Bridging the gap between academic learning and real-world technology skills.</p>
+            <h1>Two Minds. One <span>Mission.</span></h1>
+            <p>Bridging the gap between academic learning and real-world technology skills.</p>
         </div>
     </div>
 </section>
@@ -254,8 +249,7 @@
     <div class="container">
         <div class="founders-flex">
             
-            <!-- CO-FOUNDER CARD 01: Rakesh -->
-            <div class="founder-card-premium founder-card-rakesh reveal-up active">
+            <div class="founder-card-premium founder-card-rakesh">
                 <div class="image-box">
                      <div class="image-inner">
                         <img src="rakesh.png" alt="Rakesh Jadhav" class="founder-img">
@@ -273,8 +267,7 @@
                 </div>
             </div>
 
-            <!-- CO-FOUNDER CARD 02: Rashmi -->
-            <div class="founder-card-premium founder-card-rashmi reveal-up reveal-delay-1 active">
+            <div class="founder-card-premium founder-card-rashmi">
                 <div class="image-box">
                      <div class="image-inner">
                         <img src="rashmi.png" alt="Rashmi Divantgi" class="founder-img">
@@ -296,8 +289,7 @@
     </div>
 </section>
 
-<!-- Bottom Mission Impact Segment -->
-<section class="mission-reveal reveal-up active">
+<section class="mission-reveal">
     <div class="container">
         <div class="glass-impact-box">
             <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
@@ -308,10 +300,8 @@
     </div>
 </section>
 
-<!-- Dynamic Universal Footer Mount Anchor Slot -->
 <div id="global-footer"></div>
 
-<!-- Core System Application Engine Injections -->
 <script src="main.js"></script>
 <script src="footer.js"></script>
 </body>
