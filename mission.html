@@ -6,12 +6,17 @@
     <title>Our Mission | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Premium Fonts Injection -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --secondary: #0f172a;     /* Deep Slate / Charcoal Headings */
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
             --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
             --text-main: #1e293b;     /* Dark Charcoal Main Typography */
@@ -22,32 +27,33 @@
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             
             /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --tactile-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.03), 0 2px 6px -2px rgba(15, 23, 42, 0.01);
             --hover-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.06), 0 4px 15px -2px var(--primary-glow);
         }
 
+        h1, h2, h3, h4, .step-num { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Fixed navbar padding buffer constraint */
+            padding-top: 85px; /* Fixed navbar padding buffer constraint[cite: 2] */
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
 
         /* --- 1. Soft Ambient Hero Section --- */
         .mission-hero-minimal {
             position: relative;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
-            padding: 90px 0 70px;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100__);
+            padding: 100px 0 80px;
             text-align: center;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
         }
 
-        /* Technical accent background mesh design */
+        /* Technical accent background mesh design[cite: 2] */
         .mission-hero-minimal::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
@@ -56,17 +62,39 @@
             background-size: 45px 40px; pointer-events: none; z-index: 1;
         }
 
-        .mission-hero-minimal h1 { font-size: 2.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 15px; line-height: 1.25; }
+        .mission-hero-minimal h1 { 
+            font-size: 3.2rem; 
+            font-weight: 700; 
+            letter-spacing: -0.02em; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+            animation: safeFadeIn 0.8s ease-out forwards;
+        }
         .mission-hero-minimal h1 span { color: var(--primary); }
-        .mission-hero-minimal p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .mission-hero-minimal p { 
+            color: var(--text-muted); 
+            font-size: 1.1rem; 
+            font-weight: 500; 
+            max-width: 750px; 
+            margin: 0 auto; 
+            line-height: 1.65;
+            animation: safeFadeIn 0.8s ease-out 0.15s forwards;
+            opacity: 0;
+        }
+
+        @keyframes safeFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* --- 2. Tactile Pillar Row Architecture --- */
-        .mission-pillars { padding: 60px 0 40px; }
+        .mission-pillars { padding: 90px 0 50px; }
         
         .pillar-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 30px;
             width: 100%;
         }
 
@@ -75,13 +103,15 @@
             border: 1px solid var(--border);
             border-bottom: 4px solid #cbd5e1;
             border-radius: var(--card-radius);
-            padding: 40px 30px;
+            padding: 45px 35px;
             box-shadow: var(--tactile-shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            animation: safeFadeIn 0.8s ease-out 0.3s forwards;
+            opacity: 0;
         }
 
         .pillar-card:hover {
@@ -90,7 +120,7 @@
             border-bottom-color: var(--primary);
         }
 
-        /* Large watermarked decorative back-numbers inside each card block */
+        /* Large watermarked decorative back-numbers inside each card block[cite: 2] */
         .pillar-card::after {
             position: absolute; bottom: -10px; right: 10px;
             font-size: 5.5rem; font-weight: 900; color: rgba(148, 163, 184, 0.04);
@@ -101,38 +131,40 @@
         .pillar-card:nth-child(3)::after { content: '03'; }
         .pillar-card:hover::after { color: rgba(16, 185, 129, 0.06); transform: scale(1.05) translateY(-5px); }
 
-        .pillar-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .pillar-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
         
         .pillar-header i {
-            width: 44px; height: 44px; border-radius: 10px;
+            width: 46px; height: 46px; border-radius: 10px;
             background: rgba(16, 185, 129, 0.05); color: var(--primary);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.15rem; transition: var(--transition);
+            font-size: 1.2rem; transition: var(--transition);
             border: 1px solid rgba(16, 185, 129, 0.1);
         }
         .pillar-card:hover .pillar-header i { background: var(--primary); color: var(--white); }
 
-        .pillar-header h2 { font-size: 1.3rem; font-weight: 800; color: #0f172a; letter-spacing: -0.01em; }
-        .pillar-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
+        .pillar-header h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
+        .pillar-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
 
         /* --- 3. Premium Interactive Roadmap Pipeline --- */
-        .mission-roadmap { padding: 40px 0 80px; }
+        .mission-roadmap { padding: 40px 0 90px; }
         
         .roadmap-container {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
-            padding: 50px 60px;
+            padding: 55px 60px;
             box-shadow: var(--tactile-shadow);
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            animation: safeFadeIn 0.8s ease-out 0.45s forwards;
+            opacity: 0;
         }
 
-        .roadmap-container h2 { font-size: 1.8rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 45px; text-align: center; }
+        .roadmap-container h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 50px; text-align: center; }
         .roadmap-container h2 span { color: var(--primary); }
 
-        /* Centralized baseline track layout connectors */
+        /* Centralized baseline track layout connectors[cite: 2] */
         .roadmap-track { position: relative; display: flex; flex-direction: column; gap: 35px; }
         .roadmap-track::before {
             content: ''; position: absolute; top: 0; left: 24px; width: 2px; height: 100%;
@@ -144,7 +176,7 @@
         .step-num {
             width: 50px; height: 50px; border-radius: 50%;
             background: #f8fafc; border: 2px solid #e2e8f0;
-            color: var(--text-muted); font-family: monospace; font-size: 0.95rem; font-weight: 800;
+            color: var(--text-muted); font-size: 0.95rem; font-weight: 700;
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
             transition: var(--transition); z-index: 10;
         }
@@ -152,41 +184,66 @@
 
         .step-content {
             background: #f8fafc; border: 1px solid var(--border);
-            padding: 24px 30px; border-radius: 12px; flex-grow: 1;
+            padding: 26px 30px; border-radius: 14px; flex-grow: 1;
             transition: var(--transition); text-align: left;
         }
         .roadmap-step:hover .step-content { background: var(--white); border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04); }
 
-        .step-content h4 { font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.01em; }
-        .step-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; }
+        .step-content h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .step-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; }
+
+        /* --- 4. Premium Vision Structural Block --- */
+        .vision-reveal { padding-bottom: 100px; }
+        .glass-impact-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--primary);
+            padding: 50px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
+            box-shadow: var(--tactile-shadow); text-align: center;
+            max-width: 900px; margin: 0 auto; display: flex;
+            flex-direction: column; align-items: center;
+            animation: safeFadeIn 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        .vision-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--primary-glow); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 24px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        .glass-impact-box h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .glass-impact-box h2 span { color: var(--primary); }
+        .glass-impact-box p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 700px; }
 
         /* ==========================================================================
            --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
            ========================================================================== */
         @media (max-width: 1024px) {
-            .pillar-row { grid-template-columns: 1fr; gap: 20px; }
+            .pillar-row { grid-template-columns: 1fr; gap: 24px; }
             .pillar-card { padding: 35px 25px; }
             .roadmap-container { padding: 40px 30px; }
         }
         @media (max-width: 640px) {
-            .mission-hero-minimal { padding: 70px 0 50px; }
-            .mission-hero-minimal h1 { font-size: 2rem; }
+            .mission-hero-minimal { padding: 75px 0 55px; }
+            .mission-hero-minimal h1 { font-size: 2.2rem; }
             .step-num { width: 40px; height: 40px; font-size: 0.85rem; }
             .roadmap-track::before { left: 19px; }
             .step-content { padding: 20px; }
+            .glass-impact-box { padding: 35px 24px; }
             .container { padding: 0 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Dynamic Universal Header Mount Anchor Slot -->
+<!-- Dynamic Universal Header Nav Anchor Mount -->
 <div id="global-header"></div>
 
 <section class="mission-hero-minimal">
     <div class="container">
-        <h1 class="reveal-up">Bridging the Gap Between <br><span>Theory & Industry.</span></h1>
-        <p class="reveal-up reveal-delay-1">Founded by <strong>Rakesh (BCA Graduate)</strong> & <strong>Rashmi (MCA Scholar)</strong> to redefine digital education and production-ready architecture.</p>
+        <h1>Bridging the Gap Between <br><span>Theory &amp; Industry.</span></h1>
+        <p>Founded by Rakesh (BCA Graduate) and Rashmi (MCA Scholar), our mission is to bridge the gap between academic learning and real-world industry practices. Through education, innovation, and collaboration, we empower students, developers, and businesses with the knowledge, skills, and digital solutions needed to succeed in a rapidly evolving technological world.</p>
     </div>
 </section>
 
@@ -195,37 +252,37 @@
         <div class="pillar-row">
             
             <!-- PILLAR 1 -->
-            <div class="pillar-card reveal-up">
+            <div class="pillar-card">
                 <div class="pillar-header">
                     <i class="fas fa-terminal"></i>
-                    <h2>Code Logic First</h2>
+                    <h3>Code Logic First</h3>
                 </div>
-                <p>At <strong>Code Craft Academic</strong>, our core mission is to eliminate basic copy-paste logic. We educate students in the analytical structure of low-level compilation architectures, dynamic data logic arrays, and scalable structural system programming patterns.</p>
+                <p>At Code Craft Academic, we believe that strong fundamentals create exceptional developers. Rather than encouraging copy-paste learning, we focus on programming logic, problem-solving methodologies, system design concepts, and practical development workflows. Our goal is to help learners build a deep understanding of technology and develop the confidence to create solutions independently.</p>
             </div>
 
             <!-- PILLAR 2 -->
-            <div class="pillar-card reveal-up reveal-delay-1">
+            <div class="pillar-card">
                 <div class="pillar-header">
                     <i class="fas fa-layer-group"></i>
-                    <h2>Design with Purpose</h2>
+                    <h3>Design with Purpose</h3>
                 </div>
-                <p>At <strong>WebNova Studio</strong>, we balance wireframe blueprint layouts with user interactions. We aim to deploy lightweight digital architectures and cohesive brand models optimized for real-world interface performance.</p>
+                <p>At WebNova Studio, we combine creativity with functionality to craft meaningful digital experiences. From modern websites and user interfaces to scalable digital solutions, we prioritize usability, performance, accessibility, and visual excellence. Every project is designed to serve a purpose and deliver measurable value.</p>
             </div>
 
             <!-- PILLAR 3 -->
-            <div class="pillar-card reveal-up reveal-delay-2">
+            <div class="pillar-card">
                 <div class="pillar-header">
                     <i class="fas fa-seedling"></i>
-                    <h2>Community Growth</h2>
+                    <h3>Community Growth</h3>
                 </div>
-                <p>Our focus is to provide verified open-source scripts, actionable terminal workflows, and comprehensive developer assets. We deliver the precise scaffolding needed by entry-level learners to launch balanced freelance systems.</p>
+                <p>We are committed to fostering a collaborative ecosystem where learners, creators, and developers can grow together. Through open-source resources, practical learning materials, project-based experiences, and community-driven initiatives, we provide the tools and opportunities needed to transform knowledge into real-world impact.</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<section class="mission-roadmap reveal-up">
+<section class="mission-roadmap">
     <div class="container">
         <div class="roadmap-container">
             <h2>The Consolidated <span>Ecosystem Roadmap</span></h2>
@@ -237,7 +294,7 @@
                     <div class="step-num">01</div>
                     <div class="step-content">
                         <h4>Educational Standardization</h4>
-                        <p>Completing our specialized repository decks across database management system engines, full-stack programming nodes, and technical automation logic guides.</p>
+                        <p>Developing structured learning pathways, comprehensive study materials, and project-based curricula covering programming, databases, web technologies, software development, and emerging digital skills to ensure consistent and industry-relevant education.</p>
                     </div>
                 </div>
                 
@@ -246,7 +303,7 @@
                     <div class="step-num">02</div>
                     <div class="step-content">
                         <h4>Platform Deployment</h4>
-                        <p>Scaling WebNova Studio assets to supply structured interface modules, operational pipelines, and technical blueprints for modern visual developers.</p>
+                        <p>Expanding the WebNova Studio ecosystem with modern design systems, development frameworks, digital products, reusable resources, and innovative solutions that support students, freelancers, creators, and businesses.</p>
                     </div>
                 </div>
                 
@@ -255,20 +312,30 @@
                     <div class="step-num">03</div>
                     <div class="step-content">
                         <h4>Collaborative Workspaces</h4>
-                        <p>Launching project-driven online frameworks where students and active creators synchronize code stacks on live production environments.</p>
+                        <p>Building collaborative environments where students, developers, and creative professionals can work together on real-world projects, exchange knowledge, strengthen practical skills, and gain valuable industry experience.</p>
                     </div>
                 </div>
                 
             </div>
-            
         </div>
     </div>
 </section>
 
-<!-- Dynamic Universal Footer Mount Anchor Slot -->
+<!-- Vision Canvas Callout Unit Block -->
+<section class="vision-reveal">
+    <div class="container">
+        <div class="glass-impact-box">
+            <div class="vision-icon"><i class="fas fa-eye"></i></div>
+            <h2>Our <span>Vision</span></h2>
+            <p>To create a unified ecosystem where education, innovation, and digital creation work together seamlessly—empowering the next generation of developers, designers, and technology leaders to learn, build, and grow with confidence.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Dynamic Universal Footer Mount Anchor -->
 <div id="global-footer"></div>
 
-<!-- Core System Application Engine Injections -->
+<!-- System Production Script Hooks -->
 <script src="main.js"></script>
 <script src="footer.js"></script>
 </body>
