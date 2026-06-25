@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     <ul class="nav-links">
                         <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+                        <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
                         <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
                         <li class="nav-item"><a href="practicals-library.html" class="nav-link">Practical Hub</a></li>
                         
