@@ -8,174 +8,182 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* High-Premium Realistic Tactile Palette */
-            --primary: #0d9488;       
-            --primary-glow: rgba(13, 148, 136, 0.3);
+            /* High-Premium Unified Light Canvas Style Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --secondary: #0f172a;     /* WebNova Master Deep Navy */
+            --card-surface: #ffffff;  /* High-Performance White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Background */
+            --text-main: #334155;     /* Dark Sapphire Headings Typography */
+            --text-muted: #64748b;    /* Muted Gray Secondary Text */
+            --border: rgba(37, 99, 235, 0.08); 
+            --card-radius: 16px;      
+            --white: #ffffff;
             --accent: #f59e0b;        
-            --bg: #f1f5f9;            /* Soft neutral physical desk background */
-            --white: #ffffff;         
-            --text-main: #0f172a;     
-            --text-muted: #475569;    
-            --border: #e2e8f0;        
-            --card-radius: 20px;      
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Realistic inertial transition curves */
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             
-            /* Skeuomorphic Shadow Layers */
-            --tactile-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03), inset 0 1px 0 var(--white);
-            --hover-shadow: 0 25px 30px -10px rgba(15, 23, 42, 0.15), 0 10px 15px -5px rgba(13, 148, 136, 0.1), inset 0 1px 0 var(--white);
+            /* Structural Shadow Layers */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.04), inset 0 1px 0 var(--white);
+            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.12), inset 0 1px 0 var(--white);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: subpixel-antialiased; 
+            padding-top: 85px; /* Fixed header offset buffer boundary */
+        }
 
-        .container { max-width: 1440px; margin: 0 auto; padding: 50px 24px; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 40px 24px; }
 
         /* --- Header & Branding --- */
-        .library-header { text-align: center; margin-bottom: 50px; }
+        .library-header { text-align: center; margin-bottom: 40px; }
         .branding-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
-        .library-header h1 { font-size: 2.8rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.03em; }
+        .library-header h1 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.02em; }
         .library-header h1 span { color: var(--primary); }
         .library-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 8px; font-weight: 500; }
 
         /* --- Controls Toolbar (Skeuomorphic Inset Tray) --- */
         .toolbar {
-            background: #e2e8f0;
+            background: #ffffff;
             padding: 12px;
-            border-radius: 28px;
-            border: 1px solid #cbd5e1;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 15px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             position: sticky;
-            top: 20px;
+            top: 105px; /* Aligned below progress tracker ribbon line */
             z-index: 100;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05), 0 15px 30px -10px rgba(15,23,42,0.05);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.04);
         }
 
         .search-box { flex: 2; position: relative; }
-        .search-box i { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem; }
+        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem; }
         .search-box input {
-            width: 100%; padding: 14px 20px 14px 56px; border-radius: 20px;
-            border: 1px solid #cbd5e1; background: var(--white); outline: none; transition: var(--transition);
-            color: var(--text-main); font-weight: 500; font-size: 0.95rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02), inset 0 1px 2px rgba(0,0,0,0.02);
+            width: 100%; padding: 12px 20px 12px 50px; border-radius: 10px;
+            border: 1px solid var(--border); background: var(--bg); outline: none; transition: var(--transition);
+            color: var(--secondary); font-weight: 500; font-size: 0.95rem;
         }
-        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         .sort-box { flex: 1; position: relative; }
         .sort-box select {
-            width: 100%; padding: 14px 24px; border-radius: 20px;
-            border: 1px solid #cbd5e1; background: var(--white);
+            width: 100%; padding: 12px 20px; border-radius: 10px;
+            border: 1px solid var(--border); background: var(--bg);
             font-weight: 700; color: var(--text-main); cursor: pointer; appearance: none; outline: none;
             font-size: 0.9rem; transition: var(--transition);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .sort-box select:hover { border-color: var(--primary); }
+        .sort-box select:hover { border-color: var(--primary); background: var(--white); }
         .sort-box::after {
             content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
-            position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+            position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
             color: var(--primary); pointer-events: none; font-size: 0.8rem;
         }
 
-        /* --- Highly Realistic Macro-Dock Grid --- */
+        /* --- Macro-Dock Grid System --- */
         .asset-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr); /* Unified spacing columns structure */
+            gap: 24px;
         }
 
         .asset-card {
-            background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
-            border: 1px solid rgba(255,255,255,0.8);
+            background: var(--card-surface);
+            border: 1px solid var(--border);
+            border-bottom: 4px solid var(--border);
             border-radius: var(--card-radius);
             display: flex;
-            padding: 16px;
+            padding: 20px;
             align-items: center;
             transition: var(--transition);
-            height: 110px;
+            height: 125px;
             position: relative;
             box-shadow: var(--tactile-shadow);
             animation: cardEntrance 0.5s ease forwards;
         }
 
         .asset-card:hover {
-            transform: translateY(-6px) scale(1.02); /* Slight realistic popping growth scale */
-            border-color: rgba(13, 148, 136, 0.3);
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(16, 185, 129, 0.25);
+            border-bottom-color: var(--primary);
             box-shadow: var(--hover-shadow);
         }
 
-        /* Skeuomorphic Glossy Icon Backings */
+        /* Rounded Icon Backings */
         .thumb {
-            width: 56px; height: 56px; 
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            border: 1px solid #cbd5e1;
-            border-radius: 14px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.4rem; color: #475569;
+            width: 52px; height: 52px; 
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; color: var(--primary);
             flex-shrink: 0; transition: var(--transition);
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
         .asset-card:hover .thumb {
-            background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
-            border-color: #0f766e;
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100__);
+            border-color: #059669;
             color: var(--white);
             transform: scale(1.05);
-            box-shadow: 0 8px 16px -4px var(--primary-glow);
+            box-shadow: 0 6px 12px var(--primary-glow);
         }
 
         .info { margin-left: 16px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
-        .info h3 { font-size: 0.9rem; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; }
+        .info h3 { font-size: 1rem; color: var(--secondary); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
         
-        .meta { display: flex; gap: 10px; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); align-items: center; }
-        .meta .count { color: var(--accent); display: flex; align-items: center; gap: 4px; }
+        .meta { display: flex; gap: 10px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); align-items: center; }
+        .meta .count { color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
 
-        .actions { display: flex; gap: 6px; margin-top: 8px; }
+        .actions { display: flex; gap: 8px; margin-top: 10px; }
         .btn-act {
-            font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 6px 12px; border-radius: 8px; text-decoration: none; transition: var(--transition);
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 6px 14px; border-radius: 6px; text-decoration: none; transition: var(--transition);
             text-align: center; display: inline-flex; align-items: center; justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
         }
-        .btn-demo { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-        .btn-zip { background: linear-gradient(180deg, #14b8a6 0%, var(--primary) 100%); color: var(--white); border: 1px solid #0f766e; }
+        .btn-demo { background: #eff6ff; color: #2563eb; border: 1px solid rgba(37, 99,  blue, 0.05); }
+        .btn-zip { background: var(--primary); color: var(--white); }
         
-        .btn-demo:hover { background: var(--text-main); color: var(--white); border-color: var(--text-main); }
-        .btn-zip:hover { background: linear-gradient(180deg, var(--primary) 0%, #0f766e 100__); box-shadow: 0 4px 10px var(--primary-glow); }
+        .btn-demo:hover { background: var(--secondary); color: var(--white); }
+        .btn-zip:hover { background: #059669; box-shadow: 0 4px 10px var(--primary-glow); }
 
-        /* Pagination Tray Module Layout Rules */
-        .pagination-box { text-align: center; margin: 50px 0; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        /* Pagination Controls Tray */
+        .pagination-box { text-align: center; margin: 40px 0; display: flex; justify-content: center; align-items: center; gap: 15px; flex-direction: column; }
         .btn-load-more {
-            background: var(--text-main); color: var(--white); border: none; padding: 14px 38px;
-            border-radius: 16px; font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
-            transition: var(--transition); box-shadow: 0 10px 20px rgba(15,23,42,0.15); display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            color: var(--white); border: none; padding: 14px 35px;
+            border-radius: 10px; font-size: 0.9rem; font-weight: 800; cursor: pointer; letter-spacing: 0.5px;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
         }
-        .btn-load-more:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 12px 24px var(--primary-glow); }
+        .btn-load-more:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 20px var(--primary-glow); }
         .btn-load-more.hidden { display: none; }
         .item-counter-tag { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
 
         #backlogStorage { display: none; }
 
         @keyframes cardEntrance { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        #sentinel { height: 10px; }
 
-        @media (max-width: 1400px) { .asset-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 1100px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 850px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1200px) { .asset-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { 
-            .asset-grid { grid-template-columns: 1fr; gap: 14px; } 
-            .toolbar { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 12px; } 
-            .library-header h1 { font-size: 2.2rem; }
+            .asset-grid { grid-template-columns: 1fr; gap: 16px; } 
+            .toolbar { flex-direction: column; align-items: stretch; border-radius: 12px; padding: 12px; top: 95px; } 
+            .library-header h1 { font-size: 2rem; }
             .container { padding: 30px 16px; }
         }
     </style>
 </head>
 <body>
 
+<div id="global-header"></div>
+
 <div class="container">
     <header class="library-header">
-        <p class="branding-tag">RR Web Designers & Code Craft Academic</p>
+        <p class="branding-tag">WebNova Studio & Code Craft Academic</p>
         <h1><span>Infinite</span> Asset Library</h1>
         <p>Explore 100+ production-ready landing pages from WebNova Studio.</p>
     </header>
@@ -202,7 +210,7 @@
                 <h3>About Us Design 1</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 840</span>
-                    <span><i class="fas fa-layer-group"></i>Page Template</span>
+                    <span><i class="fas fa-layer-group"></i>Template</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/about-us-design-1/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -217,7 +225,7 @@
                 <h3>About us Design 2</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 910</span>
-                    <span><i class="fas fa-layer-group"></i>Page Template</span>
+                    <span><i class="fas fa-layer-group"></i>Template</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/about-us-design-2/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -232,7 +240,7 @@
                 <h3>Flower Shop</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 1.4k</span>
-                    <span><i class="fas fa-layer-group"></i>Landing page</span>
+                    <span><i class="fas fa-layer-group"></i>Landing Page</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/Flower-shop-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -247,7 +255,7 @@
                 <h3>Cafe</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 1.1k</span>
-                    <span><i class="fas fa-layer-group"></i>Landing page</span>
+                    <span><i class="fas fa-layer-group"></i>Landing Page</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/Cafe-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -274,10 +282,10 @@
         <div class="asset-card" data-downloads="1050" data-name="Airlines Booking landing page">
             <div class="thumb"><i class="fas fa-plane"></i></div>
             <div class="info">
-                <h3>Airlines booking</h3>
+                <h3>Airlines Booking</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 1.0k</span>
-                    <span><i class="fas fa-layer-group"></i> Landing page</span>
+                    <span><i class="fas fa-layer-group"></i>Landing Page</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/Airlines-booking-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -475,7 +483,7 @@
                 <h3>Contact Us Design</h3>
                 <div class="meta">
                     <span class="count"><i class="fas fa-download"></i> 870</span>
-                    <span><i class="fas fa-layer-group"></i>Page Template</span>
+                    <span><i class="fas fa-layer-group"></i>Template</span>
                 </div>
                 <div class="actions">
                     <a href="https://webnova-studio76.github.io/contact-design-1-page-template/" class="btn-act btn-demo" target="_blank">Preview</a>
@@ -504,9 +512,9 @@
         <span class="item-counter-tag" id="countDisplay">Showing 10 of 20 Items</span>
         <button class="btn-load-more" id="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More Templates</button>
     </div>
-
-    <div id="sentinel"></div>
 </div>
+
+<div id="global-footer"></div>
 
 <script>
     const grid = document.getElementById('assetGrid');
@@ -599,8 +607,8 @@
     // Initialize calibration states
     updateCounterDisplay();
 </script>
-<script src="header.js"></script>
+
+<script src="main.js"></script>
 <script src="footer.js"></script>
-<script src="animations.js"></script>
 </body>
 </html>
