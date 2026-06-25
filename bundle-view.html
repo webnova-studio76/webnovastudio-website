@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Designer Bundle | Code Craft Academic</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ==========================================================================
+           ⚓ 1. DESIGN THEME VARIABLES & GLOBAL RESETS
+           ========================================================================== */
         :root {
-            /* Compact Data-Dense Tokens */
-            --primary: #10b981;
-            --secondary: #0f172a;
-            --bg: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border-line: #e2e8f0;
+            --nav-bg: #0b132a;        /* Deep Dark Blue from image_8f0f5e.png */
+            --page-bg: #f8fafc;       /* Clean Light Gray Content Background */
+            --text-main: #0f172a;     /* Dark Charcoal for Content Text */
+            --text-muted: #475569;    /* Slate Gray for Subtext */
+            --border-line: #e2e8f0;   /* Light Framework Lines */
             --white: #ffffff;
             
-            /* Structural Specialized Accent Tracks */
+            /* Category Accent Colors */
             --uiux-accent: #6366f1;
             --html-accent: #ef4444;
             --css-accent: #0284c7;
@@ -29,270 +29,166 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 76px; }
-        
+        body { background-color: var(--page-bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
         /* ==========================================================================
-           💎 PREMIUM GLASSMORPHISM NAVIGATION SYSTEM STYLES
+           ⚓ 2. STABLE DARK NAVBAR STYLES (Matches image_8f0f5e.png)
            ========================================================================== */
-        .master-header {
-            background: rgba(255, 255, 255, 0.75) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 70px !important;
-            display: flex !important;
-            align-items: center !important;
-            z-index: 99999 !important;
+        .main-navbar {
+            background-color: var(--nav-bg);
+            width: 100%;
+            height: 72px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            z-index: 9999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-container {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            width: 100% !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 24px !important;
+        .nav-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo { display: flex !important; align-items: center !important; gap: 10px !important; text-decoration: none !important; flex-shrink: 0 !important; }
-        .brand-logo { height: 26px !important; width: auto !important; object-fit: contain !important; }
-        .logo-text { font-family: 'Space Grotesk', sans-serif !important; font-size: 1.15rem !important; font-weight: 700 !important; color: #0f172a !important; letter-spacing: -0.02em !important; white-space: nowrap !important; }
-        .logo-text span { color: #10b981 !important; }
+        .brand-identity { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 32px; width: auto; }
+        .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; white-space: nowrap; }
+        .logo-highlight { color: #38bdf8; }
 
-        .nav-links { display: flex !important; gap: 28px !important; list-style: none !important; align-items: center !important; margin: 0 !important; padding: 0 !important; flex-shrink: 0 !important; }
-        
-        .nav-link {
-            text-decoration: none !important;
-            font-size: 0.88rem !important;
-            font-weight: 600 !important;
-            color: #475569 !important;
-            white-space: nowrap !important;
-            transition: color 0.2s ease !important;
-        }
-        .nav-link:hover { color: #0f172a !important; }
-        .nav-arrow { font-size: 0.7rem !important; color: #94a3b8 !important; transition: transform 0.2s ease !important; }
+        .menu-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .menu-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: color 0.2s ease; }
+        .menu-links a:hover { color: #ffffff; }
 
-        /* Click Toggle Dropdown Setup */
-        .dropdown-hitbox { position: relative !important; display: flex !important; align-items: center !important; height: 70px !important; }
-        
-        .dropdown-matrix {
-            position: absolute !important;
-            top: 100% !important;
-            left: 50% !important;
-            transform: translateX(-50%) translateY(10px) !important;
-            background: #ffffff !important;
-            border: 1px solid #e2e8f0 !important;
-            padding: 6px 0 !important;
-            min-width: 175px !important;
-            border-radius: 6px !important;
-            box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.08) !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        /* Hover Submenu System */
+        .dropdown-item { position: relative; }
+        .arrow-icon { font-size: 0.7rem; margin-left: 2px; opacity: 0.7; }
+        .submenu {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            background-color: #0f172a; border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 0; min-width: 160px; border-radius: 6px; list-style: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); display: none;
         }
+        .submenu li a { display: block; padding: 8px 16px; font-size: 0.85rem; color: #94a3b8; text-align: left; }
+        .submenu li a:hover { background-color: rgba(255, 255, 255, 0.05); color: #ffffff; }
+        .dropdown-item:hover .submenu { display: block; }
 
-        .dropdown-hitbox.menu-active .dropdown-matrix {
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            transform: translateX(-50%) translateY(0px) !important;
-        }
-        .dropdown-hitbox.menu-active .nav-arrow { transform: rotate(180deg) !important; color: #0f172a !important; }
-
-        .dropdown-node {
-            display: block !important;
-            padding: 8px 20px !important;
-            text-decoration: none !important;
-            font-size: 0.85rem !important;
-            color: #475569 !important;
-            font-weight: 500 !important;
-            text-align: left !important;
-            transition: all 0.15s ease !important;
-        }
-        .dropdown-node:hover { background: #f8fafc !important; color: #0f172a !important; padding-left: 22px !important; }
-
-        .nav-btn-accent {
-            background: #0f172a !important;
-            color: #ffffff !important;
-            padding: 8px 16px !important;
-            border-radius: 4px !important;
-            font-size: 0.82rem !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-        }
-        .nav-btn-accent:hover { background: #10b981 !important; }
-
-        /* --- Minimal Hero Banner --- */
-        .course-header {
-            padding: 35px 0;
-            border-bottom: 1px solid var(--border-line);
-            background: var(--white);
-        }
+        /* ==========================================================================
+           ⚓ 3. CONTENT HERO BANNER & MAIN TRACKS
+           ========================================================================== */
+        .course-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
         .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-muted); }
         .breadcrumb a { color: var(--text-muted); text-decoration: none; }
         .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
-        .course-header h1 span { color: var(--primary); }
+        .course-header h1 span { color: #10b981; }
         .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
         .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
-        .hero-stats span {
-            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
-        }
+        .hero-stats span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--page-bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted); }
 
-        /* --- Journey Timeline Heading --- */
-        .section-headline-bar {
-            padding: 32px 0 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-line);
-        }
+        .section-headline-bar { padding: 32px 0 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-line); }
         .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
-        .section-headline-bar h2 span { color: var(--primary); }
         .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- Immune Wide List Architecture --- */
+        /* --- 4. COMPACT HORIZONTAL DATA ROWS --- */
         .learning-modules-section { padding: 24px 0; }
-        
-        .wide-list-container {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 16px !important;
-            width: 100% !important;
-        }
+        .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
 
         .wide-list-row {
-            background: var(--white) !important;
-            border: 1px solid var(--border-line) !important;
-            padding: 24px 32px !important;
-            border-radius: 8px !important;
-            display: grid !important;
-            grid-template-columns: 260px 1fr 160px !important;
-            align-items: center !important;
-            gap: 32px !important;
-            width: 100% !important;
-            min-width: 100% !important;
-            box-shadow: none !important;
-            transform: none !important;
+            background: var(--white); border: 1px solid var(--border-line); padding: 24px 32px; border-radius: 8px;
+            display: grid; grid-template-columns: 260px 1fr 160px; align-items: center; gap: 32px; width: 100%;
             transition: border-color 0.2s ease;
         }
-        .wide-list-row:hover { border-color: #cbd5e1 !important; }
+        .wide-list-row:hover { border-color: #cbd5e1; }
 
-        /* Left-Side Colored Structural Borders */
-        .wide-list-row.track-uiux { border-left: 5px solid var(--uiux-accent) !important; }
-        .wide-list-row.track-html { border-left: 5px solid var(--html-accent) !important; }
-        .wide-list-row.track-css { border-left: 5px solid var(--css-accent) !important; }
-        .wide-list-row.track-js { border-left: 5px solid var(--js-accent) !important; }
+        /* Colored Structural Left Borders */
+        .wide-list-row.track-uiux { border-left: 5px solid var(--uiux-accent); }
+        .wide-list-row.track-html { border-left: 5px solid var(--html-accent); }
+        .wide-list-row.track-css { border-left: 5px solid var(--css-accent); }
+        .wide-list-row.track-js { border-left: 5px solid var(--js-accent); }
 
         .mod-identity-block { display: flex; align-items: center; gap: 14px; }
-        .mod-thumb-deck {
-            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
-            border-radius: 4px; display: flex; align-items: center; justify-content: center;
-            font-size: 0.95rem; flex-shrink: 0;
-        }
+        .mod-thumb-deck { width: 38px; height: 36px; background: var(--page-bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
         .wide-list-row.track-uiux .mod-thumb-deck { color: var(--uiux-accent); }
         .wide-list-row.track-html .mod-thumb-deck { color: var(--html-accent); }
         .wide-list-row.track-css .mod-thumb-deck { color: var(--css-accent); }
         .wide-list-row.track-js .mod-thumb-deck { color: var(--js-accent); }
 
-        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
-        
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-main); white-space: nowrap; }
         .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
-        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
-        .meta-chip.start-indicator { background: rgba(16, 185, 129, 0.08); color: var(--primary); border-color: rgba(16, 185, 129, 0.2); font-weight: 700; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--page-bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .meta-chip.start-indicator { background: rgba(16, 185, 129, 0.08); color: #10b981; border-color: rgba(16, 185, 129, 0.2); font-weight: 700; }
 
         .wide-list-row ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
         .wide-list-row li { font-size: 0.88rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
-        .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
+        .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: #10b981; font-weight: 900; font-size: 0.72rem; }
 
         .download-btns { width: 160px; }
         .btn-dl { 
-            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
-            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
-            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; text-decoration: none; 
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--page-bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
         .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- Outcomes Block --- */
-        .outcomes-block { padding: 24px 0; margin-bottom: 24px; }
-        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
-        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
-        .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
-        .outcome-item i { color: var(--primary); margin-top: 3px; font-size: 0.85rem; }
-
-        /* --- Footer Summary Deck --- */
+        /* --- 5. FOOTER STATS & BOTTOM DETAILS --- */
         .syllabus-footer { padding: 16px 0 60px; }
-        .resource-summary {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 16px; background: var(--white); padding: 16px 24px;
-            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px;
-        }
+        .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
         .summary-item { display: flex; align-items: center; gap: 12px; }
-        .summary-item i { font-size: 1rem; color: var(--primary); }
+        .summary-item i { font-size: 1rem; color: #10b981; }
         .summary-item div { display: flex; flex-direction: column; }
         .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
-
-        .webnova-bottom-card {
-            background: var(--white); border-left: 4px solid var(--primary);
-            padding: 24px 32px; border-radius: 0 8px 8px 0; width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
-            display: flex; justify-content: space-between; align-items: center; gap: 40px;
-        }
-        .webnova-bottom-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 2px; }
-        .webnova-bottom-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
-        .btn-studio { 
-            padding: 10px 20px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap;
-        }
-        .btn-studio:hover { background: var(--primary); }
+        .summary-item strong { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
 
         @media (max-width: 960px) {
             .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
             .download-btns { width: 100%; }
-            .outcomes-grid, .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
-            .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .resource-summary { grid-template-columns: 1fr; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="master-header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="webnova-logo.png" alt="WebNova Studio Logo" class="brand-logo">
-                <span class="logo-text">WebNova <span>Studio</span></span>
+    <!-- ⚓ STABLE DARK NAVBAR BLOCK (Ref: image_8f0f5e.png) -->
+    <header class="main-navbar">
+        <div class="nav-wrapper">
+            
+            <a href="index.html" class="brand-identity">
+                <img src="webnova-logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">WebNova <span class="logo-highlight">Studio</span></span>
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="course.html" class="nav-link">Courses</a></li>
-                <li><a href="free-resources.html" class="nav-link">Resources</a></li>
-                <li><a href="free-resources.html" class="nav-link">Premium Vault</a></li>
-                <li class="dropdown-hitbox" id="aboutDropdown">
-                    <a href="#" class="nav-link" onclick="toggleAboutMenu(event)">About <i class="fas fa-chevron-down nav-arrow"></i></a>
-                    <div class="dropdown-matrix">
-                        <a href="our-story.html" class="dropdown-node">Our Story</a>
-                        <a href="mission.html" class="dropdown-node">Our Mission</a>
-                        <a href="team.html" class="dropdown-node">Meet the Team</a>
-                        <a href="why-choose-us.html" class="dropdown-node">Why Choose Us</a>
-                    </div>
+            
+            <ul class="menu-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="free-resources.html">Resources</a></li>
+                <li><a href="practical-hub.html">Practical Hub</a></li>
+                
+                <li class="dropdown-item">
+                    <a href="#" class="dropdown-trigger">About <i class="fas fa-chevron-down arrow-icon"></i></a>
+                    <ul class="submenu">
+                        <li><a href="our-story.html">Our Story</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="team.html">Meet the Team</a></li>
+                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                    </ul>
                 </li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="requests.html" class="nav-link nav-btn-accent">Request Vault</a></li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="requests.html">Request Vault</a></li>
             </ul>
+            
         </div>
     </header>
 
+    <!-- CONTENT BODY LAYER -->
     <section class="course-header">
         <div class="container">
             <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Journeys</a> / Web Designer</div>
@@ -310,14 +206,15 @@
     <div class="container">
         
         <div class="section-headline-bar">
-            <h2>Journey <span>Curriculum Track</span></h2>
+            <h2>Journey Curriculum Track</h2>
             <span class="track-total-count">04 Linked Milestones</span>
         </div>
 
         <section class="learning-modules-section">
             <div class="wide-list-container" id="moduleGrid">
                 
-                <div class="wide-list-row track-uiux">
+                <!-- PHASE 1: UI/UX -->
+                <div class="wide-list-row track-uiux" data-category="uiux">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-palette"></i></div>
                         <div class="mod-header-text">
@@ -338,7 +235,8 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-html">
+                <!-- PHASE 2: HTML5 -->
+                <div class="wide-list-row track-html" data-category="html">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-html5"></i></div>
                         <div class="mod-header-text">
@@ -359,7 +257,8 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-css">
+                <!-- PHASE 3: CSS3 -->
+                <div class="wide-list-row track-css" data-category="css">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-css3-alt"></i></div>
                         <div class="mod-header-text">
@@ -380,7 +279,8 @@
                     </div>
                 </div>
 
-                <div class="wide-list-row track-js">
+                <!-- PHASE 4: JAVASCRIPT -->
+                <div class="wide-list-row track-js" data-category="js">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fab fa-js"></i></div>
                         <div class="mod-header-text">
@@ -404,23 +304,11 @@
             </div>
         </section>
 
-        <section class="outcomes-block">
-            <div class="outcomes-container">
-                <h3>Target Learning Outcomes</h3>
-                <div class="outcomes-grid">
-                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Construct conversion-optimized visual interfaces inside Figma.</span></div>
-                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Author clean, valid, semantic HTML5 layouts matching SEO parameters.</span></div>
-                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Architect modular, responsive, fast-loading CSS3 presentation files.</span></div>
-                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Inject runtime functional programming logic routes into document elements.</span></div>
-                </div>
-            </div>
-        </section>
-
         <section class="syllabus-footer">
             <div class="resource-summary">
                 <div class="summary-item">
                     <i class="fas fa-layer-group"></i>
-                    <div><span>Syllabus Milestone</span>export <strong>04 Core Phases</strong></div>
+                    <div><span>Syllabus Milestone</span><strong>04 Core Phases</strong></div>
                 </div>
                 <div class="summary-item">
                     <i class="fas fa-code-branch"></i>
@@ -431,36 +319,8 @@
                     <div><span>Portal Framework</span><strong>100% Free Access</strong></div>
                 </div>
             </div>
-
-            <div class="webnova-bottom-card">
-                <div>
-                    <h3>Begin Your Technical Education</h3>
-                    <p>Unlock more specialized syllabus paths, programming documentation resources, and open-source lab sheets at Code Craft Academic.</p>
-                </div>
-                <a href="courses.html" class="btn-studio">Browse Academy</a>
-            </div>
         </section>
     </div>
 
-    <div id="global-footer"></div>
-
-    <script src="main.js"></script>
-    <script src="footer.js"></script>
-    <script>
-        function toggleAboutMenu(event) {
-            event.preventDefault(); 
-            event.stopPropagation(); 
-            
-            const dropdown = document.getElementById('aboutDropdown');
-            dropdown.classList.toggle('menu-active');
-        }
-
-        document.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('aboutDropdown');
-            if (dropdown && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('menu-active');
-            }
-        });
-    </script>
 </body>
 </html>
