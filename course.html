@@ -80,44 +80,45 @@
         }
         .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- 3. Protected Wide List Row Architecture --- */
+        /* --- 3. Clean Square Grid Layout Engine (4 in a row) --- */
         .learning-modules-section { padding: 24px 0; }
         
         .wide-list-container {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 14px !important;
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
             width: 100% !important;
         }
 
         .wide-list-row {
             background: var(--white) !important;
             border: 1px solid var(--border-line) !important;
-            padding: 20px 32px !important;
+            padding: 24px !important;
             border-radius: 8px !important;
-            display: grid !important;
-            grid-template-columns: 280px 1fr 160px !important;
-            align-items: center !important;
-            gap: 32px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
             width: 100% !important;
-            min-width: 100% !important;
+            min-height: 320px !important; /* Ensures neat, uniform square-proportioned heights */
             transition: border-color 0.2s ease;
         }
         .wide-list-row:hover { border-color: #cbd5e1 !important; }
 
-        /* Category Left-Border Color Tracks */
-        .wide-list-row.cat-basics { border-left: 5px solid var(--track-basics) !important; }
-        .wide-list-row.cat-frontend { border-left: 5px solid var(--track-frontend) !important; }
-        .wide-list-row.cat-programming { border-left: 5px solid var(--track-programming) !important; }
-        .wide-list-row.cat-database { border-left: 5px solid var(--track-dbms) !important; }
-        .wide-list-row.cat-frameworks { border-left: 5px solid var(--track-frameworks) !important; }
-        .wide-list-row.cat-career { border-left: 5px solid var(--track-career) !important; }
-        .wide-list-row.cat-cloud { border-left: 5px solid var(--track-cloud) !important; }
-        .wide-list-row.cat-core { border-left: 5px solid var(--track-core) !important; }
+        /* Top Color Borders for Square Grid Mode */
+        .wide-list-row.cat-basics { border-top: 5px solid var(--track-basics) !important; }
+        .wide-list-row.cat-frontend { border-top: 5px solid var(--track-frontend) !important; }
+        .wide-list-row.cat-programming { border-top: 5px solid var(--track-programming) !important; }
+        .wide-list-row.cat-database { border-top: 5px solid var(--track-dbms) !important; }
+        .wide-list-row.cat-frameworks { border-top: 5px solid var(--track-frameworks) !important; }
+        .wide-list-row.cat-career { border-top: 5px solid var(--track-career) !important; }
+        .wide-list-row.cat-cloud { border-top: 5px solid var(--track-cloud) !important; }
+        .wide-list-row.cat-core { border-top: 5px solid var(--track-core) !important; }
 
-        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
         .mod-thumb-deck {
-            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            width: 36px; height: 34px; background: var(--bg); border: 1px solid var(--border-line);
             border-radius: 4px; display: flex; align-items: center; justify-content: center;
             font-size: 0.95rem; flex-shrink: 0;
         }
@@ -130,23 +131,24 @@
         .wide-list-row.cat-cloud .mod-thumb-deck { color: var(--track-cloud); }
         .wide-list-row.cat-core .mod-thumb-deck { color: var(--track-core); }
 
-        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
         .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        .wide-list-row p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
+        .wide-list-row p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; flex-grow: 1; }
 
-        .download-btns { width: 160px; }
+        .download-btns { width: 100%; margin-top: auto; }
         .btn-dl { 
-            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
             text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
             display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
         .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
         /* Empty State */
-        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
         .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
         .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
         .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
@@ -158,11 +160,13 @@
         .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
         .outcome-item i { color: var(--primary); margin-top: 2px; font-size: 0.9rem; }
-        .outcome-item div strong { display: block; color: var(--secondary); margin-bottom: 2px; }
+        .outcome-item div .outcome-heading-text { display: block; color: var(--secondary); margin-bottom: 2px; font-weight: 700; }
 
-        @media (max-width: 960px) {
-            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
-            .download-btns { width: 100%; }
+        @media (max-width: 1024px) {
+            .wide-list-container { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+            .wide-list-container { grid-template-columns: 1fr !important; }
             .outcomes-grid { grid-template-columns: 1fr; gap: 16px; }
             .search-box { width: 100%; }
             .filter-wrapper { flex-direction: column; align-items: stretch; gap: 14px; }
@@ -379,21 +383,21 @@
                     <div class="outcome-item">
                         <i class="fas fa-route"></i>
                         <div>
-                            <strong>Linear Trajectories</strong>
+                            <span class="outcome-heading-text">Linear Trajectories</span>
                             <p>No loose topics. Every track is built directly as a step-by-step ladder connecting to your target technical outcome milestone.</p>
                         </div>
                     </div>
                     <div class="outcome-item">
                         <i class="fas fa-file-pdf"></i>
                         <div>
-                            <strong>Free Blueprint Notes</strong>
+                            <span class="outcome-heading-text">Free Blueprint Notes</span>
                             <p>Access high-quality structural text summaries, verification manuals, code samples repositories, and clean checklist notes completely free.</p>
                         </div>
                     </div>
                     <div class="outcome-item">
                         <i class="fas fa-sliders-h"></i>
                         <div>
-                            <strong>Granular Filter Tracks</strong>
+                            <span class="outcome-heading-text">Granular Filter Tracks</span>
                             <p>Seamlessly pivot across layout stacks, computing infrastructure parameters, background system logics, or absolute basics modules instantly.</p>
                         </div>
                     </div>
@@ -431,7 +435,7 @@
                                       isCoreSubmatch;
 
                 if (searchMatch && categoryMatch) {
-                    card.style.setProperty('display', 'grid', 'important');
+                    card.style.setProperty('display', 'flex', 'important');
                     matchCount++;
                 } else {
                     card.style.setProperty('display', 'none', 'important');
