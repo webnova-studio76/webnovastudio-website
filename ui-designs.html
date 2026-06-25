@@ -7,58 +7,82 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ... Your existing styles remain the same ... */
         :root {
-            --ui-primary: #2563eb; 
-            --ui-bg: #f8fafc;
-            --ui-card-bg: #ffffff;
-            --ui-text: #1e293b;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* High-Premium Soft Light Workspace Palette Tokens */
+            --ui-primary: #10b981;        /* Global Academic Emerald Green */
+            --ui-primary-glow: rgba(16, 185, 129, 0.08);
+            --ui-secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --ui-card-bg: #ffffff;       /* Pure White Canvas Cards */
+            --ui-bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --ui-text: #1e293b;          /* Dark Charcoal Main Typography */
+            --ui-text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
+            --card-radius: 16px;      
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--ui-primary-glow);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
         body { 
             background-color: var(--ui-bg); 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--ui-text); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed navbar padding buffer constraint */
         }
 
         .vault-container { 
-            max-width: 1300px; 
+            max-width: 1400px; 
             margin: 0 auto; 
-            padding: 60px 20px; 
+            padding: 50px 24px;
+            width: 100%;
         }
 
-        .vault-header { text-align: center; margin-bottom: 50px; }
+        /* --- Header Segment Layout --- */
+        .vault-header { text-align: center; margin-bottom: 45px; }
         .ui-badge { 
-            background: #eff6ff; color: var(--ui-primary); padding: 6px 16px; 
-            border-radius: 50px; font-size: 0.7rem; font-weight: 800; 
-            border: 1px solid #dbeafe; margin-bottom: 15px; display: inline-block;
-            text-transform: uppercase; letter-spacing: 1px;
+            background: rgba(16, 185, 129, 0.06); 
+            color: var(--ui-primary); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-size: 0.72rem; 
+            font-weight: 800; 
+            border: 1px solid rgba(16, 185, 129, 0.12); 
+            margin-bottom: 15px; 
+            display: inline-block;
+            text-transform: uppercase; 
+            letter-spacing: 1px;
             animation: bounce 2s infinite;
         }
-        .vault-header h1 { font-size: 2.8rem; font-weight: 900; color: #0f172a; margin: 10px 0; }
+        .vault-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; }
         .vault-header h1 span { color: var(--ui-primary); }
+        .vault-header p { color: var(--ui-text-muted); font-size: 1.05rem; margin-top: 10px; font-weight: 500; }
 
+        /* --- Fluid Responsive Asset Grid Frame --- */
         .ui-asset-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-            gap: 20px;
-            justify-content: center; 
-            max-width: 1200px; 
-            margin: 0 auto;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 24px;
+            width: 100%;
+            margin-top: 20px;
         }
 
+        /* --- Compact Card Units --- */
         .ui-card {
             background: var(--ui-card-bg);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--card-radius);
             overflow: hidden;
             transition: var(--transition);
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(12px);
             display: flex;
             flex-direction: column;
+            box-shadow: var(--tactile-shadow);
         }
 
         .ui-card.show {
@@ -67,106 +91,133 @@
         }
 
         .ui-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--ui-primary);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(16, 185, 129, 0.2);
         }
 
+        /* Pure Blueprint Inset Areas instead of harsh gray backgrounds */
         .canvas-area {
             height: 140px;
-            background: #f1f5f9;
+            background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
-            background-size: 15px 15px;
+            background-image: radial-gradient(rgba(148, 163, 184, 0.15) 0.7px, transparent 0.7px);
+            background-size: 16px 16px;
+            border-bottom: 1px solid var(--border);
         }
 
         .canvas-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
+            width: 58px;
+            height: 58px;
+            background: var(--white);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
 
         .ui-card:hover .canvas-icon-wrapper {
-            transform: scale(1.1);
-            background: var(--ui-primary);
+            transform: scale(1.04);
+            background: var(--ui-primary-glow);
+            border-color: transparent;
         }
 
         .canvas-icon-wrapper i {
-            font-size: 2rem;
-            color: var(--ui-primary);
-            transition: 0.3s;
+            font-size: 1.25rem;
+            color: var(--ui-text-muted);
+            transition: var(--transition);
         }
 
         .ui-card:hover .canvas-icon-wrapper i {
-            color: white;
+            color: var(--ui-primary);
         }
 
         .ui-tag {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
+            top: 12px;
+            right: 12px;
+            background: var(--white);
             padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.6rem;
+            border-radius: 5px;
+            font-size: 0.65rem;
             font-weight: 800;
             color: var(--ui-primary);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            letter-spacing: 0.3px;
         }
 
-        .ui-info { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; }
-        .ui-info h3 { font-size: 1rem; color: #0f172a; margin-bottom: 6px; font-weight: 800; }
+        .ui-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .ui-info h3 { font-size: 0.95rem; color: #0f172a; margin-bottom: 6px; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
         .ui-info p { 
-            font-size: 0.75rem; 
-            color: #64748b; 
-            line-height: 1.4; 
-            margin-bottom: 15px;
+            font-size: 0.8rem; 
+            color: var(--ui-text-muted); 
+            line-height: 1.45; 
+            margin-bottom: 20px;
             display: -webkit-box;
             -webkit-line-clamp: 2; 
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-weight: 500;
+            text-align: left;
         }
         
         .ui-actions { display: flex; gap: 8px; margin-top: auto; }
         .btn-ui {
             flex: 1;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
             text-align: center;
             text-decoration: none;
-            transition: 0.3s;
+            transition: var(--transition);
             cursor: pointer;
             border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
-        .btn-live { background: var(--ui-primary); color: white; }
-        .btn-get { background: #f1f5f9; color: #475569; }
-        .btn-get:hover { background: #e2e8f0; }
+        .btn-live { background: var(--ui-primary); color: var(--white); }
+        .btn-live:hover { background: #059669; box-shadow: 0 4px 10px var(--ui-primary-glow); }
+        
+        .btn-get { background: #f1f5f9; color: var(--ui-secondary); border: 1px solid rgba(0,0,0,0.02); }
+        .btn-get:hover { background: #e2e8f0; color: #0f172a; }
+
+        /* Dynamic Custom Color Assignments for Top Borders */
+        .ui-asset-grid > div:nth-of-type(4n+1) { border-top: 4px solid #38bdf8; } /* Light Blue */
+        .ui-asset-grid > div:nth-of-type(4n+2) { border-top: 4px solid #a855f7; } /* Light Purple */
+        .ui-asset-grid > div:nth-of-type(4n+3) { border-top: 4px solid #f29111; } /* Light Orange */
+        .ui-asset-grid > div:nth-of-type(4n+4) { border-top: 4px solid #ec4899; } /* Light Pink */
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-3px); }
         }
 
-        @media (max-width: 600px) {
-            .ui-asset-grid { grid-template-columns: 1fr; max-width: 350px; }
+        /* ==========================================================================
+           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 1280px) {
+            .ui-asset-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+        @media (max-width: 960px) {
+            .ui-asset-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) { 
+            .ui-asset-grid { grid-template-columns: 1fr; max-width: 100%; gap: 16px; } 
             .vault-header h1 { font-size: 2rem; }
+            .vault-container { padding: 30px 16px; }
         }
     </style>
 </head>
 <body>
+
+<div id="global-header"></div>
 
 <div class="vault-container">
     <header class="vault-header">
@@ -196,7 +247,7 @@
             </div>
         </div>
 
-          <div class="ui-card">
+        <div class="ui-card">
             <div class="canvas-area">
                 <span class="ui-tag">UI DESIGN</span>
                 <div class="canvas-icon-wrapper">
@@ -272,7 +323,10 @@
             </div>
         </div>
 
-      
+    </div>
+</div>
+
+<div id="global-footer"></div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -280,12 +334,12 @@
         cards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('show');
-            }, index * 100); 
+            }, index * 60); 
         });
     });
 </script>
-    <script src="header.js"></script>
+
+<script src="main.js"></script>
 <script src="footer.js"></script>
-<script src="animations.js"></script>
 </body>
 </html>
