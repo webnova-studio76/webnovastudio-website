@@ -6,269 +6,181 @@
     <title>Our Mission | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Next-Gen Typography Engines -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* High-Premium Light Workspace Theme Tokens */
+            /* High-End Minimalist Studio Design Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --primary-glow: rgba(16, 185, 129, 0.06);
-            --secondary: #0f172a;     /* Deep Slate Main Typography */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
-            --card-radius: 20px;      
+            --secondary: #0f172a;     /* Deep Jet Onyx */
+            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
+            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
+            --text-muted: #57534e;    /* Deep Muted Stone Blue */
+            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
             --white: #ffffff;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04), 0 1px 3px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 30px 50px -10px rgba(15, 23, 42, 0.06), 0 4px 20px -2px var(--primary-glow);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        h1, h2, h3, h4, .bento-num { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4, .bento-num, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             -webkit-font-smoothing: antialiased; 
             padding-top: 85px;
-            overflow-x: hidden;
+            letter-spacing: -0.01em;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; width: 100%; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 32px; width: 100%; }
 
-        /* --- 1. Ambient Dynamic Hero Canvas --- */
+        /* --- 1. Institutional Editorial Hero --- */
         .mission-hero-minimal {
+            padding: 130px 0 90px;
+            border-bottom: 1px solid var(--border-line);
+            background: var(--white);
             position: relative;
-            padding: 100px 0 80px;
-            text-align: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
-            border-bottom: 1px solid var(--border);
         }
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: flex-end;
+        }
+        .hero-left h1 { font-size: 3.8rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; }
+        .hero-left h1 span { color: var(--primary); }
+        .hero-right p { color: var(--text-muted); font-size: 1.15rem; font-weight: 400; line-height: 1.7; max-width: 520px; }
 
-        /* Subtle Light Grid Alignment Blueprint Matrix */
-        .mission-hero-minimal::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px; pointer-events: none; z-index: 1;
-        }
-
-        .hero-meta-tag {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.12);
-            padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 2px; color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .mission-hero-minimal h1 { 
-            font-size: 3.5rem; 
-            font-weight: 700; 
-            letter-spacing: -0.03em; 
-            margin-bottom: 24px; 
-            line-height: 1.15;
-        }
-        .mission-hero-minimal h1 span { color: var(--primary); }
-        
-        .mission-hero-minimal p { 
-            color: var(--text-muted); 
-            font-size: 1.1rem; 
-            font-weight: 500; 
-            max-width: 850px; 
-            margin: 0 auto; 
-            line-height: 1.7;
-        }
-
-        /* --- 2. Advanced Asymmetric Bento Grid Deck --- */
-        .mission-pillars { padding: 80px 0; }
+        /* --- 2. Asymmetric Bento Grid Deck (Light Structural Architecture) --- */
+        .mission-pillars { padding: 0; background: var(--white); }
         
         .bento-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            grid-template-rows: auto auto;
-            gap: 28px;
-            width: 100%;
+            border-bottom: 1px solid var(--border-line);
         }
 
         .bento-card {
-            background: var(--card-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
-            padding: 45px;
-            position: relative;
-            overflow: hidden;
+            padding: 80px 50px;
+            border-right: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-line);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: space-between;
             transition: var(--transition);
-            box-shadow: var(--tactile-shadow);
+            background: var(--white);
         }
+        
+        /* Clear cross-borders systematically */
+        .bento-grid .bento-card:nth-child(2n) { border-right: none; }
+        .bento-grid .bento-card.card-large-2 { grid-column: 1 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; border-bottom: none; }
 
-        /* Unique Asymmetric Grid Layout Locks */
-        .card-large-1 { grid-column: 1 / 2; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
-        .card-small { grid-column: 2 / 3; grid-row: 1 / 2; border-bottom: 4px solid #cbd5e1; }
-        .card-large-2 { grid-column: 1 / 3; grid-row: 2 / 3; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: center; border-bottom: 4px solid #cbd5e1; }
+        .bento-card:hover { background: #fdfdfd; }
 
-        /* Smooth Light Mouseglow Track Overlay */
-        .bento-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(16, 185, 129, 0.04), transparent 60%);
-            z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
-        }
-        .bento-card:hover::before { opacity: 1; }
+        .card-top-content .cell-tag { font-family: monospace; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 24px; }
+        .bento-card h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; line-height: 1.2; }
+        .bento-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; font-weight: 400; text-align: left; }
 
-        .bento-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.2);
-            border-bottom-color: var(--primary);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .bento-card i {
-            font-size: 1.3rem; color: var(--primary);
-            margin-bottom: 24px; display: inline-flex;
-            width: 46px; height: 44px; background: rgba(16, 185, 129, 0.05);
-            border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 12px;
-            align-items: center; justify-content: center;
-            transition: var(--transition);
-        }
-        .bento-card:hover i { background: var(--primary); color: var(--white); border-color: var(--primary); }
-
-        .bento-card h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .bento-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; font-weight: 500; text-align: left; }
+        .cell-icon-wrap { font-size: 1.2rem; color: var(--secondary); display: inline-flex; margin-top: auto; }
 
         /* --- 3. Sleek SaaS Execution Timeline --- */
-        .mission-roadmap { padding: 60px 0 90px; }
-        .roadmap-container { position: relative; width: 100%; }
-        
-        .roadmap-container h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 60px; text-align: center; }
+        .mission-roadmap { padding: 100px 0; border-bottom: 1px solid var(--border-line); }
+        .roadmap-container h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 60px; text-align: left; }
         .roadmap-container h2 span { color: var(--primary); }
 
         .roadmap-linear-track {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 40px;
             position: relative;
         }
 
-        /* Connecting horizontal technical wireframe axis line */
+        /* Connecting horizontal technical layout alignment grid axis line */
         .roadmap-linear-track::before {
-            content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px;
-            background: #e2e8f0;
+            content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 1px;
+            background: var(--border-line);
             z-index: 1;
         }
 
         .roadmap-node { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; }
         
         .bento-num {
-            font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
-            background: #f8fafc; border: 2px solid #e2e8f0;
-            width: 42px; height: 42px; border-radius: 50%;
+            font-size: 0.85rem; font-weight: 700; color: var(--text-muted);
+            background: var(--bg); border: 1px solid var(--border-line);
+            width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 24px; transition: var(--transition);
         }
-        .roadmap-node:hover .bento-num { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); transform: scale(1.05); }
+        .roadmap-node:hover .bento-num { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        .node-content { background: var(--white); border: 1px solid var(--border); padding: 26px 28px; border-radius: 14px; box-shadow: var(--tactile-shadow); transition: var(--transition); }
-        .roadmap-node:hover .node-content { border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04); }
+        .node-content h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .node-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+        /* --- 4. Institutional Vision Inset Block --- */
+        .vision-reveal { padding: 110px 0; background: var(--white); border-bottom: 1px solid var(--border-line); }
+        .statement-split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
+        .statement-split h2 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
+        .statement-split h2 span { color: var(--primary); }
         
-        .node-content h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-        .node-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; text-align: left; }
-
-        /* --- 4. Holographic Inset Vision Callout --- */
-        .vision-reveal { padding-bottom: 100px; }
-        
-        .hologram-vision-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-left: 6px solid var(--primary);
-            padding: 50px; border-radius: 4px var(--card-radius) var(--card-radius) 4px;
-            box-shadow: var(--tactile-shadow);
-            text-align: center; max-width: 900px; margin: 0 auto;
-            display: flex; flex-direction: column; align-items: center;
-        }
-
-        .vision-avatar {
-            width: 52px; height: 52px; border-radius: 14px;
-            background: var(--primary-glow); color: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.1);
-        }
-
-        .hologram-vision-card h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .hologram-vision-card h2 span { color: var(--primary); }
-        .hologram-vision-card p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 700px; }
+        .glass-impact-box { text-align: left; }
+        .glass-impact-box p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.75; font-weight: 400; }
 
         /* ==========================================================================
            --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
            ========================================================================== */
-        @media (max-width: 1100px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .card-large-1, .card-small, .card-large-2 { grid-column: 1 / -1; }
-            .card-large-2 { grid-template-columns: 1fr; gap: 24px; }
-            .roadmap-linear-track { grid-template-columns: 1fr; gap: 40px; }
+        @media (max-width: 1024px) {
+            .hero-layout, .bento-grid, .roadmap-linear-track, .statement-split { grid-template-columns: 1fr; gap: 40px; }
+            .hero-left h1 { font-size: 3rem; }
+            .bento-grid .bento-card { border-right: none !important; border-bottom: 1px solid var(--border-line) !important; padding: 50px 24px; }
+            .bento-grid .bento-card.card-large-2 { grid-template-columns: 1fr; gap: 20px; border-bottom: none !important; }
             .roadmap-linear-track::before { display: none; }
-            .mission-hero-minimal h1 { font-size: 2.6rem; }
-            .bento-card { padding: 40px 30px; }
-        }
-        @media (max-width: 640px) {
-            .mission-hero-minimal { padding: 75px 0 55px; }
-            .mission-hero-minimal h1 { font-size: 2.2rem; }
-            .hologram-vision-card { padding: 35px 24px; }
-            .container { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Dynamic Universal Header Nav Anchor Mount -->
 <div id="global-header"></div>
 
 <section class="mission-hero-minimal">
     <div class="container">
-        <span class="hero-meta-tag">Ecosystem Core</span>
-        <h1>Bridging the Gap Between <br><span>Theory &amp; Industry.</span></h1>
-        <p>Founded by Rakesh (BCA Graduate) and Rashmi (MCA Scholar), our mission is to bridge the gap between academic learning and real-world industry practices. Through education, innovation, and collaboration, we empower students, developers, and businesses with the knowledge, skills, and digital solutions needed to succeed in a rapidly evolving technological world.</p>
+        <div class="hero-layout">
+            <div class="hero-left">
+                <h1>Our Core<br><span>Mission.</span></h1>
+            </div>
+            <div class="hero-right">
+                <p>Founded by Rakesh (BCA Graduate) and Rashmi (MCA Scholar), our mission is to bridge the gap between academic learning and real-world industry practices. Through education, innovation, and collaboration, we empower students, developers, and businesses with the knowledge, skills, and digital solutions needed to succeed in a rapidly evolving technological world.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="mission-pillars">
-    <div class="container">
+    <div class="container" style="padding:0;">
         <div class="bento-grid">
             
-            <!-- BENTO CARD 1: LARGE ASYMMETRIC -->
             <div class="bento-card card-large-1">
-                <div>
-                    <i class="fas fa-terminal"></i>
+                <div class="card-top-content">
+                    <span class="cell-tag">01 // Optimization</span>
                     <h3>Code Logic First</h3>
                     <p>At Code Craft Academic, we believe that strong fundamentals create exceptional developers. Rather than encouraging copy-paste learning, we focus on programming logic, problem-solving methodologies, system design concepts, and practical development workflows. Our goal is to help learners build a deep understanding of technology and develop the confidence to create solutions independently.</p>
                 </div>
+                <div class="cell-icon-wrap"><i class="fas fa-terminal"></i></div>
             </div>
 
-            <!-- BENTO CARD 2: COMPACT AXIS -->
             <div class="bento-card card-small">
-                <div>
-                    <i class="fas fa-layer-group"></i>
+                <div class="card-top-content">
+                    <span class="cell-tag">02 // Usability</span>
                     <h3>Design with Purpose</h3>
                     <p>At WebNova Studio, we combine creativity with functionality to craft meaningful digital experiences. From modern websites and user interfaces to scalable digital solutions, we prioritize usability, performance, accessibility, and visual excellence. Every project is designed to serve a purpose and deliver measurable value.</p>
                 </div>
+                <div class="cell-icon-wrap"><i class="fas fa-layer-group"></i></div>
             </div>
 
-            <!-- BENTO CARD 3: FULL GRID ROW HORIZON -->
             <div class="bento-card card-large-2">
                 <div>
-                    <i class="fas fa-seedling"></i>
+                    <span class="cell-tag">03 // Collaboration</span>
                     <h3>Community Growth</h3>
                 </div>
                 <div>
@@ -287,7 +199,6 @@
             
             <div class="roadmap-linear-track">
                 
-                <!-- NODE 1 -->
                 <div class="roadmap-node">
                     <div class="bento-num">01</div>
                     <div class="node-content">
@@ -296,7 +207,6 @@
                     </div>
                 </div>
                 
-                <!-- NODE 2 -->
                 <div class="roadmap-node">
                     <div class="bento-num">02</div>
                     <div class="node-content">
@@ -305,7 +215,6 @@
                     </div>
                 </div>
                 
-                <!-- NODE 3 -->
                 <div class="roadmap-node">
                     <div class="bento-num">03</div>
                     <div class="node-content">
@@ -319,35 +228,22 @@
     </div>
 </section>
 
-<!-- Vision Section -->
 <section class="vision-reveal">
     <div class="container">
-        <div class="glass-impact-box">
-            <div class="vision-avatar"><i class="fas fa-eye"></i></div>
-            <h2>Our <span>Vision</span></h2>
-            <p>To create a unified ecosystem where education, innovation, and digital creation work together seamlessly—empowering the next generation of developers, designers, and technology leaders to learn, build, and grow with confidence.</p>
+        <div class="statement-split">
+            <div>
+                <h2>Our Global<br><span>Vision.</span></h2>
+            </div>
+            <div class="glass-impact-box">
+                <p>To create a unified ecosystem where education, innovation, and digital creation work together seamlessly—empowering the next generation of developers, designers, and technology leaders to learn, build, and grow with confidence.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Dynamic Universal Footer Mount Anchor -->
 <div id="global-footer"></div>
 
-<!-- System Production Script Hooks -->
 <script src="main.js"></script>
 <script src="footer.js"></script>
-
-<!-- Cursor Tracking Light Effect Interaction Code -->
-<script>
-    document.querySelectorAll('.bento-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-</script>
 </body>
 </html>
