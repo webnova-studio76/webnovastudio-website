@@ -12,7 +12,6 @@
     
     <style>
         :root {
-            /* Compact Data-Dense Tokens */
             --primary: #10b981;
             --secondary: #0f172a;
             --bg: #f8fafc;
@@ -39,7 +38,7 @@
         .course-header h1 span { color: var(--primary); }
         .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; }
 
-        /* --- 2. Dense Control & Filter Row --- */
+        /* --- 2. Filter Bar --- */
         .filter-wrapper {
             display: flex;
             align-items: center;
@@ -65,31 +64,39 @@
         }
         .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- 3. Ultra-Wide Row-Based Card Architecture --- */
-        .learning-modules-section { padding: 24px 0; }
-        .module-grid {
-            display: grid; grid-template-columns: 1fr; gap: 14px; /* Forces cards into a 100% wide row structure */
+        /* --- 3. IMMUNE WIDE LIST ENGINE (FIXES OVERLAPPING / SQUISHING) --- */
+        .wide-list-section { padding: 24px 0; }
+        
+        .wide-list-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            width: 100% !important;
         }
 
-        .module-card {
-            background: var(--white);
-            border: 1px solid var(--border-line);
-            padding: 20px 32px; /* Tight vertical padding, spacious horizontal padding */
-            border-radius: 8px;
-            display: grid;
-            grid-template-columns: 240px 1fr auto; /* Split: Metadata | Lessons List | Action Button */
-            align-items: center;
-            gap: 32px;
-            transition: all 0.2s ease;
+        .wide-list-row {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px 32px !important;
+            border-radius: 8px !important;
+            display: grid !important;
+            grid-template-columns: 240px 1fr 160px !important; /* Locks width segments explicitly */
+            align-items: center !important;
+            gap: 32px !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            box-shadow: none !important;
+            transform: none !important;
+            transition: border-color 0.2s ease;
         }
-        .module-card:hover { border-color: #cbd5e1; transform: translateX(2px); }
+        .wide-list-row:hover { border-color: #cbd5e1 !important; }
 
-        /* Distinct Color Borders for Each Specific Category Card Track */
-        .module-card.border-orange { border-left: 5px solid #f59e0b; }
-        .module-card.border-blue { border-left: 5px solid #3b82f6; }
-        .module-card.border-emerald { border-left: 5px solid #10b981; }
-        .module-card.border-purple { border-left: 5px solid #8b5cf6; }
-        .module-card.border-red { border-left: 5px solid #ef4444; }
+        /* Left-Side Colored Structural Borders */
+        .wide-list-row.track-orange { border-left: 5px solid #f59e0b !important; }
+        .wide-list-row.track-blue { border-left: 5px solid #3b82f6 !important; }
+        .wide-list-row.track-emerald { border-left: 5px solid #10b981 !important; }
+        .wide-list-row.track-purple { border-left: 5px solid #8b5cf6 !important; }
+        .wide-list-row.track-red { border-left: 5px solid #ef4444 !important; }
 
         .mod-identity-block { display: flex; align-items: center; gap: 14px; }
         .mod-thumb-deck {
@@ -97,20 +104,20 @@
             border-radius: 4px; display: flex; align-items: center; justify-content: center;
             font-size: 0.95rem; color: var(--text-main); flex-shrink: 0;
         }
-        .module-card.border-orange .mod-thumb-deck { color: #f59e0b; }
-        .module-card.border-blue .mod-thumb-deck { color: #3b82f6; }
-        .module-card.border-emerald .mod-thumb-deck { color: #10b981; }
-        .module-card.border-purple .mod-thumb-deck { color: #8b5cf6; }
-        .module-card.border-red .mod-thumb-deck { color: #ef4444; }
+        .wide-list-row.track-orange .mod-thumb-deck { color: #f59e0b; }
+        .wide-list-row.track-blue .mod-thumb-deck { color: #3b82f6; }
+        .wide-list-row.track-emerald .mod-thumb-deck { color: #10b981; }
+        .wide-list-row.track-purple .mod-thumb-deck { color: #8b5cf6; }
+        .wide-list-row.track-red .mod-thumb-deck { color: #ef4444; }
 
         .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
         
         .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
         .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        .module-card ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-        .module-card li { font-size: 0.88rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; }
-        .module-card li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
+        .wide-list-row ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .wide-list-row li { font-size: 0.88rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
         .download-btns { width: 160px; }
         .btn-dl { 
@@ -126,7 +133,7 @@
         .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
         .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* --- 4. Compact Footer Stats --- */
+        /* --- 4. Footer Summary Deck --- */
         .syllabus-footer { padding: 16px 0 60px; }
         .resource-summary {
             display: grid; grid-template-columns: repeat(3, 1fr);
@@ -153,7 +160,7 @@
         .btn-studio:hover { background: var(--primary); }
 
         @media (max-width: 960px) {
-            .module-card { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
             .download-btns { width: 100%; }
             .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
             .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -166,7 +173,7 @@
 </head>
 <body>
 
-    <!-- Unified Navigation Bar Component -->
+    <!-- Unified Navigation Component Header Mount Slot -->
     <div id="global-header"></div>
 
     <section class="course-header">
@@ -193,12 +200,12 @@
             </div>
         </div>
 
-        <!-- Horizontal Dense Module Track -->
-        <section class="learning-modules-section">
-            <div class="module-grid" id="moduleGrid">
+        <!-- Horizontal Dense Module Track Container -->
+        <section class="wide-list-section">
+            <div class="wide-list-container" id="moduleGrid">
                 
                 <!-- MODULE 1 -->
-                <div class="module-card border-orange" data-category="software">
+                <div class="wide-list-row track-orange" data-category="software">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-history"></i></div>
                         <div class="mod-header-text">
@@ -220,7 +227,7 @@
                 </div>
 
                 <!-- MODULE 2 -->
-                <div class="module-card border-blue" data-category="hardware">
+                <div class="wide-list-row track-blue" data-category="hardware">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
                         <div class="mod-header-text">
@@ -242,7 +249,7 @@
                 </div>
 
                 <!-- MODULE 3 -->
-                <div class="module-card border-emerald" data-category="software">
+                <div class="wide-list-row track-emerald" data-category="software">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-compact-disc"></i></div>
                         <div class="mod-header-text">
@@ -264,7 +271,7 @@
                 </div>
 
                 <!-- MODULE 4 -->
-                <div class="module-card border-purple" data-category="network">
+                <div class="wide-list-row track-purple" data-category="network">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
                         <div class="mod-header-text">
@@ -286,7 +293,7 @@
                 </div>
 
                 <!-- MODULE 5 -->
-                <div class="module-card border-red" data-category="network">
+                <div class="wide-list-row track-red" data-category="network">
                     <div class="mod-identity-block">
                         <div class="mod-thumb-deck"><i class="fas fa-user-shield"></i></div>
                         <div class="mod-header-text">
@@ -343,7 +350,7 @@
         </section>
     </div>
 
-    <!-- Master Footer -->
+    <!-- Dynamic Universal Footer Slot Mount -->
     <div id="global-footer"></div>
 
     <script src="main.js"></script>
@@ -353,7 +360,7 @@
 
         function applyFilters() {
             const query = document.getElementById('moduleSearch').value.toLowerCase();
-            const cards = document.querySelectorAll('.module-card');
+            const cards = document.querySelectorAll('.wide-list-row');
             const noResults = document.getElementById('noResults');
             let matchCount = 0;
 
@@ -365,10 +372,10 @@
                 const categoryMatch = currentCategory === 'all' || card.dataset.category === currentCategory;
 
                 if (searchMatch && categoryMatch) {
-                    card.style.display = 'grid';
+                    card.style.setProperty('display', 'grid', 'important');
                     matchCount++;
                 } else {
-                    card.style.display = 'none';
+                    card.style.setProperty('display', 'none', 'important');
                 }
             });
 
