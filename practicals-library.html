@@ -3,324 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C-Labs Master Library | Code Craft Academic</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Programming Practical Hub | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 1. PREMIUM DARK CYBER VARIABLES & RESET */
         :root {
-            --primary: #10b981;       /* Vibrant Emerald Green */
-            --secondary: #090d16;     /* Deep Space Dark Matte */
-            --card-surface: #111827;  /* High-Contrast Charcoal Slate */
-            --bg: #030712;            /* True Obsidian Background */
+            /* High-Premium Soft Light Dashboard Workspace Palette Tokens */
+            --primary: #10b981;        /* Global Academic Emerald Green */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border: rgba(148, 163, 184, 0.14); /* Extremely soft structural outline */
+            --card-radius: 16px;      
             --white: #ffffff;
-            --border: rgba(255, 255, 255, 0.05); /* Soft structural line */
-            --text-main: #f1f5f9;     /* Off-White Crisp Typography */
-            --text-muted: #94a3b8;    /* Muted Cool Gray Metadata */
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* High-Performance Smooth Depth Shadows */
+            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 85px; /* Fixed navbar padding buffer constraint */
+        }
 
-        /* 2. HEADER & GLOWING SEARCH SECTION */
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; width: 100%; }
+
+        /* --- Header Section --- */
         .hub-header {
             position: relative;
-            background: linear-gradient(180deg, var(--secondary) 0%, var(--bg) 100%);
-            padding: 100px 20px 120px;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            color: var(--text-main);
+            padding: 50px 20px 70px;
             text-align: center;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
         }
 
-        /* Subtle cyber grid ambient design effect */
+        /* Ambient background technology grid lines matching the index style */
         .hub-header::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none; z-index: 1;
         }
 
-        /* Fixed Title Wrapper: Allows headline to span in one single row line */
-        .header-title-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
+        .header-title-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
+        .hub-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .hub-header h1 span { color: var(--primary); }
+        .hub-header p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; }
 
-        .hub-header h1 { font-size: 3rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.03em; color: var(--white); white-space: nowrap; }
-        .hub-header h1 span { color: var(--primary); text-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
-        .hub-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
-        
-        .search-container {
-            max-width: 540px;
-            margin: 40px auto 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            transition: var(--transition);
-        }
-
-        #hubSearch {
-            width: 100%;
-            padding: 16px 20px 16px 60px;
-            border-radius: 50px;
+        /* --- Search & Controls Toolbar --- */
+        .toolbar {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 14px;
             border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            outline: none;
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 105px; 
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04);
         }
 
-        #hubSearch:focus {
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 4px 30px rgba(0, 0, 0, 0.4);
+        .search-box { flex: 2; position: relative; }
+        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
+        .search-box input {
+            width: 100%; padding: 12px 16px 12px 48px; border-radius: 10px;
+            border: 1px solid transparent; background: #f1f5f9; outline: none; transition: var(--transition);
+            color: var(--secondary); font-weight: 500; font-size: 0.92rem;
         }
-        #hubSearch:focus + i { color: var(--primary); }
+        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow); }
+        .search-box input:focus + i { color: var(--primary); }
 
-        /* 3. GRID SYSTEM & CONTAINER STRUCTURAL POSITIONS */
-        .container { max-width: 1300px; margin: -50px auto 80px; padding: 0 24px; position: relative; z-index: 20; }
+        .sort-box { flex: 1; position: relative; min-width: 180px; }
+        .sort-box select {
+            width: 100%; padding: 12px 16px; border-radius: 10px;
+            border: 1px solid transparent; background: #f1f5f9;
+            font-weight: 700; color: var(--secondary); cursor: pointer; appearance: none; outline: none;
+            font-size: 0.88rem; transition: var(--transition);
+        }
+        .sort-box select:hover, .sort-box select:focus { border-color: var(--border); background: #e2e8f0; }
+        .sort-box::after {
+            content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
+            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); pointer-events: none; font-size: 0.75rem;
+        }
 
+        /* --- Fluid Responsive Asset Grid Frame --- */
         .lab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            width: 100%;
         }
 
-        /* 4. HIGH-PREMIUM GLASSMORPHIC CARD STYLING */
+        /* --- High-Premium Soft Light Lab Cards --- */
         .lab-card {
             background: var(--card-surface);
-            border-radius: 24px;
-            padding: 40px;
             border: 1px solid var(--border);
+            border-radius: var(--card-radius);
+            padding: 35px 28px;
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: var(--transition);
-            animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--tactile-shadow);
+            opacity: 0;
+            transform: translateY(12px);
         }
 
-        .lab-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
-            background: #cbd5e1; 
-            transition: var(--transition);
-        }
+        .lab-card.show { opacity: 1; transform: translateY(0); }
 
         .lab-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            transform: translateY(-4px);
+            box-shadow: var(--hover-shadow);
         }
+
+        /* Custom Soft Pastel Left Identification Borders */
+        .card-c { border-left: 5px solid #64748b; }
+        .card-c:hover { border-color: rgba(100, 116, 139, 0.25); }
+        .card-cpp { border-left: 5px solid #38bdf8; }
+        .card-cpp:hover { border-color: rgba(56, 189, 248, 0.25); }
+        .card-java { border-left: 5px solid #f89820; }
+        .card-java:hover { border-color: rgba(248, 152, 32, 0.25); }
+        .card-python { border-left: 5px solid #4776ab; }
+        .card-python:hover { border-color: rgba(71, 118, 171, 0.25); }
+        .card-sql { border-left: 5px solid #f29111; }
+        .card-sql:hover { border-color: rgba(242, 145, 17, 0.25); }
+        .card-web { border-left: 5px solid #e34c26; }
+        .card-web:hover { border-color: rgba(227, 76, 38, 0.25); }
 
         .phase-tag { 
-            font-size: 0.75rem; 
+            font-size: 0.72rem; 
             font-weight: 800; 
             text-transform: uppercase; 
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
             display: inline-block;
+            background: #f1f5f9;
+            padding: 3px 10px;
+            border-radius: 5px;
         }
 
-        .lab-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.01em; }
-        .lab-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; }
+        .lab-card h3 { color: #0f172a; font-size: 1.35rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
+        .lab-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; line-height: 1.5; text-align: left; }
 
-        /* Footer of Card Elements */
+        /* Card Split Area Rule Line */
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 24px;
+            padding-top: 20px;
             border-top: 1px solid var(--border);
         }
 
         .btn-view {
-            text-decoration: none;
-            font-weight: 700;
+            text-decoration: none !important;
+            font-weight: 800;
+            color: #2563eb;
             font-size: 0.85rem;
-            color: var(--white);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition);
-            cursor: pointer; 
-            user-select: none; 
         }
+        .btn-view:hover { color: #0f172a; text-decoration: underline !important; }
 
-        .btn-view i { transition: var(--transition); font-size: 0.8rem; }
-        .btn-view:hover { color: var(--primary); }
-        .btn-view:hover i { transform: translateX(6px); }
+        #sentinel { height: 40px; }
 
-        /* 5. VIBRANT NEON TECH COLOR ASSIGNMENTS */
-        .card-c::before { background: #64748b; }
-        .card-c:hover { border-color: rgba(100, 116, 139, 0.4); box-shadow: 0 20px 40px -15px rgba(100, 116, 139, 0.15); }
-        .card-c:hover .btn-view { color: #64748b; }
-
-        .card-cpp::before { background: #00599c; }
-        .card-cpp:hover { border-color: rgba(0, 89, 156, 0.4); box-shadow: 0 20px 40px -15px rgba(0, 89, 156, 0.15); }
-        .card-cpp:hover .btn-view { color: #38bdf8; }
-
-        .card-java::before { background: #f89820; }
-        .card-java:hover { border-color: rgba(248, 152, 32, 0.4); box-shadow: 0 20px 40px -15px rgba(248, 152, 32, 0.15); }
-        .card-java:hover .btn-view { color: #f89820; }
-
-        .card-python::before { background: #3776ab; }
-        .card-python:hover { border-color: rgba(55, 118, 171, 0.4); box-shadow: 0 20px 40px -15px rgba(55, 118, 171, 0.15); }
-        .card-python:hover .btn-view { color: #3776ab; }
-
-        .card-sql::before { background: #f29111; }
-        .card-sql:hover { border-color: rgba(242, 145, 17, 0.4); box-shadow: 0 20px 40px -15px rgba(242, 145, 17, 0.15); }
-        .card-sql:hover .btn-view { color: #f29111; }
-
-        .card-web::before { background: #e34c26; }
-        .card-web:hover { border-color: rgba(227, 76, 38, 0.4); box-shadow: 0 20px 40px -15px rgba(227, 76, 38, 0.15); }
-        .card-web:hover .btn-view { color: #e34c26; }
-
-        /* Smooth Entrance Animations Keyframes */
-        @keyframes cardEntrance {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ==========================================================================
+           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 1150px) {
+            .asset-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .toolbar { top: 95px; }
         }
-
-        @media (max-width: 768px) {
-            .hub-header { padding: 80px 16px 100px; }
-            .hub-header h1 { font-size: 1.8rem; white-space: normal; } /* Normal wrap safety for smaller smartphones */
-            .container { margin-top: -30px; padding: 0 16px; }
-            .lab-card { padding: 30px; }
+        @media (max-width: 680px) { 
+            .asset-grid { grid-template-columns: 1fr; gap: 16px; } 
+            .toolbar { flex-direction: column; align-items: stretch; border-radius: 12px; padding: 12px; top: 95px; gap: 12px; } 
+            .hub-header h1 { font-size: 2rem; }
+            .container { padding: 30px 16px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hub-header">
-        <div class="header-title-container">
-            <h1>Programming <span>Practical Hub</span></h1>
-            <p>Verified source code and lab manuals for the WebNova community.</p>
-        </div>
-        
-        <div class="search-container">
+<div id="global-header"></div>
+
+<header class="hub-header">
+    <div class="header-title-container">
+        <h1>Programming <span>Practical Hub</span></h1>
+        <p>Verified source code and lab manuals for the WebNova community.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="toolbar">
+        <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" id="hubSearch" placeholder="Search by language (e.g. Java, Python)..." onkeyup="filterHub()">
+            <input type="text" id="hubSearch" placeholder="Search parameters (e.g., Java, SQL, c)...">
         </div>
-    </header>
-
-    <div class="container">
-        <div class="lab-grid" id="labGrid">
-
-            <div class="lab-card card-c" data-lang="c">
-                <div>
-                    <p class="phase-tag" style="color: #64748b;">Procedural Core</p>
-                    <h3>C Programming</h3>
-                    <p>Essential lab programs: Pointers, Structures, File I/O, and sorting algorithms.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="c-labs.html" class="btn-view" style="text-decoration: none;">
-                        View C Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lab-card card-cpp" data-lang="c++">
-                <div>
-                    <p class="phase-tag" style="color: #38bdf8;">Object Oriented</p>
-                    <h3>C++ Architecture</h3>
-                    <p>Practical implementation of Classes, Inheritance, Polymorphism, and Templates.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="cpp-labs.html" class="btn-view" style="text-decoration: none;">
-                        View C++ Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lab-card card-java" data-lang="java">
-                <div>
-                    <p class="phase-tag" style="color: #f89820;">Platform Independent</p>
-                    <h3>Java Mastery</h3>
-                    <p>Multithreading, Exception Handling, JDBC Connectivity, and Applets.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="java-labs.html" class="btn-view" style="text-decoration: none;">
-                        View Java Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lab-card card-python" data-lang="python">
-                <div>
-                    <p class="phase-tag" style="color: #3776ab;">Logic Mastery</p>
-                    <h3>Python Labs</h3>
-                    <p>List comprehensions, Dictionary methods, File handling, and Data logic.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="python-labs.html" class="btn-view" style="text-decoration: none;">
-                        View Python Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lab-card card-sql" data-lang="sql">
-                <div>
-                    <p class="phase-tag" style="color: #f29111;">Database Ops</p>
-                    <h3>SQL & DBMS</h3>
-                    <p>Database normalization, Complex Joins, Triggers, and Stored Procedures.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="sql-labs.html" class="btn-view" style="text-decoration: none;">
-                        View SQL Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lab-card card-web" data-lang="html css">
-                <div>
-                    <p class="phase-tag" style="color: #e34c26;">Frontend Design</p>
-                    <h3>HTML & CSS Examples</h3>
-                    <p>Responsive Grid/Flexbox layouts, Form validations, and UI components.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="web-labs.html" class="btn-view" style="text-decoration: none;">
-                        View HTML & CSS Labs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
+        <div class="sort-box">
+            <select id="hubSort">
+                <option value="newest">Latest Manuals</option>
+                <option value="popular">Most Utilized</option>
+                <option value="az">Alphabetic (A-Z)</option>
+            </select>
         </div>
     </div>
 
-    <script>
-        function filterHub() {
-            const input = document.getElementById('hubSearch').value.toLowerCase();
-            const cards = document.getElementsByClassName('lab-card');
+    <div class="lab-grid" id="labGrid">
 
-            for (let i = 0; i < cards.length; i++) {
-                let lang = cards[i].getAttribute('data-lang');
-                if (lang.includes(input)) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
+        <div class="lab-card card-c" data-lang="c" data-downloads="3100">
+            <div>
+                <span class="phase-tag" style="color: #64748b;">Procedural Core</span>
+                <h3>C Programming</h3>
+                <p>Essential lab programs: Pointers, Structures, File I/O, and sorting algorithms.</p>
+            </div>
+            <div class="card-footer">
+                <a href="c-labs.html" class="btn-view">View C Labs &rarr;</a>
+            </div>
+        </div>
+
+        <div class="lab-card card-cpp" data-lang="c++" data-downloads="3400">
+            <div>
+                <span class="phase-tag" style="color: #0284c7;">Object Oriented</span>
+                <h3>C++ Architecture</h3>
+                <p>Practical implementation of Classes, Inheritance, Polymorphism, and Templates.</p>
+            </div>
+            <div class="card-footer">
+                <a href="cpp-labs.html" class="btn-view">View C++ Labs &rarr;</a>
+            </div>
+        </div>
+
+        <div class="lab-card card-java" data-lang="java" data-downloads="4800">
+            <div>
+                <span class="phase-tag" style="color: #d97706;">Platform Independent</span>
+                <h3>Java Mastery</h3>
+                <p>Multithreading, Exception Handling, JDBC Connectivity, and Applets.</p>
+            </div>
+            <div class="card-footer">
+                <a href="java-labs.html" class="btn-view">View Java Labs &rarr;</a>
+            </div>
+        </div>
+
+        <div class="lab-card card-python" data-lang="python" data-downloads="4100">
+            <div>
+                <span class="phase-tag" style="color: #2563eb;">Logic Mastery</span>
+                <h3>Python Labs</h3>
+                <p>List comprehensions, Dictionary methods, File handling, and Data logic.</p>
+            </div>
+            <div class="card-footer">
+                <a href="python-labs.html" class="btn-view">View Python Labs &rarr;</a>
+            </div>
+        </div>
+
+        <div class="lab-card card-sql" data-lang="sql" data-downloads="3900">
+            <div>
+                <span class="phase-tag" style="color: #c2410c;">Database Ops</span>
+                <h3>SQL & DBMS</h3>
+                <p>Database normalization, Complex Joins, Triggers, and Stored Procedures.</p>
+            </div>
+            <div class="card-footer">
+                <a href="sql-labs.html" class="btn-view">View SQL Labs &rarr;</a>
+            </div>
+        </div>
+
+        <div class="lab-card card-web" data-lang="html css" data-downloads="5200">
+            <div>
+                <span class="phase-tag" style="color: #b91c1c;">Frontend Design</span>
+                <h3>HTML & CSS Examples</h3>
+                <p>Responsive Grid/Flexbox layouts, Form validations, and UI components.</p>
+            </div>
+            <div class="card-footer">
+                <a href="web-labs.html" class="btn-view">View HTML & CSS Labs &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+    <div id="sentinel"></div>
+</div>
+
+<div id="global-footer"></div>
+
+<script>
+    const grid = document.getElementById('labGrid');
+    const search = document.getElementById('hubSearch');
+    const sort = document.getElementById('hubSort');
+
+    // Staggered Entrance Motion Animation Setup
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.lab-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 40); 
+        });
+    });
+
+    // Instant Real-Time Search Logic Filter
+    search.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        document.querySelectorAll('.lab-card').forEach(card => {
+            const langIndex = card.getAttribute('data-lang').toLowerCase();
+            const titleIndex = card.querySelector('h3').innerText.toLowerCase();
+            
+            if (langIndex.includes(query) || titleIndex.includes(query)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
             }
+        });
+    });
+
+    // Unified Sorting Engine Processing
+    sort.addEventListener('change', () => {
+        const cards = Array.from(grid.querySelectorAll('.lab-card'));
+        
+        if (sort.value === 'popular') {
+            cards.sort((a, b) => parseInt(b.dataset.downloads || 0) - parseInt(a.dataset.downloads || 0));
+        } else if (sort.value === 'az') {
+            cards.sort((a, b) => a.getAttribute('data-lang').localeCompare(b.getAttribute('data-lang')));
+        } else {
+            // Default chronological layout reset
+            location.reload();
+            return;
         }
-    </script>
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
-    <script src="animations.js"></script>
+
+        grid.innerHTML = '';
+        cards.forEach(card => grid.appendChild(card));
+    });
+</script>
+
+<script src="main.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>
