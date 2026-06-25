@@ -17,13 +17,13 @@
             --text-main: #1e293b;     /* Dark Charcoal Main Typography */
             --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
             --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
-            --card-radius: 16px;      
+            --card-radius: 24px;      
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.33, 1);
             
             /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
+            --tactile-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04), 0 1px 3px rgba(37, 99, 235, 0.02);
+            --hover-shadow: 0 30px 50px -10px rgba(15, 23, 42, 0.08), 0 4px 20px -2px var(--primary-glow);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -35,44 +35,44 @@
             padding-top: 85px; /* Fixed header offset buffer boundary */
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; width: 100%; }
 
-        /* --- 1. Soft Ambient Hero Section --- */
+        /* --- 1. Ambient Dynamic Hero Header --- */
         .story-hero-animated {
             position: relative;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100__);
-            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
+            padding: 100px 0 80px;
             text-align: center;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
         }
 
-        /* Ambient background technology grid lines matching your design system */
+        /* Subtle technical background grid mesh lines */
         .story-hero-animated::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none; z-index: 1;
+                linear-gradient(to right, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; z-index: 1;
         }
 
-        .hero-text-block { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; }
-        .story-hero-animated h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0; transform: translateY(12px); }
+        .hero-text-block { position: relative; z-index: 10; max-width: 850px; margin: 0 auto; }
+        .story-hero-animated h1 { font-size: 3rem; font-weight: 900; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 12px; opacity: 0; transform: translateY(15px); }
         .story-hero-animated h1 span { color: var(--primary); }
-        .story-hero-animated p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; opacity: 0; transform: translateY(12px); }
+        .story-hero-animated p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; opacity: 0; transform: translateY(15px); max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
-        /* Animation class states applied via script engine loops */
+        /* Activation trigger rules for unified entrance script loops */
         .story-hero-animated h1.active, .story-hero-animated p.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
         .reveal-delay-1 { transition-delay: 0.15s !important; }
         .reveal-delay-2 { transition-delay: 0.3s !important; }
 
-        /* --- 2. Founders Cards Workspace Grid --- */
-        .founders-display { padding: 60px 0; }
+        /* --- 2. Interactive Premium Profile Workspace Grid --- */
+        .founders-display { padding: 80px 0; }
         
         .founders-flex {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             width: 100%;
         }
 
@@ -80,91 +80,135 @@
             background: var(--card-surface);
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
-            padding: 35px;
-            text-align: center;
+            padding: 50px;
             box-shadow: var(--tactile-shadow);
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 180px 1fr;
             align-items: center;
+            gap: 40px;
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(20px);
+            position: relative;
+            transition: var(--transition);
         }
+        
         .founder-card-premium.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
-        .founder-card-premium:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: rgba(16, 185, 129, 0.2); }
 
-        .image-box { position: relative; margin-bottom: 24px; }
+        /* Asymmetric identity metric markers at upper background borders */
+        .founder-card-premium::after {
+            position: absolute; top: 30px; right: 40px;
+            font-family: monospace; font-size: 0.72rem; font-weight: 700;
+            color: rgba(148, 163, 184, 0.4); letter-spacing: 1px;
+            transition: var(--transition);
+        }
+        .founder-card-rakesh::after { content: '[ 01 // CORE ]'; }
+        .founder-card-rashmi::after { content: '[ 02 // CREATIVE ]'; }
+
+        /* Hover matrix profiles with customized micro color shifts */
+        .founder-card-premium:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--hover-shadow);
+        }
+        .founder-card-rakesh:hover { border-color: rgba(59, 130, 246, 0.25); border-left: 6px solid #3b82f6; }
+        .founder-card-rakesh:hover::after { color: #3b82f6; }
+        
+        .founder-card-rashmi:hover { border-color: rgba(16, 185, 129, 0.25); border-left: 6px solid #10b981; }
+        .founder-card-rashmi:hover::after { color: #10b981; }
+
+        .image-box { position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; }
         
         .image-inner {
-            width: 130px; height: 130px;
-            border-radius: 50%;
+            width: 160px; height: 180px;
+            border-radius: 20px;
             overflow: hidden;
-            background: #f1f5f9;
-            border: 4px solid var(--white);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.05);
+            transition: var(--transition);
         }
         
-        .founder-img { width: 100%; height: 100%; object-fit: cover; }
+        .founder-img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); filter: grayscale(10%) contrast(102%); }
+        .founder-card-premium:hover .founder-img { transform: scale(1.05); filter: grayscale(0%); }
 
         .experience-tag {
-            position: absolute; bottom: -5px; left: 50%;
+            position: absolute; bottom: -8px; left: 50%;
             transform: translateX(-50%);
-            background: #eff6ff; color: #2563eb;
-            padding: 4px 14px; border-radius: 50px;
+            background: #f8fafc; color: var(--text-main);
+            padding: 5px 16px; border-radius: 8px;
             font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 0.5px; border: 1px solid rgba(37, 99, 235, 0.1);
-            white-space: nowrap;
+            letter-spacing: 0.5px; border: 1px solid var(--border);
+            white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: var(--transition);
         }
+        .founder-card-rakesh:hover .experience-tag { background: #3b82f6; color: var(--white); border-color: #3b82f6; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); }
+        .founder-card-rashmi:hover .experience-tag { background: #10b981; color: var(--white); border-color: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
 
-        .founder-info h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 6px; font-weight: 800; letter-spacing: -0.01em; }
+        .founder-info { display: flex; flex-direction: column; align-items: flex-start; }
+        .founder-info h3 { font-size: 1.4rem; color: #0f172a; margin-bottom: 6px; font-weight: 900; letter-spacing: -0.02em; }
         
         .qualification-badge {
-            background: var(--primary-glow); color: #059669;
+            background: #f1f5f9; color: var(--text-muted);
             padding: 3px 10px; border-radius: 6px;
             font-size: 0.72rem; font-weight: 700; display: inline-block;
-            margin-bottom: 16px; border: 1px solid rgba(16, 185, 129, 0.1);
+            margin-bottom: 16px; border: 1px solid var(--border);
+            text-transform: uppercase; letter-spacing: 0.3px;
         }
+        .founder-card-rakesh:hover .qualification-badge { background: rgba(59, 130, 246, 0.05); color: #2563eb; border-color: rgba(59, 130, 246, 0.1); }
+        .founder-card-rashmi:hover .qualification-badge { background: rgba(16, 185, 129, 0.05); color: #059669; border-color: rgba(16, 185, 129, 0.1); }
 
-        .founder-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 500; margin-bottom: 20px; }
+        .founder-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; margin-bottom: 22px; text-align: left; }
 
-        .founder-social { display: flex; gap: 12px; justify-content: center; }
+        .founder-social { display: flex; gap: 10px; }
         .founder-social a {
-            width: 34px; height: 34px; border-radius: 8px;
+            width: 36px; height: 36px; border-radius: 8px;
             background: #f1f5f9; color: var(--text-muted);
             display: inline-flex; align-items: center; justify-content: center;
             text-decoration: none; transition: var(--transition); font-size: 0.9rem;
+            border: 1px solid transparent;
         }
-        .founder-social a:hover { background: #0f172a; color: var(--white); }
+        .founder-social a:hover { background: #0f172a; color: var(--white); transform: scale(1.05); }
 
-        /* --- 3. Corporate Mission Glass Box --- */
-        .mission-reveal { padding-bottom: 60px; opacity: 0; transform: translateY(15px); }
+        /* --- 3. Academic Mission Corporate Grid Canvas --- */
+        .mission-reveal { padding-bottom: 80px; opacity: 0; transform: translateY(20px); }
         .mission-reveal.active { opacity: 1; transform: translateY(0); transition: var(--transition); }
         
         .glass-impact-box {
-            background: var(--card-surface);
+            background: var(--white);
             border: 1px solid var(--border);
-            padding: 40px; border-radius: var(--card-radius);
+            padding: 50px; border-radius: var(--card-radius);
             box-shadow: var(--tactile-shadow); text-align: center;
-            max-width: 850px; margin: 0 auto; display: flex;
+            max-width: 900px; margin: 0 auto; display: flex;
             flex-direction: column; align-items: center;
+            position: relative;
         }
         
         .icon-circle {
-            width: 50px; height: 50px; border-radius: 12px;
-            background: #fef3c7; color: #d97706;
+            width: 52px; height: 52px; border-radius: 14px;
+            background: #fffbeb; color: #d97706;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; margin-bottom: 20px;
+            font-size: 1.25rem; margin-bottom: 24px;
+            border: 1px solid #fef3c7;
         }
 
-        .glass-impact-box h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .glass-impact-box h2 { font-size: 1.6rem; font-weight: 900; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.02em; }
         .glass-impact-box h2 span { color: var(--primary); }
-        .glass-impact-box p { font-size: 0.92rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; max-width: 600px; }
+        .glass-impact-box p { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; line-height: 1.65; max-width: 680px; }
 
-        @media (max-width: 768px) {
-            .story-hero-animated { padding: 60px 0 40px; }
-            .story-hero-animated h1 { font-size: 2rem; }
-            .founders-flex { gap: 20px; }
-            .founder-card-premium { padding: 25px; }
-            .glass-impact-box { padding: 30px 20px; }
+        /* ==========================================================================
+           --- RESPONSIVE CONTENT INTERSECTION BREAKPOINTS ---
+           ========================================================================== */
+        @media (max-width: 1200px) {
+            .founders-flex { grid-template-columns: 1fr; gap: 24px; }
+            .founder-card-premium { padding: 40px; }
+        }
+        @media (max-width: 640px) {
+            .story-hero-animated { padding: 70px 0 50px; }
+            .story-hero-animated h1 { font-size: 2.2rem; }
+            .founder-card-premium { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 35px 24px; gap: 30px; }
+            .founder-info { align-items: center; }
+            .founder-info p { text-align: center; }
+            .glass-impact-box { padding: 35px 20px; }
+            .container { padding: 0 16px; }
         }
     </style>
 </head>
@@ -176,7 +220,7 @@
     <div class="container">
         <div class="hero-text-block">
             <h1 class="reveal active">Two Minds. One <span>Mission.</span></h1>
-            <p class="reveal-up reveal-delay-1 active">Bridging the gap between academic theory and industry reality.</p>
+            <p class="reveal-up reveal-delay-1 active">Bridging the gap between academic theory and high-performance engineering reality.</p>
         </div>
     </div>
 </section>
@@ -185,7 +229,7 @@
     <div class="container">
         <div class="founders-flex">
             
-            <div class="founder-card-premium reveal-up active">
+            <div class="founder-card-premium founder-card-rakesh reveal-up active">
                 <div class="image-box">
                      <div class="image-inner">
                         <img src="rakesh.png" alt="Rakesh Jadhav" class="founder-img">
@@ -194,16 +238,16 @@
                 </div>
                 <div class="founder-info">
                     <h3>Rakesh Jadhav</h3>
-                    <span class="qualification-badge">BCA Graduate</span>
-                    <p>Specializing in full-stack architecture, database clustering, and advanced systems deployment tracks. Rakesh commands the technical pipeline for Code Craft Academic.</p>
+                    <span class="qualification-badge">MCA Scholar</span>
+                    <p>Specializing in full-stack orchestration, high-availability architecture, and automated execution rails. Rakesh commands the technical pipeline for Code Craft Academic.</p>
                     <div class="founder-social">
-                        <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn Account Connection"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub Repository Space"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="founder-card-premium reveal-up reveal-delay-1 active">
+            <div class="founder-card-premium founder-card-rashmi reveal-up reveal-delay-1 active">
                 <div class="image-box">
                      <div class="image-inner">
                         <img src="rashmi.png" alt="Rashmi Divantgi" class="founder-img">
@@ -213,10 +257,10 @@
                 <div class="founder-info">
                     <h3>Rashmi Divantgi</h3>
                     <span class="qualification-badge">MCA Scholar</span>
-                    <p>A UI/UX designer specialized in wireframe blueprinting, vector components, and system micro-interactions. Rashmi anchors the creative design vision for WebNova Studio.</p>
+                    <p>A UI/UX designer focused on component layout strategies, Server-Driven design arrays, and seamless user experiences. Rashmi directs the creative core for WebNova Studio.</p>
                     <div class="founder-social">
-                        <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn Account Connection"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub Portfolio Portal"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -225,15 +269,20 @@
     </div>
 </section>
 
-<section class="mission-reveal reveal-up active">
-    <div class="container">
-        <div class="glass-impact-box">
-            <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
-            <h2>Our <span>Academic</span> Commitment</h2>
-            <p>As Master of Computer Applications students, we directly encounter the changing parameters of modern technological training. We maintain WebNova Studio to guarantee that students and entry-level freelancers are equipped with stable digital blueprints.</p>
+<div class="container" style="margin-top: 0; margin-bottom: 80px;">
+    <div class="live-viewer-console" style="height: auto; min-height: auto; text-align: center; align-items: center; padding: 45px;">
+        <div class="viewer-title-block" style="flex-direction: column; gap: 10px; margin-bottom: 15px;">
+            <i class="fas fa-cubes" style="font-size: 1.8rem;"></i>
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">Building Digital Infrastructure</h2>
         </div>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 25px; font-size: 0.95rem; line-height: 1.6; font-weight: 500;">
+            Whether designing robust technical blueprints for students or developing scalable software platforms for production environments, we stay committed to clean engineering standards.
+        </p>
+        <a href="contact.html" class="btn-action-download" style="box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.15);">
+            Let's Collaborate <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
-</section>
+</div>
 
 <div id="global-footer"></div>
 
