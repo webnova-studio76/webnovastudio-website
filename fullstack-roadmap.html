@@ -3,171 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Stack Roadmap | WebNova Academy</title>
+    <title>Full-Stack Roadmap | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --accent: #2563eb; /* Career Blue */
-            --secondary: #0f172a;
-            --bg: #f8fafc;
+            /* Compact Data-Dense Theming Alignment Map */
+            --primary: #2563eb;        /* Career Blue Base */
+            --secondary: #0f172a;      /* WebNova Master Deep Navy */
+            --bg: #f8fafc;             /* Workspace Off-White Background */
+            --text-main: #0f172a;      /* High-Contrast Charcoal Typography */
+            --text-muted: #475569;     /* Deep Muted Blue-Gray Details */
+            --border-line: #e2e8f0;    /* Razor-Thin Separator Lines */
             --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
+            
+            /* Career Roadmap Sequential Phases Markers */
+            --phase-1: #38bdf8;
+            --phase-2: #6366f1;
+            --phase-3: #a855f7;
+            --phase-4: #0ea5e9;
+            --phase-5: #f59e0b;
+            --phase-6: #10b981;
+            --phase-7: #ec4899;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
-        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--accent); }
-
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .module-card {
+        /* --- 1. Course Directory Hero --- */
+        .course-header {
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-line);
             background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid var(--border);
+        }
+        .sub-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
+
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
+        }
+
+        /* --- 2. Timeline Heading Section --- */
+        .section-headline-bar {
+            padding: 32px 0 12px;
             display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            aspect-ratio: 1 / 1;
+            align-items: center;
             justify-content: space-between;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* --- 3. Immune Wide List Row Architecture --- */
+        .learning-modules-section { padding: 24px 0; }
+        
+        .wide-list-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            width: 100% !important;
         }
 
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.05);
+        .wide-list-row {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px 32px !important;
+            border-radius: 8px !important;
+            display: grid !important;
+            grid-template-columns: 280px 1fr 160px !important; /* Locks width blocks alignment maps safely */
+            align-items: center !important;
+            gap: 32px !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .wide-list-row:hover { border-color: #cbd5e1 !important; transform: translateX(2px); }
+
+        /* Colored Structural Left Border Accent Rails */
+        .wide-list-row.phase-r1 { border-left: 5px solid var(--phase-1) !important; }
+        .wide-list-row.phase-r2 { border-left: 5px solid var(--phase-2) !important; }
+        .wide-list-row.phase-r3 { border-left: 5px solid var(--phase-3) !important; }
+        .wide-list-row.phase-r4 { border-left: 5px solid var(--phase-4) !important; }
+        .wide-list-row.phase-r5 { border-left: 5px solid var(--phase-5) !important; }
+        .wide-list-row.phase-r6 { border-left: 5px solid var(--phase-6) !important; }
+        .wide-list-row.phase-r7 { border-left: 5px solid var(--phase-7) !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
+        }
+        .wide-list-row.phase-r1 .mod-thumb-deck { color: var(--phase-1); }
+        .wide-list-row.phase-r2 .mod-thumb-deck { color: var(--phase-2); }
+        .wide-list-row.phase-r3 .mod-thumb-deck { color: var(--phase-3); }
+        .wide-list-row.phase-r4 .mod-thumb-deck { color: var(--phase-4); }
+        .wide-list-row.phase-r5 .mod-thumb-deck { color: var(--phase-5); }
+        .wide-list-row.phase-r6 .mod-thumb-deck { color: var(--phase-6); }
+        .wide-list-row.phase-r7 .mod-thumb-deck { color: var(--phase-7); }
+
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        /* Multi-column grid packing list inside text block container node */
+        .wide-list-row ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; }
+        .wide-list-row li { font-size: 0.85rem; color: var(--text-muted); padding-left: 16px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
+
+        .download-btns { width: 160px; text-align: center; }
+        .phase-complete-tag {
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg);
+            border: 1px solid var(--border-line); color: var(--text-muted); display: block;
         }
 
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+        /* --- 4. Value Framework Outposts --- */
+        .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
+        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: var(--primary); margin-top: 3px; font-size: 0.85rem; }
+
+        /* --- 5. Summary Layout Footers --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px; background: var(--white); padding: 16px 24px;
+            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px;
         }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: var(--primary); }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
 
-        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .module-card ul { list-style: none; flex-grow: 1; }
-        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
-        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
-
-        .phase-complete {
-            background: #f1f5f9;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--secondary);
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .wide-list-row ul { grid-template-columns: 1fr; }
+            .download-btns { width: 100%; }
+            .outcomes-grid, .resource-summary { grid-template-columns: 1fr; gap: 16px; }
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header class="syllabus-head">
-        <h1>The <span>Full-Stack</span> Blueprint</h1>
-        <p>The 6-Phase sequence required to build modern, production-grade applications.</p>
-    </header>
+    <!-- Global Layout Navigation Header Mount Slot Placeholder (Untouched) -->
+    <div id="global-header"></div>
 
-    <div class="module-grid">
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 01: The Frontend Core</p>
-                <h3>Foundations</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> HTML5 (Semantic Structure).</li>
-                    <li><i class="fas fa-check"></i> CSS3 (Flexbox, Grid, Responsive).</li>
-                    <li><i class="fas fa-check"></i> Modern JavaScript (ES6+ Logic).</li>
-                </ul>
+    <section class="course-header">
+        <div class="container">
+            <span class="sub-title">WebNova Academy</span>
+            <h1>The <span>Full-Stack</span> Blueprint</h1>
+            <p>The structured 7-phase sequence architecture required to scale software engineering workflows from structural basics into production environments.</p>
+            <div class="hero-stats">
+                <span>07 Core Phases</span>
+                <span>6 Months Track</span>
+                <span>7 Capstone Projects</span>
+                <span>Prerequisites: None</span>
             </div>
-            <div class="phase-complete">Notes Coming Soon</div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <div class="section-headline-bar">
+            <h2>Ecosystem <span>Roadmap Sequences</span></h2>
+            <span class="track-total-count">07 Sequential Milestones</span>
         </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 02: Advanced UI</p>
-                <h3>Framework Mastery</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> React.js or Angular.</li>
-                    <li><i class="fas fa-check"></i> State Management (Redux/Context).</li>
-                    <li><i class="fas fa-check"></i> Component Libraries (Tailwind/MUI).</li>
-                </ul>
-            </div>
-            <div class="phase-complete">Notes Coming Soon</div>
-        </div>
+        <!-- Academic Wide List Rows Engineering Tracks Feed -->
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <!-- PHASE 1 -->
+                <div class="wide-list-row phase-r1">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-code"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 01: Frontend Core</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">3 Weeks</span>
+                                <span class="meta-chip">Project: Portfolio</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>HTML5 Semantic Structuring</li>
+                        <li>CSS3 Volumetric Box Models</li>
+                        <li>Flexbox &amp; Asymmetric Grids</li>
+                        <li>Responsive Media Queries</li>
+                        <li>Modern JavaScript ES6 Logic</li>
+                        <li>Asynchronous Fetch APIs DOM</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 03: The Server</p>
-                <h3>Backend Logic</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> Node.js Runtime & Express.</li>
-                    <li><i class="fas fa-check"></i> RESTful API Design.</li>
-                    <li><i class="fas fa-check"></i> Authentication (JWT/Cookies).</li>
-                </ul>
-            </div>
-            <div class="phase-complete">Notes Coming Soon</div>
-        </div>
+                <!-- PHASE 2 -->
+                <div class="wide-list-row phase-r2">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-react"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 02: Advanced UI</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">4 Weeks</span>
+                                <span class="meta-chip">Project: Engine Blog</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>React JS Lifecycle Engines</li>
+                        <li>JSX State Components Hooks</li>
+                        <li>Context API Token Channels</li>
+                        <li>Redux Toolkit Structures</li>
+                        <li>Tailwind Utility Frameworks</li>
+                        <li>Material UI Interface Nodes</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 04: Data Persistence</p>
-                <h3>Database Systems</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> SQL (PostgreSQL/MySQL).</li>
-                    <li><i class="fas fa-check"></i> NoSQL (MongoDB).</li>
-                    <li><i class="fas fa-check"></i> ORMs (Mongoose/Prisma).</li>
-                </ul>
-            </div>
-            <div class="phase-complete">Notes Coming Soon</div>
-        </div>
+                <!-- PHASE 3 -->
+                <div class="wide-list-row phase-r3">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-server"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 03: The Server Layer</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">4 Weeks</span>
+                                <span class="meta-chip">Project: Auth API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Node.js V8 Runtime Processing</li>
+                        <li>Express Routing Systems</li>
+                        <li>RESTful API Endpoints Design</li>
+                        <li>Granular Middleware Pipelines</li>
+                        <li>JWT Secure Token Interventions</li>
+                        <li>Cookie Sessions Authorization</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 05: Professional Flow</p>
-                <h3>DevOps & Version</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> Git & GitHub (Collaboration).</li>
-                    <li><i class="fas fa-check"></i> Docker & Containerization.</li>
-                    <li><i class="fas fa-check"></i> CI/CD Pipelines.</li>
-                </ul>
-            </div>
-            <div class="phase-complete">Notes Coming Soon</div>
-        </div>
+                <!-- PHASE 4 -->
+                <div class="wide-list-row phase-r4">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-database"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 04: Data Persistence</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">3 Weeks</span>
+                                <span class="meta-chip">Project: Lab Database</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Database ER Modeling Blueprints</li>
+                        <li>Relational MySQL Schemas</li>
+                        <li>PostgreSQL Join Indexing</li>
+                        <li>Document Store MongoDB Clusters</li>
+                        <li>Mongoose Schema Object Mapping</li>
+                        <li>Prisma Data Access ORM Layer</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 06: Launch</p>
-                <h3>Cloud & Deployment</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> AWS, Azure, or Vercel.</li>
-                    <li><i class="fas fa-check"></i> Domain & SSL Management.</li>
-                    <li><i class="fas fa-check"></i> Monitoring & Error Logging.</li>
-                </ul>
+                <!-- PHASE 5 -->
+                <div class="wide-list-row phase-r5">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-sliders-h"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 05: Professional Flow</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">3 Weeks</span>
+                                <span class="meta-chip">Project: Docker Stack</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Git Version Trees Controls</li>
+                        <li>GitHub Team Distribution Hooks</li>
+                        <li>Docker Containment Packaging</li>
+                        <li>Docker Compose Network Links</li>
+                        <li>Linux Command Terminal Stacks</li>
+                        <li>Nginx Configuration Routing</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- PHASE 6 -->
+                <div class="wide-list-row phase-r6">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-cloud"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 06: Cloud Infrastructure</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">3 Weeks</span>
+                                <span class="meta-chip">Project: Live App</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Vercel &amp; Netlify Asset Builds</li>
+                        <li>Railway Cloud Runtimes Engines</li>
+                        <li>AWS EC2 Elastic Configurations</li>
+                        <li>Domain Mapping SSL Routing</li>
+                        <li>GitHub Actions CI/CD Loops</li>
+                        <li>Production Logging Monitors</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- PHASE 7 -->
+                <div class="wide-list-row phase-r7">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-briefcase"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 07: Career Development</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Placement</span>
+                                <span class="meta-chip">Employment Hub</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Portfolio Optimization Schemes</li>
+                        <li>Technical Interview Checklists</li>
+                        <li>Resume Engineering Profiles</li>
+                        <li>GitHub Profile Polish Routines</li>
+                        <li>DSA Interview Basics Mapping</li>
+                        <li>Upwork Freelancing Parameters</li>
+                    </ul>
+                    <div class="download-btns">
+                        <span class="phase-complete-tag">Coming Soon</span>
+                    </div>
+                </div>
+
             </div>
-            <div class="phase-complete">Notes Coming Soon</div>
-        </div>
+        </section>
+
+        <!-- Career Target Opportunities Matrix Layer -->
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Target Placement Outcomes</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Frontend UI/UX Specialist Developer (React, Tailwind ecosystem focus)</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Backend Software Engineer (Asynchronous APIs Node.js runtime operations)</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Full-Stack Engineer (Complete infrastructure data architecture control)</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Freelance Developer (Autonomous project execution models monetization)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Curriculum Split</span><strong>07 Core Phases</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div><span>Capstone Scope</span><strong>7 Real Projects</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-unlock-alt"></i>
+                    <div><span>Tracking Framework</span><strong>100% Free Resources</strong></div>
+                </div>
+            </div>
+        </section>
+
     </div>
-</div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <!-- Global Layout Footer Mount Slot Placeholder (Untouched) -->
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
