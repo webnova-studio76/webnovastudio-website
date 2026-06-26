@@ -3,265 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Cheat Sheets | Code Craft Academic</title>
+    <title>Developer Cheat Sheets | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #475569;      /* Soft Corporate Slate Blue-Gray */
-            --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --bg: #f8fafc;            /* Workspace Off-White Canvas Background */
+            --secondary: #0f172a;      /* WebNova Deep Slate */
             --text-main: #0f172a;     /* Dark Charcoal Main Typography */
             --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
-            --border-line: #e2e8f0;   /* Razor-Thin Separator Split Lines */
-            --code-terminal: #0f172a;  /* High-Contrast Professional Indigo Dark Console */
-            --card-radius: 12px;       /* Fixed Structural Radius Border Variable */
+            --border-line: #e2e8f0;   /* Razor-Thin Split Framework Lines */
             --white: #ffffff;
+            --bg: #f8fafc;            /* Clean Workspace Off-White Background */
             --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* Subtle Category Chromatic Token Rails */
+            --color-programming: #3b82f6;
+            --color-web: #10b981;
+            --color-database: #f59e0b;
+            --color-backend: #ef4444;
+            --color-devops: #8b5cf6;
+            --color-ui: #0ea5e9;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* --- 1. System Directory Header --- */
-        .library-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
-        .sheet-badge { 
-            background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 4px 12px; 
-            border-radius: 4px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.12); 
-            margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .library-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; color: #0f172a; }
-        .library-header h1 span { color: var(--primary); }
-        .library-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
-
-        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
-        .hero-stats span {
-            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
-        }
-
-        /* --- 2. Advanced Dynamic Filtering Search Array --- */
-        .toolbar {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 12px;
-            padding: 20px 0;
+        /* --- 1. VS Code + Stripe Inspired Hero Engine Section --- */
+        .hero-section {
+            background: var(--white);
+            padding: 48px 0 35px 0;
             border-bottom: 1px solid var(--border-line);
+            text-align: center;
         }
-        .search-box { position: relative; }
-        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
-        .search-box input {
-            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
-            border: 1px solid var(--border-line); background: var(--white); outline: none;
-            font-size: 0.88rem; font-weight: 500; transition: var(--transition);
-        }
-        .search-box input:focus { border-color: var(--text-main); }
+        .hero-section h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .hero-section h1 span { color: var(--primary); }
+        .hero-section p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; margin-bottom: 24px; max-width: 650px; margin-left: auto; margin-right: auto; }
 
-        .select-wrapper { position: relative; }
-        .select-wrapper select {
-            width: 100%; padding: 10px 32px 10px 14px; border-radius: 6px;
-            border: 1px solid var(--border-line); background: var(--white); outline: none;
-            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); cursor: pointer; appearance: none;
+        /* Central Search Input Control Area */
+        .search-wrapper { position: relative; max-width: 550px; margin: 0 auto 32px; }
+        .search-wrapper i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; }
+        .search-wrapper input {
+            width: 100%; padding: 12px 16px 12px 44px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--bg); outline: none;
+            font-size: 0.92rem; font-weight: 500; transition: var(--transition);
         }
-        .select-wrapper::after {
-            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-            color: var(--text-muted); pointer-events: none; font-size: 0.7rem;
+        .search-wrapper input:focus { border-color: var(--text-main); background: var(--white); box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.04); }
+
+        /* Instant Credibility Counter Statistics Ribbon */
+        .stats-ribbon { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; border-top: 1px solid var(--border-line); padding-top: 24px; }
+        .stat-node { display: flex; flex-direction: column; align-items: center; }
+        .stat-node strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--secondary); }
+        .stat-node span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
+
+        /* --- 2. Category Tab Navigation System --- */
+        .category-nav-bar { display: flex; gap: 8px; padding: 20px 0; border-bottom: 1px solid var(--border-line); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-tab-btn {
+            white-space: nowrap; padding: 8px 16px; border-radius: 4px; border: 1px solid var(--border-line);
+            background: var(--white); color: var(--text-muted); font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 0.78rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
         }
+        .nav-tab-btn:hover, .nav-tab-btn.active { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* --- 3. Split Workstation Workspace Core Frame --- */
-        .workspace-split {
-            display: grid;
-            grid-template-columns: 360px 1fr;
-            gap: 24px;
-            padding: 24px 0;
-            width: 100%;
+        /* --- 3. Featured Quick-Access Tracks --- */
+        .featured-row-wrapper { padding: 24px 0 8px; }
+        .featured-row-wrapper h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+        .featured-chips-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .featured-chip-link {
+            background: var(--white); border: 1px solid var(--border-line); padding: 8px 16px; border-radius: 4px;
+            font-size: 0.82rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
         }
+        .featured-chip-link i { color: #f43f5e; }
+        .featured-chip-link:hover { border-color: #cbd5e1; transform: translateY(-1px); }
 
-        .cards-column { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+        /* --- 4. High-Density 4-In-A-Row Reference Grid --- */
+        .catalog-section-grid { padding: 24px 0; }
+        .catalog-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 16px !important; width: 100% !important; }
 
-        /* Left Side Interactive Grid Cards Component Row */
         .sheet-card {
-            background: var(--white); border: 1px solid var(--border-line);
-            border-radius: var(--card-radius); display: flex; padding: 16px;
-            align-items: center; height: 90px; min-height: 90px; transition: var(--transition);
-            position: relative; cursor: pointer;
+            background: var(--white) !important; border: 1px solid var(--border-line) !important;
+            padding: 24px !important; border-radius: 8px !important; display: flex !important;
+            flex-direction: column !important; justify-content: space-between !important;
+            align-items: flex-start !important; gap: 16px !important; width: 100% !important;
+            min-height: 260px !important; transition: border-color 0.2s ease, transform 0.2s ease;
         }
-        .sheet-card:hover, .sheet-card.active {
-            transform: translateX(4px); border-color: #cbd5e1;
+        .sheet-card:hover { border-color: #cbd5e1 !important; transform: translateY(-4px) !important; }
+
+        /* Left Category Border Accent Maps */
+        .sheet-card.cat-programming { border-left: 5px solid var(--color-programming) !important; }
+        .sheet-card.cat-web { border-left: 5px solid var(--color-web) !important; }
+        .sheet-card.cat-database { border-left: 5px solid var(--color-database) !important; }
+        .sheet-card.cat-backend { border-left: 5px solid var(--color-backend) !important; }
+        .sheet-card.cat-devops { border-left: 5px solid var(--color-devops) !important; }
+        .sheet-card.cat-ui { border-left: 5px solid var(--color-ui) !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
+        .thumb-glyph { font-size: 1.2rem; flex-shrink: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 2px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        .sheet-card ul { list-style: none; display: flex; flex-direction: column; gap: 3px; width: 100%; }
+        .sheet-card li { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; text-align: left; padding-left: 14px; position: relative; }
+        .sheet-card li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.68rem; }
+
+        .card-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+        .btn-card-trigger {
+            text-align: center; padding: 8px 10px; border-radius: 4px; text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem;
+            text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center;
+            justify-content: center; gap: 4px; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); cursor: pointer; transition: all 0.2s ease;
         }
-        .sheet-card.active {
-            border-left: 5px solid var(--primary);
-            background: rgba(16, 185, 129, 0.01);
-        }
+        .btn-card-trigger.btn-zip { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+        .btn-card-trigger:hover { background: #cbd5e1; color: var(--text-main); }
+        .btn-card-trigger.btn-zip:hover { background: var(--primary); border-color: var(--primary); color: var(--white); }
 
-        .thumb {
-            width: 42px; height: 40px; background: var(--bg); border: 1px solid var(--border-line);
-            border-radius: 4px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; color: var(--text-muted); flex-shrink: 0; transition: var(--transition);
-        }
-        .sheet-card:hover .thumb, .sheet-card.active .thumb { 
-            color: var(--primary); background: var(--primary-glow); border-color: transparent;
-        }
-
-        .info { margin-left: 14px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
-        .info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; color: #0f172a; margin-bottom: 2px; font-weight: 700; letter-spacing: -0.01em; text-align: left; }
-        .meta { display: flex; gap: 8px; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); align-items: center; }
-        .meta b { color: var(--primary); }
-
-        .pdf-tag { position: absolute; top: 14px; right: 16px; font-size: 0.78rem; color: #ef4444; transition: var(--transition); }
-
-        /* --- 4. Right Side Console Viewer Terminal Core --- */
-        .live-viewer-console {
-            background: var(--white); border: 1px solid var(--border-line);
-            border-radius: 8px; padding: 24px; display: flex;
-            flex-direction: column; justify-content: space-between;
-            position: sticky; top: 96px; height: calc(100vh - 140px); min-height: 520px;
-        }
-
-        .viewer-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--border-line); padding-bottom: 16px; margin-bottom: 16px;
-            gap: 12px;
-        }
-        .viewer-title-block { display: flex; align-items: center; gap: 12px; }
-        .viewer-title-block i { font-size: 1.25rem; color: var(--primary); }
-        .viewer-title-block h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: #0f172a; letter-spacing: -0.02em; }
-        .viewer-title-block p { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
-
-        .btn-action-download {
-            background: var(--secondary); color: var(--white); padding: 8px 16px;
-            border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem;
-            display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .btn-action-download:hover { background: var(--primary); }
-
-        /* Embedded macOS Terminal Frame Architecture Components */
-        .terminal-container {
-            display: flex; flex-direction: column; flex-grow: 1;
-            background: var(--code-terminal); border-radius: 6px; overflow: hidden;
-            box-shadow: inset 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .terminal-top-bar {
-            background: #1e293b; padding: 10px 16px; display: flex; align-items: center;
-            justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-        .mac-dots { display: flex; gap: 6px; }
-        .mac-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .mac-dot.red { background: #ff5f56; }
-        .mac-dot.yellow { background: #ffbd2e; }
-        .mac-dot.green { background: #27c93f; }
-        .terminal-file-tab { font-family: 'Fira Code', monospace; font-size: 0.72rem; color: #94a3b8; font-weight: 500; }
-
-        .terminal-viewport { padding: 20px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.6; color: #e2e8f0; }
-        .terminal-viewport pre { white-space: pre-wrap; word-break: break-all; text-align: left; }
-
-        /* Syntax Highlighter Scope Mappings Core System Tokens */
-        .sc-comment { color: #64748b; font-style: italic; display: block; }
-        .sc-keyword { color: #f43f5e; font-weight: 700; }
-        .sc-method { color: #38bdf8; }
-        .sc-string { color: #34d399; }
-        .sc-args { color: #fbbf24; }
-
-        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        /* Empty Search Result Component Slots */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
         .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
         .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
         .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
 
-        @media (max-width: 960px) {
-            .workspace-split { grid-template-columns: 1fr; }
-            .live-viewer-console { height: auto; min-height: auto; position: relative; top: 0; padding: 20px; }
-            .cards-column { order: 2; }
-            .live-viewer-console { order: 1; }
+        /* --- 5. High-Res Modal Viewer Engine (No Fake Highlights) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.3); backdrop-filter: blur(4px);
+            z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-window {
+            background: var(--white); border: 1px solid var(--border-line);
+            width: 100%; max-width: 950px; height: calc(100vh - 80px); max-height: 750px;
+            border-radius: 8px; padding: 24px; display: grid; grid-template-columns: 1fr 280px; gap: 24px;
+            animation: modalFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalFade { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+
+        .modal-left-preview { display: flex; flex-direction: column; gap: 14px; height: 100%; overflow: hidden; }
+        .modal-viewer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-line); padding-bottom: 12px; }
+        .modal-viewer-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: #0f172a; }
+        
+        /* Real Embedded Frame Sandbox for PDF Object Elements */
+        .pdf-embed-canvas { width: 100%; flex-grow: 1; background: #e2e8f0; border-radius: 6px; border: 1px solid var(--border-line); overflow: hidden; position: relative; }
+        .pdf-embed-canvas iframe { width: 100%; height: 100%; border: none; }
+        .pdf-fallback-cta { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 80%; }
+        .pdf-fallback-cta i { font-size: 2rem; color: var(--text-muted); }
+        .pdf-fallback-cta p { font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+
+        /* Right Meta Details Processing Block Column */
+        .modal-right-meta { display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid var(--border-line); padding-left: 24px; height: 100%; overflow-y: auto; }
+        .modal-meta-top-box { display: flex; flex-direction: column; gap: 20px; }
+        .modal-close-row { display: flex; justify-content: flex-end; margin-bottom: -10px; }
+        .close-modal-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; transition: var(--transition); }
+        .close-modal-btn:hover { color: #ef4444; }
+
+        .meta-group-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 6px; }
+        .meta-group-node p { font-size: 0.88rem; font-weight: 600; color: var(--secondary); }
+        .meta-group-node ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .meta-group-node li { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; padding-left: 14px; position: relative; }
+        .meta-group-node li::before { content: "\f12a"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 0.72rem; }
+
+        .modal-actions-block { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border-line); }
+        .btn-modal-action {
+            width: 100%; text-align: center; padding: 12px; border-radius: 4px; text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: var(--transition);
+        }
+        .btn-modal-download { background: var(--primary); color: var(--white); border: none; }
+        .btn-modal-fullscreen { background: var(--bg); color: var(--text-main); border: 1px solid var(--border-line); }
+        .btn-modal-download:hover { background: #059669; }
+        .btn-modal-fullscreen:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* --- 6. Request Resource Outpost CTA Block --- */
+        .request-cta-block { padding: 24px 0 60px; }
+        .request-box-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+        .request-box-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+        .request-box-container p { font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .btn-request-action {
+            padding: 12px 24px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.82rem;
+            text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: var(--transition); white-space: nowrap;
+        }
+        .btn-request-action:hover { background: var(--primary); }
+
+        @media (max-width: 1024px) { .catalog-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 768px) {
+            .catalog-grid { grid-template-columns: 1fr !important; }
             .toolbar { grid-template-columns: 1fr; }
+            .modal-window { grid-template-columns: 1fr; height: calc(100vh - 40px); max-height: none; }
+            .modal-right-meta { display: none; }
+            .request-box-container { flex-direction: column; align-items: flex-start; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Loaded Home Page Global Header Slots Anchor (Untouched) -->
     <div id="global-header"></div>
+
+    <!-- MAIN CONSOLE INTERFACE TITLE VIEW -->
+    <section class="hero-section">
+        <div class="container">
+            <span class="sheet-badge"><i class="fas fa-print"></i> Printable Resource Desk</span>
+            <h1>Learn Faster with <span>One-Page Developer References</span></h1>
+            <p>Accelerate your engineering learning velocity tracks. Extract clean, highly condensed syntax blueprints, architectural operations summaries, and data maps repositories.</p>
+            
+            <!-- Real-time Input Searching Box Module -->
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="sheetSearch" placeholder="Search parameters, loops, hooks, tags (e.g. exceptions, matrices, dhcp)..." oninput="processPipeline()">
+            </div>
+
+            <!-- Authentic Performance Metrics Ribbon -->
+            <div class="stats-ribbon">
+                <div class="stat-node"><strong>150+ Sheets</strong><span>Curated Library</span></div>
+                <div class="stat-node"><strong>50+ Stacks</strong><span>Languages Covered</span></div>
+                <div class="stat-node"><strong>250K+ Pulls</strong><span>Assets Downloaded</span></div>
+                <div class="stat-node"><strong>Weekly Sync</strong><span>Curriculum Updates</span></div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         
-        <header class="library-header">
-            <span class="sheet-badge"><i class="fas fa-terminal"></i> Syntax Quick-Ref</span>
-            <h1>Coding <span>Cheat</span> Sheets</h1>
-            <p>Master clean script syntaxes, declarative component rules, database operations, and layout frameworks grids via high-performance console interfaces.</p>
-            <div class="hero-stats">
-                <span id="statCount">4 Reference Tracks</span>
-                <span>Printable Vector Layouts</span>
-                <span>Verified Clean Snippets</span>
-                <span>Sync Date: June 2026</span>
-            </div>
-        </header>
+        <!-- Category Segment Tab Navigation Engine Deck -->
+        <div class="category-nav-bar" id="categoryNavBar">
+            <button class="nav-tab-btn active" onclick="filterCategoryTab(this, 'all')"><i class="fas fa-border-all"></i> All References</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'programming')">🐍 Programming Languages</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'web')">🌐 Web Development</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'database')">🗄 Databases &amp; SQL</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'backend')">⚙ Backend Engineering</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'devops')">☁ DevOps Systems</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'ui')">🎨 Professional UI Design</button>
+        </div>
 
-        <div class="toolbar">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="sheetSearch" placeholder="Search reference sets, syntax categories, version tags (e.g. hooks, queries, lambda)..." oninput="applyFilters()">
-            </div>
-            <div class="select-wrapper">
-                <select id="filterCategory" onchange="applyFilters()">
-                    <option value="all">All Ecosystem Realms</option>
-                    <option value="programming">Core Programming</option>
-                    <option value="frontend">Frontend Engineering</option>
-                    <option value="database">Database Operations</option>
-                </select>
+        <!-- Curated Weekly Featured Outposts Segment Row -->
+        <div class="featured-row-wrapper" id="featuredWrapper">
+            <h2>Featured Reference Sets This Week</h2>
+            <div class="featured-chips-container">
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSheet('python')"><i class="fas fa-fire"></i> Python Essentials</a>
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSheet('react')"><i class="fas fa-star"></i> React Hooks Matrix</a>
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSheet('sql')"><i class="fas fa-bolt"></i> SQL Query Blueprint</a>
             </div>
         </div>
 
-        <div class="workspace-split">
-            
-            <div class="cards-column" id="cardsColumn">
+        <!-- High-Density Catalog Reference Output Matrix Section -->
+        <section class="catalog-section-grid">
+            <div class="catalog-grid" id="catalogGrid">
+                <!-- JavaScript handles clean data grid creation entries loop here securely -->
                 <div class="empty-state-node" id="noResults">
                     <i class="fas fa-folder-open"></i>
-                    <h4>No Cheat Sheets Match Your Query</h4>
-                    <p>Modify your parameters input keyword search tokens text.</p>
+                    <h4>No Cheat Sheets Match Your Parameters</h4>
+                    <p>Modify your text keywords query or verify your selected category domain tab.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suggest Resource Inset Block Component Slot -->
+        <section class="request-cta-block">
+            <div class="request-box-container">
+                <div>
+                    <h3>Didn't find what you're looking for?</h3>
+                    <p>Our academic teams publish clean syntax bundles weekly. Suggest a language stack or system tool blueprint now.</p>
+                </div>
+                <a href="contact.html" class="btn-request-action">Request a Cheat Sheet</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- REAL HIGH-RESOLUTION PDF EMBED MODAL COMPONENT VIEW -->
+    <div class="modal-overlay" id="pdfModal">
+        <div class="modal-window">
+            
+            <!-- Left Side Document Preview Block Box Container -->
+            <div class="modal-left-preview">
+                <div class="modal-viewer-header">
+                    <h2 id="modalTitle">Document Viewer Blueprint</h2>
+                </div>
+                <div class="pdf-embed-canvas" id="pdfCanvasSlot">
+                    <!-- High-Resolution IFrame Embedded Document Element Target Slot -->
                 </div>
             </div>
 
-            <div class="live-viewer-console" id="liveViewer">
-                <div class="viewer-header">
-                    <div class="viewer-title-block">
-                        <i id="viewer-icon" class="fab fa-python"></i>
-                        <div>
-                            <h2 id="viewer-title">Python Core Cheat Sheet</h2>
-                            <p id="viewer-meta">Language Target // v3.12 Reference</p>
-                        </div>
+            <!-- Right Side Meta Informative Context Column Block Module -->
+            <div class="modal-right-meta">
+                <div class="modal-meta-top-box">
+                    <div class="modal-close-row">
+                        <button class="close-modal-btn" onclick="closeDocumentViewer()"><i class="fas fa-times"></i></button>
                     </div>
-                    <a id="viewer-download-trigger" href="pdfs/python-core.pdf" download class="btn-action-download">
-                        <i class="fas fa-cloud-download-alt"></i> Download PDF [1.2 MB]
-                    </a>
+                    <div class="meta-group-node">
+                        <h4>Syllabus Tier</h4>
+                        <p id="modalTier">Beginner</p>
+                    </div>
+                    <div class="meta-group-node">
+                        <h4>Workload Volume</h4>
+                        <p id="modalPages">1 Page Summary</p>
+                    </div>
+                    <div class="meta-group-node">
+                        <h4>Estimated Reading</h4>
+                        <p id="modalDuration">5 Minutes</p>
+                    </div>
+                    <div class="meta-group-node">
+                        <h4>Core Topics Covered</h4>
+                        <ul id="modalTopicsList">
+                            <!-- Populated dynamically based on reference database selection -->
+                        </ul>
+                    </div>
+                    <div class="meta-group-node">
+                        <h4>University Code Labs Projects</h4>
+                        <ul id="modalProjectsList">
+                            <!-- Populated dynamically based on reference database selection -->
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="terminal-container">
-                    <div class="terminal-top-bar">
-                        <div class="mac-dots">
-                            <div class="mac-dot red"></div>
-                            <div class="mac-dot yellow"></div>
-                            <div class="mac-dot green"></div>
-                        </div>
-                        <div class="terminal-file-tab" id="terminalTab">main.py</div>
-                        <div></div>
-                    </div>
-                    <div class="terminal-viewport">
-                        <pre id="terminal-pre"></pre>
-                    </div>
+                <!-- Action Extraction Button Modules Link Rails Elements -->
+                <div class="modal-actions-block">
+                    <a id="modalDownloadBtn" href="#" download class="btn-modal-action btn-modal-download"><i class="fas fa-download"></i> Download Vector PDF</a>
+                    <a id="modalFullscreenBtn" href="#" target="_blank" class="btn-modal-action btn-modal-fullscreen"><i class="fas fa-expand"></i> Open Fullscreen</a>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <!-- Loaded Home Page Global Footer Slots Anchor (Untouched) -->
     <div id="global-footer"></div>
 
     <script src="main.js"></script>
@@ -269,137 +344,159 @@
 
     <script>
         /* ==========================================================================
-           📦 Curated Cheat Sheets Single Source Of Truth Repository Database
+           📦 CENTRAL SINGLE SOURCE OF TRUTH COMPLETE SYSTEM REFERENCE DATABASE
            ========================================================================== */
-        const CHEAT_SHEET_DATABASE = [
-            { id: "python", name: "Python Core", category: "programming", version: "v3.12", pages: "2 Pages", icon: "fab fa-python", fileTab: "main.py", download: "pdfs/python-core.pdf", tags: "lambda variables methods lists dictionaries loops oop parameters logic math", code: `<span class="sc-comment"># 1. Lambda Functions & Quick Logic Mapping</span>
-<span class="sc-keyword">square</span> = <span class="sc-keyword">lambda</span> x: x ** <span class="sc-args">2</span>
-<span class="sc-method">print</span>(<span class="sc-keyword">square</span>(<span class="sc-args">5</span>)) <span class="sc-comment"># Output: 25</span>
-
-<span class="sc-comment"># 2. Advanced List Comprehensions</span>
-numbers = [<span class="sc-args">1</span>, <span class="sc-args">2</span>, <span class="sc-args">3</span>, <span class="sc-args">4</span>, <span class="sc-args">5</span>]
-evens = [x <span class="sc-keyword">for</span> x <span class="sc-keyword">in</span> numbers <span class="sc-keyword">if</span> x % <span class="sc-args">2</span> == <span class="sc-args">0</span>]
-
-<span class="sc-comment"># 3. Dictionary Comprehension Matrix</span>
-square_dict = {x: x**<span class="sc-args">2</span> <span class="sc-keyword">for</span> x <span class="sc-keyword">in</span> <span class="sc-method">range</span>(<span class="sc-args">5</span>)}` },
-            
-            { id: "react", name: "React Hooks", category: "frontend", version: "v18.3", pages: "1 Page", icon: "fab fa-react", fileTab: "App.jsx", download: "pdfs/react-hooks.pdf", tags: "hooks dependencies lifecycle state functional context tracking effects components useeffect usestate", code: `<span class="sc-comment">// 1. State hook deployment structure</span>
-<span class="sc-keyword">const</span> [count, setCount] = <span class="sc-method">useState</span>(<span class="sc-args">0</span>);
-
-<span class="sc-comment">// 2. Lifecycle synchronization with useEffect</span>
-<span class="sc-method">useEffect</span>(() => {
-    <span class="sc-method">document</span>.title = <span class="sc-string">\`Count Trace: \${count}\`</span>;
-}, [count]); <span class="sc-comment">// Only runs when dependency array transforms</span>
-
-<span class="sc-comment">// 3. Performance tracking with useMemo caching mechanics</span>
-<span class="sc-keyword">const</span> memoizedValue = <span class="sc-method">useMemo</span>(() => <span class="sc-method">expensiveCalculation</span>(data), [data]);` },
-            
-            { id: "sql", name: "SQL Mastery", category: "database", version: "ANSI SQL", pages: "3 Pages", icon: "fas fa-database", fileTab: "query.sql", download: "pdfs/sql-queries.pdf", tags: "queries tables databases joins selections aggregations groupings filtering relational storage mysql keys", code: `<span class="sc-comment">-- 1. Aggregations & Conditional Matrix Sorting</span>
-<span class="sc-keyword">SELECT</span> department_id, <span class="sc-method">COUNT</span>(*), <span class="sc-method">AVG</span>(salary)
-<span class="sc-keyword">FROM</span> corporate_ledger_employees
-<span class="sc-keyword">WHERE</span> status = <span class="sc-string">'Active'</span>
-<span class="sc-keyword">GROUP BY</span> department_id
-<span class="sc-keyword">HAVING</span> <span class="sc-method">AVG</span>(salary) > <span class="sc-args">55000</span>;
-
-<span class="sc-comment">-- 2. Multi-Table Join Frameworks</span>
-<span class="sc-keyword">SELECT</span> e.name, d.dept_name
-<span class="sc-keyword">FROM</span> employees e
-<span class="sc-keyword">INNER JOIN</span> departments d <span class="sc-keyword">ON</span> e.dept_id = d.id;` },
-            
-            { id: "css", name: "CSS Grid", category: "frontend", version: "W3C Spec", pages: "1 Page", icon: "fas fa-th", fileTab: "layout.css", download: "pdfs/css-grid.pdf", tags: "grid styling viewports template responsive layouts alignment rows margins parent flex container rules padding asymmetric", code: `<span class="sc-comment">/* 1. Definitive Parent Layout Canvas Blueprint */</span>
-<span class="sc-method">.matrix-grid-container</span> {
-    <span class="sc-keyword">display</span>: grid;
-    <span class="sc-keyword">grid-template-columns</span>: <span class="sc-method">repeat</span>(auto-fit, <span class="sc-method">minmax</span>(<span class="sc-args">280px</span>, <span class="sc-args">1fr</span>));
-    <span class="sc-keyword">gap</span>: <span class="sc-args">24px</span>;
-}
-
-<span class="sc-comment">/* 2. Micro-placement span alignment overrides */</span>
-<span class="sc-method">.wide-span-column</span> {
-    <span class="sc-keyword">grid-column</span>: span <span class="sc-args">2</span>;
-    <span class="sc-keyword">grid-row</span>: <span class="sc-args">1</span> / <span class="sc-args">3</span>;
-}` }
+        const REFERENCE_DATABASE = [
+            { id: "python", name: "Python Essentials", category: "programming", classStyle: "cat-programming", glyph: "🐍", tier: "Beginner", length: "2 Pages", time: "5 Minutes", updated: "June 2026", path: "pdfs/python-core.pdf", points: ["Variables & Core Logic Mapping", "Advanced List Comprehensions", "Dictionary Comprehension Matrix", "Lambda Quick Expressions Functions"], topics: ["Variables & Scope", "List Comprehensions", "Lambda Expressions", "Dictionary Logic Matrices", "Loops Iterations"], projects: ["Calculator Console", "Bank App Database", "Todo List Automation Script"], tags: "python core lambda compression variables data loops collections exceptions functions" },
+            { id: "react", name: "React Hooks Matrix", category: "frontend", classStyle: "cat-web", glyph: "⚛️", tier: "Intermediate", length: "1 Page", time: "8 Minutes", updated: "June 2026", path: "pdfs/react-hooks.pdf", points: ["State Hook Deployment Elements", "Lifecycle useEffect Sync Maps", "useMemo Performance Tracking Caching"], topics: ["useState Management", "useEffect Synchronization", "useMemo Cache Paradigms", "Context API Channels"], projects: ["Dynamic Engine Blog", "Authentication Portal Interface", "Real-time Metrics Dashboard"], tags: "react hooks components lifecycles conditional rendering state useeffect hooks tokens" },
+            { id: "sql", name: "SQL Query Blueprint", category: "database", classStyle: "cat-database", glyph: "🗄️", tier: "Beginner", length: "3 Pages", time: "12 Minutes", updated: "June 2026", path: "pdfs/sql-queries.pdf", points: ["Aggregations & Conditional Sorting", "Multi-Table Join Relational Frameworks", "Subqueries Execution syntaxes blocks"], topics: ["Aggregations Functions", "Inner / Outer Joins Blocks", "Correlated Subqueries Syntaxes", "Index Table Mappings"], projects: ["Student Record System Schema", "Inventory Ledger Registry Dump", "E-Commerce Transaction Log"], tags: "sql queries databases structures joins indexing selections groupings tables fields rows analytics" },
+            { id: "css", name: "CSS Grid Canvas", category: "frontend", classStyle: "cat-web", glyph: "🎨", tier: "Beginner", length: "1 Page", time: "5 Minutes", updated: "June 2026", path: "pdfs/css-grid.pdf", points: ["Parent Layout Canvas Blueprints", "Micro-placement Grid Span Overrides", "Responsive auto-fit minmax limits"], topics: ["Parent Grid Viewports Definitions", "Grid Span Column Tracks", "Asymmetric Areas Placement", "Responsive Fraction Limits"], projects: ["Asymmetric Layout Showroom", "Responsive Dashboard Shell", "Media Grid Portfolio Deck"], tags: "css grid flexbox layout responsiveness formatting design columns rows spacing viewports margins panels" }
         ];
 
-        let targetSelectedId = "python";
-
-        // Global Statistics Track Setup Builder
-        document.getElementById('statCount').innerText = `${CHEAT_SHEET_DATABASE.length} Reference Tracks`;
+        let activeTargetTabFilter = "all";
 
         /* ==========================================================================
-           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
-           ========================================================================== */
-        function applyFilters() {
+           🧠 REAL-TIME MATRIX PROCESSING CORE PIPELINE ENGINE
+           ========================================================================= */
+        function processPipeline() {
             const query = document.getElementById('sheetSearch').value.toLowerCase().trim();
-            const categorySelection = document.getElementById('filterCategory').value;
-            const cardsColumn = document.getElementById('cardsColumn');
+            const gridContainer = document.getElementById('catalogGrid');
             const noResultsNode = document.getElementById('noResults');
 
-            // Wipe out existing cards without altering empty tracker node structure configurations
+            // Purge active child nodes safely without breaking baseline state configurations selectors
             document.querySelectorAll('.sheet-card').forEach(c => c.remove());
-            let matchCount = 0;
+            let currentMatchCount = 0;
 
-            CHEAT_SHEET_DATABASE.forEach(sheet => {
+            // Pipeline Filter Logic Step Arrays Routing
+            const filteredCacheStack = REFERENCE_DATABASE.filter(sheet => {
                 const nameMatch = sheet.name.toLowerCase().includes(query);
                 const tagsMatch = sheet.tags.toLowerCase().includes(query);
-                const categoryFilterMatch = categorySelection === 'all' || sheet.category === categorySelection;
+                const tierMatch = sheet.tier.toLowerCase().includes(query);
+                
+                const fullTextMatch = nameMatch || tagsMatch || tierMatch;
+                const categoryTabMatch = activeTargetTabFilter === 'all' || sheet.category === activeTargetTabFilter;
 
-                if ((nameMatch || tagsMatch) && categoryFilterMatch) {
-                    matchCount++;
-                    const activeStateClass = sheet.id === targetSelectedId ? "active" : "";
+                return fullTextMatch && categoryTabMatch;
+            });
 
-                    const cardHTML = `
-                        <div class="sheet-card ${activeStateClass}" data-id="${sheet.id}">
-                            <div class="pdf-tag"><i class="fas fa-file-pdf"></i></div>
-                            <div class="thumb"><i class="${sheet.icon}"></i></div>
-                            <div class="info">
+            // Paint Filtered Selection Into Render Grid Canvas Block
+            filteredCacheStack.forEach(sheet => {
+                currentMatchCount++;
+                const pointItemsHTML = sheet.points.map(pt => `<li>${pt}</li>`).join('');
+
+                const cardHTML = `
+                    <div class="sheet-card ${sheet.classStyle}">
+                        <div class="mod-identity-block">
+                            <div class="thumb-glyph">${sheet.glyph}</div>
+                            <div class="mod-header-text">
                                 <h3>${sheet.name}</h3>
-                                <div class="meta"><span><b>${sheet.version}</b></span><span>${sheet.pages}</span></div>
+                                <div class="module-meta-chips">
+                                    <span class="meta-chip">${sheet.tier}</span>
+                                    <span class="meta-chip">${sheet.length}</span>
+                                </div>
                             </div>
                         </div>
-                    `;
-                    // Append immediately preceding the empty results container node block element layout
-                    noResultsNode.insertAdjacentHTML('beforebegin', cardHTML);
-                }
+                        <ul>
+                            ${pointItemsHTML}
+                        </ul>
+                        <div class="card-actions-row">
+                            <button class="btn-card-trigger" onclick="openDocumentViewer('${sheet.id}')"><i class="far fa-eye"></i> Preview</button>
+                            <a href="${sheet.path}" download class="btn-card-trigger btn-zip"><i class="fas fa-download"></i> Extract</a>
+                        </div>
+                    </div>
+                `;
+                noResultsNode.insertAdjacentHTML('beforebegin', cardHTML);
             });
 
-            // Re-bind click event triggers to freshly injected layout nodes cleanly
-            document.querySelectorAll('.sheet-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    targetSelectedId = card.dataset.id;
-                    document.querySelectorAll('.sheet-card').forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    paintConsoleViewer();
-                });
-            });
+            noResultsNode.style.display = (currentMatchCount === 0) ? 'flex' : 'none';
+            document.getElementById('countDisplay').innerText = `Showing ${currentMatchCount} of ${REFERENCE_DATABASE.length} Reference Tracks`;
+        }
 
-            noResultsNode.style.display = (matchCount === 0) ? 'flex' : 'none';
+        /* --- Tab Filtration Controller Deck Routing --- */
+        function filterCategoryTab(btnElement, categoryTabToken) {
+            activeTargetTabFilter = categoryTabToken;
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
             
-            // Safety Check: If active card is filtered away, select first visible match element node array
-            const activeCardExists = document.querySelector(`.sheet-card[data-id="${targetSelectedId}"]`);
-            if (!activeCardExists && matchCount > 0) {
-                const firstAvailableCard = document.querySelector('.sheet-card');
-                firstAvailableCard.classList.add('active');
-                targetSelectedId = firstAvailableCard.dataset.id;
-                paintConsoleViewer();
+            // Toggle visibility parameters of featured elements depending on filtered tracking search states context
+            document.getElementById('featuredWrapper').style.display = (categoryTabToken === 'all') ? 'block' : 'none';
+            
+            processPipeline();
+        }
+
+        function openFeaturedSheet(idKey) {
+            document.getElementById('sheetSearch').value = "";
+            activeTargetTabFilter = "all";
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.nav-tab-btn[onclick*="all"]').classList.add('active');
+            document.getElementById('featuredWrapper').style.display = 'block';
+            processPipeline();
+            openDocumentViewer(idKey);
+        }
+
+        /* ==========================================================================
+           ⚓ 5. PURE DYNAMIC DOCUMENT PREVIEW ENGINE (No Fake Snippets Codes)
+           ========================================================================== */
+        function openDocumentViewer(idKey) {
+            const documentMetaNode = REFERENCE_DATABASE.find(s => s.id === idKey);
+            if (!documentMetaNode) return;
+
+            // Sync Header Titles Elements Text Data Tokens
+            document.getElementById('modalTitle').innerText = `${documentMetaNode.name} Reference Guide`;
+            document.getElementById('modalTier').innerText = documentMetaNode.tier;
+            document.getElementById('modalPages').innerText = `${documentMetaNode.length} Quick-Ref Summary`;
+            document.getElementById('modalDuration').innerText = `⏱️ ${documentMetaNode.time} Study Time`;
+
+            // Build Topics Unordered Lists Elements Items Loops
+            const topicsHTML = documentMetaNode.topics.map(t => `<li>${t}</li>`).join('');
+            document.getElementById('modalTopicsList').innerHTML = topicsHTML;
+
+            // Build Lab Projects Unordered Lists Elements Items Loops
+            const projectsHTML = documentMetaNode.projects.map(p => `<li>${p}</li>`).join('');
+            document.getElementById('modalProjectsList').innerHTML = projectsHTML;
+
+            // Sync Extraction Action Buttons Attributes Routing Links Paths
+            document.getElementById('modalDownloadBtn').setAttribute('href', documentMetaNode.path);
+            document.getElementById('modalFullscreenBtn').setAttribute('href', documentMetaNode.path);
+
+            // Inset Pure Vector PDF Object IFrame Framework Mount Segment
+            const canvasSlot = document.getElementById('pdfCanvasSlot');
+            canvasSlot.innerHTML = `
+                <iframe src="${documentMetaNode.path}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf">
+                    <div class="pdf-fallback-cta">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>Your browser setup lacks inline preview engine integrations parameters support loops.</p>
+                        <a href="${documentMetaNode.path}" download class="btn-action-download"><i class="fas fa-download"></i> Extract Directly</a>
+                    </div>
+                </iframe>
+            `;
+
+            document.getElementById('pdfModal').style.display = 'flex';
+        }
+
+        function closeDocumentViewer() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.getElementById('pdfCanvasSlot').innerHTML = ""; // Clear canvas completely to terminate sandbox resources footprints processes
+        }
+
+        // Global Key Listener Registration Anchor Channels Hooks
+        document.getElementById('pdfModal').addEventListener('click', function(e) {
+            if(e.target === this) closeDocumentViewer();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === '/') {
+                if (document.activeElement !== document.getElementById('sheetSearch')) {
+                    e.preventDefault();
+                    document.getElementById('sheetSearch').focus();
+                }
+            } else if (e.key === 'Escape') {
+                closeDocumentViewer();
             }
-        }
+        });
 
-        // Pure DOM Synchronized Terminal Rendering Engine Routine
-        function paintConsoleViewer() {
-            const dataNode = CHEAT_SHEET_DATABASE.find(s => s.id === targetSelectedId);
-            if (!dataNode) return;
-
-            document.getElementById('viewer-title').innerText = `${dataNode.name} Cheat Sheet`;
-            document.getElementById('viewer-icon').className = dataNode.icon;
-            document.getElementById('viewer-meta').innerText = `Language Target // ${dataNode.version} Reference`;
-            document.getElementById('terminalTab').innerText = dataNode.fileTab;
-            document.getElementById('viewer-download-trigger').setAttribute('href', dataNode.download);
-            document.getElementById('terminal-pre').innerHTML = dataNode.code;
-        }
-
-        // Initialize Workspace Framework Pipeline Core On Boot Complete Configuration
-        applyFilters();
-        paintConsoleViewer();
+        // Initialize Master Directory Catalog Engine Loop On Boot Complete Setup
+        processPipeline();
     </script>
 </body>
 </html>
