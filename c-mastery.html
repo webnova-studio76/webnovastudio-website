@@ -6,6 +6,10 @@
     <title>C Programming Mastery | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* ==========================================================================
            1. HARDWARE-LEVEL PALETTE DICTIONARY & SPECIFICITY SHIELDING
@@ -54,7 +58,7 @@
            ========================================================================== */
         .module-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
 
@@ -66,7 +70,7 @@
             display: flex;
             flex-direction: column;
             transition: var(--transition);
-            aspect-ratio: 1 / 1;
+            min-height: 520px; /* Upgraded to perfectly accommodate expanded sub-topics list */
             justify-content: space-between;
             box-shadow: var(--tactile-shadow);
         }
@@ -77,33 +81,37 @@
             box-shadow: var(--hover-shadow);
         }
 
+        .phase-meta-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .phase-tag { 
             font-size: 0.7rem; 
             font-weight: 800; 
             text-transform: uppercase; 
             color: var(--c-slate); 
             letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            display: inline-block;
         }
+        .skill-rank { font-size: 0.7rem; font-weight: 700; color: #ffd343; letter-spacing: 1px; }
 
-        .module-card h3 { color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.01em; }
-        
+        .module-card h3 { color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .duration-tag { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; }
+
         /* Strictly isolated inside the modules to preserve navigation header logic */
-        .module-card ul { list-style: none !important; padding: 0 !important; margin: 0 !important; flex-grow: 1; }
+        .module-card ul { list-style: none !important; padding: 0 !important; margin: 0 0 20px 0 !important; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 12px; flex-grow: 1; }
         .module-card li { 
-            margin-bottom: 12px !important; 
             display: flex !important; 
             align-items: flex-start !important; 
-            gap: 12px !important; 
-            font-size: 0.9rem !important; 
+            gap: 6px !important; 
+            font-size: 0.78rem !important; 
             color: var(--text-muted) !important;
             font-weight: 500 !important;
             padding-left: 0 !important;
         }
-        .module-card li::before { content: none !important; display: none !important; }
-        .module-card li i { color: var(--c-slate); margin-top: 4px; font-size: 0.85rem; filter: drop-shadow(0 0 6px var(--c-slate-glow)); }
+        .module-card li i { color: var(--c-slate); margin-top: 3px; font-size: 0.7rem; }
         .module-card:hover li { color: rgba(255, 255, 255, 0.85); }
+
+        /* Outcomes Segment Block */
+        .outcomes-sub-block { border-top: 1px dashed rgba(255, 255, 255, 0.08); padding-top: 14px; margin-bottom: 16px; }
+        .outcomes-sub-block h4 { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: 0.5px; margin-bottom: 6px; }
+        .outcomes-sub-block p { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
 
         /* ==========================================================================
            4. FLEXBOX TOOLZONE DOWNLOAD TRIGGERS
@@ -111,8 +119,7 @@
         .download-zone {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
-            padding-top: 20px;
+            padding-top: 16px;
             border-top: 1px solid var(--border);
         }
 
@@ -131,6 +138,8 @@
             justify-content: center;
             gap: 8px;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
         .btn-pdf { 
             background: rgba(100, 116, 139, 0.08); 
@@ -146,126 +155,249 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 768px) { 
-            .module-card { aspect-ratio: auto; padding: 30px; } 
-            .syllabus-head { padding: 40px 20px; }
-            .syllabus-head h1 { font-size: 2rem; }
+        @media (max-width: 960px) {
+            .module-grid { grid-template-columns: 1fr; }
+            .module-card { min-height: auto; }
+            .module-card ul { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<div id="global-header"></div>
+
 <div class="container">
     
-    <!-- HARDWARE COMPILATION CONSOLE TITLE HEADER -->
     <header class="syllabus-head">
         <h1>C Programming <span>Architecture</span></h1>
-        <p>A 6-Phase deep dive from syntax basics to manual memory management.</p>
+        <p>An enriched 7-Phase modular roadmap sequence scaled from fundamental source syntax tokens into deep manual memory operations.</p>
     </header>
 
-    <!-- 6-PHASE GRID MATRIX PIPELINE -->
     <div class="module-grid">
         
-        <!-- PHASE 01 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 01: Syntax Core</p>
-                <h3>Foundations</h3>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 01</span>
+                    <span class="skill-rank">★ Beginner</span>
+                </div>
+                <h3>C Fundamentals</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 8 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-terminal"></i> Variables, Constants & Data Types.</li>
-                    <li><i class="fas fa-terminal"></i> Input/Output (printf & scanf).</li>
-                    <li><i class="fas fa-terminal"></i> The Compilation Process (GCC).</li>
+                    <li><i class="fas fa-terminal"></i> Introduction &amp; History</li>
+                    <li><i class="fas fa-terminal"></i> Structure of C Program</li>
+                    <li><i class="fas fa-terminal"></i> Compilation &amp; GCC</li>
+                    <li><i class="fas fa-terminal"></i> Tokens &amp; Keywords</li>
+                    <li><i class="fas fa-terminal"></i> Identifiers &amp; Variables</li>
+                    <li><i class="fas fa-terminal"></i> Constants &amp; Data Types</li>
+                    <li><i class="fas fa-terminal"></i> Type Modifiers &amp; sizeof()</li>
+                    <li><i class="fas fa-terminal"></i> Escape Sequences</li>
+                    <li><i class="fas fa-terminal"></i> Type Casting Engine</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Configure compiler environments, trace system diagnostics loops, and execute simple standard input/output scripts.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
 
-        <!-- PHASE 02 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 02: Control Logic</p>
-                <h3>Decision & Loops</h3>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 02</span>
+                    <span class="skill-rank">★ Beginner</span>
+                </div>
+                <h3>Control Flow</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 12 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-code-branch"></i> If-Else, Switch Case Logic.</li>
-                    <li><i class="fas fa-redo"></i> For, While, and Do-While Loops.</li>
-                    <li><i class="fas fa-redo"></i> Nested Loops & Break/Continue.</li>
+                    <li><i class="fas fa-code-branch"></i> Relational Operators</li>
+                    <li><i class="fas fa-code-branch"></i> Logical Logic Gates</li>
+                    <li><i class="fas fa-code-branch"></i> Standard If Condition</li>
+                    <li><i class="fas fa-code-branch"></i> If-Else Frameworks</li>
+                    <li><i class="fas fa-code-branch"></i> Nested If Statements</li>
+                    <li><i class="fas fa-code-branch"></i> Switch Case Mapping</li>
+                    <li><i class="fas fa-redo"></i> Loop Logic: For Loop</li>
+                    <li><i class="fas fa-redo"></i> Iterative While Loops</li>
+                    <li><i class="fas fa-redo"></i> Do-While Pipelines</li>
+                    <li><i class="fas fa-redo"></i> Break, Continue &amp; Goto</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Build structural branching algorithms, manage runtime loops conditions, and bypass infinite code loops traps.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
 
-        <!-- PHASE 03 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 03: Modular Code</p>
-                <h3>Functions & Arrays</h3>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 03</span>
+                    <span class="skill-rank">★★ Intermediate</span>
+                </div>
+                <h3>Functions &amp; Arrays</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 15 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-cubes"></i> Function Prototypes & Recursion.</li>
-                    <li><i class="fas fa-cubes"></i> 1D and 2D Array Operations.</li>
-                    <li><i class="fas fa-cubes"></i> String Handling & Header Files.</li>
+                    <li><i class="fas fa-cubes"></i> Prototypes Declaration</li>
+                    <li><i class="fas fa-cubes"></i> Function Definitions</li>
+                    <li><i class="fas fa-cubes"></i> Execution Call Routines</li>
+                    <li><i class="fas fa-cubes"></i> Value vs Ref Handlers</li>
+                    <li><i class="fas fa-cubes"></i> Recursion Stack Limits</li>
+                    <li><i class="fas fa-th-large"></i> 1D Memory Arrays</li>
+                    <li><i class="fas fa-th-large"></i> 2D Matrix Structures</li>
+                    <li><i class="fas fa-font"></i> Character Arrays</li>
+                    <li><i class="fas fa-font"></i> String Built-In Library</li>
+                    <li><i class="fas fa-box"></i> Storage Classes Allocation</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Architect decoupled modular functions blocks, handle sequential array lists, and manipulation string matrices.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
 
-        <!-- PHASE 04 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 04: The "Heart" of C</p>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 04</span>
+                    <span class="skill-rank">★★ Intermediate</span>
+                </div>
                 <h3>Pointers Mastery</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 14 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-microchip"></i> Pointer Arithmetic & Addresses.</li>
-                    <li><i class="fas fa-microchip"></i> Call by Value vs. Call by Reference.</li>
-                    <li><i class="fas fa-microchip"></i> Pointers to Arrays and Functions.</li>
+                    <li><i class="fas fa-microchip"></i> Physical Address Space</li>
+                    <li><i class="fas fa-microchip"></i> Pointer Variables Setup</li>
+                    <li><i class="fas fa-microchip"></i> Pointer Arithmetic</li>
+                    <li><i class="fas fa-microchip"></i> Array Memory Pointers</li>
+                    <li><i class="fas fa-microchip"></i> Pointers to Functions</li>
+                    <li><i class="fas fa-microchip"></i> Double Indirection Mapping</li>
+                    <li><i class="fas fa-microchip"></i> Void &amp; Null Pointer Flags</li>
+                    <li><i class="fas fa-memory"></i> Heap: malloc() &amp; calloc()</li>
+                    <li><i class="fas fa-memory"></i> Heap: realloc() &amp; free()</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Override standard variable bounds via direct addressing, track data addresses, and manage manual memory heap segments.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
 
-        <!-- PHASE 05 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 05: Data Structures</p>
-                <h3>Structs & Unions</h3>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 05</span>
+                    <span class="skill-rank">★★★ Advanced</span>
+                </div>
+                <h3>Custom Structures</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 10 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-database"></i> Defining Custom Structures.</li>
-                    <li><i class="fas fa-database"></i> Nested Structs & Typedef.</li>
-                    <li><i class="fas fa-database"></i> Dynamic Memory (malloc, free).</li>
+                    <li><i class="fas fa-database"></i> Structures Blueprints</li>
+                    <li><i class="fas fa-database"></i> Nested Struct Parameters</li>
+                    <li><i class="fas fa-database"></i> Array of Structures</li>
+                    <li><i class="fas fa-database"></i> Structures Pointer Links</li>
+                    <li><i class="fas fa-clone"></i> Shared Unions Memory</li>
+                    <li><i class="fas fa-tags"></i> Enum Enumerations</li>
+                    <li><i class="fas fa-signature"></i> typedef Custom Aliases</li>
+                    <li><i class="fas fa-compress"></i> Bit Fields Compression</li>
+                    <li><i class="fas fa-triangle-exclamation"></i> Memory Leak Auditing</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Compose custom, complex heterogeneous data models, allocate structures dynamically, and evaluate bit fields allocations.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
 
-        <!-- PHASE 06 -->
         <div class="module-card">
             <div>
-                <p class="phase-tag">Phase 06: Persistence</p>
-                <h3>File I/O Ops</h3>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 06</span>
+                    <span class="skill-rank">★★★ Advanced</span>
+                </div>
+                <h3>File I/O Streams</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 10 Lessons</p>
                 <ul>
-                    <li><i class="fas fa-save"></i> Opening, Reading & Writing Files.</li>
-                    <li><i class="fas fa-save"></i> Binary vs. Text File Handling.</li>
-                    <li><i class="fas fa-save"></i> Error Handling in System Calls.</li>
+                    <li><i class="fas fa-save"></i> Stream Handling Logic</li>
+                    <li><i class="fas fa-save"></i> Text File Stream Buffers</li>
+                    <li><i class="fas fa-save"></i> Binary Block Handling</li>
+                    <li><i class="fas fa-save"></i> fopen() &amp; fclose() Operations</li>
+                    <li><i class="fas fa-save"></i> Formatted: fprintf() / fscanf()</li>
+                    <li><i class="fas fa-save"></i> Block: fread() / fwrite()</li>
+                    <li><i class="fas fa-circle-exclamation"></i> Stream Error Parameters</li>
+                    <li><i class="fas fa-terminal"></i> Command Line Arguments</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Build data persistence loops, manipulate low-level binary data blocks, and intercept system errors alerts cleanly.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
             </div>
         </div>
-        
+
+        <div class="module-card">
+            <div>
+                <div class="phase-meta-wrapper">
+                    <span class="phase-tag">Phase 07</span>
+                    <span class="skill-rank">🏆 Production Capstone</span>
+                </div>
+                <h3>Algorithms &amp; Projects</h3>
+                <p class="duration-tag"><i class="far fa-clock"></i> 16 Lessons</p>
+                <ul>
+                    <li><i class="fas fa-gears"></i> Pyramids Pattern Engines</li>
+                    <li><i class="fas fa-gears"></i> Searching: Linear &amp; Binary</li>
+                    <li><i class="fas fa-gears"></i> Sorting: Bubble, Selection</li>
+                    <li><i class="fas fa-gears"></i> Matrix Multiplications</li>
+                    <li><i class="fas fa-folder-tree"></i> Student Management System</li>
+                    <li><i class="fas fa-folder-tree"></i> Library Management Portal</li>
+                    <li><i class="fas fa-folder-tree"></i> Console Banking System</li>
+                    <li><i class="fas fa-gamepad"></i> Mini Console System Games</li>
+                </ul>
+            </div>
+            <div>
+                <div class="outcomes-sub-block">
+                    <h4>Target Competency</h4>
+                    <p>Convert algorithm structures into terminal automation engines, build comprehensive multi-file file systems, and execute complex functional calculations loops.</p>
+                </div>
+                <div class="download-zone">
+                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<!-- EXTERNAL GLOBAL INTERACTION TRIGGERS -->
+<div id="global-footer"></div>
+
+<script src="main.js"></script>
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="animations.js"></script>
