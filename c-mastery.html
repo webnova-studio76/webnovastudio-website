@@ -12,394 +12,344 @@
     
     <style>
         /* ==========================================================================
-           1. HARDWARE-LEVEL PALETTE DICTIONARY & SPECIFICITY SHIELDING
+           ⚓ 1. LOW-LEVEL DESIGN THEME VARIABLES & GLOBAL RESETS
            ========================================================================== */
         :root {
-            --c-slate: #64748b;        /* Low-Level C Steel Slate Accent */
-            --c-slate-glow: rgba(100, 116, 139, 0.25);
+            --c-slate: #64748b;        /* Steel Slate Core Blue-Gray */
             --secondary: #090d16;      /* Deep Space Dark Matte */
-            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
-            --bg: #030712;             /* True Obsidian Background Canvas */
+            --page-bg: #f8fafc;       /* Clean Light Gray Content Background */
+            --text-main: #0f172a;     /* Dark Charcoal Content Headings */
+            --text-muted: #475569;    /* Slate Gray for Subtext Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
-            --text-main: #f1f5f9;      /* Off-White Crisp Typography */
-            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
-            --border: rgba(255, 255, 255, 0.05);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-            /* Skeuomorphic Shadow Layers */
-            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px -2px var(--c-slate-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            
+            /* Phase Complexity Track Colors */
+            --rank-beginner: #0ea5e9;
+            --rank-intermediate: #3b82f6;
+            --rank-advanced: #6366f1;
+            --rank-production: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 10; }
+        body { background-color: var(--page-bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        /* --- Content Title Header --- */
+        .course-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
+        .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--c-slate); }
+        .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
+
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--page-bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted); }
+
+        .section-headline-bar { padding: 32px 0 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-line); }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ==========================================================================
-           2. SKEUOMORPHIC LAB ARCHITECTURE HEADER
+           ⚓ 2. IMMUNE WIDE HORIZONTAL LIST LAYOUT ENGINE (Fixes text collision)
            ========================================================================== */
-        .syllabus-head { 
-            text-align: center; 
-            margin-bottom: 50px; 
-            padding: 50px 40px;
-            background: linear-gradient(135deg, var(--card-surface) 0%, var(--secondary) 100%);
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--tactile-shadow);
-            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        .syllabus-head h1 { font-size: 2.6rem; font-weight: 900; letter-spacing: -0.02em; color: var(--white); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--c-slate); text-shadow: 0 0 25px var(--c-slate-glow); }
-        .syllabus-head p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; }
+        .learning-modules-section { padding: 24px 0; }
+        .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
 
-        /* ==========================================================================
-           3. DOCK-STYLE STRUCTURAL WORKSPACE GRID
-           ========================================================================== */
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+        .wide-list-row {
+            background: var(--white); border: 1px solid var(--border-line); padding: 24px 32px; border-radius: 8px;
+            display: grid; grid-template-columns: 280px 1fr 160px; align-items: center; gap: 32px; width: 100%;
+            transition: border-color 0.2s ease;
         }
+        .wide-list-row:hover { border-color: #cbd5e1; }
 
-        .module-card {
-            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
-            border-radius: 24px;
-            padding: 35px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-            min-height: 520px; /* Upgraded to perfectly accommodate expanded sub-topics list */
-            justify-content: space-between;
-            box-shadow: var(--tactile-shadow);
+        /* Structural Complexity Colored Left Borders */
+        .wide-list-row.level-beginner { border-left: 5px solid var(--rank-beginner); }
+        .wide-list-row.level-intermediate { border-left: 5px solid var(--rank-intermediate); }
+        .wide-list-row.level-advanced { border-left: 5px solid var(--rank-advanced); }
+        .wide-list-row.level-production { border-left: 5px solid var(--rank-production); }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck { width: 38px; height: 36px; background: var(--page-bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+        .wide-list-row.level-beginner .mod-thumb-deck { color: var(--rank-beginner); }
+        .wide-list-row.level-intermediate .mod-thumb-deck { color: var(--rank-intermediate); }
+        .wide-list-row.level-advanced .mod-thumb-deck { color: var(--rank-advanced); }
+        .wide-list-row.level-production .mod-thumb-deck { color: var(--rank-production); }
+
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--page-bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        /* Balanced Dual-Column Grid System for Dense Topics List */
+        .wide-list-row ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; }
+        .wide-list-row li { font-size: 0.85rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f120"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: #10b981; font-weight: 900; font-size: 0.72rem; }
+
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; text-decoration: none; 
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--page-bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        .module-card:hover {
-            transform: translateY(-8px) scale(1.015);
-            border-color: rgba(100, 116, 139, 0.4);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .phase-meta-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--c-slate); 
-            letter-spacing: 1.5px;
-        }
-        .skill-rank { font-size: 0.7rem; font-weight: 700; color: #ffd343; letter-spacing: 1px; }
-
-        .module-card h3 { color: var(--white); font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.01em; }
-        .duration-tag { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; }
-
-        /* Strictly isolated inside the modules to preserve navigation header logic */
-        .module-card ul { list-style: none !important; padding: 0 !important; margin: 0 0 20px 0 !important; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 12px; flex-grow: 1; }
-        .module-card li { 
-            display: flex !important; 
-            align-items: flex-start !important; 
-            gap: 6px !important; 
-            font-size: 0.78rem !important; 
-            color: var(--text-muted) !important;
-            font-weight: 500 !important;
-            padding-left: 0 !important;
-        }
-        .module-card li i { color: var(--c-slate); margin-top: 3px; font-size: 0.7rem; }
-        .module-card:hover li { color: rgba(255, 255, 255, 0.85); }
-
-        /* Outcomes Segment Block */
-        .outcomes-sub-block { border-top: 1px dashed rgba(255, 255, 255, 0.08); padding-top: 14px; margin-bottom: 16px; }
-        .outcomes-sub-block h4 { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: 0.5px; margin-bottom: 6px; }
-        .outcomes-sub-block p { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
-
-        /* ==========================================================================
-           4. FLEXBOX TOOLZONE DOWNLOAD TRIGGERS
-           ========================================================================== */
-        .download-zone {
-            display: flex;
-            gap: 10px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-dl {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.75rem;
-            text-align: center;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-        .btn-pdf { 
-            background: rgba(100, 116, 139, 0.08); 
-            border: 1px solid rgba(100, 116, 139, 0.15); 
-            color: #cbd5e1; 
-        }
-        .btn-pdf:hover {
-            background: var(--c-slate);
-            color: var(--white);
-            border-color: var(--c-slate);
-            box-shadow: 0 4px 14px var(--c-slate-glow);
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* --- 4. Summary Footer Statistics --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: #10b981; }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
 
         @media (max-width: 960px) {
-            .module-grid { grid-template-columns: 1fr; }
-            .module-card { min-height: auto; }
-            .module-card ul { grid-template-columns: 1fr; }
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .wide-list-row ul { grid-template-columns: 1fr; }
+            .download-btns { width: 100%; }
+            .resource-summary { grid-template-columns: 1fr; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<div class="container">
-    
-    <header class="syllabus-head">
-        <h1>C Programming <span>Architecture</span></h1>
-        <p>An enriched 7-Phase modular roadmap sequence scaled from fundamental source syntax tokens into deep manual memory operations.</p>
-    </header>
+    <section class="course-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / C Programming</div>
+            <h1>C Programming <span>Architecture</span></h1>
+            <p>An enriched 7-Phase modular roadmap sequence scaled from fundamental source syntax tokens into deep manual memory operations.</p>
+            <div class="hero-stats">
+                <span>07 Learning Phases</span>
+                <span>80+ Total Chapters</span>
+                <span>Structured Blueprints</span>
+                <span>Free Lecture Notes</span>
+            </div>
+        </div>
+    </section>
 
-    <div class="module-grid">
+    <div class="container">
         
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 01</span>
-                    <span class="skill-rank">★ Beginner</span>
-                </div>
-                <h3>C Fundamentals</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 8 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-terminal"></i> Introduction &amp; History</li>
-                    <li><i class="fas fa-terminal"></i> Structure of C Program</li>
-                    <li><i class="fas fa-terminal"></i> Compilation &amp; GCC</li>
-                    <li><i class="fas fa-terminal"></i> Tokens &amp; Keywords</li>
-                    <li><i class="fas fa-terminal"></i> Identifiers &amp; Variables</li>
-                    <li><i class="fas fa-terminal"></i> Constants &amp; Data Types</li>
-                    <li><i class="fas fa-terminal"></i> Type Modifiers &amp; sizeof()</li>
-                    <li><i class="fas fa-terminal"></i> Escape Sequences</li>
-                    <li><i class="fas fa-terminal"></i> Type Casting Engine</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Configure compiler environments, trace system diagnostics loops, and execute simple standard input/output scripts.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
+        <div class="section-headline-bar">
+            <h2>Architecture Curriculum Track</h2>
+            <span class="track-total-count">07 Sequential Milestones</span>
         </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 02</span>
-                    <span class="skill-rank">★ Beginner</span>
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <div class="wide-list-row phase-r1" data-category="basics">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-terminal"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 01 // C Fundamentals</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">8 Lessons</span>
+                                <span class="meta-chip">★ Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Introduction &amp; Structure of C</li>
+                        <li>Compilation Lifecycle &amp; GCC</li>
+                        <li>Tokens, Keywords &amp; Identifiers</li>
+                        <li>Variables &amp; Standard Constants</li>
+                        <li>Core Data Types &amp; Modifiers</li>
+                        <li>Input/Output (printf / scanf)</li>
+                        <li>Escape Sequences &amp; Comments</li>
+                        <li>sizeof() Operator &amp; Type Casting</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod1.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>Control Flow</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 12 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-code-branch"></i> Relational Operators</li>
-                    <li><i class="fas fa-code-branch"></i> Logical Logic Gates</li>
-                    <li><i class="fas fa-code-branch"></i> Standard If Condition</li>
-                    <li><i class="fas fa-code-branch"></i> If-Else Frameworks</li>
-                    <li><i class="fas fa-code-branch"></i> Nested If Statements</li>
-                    <li><i class="fas fa-code-branch"></i> Switch Case Mapping</li>
-                    <li><i class="fas fa-redo"></i> Loop Logic: For Loop</li>
-                    <li><i class="fas fa-redo"></i> Iterative While Loops</li>
-                    <li><i class="fas fa-redo"></i> Do-While Pipelines</li>
-                    <li><i class="fas fa-redo"></i> Break, Continue &amp; Goto</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Build structural branching algorithms, manage runtime loops conditions, and bypass infinite code loops traps.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 03</span>
-                    <span class="skill-rank">★★ Intermediate</span>
+                <div class="wide-list-row phase-r2" data-category="basics">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-code-branch"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 02 // Decision &amp; Loops</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">12 Lessons</span>
+                                <span class="meta-chip">★ Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Relational &amp; Logical Operators</li>
+                        <li>Standard If &amp; If-Else Blocks</li>
+                        <li>Nested If Decision Trees</li>
+                        <li>Switch Case Mapping Engines</li>
+                        <li>Iterative Loops: For Loops</li>
+                        <li>Condition Loops: While Paths</li>
+                        <li>Do-While Execution Steps</li>
+                        <li>Nested Iterations Matrices</li>
+                        <li>Break, Continue, &amp; Goto Jumps</li>
+                        <li>Infinite Loops Protections</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod2.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>Functions &amp; Arrays</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 15 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-cubes"></i> Prototypes Declaration</li>
-                    <li><i class="fas fa-cubes"></i> Function Definitions</li>
-                    <li><i class="fas fa-cubes"></i> Execution Call Routines</li>
-                    <li><i class="fas fa-cubes"></i> Value vs Ref Handlers</li>
-                    <li><i class="fas fa-cubes"></i> Recursion Stack Limits</li>
-                    <li><i class="fas fa-th-large"></i> 1D Memory Arrays</li>
-                    <li><i class="fas fa-th-large"></i> 2D Matrix Structures</li>
-                    <li><i class="fas fa-font"></i> Character Arrays</li>
-                    <li><i class="fas fa-font"></i> String Built-In Library</li>
-                    <li><i class="fas fa-box"></i> Storage Classes Allocation</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Architect decoupled modular functions blocks, handle sequential array lists, and manipulation string matrices.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 04</span>
-                    <span class="skill-rank">★★ Intermediate</span>
+                <div class="wide-list-row phase-r3">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-cubes"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 03: Functions &amp; Arrays</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">15 Lessons</span>
+                                <span class="meta-chip">★★ Inter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Function Declaration Prototypes</li>
+                        <li>Function Definitions &amp; Calls</li>
+                        <li>Return Scope Statement Values</li>
+                        <li>Call by Value Parameter Routing</li>
+                        <li>Call by Reference Foundations</li>
+                        <li>Recursion Stack Frameworks</li>
+                        <li>1D Linear Memory Arrays</li>
+                        <li>2D Dimensional Grid Matrices</li>
+                        <li>Character Arrays &amp; Libraries</li>
+                        <li>Storage Classes Declarations</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod3.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>Pointers Mastery</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 14 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-microchip"></i> Physical Address Space</li>
-                    <li><i class="fas fa-microchip"></i> Pointer Variables Setup</li>
-                    <li><i class="fas fa-microchip"></i> Pointer Arithmetic</li>
-                    <li><i class="fas fa-microchip"></i> Array Memory Pointers</li>
-                    <li><i class="fas fa-microchip"></i> Pointers to Functions</li>
-                    <li><i class="fas fa-microchip"></i> Double Indirection Mapping</li>
-                    <li><i class="fas fa-microchip"></i> Void &amp; Null Pointer Flags</li>
-                    <li><i class="fas fa-memory"></i> Heap: malloc() &amp; calloc()</li>
-                    <li><i class="fas fa-memory"></i> Heap: realloc() &amp; free()</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Override standard variable bounds via direct addressing, track data addresses, and manage manual memory heap segments.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 05</span>
-                    <span class="skill-rank">★★★ Advanced</span>
+                <div class="wide-list-row phase-r4">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 04: Pointers Mastery</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">14 Lessons</span>
+                                <span class="meta-chip">★★ Inter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Physical Address Space Logic</li>
+                        <li>Pointer Variables Allocation</li>
+                        <li>Pointer Arithmetic Bounds</li>
+                        <li>Pointers and Array Offsets</li>
+                        <li>Pointers to Functional Scopes</li>
+                        <li>Pointers to Pointers Matrix</li>
+                        <li>Void &amp; Null Pointer Indirection</li>
+                        <li>Dynamic Alloc: malloc() / calloc()</li>
+                        <li>Heap Freeing: realloc() / free()</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod4.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>Custom Structures</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 10 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-database"></i> Structures Blueprints</li>
-                    <li><i class="fas fa-database"></i> Nested Struct Parameters</li>
-                    <li><i class="fas fa-database"></i> Array of Structures</li>
-                    <li><i class="fas fa-database"></i> Structures Pointer Links</li>
-                    <li><i class="fas fa-clone"></i> Shared Unions Memory</li>
-                    <li><i class="fas fa-tags"></i> Enum Enumerations</li>
-                    <li><i class="fas fa-signature"></i> typedef Custom Aliases</li>
-                    <li><i class="fas fa-compress"></i> Bit Fields Compression</li>
-                    <li><i class="fas fa-triangle-exclamation"></i> Memory Leak Auditing</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Compose custom, complex heterogeneous data models, allocate structures dynamically, and evaluate bit fields allocations.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 06</span>
-                    <span class="skill-rank">★★★ Advanced</span>
+                <div class="wide-list-row phase-r5">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-database"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 05: Structs &amp; Memory</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Lessons</span>
+                                <span class="meta-chip">★★★ Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Heterogeneous Structure Models</li>
+                        <li>Nested Structures Framing</li>
+                        <li>Arrays of Custom Structures</li>
+                        <li>Pointers to Struct Members</li>
+                        <li>Shared Memory Unions Block</li>
+                        <li>Enumerated Enum Constants</li>
+                        <li>typedef Custom Type Aliases</li>
+                        <li>Bit Fields Frame Compression</li>
+                        <li>Heap Memory Leak Preventions</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod5.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>File I/O Streams</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 10 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-save"></i> Stream Handling Logic</li>
-                    <li><i class="fas fa-save"></i> Text File Stream Buffers</li>
-                    <li><i class="fas fa-save"></i> Binary Block Handling</li>
-                    <li><i class="fas fa-save"></i> fopen() &amp; fclose() Operations</li>
-                    <li><i class="fas fa-save"></i> Formatted: fprintf() / fscanf()</li>
-                    <li><i class="fas fa-save"></i> Block: fread() / fwrite()</li>
-                    <li><i class="fas fa-circle-exclamation"></i> Stream Error Parameters</li>
-                    <li><i class="fas fa-terminal"></i> Command Line Arguments</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Build data persistence loops, manipulate low-level binary data blocks, and intercept system errors alerts cleanly.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <div class="phase-meta-wrapper">
-                    <span class="phase-tag">Phase 07</span>
-                    <span class="skill-rank">🏆 Production Capstone</span>
+                <div class="wide-list-row phase-r6">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-save"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 06: File I/O Streams</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Lessons</span>
+                                <span class="meta-chip">★★★ Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Stream Allocation Principles</li>
+                        <li>fopen() and fclose() Routines</li>
+                        <li>Text Stream Buffers Structs</li>
+                        <li>Binary Data Block Persistence</li>
+                        <li>Formatted: fprintf() / fscanf()</li>
+                        <li>Block Operations: fread() / fwrite()</li>
+                        <li>Stream Execution Error Handling</li>
+                        <li>Command Line Systems Arguments</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod6.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-                <h3>Algorithms &amp; Projects</h3>
-                <p class="duration-tag"><i class="far fa-clock"></i> 16 Lessons</p>
-                <ul>
-                    <li><i class="fas fa-gears"></i> Pyramids Pattern Engines</li>
-                    <li><i class="fas fa-gears"></i> Searching: Linear &amp; Binary</li>
-                    <li><i class="fas fa-gears"></i> Sorting: Bubble, Selection</li>
-                    <li><i class="fas fa-gears"></i> Matrix Multiplications</li>
-                    <li><i class="fas fa-folder-tree"></i> Student Management System</li>
-                    <li><i class="fas fa-folder-tree"></i> Library Management Portal</li>
-                    <li><i class="fas fa-folder-tree"></i> Console Banking System</li>
-                    <li><i class="fas fa-gamepad"></i> Mini Console System Games</li>
-                </ul>
-            </div>
-            <div>
-                <div class="outcomes-sub-block">
-                    <h4>Target Competency</h4>
-                    <p>Convert algorithm structures into terminal automation engines, build comprehensive multi-file file systems, and execute complex functional calculations loops.</p>
-                </div>
-                <div class="download-zone">
-                    <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Open Notes</a>
-                </div>
-            </div>
-        </div>
 
+                <div class="wide-list-row phase-r7">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-gears"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 07: Project Capstones</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">16 Lessons</span>
+                                <span class="meta-chip">🏆 Capstone</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Pyramids Pattern Logic Engines</li>
+                        <li>Searching: Linear &amp; Binary Loops</li>
+                        <li>Sorting: Bubble &amp; Selection</li>
+                        <li>Matrix Multiplications Formations</li>
+                        <li>Student Database Management</li>
+                        <li>Library Portfolio Portal Logs</li>
+                        <li>Console Banking System Code</li>
+                        <li>Mini Terminal Systems Games</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="c-projects.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Syllabus Breakdown</span><strong>07 Core Phases</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-code"></i>
+                    <div><span>Curriculum Depth</span><strong>85+ Total Chapters</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div><span>Training Scope</span><strong>Lab Demos &amp; Systems</strong></div>
+                </div>
+            </div>
+        </section>
     </div>
-</div>
 
-<div id="global-footer"></div>
+    <div id="global-footer"></div>
 
-<script src="main.js"></script>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
