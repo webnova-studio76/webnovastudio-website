@@ -8,45 +8,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #0f172a;      /* WebNova Deep Slate */
-            --bg: #f8fafc;            /* Workspace Off-White Background */
-            --text-main: #0f172a;     /* Dark Charcoal Main Typography */
-            --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
-            --border-line: #e2e8f0;   /* Razor-Thin Split Framework Lines */
+            --secondary: #475569;      /* Soft Corporate Slate Blue-Gray */
+            --card-surface: #ffffff;  /* Pure White Canvas Cards */
+            --bg: #f8fafc;            /* Pristine Clean Workspace Canvas */
+            --text-main: #0f172a;     /* Deep Sapphire Slate Typography */
+            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
+            --card-radius: 12px;
             --white: #ffffff;
-            --card-radius: 8px;
             --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        h1, h2, h3, h4, .info-pane h3, .btn-request-action { font-family: 'Space Grotesk', sans-serif; color: var(--text-main); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            padding-top: 72px; 
+            overflow-x: hidden;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* --- 1. Institutional Hero Section --- */
-        .story-hero { padding: 48px 0 32px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border-line); }
+        /* --- 1. Hero Alignment Section --- */
+        .contact-hero { padding: 48px 0 32px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border-line); }
         .badge {
             background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 4px 12px; 
             border-radius: 4px; font-weight: 700; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.15);
             margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
         }
-        .story-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
-        .story-hero h1 span { color: var(--primary); }
-        .story-hero p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; max-width: 750px; margin: 0 auto; }
+        .contact-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .contact-hero h1 span { color: var(--primary); }
+        .contact-hero p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; max-width: 700px; margin: 0 auto; }
 
-        /* --- 2. High-Performance Stats Strip --- */
         .stats-ribbon { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-line); }
         .stat-node { display: flex; flex-direction: column; align-items: center; }
         .stat-node strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
         .stat-node span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
 
-        /* --- 3. Unified Narrative Section --- */
+        /* --- 2. Core Narrative Block --- */
         .section-headline-bar { padding: 32px 0 12px; border-bottom: 1px solid var(--border-line); }
         .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
         
@@ -54,53 +64,73 @@
         .narrative-block p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; margin-bottom: 16px; text-align: left; }
         .narrative-block p:last-child { margin-bottom: 0; }
 
-        /* --- 4. Restructured Horizontal Wide Founders Columns --- */
+        /* --- 3. Optimized Anti-Blur Horizontal Wide Founders Rows --- */
         .learning-modules-section { padding: 16px 0; }
         .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
         
         .wide-list-row {
             background: var(--white) !important; border: 1px solid var(--border-line) !important;
             padding: 32px !important; border-radius: var(--card-radius) !important;
-            display: grid !important; grid-template-columns: 200px 1fr !important;
-            align-items: start !important; gap: 32px !important; width: 100% !important;
+            display: grid !important; grid-template-columns: 140px 1fr !important; /* Retained grid alignment footprint */
+            align-items: center !important; gap: 32px !important; width: 100% !important;
         }
         .wide-list-row.lead-rakesh { border-left: 5px solid #64748b !important; }
         .wide-list-row.lead-rashmi { border-left: 5px solid #38bdf8 !important; }
 
-        .image-frame-box { width: 100%; height: 220px; border-radius: 4px; overflow: hidden; background: var(--bg); border: 1px solid var(--border-line); position: relative; }
-        .image-frame-box img { width: 100%; height: 100%; object-fit: cover; }
+        /* Anti-Blur Square Frame Container Configuration */
+        .image-frame-box { 
+            width: 130px; 
+            height: 130px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            background: transparent; 
+            border: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .image-frame-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Prevents logo asset stretching distortion completely */
+            transition: transform 0.3s ease; /* Exclusively smooth zoom without rotation distortion */
+        }
+        .wide-list-row:hover .image-frame-box img {
+            transform: scale(1.05); /* Clean zoom effect on card hover */
+        }
         
-        .founder-info-pack { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+        .founder-info-pack { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
         .founder-title-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-main); }
         .founder-title-block span { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
         
         .qualification-badge { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-line); }
         
-        .founder-info-pack p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; text-align: left; font-weight: 500; }
+        .founder-info-pack p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; text-align: left; font-weight: 500; }
         
-        .founder-info-pack ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; width: 100%; }
+        .founder-info-pack ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; width: 100%; }
         .founder-info-pack li { font-size: 0.82rem; color: var(--text-muted); padding-left: 16px; position: relative; font-weight: 500; text-align: left; }
         .founder-info-pack li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
-        .founder-social { display: flex; gap: 8px; margin-top: 4px; }
+        .founder-social { display: flex; gap: 6px; margin-top: 2px; }
         .founder-social a { width: 32px; height: 30px; background: var(--bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: var(--transition); }
         .founder-social a:hover { color: var(--white); background: var(--text-main); border-color: var(--text-main); }
 
-        /* --- 5. Capabilities Matrix Blocks --- */
+        /* --- 4. Capabilities Matrix Blocks --- */
         .capabilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px 0 24px; }
         .capability-card { background: var(--white); border: 1px solid var(--border-line); padding: 24px; border-radius: var(--card-radius); display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
         .capability-card i { font-size: 1.15rem; color: var(--primary); }
         .capability-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; }
         .capability-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; font-weight: 500; text-align: left; }
 
-        /* --- 6. Chronological Project Timeline --- */
+        /* --- 5. Chronological Project Timeline --- */
         .timeline-container { display: flex; flex-direction: column; gap: 12px; padding: 16px 0 24px; }
         .timeline-node { background: var(--white); border: 1px solid var(--border-line); padding: 16px 24px; border-radius: 6px; display: flex; align-items: center; gap: 24px; }
         .timeline-year { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--primary); min-width: 60px; text-align: left; }
         .timeline-detail h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
         .timeline-detail p { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; text-align: left; }
 
-        /* --- 7. Corporate Statement & Conversion Blocks --- */
+        /* --- 6. Corporate Statement & Conversion Blocks --- */
         .mission-vision-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 0 24px; }
         .statement-node { background: var(--white); border: 1px solid var(--border-line); padding: 24px; border-radius: var(--card-radius); }
         .statement-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
@@ -113,7 +143,8 @@
         .btn-cta:hover { background: var(--primary); }
 
         @media (max-width: 960px) {
-            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; justify-items: center; text-align: center; }
+            .founder-info-pack { align-items: center; }
             .founder-info-pack ul { grid-template-columns: 1fr; }
             .capabilities-grid, .mission-vision-box { grid-template-columns: 1fr; gap: 16px; }
             .freelance-panel { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
@@ -125,7 +156,7 @@
     <!-- Loaded Home Page Global Header Mount Placeholder (Untouched) -->
     <div id="global-header"></div>
 
-    <section class="story-hero">
+    <section class="contact-hero">
         <div class="container">
             <span class="badge">Ecosystem Profile</span>
             <h1>Building Digital Experiences That <span>Educate, Inspire, &amp; Deliver</span></h1>
@@ -161,7 +192,7 @@
                 <!-- RAKESH CARD -->
                 <div class="wide-list-row lead-rakesh">
                     <div class="image-frame-box">
-                        <img src="rj.png" alt="Rakesh Jadhav">
+                        <img src="rakesh.png" alt="Rakesh Jadhav">
                     </div>
                     <div class="founder-info-pack">
                         <div class="founder-title-block">
@@ -178,7 +209,7 @@
                         </ul>
                         <div class="founder-social">
                             <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="GitHub RepositoriesSpace"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="GitHub Repositories Space"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +217,7 @@
                 <!-- RASHMI CARD -->
                 <div class="wide-list-row lead-rashmi">
                     <div class="image-frame-box">
-                        <img src="rd.png" alt="Rashmi Divantgi">
+                        <img src="rashmi.png" alt="Rashmi Divantgi">
                     </div>
                     <div class="founder-info-pack">
                         <div class="founder-title-block">
