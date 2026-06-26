@@ -8,246 +8,293 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* High-End Minimalist Studio Design Tokens */
+            /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
-            --secondary: #0f172a;     /* Deep Jet Onyx */
-            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
-            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
-            --text-muted: #57534e;    /* Deep Muted Stone Blue */
-            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
+            --primary-glow: rgba(16, 185, 129, 0.08);
+            --secondary: #0f172a;      /* WebNova Deep Slate */
+            --bg: #f8fafc;            /* Workspace Off-White Background */
+            --text-main: #0f172a;     /* Dark Charcoal Main Typography */
+            --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
+            --border-line: #e2e8f0;   /* Razor-Thin Split Framework Lines */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --card-radius: 8px;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        h1, h2, h3, h4, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        /* --- 1. Institutional Hero Section --- */
+        .story-hero { padding: 48px 0 32px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border-line); }
+        .badge {
+            background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 4px 12px; 
+            border-radius: 4px; font-weight: 700; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.15);
+            margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .story-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .story-hero h1 span { color: var(--primary); }
+        .story-hero p { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; max-width: 750px; margin: 0 auto; }
+
+        /* --- 2. High-Performance Stats Strip --- */
+        .stats-ribbon { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-line); }
+        .stat-node { display: flex; flex-direction: column; align-items: center; }
+        .stat-node strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .stat-node span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
+
+        /* --- 3. Unified Narrative Section --- */
+        .section-headline-bar { padding: 32px 0 12px; border-bottom: 1px solid var(--border-line); }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px;
-            letter-spacing: -0.01em;
-        }
+        .narrative-block { background: var(--white); border: 1px solid var(--border-line); padding: 32px; border-radius: var(--card-radius); margin-top: 16px; }
+        .narrative-block p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; margin-bottom: 16px; text-align: left; }
+        .narrative-block p:last-child { margin-bottom: 0; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 32px; width: 100%; }
-
-        /* --- 1. Institutional Editorial Hero --- */
-        .story-hero-animated {
-            padding: 130px 0 90px;
-            border-bottom: 1px solid var(--border-line);
-            background: var(--white);
-            position: relative;
-        }
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: flex-end;
-        }
-        .hero-left h1 { font-size: 3.8rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; }
-        .hero-left h1 span { color: var(--primary); }
-        .hero-right p { color: var(--text-muted); font-size: 1.15rem; font-weight: 400; line-height: 1.7; max-width: 520px; }
-
-        /* --- 2. Asymmetric Founders Core Section --- */
-        .founders-display { padding: 0; background: var(--white); }
+        /* --- 4. Restructured Horizontal Wide Founders Columns --- */
+        .learning-modules-section { padding: 16px 0; }
+        .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
         
-        .editorial-founders-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-bottom: 1px solid var(--border-line);
+        .wide-list-row {
+            background: var(--white) !important; border: 1px solid var(--border-line) !important;
+            padding: 32px !important; border-radius: var(--card-radius) !important;
+            display: grid !important; grid-template-columns: 200px 1fr !important;
+            align-items: start !important; gap: 32px !important; width: 100% !important;
         }
+        .wide-list-row.lead-rakesh { border-left: 5px solid #64748b !important; }
+        .wide-list-row.lead-rashmi { border-left: 5px solid #38bdf8 !important; }
 
-        .founder-profile-cell {
-            padding: 80px 50px;
-            border-right: 1px solid var(--border-line);
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 40px;
-            align-items: flex-start;
-            transition: var(--transition);
-        }
-        .editorial-founders-grid .founder-profile-cell:nth-child(2n) { border-right: none; }
-        .founder-profile-cell:hover { background: #fdfdfd; }
-
-        .image-frame-box {
-            width: 160px; height: 180px;
-            border-radius: 8px; overflow: hidden;
-            background: #f1f5f9; border: 1px solid var(--border-line);
-            box-shadow: 0 8px 24px -12px rgba(0,0,0,0.08);
-            position: relative;
-        }
-        .image-frame-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: var(--transition); }
-        .founder-profile-cell:hover img { filter: grayscale(0%); transform: scale(1.02); }
-
-        .experience-tag {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px);
-            color: var(--white); text-align: center; padding: 4px 0;
-            font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        .founder-info { display: flex; flex-direction: column; align-items: flex-start; }
-        .founder-info h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
-        .role-title { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+        .image-frame-box { width: 100%; height: 220px; border-radius: 4px; overflow: hidden; background: var(--bg); border: 1px solid var(--border-line); position: relative; }
+        .image-frame-box img { width: 100%; height: 100%; object-fit: cover; }
         
-        .qualification-badge {
-            font-size: 0.7rem; font-weight: 700; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 18px;
-            background: #f1f5f9; padding: 3px 8px; border-radius: 4px; display: inline-block;
-        }
-        .founder-profile-cell:nth-child(1):hover .qualification-badge { background: rgba(59, 130, 246, 0.05); color: #2563eb; }
-        .founder-profile-cell:nth-child(2):hover .qualification-badge { background: rgba(16, 185, 129, 0.05); color: #059669; }
-
-        .founder-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; text-align: left; }
+        .founder-info-pack { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+        .founder-title-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-main); }
+        .founder-title-block span { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
         
-        .founder-social { display: flex; gap: 16px; }
-        .founder-social a { color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
-        .founder-social a:hover { color: var(--secondary); }
-
-        /* --- 3. Institutional Statement Inset --- */
-        .mission-reveal { padding: 110px 0; border-bottom: 1px solid var(--border-line); }
-        .statement-split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
-        .statement-split h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
-        .statement-split h2 span { color: var(--primary); }
+        .qualification-badge { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-line); }
         
-        .glass-impact-box { text-align: left; }
-        .glass-impact-box p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; font-weight: 400; margin-bottom: 24px; }
-        .glass-impact-box p:last-child { margin-bottom: 0; }
-
-        /* --- 5. High-Conversion Studio CTA --- */
-        .closing-cta-block { padding: 120px 0; background: var(--white); }
-        .cta-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
-        .cta-left h3 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
-        .cta-left p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; max-width: 620px; }
+        .founder-info-pack p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; text-align: left; font-weight: 500; }
         
-        .cta-actions { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 320px; margin-left: auto; }
-        .btn-studio { 
-            padding: 14px 28px; border-radius: 6px; text-decoration: none; 
-            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
-            letter-spacing: 1px; transition: var(--transition); display: inline-flex; 
-            align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent;
-        }
-        .btn-black { background: var(--secondary); color: var(--white); }
-        .btn-black:hover { background: var(--primary); }
+        .founder-info-pack ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; width: 100%; }
+        .founder-info-pack li { font-size: 0.82rem; color: var(--text-muted); padding-left: 16px; position: relative; font-weight: 500; text-align: left; }
+        .founder-info-pack li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1024px) {
-            .hero-layout, .editorial-founders-grid, .statement-split, .cta-layout { grid-template-columns: 1fr; gap: 40px; }
-            .hero-left h1 { font-size: 3rem; }
-            .editorial-founders-grid .founder-profile-cell { border-right: none !important; border-bottom: 1px solid var(--border-line) !important; padding: 50px 24px; }
-            .editorial-founders-grid .founder-profile-cell:last-child { border-bottom: none !important; }
-            .cta-actions { margin-left: 0; }
-        }
-        @media (max-width: 640px) {
-            .founder-profile-cell { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 24px; }
-            .founder-info { align-items: center; }
-            .founder-info p { text-align: center; }
-            .btn-studio { width: 100%; }
+        .founder-social { display: flex; gap: 8px; margin-top: 4px; }
+        .founder-social a { width: 32px; height: 30px; background: var(--bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: var(--transition); }
+        .founder-social a:hover { color: var(--white); background: var(--text-main); border-color: var(--text-main); }
+
+        /* --- 5. Capabilities Matrix Blocks --- */
+        .capabilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px 0 24px; }
+        .capability-card { background: var(--white); border: 1px solid var(--border-line); padding: 24px; border-radius: var(--card-radius); display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+        .capability-card i { font-size: 1.15rem; color: var(--primary); }
+        .capability-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; }
+        .capability-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; font-weight: 500; text-align: left; }
+
+        /* --- 6. Chronological Project Timeline --- */
+        .timeline-container { display: flex; flex-direction: column; gap: 12px; padding: 16px 0 24px; }
+        .timeline-node { background: var(--white); border: 1px solid var(--border-line); padding: 16px 24px; border-radius: 6px; display: flex; align-items: center; gap: 24px; }
+        .timeline-year { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--primary); min-width: 60px; text-align: left; }
+        .timeline-detail h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+        .timeline-detail p { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; text-align: left; }
+
+        /* --- 7. Corporate Statement & Conversion Blocks --- */
+        .mission-vision-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 0 24px; }
+        .statement-node { background: var(--white); border: 1px solid var(--border-line); padding: 24px; border-radius: var(--card-radius); }
+        .statement-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+        .statement-node p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
+
+        .freelance-panel { background: var(--white); border-left: 4px solid var(--primary); padding: 24px 32px; border-radius: 0 var(--card-radius) var(--card-radius) 0; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; gap: 40px; margin-bottom: 48px; }
+        .freelance-panel h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
+        .freelance-panel p { color: var(--text-muted); font-size: 0.88rem; font-weight: 500; line-height: 1.5; text-align: left; }
+        .btn-cta { padding: 10px 20px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap; }
+        .btn-cta:hover { background: var(--primary); }
+
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .founder-info-pack ul { grid-template-columns: 1fr; }
+            .capabilities-grid, .mission-vision-box { grid-template-columns: 1fr; gap: 16px; }
+            .freelance-panel { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <!-- Loaded Home Page Global Header Mount Placeholder (Untouched) -->
+    <div id="global-header"></div>
 
-<!-- SYSTEM RESOLVED HERO BANNER - HIGH VISIBILITY DECK -->
-<section class="story-hero-animated" style="background: linear-gradient(145deg, #060b19 0%, #0b1532 40%, #112559 100%) !important; padding: 130px 0 90px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-    <div class="container">
-        <div class="hero-layout" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: flex-end;">
-            <div class="hero-left">
-                <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 3.8rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; color: #ffffff !important;">
-                    Two Minds.<br>One <span style="color: #10b981 !important;">Mission.</span>
-                </h1>
-            </div>
-            <div class="hero-right">
-                <p style="color: #94a3b8 !important; font-size: 1.15rem; font-weight: 400; line-height: 1.7; max-width: 520px; margin-bottom: 12px;">
-                    Bridging the gap between academic learning and real-world technology skills.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="founders-display">
-    <div class="container" style="padding:0;">
-        <div class="editorial-founders-grid">
+    <section class="story-hero">
+        <div class="container">
+            <span class="badge">Ecosystem Profile</span>
+            <h1>Building Digital Experiences That <span>Educate, Inspire, &amp; Deliver</span></h1>
+            <p>WebNova Studio combines precise interface design, custom frontend systems architecture, and comprehensive computer applications learning roadmaps into a single operational repository hub.</p>
             
-            <div class="founder-profile-cell">
-                <div class="image-frame-box">
-                    <img src="rakesh.png" alt="Rakesh Jadhav">
-                    <div class="experience-tag">Technical Vision</div>
-                </div>
-                <div class="founder-info">
-                    <h3>Rakesh Jadhav</h3>
-                    <span class="role-title">Founder &amp; Technical Lead</span>
-                    <span class="qualification-badge">BCA Graduate</span>
-                    <p>Rakesh leads the technical vision of WebNova Studio and Code Craft Academic. His focus lies in software development, database systems, web technologies, programming education, and structured learning frameworks. He is committed to helping students build strong technical foundations and industry-ready development skills through practical, project-based learning.</p>
-                    <div class="founder-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
+            <div class="stats-ribbon">
+                <div class="stat-node"><strong>15+ Years</strong><span>Design Experience</span></div>
+                <div class="stat-node"><strong>2+ Years</strong><span>Project Engineering</span></div>
+                <div class="stat-node"><strong>100+ Assets</strong><span>Academic Handouts</span></div>
+                <div class="stat-node"><strong>Active</strong><span>Freelance Track</span></div>
             </div>
-
-            <div class="founder-profile-cell">
-                <div class="image-frame-box">
-                    <img src="rashmi.png" alt="Rashmi Divantgi">
-                    <div class="experience-tag">Creative Vision</div>
-                </div>
-                <div class="founder-info">
-                    <h3>Rashmi Divantgi</h3>
-                    <span class="role-title">Co-Founder &amp; Design Lead</span>
-                    <span class="qualification-badge">MCA Graduate</span>
-                    <p>Focused on user experience, visual design, and educational content presentation. Rashmi leads the creative direction of WebNova Studio, ensuring that learning materials and digital experiences remain engaging, accessible, and effective.</p>
-                    <div class="founder-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="mission-reveal">
     <div class="container">
-        <div class="statement-split">
+        
+        <!-- Section 1: Core Narrative Block -->
+        <div class="section-headline-bar">
+            <h2>1. Our Operational Journey</h2>
+        </div>
+        <div class="narrative-block">
+            <p>Every successful system architecture begins with deliberate curiosity. WebNova Studio was founded on a central technical principle: that modern software design should be highly practical, structured, and beautifully engineered from the ground up.</p>
+            <p>What started as private frontend component development and specialized academic tools configurations has naturally evolved. Today, WebNova Studio and Code Craft Academic work hand-in-hand, bridging the distinct gap between academic computer application tracks and the fluid skillsets required inside production environments.</p>
+        </div>
+
+        <!-- Section 2: Restructured Founders Columns -->
+        <div class="section-headline-bar">
+            <h2>2. Meet the Founders</h2>
+        </div>
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <!-- RAKESH CARD -->
+                <div class="wide-list-row lead-rakesh">
+                    <div class="image-frame-box">
+                        <img src="rakesh.png" alt="Rakesh Jadhav">
+                    </div>
+                    <div class="founder-info-pack">
+                        <div class="founder-title-block">
+                            <h3>Rakesh Jadhav</h3>
+                            <span>Founder &amp; Technical Lead</span>
+                        </div>
+                        <span class="qualification-badge">BCA Graduate // Educator</span>
+                        <p>Rakesh establishes the technological vision behind our application frameworks and acts as the lead coordinator for Code Craft Academic. Balancing extensive personal web layout design timelines alongside formal classroom teaching, he shapes practical computer engineering tools designed to give students industry-aligned foundational control.</p>
+                        <ul>
+                            <li>15+ Years Web Design Experience</li>
+                            <li>2+ Years Software Project Dev</li>
+                            <li>Active Classroom School Teacher</li>
+                            <li>Full-Stack Development Enthusiast</li>
+                        </ul>
+                        <div class="founder-social">
+                            <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="GitHub RepositoriesSpace"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RASHMI CARD -->
+                <div class="wide-list-row lead-rashmi">
+                    <div class="image-frame-box">
+                        <img src="rashmi.png" alt="Rashmi Divantgi">
+                    </div>
+                    <div class="founder-info-pack">
+                        <div class="founder-title-block">
+                            <h3>Rashmi Divantgi</h3>
+                            <span>Co-Founder &amp; Design Lead</span>
+                        </div>
+                        <span class="qualification-badge">MCA Student Candidate</span>
+                        <p>Rashmi handles user experience validation rules, interface micro-interactions layers, and educational taxonomy design. Currently pursuing her Master of Computer Applications (MCA) degree, she merges structured scholastic paradigms with active front-end layout configurations to deliver clean, intuitive user journeys.</p>
+                        <ul>
+                            <li>2+ Years Web Development Track</li>
+                            <li>2+ Years UI/UX Interface Design</li>
+                            <li>Responsive Framework Styling</li>
+                            <li>Academic Content Structuring</li>
+                        </ul>
+                        <div class="founder-social">
+                            <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="GitHub Repositories Space"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 3: Core Capabilities Matrix -->
+        <div class="section-headline-bar">
+            <h2>3. What We Architect</h2>
+        </div>
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <i class="fas fa-browser"></i>
+                <h4>Responsive Web Design</h4>
+                <p>Clean, high-conversion commercial business landing layouts optimized for all viewport breakpoints.</p>
+            </div>
+            <div class="capability-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Academic Resources</h4>
+                <p>Structured computer science reference cheat sheets, lab programs manuals, and lecture presentation slidedecks.</p>
+            </div>
+            <div class="capability-card">
+                <i class="fas fa-palette"></i>
+                <h4>UI/UX Interface Systems</h4>
+                <p>User-centered digital blueprints built with a focus on usability metrics and aesthetic hierarchy rules.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Validated Timeline Track -->
+        <div class="section-headline-bar">
+            <h2>4. Chronological Timeline</h2>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-node">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-detail">
+                    <h4>Web Design Inception</h4>
+                    <p>Began exploring structural web styles, digital interfaces, and legacy stylesheet layout configurations tracks.</p>
+                </div>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-detail">
+                    <h4>Academic Software Engineering</h4>
+                    <p>Launched targeted development tracks covering verified student source codes, standalone programs, and schemas maps.</p>
+                </div>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-detail">
+                    <h4>Code Craft Academic Launch</h4>
+                    <p>Deployed our digital educational reference center, hosting vetted notes and syllabus manual handouts.</p>
+                </div>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-detail">
+                    <h4>WebNova Studio Integration</h4>
+                    <p>Consolidated both creative freelance layout pipelines and training tracks into a single production workspace matrix.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Mission Statements and Conversion Panels -->
+        <div class="mission-vision-box">
+            <div class="statement-node">
+                <h4>Our Mission</h4>
+                <p>To make technology implementation practical, structured, and completely accessible by anchoring modern front-end web development practices within balanced educational material tracks.</p>
+            </div>
+            <div class="statement-node">
+                <h4>Our Vision</h4>
+                <p>To establish a trusted web presence platform where students gain immediate logical clarity, creators isolate clean source blueprints, and businesses unlock performant web applications layout solutions.</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Trust-Centered Freelance Outpost -->
+        <div class="freelance-panel">
             <div>
-                <h2>Building Knowledge<br>Through <span>Technology.</span></h2>
+                <h3>Available for Freelance Project Collaborations</h3>
+                <p>We are actively accepting select freelance contracts covering responsive web configuration files, UI/UX systems design wireframes, and custom software training resources. Let's build a functional solution together.</p>
             </div>
-            <div class="glass-impact-box">
-                <p>At WebNova Studio and Code Craft Academic, our goal is simple: help learners understand technology through practical learning, real projects, and modern development practices.</p>
-                <p>Whether it's computer fundamentals, programming, web development, design, or emerging technologies, we are committed to creating resources that empower students to learn, build, and grow with confidence.</p>
-            </div>
+            <a href="contact.html" class="btn-cta">Start Your Project</a>
         </div>
+
     </div>
-</section>
 
-<section class="closing-cta-block">
-    <div class="container">
-        <div class="cta-layout">
-            <div class="cta-left">
-                <h3>Start Your Journey With Us.</h3>
-                <p>Work directly with our team to bring your application layouts to production environments, or start mastering computer applications logic tracks via our learning modules.</p>
-            </div>
-            <div class="cta-actions">
-                <a href="contact.html" class="btn-studio btn-black">Connect With Our Team</a>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- Loaded Home Page Global Footer Mount Placeholder (Untouched) -->
+    <div id="global-footer"></div>
 
-<div id="global-footer"></div>
-
-<script src="main.js"></script>
-<script src="footer.js"></script>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>
