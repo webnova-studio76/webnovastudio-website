@@ -6,162 +6,296 @@
     <title>Framework Mastery | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #0f172a;
-            --bg: #f8fafc;
+            /* Compact Data-Dense Theming Alignment Map */
+            --primary: #2563eb;        /* Global Academic Royal Blue */
+            --secondary: #0f172a;      /* WebNova Master Deep Navy */
+            --bg: #f8fafc;             /* Workspace Background */
+            --text-main: #0f172a;      /* High-Contrast Headings */
+            --text-muted: #475569;     /* Deep Muted Subtext */
+            --border-line: #e2e8f0;    /* Framework Split Lines */
             --white: #ffffff;
-            --react: #61dafb;
-            --angular: #dd0031;
-            --node: #68a063;
+            
+            /* Framework Chromatic Track Identifiers */
+            --react-color: #0ea5e9;
+            --angular-color: #dd0031;
+            --node-color: #16a34a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--secondary); line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 15px; }
-        .header h1 span { color: var(--primary); }
-        .header p { color: #64748b; font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
-
-        .section-title { 
-            text-align: center; 
-            margin: 40px 0 80px; 
-            font-size: 1.2rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: #94a3b8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        .section-title::before, .section-title::after { content: ""; height: 1px; width: 50px; background: #cbd5e1; }
-
-        .bundle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-            justify-content: center;
-        }
-
-        .phase-card {
+        /* --- 1. Course Title Header Banner --- */
+        .course-header {
+            position: relative;
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-line);
             background: var(--white);
-            border-radius: 20px;
-            padding: 50px 35px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        }
+        .sub-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
+
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
         }
 
-        .phase-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border-color: #cbd5e1;
-        }
-
-        .icon-circle {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
+        /* --- 2. Filter Bar Title Headline --- */
+        .section-headline-bar {
+            padding: 32px 0 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* --- 3. Immune Horizontal Wide List Layout Engine --- */
+        .learning-modules-section { padding: 24px 0; }
+        
+        .wide-list-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            width: 100% !important;
         }
 
-        /* Framework Theming */
-        .react-card .icon-circle { background: var(--react); }
-        .angular-card .icon-circle { background: var(--angular); }
-        .node-card .icon-circle { background: var(--node); }
-
-        .phase-card h3 { margin-bottom: 12px; font-size: 1.6rem; }
-        .phase-card p { font-size: 0.95rem; color: #64748b; margin-bottom: 30px; flex-grow: 1; }
-
-        .btn-view {
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            border: 2px solid transparent;
-            width: 100%;
+        .wide-list-row {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px 32px !important;
+            border-radius: 8px !important;
+            display: grid !important;
+            grid-template-columns: 260px 1fr 160px !important; /* Locked explicit layout dimensions columns */
+            align-items: center !important;
+            gap: 32px !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
+        .wide-list-row:hover { border-color: #cbd5e1 !important; transform: translateX(2px); }
 
-        .react-card .btn-view { border-color: var(--react); color: var(--react); }
-        .angular-card .btn-view { border-color: var(--angular); color: var(--angular); }
-        .node-card .btn-view { border-color: var(--node); color: var(--node); }
+        /* Color Borders Mapping For Architecture Specifications */
+        .wide-list-row.track-react { border-left: 5px solid var(--react-color) !important; }
+        .wide-list-row.track-angular { border-left: 5px solid var(--angular-color) !important; }
+        .wide-list-row.track-node { border-left: 5px solid var(--node-color) !important; }
 
-        .btn-view:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
-
-        .footer-cta {
-            background: var(--secondary);
-            color: white;
-            padding: 60px 40px;
-            border-radius: 30px;
-            text-align: center;
-            margin-top: 60px;
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
         }
+        .wide-list-row.track-react .mod-thumb-deck { color: var(--react-color); }
+        .wide-list-row.track-angular .mod-thumb-deck { color: var(--angular-color); }
+        .wide-list-row.track-node .mod-thumb-deck { color: var(--node-color); }
 
-        .footer-cta h2 { margin-bottom: 15px; }
-        .footer-cta p { color: #94a3b8; margin-bottom: 30px; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        @media (max-width: 768px) {
-            .bundle-grid { grid-template-columns: 1fr; }
+        .wide-list-row ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .wide-list-row li { font-size: 0.88rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f121"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
+
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+        }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* --- 4. Value Outcomes Framework --- */
+        .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
+        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: var(--primary); margin-top: 3px; font-size: 0.85rem; }
+
+        /* --- 5. Summary Framework Footer --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px; background: var(--white); padding: 16px 24px;
+            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px;
+        }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: var(--primary); }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
+
+        .webnova-bottom-card {
+            background: var(--white); border-left: 4px solid var(--primary);
+            padding: 24px 32px; border-radius: 0 8px 8px 0; width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
+            display: flex; justify-content: space-between; align-items: center; gap: 40px;
+        }
+        .webnova-bottom-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 2px; }
+        .webnova-bottom-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .btn-cta { 
+            padding: 10px 20px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap;
+        }
+        .btn-cta:hover { background: var(--primary); }
+
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .download-btns { width: 100%; }
+            .outcomes-grid, .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
+            .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
+    <div id="global-header"></div>
+
+    <section class="course-header">
+        <div class="container">
+            <span class="sub-title">Code Craft Academic</span>
+            <h1>Advanced <span>JS Frameworks</span></h1>
+            <p>Master component architecture states, synchronous script lifecycles, and scalable asynchronous runtime environments.</p>
+            <div class="hero-stats">
+                <span>3 Learning Tracks</span>
+                <span>45+ Core Chapters</span>
+                <span>Production Projects</span>
+                <span>Free Guide Manuals</span>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
-        <header class="header">
-            <h1>Advanced <span>JS Engineering</span></h1>
-            <p>Master the top-tier frameworks and runtimes that power modern high-performance web applications.</p>
-        </header>
-
-        <h2 class="section-title">Professional Framework Tracks</h2>
-        <div class="bundle-grid">
-            <div class="phase-card react-card">
-                <div class="icon-circle"><i class="fab fa-react"></i></div>
-                <h3>ReactJS</h3>
-                <p>Component-based UI logic, Virtual DOM optimization, and modern State Management patterns.</p>
-                <a href="react-mastery.html" class="btn-view">Access Syllabus</a>
-            </div>
-
-            <div class="phase-card angular-card">
-                <div class="icon-circle"><i class="fab fa-angular"></i></div>
-                <h3>AngularJS</h3>
-                <p>Enterprise TypeScript development, Dependency Injection, and Two-Way Data Binding architecture.</p>
-                <a href="angular-mastery.html" class="btn-view">Access Syllabus</a>
-            </div>
-
-            <div class="phase-card node-card">
-                <div class="icon-circle"><i class="fab fa-node-js"></i></div>
-                <h3>NodeJS</h3>
-                <p>Asynchronous Event-Driven Runtimes, RESTful API design, and Scalable Middleware patterns.</p>
-                <a href="node-mastery.html" class="btn-view">Access Syllabus</a>
-            </div>
+        
+        <div class="section-headline-bar">
+            <h2>Professional <span>Framework Blueprints</span></h2>
+            <span class="track-total-count">03 Engineering Tracks</span>
         </div>
 
-        <div class="footer-cta">
-            <h2>Ready to Scale Your Knowledge?</h2>
-            <p>Transition from a web designer to a software engineer with our specialized JavaScript tracks.</p>
-            <a href="contact.html" style="background: var(--primary); color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; transition: 0.3s;">Consult WebNova Studio</a>
-        </div>
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <div class="wide-list-row track-react">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-react"></i></div>
+                        <div class="mod-header-text">
+                            <h3>ReactJS Master Track</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">15 Modules</span>
+                                <span class="meta-chip">Beginner → Pro</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Declarative Component UI Tree Logic &amp; Virtual DOM Diffing</li>
+                        <li>Modern React Hooks Patterns, Context Architecture &amp; State Hooks</li>
+                        <li>Single Page Navigation Routing Elements &amp; State Management</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="frameworks-portal.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row track-html">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-node-js"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Node.js Backend Engine</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">12 Modules</span>
+                                <span class="meta-chip">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Asynchronous Event-Driven Architecture &amp; V8 Engine Loops</li>
+                        <li>RESTful API Design, Express Middleware Pipelines &amp; CORS Maps</li>
+                        <li>Persistent Databases Connection Connectors &amp; JWT Authorization Security</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="node-mastery.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row track-angular">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-angular"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Angular Enterprise Hub</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">14 Modules</span>
+                                <span class="meta-chip">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Strict TypeScript Typings, Classes, &amp; Interface Frameworks</li>
+                        <li>Hierarchical Dependency Injection Trees &amp; Component Form Handlers</li>
+                        <li>RxJS Event Handling Streams, Observables Sequences &amp; HTTP Services</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="angular-mastery.html" class="btn-dl">Explore Path</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Target Engineering Competencies</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Architect decoupled, scalable reactive web interfaces following industry benchmarks.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Deploy asynchronous, secure backend routing applications dealing with real data pipelines.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Leverage strong architectural typings protocols to design robust corporate platforms.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Integrate state managers, middleware layers, and observable pipes smoothly.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Syllabus Layout</span><strong>03 Main Stacks</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-code-branch"></i>
+                    <div><span>Compiled Chapters</span><strong>45+ Deep Topics</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-unlock-alt"></i>
+                    <div><span>Portal Access</span><strong>100% Free Materials</strong></div>
+                </div>
+            </div>
+
+            <div class="webnova-bottom-card">
+                <div>
+                    <h3>Transition to Full-Stack Developer</h3>
+                    <p>Link your interface nodes to enterprise-ready backend runtimes. Explore our complete computer applications repository indexes at Code Craft Academic.</p>
+                </div>
+                <a href="courses.html" class="btn-cta">Browse Academy</a>
+            </div>
+        </section>
     </div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
