@@ -26,7 +26,16 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; height: 100vh; overflow: hidden; padding-top: 72px; }
+        body { background: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* --- Injected Flex Isolation Wrapper Container --- */
+        .app-workspace-wrapper {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 72px); /* Subtracts global header constraint block values */
+            overflow: hidden;
+            width: 100%;
+        }
 
         /* ==========================================================================
            ⚓ 1. CATEGORIZED SIDEBAR DIRECTORY ENGINE
@@ -138,7 +147,7 @@
         @keyframes toastSlide { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
         @media (max-width: 960px) {
-            body { flex-direction: column; overflow: auto; height: auto; }
+            .app-workspace-wrapper { flex-direction: column; overflow: auto; height: auto; }
             .sidebar { width: 100%; height: 350px; }
             .content-grid { grid-template-columns: 1fr; }
             .main-content { height: auto; }
@@ -149,81 +158,85 @@
 
     <div id="global-header"></div>
 
-    <aside class="sidebar">
-        <div class="sidebar-search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="libSearch" placeholder="Search C programs, algorithms..." oninput="filterCatalogTree()">
-        </div>
-        <div class="category-group-container" id="catalogDirectory">
+    <div class="app-workspace-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="libSearch" placeholder="Search C programs, algorithms..." oninput="filterCatalogTree()">
             </div>
-    </aside>
-
-    <main class="main-content">
-        <div id="content-display">
-            
-            <nav class="breadcrumb-trail">
-                <span>C Directory</span> / <span id="breadcrumbSection">Basic</span> / <span class="active-node" id="breadcrumbTitle">Hello World</span>
-            </nav>
-
-            <div class="header-box">
-                <h1 id="prog-title">Program Title</h1>
-                <div class="meta-badges-row">
-                    <span class="meta-badge tier-pill" id="metaTier">Beginner</span>
-                    <span class="meta-badge verified-tag"><i class="fas fa-check-circle"></i> Code Craft Audited</span>
-                    <span class="meta-badge"><i class="fas fa-microchip"></i> GCC C99 Ready</span>
+            <div class="category-group-container" id="catalogDirectory">
                 </div>
-            </div>
+        </aside>
 
-            <div class="content-grid">
+        <main class="main-content">
+            <div id="content-display">
                 
-                <div class="logic-container">
-                    <div class="logic-header"><i class="fas fa-brain"></i> Dynamic System Logic Breakdown</div>
-                    <div class="logic-body">
-                        <div id="logic-text">
+                <nav class="breadcrumb-trail">
+                    <span>C Directory</span> / <span id="breadcrumbSection">Basic</span> / <span class="active-node" id="breadcrumbTitle">Hello World</span>
+                </nav>
+
+                <div class="header-box">
+                    <h1 id="prog-title">Program Title</h1>
+                    <div class="meta-badges-row">
+                        <span class="meta-badge tier-pill" id="metaTier">Beginner</span>
+                        <span class="meta-badge verified-tag"><i class="fas fa-check-circle"></i> Code Craft Audited</span>
+                        <span class="meta-badge"><i class="fas fa-microchip"></i> GCC C99 Ready</span>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    
+                    <div class="logic-container">
+                        <div class="logic-header"><i class="fas fa-brain"></i> Dynamic System Logic Breakdown</div>
+                        <div class="logic-body">
+                            <div id="logic-text">
+                                </div>
+                            <div class="analysis-specs-box">
+                                <span class="spec-item-node">Time Complexity: <strong id="specTime">O(1)</strong></span>
+                                <span class="spec-item-node">Space Complexity: <strong id="specSpace">O(1)</strong></span>
                             </div>
-                        <div class="analysis-specs-box">
-                            <span class="spec-item-node">Time Complexity: <strong id="specTime">O(1)</strong></span>
-                            <span class="spec-item-node">Space Complexity: <strong id="specSpace">O(1)</strong></span>
                         </div>
                     </div>
-                </div>
 
-                <div class="terminal-container">
-                    <div class="terminal-header">
-                        <span class="dot" style="background: #ff5f56;"></span>
-                        <span class="dot" style="background: #ffbd2e;"></span>
-                        <span class="dot" style="background: #27c93f;"></span>
-                        <span style="margin-left: 6px;"><i class="fas fa-terminal"></i> Terminal Compiled Output</span>
-                    </div>
-                    <div class="terminal-body" id="output-text"></div>
-                </div>
-
-            </div>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <div class="code-header-meta">
-                        <i class="fas fa-file-code"></i> <span>main.c</span>
-                    </div>
-                    <div class="code-actions-zone">
-                        <button class="btn-code-action" onclick="openOnlineCompiler()"><i class="fas fa-play"></i> Run Online</button>
-                        <button class="btn-code-action btn-copy" onclick="copyCodeStack()"><i class="far fa-copy"></i> Copy Code</button>
-                    </div>
-                </div>
-                <div class="editor-workspace-canvas">
-                    <div class="line-numbers-rail" id="lineNumbersRail">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <span class="dot" style="background: #ff5f56;"></span>
+                            <span class="dot" style="background: #ffbd2e;"></span>
+                            <span class="dot" style="background: #27c93f;"></span>
+                            <span style="margin-left: 6px;"><i class="fas fa-terminal"></i> Terminal Compiled Output</span>
                         </div>
-                    <pre><code id="code-block"></code></pre>
+                        <div class="terminal-body" id="output-text"></div>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="navigation-row-deck">
-                <button class="btn-nav-trigger" id="prevBtn" onclick="navigateProgram(-1)">&larr; Previous Lab</button>
-                <button class="btn-nav-trigger" id="nextBtn" onclick="navigateProgram(1)">Next Lab &rarr;</button>
-            </div>
+                <div class="code-container">
+                    <div class="code-header">
+                        <div class="code-header-meta">
+                            <i class="fas fa-file-code"></i> <span>main.c</span>
+                        </div>
+                        <div class="code-actions-zone">
+                            <button class="btn-code-action" onclick="openOnlineCompiler()"><i class="fas fa-play"></i> Run Online</button>
+                            <button class="btn-code-action btn-copy" onclick="copyCodeStack()"><i class="far fa-copy"></i> Copy Code</button>
+                        </div>
+                    </div>
+                    <div class="editor-workspace-canvas">
+                        <div class="line-numbers-rail" id="lineNumbersRail">
+                            </div>
+                        <pre><code id="code-block"></code></pre>
+                    </div>
+                </div>
 
-        </div>
-    </main>
+                <div class="navigation-row-deck">
+                    <button class="btn-nav-trigger" id="prevBtn" onclick="navigateProgram(-1)">&larr; Previous Lab</button>
+                    <button class="btn-nav-trigger" id="nextBtn" onclick="navigateProgram(1)">Next Lab &rarr;</button>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
 
     <div class="toast-notification" id="toastAlert">
         <i class="fas fa-check"></i> Code block copied to workspace clipboard successfully!
@@ -262,7 +275,7 @@
             { id: "p21", title: "21. Largest (DMA)", category: "Memory", tier: "Advanced", timeComp: "O(N)", spaceComp: "O(N)", code: `#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, *p, max, i;\n    scanf("%d", &n);\n    p=(int*)malloc(n*sizeof(int));\n    for(i=0; i<n; i++) scanf("%d", p+i);\n    max=*p;\n    for(i=1; i<n; i++) if(*(p+i)>max) max=*(p+i);\n    printf("%d", max); free(p);\n    return 0;\n}`, logic: "Allocates customizable sequential blocks structures tracking dimensions variables inside system heap fields memory spaces before clearing data tracks nodes via explicit free() instructions loops.", output: "> gcc main.c\n> ./a.out\n3\n10 55 21\n55" },
             { id: "p22", title: "22. Vowel/Consonant", category: "Strings", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char s[50], c;\n    int v=0, co=0, i;\n    scanf("%s", s);\n    for(i=0; s[i]; i++){\n        c=tolower(s[i]);\n        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') v++;\n        else if(c>='a'&&c<='z') co++;\n    }\n    printf("V:%d C:%d", v, co);\n    return 0;\n}`, logic: "Parses target text string character allocations arrays arrays maps, converting casings variables dynamically via character-by-character validation criteria loops pathways.", output: "> gcc main.c\n> ./a.out\nWebNova\nV:3 C:4" },
             { id: "p23", title: "23. Student Info", category: "Structures", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nstruct Student { char n[20]; int r; float m; };\nint main() {\n    struct Student s = {"Alex", 101, 85.5};\n    printf("%s %d %.1f", s.n, s.r, s.m);\n    return 0;\n}`, logic: "Composes user-defined custom data models wrapping heterogeneous structural properties variables tokens into a single unified record structural footprint representation slot.", output: "> gcc main.c\n> ./a.out\nAlex 101 85.5" },
-            { id: "p24", title: "24. String Palindrome", category: "Strings", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[]="madam"; int n=strlen(s), i, f=0;\n    for(i=0; i<n/2; i++) { if(s[i]!=s[n-i-1]){ f=1; break; } }\n    if(f==0) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: "Traces opposite ends tracking boundaries coordinates indices inside targeted string allocations memory arrays simultaneously, analyzing symmetrical equivalence before flag breakout bounds.", output: "> gcc main.c\n> ./a.out\nYes" }
+            { id: "p24", title: "24. String Palindrome", category: "Strings", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    char s[]="madam"; int n=strlen(s), i, f=0;\n    for(i=0; i<n/2; i++) { if(s[i]!=s[n-i-1]){ f=1; break; } }\n    if(f==0) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: "Traces opposite ends tracking boundaries coordinates indices inside targeted string allocations memory arrays simultaneously, analyzing symmetrical equivalence before flag breakout bounds.", output: "> gcc main.c\n> ./a.out\nYes" }
         ];
 
         let activeTargetIndexId = "p1";
@@ -271,16 +284,15 @@
         /* ==========================================================================
            🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
            ========================================================================== */
-        function rebuildGroupedCatalogTree() {
-            const directoryMountContainer = document.getElementById('catalogDirectory');
-            directoryMountContainer.innerHTML = "";
+        function renderCatalogTree() {
+            const directoryContainer = document.getElementById('catalogDirectory');
+            directoryContainer.innerHTML = "";
 
-            // Group absolute database files objects matching unique category classification labels keys
+            // Group dataset based on search cache
             const catalogGroupedTree = {};
             LAB_DATABASE.forEach(item => {
                 const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
-                                    item.category.toLowerCase().includes(localSearchQueryStringCache) || 
-                                    item.tags.toLowerCase().includes(localSearchQueryStringCache);
+                                    item.category.toLowerCase().includes(localSearchQueryStringCache);
                 
                 if (searchMatch) {
                     if (!catalogGroupedTree[item.category]) {
@@ -291,16 +303,12 @@
             });
 
             const uniqueKeys = Object.keys(catalogGroupedTree);
-            
             if (uniqueKeys.length === 0) {
-                directoryMountContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
+                directoryContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
                 return;
             }
 
-            uniqueKeys.forEach((categoryKey, idx) => {
-                const isGroupActiveCollapsed = false; // Persistent folder view models state maps references
-                const collapseClassString = isGroupActiveCollapsed ? "collapsed" : "";
-                
+            uniqueKeys.forEach(categoryKey => {
                 let listElementsHTML = "";
                 catalogGroupedTree[categoryKey].forEach(item => {
                     const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
@@ -308,7 +316,7 @@
                 });
 
                 const groupHTML = `
-                    <div class="category-group-container ${collapseClassString}" data-cat-name="${categoryKey}">
+                    <div class="category-group-container" data-cat-name="${categoryKey}">
                         <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
                             <span>▼ ${categoryKey}</span>
                         </div>
@@ -317,10 +325,10 @@
                         </ul>
                     </div>
                 `;
-                directoryMountContainer.insertAdjacentHTML('beforeend', groupHTML);
+                directoryContainer.insertAdjacentHTML('beforeend', groupHTML);
             });
 
-            // Bind click listeners parameters securely to fresh dynamic children nodes maps elements
+            // Re-bind exact mouse events to new nodes elements lists strings loop
             document.querySelectorAll('.lab-item').forEach(itemNode => {
                 itemNode.addEventListener('click', () => {
                     activeTargetIndexId = itemNode.dataset.id;
@@ -330,13 +338,16 @@
                 });
             });
 
-            // Adjust navigation control buttons state limits bounds parameters values
             updateNavigationButtonsStateBounds();
         }
 
         function filterCatalogTree() {
             localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
             rebuildGroupedCatalogTree();
+        }
+
+        function rebuildGroupedCatalogTree() {
+            renderCatalogTree();
         }
 
         function toggleFolderViewBlock(headerNode) {
@@ -350,24 +361,17 @@
             }
         }
 
-        /* ==========================================================================
-           ⚓ 4. SYNCHRONIZED REPOSITORIES MAIN CONTENT WORKSPACE VIEW PUMP
-           ========================================================================== */
         function syncMainWorkspaceView() {
             const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
             if (!dataNode) return;
 
-            // Sync Header Titles Elements Text Data Tokens
             document.getElementById('prog-title').innerText = dataNode.title;
             document.getElementById('breadcrumbSection').innerText = dataNode.category;
             document.getElementById('breadcrumbTitle').innerText = dataNode.title;
             document.getElementById('metaTier').innerText = dataNode.tier;
-
-            // Sync Multi-Dimensional Algorithm Complexity Metrics Text Values Nodes
             document.getElementById('specTime').innerText = dataNode.timeComp;
             document.getElementById('specSpace').innerText = dataNode.spaceComp;
 
-            // Inject Custom Descriptive Instructions Block Elements Markup Content
             document.getElementById('logic-text').innerHTML = `
                 <div class="logic-step">
                     <div class="step-num">i</div>
@@ -375,13 +379,9 @@
                 </div>
             `;
 
-            // Sync Local Terminal Emulator String Cache
             document.getElementById('output-text').innerText = dataNode.output;
-
-            // Sync Editor Workspace Canvas & Core Syntax Lines
             document.getElementById('code-block').innerText = dataNode.code;
 
-            // Generate Sequential Code Line Numbers Matrix dynamically matching target length arrays strings split
             const lineCount = dataNode.code.split('\n').length;
             let lineRailHTML = "";
             for (let i = 1; i <= lineCount; i++) {
@@ -389,7 +389,6 @@
             }
             document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
 
-            // Dynamic safe tracking checks across sibling lists sets boundary indices properties values
             updateNavigationButtonsStateBounds();
         }
 
@@ -404,10 +403,9 @@
             const targetTargetIndex = currentIndex + directionOffset;
             if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
                 activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
-                rebuildGroupedCatalogTree();
+                renderCatalogTree();
                 syncMainWorkspaceView();
                 
-                // Keep selected layout card focused visibly inside sidebar scroll framework
                 const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
                 if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }
@@ -423,13 +421,12 @@
         }
 
         function openOnlineCompiler() {
-            // Fires target workspace definitions down straight into global programming portals remote compilers links scripts
             window.open("https://www.onlinegdb.com/online_c_compiler", "_blank");
         }
 
-        // Initialize Runtime Compilation Infrastructure Core Dashboard Loop On Boot Up Sequences Setup
+        // Setup on window load complete sequences loops execution pipeline
         window.onload = () => {
-            rebuildGroupedCatalogTree();
+            renderCatalogTree();
             syncMainWorkspaceView();
         };
     </script>
