@@ -837,3 +837,257 @@ header.master-header {
         transform: translateY(0px);
     }
 }
+
+/* ==========================================================================
+   ⚓ DYNAMIC CONVERSION-ORIENTED HOMEPAGE ROOT STYLES (Safe Extension)
+   ========================================================================== */
+body.homepage-root {
+    background-color: #f8fafc;
+    color: #111827;
+}
+
+.hp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.hp-section {
+    padding: 80px 0;
+    text-align: center;
+}
+.hp-section.bg-white { background-color: #ffffff; }
+.hp-section.bg-gray { background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.hp-section.bg-dark { background-color: #0f172a; color: #ffffff; }
+
+.hp-section-header {
+    max-width: 700px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+.hp-section-header.text-left-h { text-align: left !important; margin-bottom: 16px; }
+.hp-section-header.max-w-large { max-width: 850px; }
+.hp-section-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+    color: #0f172a !important;
+}
+.hp-section-header.dark-mode-header h2 { color: #ffffff !important; }
+.hp-section-header h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #0f172a !important; }
+.hp-section-header p {
+    color: #475569 !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    margin-top: 8px !important;
+}
+.hp-section-header.dark-mode-header p { color: #94a3b8 !important; }
+
+.hp-section-badge {
+    background: rgba(16, 185, 129, 0.06);
+    color: #10b981;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+}
+.hp-section-badge.bg-trans-emerald { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); }
+
+/* --- 1. Hero Layout Canvas Blocks --- */
+.hp-hero-canvas {
+    padding: 80px 0 64px;
+    background: #0f172a !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+.hp-hero-content { max-width: 850px; margin: 0 auto; }
+.hp-hero-content h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+}
+.hp-hero-content h1 span { color: #10b981 !important; text-shadow: none !important; }
+.hp-hero-content p {
+    font-size: 0.98rem !important;
+    color: #94a3b8 !important;
+    max-width: 680px !important;
+    line-height: 1.6 !important;
+    margin: 0 auto 28px !important;
+    font-weight: 500 !important;
+}
+.hp-hero-slogan { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.hp-hero-slogan span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #10b981 !important; }
+.hp-slogan-dot { width: 4px; height: 4px; background: #475569; border-radius: 50%; }
+
+.hp-hero-btns-row { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.hp-btn {
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.hp-btn-primary { background-color: #10b981; color: #ffffff !important; }
+.hp-btn-primary:hover { background-color: #059669; }
+.hp-btn-secondary { background-color: #1e293b; color: #ffffff !important; border: 1px solid #334155; }
+.hp-btn-secondary:hover { background-color: #334155; }
+.hp-btn-link { color: #10b981 !important; background: transparent !important; border: none !important; text-transform: none !important; font-weight: 700 !important; font-size: 0.88rem !important; }
+.hp-btn-link:hover { color: #ffffff !important; text-decoration: underline !important; }
+
+/* --- 2. Trust Slender Strip --- */
+.hp-trust-strip { background-color: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 14px 0; }
+.flex-strip { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.strip-item { font-size: 0.75rem; font-weight: 700; color: #475569; display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.strip-item i { color: #10b981; font-size: 0.85rem; }
+
+/* --- 3. Corporate Brands Split Grids --- */
+.hp-brand-split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1000px; margin: 0 auto; }
+.hp-brand-column { background: #ffffff; border: 1px solid #e2e8f0; padding: 32px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.hp-brand-column.border-amber { border-top: 4px solid #f59e0b; }
+.hp-brand-column.border-emerald { border-top: 4px solid #10b981; }
+
+.hp-brand-header { display: flex; align-items: center; gap: 14px; text-align: left; }
+.hp-brand-header i { width: 36px; height: 34px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.hp-brand-column.border-amber i { color: #f59e0b; }
+.hp-brand-column.border-emerald i { color: #10b981; }
+.hp-brand-header h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: #475569 !important; text-transform: uppercase; letter-spacing: 0.5px; }
+.hp-brand-header strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; display: block; margin-top: -2px; }
+
+.hp-brand-list { list-style: none; display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.hp-brand-list li { font-size: 0.85rem; color: #475569; text-align: left; padding-left: 14px; position: relative; font-weight: 500; }
+.hp-brand-list li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; font-weight: 900; font-size: 0.68rem; }
+.hp-brand-column.border-amber li::before { color: #f59e0b; }
+.hp-brand-column.border-emerald li::before { color: #10b981; }
+
+.hp-brand-action { font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; display: inline-block; padding-top: 4px; }
+.hp-brand-column.border-amber .hp-brand-action { color: #f59e0b; }
+.hp-brand-column.border-emerald .hp-brand-action { color: #10b981; }
+
+/* --- 4. Shared Matrix Core Layout Blocks Grids --- */
+.hp-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 100%; }
+.hp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
+
+.hp-scope-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.scope-icon { width: 36px; height: 34px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #10b981; }
+.hp-scope-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+.hp-scope-card p { font-size: 0.82rem; color: #475569; line-height: 1.45; font-weight: 500; text-align: left; }
+
+/* --- 5. Specialty Track Cards --- */
+.hp-spec-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 32px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; border-top: 4px solid #0f172a; }
+.hp-spec-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: #0f172a !important; }
+.spec-sub-chip { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; }
+.spec-bullets { list-style: none; display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.spec-bullets li { font-size: 0.85rem; color: #475569; text-align: left; padding-left: 14px; position: relative; font-weight: 500; }
+.spec-bullets li::before { content: "\f105"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
+
+/* --- 6. Vault Metric Items Elements --- */
+.vault-p-node { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.vault-p-node i { font-size: 1.5rem; margin-bottom: 4px; }
+.vault-p-node i.text-orange { color: #e34c26; }
+.vault-p-node i.text-blue { color: #264de4; }
+.vault-p-node i.text-yellow { color: #f7df1e; }
+.vault-p-node i.text-red { color: #e52521; }
+.vault-p-node i.text-tele { color: #0088cc; }
+.vault-p-node i.text-emerald { color: #10b981; }
+.vault-p-node strong { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
+.vault-p-node span { font-size: 0.72rem; color: #475569; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+.hp-center-btn-row { display: flex; justify-content: center; margin-top: 32px; }
+
+/* --- 7. Seven Phase Timeline Configurations --- */
+.hp-timeline-rail { display: flex; flex-direction: column; gap: 12px; max-width: 850px; margin: 0 auto; }
+.hp-timeline-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px 24px; border-radius: 6px; display: flex; align-items: center; gap: 24px; }
+.tl-phase { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #10b981; min-width: 70px; text-align: left; }
+.tl-text h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 2px; }
+.tl-text p { font-size: 0.82rem; color: #475569; font-weight: 500; text-align: left; line-height: 1.4; }
+
+/* --- 8. Embedded Lab Console Screen Area --- */
+.hp-console-preview-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 15px 30px -10px rgba(15,23,42,0.03); overflow: hidden; display: flex; flex-direction: column; max-width: 900px; margin: 0 auto; }
+.console-tab-header { background: #1e293b; padding: 10px 16px; display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; }
+.mac-buttons-row { display: flex; gap: 6px; }
+.m-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.m-dot.r { background: #ff5f56; }
+.m-dot.y { background: #ffbd2e; }
+.m-dot.g { background: #27c93f; }
+.console-tab-label { font-family: 'Fira Code', monospace; font-size: 0.72rem; color: #94a3b8; font-weight: 600; }
+.console-inner-split { display: grid; grid-template-columns: 240px 1fr; height: 180px; }
+.console-sidebar-preview { background: #0f172a; border-right: 1px solid rgba(255,255,255,0.03); padding: 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.c-item-node { font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+.c-item-node.active-item { color: #10b981; font-weight: 700; }
+.survey-p-link { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #10b981; text-decoration: none; margin-top: auto; }
+.console-output-canvas { background: #020617; padding: 16px 20px; overflow-y: auto; font-family: 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.5; color: #38bdf8; }
+
+/* --- 9. Personal Bio Founders Cards System --- */
+.hp-founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.hp-founder-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 28px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.hp-founder-card.border-slate-left { border-left: 5px solid #64748b; }
+.hp-founder-card.border-sky-left { border-left: 5px solid #38bdf8; }
+.card-identity-block { display: flex; align-items: center; gap: 12px; text-align: left; }
+.avatar-box { width: 44px; height: 44px; border-radius: 4px; overflow: hidden; background: #f1f5f9; border: 1px solid #e2e8f0; flex-shrink: 0; }
+.avatar-box img { width: 100%; height: 100%; object-fit: contain; }
+.card-identity-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: #0f172a !important; }
+.f-sub-title { font-size: 0.78rem; color: #475569; font-weight: 600; display: block; }
+.f-edu-p { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; }
+.f-bio-paragraph { font-size: 0.82rem; color: #475569; line-height: 1.5; text-align: left; font-weight: 500; font-style: italic; }
+.f-micro-metrics { display: flex; gap: 8px; width: 100%; margin-top: auto; }
+.f-micro-metrics span { font-size: 0.7rem; font-weight: 600; color: #334155; background: #f1f5f9; padding: 1px 6px; border-radius: 4px; }
+
+.freelance-availability-banner { display: inline-flex; align-items: center; gap: 12px; background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 20px; border-radius: 6px; margin-top: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+.live-signal-pulse { width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); }
+.freelance-availability-banner p { font-size: 0.82rem; font-weight: 600; color: #475569; text-align: left; }
+
+/* --- 10. Volumetric Value Proposition Grid Block --- */
+.value-prop-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.value-prop-card i.text-emerald { color: #10b981; font-size: 1rem; }
+.value-prop-card strong { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #ffffff !important; }
+.value-prop-card span { font-size: 0.82rem; color: #94a3b8; text-align: left; line-height: 1.4; }
+
+/* --- 11. Split Lower Layout Matrices --- */
+.split-lower-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; text-align: left; }
+.lower-column { display: flex; flex-direction: column; gap: 12px; }
+
+.updates-ledger-list { display: flex; flex-direction: column; gap: 8px; }
+.ledger-item { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 12px; }
+.l-badge { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 4px; min-width: 60px; text-align: center; }
+.l-badge.new { background: #d1fae5; color: #059669; }
+.l-badge.sync { background: #dbeafe; color: #2563eb; }
+.l-badge.tele { background: rgba(0, 136, 204, 0.08); color: #0088cc; border: 1px solid rgba(0, 136, 204, 0.15); }
+
+.review-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; }
+.review-card.placeholder-review { background: #f8fafc; border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 24px; color: #475569; }
+.review-card.placeholder-review i { font-size: 1.25rem; color: #94a3b8; }
+.stars-row { display: flex; gap: 2px; color: #f59e0b; font-size: 0.75rem; }
+.review-text { font-size: 0.85rem; color: #475569; font-weight: 500; line-height: 1.45; font-style: italic; }
+.review-card strong { font-size: 0.75rem; color: #0f172a !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* --- 12. Dark Conversion CTA Block Rail --- */
+.hp-section.border-top-accent { border-top: 2px solid #10b981; }
+
+/* ==========================================================================
+   ⚓ RESPONSIVE BREAKPOINT GRID CONSTRAINTS
+   ========================================================================== */
+@media (max-width: 960px) {
+    .hp-brand-split-grid, .hp-grid-4, .hp-grid-3, .hp-founders-grid, .split-lower-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .flex-strip { justify-content: center; gap: 16px 24px; }
+    .console-inner-split { grid-template-columns: 1fr; height: auto; }
+    .console-sidebar-preview { flex-direction: row; flex-wrap: wrap; gap: 12px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .survey-p-link { width: 100%; margin-top: 8px; }
+}
