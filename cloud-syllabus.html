@@ -6,368 +6,459 @@
     <title>Cloud Computing Mastery | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* ==========================================================================
-           1. PREMIUM CYBER PALETTE VARIABLE DICTIONARY & ANTI-BLUR OVERRIDES
-           ========================================================================== */
         :root {
+            /* Compact Data-Dense Theming Alignment Map */
             --primary: #0ea5e9;        /* Cloud Sky Blue */
-            --primary-glow: rgba(14, 165, 233, 0.25);
+            --primary-glow: rgba(14, 165, 233, 0.15);
             --secondary: #090d16;      /* Deep Space Dark Matte */
-            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
-            --bg: #030712;             /* True Obsidian Background Canvas */
+            --bg: #f8fafc;             /* Workspace Background Canvas */
+            --text-main: #0f172a;      /* High-Contrast Headings Text */
+            --text-muted: #475569;     /* Deep Muted Subtext Details */
+            --border-line: #e2e8f0;    /* Razor-Thin Split Framework Lines */
             --white: #ffffff;
-            --text-main: #cbd5e1;      /* Anti-Halation Cool Off-White Text */
-            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
-            --border: rgba(255, 255, 255, 0.05);
-            --accent: #f59e0b;         /* Amber Gold Accent */
-            --card-radius: 24px;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             
-            /* Skeuomorphic Shadow Frameworks */
-            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 10px 20px -5px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            /* Channel Classification Tracking Accent Rails */
+            --track-foundations: #0ea5e9;
+            --track-devops: #8b5cf6;
+            --track-projects: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            line-height: 1.8; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* ==========================================================================
-           2. SKEUOMORPHIC CLOUD HERO SEGMENT WITH CONSTELLATION BACKDROP
-           ========================================================================== */
+        /* --- 1. Cloud Infrastructure Header Banner --- */
         .course-header {
             position: relative;
-            padding: 100px 0;
-            text-align: center;
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-line);
+            background: var(--secondary);
+            color: var(--white);
             overflow: hidden;
-            background: radial-gradient(circle at center, var(--secondary) 0%, var(--bg) 100%);
-            border-bottom: 1px solid var(--border);
         }
-
         #header-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.25; z-index: 1; pointer-events: none;
+            opacity: 0.15; z-index: 1; pointer-events: none;
         }
-
         .header-content { position: relative; z-index: 2; }
-        .breadcrumb { font-size: 0.8rem; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
-        .breadcrumb a:hover { color: var(--white); }
-        .course-header h1 { font-size: 3rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--white); }
-        .course-header h1 span { color: var(--primary); text-shadow: 0 0 25px var(--primary-glow); }
-        .course-header p { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
+        .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: #94a3b8; }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--primary); }
+        .course-header p { color: #cbd5e1; font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        /* ==========================================================================
-           3. TACTILE SEARCH & FILTER CONTROL TRAY
-           ========================================================================== */
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1); padding: 5px 12px; border-radius: 4px; color: #e2e8f0;
+        }
+
+        /* --- 2. Integrated Search & Filter Arrays --- */
         .filter-wrapper {
-            display: flex; justify-content: space-between; align-items: center;
-            gap: 20px; margin: 50px 0 35px; flex-wrap: wrap;
-            background: rgba(17, 24, 39, 0.6); border: 1px solid var(--border);
-            padding: 14px 20px; border-radius: 24px; box-shadow: var(--tactile-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
         }
-
-        .search-box { position: relative; flex: 1; min-width: 300px; }
-        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); }
+        .search-box { position: relative; width: 350px; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
         .search-box input {
-            width: 100%; padding: 14px 20px 14px 52px; border-radius: 14px;
-            border: 1px solid var(--border); background: var(--bg); outline: none;
-            color: var(--white); font-weight: 500; font-size: 0.95rem; transition: var(--transition);
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: all 0.2s ease;
         }
-        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+        .search-box input:focus { border-color: var(--text-main); }
 
-        .filter-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btns { display: flex; gap: 6px; }
         .filter-btn {
-            padding: 12px 24px; border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02); color: var(--text-muted);
-            border-radius: 12px; cursor: pointer; font-weight: 700;
-            font-size: 0.88rem; transition: var(--transition);
+            padding: 8px 16px; border: 1px solid var(--border-line); background: var(--white);
+            color: var(--text-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;
         }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+        .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        /* ==========================================================================
-           4. UPGRADED MACRO-DOCK INDEX SYLLABUS GRID
-           ========================================================================== */
-        .module-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;
-        }
-
-        .module-card {
-            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
-            border: 1px solid var(--border); padding: 30px; border-radius: var(--card-radius);
-            box-shadow: var(--tactile-shadow); display: flex; flex-direction: column;
-            transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .module-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(14, 165, 233, 0.3); box-shadow: var(--hover-shadow); }
-
-        .mod-identity-block { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        /* --- 3. Immune Horizontal Wide List Layout Engine --- */
+        .learning-modules-section { padding: 24px 0; }
         
+        .wide-list-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            width: 100% !important;
+        }
+
+        .wide-list-row {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px 32px !important;
+            border-radius: 8px !important;
+            display: grid !important;
+            grid-template-columns: 260px 1fr 160px !important; /* Locks explicit structural layout width columns */
+            align-items: center !important;
+            gap: 32px !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            transition: border-color 0.2s ease;
+        }
+        .wide-list-row:hover { border-color: #cbd5e1 !important; }
+
+        /* Chromatic Rail Identifiers Mapping */
+        .wide-list-row.track-foundations { border-left: 5px solid var(--track-foundations) !important; }
+        .wide-list-row.track-devops { border-left: 5px solid var(--track-devops) !important; }
+        .wide-list-row.track-projects { border-left: 5px solid var(--track-projects) !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
         .mod-thumb-deck {
-            width: 54px; height: 54px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%);
-            border: 1px solid var(--border); border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.25rem; color: var(--primary); flex-shrink: 0;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.2);
-            transition: var(--transition);
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
         }
-        .module-card:hover .mod-thumb-deck {
-            background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
-            border-color: #0284c7; color: var(--white); transform: scale(1.05);
-            box-shadow: 0 8px 20px -4px var(--primary-glow);
-        }
+        .wide-list-row.track-foundations .mod-thumb-deck { color: var(--track-foundations); }
+        .wide-list-row.track-devops .mod-thumb-deck { color: var(--track-devops); }
+        .wide-list-row.track-projects .mod-thumb-deck { color: var(--track-projects); }
 
-        .mod-header-text { display: flex; flex-direction: column; gap: 2px; }
-        .mod-pill { font-size: 0.65rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        .module-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--white); letter-spacing: -0.01em; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
         
-        .module-card ul { list-style: none !important; margin-bottom: 25px; flex-grow: 1; padding: 0 !important; }
-        .module-card li { margin-bottom: 12px; font-size: 0.92rem; color: var(--text-muted); padding-left: 24px; position: relative; font-weight: 500; transition: var(--transition); }
-        .module-card li::before { content: "\f0c2"; font-family: "Font Awesome 5 Free"; position: absolute; left: 0; top: 1px; color: rgba(14, 165, 233, 0.4); font-weight: 900; font-size: 0.75rem; transition: var(--transition); }
-        .module-card:hover li { color: rgba(255, 255, 255, 0.85); }
-        .module-card:hover li::before { color: var(--primary); filter: drop-shadow(0 0 4px var(--primary-glow)); }
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        .download-btns { display: flex; border-top: 1px solid var(--border); padding-top: 20px; }
-        .btn-dl { flex: 1; text-align: center; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; }
-        .btn-dl.pdf { background: rgba(14, 165, 233, 0.08); border: 1px solid rgba(14, 165, 233, 0.15); color: #38bdf8; }
-        .btn-dl.pdf:hover { background: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 6px 15px var(--primary-glow); }
+        .wide-list-row ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; }
+        .wide-list-row li { font-size: 0.85rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f0c2"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
-        /* ==========================================================================
-           5. LOWER METRIC SUMMARY & CORPORATE CTA CARD
-           ========================================================================== */
-        .syllabus-footer { margin-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-
-        .resource-summary {
-            display: flex; justify-content: space-around; align-items: center;
-            gap: 20px; background: var(--card-surface); padding: 30px 40px;
-            border-radius: 24px; border: 1px solid var(--border); width: 100%; box-shadow: var(--tactile-shadow);
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        .summary-item { display: flex; align-items: center; gap: 15px; }
-        .summary-item i { font-size: 1.4rem; color: var(--primary); filter: drop-shadow(0 0 8px var(--primary-glow)); }
+        /* Empty Search State Handlers */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* --- 4. Metric Lower Framework Layout Summaries --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px; background: var(--white); padding: 16px 24px;
+            border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px;
+        }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: var(--primary); }
         .summary-item div { display: flex; flex-direction: column; }
-        .summary-item span { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
-        .summary-item strong { color: var(--white); font-size: 1.05rem; font-weight: 800; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--secondary); font-size: 0.95rem; font-weight: 700; }
 
         .webnova-bottom-card {
-            background: linear-gradient(135deg, var(--secondary) 0%, #030712 100%);
-            color: var(--white); padding: 60px 40px; border-radius: 28px; text-align: center;
-            width: 100%; border: 1px solid var(--border); box-shadow: var(--tactile-shadow);
+            background: var(--white); border-left: 4px solid var(--primary);
+            padding: 24px 32px; border-radius: 0 8px 8px 0; width: 100%; border-top: 1px solid var(--border-line); border-right: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line);
+            display: flex; justify-content: space-between; align-items: center; gap: 40px;
         }
+        .webnova-bottom-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 2px; }
+        .webnova-bottom-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .btn-cta { 
+            padding: 10px 20px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; background: var(--secondary); color: var(--white); transition: all 0.2s ease; white-space: nowrap;
+        }
+        .btn-cta:hover { background: var(--primary); }
 
-        .webnova-bottom-card h3 { font-size: 2rem; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.02em; }
-        .webnova-bottom-card p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-weight: 500; font-size: 1.05rem; }
-        .btn-cta { background: var(--primary); color: var(--white); padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: var(--transition); display: inline-block; box-shadow: 0 4px 14px var(--primary-glow); }
-        .btn-cta:hover { transform: translateY(-2px); background: #0284c7; box-shadow: 0 8px 22px var(--primary-glow); }
-
-        @media (max-width: 768px) {
-            .resource-summary { flex-direction: column; align-items: flex-start; gap: 24px; padding: 30px; }
-            .filter-wrapper { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 15px; }
-            .filter-btns { justify-content: stretch; gap: 8px; }
-            .filter-btn { flex: 1; text-align: center; padding: 10px; }
-            .course-header h1 { font-size: 2.2rem; }
-            .module-grid { gap: 20px; }
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .wide-list-row ul { grid-template-columns: 1fr; }
+            .download-btns { width: 100%; }
+            .resource-summary, .webnova-bottom-card { grid-template-columns: 1fr; gap: 16px; }
+            .webnova-bottom-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .search-box { width: 100%; }
+            .filter-wrapper { flex-direction: column; align-items: stretch; gap: 14px; }
+            .filter-btns { width: 100%; justify-content: space-between; }
+            .filter-btn { flex: 1; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<header class="course-header">
-    <canvas id="header-canvas"></canvas>
-    <div class="header-content container">
-        <nav class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / Cloud</nav>
-        <h1>Cloud <span>Computing</span></h1>
-        <p>Deploy, manage, and scale applications on global cloud infrastructure.</p>
-    </div>
-</header>
+    <div id="global-header"></div>
 
-<div class="container">
-    
-    <div class="filter-wrapper">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="moduleSearch" placeholder="Search Cloud topics (AWS, Docker, Serverless)..." onkeyup="filterModules()">
+    <section class="course-header">
+        <canvas id="header-canvas"></canvas>
+        <div class="header-content container">
+            <nav class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / Cloud</nav>
+            <h1>Cloud <span>Computing Mastery</span></h1>
+            <p>Deploy, organize, configure, and scale applications on world-spanning virtual systems infrastructure pipelines.</p>
+            <div class="hero-stats">
+                <span>06 Core Modules</span>
+                <span>40+ Intensive Topics</span>
+                <span>AWS • Azure • GCP</span>
+                <span>Docker • Kubernetes</span>
+            </div>
         </div>
-        <div class="filter-btns">
-            <button class="filter-btn active" onclick="filterCategory(this, 'all')">All</button>
-            <button class="filter-btn" onclick="filterCategory(this, 'foundations')">Foundations</button>
-            <button class="filter-btn" onclick="filterCategory(this, 'devops')">DevOps/Scalability</button>
-        </div>
-    </div>
+    </section>
 
-    <div class="module-grid" id="moduleGrid">
+    <div class="container">
         
-        <div class="module-card" data-category="foundations">
-            <div class="mod-identity-block">
-                <div class="mod-thumb-deck"><i class="fas fa-layer-group"></i></div>
-                <div class="mod-header-text">
-                    <span class="mod-pill">Module 01</span>
-                    <h3>Cloud Concepts</h3>
-                </div>
+        <div class="filter-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="moduleSearch" placeholder="Search modules, AWS, Docker, Kubernetes, DevOps..." onkeyup="applyFilters()">
             </div>
-            <ul>
-                <li>IaaS, PaaS, and SaaS Service Models</li>
-                <li>Public, Private, and Hybrid Cloud Architectures</li>
-                <li>Cloud Economics & Shared Responsibility Model</li>
-            </ul>
-            <div class="download-btns">
-                <a href="cloud-mod1.html" class="btn-dl pdf"><i class="fas fa-file-alt"></i>Read More</a>
+            <div class="filter-btns">
+                <button class="filter-btn active" onclick="filterCategory(this, 'all')">All Blocks</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'foundations')">Foundations</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'devops')">DevOps &amp; Scaling</button>
+                <button class="filter-btn" onclick="filterCategory(this, 'projects')">Deploy Labs</button>
             </div>
         </div>
 
-        <div class="module-card" data-category="foundations">
-            <div class="mod-identity-block">
-                <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
-                <div class="mod-header-text">
-                    <span class="mod-pill">Module 02</span>
-                    <h3>Virtualization & Compute</h3>
+        <section class="learning-modules-section">
+            <div class="wide-list-container" id="moduleGrid">
+                
+                <div class="wide-list-row track-foundations" data-category="foundations">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-layer-group"></i></div>
+                        <div class="mod-header-text">
+                            <h3>01 // Cloud System Concepts</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Beginner</span>
+                                <span class="meta-chip">Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Cloud Paradigms: Characteristics &amp; Strengths</li>
+                        <li>Service Matrices: IaaS, PaaS, SaaS, &amp; FaaS</li>
+                        <li>Public, Private, Hybrid &amp; Multi-Cloud Systems</li>
+                        <li>Economics: OpEx/CapEx &amp; Shared Responsibilities</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod1.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-            </div>
-            <ul>
-                <li>Hypervisors & Virtual Machine (VM) Management</li>
-                <li>AWS EC2 & Azure Virtual Machines</li>
-                <li>Serverless Computing (AWS Lambda / Azure Functions)</li>
-            </ul>
-            <div class="download-btns">
-                <a href="cloud-mod2.html" class="btn-dl pdf"><i class="fas fa-file-alt"></i>Read More</a>
-            </div>
-        </div>
 
-        <div class="module-card" data-category="foundations">
-            <div class="mod-identity-block">
-                <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
-                <div class="mod-header-text">
-                    <span class="mod-pill">Module 03</span>
-                    <h3>Cloud Storage & Networking</h3>
+                <div class="wide-list-row track-foundations" data-category="foundations">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
+                        <div class="mod-header-text">
+                            <h3>02 // Virtualization &amp; Compute</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">6 Topics</span>
+                                <span class="meta-chip">Core Elastic</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Type-1 &amp; Type-2 Hypervisors VMs Engines</li>
+                        <li>AWS EC2 Instances &amp; Azure Virtual Machines</li>
+                        <li>Auto-Scaling Triggers &amp; High-Availability Regions</li>
+                        <li>Serverless Engines: AWS Lambda &amp; Azure Functions</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod2.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-            </div>
-            <ul>
-                <li>Object Storage (S3) vs Block Storage (EBS)</li>
-                <li>Virtual Private Clouds (VPC) & Subnetting</li>
-                <li>Content Delivery Networks (CDN) & Load Balancing</li>
-            </ul>
-            <div class="download-btns">
-                <a href="cloud-mod3.html" class="btn-dl pdf"><i class="fas fa-file-alt"></i>Read More</a>
-            </div>
-        </div>
 
-        <div class="module-card" data-category="devops">
-            <div class="mod-identity-block">
-                <div class="mod-thumb-deck"><i class="fab fa-docker"></i></div>
-                <div class="mod-header-text">
-                    <span class="mod-pill">Module 04</span>
-                    <h3>Containers & Orchestration</h3>
+                <div class="wide-list-row track-foundations" data-category="foundations">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-network-wired"></i></div>
+                        <div class="mod-header-text">
+                            <h3>03 // Storage &amp; Networking</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">8 Topics</span>
+                                <span class="meta-chip">Data Nodes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Object Storage (S3) vs Elastic Block Storage (EBS)</li>
+                        <li>File Storage Connectors, Snapshots, &amp; Lifecycles</li>
+                        <li>Virtual Private Clouds (VPC) &amp; Subnet Segments</li>
+                        <li>Load Balancers, Internet Gateways, CDNs &amp; DNS</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod3.html" class="btn-dl">Open Notes</a>
+                    </div>
                 </div>
-            </div>
-            <ul>
-                <li>Introduction to Docker & Containerization</li>
-                <li>Kubernetes (K8s) Cluster Management</li>
-                <li>Microservices Architecture on Cloud</li>
-            </ul>
-            <div class="download-btns">
-                <a href="cloud-mod4.html" class="btn-dl pdf"><i class="fas fa-file-alt"></i>Read More</a>
-            </div>
-        </div>
 
-        <div class="module-card" data-category="devops">
-            <div class="mod-identity-block">
-                <div class="mod-thumb-deck"><i class="fas fa-infinity"></i></div>
-                <div class="mod-header-text">
-                    <span class="mod-pill">Module 05</span>
-                    <h3>Cloud Security & DevOps</h3>
+                <div class="wide-list-row track-devops" data-category="devops">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fab fa-docker"></i></div>
+                        <div class="mod-header-text">
+                            <h3>04 // Containers &amp; Orchestration</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Advanced</span>
+                                <span class="meta-chip">Microservices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Docker Engine Isolation &amp; Custom Image Builds</li>
+                        <li>Multi-Container Links via Docker Compose Volumes</li>
+                        <li>Kubernetes Clusters Management, Pods &amp; ReplicaSets</li>
+                        <li>Deployments Controls, Ingress, Services, &amp; Helm Stacks</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod4.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row track-devops" data-category="devops">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-infinity"></i></div>
+                        <div class="mod-header-text">
+                            <h3>05 // Cloud SecOps &amp; DevOps</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Advanced</span>
+                                <span class="meta-chip">Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Identity &amp; Access Management (IAM Roles &amp; Policies)</li>
+                        <li>Infrastructure as Code (IaC) Engines via Terraform</li>
+                        <li>CI/CD Deployment Automations (GitHub Actions / Jenkins)</li>
+                        <li>CloudWatch Monitors, Logging Stacks, &amp; Disaster Recovery</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod5.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row track-projects" data-category="projects">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-laptop-code"></i></div>
+                        <div class="mod-header-text">
+                            <h3>06 // Cloud Projects &amp; Deployments</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">Labs Scope</span>
+                                <span class="meta-chip">Capstone</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Deploying Static Sites &amp; Secure React Applications</li>
+                        <li>Node API Deployment Runtimes via Container Services</li>
+                        <li>Reverse Proxy Structures with Nginx &amp; SSL Certificates</li>
+                        <li>Production Logging Audits, Lifecycle Checks, &amp; FinOps</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cloud-mod6.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="empty-state-node" id="noResults">
+                    <i class="fas fa-folder-open"></i>
+                    <h4>No Cloud Modules Found</h4>
+                    <p>Refine your search tokens parameter input data or modify your tracking difficulty tab button choices above.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-cloud"></i>
+                    <div><span>Syllabus Breakdown</span><strong>06 Core Blueprints</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-tools"></i>
+                    <div><span>Provider Ecosystem</span><strong>AWS • Azure • GCP Tier</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-infinity"></i>
+                    <div><span>Target Engineering</span><strong>DevOps / FinOps Ready</strong></div>
                 </div>
             </div>
-            <ul>
-                <li>Identity & Access Management (IAM)</li>
-                <li>Infrastructure as Code (Terraform / CloudFormation)</li>
-                <li>CI/CD Pipelines for Cloud Deployment</li>
-            </ul>
-            <div class="download-btns">
-                <a href="cloud-mod5.html" class="btn-dl pdf"><i class="fas fa-file-alt"></i>Read More</a>
+
+            <div class="webnova-bottom-card">
+                <div>
+                    <h3>Build &amp; Deploy Your Application</h3>
+                    <p>Access our complete hands-on Terraform files, cluster compose templates scripts, and open-source lab exercises at Code Craft Academic.</p>
+                </div>
+                <a href="courses.html" class="btn-cta">Browse Academy</a>
             </div>
-        </div>
+        </section>
     </div>
 
-    <div class="syllabus-footer">
-        <div class="resource-summary">
-            <div class="summary-item">
-                <i class="fas fa-cloud"></i>
-                <div><span>Total</span><strong>05 Modules</strong></div>
-            </div>
-            <div class="summary-item">
-                <i class="fas fa-tools"></i>
-                <div><span>Platforms</span><strong>AWS / Azure / GCP</strong></div>
-            </div>
-            <div class="summary-item">
-                <i class="fas fa-infinity"></i>
-                <div><span>Method</span><strong>DevOps Ready</strong></div>
-            </div>
-        </div>
+    <div id="global-footer"></div>
 
-        <div class="webnova-bottom-card">
-            <h3>Migrate Your Business to the Cloud</h3>
-            <p>At <strong>WebNova Studio</strong>, we provide seamless cloud migration, cost optimization, and high-availability architecture. Scale globally with us.</p>
-            <a href="contact.html" class="btn-cta">Consult WebNova for Cloud</a>
-        </div>
-    </div>
-</div>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+    
+    <script>
+        // Stable Node Network Mesh Backdrop Canvas Animation Control Engine
+        const canvas = document.getElementById('header-canvas');
+        const ctx = canvas.getContext('2d');
+        function setCanvasSize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+        window.addEventListener('resize', setCanvasSize); setCanvasSize();
 
-<script>
-    // BACKGROUND MESH CONSTELLATION
-    const canvas = document.getElementById('header-canvas');
-    const ctx = canvas.getContext('2d');
-    function setCanvasSize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
-    window.addEventListener('resize', setCanvasSize); setCanvasSize();
-
-    let dots = []; const dotCount = 45; const connectionDistance = 110;
-    for(let i=0; i < dotCount; i++) {
-        dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 });
-    }
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        dots.forEach((d, i) => {
-            d.x += d.vx; d.y += d.vy;
-            if(d.x < 0 || d.x > canvas.width) d.vx *= -1; if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
-            for(let j = i + 1; j < dots.length; j++) {
-                const d2 = dots[j]; const dist = Math.hypot(d.x - d2.x, d.y - d2.y);
-                if(dist < connectionDistance) {
-                    ctx.beginPath(); ctx.strokeStyle = `rgba(14, 165, 233, ${0.2 * (1 - dist / connectionDistance)})`;
-                    ctx.lineWidth = 1; ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
+        let dots = []; const dotCount = 35; const connectionDistance = 110;
+        for(let i=0; i < dotCount; i++) {
+            dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 });
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dots.forEach((d, i) => {
+                d.x += d.vx; d.y += d.vy;
+                if(d.x < 0 || d.x > canvas.width) d.vx *= -1; if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
+                for(let j = i + 1; j < dots.length; j++) {
+                    const d2 = dots[j]; const dist = Math.hypot(d.x - d2.x, d.y - d2.y);
+                    if(dist < connectionDistance) {
+                        ctx.beginPath(); ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 * (1 - dist / connectionDistance)})`;
+                        ctx.lineWidth = 1; ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
+                    }
                 }
-            }
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
 
-    // DYNAMIC CARD FILTER CONTROLLER
-    function filterModules() {
-        const query = document.getElementById('moduleSearch').value.toLowerCase();
-        document.querySelectorAll('.module-card').forEach(card => {
-            const h3 = card.querySelector('h3').innerText.toLowerCase();
-            const text = card.querySelector('ul').innerText.toLowerCase();
-            card.style.display = (h3.includes(query) || text.includes(query)) ? 'flex' : 'none';
-        });
-    }
+        // Insulated Isolated Category Filtering System Routines
+        let currentCategory = 'all';
 
-    function filterCategory(btn, category) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
-        document.querySelectorAll('.module-card').forEach(card => {
-            card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
-        });
-    }
-</script>
+        function applyFilters() {
+            const query = document.getElementById('moduleSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.wide-list-row');
+            const noResults = document.getElementById('noResults');
+            let matchCount = 0;
 
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const content = card.querySelector('ul').innerText.toLowerCase();
+
+                const searchMatch = title.includes(query) || content.includes(query);
+                const categoryMatch = currentCategory === 'all' || card.dataset.category === currentCategory;
+
+                if (searchMatch && categoryMatch) {
+                    card.style.setProperty('display', 'grid', 'important');
+                    matchCount++;
+                } else {
+                    card.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            noResults.style.display = (matchCount === 0) ? 'flex' : 'none';
+        }
+
+        function filterCategory(btn, category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+            applyFilters();
+        }
+    </script>
 </body>
 </html>
