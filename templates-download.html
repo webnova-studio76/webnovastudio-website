@@ -3,624 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Asset Hub | WebNova Studio</title>
+    <title>Infinite Asset Library | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* High-Premium Soft Light Workspace Palette Tokens */
+            /* High-Premium Unified Light Canvas Style Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #334155;     /* Professional Slate Gray instead of Black */
-            --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.12); /* Extremely soft structural outline */
-            --card-radius: 16px;      
+            --secondary: #334155;      /* Professional Slate Gray */
+            --card-surface: #ffffff;  /* High-Performance White Canvas Cards */
+            --bg: #f8fafc;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #0f172a;     /* Dark Charcoal Headings Typography */
+            --text-muted: #64748b;    /* Muted Cool Gray Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
             --accent: #f59e0b;        /* Amber Download Stat Indicator */
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            
-            /* Clean Minimalist Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Injected fixed navbar padding buffer constraint */
-        }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1440px; margin: 0 auto; padding: 50px 24px; }
-
-        /* --- Header Segment Layout --- */
-        .library-header { text-align: center; margin-bottom: 45px; }
-        .branding-tag { font-size: 0.72rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-        .library-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; }
+        /* --- 1. Library Title Header --- */
+        .library-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
+        .branding-tag { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .library-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; color: #0f172a; }
         .library-header h1 span { color: var(--primary); }
-        .library-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 10px; font-weight: 500; }
+        .library-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        /* --- Dashboard Toolbar controls --- */
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
+        }
+
+        /* --- 2. Advanced Control Toolbar --- */
         .toolbar {
-            background: var(--white);
-            padding: 10px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 105px; 
-            z-index: 100;
-            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04);
-        }
-
-        .search-box { flex: 2; position: relative; }
-        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
-        .search-box input {
-            width: 100%; padding: 12px 16px 12px 48px; border-radius: 10px;
-            border: 1px solid transparent; background: #f1f5f9; outline: none; transition: var(--transition);
-            color: var(--secondary); font-weight: 500; font-size: 0.92rem;
-        }
-        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow); }
-        .search-box input:focus + i { color: var(--primary); }
-
-        .sort-box { flex: 1; position: relative; min-width: 180px; }
-        .sort-box select {
-            width: 100%; padding: 12px 16px; border-radius: 10px;
-            border: 1px solid transparent; background: #f1f5f9;
-            font-weight: 700; color: var(--secondary); cursor: pointer; appearance: none; outline: none;
-            font-size: 0.88rem; transition: var(--transition);
-        }
-        .sort-box select:hover, .sort-box select:focus { border-color: var(--border); background: #e2e8f0; }
-        .sort-box::after {
-            content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
-            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-            color: var(--text-muted); pointer-events: none; font-size: 0.75rem;
-        }
-
-        /* --- Soft Pro Asset Grid Architecture --- */
-        .asset-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 24px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .search-box { position: relative; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: var(--transition);
+        }
+        .search-box input:focus { border-color: var(--text-main); }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper select {
+            width: 100%; padding: 10px 32px 10px 14px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--secondary); cursor: pointer; appearance: none;
+        }
+        .select-wrapper::after {
+            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); pointer-events: none; font-size: 0.7rem;
+        }
+
+        /* --- 3. Optimized Square Grid Architecture --- */
+        .learning-modules-section { padding: 24px 0; }
+        .asset-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+            width: 100% !important;
         }
 
         .asset-card {
-            background: var(--card-surface);
-            border: 1px solid var(--border);
-            border-top: 4px solid #cbd5e1; /* Smooth corporate default line */
-            border-radius: var(--card-radius);
-            display: flex;
-            padding: 20px;
-            align-items: center;
-            transition: var(--transition);
-            height: 130px;
-            position: relative;
-            box-shadow: var(--tactile-shadow);
-            animation: cardEntrance 0.4s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            width: 100% !important;
+            min-height: 250px !important; /* Locks uniform data-square profile shapes */
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .asset-card:hover { 
+            border-color: #cbd5e1 !important; 
+            transform: translateY(-6px) scale(1.015) !important;
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.06) !important;
         }
 
-        .asset-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        /* Custom Soft Pastel Categories Matrix Assignments */
-        .asset-grid > div:nth-of-type(5n+1) { border-top-color: #38bdf8; } /* Pastel Blue */
-        .asset-grid > div:nth-of-type(5n+1) .thumb { color: #38bdf8; background: rgba(56, 189, 248, 0.06); }
-        .asset-grid > div:nth-of-type(5n+1) .btn-zip { background: #38bdf8; color: var(--white); }
-        .asset-grid > div:nth-of-type(5n+1) .btn-zip:hover { background: #0284c7; }
-
-        .asset-grid > div:nth-of-type(5n+2) { border-top-color: #0d9488; } /* Pastel Teal */
-        .asset-grid > div:nth-of-type(5n+2) .thumb { color: #0d9488; background: rgba(13, 148, 136, 0.06); }
-        .asset-grid > div:nth-of-type(5n+2) .btn-zip { background: #0d9488; color: var(--white); }
-        .asset-grid > div:nth-of-type(5n+2) .btn-zip:hover { background: #0f766e; }
-
-        .asset-grid > div:nth-of-type(5n+3) { border-top-color: #ec4899; } /* Pastel Pink */
-        .asset-grid > div:nth-of-type(5n+3) .thumb { color: #ec4899; background: rgba(236, 72, 153, 0.06); }
-        .asset-grid > div:nth-of-type(5n+3) .btn-zip { background: #ec4899; color: var(--white); }
-        .asset-grid > div:nth-of-type(5n+3) .btn-zip:hover { background: #be185d; }
-
-        .asset-grid > div:nth-of-type(5n+4) { border-top-color: #a855f7; } /* Pastel Purple */
-        .asset-grid > div:nth-of-type(5n+4) .thumb { color: #a855f7; background: rgba(168, 85, 247, 0.06); }
-        .asset-grid > div:nth-of-type(5n+4) .btn-zip { background: #a855f7; color: var(--white); }
-        .asset-grid > div:nth-of-type(5n+4) .btn-zip:hover { background: #7e22ce; }
-
-        .asset-grid > div:nth-of-type(5n+5) { border-top-color: #f29111; } /* Pastel Orange */
-        .asset-grid > div:nth-of-type(5n+5) .thumb { color: #f29111; background: rgba(242, 145, 17, 0.06); }
-        .asset-grid > div:nth-of-type(5n+5) .btn-zip { background: #f29111; color: var(--white); }
-        .asset-grid > div:nth-of-type(5n+5) .btn-zip:hover { background: #c2410c; }
-
-        /* Thumb Box Base */
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
         .thumb {
-            width: 54px; height: 54px; 
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.25rem;
-            flex-shrink: 0; transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.02);
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0; transition: var(--transition);
         }
-        .asset-card:hover .thumb { transform: scale(1.04); }
-
-        .info { margin-left: 18px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
-        .info h3 { font-size: 0.95rem; color: #0f172a; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
         
-        .meta { display: flex; gap: 12px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); align-items: center; }
-        .meta .count { color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
-        .meta .tag-badge { background: #f1f5f9; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; align-items: center; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .meta-chip.dl-count { color: var(--accent); font-weight: 700; background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.15); }
 
-        .actions { display: flex; gap: 8px; margin-top: 12px; }
-        .btn-act {
-            font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;
-            padding: 7px 14px; border-radius: 6px; text-decoration: none; transition: var(--transition);
-            text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; margin-top: auto; }
+        .btn-act { 
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
-        .btn-demo { background: #f1f5f9; color: var(--secondary); border: 1px solid rgba(0,0,0,0.02); }
-        .btn-demo:hover { background: #e2e8f0; color: #0f172a; }
-        .btn-zip { border: none; font-weight: 800; cursor: pointer; }
+        .btn-zip { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+        .btn-demo:hover { background: #cbd5e1; }
+        .btn-zip:hover { background: var(--primary); border-color: var(--primary); }
 
-        /* Control Tray Pagination Blocks */
-        .pagination-box { text-align: center; margin: 50px 0 20px; display: flex; justify-content: center; align-items: center; gap: 12px; flex-direction: column; }
+        /* Empty Search States */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Pagination Layout Footers */
+        .pagination-box { text-align: center; margin: 32px 0; display: flex; justify-content: center; align-items: center; gap: 12px; flex-direction: column; }
         .btn-load-more {
-            background: #e2e8f0;
-            color: #334155; border: 1px solid var(--border); padding: 14px 32px;
-            border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer;
-            transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+            background: var(--white); color: var(--text-main); border: 1px solid var(--border-line); padding: 12px 28px;
+            border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 0.5px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
         }
-        .btn-load-more:hover { background: var(--primary); color: var(--white); border-color: transparent; box-shadow: 0 8px 20px var(--primary-glow); }
-        .btn-load-more.hidden { display: none; }
+        .btn-load-more:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+        .btn-load-more.hidden { display: none !important; }
         .item-counter-tag { font-size: 0.82rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.2px; }
 
-        #backlogStorage { display: none; }
-
-        @keyframes cardEntrance { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 1280px) { .asset-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-        @media (max-width: 960px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { 
-            .asset-grid { grid-template-columns: 1fr; gap: 16px; } 
-            .toolbar { flex-direction: column; align-items: stretch; border-radius: 12px; padding: 12px; top: 95px; gap: 12px; } 
-            .library-header h1 { font-size: 2rem; }
-            .container { padding: 30px 16px; }
+        @media (max-width: 1024px) { .asset-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 768px) {
+            .asset-grid { grid-template-columns: 1fr !important; }
+            .toolbar { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Global Master Navbar Component Target Anchor -->
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<div class="container">
     <header class="library-header">
-        <p class="branding-tag">WebNova Studio & Code Craft Academic</p>
-        <h1><span>Infinite</span> Asset Library</h1>
-        <p>Explore production-ready interfaces and page components from WebNova Studio.</p>
+        <div class="container">
+            <p class="branding-tag">WebNova Studio &amp; Code Craft Academic</p>
+            <h1><span>Infinite</span> Asset Library</h1>
+            <p>Explore clean, fully audited, production-ready interfaces and responsive landing page component bundles from WebNova Studio.</p>
+            <div class="hero-stats">
+                <span id="statCount">20 Templates</span>
+                <span>Audited Source Code</span>
+                <span>100% Free Access</span>
+                <span>Weekly Assets Sync</span>
+            </div>
+        </div>
     </header>
 
-    <div class="toolbar">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="libSearch" placeholder="Search templates (e.g., Hospital, Shop)...">
-        </div>
-        <div class="sort-box">
-            <select id="libSort">
-                <option value="newest">Latest Assets</option>
-                <option value="popular">Most Downloaded</option>
-                <option value="az">Name A-Z</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="asset-grid" id="assetGrid">
+    <div class="container">
         
-        <div class="asset-card" data-downloads="840" data-name="About Us - Design 1">
-            <div class="thumb"><i class="fas fa-address-card"></i></div>
-            <div class="info">
-                <h3>About Us Design 1</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 840</span>
-                    <span class="tag-badge">Template</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/about-us-design-1/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/about-us-design-1.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="libSearch" placeholder="Search assets by name, tag, category (e.g. shop, gym)..." oninput="processPipeline()">
+            </div>
+            <div class="select-wrapper">
+                <select id="filterCategory" onchange="processPipeline()">
+                    <option value="all">All Categories</option>
+                    <option value="template">Templates</option>
+                    <option value="landing page">Landing Pages</option>
+                    <option value="home page">Home Pages</option>
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="libSort" onchange="processPipeline()">
+                    <option value="newest">Latest Assets</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="az">Name A-Z</option>
+                </select>
             </div>
         </div>
 
-        <div class="asset-card" data-downloads="910" data-name="About us Design 2">
-            <div class="thumb"><i class="fas fa-id-card"></i></div>
-            <div class="info">
-                <h3>About us Design 2</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 910</span>
-                    <span class="tag-badge">Template</span>
+        <section class="learning-modules-section">
+            <div class="asset-grid" id="assetGrid">
                 </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/about-us-design-2/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/about-us-design-2.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
+            
+            <div class="empty-state-node" id="noResults">
+                <i class="fas fa-folder-open"></i>
+                <h4>No Assets Match Your Search Parameters</h4>
+                <p>Adjust your input character strings or check another category track filter selection.</p>
             </div>
+        </section>
+
+        <div class="pagination-box" id="paginationBox">
+            <span class="item-counter-tag" id="countDisplay">Showing 0 of 0 Templates</span>
+            <button class="btn-load-more" id="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More Assets</button>
         </div>
 
-        <div class="asset-card" data-downloads="1430" data-name="Flower shop landing page">
-            <div class="thumb"><i class="fas fa-seedling"></i></div>
-            <div class="info">
-                <h3>Flower Shop</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.4k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Flower-shop-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Flower-shop-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1120" data-name="Cafe landing page">
-            <div class="thumb"><i class="fas fa-coffee"></i></div>
-            <div class="info">
-                <h3>Cafe</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.1k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Cafe-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Cafe-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1680" data-name="Gym Fitness Landing Page">
-            <div class="thumb"><i class="fas fa-dumbbell"></i></div>
-            <div class="info">
-                <h3>Gym Fitness</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.6k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/gym-fitness-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/gym-fitness-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1050" data-name="Airlines Booking landing page">
-            <div class="thumb"><i class="fas fa-plane"></i></div>
-            <div class="info">
-                <h3>Airlines Booking</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.0k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Airlines-booking-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Airlines-booking-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="780" data-name="Yoga">
-            <div class="thumb"><i class="fas fa-spa"></i></div>
-            <div class="info">
-                <h3>Yoga</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 780</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Yoga-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Yoga-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="940" data-name="Accesories Shop">
-            <div class="thumb"><i class="fas fa-headphones"></i></div>
-            <div class="info">
-                <h3>Accesories Shop</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 940</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/accesories-Shop-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/accesories-Shop-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="810" data-name="E-book">
-            <div class="thumb"><i class="fas fa-book-open"></i></div>
-            <div class="info">
-                <h3>E-book</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 810</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/E-Book-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/E-Book-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1150" data-name="Grocery Shop">
-            <div class="thumb"><i class="fas fa-shopping-basket"></i></div>
-            <div class="info">
-                <h3>Grocery Shop</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.1k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/grocery-shop-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/grocery-shop-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-    </div>     
-
-    <div id="backlogStorage">
-        <div class="asset-card" data-downloads="1320" data-name="Tours and Travels">
-            <div class="thumb"><i class="fas fa-map-marked-alt"></i></div>
-            <div class="info">
-                <h3>Tours and Travels</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.3k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Tours-and-Travels-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Tours-and-Travels-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="890" data-name="Travel Blog">
-            <div class="thumb"><i class="fas fa-route"></i></div>
-            <div class="info">
-                <h3>Travel Blog</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 890</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Travel-Blog-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Travel-Blog-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="960" data-name="Saloon Shop">
-            <div class="thumb"><i class="fas fa-cut"></i></div>
-            <div class="info">
-                <h3>Saloon Shop</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 960</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Saloon-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Saloon-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1020" data-name="Mobile Repair Shop">
-            <div class="thumb"><i class="fas fa-tools"></i></div>
-            <div class="info">
-                <h3>Mobile Repair Shop</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.0k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Mobile-Repair-Shop-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Mobile-Repair-Shop-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1180" data-name="Watch Store">
-            <div class="thumb"><i class="fas fa-clock"></i></div>
-            <div class="info">
-                <h3>Watch Store</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.1k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/watch-store-landing-page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/watch-store-landing-page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1250" data-name="Photographer Studio">
-            <div class="thumb"><i class="fas fa-camera-retro"></i></div>
-            <div class="info">
-                <h3>Photographer Studio</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.2k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Photographer-Studio-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Photographer-Studio-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1390" data-name="Real Estate Agent">
-            <div class="thumb"><i class="fas fa-building"></i></div>
-            <div class="info">
-                <h3>Real Estate Agent</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.3k</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Real-Estate-Agent-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Real-Estate-Agent-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="950" data-name="Coaching class">
-            <div class="thumb"><i class="fas fa-graduation-cap"></i></div>
-            <div class="info">
-                <h3>Coaching class</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 950</span>
-                    <span class="tag-badge">Landing Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Coaching-class-Landing-Page/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Coaching-class-Landing-Page.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="870" data-name="Contact Us Design">
-            <div class="thumb"><i class="fas fa-envelope-open-text"></i></div>
-            <div class="info">
-                <h3>Contact Us Design</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 870</span>
-                    <span class="tag-badge">Template</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/contact-design-1-page-template/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/contact-design-1-page-template.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="asset-card" data-downloads="1950" data-name="Website Home Page">
-            <div class="thumb"><i class="fas fa-home"></i></div>
-            <div class="info">
-                <h3>Website Home Page</h3>
-                <div class="meta">
-                    <span class="count"><i class="fas fa-download"></i> 1.9k</span>
-                    <span class="tag-badge">Home Page</span>
-                </div>
-                <div class="actions">
-                    <a href="https://webnova-studio76.github.io/Website-Home-Page-Design-1/" class="btn-act btn-demo" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Website-Home-Page-Design-1.git" class="btn-act btn-zip" target="_blank">Source</a>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="pagination-box">
-        <span class="item-counter-tag" id="countDisplay">Showing 10 of 20 Items</span>
-        <button class="btn-load-more" id="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More Templates</button>
-    </div>
-</div>
+    <div id="global-footer"></div>
 
-<!-- Global Dynamic Footer Element Component Mount Anchor -->
-<div id="global-footer"></div>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 
-<script>
-    const grid = document.getElementById('assetGrid');
-    const search = document.getElementById('libSearch');
-    const sort = document.getElementById('libSort');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const countDisplay = document.getElementById('countDisplay');
-    const backlogStorage = document.getElementById('backlogStorage');
+    <script>
+        /* ==========================================================================
+           📦 CENTRAL SINGLE SOURCE OF TRUTH DATA MATRIX ARRAY
+           ========================================================================== */
+        const ASSET_DATABASE = [
+            { name: "About Us Design 1", downloads: 840, type: "Template", icon: "fa-address-card", demo: "https://webnova-studio76.github.io/about-us-design-1/", source: "https://github.com/webnova-studio76/about-us-design-1.git", tags: "about identity business company" },
+            { name: "About Us Design 2", downloads: 910, type: "Template", icon: "fa-id-card", demo: "https://webnova-studio76.github.io/about-us-design-2/", source: "https://github.com/webnova-studio76/about-us-design-2.git", tags: "about profile layout agency" },
+            { name: "Flower Shop", downloads: 1430, type: "Landing Page", icon: "fa-seedling", demo: "https://webnova-studio76.github.io/Flower-shop-landing-page/", source: "https://github.com/webnova-studio76/Flower-shop-landing-page.git", tags: "flower shop landing ecommerce boutique commercial retail" },
+            { name: "Cafe Landing Page", downloads: 1120, type: "Landing Page", icon: "fa-coffee", demo: "https://webnova-studio76.github.io/Cafe-landing-page/", source: "https://github.com/webnova-studio76/Cafe-landing-page.git", tags: "cafe coffee restaurant food design" },
+            { name: "Gym Fitness Landing", downloads: 1680, type: "Landing Page", icon: "fa-dumbbell", demo: "https://webnova-studio76.github.io/gym-fitness-landing-page/", source: "https://github.com/webnova-studio76/gym-fitness-landing-page.git", tags: "gym fitness crossfit health training workout exercise" },
+            { name: "Airlines Booking", downloads: 1050, type: "Landing Page", icon: "fa-plane", demo: "https://webnova-studio76.github.io/Airlines-booking-landing-page/", source: "https://github.com/webnova-studio76/Airlines-booking-landing-page.git", tags: "airlines flight travel ticket reservation agency" },
+            { name: "Yoga Space Page", downloads: 780, type: "Landing Page", icon: "fa-spa", demo: "https://webnova-studio76.github.io/Yoga-Landing-Page/", source: "https://github.com/webnova-studio76/Yoga-Landing-Page.git", tags: "yoga spa health meditation wellness calisthenics" },
+            { name: "Accessories Shop", downloads: 940, type: "Landing Page", icon: "fa-headphones", demo: "https://webnova-studio76.github.io/accesories-Shop-landing-page/", source: "https://github.com/webnova-studio76/accesories-Shop-landing-page.git", tags: "accessories headphones ecommerce retail electronics gear" },
+            { name: "E-Book Portal", downloads: 810, type: "Landing Page", icon: "fa-book-open", demo: "https://webnova-studio76.github.io/E-Book-Landing-Page/", source: "https://github.com/webnova-studio76/E-Book-Landing-Page.git", tags: "ebook book digital download library reading" },
+            { name: "Grocery Shop", downloads: 1150, type: "Landing Page", icon: "fa-shopping-basket", demo: "https://webnova-studio76.github.io/grocery-shop-Landing-Page/", source: "https://github.com/webnova-studio76/grocery-shop-Landing-Page.git", tags: "grocery shop retail supermarket organic food cart" },
+            { name: "Tours and Travels", downloads: 1320, type: "Landing Page", icon: "fa-map-marked-alt", demo: "https://webnova-studio76.github.io/Tours-and-Travels-Landing-Page/", source: "https://github.com/webnova-studio76/Tours-and-Travels-Landing-Page.git", tags: "tours travels geography navigation agency tickets" },
+            { name: "Travel Blog Node", downloads: 890, type: "Landing Page", icon: "fa-route", demo: "https://webnova-studio76.github.io/Travel-Blog-Landing-Page/", source: "https://github.com/webnova-studio76/Travel-Blog-Landing-Page.git", tags: "travel blog writing journal path diary notes" },
+            { name: "Saloon Shop Frame", downloads: 960, type: "Landing Page", icon: "fa-cut", demo: "https://webnova-studio76.github.io/Saloon-Landing-Page/", source: "https://github.com/webnova-studio76/Saloon-Landing-Page.git", tags: "saloon hair cut barbour trim style layout" },
+            { name: "Mobile Repair Hub", downloads: 1020, type: "Landing Page", icon: "fa-tools", demo: "https://webnova-studio76.github.io/Mobile-Repair-Shop-landing-page/", source: "https://github.com/webnova-studio76/Mobile-Repair-Shop-landing-page.git", tags: "mobile repair shop tools fixing diagnostic smartphone hardware" },
+            { name: "Watch Store View", downloads: 1180, type: "Landing Page", icon: "fa-clock", demo: "https://webnova-studio76.github.io/watch-store-landing-page/", source: "https://github.com/webnova-studio76/watch-store-landing-page.git", tags: "watch store timer clock lifestyle deluxe luxury retail" },
+            { name: "Photographer Studio", downloads: 1250, type: "Landing Page", icon: "fa-camera-retro", demo: "https://webnova-studio76.github.io/Photographer-Studio-Landing-Page/", source: "https://github.com/webnova-studio76/Photographer-Studio-Landing-Page.git", tags: "photographer studio camera video profile creative gallery portfolio" },
+            { name: "Real Estate Agent", downloads: 1390, type: "Landing Page", icon: "fa-building", demo: "https://webnova-studio76.github.io/Real-Estate-Agent-Landing-Page/", source: "https://github.com/webnova-studio76/Real-Estate-Agent-Landing-Page.git", tags: "real estate agent building property architecture broker apartment home" },
+            { name: "Coaching Class", downloads: 950, type: "Landing Page", icon: "fa-graduation-cap", demo: "https://webnova-studio76.github.io/Coaching-class-Landing-Page/", source: "https://github.com/webnova-studio76/Coaching-class-Landing-Page.git", tags: "coaching class education academic school library lessons training" },
+            { name: "Contact Us Design", downloads: 870, type: "Template", icon: "fa-envelope-open-text", demo: "https://webnova-studio76.github.io/contact-design-1-page-template/", source: "https://github.com/webnova-studio76/contact-design-1-page-template.git", tags: "contact email form message coordinates map inquiry support" },
+            { name: "Website Home Page", downloads: 1950, type: "Home Page", icon: "fa-home", demo: "https://webnova-studio76.github.io/Website-Home-Page-Design-1/", source: "https://github.com/webnova-studio76/Website-Home-Page-Design-1.git", tags: "website home page design portal layout interface master index" }
+        ];
 
-    const totalBacklogCards = Array.from(backlogStorage.children);
-    const activePageLimit = 10; 
+        /* ==========================================================================
+           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+           ========================================================================== */
+        const VISIBLE_PAGE_LIMIT = 10;
+        let activePageOffset = VISIBLE_PAGE_LIMIT;
+        let pipelineProcessedCache = [];
 
-    function updateCounterDisplay() {
-        const totalRendered = grid.querySelectorAll('.asset-card').length;
-        const totalHiddenStock = backlogStorage.children.length;
-        const totalOverall = totalRendered + totalHiddenStock;
-        countDisplay.innerText = `Showing ${totalRendered} of ${totalOverall} Templates`;
-        
-        if (totalHiddenStock === 0) {
-            loadMoreBtn.classList.add('hidden');
-        } else {
-            loadMoreBtn.classList.remove('hidden');
+        // Global Statistics Auto-Initializer
+        document.getElementById('statCount').innerText = `${ASSET_DATABASE.length} Asset Stacks`;
+
+        // Mathematical Smart-Short Numbers Formatter Method
+        function formatMetricDownloads(number) {
+            return number >= 1000 ? (number / 1000).toFixed(1) + 'k' : number;
         }
-    }
 
-    loadMoreBtn.addEventListener('click', () => {
-        const batchToLoad = totalBacklogCards.splice(0, activePageLimit);
-        batchToLoad.forEach(card => {
-            grid.appendChild(card);
-        });
-        updateCounterDisplay();
-        if (sort.value !== 'newest') sort.dispatchEvent(new Event('change'));
-    });
+        function processPipeline() {
+            const query = document.getElementById('libSearch').value.toLowerCase().trim();
+            const categorySelection = document.getElementById('filterCategory').value;
+            const sortSelection = document.getElementById('libSort').value;
 
-    search.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        
-        if (term.trim() !== "") {
-            loadMoreBtn.classList.add('hidden');
-            countDisplay.classList.add('hidden');
-            
-            document.querySelectorAll('.asset-card').forEach(card => {
-                const searchIndex = card.dataset.name.toLowerCase();
-                card.style.display = searchIndex.includes(term) ? 'flex' : 'none';
+            // Pipeline Filter Step 
+            pipelineProcessedCache = ASSET_DATABASE.filter(asset => {
+                const queryMatch = asset.name.toLowerCase().includes(query) || 
+                                   asset.type.toLowerCase().includes(query) || 
+                                   asset.tags.toLowerCase().includes(query);
+                const categoryMatch = categorySelection === 'all' || asset.type.toLowerCase() === categorySelection;
+                return queryMatch && categoryMatch;
             });
-            totalBacklogCards.forEach(card => {
-                const searchIndex = card.dataset.name.toLowerCase();
-                if (searchIndex.includes(term)) {
-                    grid.appendChild(card);
-                    card.style.display = 'flex';
-                }
-            });
-        } else {
-            grid.innerHTML = "";
-            document.querySelectorAll('body > .container > .asset-card').forEach(c => grid.appendChild(c));
-            
-            backlogStorage.innerHTML = "";
-            totalBacklogCards.forEach(c => backlogStorage.appendChild(c));
-            
-            const currentGridCards = Array.from(grid.children);
-            if(currentGridCards.length > activePageLimit) {
-                const overflow = currentGridCards.slice(activePageLimit);
-                overflow.forEach(c => {
-                    backlogStorage.appendChild(c);
-                    totalBacklogCards.push(c);
-                });
+
+            // Pipeline Sorting Step
+            if (sortSelection === 'popular') {
+                pipelineProcessedCache.sort((a, b) => b.downloads - a.downloads);
+            } else if (sortSelection === 'az') {
+                pipelineProcessedCache.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                // 'newest' default fallback uses arrays native insertion index stack sequences order
+                pipelineProcessedCache = pipelineProcessedCache; 
             }
-            
-            document.querySelectorAll('.asset-card').forEach(c => c.style.display = 'flex');
-            countDisplay.classList.remove('hidden');
-            updateCounterDisplay();
+
+            // Adjust layout controls handles if searching parameter queries are input actively
+            if (query !== "") {
+                renderDOMCanvas(pipelineProcessedCache.length); 
+                document.getElementById('paginationBox').style.setProperty('display', 'none', 'important');
+            } else {
+                renderDOMCanvas(activePageOffset);
+                document.getElementById('paginationBox').style.setProperty('display', 'flex', 'important');
+            }
         }
-    });
 
-    sort.addEventListener('change', () => {
-        const cards = Array.from(grid.querySelectorAll('.asset-card'));
-        cards.sort((a, b) => {
-            if (sort.value === 'popular') return parseInt(b.dataset.downloads || 0) - parseInt(a.dataset.downloads || 0);
-            if (sort.value === 'az') return a.dataset.name.localeCompare(b.dataset.name);
-            return 0;
+        // Pure DOM Sync Node Population Engine
+        function renderDOMCanvas(limitBoundary) {
+            const canvasGrid = document.getElementById('assetGrid');
+            const emptyStateNode = document.getElementById('noResults');
+            canvasGrid.innerHTML = "";
+
+            const targetRenderBatch = pipelineProcessedCache.slice(0, limitBoundary);
+
+            if (targetRenderBatch.length === 0) {
+                emptyStateNode.style.display = 'flex';
+                document.getElementById('paginationBox').style.setProperty('display', 'none', 'important');
+                return;
+            } else {
+                emptyStateNode.style.display = 'none';
+            }
+
+            targetRenderBatch.forEach(asset => {
+                const cardHTML = `
+                    <div class="asset-card">
+                        <div class="mod-identity-block">
+                            <div class="thumb"><i class="fas ${asset.icon}"></i></div>
+                            <div class="mod-header-text">
+                                <h3>${asset.name}</h3>
+                                <div class="module-meta-chips">
+                                    <span class="meta-chip">${asset.type}</span>
+                                    <span class="meta-chip dl-count"><i class="fas fa-download"></i> ${formatMetricDownloads(asset.downloads)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <a href="${asset.demo}" class="btn-act btn-demo" target="_blank">Preview</a>
+                            <a href="${asset.source}" class="btn-act btn-zip" target="_blank">Source</a>
+                        </div>
+                    </div>
+                `;
+                canvasGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // Update user counter tracking badges texts
+            document.getElementById('countDisplay').innerText = `Showing ${targetRenderBatch.length} of ${pipelineProcessedCache.length} Assets`;
+
+            // Pagination button display checks handles boundaries bounds
+            const loadBtn = document.getElementById('loadMoreBtn');
+            if (limitBoundary >= pipelineProcessedCache.length) {
+                loadBtn.classList.add('hidden');
+            } else {
+                loadBtn.classList.remove('hidden');
+            }
+        }
+
+        // Click Controller Event Registration Listener Hooks Routing
+        document.getElementById('loadMoreBtn').addEventListener('click', () => {
+            activePageOffset += VISIBLE_PAGE_LIMIT;
+            processPipeline();
         });
-        grid.innerHTML = '';
-        cards.forEach(c => grid.appendChild(c));
-    });
 
-    updateCounterDisplay();
-</script>
-
-<script src="main.js"></script>
-<script src="footer.js"></script>
+        // Initialize Runtime Matrix Framework Loop On Boot Sequence Setup
+        processPipeline();
+    </script>
 </body>
 </html>
