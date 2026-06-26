@@ -6,421 +6,400 @@
     <title>Official Dev Tools | WebNova Academy</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --secondary: #475569;      /* Soft Corporate Slate Blue-Gray */
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Extremely soft outline */
-            --card-radius: 16px;      
+            --bg: #f8fafc;            /* Soft Royal Tinted Minimal Background */
+            --text-main: #0f172a;     /* Dark Charcoal Main Typography */
+            --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Fixed navbar padding buffer constraint */
-        }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; width: 100%; }
-
-        /* --- Header Section --- */
-        .library-header { text-align: center; margin-bottom: 40px; }
+        /* --- 1. Header Section --- */
+        .library-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
         .soft-badge { 
-            background: rgba(16, 185, 129, 0.06); 
-            color: var(--primary); 
-            padding: 6px 16px; 
-            border-radius: 50px; 
-            font-size: 0.72rem; 
-            font-weight: 800; 
-            border: 1px solid rgba(16, 185, 129, 0.12); 
-            margin-bottom: 12px; 
-            display: inline-block;
-            text-transform: uppercase; 
-            letter-spacing: 1px;
+            background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 4px 12px; 
+            border-radius: 4px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.12); 
+            margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
         }
-        .library-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; }
+        .library-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
         .library-header h1 span { color: var(--primary); }
-        .library-header p { color: var(--text-muted); font-size: 1.05rem; margin-top: 10px; font-weight: 500; }
+        .library-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        /* --- Controls Toolbar --- */
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
+        }
+
+        /* --- 2. Advanced Interactive Filter Controls --- */
         .toolbar {
-            background: var(--white);
-            padding: 10px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 30px;
-            position: sticky;
-            top: 105px; 
-            z-index: 100;
-            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04);
-        }
-
-        .search-box { flex: 2; position: relative; }
-        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
-        .search-box input {
-            width: 100%; padding: 12px 16px 12px 48px; border-radius: 10px;
-            border: 1px solid transparent; background: #f1f5f9; outline: none; transition: var(--transition);
-            color: var(--text-main); font-weight: 500; font-size: 0.92rem;
-        }
-        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow); }
-        .search-box input:focus + i { color: var(--primary); }
-
-        .secure-tag { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.2px; }
-
-        /* --- Fluid Responsive Asset Grid Frame --- */
-        .asset-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            width: 100%;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .search-box { position: relative; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; transition: var(--transition); }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: var(--transition);
+        }
+        .search-box:focus-within i { color: var(--primary); }
+        .search-box input:focus { border-color: var(--text-main); }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper select {
+            width: 100%; padding: 10px 32px 10px 14px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); cursor: pointer; appearance: none;
+        }
+        .select-wrapper::after {
+            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); pointer-events: none; font-size: 0.7rem;
         }
 
-        /* --- Soft Premium Directory Cards --- */
-        .soft-card {
-            background: var(--card-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
+        /* --- 3. Fluid Responsive Asset Grid Frame --- */
+        .learning-modules-section { padding: 24px 0; }
+        .asset-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+            width: 100% !important;
+        }
+
+        /* Section Category Dividers Components */
+        .section-divider {
+            grid-column: 1 / -1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 24px 0 8px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-line);
             display: flex;
-            padding: 20px;
             align-items: center;
-            transition: var(--transition);
-            height: 100px;
-            text-decoration: none;
-            box-shadow: var(--tactile-shadow);
-            opacity: 0;
-            transform: translateY(12px);
-        }
-
-        .soft-card.show { opacity: 1; transform: translateY(0); }
-
-        .soft-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--hover-shadow);
-            border-color: rgba(16, 185, 129, 0.2);
-        }
-
-        .thumb {
-            width: 48px; height: 48px; 
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.25rem;
-            flex-shrink: 0; transition: var(--transition);
-        }
-
-        /* Continuous Rainbow Soft Pastel Palette Sequence looping through cards */
-        .asset-grid > a:nth-of-type(6n+1) { border-left: 4px solid #38bdf8; }
-        .asset-grid > a:nth-of-type(6n+1) .thumb { color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
-        .asset-grid > a:nth-of-type(6n+2) { border-left: 4px solid #0d9488; }
-        .asset-grid > a:nth-of-type(6n+2) .thumb { color: #0d9488; background: rgba(13, 148, 136, 0.05); }
-        .asset-grid > a:nth-of-type(6n+3) { border-left: 4px solid #f29111; }
-        .asset-grid > a:nth-of-type(6n+3) .thumb { color: #f29111; background: rgba(242, 145, 17, 0.05); }
-        .asset-grid > a:nth-of-type(6n+4) { border-left: 4px solid #ec4899; }
-        .asset-grid > a:nth-of-type(6n+4) .thumb { color: #ec4899; background: rgba(236, 72, 153, 0.05); }
-        .asset-grid > a:nth-of-type(6n+5) { border-left: 4px solid #a855f7; }
-        .asset-grid > a:nth-of-type(6n+5) .thumb { color: #a855f7; background: rgba(168, 85, 247, 0.05); }
-        .asset-grid > a:nth-of-type(6n+6) { border-left: 4px solid #2563eb; }
-        .asset-grid > a:nth-of-type(6n+6) .thumb { color: #2563eb; background: rgba(37, 99, 235, 0.05); }
-
-        .soft-card:hover .thumb { transform: scale(1.03); }
-
-        .info { margin-left: 16px; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
-        .info h3 { font-size: 0.95rem; color: #0f172a; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
-        
-        .btn-official {
-            font-size: 0.68rem;
-            font-weight: 800;
-            color: var(--text-muted);
+            gap: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
+            width: 100%;
         }
-        .soft-card:hover .btn-official { color: var(--primary); }
+        .section-divider i { color: var(--primary); }
 
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1400px) {
-            .asset-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        /* --- 4. Premium Inset Card Unit Profiles --- */
+        .soft-card {
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 14px !important;
+            width: 100% !important;
+            min-height: 280px !important; /* Locks uniform square container aspect design ratios */
+            text-decoration: none !important;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-        @media (max-width: 1024px) {
-            .asset-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .toolbar { top: 95px; }
+        .soft-card:hover { 
+            border-color: #cbd5e1 !important; 
+            transform: translateY(-6px) scale(1.015) !important;
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.06) !important;
         }
-        @media (max-width: 680px) { 
-            .asset-grid { grid-template-columns: 1fr; gap: 16px; } 
-            .toolbar { flex-direction: column; align-items: stretch; border-radius: 12px; padding: 12px; top: 95px; gap: 12px; } 
-            .library-header h1 { font-size: 2rem; }
-            .container { padding: 30px 16px; }
+
+        /* Official Software Brand Left-Border Accent Mapping */
+        .soft-card.brand-vscode { border-left: 5px solid #007acc !important; }
+        .soft-card.brand-figma { border-left: 5px solid #f24e1e !important; }
+        .soft-card.brand-github { border-left: 5px solid #24292e !important; }
+        .soft-card.brand-chrome { border-left: 5px solid #4285f4 !important; }
+        .soft-card.brand-blender { border-left: 5px solid #ea7600 !important; }
+        .soft-card.brand-adobe { border-left: 5px solid #ff0000 !important; }
+        .soft-card.brand-spline { border-left: 5px solid #ff3366 !important; }
+        .soft-card.brand-postman { border-left: 5px solid #ff6c37 !important; }
+        .soft-card.brand-font-awesome { border-left: 5px solid #11827c !important; }
+        .soft-card.brand-cursor { border-left: 5px solid #000000 !important; }
+        .soft-card.brand-jetbrains { border-left: 5px solid #f22435 !important; }
+        .soft-card.brand-pycharm { border-left: 5px solid #21d789 !important; }
+        .soft-card.brand-davinci { border-left: 5px solid #0a1128 !important; }
+        .soft-card.brand-capcut { border-left: 5px solid #000000 !important; }
+        .soft-card.brand-webflow { border-left: 5px solid #4353ff !important; }
+        .soft-card.brand-lottie { border-left: 5px solid #00ddb3 !important; }
+        .soft-card.brand-git { border-left: 5px solid #f05032 !important; }
+        .soft-card.brand-node { border-left: 5px solid #339933 !important; }
+        .soft-card.brand-xampp { border-left: 5px solid #fb7a24 !important; }
+        .soft-card.brand-mongodb { border-left: 5px solid #13aa52 !important; }
+        .soft-card.brand-bootstrap { border-left: 5px solid #7952b3 !important; }
+        .soft-card.brand-notepad { border-left: 5px solid #008000 !important; }
+        .soft-card.brand-filezilla { border-left: 5px solid #bf1e2e !important; }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
+        .thumb {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
+        }
+        .soft-card.brand-vscode .thumb { color: #007acc; }
+        .soft-card.brand-figma .thumb { color: #f24e1e; }
+        .soft-card.brand-github .thumb { color: #24292e; }
+        .soft-card.brand-chrome .thumb { color: #4285f4; }
+        .soft-card.brand-blender .thumb { color: #ea7600; }
+        .soft-card.brand-adobe .thumb { color: #ff0000; }
+        .soft-card.brand-spline .thumb { color: #ff3366; }
+        .soft-card.brand-postman .thumb { color: #ff6c37; }
+        .soft-card.brand-font-awesome .thumb { color: #11827c; }
+        .soft-card.brand-cursor .thumb { color: #000000; }
+        .soft-card.brand-jetbrains .thumb { color: #f22435; }
+        .soft-card.brand-pycharm .thumb { color: #21d789; }
+        .soft-card.brand-davinci .thumb { color: #0a1128; }
+        .soft-card.brand-capcut .thumb { color: #000000; }
+        .soft-card.brand-webflow .thumb { color: #4353ff; }
+        .soft-card.brand-lottie .thumb { color: #00ddb3; }
+        .soft-card.brand-git .thumb { color: #f05032; }
+        .soft-card.brand-node .thumb { color: #339933; }
+        .soft-card.brand-xampp .thumb { color: #fb7a24; }
+        .soft-card.brand-mongodb .thumb { color: #13aa52; }
+        .soft-card.brand-bootstrap .thumb { color: #7952b3; }
+        .soft-card.brand-notepad .thumb { color: #008000; }
+        .soft-card.brand-filezilla .thumb { color: #bf1e2e; }
+
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; align-items: center; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .meta-chip.license-tag { color: var(--primary); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.15); }
+
+        .soft-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
+
+        .btn-official {
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
+        }
+        .soft-card:hover .btn-official { background: var(--text-main); color: var(--white); border-color: var(--text-main); }
+
+        /* Empty State */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
+
+        @media (max-width: 1024px) { .asset-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 768px) {
+            .asset-grid { grid-template-columns: 1fr !important; }
+            .toolbar { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<div class="container">
-    <header class="library-header">
-        <span class="soft-badge"><i class="fas fa-external-link-alt"></i> Official Resource Directory</span>
-        <h1>Curated <span>Software</span> Links</h1>
-        <p>Verified official landing portals for RR Web Designers & Code Craft Academic students.</p>
-    </header>
+    <div class="container">
+        <header class="library-header">
+            <span class="soft-badge"><i class="fas fa-external-link-alt"></i> Official Resource Directory</span>
+            <h1>Curated <span>Software</span> Links</h1>
+            <p>Verified official installation portals for RR Web Designers &amp; Code Craft Academic students.</p>
+            <div class="hero-stats">
+                <span id="statCount">24 Verified Utilities</span>
+                <span>Secure Portals Only</span>
+                <span>Zero File Gatekeeping</span>
+                <span>Sync Date: June 2026</span>
+            </div>
+        </header>
 
-    <div class="toolbar">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="devSearch" placeholder="Search IDEs, UI Tools, Servers, or Frameworks...">
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="devSearch" placeholder="Search VS Code, Figma, Node.js, Bootstrap, system tools..." oninput="processPipeline()">
+            </div>
+            <div class="select-wrapper">
+                <select id="filterCategory" onchange="processPipeline()">
+                    <option value="all">All Category Domains</option>
+                    <option value="editors">IDEs &amp; Code Editors</option>
+                    <option value="design">UI/UX &amp; 3D Design</option>
+                    <option value="multimedia">Video &amp; Multimedia</option>
+                    <option value="backend">Backend &amp; Database</option>
+                    <option value="utilities">Frameworks &amp; Utilities</option>
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="libSort" onchange="processPipeline()">
+                    <option value="default">Default Catalogue Order</option>
+                    <option value="az">Alphabetic (A-Z)</option>
+                </select>
+            </div>
         </div>
-        <div class="secure-tag">
-            <i class="fas fa-shield-alt" style="color: var(--primary);"></i> Secure Official Portals
-        </div>
+
+        <section class="learning-modules-section">
+            <div class="asset-grid" id="softwareGrid">
+                </div>
+            
+            <div class="empty-state-node" id="noResults">
+                <i class="fas fa-folder-open"></i>
+                <h4>No Dev Tools Match Your Parameters</h4>
+                <p>Modify your string keywords parameters or switch your categories tab filters above.</p>
+            </div>
+        </section>
     </div>
 
-    <div class="asset-grid" id="softwareGrid">
-        
-        <a href="https://code.visualstudio.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-code"></i></div>
-            <div class="info">
-                <h3>VS Code</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
+    <div id="global-footer"></div>
 
-        <a href="https://www.figma.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-figma"></i></div>
-            <div class="info">
-                <h3>Figma UI</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 
-        <a href="https://desktop.github.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-github"></i></div>
-            <div class="info">
-                <h3>GitHub Desktop</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.google.com/chrome/dev/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-chrome"></i></div>
-            <div class="info">
-                <h3>Chrome Dev</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.blender.org/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-cube"></i></div>
-            <div class="info">
-                <h3>Blender 3D</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.adobe.com/creativecloud.html" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-adobe"></i></div>
-            <div class="info">
-                <h3>Adobe CC</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://spline.design/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-shapes"></i></div>
-            <div class="info">
-                <h3>Spline 3D</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.postman.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-rocket"></i></div>
-            <div class="info">
-                <h3>Postman API</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://fontawesome.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-flag"></i></div>
-            <div class="info">
-                <h3>Font Awesome</h3>
-                <span class="btn-official">Official Site <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.cursor.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-robot"></i></div>
-            <div class="info">
-                <h3>Cursor AI</h3>
-                <span class="btn-official">Next-Gen Editor <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.jetbrains.com/idea/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-microchip"></i></div>
-            <div class="info">
-                <h3>IntelliJ IDEA</h3>
-                <span class="btn-official">Pro IDE <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.jetbrains.com/pycharm/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-python"></i></div>
-            <div class="info">
-                <h3>PyCharm</h3>
-                <span class="btn-official">Python Expert <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-film"></i></div>
-            <div class="info">
-                <h3>DaVinci Resolve</h3>
-                <span class="btn-official">Studio Quality <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.adobe.com/products/premiere.html" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-video"></i></div>
-            <div class="info">
-                <h3>Premiere Pro</h3>
-                <span class="btn-official">Industry Standard <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.capcut.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-cut"></i></div>
-            <div class="info">
-                <h3>CapCut Desktop</h3>
-                <span class="btn-official">Fast & Trendy <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://webflow.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-infinity"></i></div>
-            <div class="info">
-                <h3>Webflow</h3>
-                <span class="btn-official">Visual Dev <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://lottiefiles.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-running"></i></div>
-            <div class="info">
-                <h3>LottieFiles</h3>
-                <span class="btn-official">Web Animation <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://git-scm.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-code-branch"></i></div>
-            <div class="info">
-                <h3>Git SCM</h3>
-                <span class="btn-official">Version Engine <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://nodejs.org/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-node-js"></i></div>
-            <div class="info">
-                <h3>Node.js</h3>
-                <span class="btn-official">V8 Runtime <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.apachefriends.org/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-server"></i></div>
-            <div class="info">
-                <h3>XAMPP Server</h3>
-                <span class="btn-official">Local Stack <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://www.mongodb.com/products/tools/compass" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-database"></i></div>
-            <div class="info">
-                <h3>MongoDB Compass</h3>
-                <span class="btn-official">NoSQL GUI <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://getbootstrap.com/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fab fa-bootstrap"></i></div>
-            <div class="info">
-                <h3>Bootstrap</h3>
-                <span class="btn-official">CSS Framework <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://notepad-plus-plus.org/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-file-alt"></i></div>
-            <div class="info">
-                <h3>Notepad++</h3>
-                <span class="btn-official">Classic Editor <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-        <a href="https://filezilla-project.org/" target="_blank" class="soft-card">
-            <div class="thumb"><i class="fas fa-cloud-upload-alt"></i></div>
-            <div class="info">
-                <h3>Filezilla FTP</h3>
-                <span class="btn-official">File Transfer <i class="fas fa-external-link-alt"></i></span>
-            </div>
-        </a>
-
-    </div>
-</div>
-
-<div id="global-footer"></div>
-
-<script>
-    // Staggered Entrance Animation Deployment Engine
-    document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.soft-card');
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 30); 
-        });
-    });
-
-    // Instant Real-Time Search Directory Filter System
-    const searchInput = document.getElementById('devSearch');
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        document.querySelectorAll('.soft-card').forEach(card => {
-            const headingText = card.querySelector('h3').innerText.toLowerCase();
-            if (headingText.includes(query)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
+    <script>
+        /* ==========================================================================
+           📦 Curated Software Database single source of truth array
+           ========================================================================== */
+        const SOFTWARE_DATABASE = [
+            {
+                section: "IDEs & Code Editors Workspace",
+                icon: "fa-code",
+                items: [
+                    { name: "VS Code", company: "Microsoft", license: "Free", category: "editors", brandClass: "brand-vscode", glyph: "fa-code", desc: "Lightweight, extensible source-code editor with built-in Git, debugging tools, and IntelliSense.", link: "https://code.visualstudio.com/", tags: "microsoft window mac linux text edit extensions extensions ide code" },
+                    { name: "Cursor AI", company: "Anysphere", license: "Freemium", category: "editors", brandClass: "brand-cursor", glyph: "fa-robot", desc: "Next-generation code editor built on top of VS Code, optimized natively for AI-assisted programming tracks.", link: "https://www.cursor.com/", tags: "cursor artificial intelligence co-pilot next gen editor automation code" },
+                    { name: "IntelliJ IDEA", company: "JetBrains", license: "Freemium", category: "editors", brandClass: "brand-jetbrains", glyph: "fa-microchip", desc: "Premium robust Java development IDE workspace built for computer application architectures.", link: "https://www.jetbrains.com/idea/", tags: "jetbrains pro ide java framework enterprise system standalone compilation compiler" },
+                    { name: "PyCharm", company: "JetBrains", license: "Freemium", category: "editors", brandClass: "brand-pycharm", glyph: "fa-brands fa-python", desc: "Dedicated Python development environment featuring safe syntax linting and integrated terminals.", link: "https://www.jetbrains.com/pycharm/", tags: "pycharm python scripts debugging backend automated environments interpreter" },
+                    { name: "Notepad++", company: "Don Ho", license: "Free", category: "editors", brandClass: "brand-notepad", glyph: "fa-file-alt", desc: "Classic fast tab text editor handling raw markup syntaxes completely trace footprint free.", link: "https://notepad-plus-plus.org/", tags: "notepad legacy text edit low script micro system lightweight tools" }
+                ]
+            },
+            {
+                section: "UI/UX & 3D Design Sandbox",
+                icon: "fa-palette",
+                items: [
+                    { name: "Figma UI", company: "Figma Inc", license: "Freemium", category: "design", brandClass: "brand-figma", glyph: "fa-brands fa-figma", desc: "Collaborative vector design framework built for high-fidelity responsive user interface design wireframes.", link: "https://www.figma.com/", tags: "figma prototype interface asset layouts wireframes responsive sketch vector vectors drawings" },
+                    { name: "Blender 3D", company: "Blender Fdn", license: "Open Source", category: "design", brandClass: "brand-blender", glyph: "fa-cube", desc: "Complete modeling sandbox for 3D elements engineering, texture tracing, and rendering blueprints.", link: "https://www.blender.org/", tags: "blender 3d model geometry rendering textures meshes coordinates vector drawings" },
+                    { name: "Spline 3D", company: "Spline Inc", license: "Freemium", category: "design", brandClass: "brand-spline", glyph: "fa-shapes", desc: "Real-time web browser based 3D composition framework designed for interactive asset engines integration.", link: "https://spline.design/", tags: "spline engine browser interactive vectors visual graphics models layouts mesh web vector drawings" },
+                    { name: "Webflow", company: "Webflow Inc", license: "Freemium", category: "design", brandClass: "brand-webflow", glyph: "fa-infinity", desc: "Visual presentation layer model engine translating custom designs grids directly into production code blocks.", link: "https://webflow.com/", tags: "webflow cloud visual builder low code node sites design landing matrices" }
+                ]
+            },
+            {
+                section: "Video & Multimedia Production",
+                icon: "fa-film",
+                items: [
+                    { name: "Adobe CC", company: "Adobe Systems", license: "Subscription", category: "multimedia", brandClass: "brand-adobe", glyph: "fa-brands fa-adobe", desc: "Industry standard suite for image editing, asset processing, vector manipulations, and branding layouts.", link: "https://www.adobe.com/creativecloud.html", tags: "adobe photoshop vector layers elements textures raster graphic drawings" },
+                    { name: "DaVinci Resolve", company: "Blackmagic", license: "Freemium", category: "multimedia", brandClass: "brand-davinci", glyph: "fa-film", desc: "Studio-tier non-linear video color tuning grading framework and high-performance editing track canvas.", link: "https://www.blackmagicdesign.com/products/davinciresolve", tags: "davinci video frames tracks editing audio master sequences rendering export films movie" },
+                    { name: "Premiere Pro", company: "Adobe Systems", license: "Subscription", category: "multimedia", brandClass: "brand-adobe", glyph: "fa-video", desc: "Timeline based high-density audio/video synchronization canvas built for digital media production tracks.", link: "https://www.adobe.com/products/premiere.html", tags: "premiere pro movie sequence frame loops export render layer tracking films multi" },
+                    { name: "CapCut Desktop", company: "ByteDance", license: "Freemium", category: "multimedia", brandClass: "brand-capcut", glyph: "fa-cut", desc: "Fast timeline execution application tracking text captions, overlays layers, and swift media loops exports.", link: "https://www.capcut.com/", tags: "capcut render speed mobile media vertical format audio tracking export sound layout short templates" }
+                ]
+            },
+            {
+                section: "Backend Server & Database Stations",
+                icon: "fa-server",
+                items: [
+                    { name: "GitHub Desktop", company: "GitHub Inc", license: "Open Source", category: "backend", brandClass: "brand-github", glyph: "fa-brands fa-github", desc: "Visual repository staging platform handling branches tracks, local tracking trees, and remote sync loops.", link: "https://desktop.github.com/", tags: "github source control git tracking repository push commits fetch trees teams projects synchronization" },
+                    { name: "Postman API", company: "Postman Inc", license: "Freemium", category: "backend", brandClass: "brand-postman", glyph: "fa-rocket", desc: "Diagnostic application designed to fire request headers arrays, test endpoints routes, and audit server data trees.", link: "https://www.postman.com/", tags: "postman server routes post get delete fetch arrays streams network interface parameters headers codes payload" },
+                    { name: "Node.js", company: "OpenJS Fdn", license: "Open Source", category: "backend", brandClass: "brand-node", glyph: "fa-brands fa-node-js", desc: "High-performance JavaScript backend engine execution runtime compiled on Google Chrome's V8 framework.", link: "https://nodejs.org/", tags: "node script dynamic asynchronous execution loops background task logic server" },
+                    { name: "XAMPP Server", company: "ApacheFriends", license: "Open Source", category: "backend", brandClass: "brand-xampp", glyph: "fa-server", desc: "Local sandbox environment container bundling Apache server routes, Relational MariaDB SQL, and PHP scripts logic.", link: "https://www.apachefriends.org/", tags: "xampp stack local server loopback environment mysql phpMyAdmin storage schemas" },
+                    { name: "MongoDB Compass", company: "MongoDB Inc", license: "Open Source", category: "backend", brandClass: "brand-mongodb", glyph: "fa-database", desc: "Graphical database user interface mapping out document collection streams, BSON parameters fields, and unstructured clusters queries.", link: "https://www.mongodb.com/products/tools/compass", tags: "mongodb compass query document data layer collections tables json storage cluster parameters" },
+                    { name: "FileZilla FTP", company: "Tim Kosse", license: "Open Source", category: "backend", brandClass: "brand-filezilla", glyph: "fa-cloud-upload-alt", desc: "Isolated network protocol client designed to handle remote site direct binary folders and static asset uploads transfers.", link: "https://filezilla-project.org/", tags: "filezilla client protocol secure directory uploads static public_html nodes host configurations credentials" }
+                ]
+            },
+            {
+                section: "Utilities & Web Framework Engines",
+                icon: "fa-screwdriver-wrench",
+                items: [
+                    { name: "Chrome Dev", company: "Google Alphabet", license: "Free", category: "utilities", brandClass: "brand-chrome", glyph: "fa-brands fa-chrome", desc: "Prerelease browser workspace equipped with inspect selectors nodes, performance trackers networks, and debug parameters audits.", link: "https://www.google.com/chrome/dev/", tags: "chrome inspect network engine variables log diagnostic elements markup rendering canvas view viewports console tool" },
+                    { name: "Font Awesome", company: "Dave Gandy", license: "Freemium", category: "utilities", brandClass: "brand-font-awesome", glyph: "fa-flag", desc: "Vector symbol token icon engine, packed with responsive markup glyphs and asset elements classes wrappers.", link: "https://fontawesome.com/", tags: "font vector drawing icon symbols layout interface indicators badges decoration css classes toolkit" },
+                    { name: "LottieFiles", company: "Lottie Fdn", license: "Freemium", category: "utilities", brandClass: "brand-lottie", glyph: "fa-running", desc: "Vector JSON script loop vector file formats engineered specifically for smooth frontend interaction pipelines animations.", link: "https://lottiefiles.com/", tags: "lottie micro animation loops element transitions triggers dynamic vectors graphics layout code json" },
+                    { name: "Git SCM", company: "Linus Torvalds", license: "Open Source", category: "utilities", brandClass: "brand-git", glyph: "fa-code-branch", desc: "The foundational core system managing absolute decentralized version state controls and project commit trees logs.", link: "https://git-scm.com/", tags: "git terminal command line tree delta merge status logging logs tracking rollback branch master origin checkout" },
+                    { name: "Bootstrap", company: "Twitter Team", license: "Open Source", category: "utilities", brandClass: "brand-bootstrap", glyph: "fa-brands fa-bootstrap", desc: "Mobile-first responsive presentation layer stylesheet engine containing layout grid arrays and component frames.", link: "https://getbootstrap.com/", tags: "bootstrap css design prebuilt layouts columns cards flex elements utility media query breakpoints spacing" }
+                ]
             }
-        });
-    });
-</script>
+        ];
 
-<script src="main.js"></script>
-<script src="footer.js"></script>
+        // Stats Global Initializer Count Hook
+        document.getElementById('statCount').innerText = `${SOFTWARE_DATABASE.reduce((sum, s) => sum + s.items.length, 0)} Verified Tools`;
+
+        /* ==========================================================================
+           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+           ========================================================================== */
+        function processPipeline() {
+            const query = document.getElementById('devSearch').value.toLowerCase().trim();
+            const categorySelection = document.getElementById('filterCategory').value;
+            const sortSelection = document.getElementById('libSort').value;
+            const gridContainer = document.getElementById('softwareGrid');
+            const noResultsNode = document.getElementById('noResults');
+
+            gridContainer.innerHTML = "";
+            let overallMatchCount = 0;
+
+            SOFTWARE_DATABASE.forEach((sectionBlock) => {
+                // Filter matching child items out of sub-database structures
+                let verifiedMatchingItems = sectionBlock.items.filter(item => {
+                    const nameMatch = item.name.toLowerCase().includes(query);
+                    const companyMatch = item.company.toLowerCase().includes(query);
+                    const descMatch = item.desc.toLowerCase().includes(query);
+                    const tagsMatch = item.tags.toLowerCase().includes(query);
+
+                    const queryMatch = nameMatch || companyMatch || descMatch || tagsMatch;
+                    const categoryMatch = categorySelection === 'all' || item.category === categorySelection;
+
+                    return queryMatch && categoryMatch;
+                });
+
+                // Apply Sorting Protocols locally inside section frames to prevent divider clipping bugs
+                if (sortSelection === 'az') {
+                    verifiedMatchingItems.sort((a, b) => a.name.localeCompare(b.name));
+                }
+
+                // Render matching layout nodes cleanly
+                if (verifiedMatchingItems.length > 0) {
+                    overallMatchCount += verifiedMatchingItems.length;
+
+                    // Re-inject Section Header Row Rails Component dynamically
+                    const dividerHTML = `<div class="section-divider"><i class="fas ${sectionBlock.icon}"></i> ${sectionBlock.section}</div>`;
+                    gridContainer.insertAdjacentHTML('beforeend', dividerHTML);
+
+                    // Re-populate Synchronized Child Cards Data Modules
+                    verifiedMatchingItems.forEach(item => {
+                        const cardHTML = `
+                            <a href="${item.link}" target="_blank" class="soft-card ${item.brandClass} show">
+                                <div class="mod-identity-block">
+                                    <div class="thumb"><i class="fas ${item.glyph}"></i></div>
+                                    <div class="mod-header-text">
+                                        <h3>${item.name}</h3>
+                                        <div class="module-meta-chips">
+                                            <span class="meta-chip">${item.company}</span>
+                                            <span class="meta-chip license-tag">${item.license}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>${item.desc}</p>
+                                <span class="btn-official">Visit Official Portal <i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                        `;
+                        gridContainer.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                }
+            });
+
+            noResultsNode.style.display = (overallMatchCount === 0) ? 'flex' : 'none';
+        }
+
+        // Initialize Catalog Runtime Engine On Boot Complete
+        processPipeline();
+    </script>
 </body>
 </html>
