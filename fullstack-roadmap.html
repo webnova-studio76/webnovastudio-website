@@ -122,13 +122,13 @@
         .wide-list-row li { font-size: 0.85rem; color: var(--text-muted); padding-left: 16px; position: relative; font-weight: 500; text-align: left; }
         .wide-list-row li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; color: var(--primary); font-weight: 900; font-size: 0.72rem; }
 
-        .download-btns { width: 160px; text-align: center; }
-        .phase-complete-tag {
-            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px;
-            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg);
-            border: 1px solid var(--border-line); color: var(--text-muted); display: block;
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
         /* --- 4. Value Framework Outposts --- */
         .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
@@ -210,7 +210,7 @@
                         <li>Asynchronous Fetch APIs DOM</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="bundle-view.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -235,7 +235,7 @@
                         <li>Material UI Interface Nodes</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="frameworks-portal.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -260,7 +260,7 @@
                         <li>Cookie Sessions Authorization</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="node-mastery.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -285,7 +285,7 @@
                         <li>Prisma Data Access ORM Layer</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="dbms-syllabus.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -310,7 +310,7 @@
                         <li>Nginx Configuration Routing</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="devops-syllabus.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -335,7 +335,7 @@
                         <li>Production Logging Monitors</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="cloud-syllabus.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
@@ -360,7 +360,7 @@
                         <li>Upwork Freelancing Parameters</li>
                     </ul>
                     <div class="download-btns">
-                        <span class="phase-complete-tag">Coming Soon</span>
+                        <a href="placement-hub.html" class="btn-dl">Explore Phase</a>
                     </div>
                 </div>
 
