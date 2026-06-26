@@ -48,7 +48,7 @@
             background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
         }
 
-        /* --- 2. Corrected Focus-Within Toolbar Engine --- */
+        /* --- 2. Focus-Within Toolbar Engine Controls Matrix --- */
         .toolbar {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -118,7 +118,7 @@
             align-items: flex-start !important;
             gap: 16px !important;
             width: 100% !important;
-            min-height: 250px !important; /* Locks uniform square design footprint shape properties */
+            min-height: 250px !important; /* Locks uniform square design footprint properties */
             transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
         .asset-card:hover { 
@@ -273,57 +273,57 @@
 
     <script>
         /* ==========================================================================
-           📦 CENTRAL SINGLE SOURCE OF TRUTH SYSADMIN DATA STORAGE
+           📦 CENTRAL DATA STORAGE - 100% COMPLETELY RESTORED DATA
            ========================================================================== */
         const COMMAND_DATABASE = [
             {
-                section: "Section 1: The Essential Command Cheat Sheet",
+                title: "Section 1: The Essential Command Cheat Sheet",
                 icon: "fa-terminal",
                 items: [
-                    { name: "Ping Connectivity Tester", downloads: 3400, tier: "card-student", badge: "Instructional", glyph: "fa-network-wired", info: "STEP 1: WHAT IT DOES\nSends diagnostic echo requests packets to a target computer or server node to measure latency and verify connectivity.\n\nSTEP 2: WHEN TO USE IT\nUse when a lab machine cannot resolve internet hosts or connect to the internal network switch map.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nping 8.8.8.8", syntax: "ping 8.8.8.8", tags: "ping network packet connection latency packets check drops" },
-                    { name: "IPConfig Adapter Audit", downloads: 4100, tier: "card-student", badge: "Instructional", glyph: "fa-sliders-h", info: "STEP 1: WHAT IT DOES\nDisplays all current TCP/IP network configuration values and updates local adapter network registry metrics frames.\n\nSTEP 2: WHEN TO USE IT\nUse to audit network hardware parameters, locate physical MAC addresses, subnets masks, or Gateway routes.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nipconfig /all", syntax: "ipconfig /all", tags: "ipconfig adapter network interfaces subnets gateway hardware mac" },
-                    { name: "DHCP IP Lease Reset", downloads: 2900, tier: "card-common", badge: "System Diagnostic", glyph: "fa-sync-alt", info: "STEP 1: WHAT IT DOES\nTermines the active dynamic IP lease address map allocations and requests a fresh network stack token assignment from the DHCP server node.\n\nSTEP 2: WHEN TO USE IT\nUse when local system network configurations display 'Limited Connectivity' flags or zero valid IP parameters.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute sequentially:\nipconfig /release\nipconfig /renew", syntax: "ipconfig /release\nipconfig /renew", tags: "dhcp release renew lease lease-time internet configuration dynamic" },
-                    { name: "DNS Resolver Cache Flush", downloads: 3800, tier: "card-common", badge: "System Diagnostic", glyph: "fa-broom", info: "STEP 1: WHAT IT DOES\nWipes out the local DNS lookup index registry cache to force the system to perform live address checks.\n\nSTEP 2: WHEN TO USE IT\nUse when server address spaces change, but the local browser persists in attempting connections to out-of-date targets.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nipconfig /flushdns", syntax: "ipconfig /flushdns", tags: "dns flush clearance flushdns names cache book domains host" },
-                    { name: "Tracert Route Analyzer", downloads: 2100, type: "Instructional", icon: "fa-project-diagram", demo: "", source: "", tags: "tracert trace route switch router failure location hop latency ping track path packets", tier: "student", badge: "Instructional", info: "STEP 1: WHAT IT DOES\nThis command maps out the exact pathway and router paths your internet signals take to reach a destination website.\n\nSTEP 2: WHEN TO USE IT\nUse this to pinpoint exactly which internet router or switch inside the school campus is dropping network signals.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ntracert 8.8.8.8", syntax: "tracert 8.8.8.8" },
-                    { name: "SFC File System Scanner", downloads: 4800, type: "System Diagnostic", icon: "fa-shield-alt", demo: "", source: "", tags: "sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch", tier: "common", info: "STEP 1: WHAT IT DOES\nThis checks your core Windows operating system files for errors and automatically repairs corrupted items.\n\nSTEP 2: WHEN TO USE IT\nUse this when Windows is behaving strangely, lagging, crashing, or throwing missing system file errors.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator (Right-click CMD -> Run as Administrator).\n2. Type the command below and press Enter:\nsfc /scannow", syntax: "sfc /scannow" },
-                    { name: "DISM System Image Patch", downloads: 4600, type: "Critical Fix", icon: "fa-cogs", demo: "", source: "", tags: "dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure", tier: "critical", info: "STEP 1: WHAT IT DOES\nThis downloads healthy core system repair files straight from official Windows updates to fix broken local files.\n\nSTEP 2: WHEN TO USE IT\nUse this when the previous 'sfc /scannow' command fails to fix the computer errors or gets stuck.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter:\nDISM /Online /Cleanup-Image /RestoreHealth", syntax: "DISM /Online /Cleanup-Image /RestoreHealth" },
-                    { name: "Chkdsk Volume Analyzer", downloads: 3200, type: "Critical Fix", icon: "fa-hdd", demo: "chkdsk C: /f /r", source: "chkdsk C: /f /r", tags: "chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing", tier: "critical", info: "STEP 1: WHAT IT DOES\nThis scans your physical hard drive for storage sector errors and attempts to fix unreadable data areas.\n\nSTEP 2: WHEN TO USE IT\nUse this when the computer freezes completely when loading files, or if opening directories feels extremely slow.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter (Press Y if prompted to scan on next reboot):\nchkdsk C: /f /r" },
-                    { name: "Gpupdate Group Policy Push", downloads: 2700, type: "System Diagnostic", icon: "fa-user-shield", demo: "gpupdate /force", source: "gpupdate /force", tags: "gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks", tier: "common" }
+                    { name: "Ping Connectivity Tester", downloads: 3400, tier: "card-student", badge: "Instructional", glyph: "fa-network-wired", info: "STEP 1: WHAT IT DOES\nSends diagnostic echo requests packets to a target computer or server node to measure latency and verify connectivity.\n\nSTEP 2: WHEN TO USE IT\nUse when a lab machine cannot resolve internet hosts or connect to the internal network switch map.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nping 8.8.8.8", syntax: "ping 8.8.8.8", tags: "ping network packet connection latency packets check drops router connectivity reachability testing" },
+                    { name: "IPConfig Adapter Audit", downloads: 4100, tier: "card-student", badge: "Instructional", glyph: "fa-sliders-h", info: "STEP 1: WHAT IT DOES\nDisplays all current TCP/IP network configuration values and updates local adapter network registry metrics frames.\n\nSTEP 2: WHEN TO USE IT\nUse to audit network hardware parameters, locate physical MAC addresses, subnets masks, or Gateway routes.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nipconfig /all", syntax: "ipconfig /all", tags: "ipconfig adapter network configurations mac address details subnets gateway adapter dns" },
+                    { name: "DHCP IP Lease Reset", downloads: 2900, tier: "card-common", badge: "System Diagnostic", glyph: "fa-sync-alt", info: "STEP 1: WHAT IT DOES\nTermines the active dynamic IP lease address map allocations and requests a fresh network stack token assignment from the DHCP server node.\n\nSTEP 2: WHEN TO USE IT\nUse when local system network configurations display 'Limited Connectivity' flags or zero valid IP parameters.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute sequentially:\nipconfig /release\nipconfig /renew", syntax: "ipconfig /release\nipconfig /renew", tags: "dhcp release renew lease lease-time internet configuration dynamic allocation limited drops assignment" },
+                    { name: "DNS Resolver Cache Flush", downloads: 3800, tier: "card-common", badge: "System Diagnostic", glyph: "fa-broom", info: "STEP 1: WHAT IT DOES\nWipes out the local DNS lookup index registry cache to force the system to perform live address checks.\n\nSTEP 2: WHEN TO USE IT\nUse when server address spaces change, but the local browser persists in attempting connections to out-of-date targets.\n\nSTEP 3: HOW TO EXECUTE\n1. Launch CMD.\n2. Execute:\nipconfig /flushdns", syntax: "ipconfig /flushdns", tags: "dns flush clearance flushdns names cache book domains host route updates load domain mismatch mapping" },
+                    { name: "Tracert Route Analyzer", downloads: 2100, tier: "card-student", badge: "Instructional", glyph: "fa-project-diagram", info: "STEP 1: WHAT IT DOES\nThis command maps out the exact pathway and router paths your internet signals take to reach a destination website.\n\nSTEP 2: WHEN TO USE IT\nUse this to pinpoint exactly which internet router or switch inside the school campus is dropping network signals.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ntracert 8.8.8.8", syntax: "tracert 8.8.8.8", tags: "tracert trace route switch router failure location hop latency ping track path packets" },
+                    { name: "SFC File System Scanner", downloads: 4800, tier: "card-common", badge: "System Diagnostic", glyph: "fa-shadow-wrapper fa-shield-alt", info: "STEP 1: WHAT IT DOES\nThis checks your core Windows operating system files for errors and automatically repairs corrupted items.\n\nSTEP 2: WHEN TO USE IT\nUse this when Windows is behaving strangely, lagging, crashing, or throwing missing system file errors.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator (Right-click CMD -> Run as Administrator).\n2. Type the command below and press Enter:\nsfc /scannow", syntax: "sfc /scannow", tags: "sfc /scannow system file checker repair corrupt integrity verification modules dynamic layers crash glitch" },
+                    { name: "DISM System Image Patch", downloads: 4600, tier: "card-critical", badge: "Critical Fix", glyph: "fa-cogs", info: "STEP 1: WHAT IT DOES\nThis downloads healthy core system repair files straight from official Windows updates to fix broken local files.\n\nSTEP 2: WHEN TO USE IT\nUse this when the previous 'sfc /scannow' command fails to fix the computer errors or gets stuck.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter:\nDISM /Online /Cleanup-Image /RestoreHealth", syntax: "DISM /Online /Cleanup-Image /RestoreHealth", tags: "dsm dism /online /cleanup-image /restorehealth system repair dynamic binary replacement core package update structural stability failure" },
+                    { name: "Chkdsk Volume Analyzer", downloads: 3200, tier: "card-critical", badge: "Critical Fix", glyph: "fa-hdd", info: "STEP 1: WHAT IT DOES\nThis scans your physical hard drive for storage sector errors and attempts to fix unreadable data areas.\n\nSTEP 2: WHEN TO USE IT\nUse this when the computer freezes completely when loading files, or if opening directories feels extremely slow.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Type the command below and press Enter (Press Y if prompted to scan on next reboot):\nchkdsk C: /f /r", syntax: "chkdsk C: /f /r", tags: "chkdsk c: /f /r hard drive bad sectors physical volume logic storage freezing slow performance mechanical blocks indexing" },
+                    { name: "Gpupdate Group Policy Push", downloads: 2700, tier: "card-common", badge: "System Diagnostic", glyph: "fa-user-shield", info: "STEP 1: WHAT IT DOES\nThis forces your local computer to synchronize and download the latest permissions rules from the lab main server.\n\nSTEP 2: WHEN TO USE IT\nUse this when the lab administrator assigns new network permissions or updates user security profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD).\n2. Type the command below and press Enter:\ngpupdate /force", syntax: "gpupdate /force", tags: "gpupdate /force group policies domain restrictions server configuration synchronization deployment security directory access rule checks" }
                 ]
             },
             {
                 title: "Section 1.2: Core Windows Management consoles (Win + R)",
                 icon: "fa-bolt",
-                assets: [
-                    { name: "Device Manager Launcher", downloads: 3100, type: "Instructional", icon: "fa-microchip", demo: "devmgmt.msc", source: "devmgmt.msc", tags: "devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers", tier: "student" },
-                    { name: "Disk Management Console", downloads: 2500, type: "Instructional", icon: "fa-hdd", demo: "diskmgmt.msc", source: "diskmgmt.msc", tags: "diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations" },
-                    { name: "Services Core Controller", downloads: 2800, type: "Instructional", icon: "fa-server", demo: "services.msc", source: "services.msc", tags: "services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager" },
-                    { name: "System Identity Manager", downloads: 1900, type: "Instructional", icon: "fa-window-restore", demo: "sysdm.cpl", source: "sysdm.cpl", tags: "sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options", tier: "student" }
+                items: [
+                    { name: "Device Manager Launcher", downloads: 3100, tier: "card-student", badge: "Instructional", glyph: "fa-microchip", info: "STEP 1: WHAT IT DOES\nThis pops open the window panel used to manage your physical hardware and driver files.\n\nSTEP 2: WHEN TO USE IT\nUse this to install sound card drivers, update display graphics, or check if the network card is working properly.\n\nSTEP 3: HOW TO EXECUTE\n1. Press the 'Windows Key + R' on your keyboard to open the Run box.\n2. Type the command below and click OK:\ndevmgmt.msc", syntax: "devmgmt.msc", tags: "devmgmt.msc device manager hardware configuration device drivers display hardware controller updates display driver setup audio network interface controllers" },
+                    { name: "Disk Management Console", downloads: 2500, tier: "card-student", badge: "Instructional", glyph: "fa-hdd", info: "STEP 1: WHAT IT DOES\nThis opens the console interface used to format drives and partition storage volumes.\n\nSTEP 2: WHEN TO USE IT\nUse this when a new USB drive doesn't show up in File Explorer, or if you need to create a new D: drive partition.\n\nSTEP 3: HOW TO EXECUTE\n1. Press 'Windows Key + R' to launch the Run box.\n2. Type the command below and click OK:\ndiskmgmt.msc", syntax: "diskmgmt.msc", tags: "diskmgmt.msc disk management partitioning flash format system logical drive configuration volumes data separation allocations" },
+                    { name: "Services Core Controller", downloads: 2800, tier: "card-student", badge: "Instructional", glyph: "fa-server", info: "STEP 1: WHAT IT DOES\nThis displays all background apps, programs, and daemons that start up automatically behind the scenes in Windows.\n\nSTEP 2: WHEN TO USE IT\nUse this to toggle windows automatic updates off, turn on print processes, or stop diagnostic logging apps.\n\nSTEP 3: HOW TO EXECUTE\n1. Press 'Windows Key + R' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nservices.msc", syntax: "services.msc", tags: "services.msc background system processes background loop controls print spooler processing daemon automation states task tracing windows services configuration manager" },
+                    { name: "System Identity Manager", downloads: 1900, tier: "card-student", badge: "Instructional", glyph: "fa-window-restore", info: "STEP 1: WHAT IT DOES\nThis launches the legacy Advanced System Properties screen to view compute settings.\n\nSTEP 2: WHEN TO USE IT\nUse this to adjust Environment Variables for Java/Python setups, or change the computer network name.\n\nSTEP 3: HOW TO EXECUTE\n1. Press 'Windows Key + R' to open the Run box.\n2. Type the shortcut syntax below and click OK:\nsysdm.cpl", syntax: "sysdm.cpl", tags: "sysdm.cpl computer identifier identity profile domain integration active directory join machine tracking system properties control configuration options" }
                 ]
             },
             {
                 title: "Section 2: Step-by-Step Troubleshooting Workflows",
                 icon: "fa-wrench",
-                assets: [
-                    { name: "PSU Diagnostic Pipeline", downloads: 3400, type: "Critical Fix", icon: "fa-plug", demo: "", source: "", tags: "power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins", tier: "critical", info: "STEP 1: INSPECT CABLE CONNECTIONS\nCheck if the primary wall socket outlet is active. Swap out the black power cable to ensure the cord isn't broken.\n\nSTEP 2: CHECK THE PSU HARDWARE REAR TOGGLE\nLook at the back of the computer CPU. Ensure the physical rocker switch sits on 'I' (Power Engaged) instead of 'O' (Power Cut).\n\nSTEP 3: DRAIN SURGE STATIC ELECTRICITY\nUnplug the power cable from the wall. Hold down the main power button on front panel for 30 seconds to drain remaining electricity. Plug it back in and try turning it on.\n\nSTEP 4: INSPECT INTERNAL MOTHERBOARD PIN ALIGNMENTS\nOpen the case chassis layer. Disconnect and firmly click back down the large 24-Pin main power rail block and the small 4/8-Pin internal processor power tracks.", syntax: "echo PSU Diagnostic Check Completed Successfully" },
-                    { name: "Display Extraction Engine", downloads: 4200, type: "Critical Fix", icon: "fa-eye-slash", demo: "", source: "", tags: "no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors", tier: "critical", info: "STEP 1: AUDIT MONITOR SECTOR CODES\nEnsure the screen monitor is turned on. Verify the cable link cords (HDMI/VGA) are connected tightly to the monitor ports.\n\nSTEP 2: PORT ALIGNMENT ROUTING\nIf the CPU has a dedicated Graphics Card (GPU), ensure your display monitor cable is plugged into the GPU ports down below, NOT the upper motherboard ports.\n\nSTEP 3: CLEAN RAM GOLD CONTACTS (80% PRO RESOLUTION RULE)\nTurn off the power. Open the computer case. Pop out the internal RAM memory sticks. Gently clean the shiny gold contact pins using a soft rubber eraser to remove dust grid layers. Click them back into the slots tightly.\n\nSTEP 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nRemove the round silver lithium coin battery (CR2032) from the motherboard. Wait 5 minutes to restore default motherboard options, put it back in, and start the system.", syntax: "echo Display Diagnostic Scanner Initiated" }
+                items: [
+                    { name: "PSU Diagnostic Pipeline", downloads: 3400, tier: "card-critical", badge: "Critical Fix", glyph: "fa-plug", info: "STEP 1: INSPECT CABLE CONNECTIONS\nCheck if the primary wall socket outlet is active. Swap out the black power cable to ensure the cord isn't broken.\n\nSTEP 2: CHECK THE PSU HARDWARE REAR TOGGLE\nLook at the back of the computer CPU. Ensure the physical rocker switch sits on 'I' (Power Engaged) instead of 'O' (Power Cut).\n\nSTEP 3: DRAIN SURGE STATIC ELECTRICITY\nUnplug the power cable from the wall. Hold down the main power button on front panel for 30 seconds to drain remaining electricity. Plug it back in and try turning it on.\n\nSTEP 4: INSPECT INTERNAL MOTHERBOARD PIN ALIGNMENTS\nOpen the case chassis layer. Disconnect and firmly click back down the large 24-Pin main power rail block and the small 4/8-Pin internal processor power tracks.", syntax: "echo PSU Diagnostic Check Completed Successfully", tags: "power troubleshoot system death no power structural supply diagnostic tracking cable psu switch line tracking breaker zero response motherboard rails pins" },
+                    { name: "Display Extraction Engine", downloads: 4200, tier: "card-critical", badge: "Critical Fix", glyph: "fa-eye-slash", info: "STEP 1: AUDIT MONITOR SECTOR CODES\nEnsure the screen monitor is turned on. Verify the cable link cords (HDMI/VGA) are connected tightly to the monitor ports.\n\nSTEP 2: PORT ALIGNMENT ROUTING\nIf the CPU has a dedicated Graphics Card (GPU), ensure your display monitor cable is plugged into the GPU ports down below, NOT the upper motherboard ports.\n\nSTEP 3: CLEAN RAM GOLD CONTACTS (80% PRO RESOLUTION RULE)\nTurn off the power. Open the computer case. Pop out the internal RAM memory sticks. Gently clean the shiny gold contact pins using a soft rubber eraser to remove dust grid layers. Click them back into the slots tightly.\n\nSTEP 4: VOLATILE REGISTER CLEARANCE (CMOS RESET)\nRemove the round silver lithium coin battery (CR2032) from the motherboard. Wait 5 minutes to restore default motherboard options, put it back in, and start the system.", syntax: "echo Display Diagnostic Scanner Initiated", tags: "no display black screen video link graphics card gpu memory tracks gold contact cleaning ram slots hardware tracking monitors" }
                 ]
             },
             {
                 title: "Section 3: School Lab Management Tactics",
                 icon: "fa-school",
-                assets: [
-                    { name: "Print Spooler Jam Fixer", downloads: 5100, type: "System Diagnostic", icon: "fa-print", demo: "", source: "", tags: "print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair", tier: "common", info: "STEP 1: WHAT IT DOES\nThis stops your frozen computer printing software, completely wipes out stuck print jobs, and restarts the printer cleanly.\n\nSTEP 2: WHEN TO USE IT\nUse this when students submit document print requests but the printing machine completely freezes up or jams.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Run these commands sequentially to clear the system:\nnet stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler", syntax: "net stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler" },
-                    { name: "Lab Configuration Locker", downloads: 3600, type: "System Diagnostic", icon: "fa-snowflake", demo: "", source: "", tags: "deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration", tier: "common", info: "STEP 1: WHAT IT DOES\nThis creates a virtual protective barrier over the hard drive. Any files added or modified vanish completely on reboot.\n\nSTEP 2: WHEN TO USE IT\nUse this to prevent student computers from catching viruses, downloading junk software, or messing up baseline lab profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Run these commands to freeze the operational system state:\nuwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0", syntax: "uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0" },
-                    { name: "Standard Privilege Enforcer", downloads: 2900, type: "System Diagnostic", icon: "fa-user-lock", demo: "", source: "", tags: "standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution", tier: "common", info: "STEP 1: WHAT IT DOES\nThis demotes a local student computer profile to a basic account, blocking them from installing software or accessing core folders.\n\nSTEP 2: WHEN TO USE IT\nUse this on classroom computers so students cannot change system registry tracks, uninstall programs, or delete windows files.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Type these commands to remove absolute system access keys:\nnet localgroup Users Student /add\nnet localgroup Administrators Student /delete", syntax: "net localgroup Users Student /add\nnet localgroup Administrators Student /delete" }
+                items: [
+                    { name: "Print Spooler Jam Fixer", downloads: 5100, tier: "card-common", badge: "System Diagnostic", glyph: "fa-print", info: "STEP 1: WHAT IT DOES\nThis stops your frozen computer printing software, completely wipes out stuck print jobs, and restarts the printer cleanly.\n\nSTEP 2: WHEN TO USE IT\nUse this when students submit document print requests but the printing machine completely freezes up or jams.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Run these commands sequentially to clear the system:\nnet stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler", syntax: "net stop spooler\ndel /q /f /s %systemroot%\\System32\\spool\\PRINTERS\\*\nnet start spooler", tags: "print spooler clear jammed system data printer failure files directory purge freeze blocks local network execution loops queue clearing daemon repair" },
+                    { name: "Lab Configuration Locker", downloads: 3600, tier: "card-common", badge: "System Diagnostic", glyph: "fa-snowflake", info: "STEP 1: WHAT IT DOES\nThis creates a virtual protective barrier over the hard drive. Any files added or modified vanish completely on reboot.\n\nSTEP 2: WHEN TO USE IT\nUse this to prevent student computers from catching viruses, downloading junk software, or messing up baseline lab profiles.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator.\n2. Run these commands to freeze the operational system state:\u003cbr\u003euwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0", syntax: "uwfmgr filter enable\nuwfmgr volume protect C:\nshutdown /r /t 0", tags: "deep freeze uwf unified write filter write protection recovery system profiles configurations sandbox state freeze isolation storage layers reboot restoration" },
+                    { name: "Standard Privilege Enforcer", downloads: 2900, tier: "card-common", badge: "System Diagnostic", glyph: "fa-user-lock", info: "STEP 1: WHAT IT DOES\nThis demotes a local student computer profile to a basic account, blocking them from installing software or accessing core folders.\n\nSTEP 2: WHEN TO USE IT\nUse this on classroom computers so students cannot change system registry tracks, uninstall programs, or delete windows files.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt (CMD) as Administrator.\n2. Type these commands to remove absolute system access keys:\nnet localgroup Users Student /add\nnet localgroup Administrators Student /delete", syntax: "net localgroup Users Student /add\nnet localgroup Administrators Student /delete", tags: "standard user account privilege separation network isolation restrictions access control student settings user accounting profiles block malicious code execution" }
                 ]
             },
             {
                 title: "Section 4: Advanced Labs Deployment Module",
                 icon: "fa-download",
-                assets: [
-                    { name: "Bootable OS Media Maker", downloads: 3900, type: "Critical Fix", icon: "fa-compact-disc", demo: "", source: "", tags: "diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation", tier: "critical", info: "STEP 1: WHAT IT DOES\nThis wipes a standard USB flash drive clean and formats its internal architecture to make it a bootable OS installation medium.\n\nSTEP 2: WHEN TO USE IT\nUse this when preparing setup drives to reinstall Windows or recovery files across broken lab computers.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator, type 'diskpart' and hit Enter.\n2. Execute these steps one by one to configure the media storage rails:\nselect disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign", syntax: "select disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign" },
-                    { name: "Automated Lab Maintenance", downloads: 5400, type: "Critical Fix", icon: "fa-magic", demo: "", source: "", tags: "automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub", tier: "critical", info: "STEP 1: WHAT IT DOES\nThis runs an automated batch sweep that clears out temporary cache folders, logs, prefetch entries, and browser buffers in one click.\n\nSTEP 2: WHEN TO USE IT\nRun this maintenance chore on lab computer clusters every week to free up storage space and speed up operation speeds.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Notepad, paste the syntax script below, and save the file as 'clean.bat'.\n2. Right-click the file and choose 'Run as Administrator':\ndel /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\nipconfig /flushdns", syntax: "del /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\ndel /q /f /s %systemdrive%\\Windows\\Prefetch\\*\nipconfig /flushdns\nwsreset.exe" }
+                items: [
+                    { name: "Bootable OS Media Maker", downloads: 3900, tier: "card-critical", badge: "Critical Fix", glyph: "fa-compact-disc", info: "STEP 1: WHAT IT DOES\nThis wipes a standard USB flash drive clean and formats its internal architecture to make it a bootable OS installation medium.\n\nSTEP 2: WHEN TO USE IT\nUse this when preparing setup drives to reinstall Windows or recovery files across broken lab computers.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Command Prompt as Administrator, type 'diskpart' and hit Enter.\n2. Execute these steps one by one to configure the media storage rails:\nselect disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign", syntax: "select disk 1\nclean\ncreate partition primary\nformat fs=ntfs quick\nactive\nassign", tags: "diskpart bootable windows creation media flash drive imaging configuration boot files mbr gpt storage arrays installer raw allocation" },
+                    { name: "Automated Lab Maintenance", downloads: 5400, tier: "card-critical", badge: "Critical Fix", glyph: "fa-magic", info: "STEP 1: WHAT IT DOES\nThis runs an automated batch sweep that clears out temporary cache folders, logs, prefetch entries, and browser buffers in one click.\n\nSTEP 2: WHEN TO USE IT\nRun this maintenance chore on lab computer clusters every week to free up storage space and speed up operation speeds.\n\nSTEP 3: HOW TO EXECUTE\n1. Open Notepad, paste the syntax script below, and save the file as 'clean.bat'.\n2. Right-click the file and choose 'Run as Administrator':\ndel /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\nipconfig /flushdns", syntax: "del /q /f /s %systemdrive%\\Windows\\Temp\\*\ndel /q /f /s %userprofile%\\AppData\\Local\\Temp\\*\ndel /q /f /s %systemdrive%\\Windows\\Prefetch\\*\nipconfig /flushdns\nwsreset.exe", tags: "automated mass maintenance script log clearance background optimization server scripts maintenance pipelines cache purge files system scrub" }
                 ]
             }
         ];
@@ -341,62 +341,56 @@
             let overallMatchCount = 0;
 
             COMMAND_DATABASE.forEach((sectionBlock) => {
-                // Determine matches matching either name, type description string elements or custom metadata keyword index tags
+                // Determine matches securely across all tracking variables fields
                 let verifiedMatchingItems = sectionBlock.items.filter(item => {
-                    const trackingDataName = (item.name || "").toLowerCase();
-                    const trackingTags = (item.tags || "").toLowerCase();
-                    const trackingInfo = (item.info || "").toLowerCase();
-                    const trackingType = (item.type || "").toLowerCase();
-                    const trackingTier = (item.tier || "").toLowerCase();
-                    const trackingBadge = (item.badge || "").toLowerCase();
-                    const trackingSyntax = (item.syntax || "").toLowerCase();
+                    const name = (item.name || "").toLowerCase();
+                    const tags = (item.tags || "").toLowerCase();
+                    const info = (item.info || "").toLowerCase();
+                    const badge = (item.badge || "").toLowerCase();
+                    const syntax = (item.syntax || "").toLowerCase();
                     
-                    return trackingDataName.includes(query) || 
-                           trackingTags.includes(query) || 
-                           trackingInfo.includes(query) ||
-                           trackingType.includes(query) ||
-                           trackingTier.includes(query) ||
-                           trackingBadge.includes(query) ||
-                           trackingSyntax.includes(query);
+                    return name.includes(query) || 
+                           tags.includes(query) || 
+                           info.includes(query) ||
+                           badge.includes(query) ||
+                           syntax.includes(query);
                 });
 
-                // Apply Sorting Protocols inside matching segments securely
+                // Apply Sorting Protocols inside sections locally to prevent layout breaking
                 if (sortValue === 'popular') {
                     verifiedMatchingItems.sort((a, b) => b.downloads - a.downloads);
                 } else if (sortValue === 'az') {
                     verifiedMatchingItems.sort((a, b) => a.name.localeCompare(b.name));
                 }
 
-                // If elements pass structural filters, sync elements maps safely
+                // If elements pass category filters, paint matching child layouts safely
                 if (verifiedMatchingItems.length > 0) {
                     overallMatchCount += verifiedMatchingItems.length;
 
-                    // Append Header Row Rails Component dynamically
+                    // Re-inject Section Header Row Rails Component dynamically
                     const dividerHTML = `<div class="section-divider"><i class="fas ${sectionBlock.icon}"></i> ${sectionBlock.title}</div>`;
                     gridContainer.insertAdjacentHTML('beforeend', dividerHTML);
 
-                    // Append Structured Child Data Blocks
+                    // Re-populate Synchronized Child Cards Data Modules
                     verifiedMatchingItems.forEach(item => {
-                        const targetCardClassification = item.tier || (item.badge === "System Diagnostic" ? "card-common" : item.badge === "Critical Fix" ? "card-critical" : "card-student");
                         const shortUsesLabel = item.downloads >= 1000 ? (item.downloads / 1000).toFixed(1) + 'k' : item.downloads;
-                        const actionIconLabel = (targetCardClassification === "card-student") ? "Run Console" : (targetCardClassification === "card-common") ? "System Diagnostic" : "Critical Fix";
-                        const actionIcon = (targetCardClassification === "card-student") ? "fa-play" : (targetCardClassification === "card-common") ? "fa-bolt" : "fa-shield-alt";
+                        const actionIcon = (item.tier === "card-student") ? "fa-play" : (item.tier === "card-common") ? "fa-bolt" : "fa-shield-alt";
 
                         const cardHTML = `
-                            <div class="asset-card ${targetCardClassification} show">
+                            <div class="asset-card ${item.tier} show">
                                 <div class="mod-identity-block">
-                                    <div class="thumb"><i class="fas ${item.glyph || item.icon}"></i></div>
+                                    <div class="thumb"><i class="fas ${item.glyph}"></i></div>
                                     <div class="mod-header-text">
                                         <h3>${item.name}</h3>
                                         <div class="module-meta-chips">
                                             <span class="meta-chip"><i class="fas ${actionIcon}"></i> ${shortUsesLabel} Uses</span>
-                                            <span class="status-badge">${item.badge || item.type}</span>
+                                            <span class="status-badge">${item.badge}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="actions">
-                                    <button class="btn-act btn-demo" onclick="openTechModal('${item.name.replace(/'/g, "\\'")}', \`${(item.info || '').replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">View Info</button>
-                                    <button class="btn-act btn-zip" onclick="openTechModal('${item.name.replace(/'/g, "\\'")} Technical Syntax', \`${(item.syntax || item.source || '').replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">Run Stack</button>
+                                    <button class="btn-act btn-demo" onclick="openTechModal('${item.name.replace(/'/g, "\\'")}', \`${item.info.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">View Info</button>
+                                    <button class="btn-act btn-zip" onclick="openTechModal('${item.name.replace(/'/g, "\\'")} Technical Syntax', \`${item.syntax.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">Run Stack</button>
                                 </div>
                             </div>
                         `;
@@ -429,7 +423,7 @@
             });
         }
 
-        // Global Event Routing Handlers listeners anchors
+        // Global Key Listener Assignments
         document.getElementById('techModal').addEventListener('click', function(e) {
             if(e.target === this) closeTechModal();
         });
@@ -445,7 +439,7 @@
             }
         });
 
-        // Initialize Pipeline Execution Engine on Boot Complete Setup Sequential
+        // Initialize Pipeline Render Processing Loop on Boot Sequence
         processPipeline();
     </script>
 </body>
