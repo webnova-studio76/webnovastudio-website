@@ -6,99 +6,114 @@
     <title>UI Design Vault | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --ui-primary: #10b981;        /* Global Academic Emerald Green */
             --ui-primary-glow: rgba(16, 185, 129, 0.08);
-            --ui-secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --ui-secondary: #475569;      /* Soft Corporate Slate Blue-Gray */
             --ui-card-bg: #ffffff;       /* Pure White Canvas Cards */
-            --ui-bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --ui-text: #1e293b;          /* Dark Charcoal Main Typography */
-            --ui-text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
-            --card-radius: 16px;      
+            --ui-bg: #f8fafc;            /* Soft Royal Tinted Minimal Background */
+            --ui-text: #0f172a;          /* Dark Charcoal Main Typography */
+            --ui-text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--ui-primary-glow);
+            --accent: #f59e0b;        /* Amber Star/Popularity Indicator */
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--ui-bg); 
-            color: var(--ui-text); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Fixed navbar padding buffer constraint */
-        }
+        body { background-color: var(--ui-bg); color: var(--ui-text); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .vault-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .vault-container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 50px 24px;
-            width: 100%;
-        }
-
-        /* --- Header Segment Layout --- */
-        .vault-header { text-align: center; margin-bottom: 45px; }
+        /* --- 1. Library Title Header --- */
+        .vault-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
         .ui-badge { 
-            background: rgba(16, 185, 129, 0.06); 
-            color: var(--ui-primary); 
-            padding: 6px 16px; 
-            border-radius: 50px; 
-            font-size: 0.72rem; 
-            font-weight: 800; 
-            border: 1px solid rgba(16, 185, 129, 0.12); 
-            margin-bottom: 15px; 
-            display: inline-block;
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            animation: bounce 2s infinite;
+            background: rgba(16, 185, 129, 0.06); color: var(--ui-primary); padding: 4px 12px; 
+            border-radius: 4px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.15); 
+            margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
         }
-        .vault-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; }
+        .vault-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; color: #0f172a; }
         .vault-header h1 span { color: var(--ui-primary); }
-        .vault-header p { color: var(--ui-text-muted); font-size: 1.05rem; margin-top: 10px; font-weight: 500; }
+        .vault-header p { color: var(--ui-text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; max-width: 850px; }
 
-        /* --- Fluid Responsive Asset Grid Frame --- */
-        .ui-asset-grid {
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--ui-bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--ui-text-muted);
+        }
+
+        /* --- 2. Advanced Interactive Filter Control Bar --- */
+        .toolbar {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 24px;
-            width: 100%;
-            margin-top: 20px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .search-box { position: relative; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ui-text-muted); font-size: 0.85rem; }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: var(--transition);
+        }
+        .search-box input:focus { border-color: var(--ui-text); }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper select {
+            width: 100%; padding: 10px 32px 10px 14px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--ui-secondary); cursor: pointer; appearance: none;
+        }
+        .select-wrapper::after {
+            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+            color: var(--ui-text-muted); pointer-events: none; font-size: 0.7rem;
         }
 
-        /* --- Compact Card Units --- */
+        /* --- 3. Fluid Grid Framework Canvas --- */
+        .learning-modules-section { padding: 24px 0; }
+        .ui-asset-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+            width: 100% !important;
+        }
+
+        /* --- 4. Premium Inset Card Component Profiles --- */
         .ui-card {
-            background: var(--ui-card-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(12px);
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--tactile-shadow);
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            width: 100% !important;
+            min-height: 340px !important;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-
-        .ui-card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .ui-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--hover-shadow);
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: #cbd5e1 !important;
+            transform: translateY(-6px) scale(1.015) !important;
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.06) !important;
         }
 
-        /* Pure Blueprint Inset Areas instead of harsh gray backgrounds */
+        /* Distinct Top Border Chromatic Assignment Mappings */
+        .ui-card.border-blue { border-top: 4px solid #38bdf8 !important; }
+        .ui-card.border-purple { border-top: 4px solid #a855f7 !important; }
+        .ui-card.border-orange { border-top: 4px solid #f29111 !important; }
+        .ui-card.border-pink { border-top: 4px solid #ec4899 !important; }
+
+        /* Blueprint Inset Mesh Preview Area */
         .canvas-area {
-            height: 140px;
+            height: 150px;
             background: #f8fafc;
             display: flex;
             align-items: center;
@@ -106,240 +121,198 @@
             position: relative;
             background-image: radial-gradient(rgba(148, 163, 184, 0.15) 0.7px, transparent 0.7px);
             background-size: 16px 16px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-line);
         }
-
         .canvas-icon-wrapper {
-            width: 58px;
-            height: 58px;
-            background: var(--white);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border: 1px solid var(--border);
+            width: 48px; height: 46px; background: var(--white); border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02); border: 1px solid var(--border-line);
             transition: var(--transition);
         }
-
-        .ui-card:hover .canvas-icon-wrapper {
-            transform: scale(1.04);
-            background: var(--ui-primary-glow);
-            border-color: transparent;
-        }
-
-        .canvas-icon-wrapper i {
-            font-size: 1.25rem;
-            color: var(--ui-text-muted);
-            transition: var(--transition);
-        }
-
-        .ui-card:hover .canvas-icon-wrapper i {
-            color: var(--ui-primary);
-        }
+        .ui-card:hover .canvas-icon-wrapper { transform: scale(1.05); color: var(--ui-primary); }
+        .canvas-icon-wrapper i { font-size: 1.1rem; color: var(--ui-text-muted); }
+        .ui-card:hover .canvas-icon-wrapper i { color: var(--ui-primary); }
 
         .ui-tag {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--white);
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--ui-primary);
-            border: 1px solid rgba(16, 185, 129, 0.1);
-            letter-spacing: 0.3px;
-        }
-
-        .ui-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-        .ui-info h3 { font-size: 0.95rem; color: #0f172a; margin-bottom: 6px; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
-        .ui-info p { 
-            font-size: 0.8rem; 
-            color: var(--ui-text-muted); 
-            line-height: 1.45; 
-            margin-bottom: 20px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; 
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-weight: 500;
-            text-align: left;
-        }
-        
-        .ui-actions { display: flex; gap: 8px; margin-top: auto; }
-        .btn-ui {
-            flex: 1;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
+            position: absolute; top: 12px; right: 12px; background: var(--white);
+            padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 700;
+            color: var(--ui-primary); border: 1px solid rgba(16, 185, 129, 0.15); letter-spacing: 0.3px;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
         }
-        .btn-live { background: var(--ui-primary); color: var(--white); }
-        .btn-live:hover { background: #059669; box-shadow: 0 4px 10px var(--ui-primary-glow); }
+
+        .ui-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; width: 100%; }
+        .ui-info-text-wrapper { display: flex; flex-direction: column; gap: 4px; }
+        .ui-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; color: #0f172a; font-weight: 700; letter-spacing: -0.01em; text-align: left; }
+        .ui-info p { font-size: 0.82rem; color: var(--ui-text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
         
-        .btn-get { background: #f1f5f9; color: var(--ui-secondary); border: 1px solid rgba(0,0,0,0.02); }
-        .btn-get:hover { background: #e2e8f0; color: #0f172a; }
+        .tech-pill-wrapper { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+        .tech-pill { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; color: var(--ui-secondary); background: var(--ui-bg); padding: 1px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
 
-        /* Dynamic Custom Color Assignments for Top Borders */
-        .ui-asset-grid > div:nth-of-type(4n+1) { border-top: 4px solid #38bdf8; } /* Light Blue */
-        .ui-asset-grid > div:nth-of-type(4n+2) { border-top: 4px solid #a855f7; } /* Light Purple */
-        .ui-asset-grid > div:nth-of-type(4n+3) { border-top: 4px solid #f29111; } /* Light Orange */
-        .ui-asset-grid > div:nth-of-type(4n+4) { border-top: 4px solid #ec4899; } /* Light Pink */
+        .ui-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; margin-top: auto; }
+        .btn-ui {
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--ui-bg); border: 1px solid var(--border-line); color: var(--ui-text); transition: all 0.2s ease; cursor: pointer;
+        }
+        .btn-live { background: var(--ui-primary); color: var(--white); border-color: var(--ui-primary); }
+        .btn-get { background: var(--ui-secondary); color: var(--white); border-color: var(--ui-secondary); }
+        .btn-live:hover { background: #059669; border-color: #059669; }
+        .btn-get:hover { background: #0f172a; border-color: #0f172a; }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
+        /* Empty State Node */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--ui-text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--ui-text-muted); }
 
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1280px) {
-            .ui-asset-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        }
-        @media (max-width: 960px) {
-            .ui-asset-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) { 
-            .ui-asset-grid { grid-template-columns: 1fr; max-width: 100%; gap: 16px; } 
-            .vault-header h1 { font-size: 2rem; }
-            .vault-container { padding: 30px 16px; }
+        @media (max-width: 1024px) { .ui-asset-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 768px) {
+            .ui-asset-grid { grid-template-columns: 1fr !important; }
+            .toolbar { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<div class="vault-container">
-    <header class="vault-header">
-        <span class="ui-badge"><i class="fas fa-magic"></i> Pro Design Assets</span>
-        <h1>UI Design <span>Vault</span></h1>
-        <p>Premium HTML & CSS components for your next project.</p>
-    </header>
-
-    <div class="ui-asset-grid" id="uiGrid">
-        
-        <div class="ui-card">
-            <div class="canvas-area">
-                <span class="ui-tag">UI DESIGN</span>
-                <div class="canvas-icon-wrapper">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
+    <div class="vault-container">
+        <header class="vault-header">
+            <span class="ui-badge"><i class="fas fa-magic"></i> Reusable UI Modules</span>
+            <h1>UI Design <span>Vault</span></h1>
+            <p>Discover production-ready HTML, CSS, and JavaScript components crafted by WebNova Studio. Build interfaces faster using clean source configurations, responsive structures, and fluid micro-interactions patterns.</p>
+            <div class="hero-stats">
+                <span id="statCount">5 Component Bundles</span>
+                <span>Responsive Viewports</span>
+                <span>Audited Source Blocks</span>
+                <span>MIT Open License</span>
             </div>
-            <div class="ui-info">
-                <h3>Animated Border Design 1</h3>
-                <p>Explore our premium library of high-performance components featuring high-end backdrop-blur.</p>
-                <div class="ui-actions">
-                    <a href="https://webnova-studio76.github.io/Electric-Border-Card-Design/" class="btn-ui btn-live" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Electric-Border-Card-Design.git" class="btn-ui btn-get" target="_blank">
-                        <i class="fas fa-code"></i> Code
-                    </a>
-                </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="uiSearch" placeholder="Search interfaces, layout forms, components (e.g. border, form, 3d)..." oninput="processPipeline()">
+            </div>
+            <div class="select-wrapper">
+                <select id="filterCategory" onchange="processPipeline()">
+                    <option value="all">All Modules</option>
+                    <option value="cards">Cards</option>
+                    <option value="carousel">Carousels</option>
+                    <option value="forms">Forms</option>
+                    <option value="navigation">Navigation</option>
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="uiSort" onchange="processPipeline()">
+                    <option value="default">Default Order</option>
+                    <option value="az">Name A-Z</option>
+                </select>
             </div>
         </div>
 
-        <div class="ui-card">
-            <div class="canvas-area">
-                <span class="ui-tag">UI DESIGN</span>
-                <div class="canvas-icon-wrapper">
-                    <i class="fas fa-laptop-code"></i>
+        <section class="learning-modules-section">
+            <div class="ui-asset-grid" id="uiGrid">
                 </div>
+            
+            <div class="empty-state-node" id="noResults">
+                <i class="fas fa-folder-open"></i>
+                <h4>No UI Modules Found</h4>
+                <p>Modify your character query input parameters or reset your segment filters dropdown choices.</p>
             </div>
-            <div class="ui-info">
-                <h3>Animated Border Design 2</h3>
-                <p>Explore our premium library of high-performance components featuring high-end backdrop-blur.</p>
-                <div class="ui-actions">
-                    <a href="https://webnova-studio76.github.io/Electric-Border-Card-Design-2-/" class="btn-ui btn-live" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/Electric-Border-Card-Design-2-.git" class="btn-ui btn-get" target="_blank">
-                        <i class="fas fa-code"></i> Code
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="ui-card">
-            <div class="canvas-area">
-                <span class="ui-tag">UI DESIGN</span>
-                <div class="canvas-icon-wrapper">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-            </div>
-            <div class="ui-info">
-                <h3>3D rotating carousel design 1</h3>
-                <p>Explore our premium library of high-performance components featuring high-end backdrop-blur.</p>
-                <div class="ui-actions">
-                    <a href="https://webnova-studio76.github.io/3D-rotating-carousel-design-1/" class="btn-ui btn-live" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/3D-rotating-carousel-design-1.git" class="btn-ui btn-get" target="_blank">
-                        <i class="fas fa-code"></i> Code
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="ui-card">
-            <div class="canvas-area">
-                <span class="ui-tag">UI DESIGN</span>
-                <div class="canvas-icon-wrapper">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-            </div>
-            <div class="ui-info">
-                <h3>Registration Form</h3>
-                <p>Explore our premium library of high-performance components featuring high-end backdrop-blur.</p>
-                <div class="ui-actions">
-                    <a href="https://webnova-studio76.github.io/UI-Design-Registration-Form/" class="btn-ui btn-live" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/UI-Design-Registration-Form.git" class="btn-ui btn-get" target="_blank">
-                        <i class="fas fa-code"></i> Code
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="ui-card">
-            <div class="canvas-area">
-                <span class="ui-tag">UI DESIGN</span>
-                <div class="canvas-icon-wrapper">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-            </div>
-            <div class="ui-info">
-                <h3>UI-Design-WebNova-Studio-home-Page</h3>
-                <p>Explore our premium library of high-performance components featuring high-end backdrop-blur.</p>
-                <div class="ui-actions">
-                    <a href="https://webnova-studio76.github.io/UI-Design-WebNova-Studio-home-Page/" class="btn-ui btn-live" target="_blank">Preview</a>
-                    <a href="https://github.com/webnova-studio76/UI-Design-WebNova-Studio-home-Page.git" class="btn-ui btn-get" target="_blank">
-                        <i class="fas fa-code"></i> Code
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        </section>
     </div>
-</div>
 
-<div id="global-footer"></div>
+    <div id="global-footer"></div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.ui-card');
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 60); 
-        });
-    });
-</script>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 
-<script src="main.js"></script>
-<script src="footer.js"></script>
+    <script>
+        /* ==========================================================================
+           📦 CENTRAL SINGLE SOURCE OF TRUTH UI COMPONENTS STORAGE
+           ========================================================================== */
+        const UI_DATABASE = [
+            { name: "Animated Border Design 1", category: "cards", borderClass: "border-blue", icon: "fa-border-all", demo: "https://webnova-studio76.github.io/Electric-Border-Card-Design/", source: "https://github.com/webnova-studio76/Electric-Border-Card-Design.git", desc: "Responsive interactive card module featuring an electric glowing animated line gradient trace container wrapper.", tech: ["HTML5", "CSS3", "Animation"] },
+            { name: "Animated Border Design 2", category: "cards", borderClass: "border-purple", icon: "fa-square", demo: "https://webnova-studio76.github.io/Electric-Border-Card-Design-2-/", source: "https://github.com/webnova-studio76/Electric-Border-Card-Design-2-.git", desc: "Variant structure glowing element with backdrop-blur overlay filtering triggers and responsive tracking boxes matrix.", tech: ["HTML5", "CSS3", "Glassmorphism"] },
+            { name: "3D Rotating Carousel Design 1", category: "carousel", borderClass: "border-orange", icon: "fa-rotate", demo: "https://webnova-studio76.github.io/3D-rotating-carousel-design-1/", source: "https://github.com/webnova-studio76/3D-rotating-carousel-design-1.git", desc: "Advanced CSS carousel component rotating on asymmetric dimensional axis pathways leveraging low-level transforms.", tech: ["HTML5", "CSS3", "3D Transform"] },
+            { name: "Registration Form Page", category: "forms", borderClass: "border-pink", icon: "fa-address-card", demo: "https://webnova-studio76.github.io/UI-Design-Registration-Form/", source: "https://github.com/webnova-studio76/UI-Design-Registration-Form.git", desc: "Clean corporate registry data form page map, fully balanced with input entry validation configurations anchors.", tech: ["HTML5", "CSS3", "Validation"] },
+            { name: "UI Design WebNova Home Page", category: "navigation", borderClass: "border-blue", icon: "fa-compass", demo: "https://webnova-studio76.github.io/UI-Design-WebNova-Studio-home-Page/", source: "https://github.com/webnova-studio76/UI-Design-WebNova-Studio-home-Page.git", desc: "The ultimate production landing index blueprint, equipped with responsive navigation systems, hero layouts, and animations.", tech: ["HTML5", "CSS3", "Full Layout"] }
+        ];
+
+        // Stats Initializer Counter Hook
+        document.getElementById('statCount').innerText = `${UI_DATABASE.length} UI Bundles`;
+
+        /* ==========================================================================
+           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+           ========================================================================== */
+        function processPipeline() {
+            const query = document.getElementById('uiSearch').value.toLowerCase().trim();
+            const categorySelection = document.getElementById('filterCategory').value;
+            const sortSelection = document.getElementById('uiSort').value;
+            const gridContainer = document.getElementById('uiGrid');
+            const noResultsNode = document.getElementById('noResults');
+
+            // 1. Pipeline Filtering Track Sequence
+            let compiledMatchingCache = UI_DATABASE.filter(asset => {
+                const nameMatch = asset.name.toLowerCase().includes(query);
+                const descMatch = asset.desc.toLowerCase().includes(query);
+                const techMatch = asset.tech.some(t => t.toLowerCase().includes(query));
+                
+                const queryMatch = nameMatch || descMatch || techMatch;
+                const categoryMatch = categorySelection === 'all' || asset.category === categorySelection;
+
+                return queryMatch && categoryMatch;
+            });
+
+            // 2. Pipeline Sorting Track Sequence
+            if (sortSelection === 'az') {
+                compiledMatchingCache.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            // 3. Render Painting Output Layout Block
+            gridContainer.innerHTML = "";
+
+            if (compiledMatchingCache.length === 0) {
+                noResultsNode.style.display = 'flex';
+                return;
+            } else {
+                noResultsNode.style.display = 'none';
+            }
+
+            compiledMatchingCache.forEach(asset => {
+                // Compile tech pills tokens markup loop dynamically
+                const pillsHTML = asset.tech.map(t => `<span class="tech-pill">${t}</span>`).join('');
+
+                const cardHTML = `
+                    <div class="ui-card ${asset.borderClass}">
+                        <div class="canvas-area">
+                            <span class="ui-tag">${asset.category}</span>
+                            <div class="canvas-icon-wrapper">
+                                <i class="fas ${asset.icon}"></i>
+                            </div>
+                        </div>
+                        <div class="ui-info">
+                            <div class="ui-info-text-wrapper">
+                                <h3>${asset.name}</h3>
+                                <p>${asset.desc}</p>
+                            </div>
+                            <div class="tech-pill-wrapper">
+                                ${pillsHTML}
+                            </div>
+                            <div class="ui-actions">
+                                <a href="${asset.demo}" class="btn-ui btn-live" target="_blank">Preview</a>
+                                <a href="${asset.source}" class="btn-ui btn-get" target="_blank"><i class="fab fa-github"></i> Source</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // Initialize Catalog Runtime Engine On Boot Complete
+        processPipeline();
+    </script>
 </body>
 </html>
