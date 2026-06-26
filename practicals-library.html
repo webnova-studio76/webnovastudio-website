@@ -6,351 +6,410 @@
     <title>Programming Practical Hub | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* High-Premium Soft Light Dashboard Workspace Palette Tokens */
+            /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --secondary: #475569;      /* Soft Corporate Slate Blue-Gray */
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
-            --bg: #f4f7fe;            /* Soft Royal Tinted Minimal Background */
-            --text-main: #1e293b;     /* Dark Charcoal Main Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Extremely soft structural outline */
-            --card-radius: 16px;      
+            --bg: #f8fafc;            /* Workspace Off-White Background */
+            --text-main: #0f172a;     /* Dark Charcoal Headings Typography */
+            --text-muted: #475569;    /* Deep Muted Blue-Gray Details */
+            --border-line: #e2e8f0;   /* Razor-Thin Split Framework Lines */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --accent: #f59e0b;        /* Amber Download Stat Indicator */
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.03), 0 2px 6px -2px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.08), 0 4px 12px -2px var(--primary-glow);
+            /* Subject Chromatic Identifiers */
+            --lang-c: #64748b;
+            --lang-cpp: #0ea5e9;
+            --lang-java: #ea9820;
+            --lang-python: #3776ab;
+            --lang-sql: #f29111;
+            --lang-web: #e34c26;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Fixed navbar padding buffer constraint */
-        }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; width: 100%; }
-
-        /* --- Header Section --- */
-        .hub-header {
-            position: relative;
-            background: linear-gradient(135deg, #ffffff 0%, #edf2ff 100%);
-            color: var(--text-main);
-            padding: 50px 20px 70px;
-            text-align: center;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* Ambient background technology grid lines matching the index style */
-        .hub-header::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
-            background-size: 40px 40px; pointer-events: none; z-index: 1;
-        }
-
-        .header-title-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
-        .hub-header h1 { font-size: 2.6rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px; }
+        /* --- 1. System Directory Header --- */
+        .hub-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
+        .branding-tag { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: inline-block; }
+        .hub-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; color: #0f172a; }
         .hub-header h1 span { color: var(--primary); }
-        .hub-header p { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; }
+        .hub-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        /* --- Search & Controls Toolbar --- */
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            background: var(--bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted);
+        }
+
+        /* --- 2. Advanced Interactive Filter Controls --- */
         .toolbar {
-            background: var(--white);
-            padding: 10px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 105px; 
-            z-index: 100;
-            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04);
-        }
-
-        .search-box { flex: 2; position: relative; }
-        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
-        .search-box input {
-            width: 100%; padding: 12px 16px 12px 48px; border-radius: 10px;
-            border: 1px solid transparent; background: #f1f5f9; outline: none; transition: var(--transition);
-            color: var(--secondary); font-weight: 500; font-size: 0.92rem;
-        }
-        .search-box input:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow); }
-        .search-box input:focus + i { color: var(--primary); }
-
-        .sort-box { flex: 1; position: relative; min-width: 180px; }
-        .sort-box select {
-            width: 100%; padding: 12px 16px; border-radius: 10px;
-            border: 1px solid transparent; background: #f1f5f9;
-            font-weight: 700; color: var(--secondary); cursor: pointer; appearance: none; outline: none;
-            font-size: 0.88rem; transition: var(--transition);
-        }
-        .sort-box select:hover, .sort-box select:focus { border-color: var(--border); background: #e2e8f0; }
-        .sort-box::after {
-            content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
-            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-            color: var(--text-muted); pointer-events: none; font-size: 0.75rem;
-        }
-
-        /* --- Fluid Responsive Asset Grid Frame --- */
-        .lab-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            width: 100%;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-line);
+        }
+        .search-box { position: relative; }
+        .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
+        .search-box input {
+            width: 100%; padding: 10px 14px 10px 38px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.88rem; font-weight: 500; transition: var(--transition);
+        }
+        .search-box input:focus { border-color: var(--text-main); }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper select {
+            width: 100%; padding: 10px 32px 10px 14px; border-radius: 6px;
+            border: 1px solid var(--border-line); background: var(--white); outline: none;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); cursor: pointer; appearance: none;
+        }
+        .select-wrapper::after {
+            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); pointer-events: none; font-size: 0.7rem;
         }
 
-        /* --- High-Premium Soft Light Lab Cards --- */
+        /* --- 3. Category Tab System --- */
+        .category-nav-bar { display: flex; gap: 8px; padding: 16px 0 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-tab-btn {
+            white-space: nowrap; padding: 8px 16px; border-radius: 4px; border: 1px solid var(--border-line);
+            background: var(--white); color: var(--text-muted); font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 0.78rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
+        }
+        .nav-tab-btn:hover, .nav-tab-btn.active { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* --- 4. Curated Featured Subjects --- */
+        .featured-row-wrapper { padding: 16px 0 0; }
+        .featured-row-wrapper h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+        .featured-chips-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .featured-chip-link {
+            background: var(--white); border: 1px solid var(--border-line); padding: 8px 16px; border-radius: 4px;
+            font-size: 0.82rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
+        }
+        .featured-chip-link i { color: #f43f5e; }
+        .featured-chip-link:hover { border-color: #cbd5e1; transform: translateY(-1px); }
+
+        /* --- 5. Fluid Responsive Asset Grid Frame --- */
+        .learning-modules-section { padding: 24px 0; }
+        .lab-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 16px !important;
+            width: 100% !important;
+        }
+
+        /* --- 6. High-Premium Soft Light Lab Cards --- */
         .lab-card {
-            background: var(--card-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--card-radius);
-            padding: 35px 28px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-            box-shadow: var(--tactile-shadow);
-            opacity: 0;
-            transform: translateY(12px);
+            background: var(--white) !important;
+            border: 1px solid var(--border-line) !important;
+            padding: 24px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            width: 100% !important;
+            min-height: 250px !important; /* Uniform square footprint */
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .lab-card:hover { 
+            border-color: #cbd5e1 !important; 
+            transform: translateY(-6px) scale(1.015) !important;
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.06) !important;
         }
 
-        .lab-card.show { opacity: 1; transform: translateY(0); }
+        /* Category Left Borders Mapping */
+        .lab-card.lang-c { border-left: 5px solid var(--lang-c) !important; }
+        .lab-card.lang-cpp { border-left: 5px solid var(--lang-cpp) !important; }
+        .lab-card.lang-java { border-left: 5px solid var(--lang-java) !important; }
+        .lab-card.lang-python { border-left: 5px solid var(--lang-python) !important; }
+        .lab-card.lang-sql { border-left: 5px solid var(--lang-sql) !important; }
+        .lab-card.lang-web { border-left: 5px solid var(--lang-web) !important; }
 
-        .lab-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--hover-shadow);
+        .mod-identity-block { display: flex; align-items: center; gap: 12px; width: 100%; }
+        .thumb {
+            width: 38px; height: 36px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; flex-shrink: 0;
         }
+        .lab-card.lang-c .thumb { color: var(--lang-c); }
+        .lab-card.lang-cpp .thumb { color: var(--lang-cpp); }
+        .lab-card.lang-java .thumb { color: var(--lang-java); }
+        .lab-card.lang-python .thumb { color: var(--lang-python); }
+        .lab-card.lang-sql .thumb { color: var(--lang-sql); }
+        .lab-card.lang-web .thumb { color: var(--lang-web); }
+        
+        .mod-header-text { overflow: hidden; }
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; align-items: center; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+        .meta-chip.dl-count { color: var(--accent); font-weight: 700; background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.15); }
 
-        /* Custom Soft Pastel Left Identification Borders */
-        .card-c { border-left: 5px solid #64748b; }
-        .card-c:hover { border-color: rgba(100, 116, 139, 0.25); }
-        .card-cpp { border-left: 5px solid #38bdf8; }
-        .card-cpp:hover { border-color: rgba(56, 189, 248, 0.25); }
-        .card-java { border-left: 5px solid #f89820; }
-        .card-java:hover { border-color: rgba(248, 152, 32, 0.25); }
-        .card-python { border-left: 5px solid #4776ab; }
-        .card-python:hover { border-color: rgba(71, 118, 171, 0.25); }
-        .card-sql { border-left: 5px solid #f29111; }
-        .card-sql:hover { border-color: rgba(242, 145, 17, 0.25); }
-        .card-web { border-left: 5px solid #e34c26; }
-        .card-web:hover { border-color: rgba(227, 76, 38, 0.25); }
+        .lab-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; text-align: left; }
 
-        .phase-tag { 
-            font-size: 0.72rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            display: inline-block;
-            background: #f1f5f9;
-            padding: 3px 10px;
-            border-radius: 5px;
-        }
-
-        .lab-card h3 { color: #0f172a; font-size: 1.35rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.01em; text-align: left; }
-        .lab-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; line-height: 1.5; text-align: left; }
-
-        /* Card Split Area Rule Line */
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-
+        .card-footer { width: 100%; border-top: 1px solid var(--border-line); padding-top: 14px; margin-top: auto; display: flex; justify-content: flex-end; }
         .btn-view {
-            text-decoration: none !important;
-            font-weight: 800;
-            color: #2563eb;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
+            width: 100%; text-align: center; padding: 10px 14px; border-radius: 4px; 
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
-        .btn-view:hover { color: #0f172a; text-decoration: underline !important; }
+        .lab-card:hover .btn-view { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        #sentinel { height: 40px; }
+        /* Empty State */
+        .empty-state-node { text-align: center; padding: 40px 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 8px; grid-column: 1 / -1; }
+        .empty-state-node i { font-size: 1.8rem; color: var(--text-muted); }
+        .empty-state-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .empty-state-node p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1150px) {
-            .asset-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .toolbar { top: 95px; }
-        }
-        @media (max-width: 680px) { 
-            .asset-grid { grid-template-columns: 1fr; gap: 16px; } 
-            .toolbar { flex-direction: column; align-items: stretch; border-radius: 12px; padding: 12px; top: 95px; gap: 12px; } 
-            .hub-header h1 { font-size: 2rem; }
-            .container { padding: 30px 16px; }
+        /* --- 7. Summary Metrics Footer --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: #10b981; }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
+
+        @media (max-width: 1024px) { .lab-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 768px) {
+            .lab-grid { grid-template-columns: 1fr !important; }
+            .toolbar { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<header class="hub-header">
-    <div class="header-title-container">
-        <h1>Programming <span>Practical Hub</span></h1>
-        <p>Verified source code and lab manuals for the WebNova community.</p>
-    </div>
-</header>
-
-<div class="container">
-    <div class="toolbar">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="hubSearch" placeholder="Search parameters (e.g., Java, SQL, c)...">
-        </div>
-        <div class="sort-box">
-            <select id="hubSort">
-                <option value="newest">Latest Manuals</option>
-                <option value="popular">Most Utilized</option>
-                <option value="az">Alphabetic (A-Z)</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="lab-grid" id="labGrid">
-
-        <div class="lab-card card-c" data-lang="c" data-downloads="3100">
-            <div>
-                <span class="phase-tag" style="color: #64748b;">Procedural Core</span>
-                <h3>C Programming</h3>
-                <p>Essential lab programs: Pointers, Structures, File I/O, and sorting algorithms.</p>
-            </div>
-            <div class="card-footer">
-                <a href="c-labs.html" class="btn-view">View C Labs &rarr;</a>
+    <header class="hub-header">
+        <div class="container">
+            <p class="branding-tag">Code Craft Academic Workspace</p>
+            <h1>Programming <span>Practical Hub</span></h1>
+            <p>Learn through real programs, structural university lab manuals, compiled datasets, and verified source code blocks updated every semester.</p>
+            <div class="hero-stats">
+                <span id="statCount">6 Core Subject Areas</span>
+                <span>350+ Programs</span>
+                <span>BCA / MCA Manuals</span>
+                <span>Solutions Included</span>
             </div>
         </div>
+    </header>
 
-        <div class="lab-card card-cpp" data-lang="c++" data-downloads="3400">
-            <div>
-                <span class="phase-tag" style="color: #0284c7;">Object Oriented</span>
-                <h3>C++ Architecture</h3>
-                <p>Practical implementation of Classes, Inheritance, Polymorphism, and Templates.</p>
-            </div>
-            <div class="card-footer">
-                <a href="cpp-labs.html" class="btn-view">View C++ Labs &rarr;</a>
-            </div>
-        </div>
-
-        <div class="lab-card card-java" data-lang="java" data-downloads="4800">
-            <div>
-                <span class="phase-tag" style="color: #d97706;">Platform Independent</span>
-                <h3>Java Mastery</h3>
-                <p>Multithreading, Exception Handling, JDBC Connectivity, and Applets.</p>
-            </div>
-            <div class="card-footer">
-                <a href="java-labs.html" class="btn-view">View Java Labs &rarr;</a>
-            </div>
-        </div>
-
-        <div class="lab-card card-python" data-lang="python" data-downloads="4100">
-            <div>
-                <span class="phase-tag" style="color: #2563eb;">Logic Mastery</span>
-                <h3>Python Labs</h3>
-                <p>List comprehensions, Dictionary methods, File handling, and Data logic.</p>
-            </div>
-            <div class="card-footer">
-                <a href="python-labs.html" class="btn-view">View Python Labs &rarr;</a>
-            </div>
-        </div>
-
-        <div class="lab-card card-sql" data-lang="sql" data-downloads="3900">
-            <div>
-                <span class="phase-tag" style="color: #c2410c;">Database Ops</span>
-                <h3>SQL & DBMS</h3>
-                <p>Database normalization, Complex Joins, Triggers, and Stored Procedures.</p>
-            </div>
-            <div class="card-footer">
-                <a href="sql-labs.html" class="btn-view">View SQL Labs &rarr;</a>
-            </div>
-        </div>
-
-        <div class="lab-card card-web" data-lang="html css" data-downloads="5200">
-            <div>
-                <span class="phase-tag" style="color: #b91c1c;">Frontend Design</span>
-                <h3>HTML & CSS Examples</h3>
-                <p>Responsive Grid/Flexbox layouts, Form validations, and UI components.</p>
-            </div>
-            <div class="card-footer">
-                <a href="web-labs.html" class="btn-view">View HTML & CSS Labs &rarr;</a>
-            </div>
-        </div>
-
-    </div>
-    <div id="sentinel"></div>
-</div>
-
-<div id="global-footer"></div>
-
-<script>
-    const grid = document.getElementById('labGrid');
-    const search = document.getElementById('hubSearch');
-    const sort = document.getElementById('hubSort');
-
-    // Staggered Entrance Motion Animation Setup
-    document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.lab-card');
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 40); 
-        });
-    });
-
-    // Instant Real-Time Search Logic Filter
-    search.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        document.querySelectorAll('.lab-card').forEach(card => {
-            const langIndex = card.getAttribute('data-lang').toLowerCase();
-            const titleIndex = card.querySelector('h3').innerText.toLowerCase();
-            
-            if (langIndex.includes(query) || titleIndex.includes(query)) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-
-    // Unified Sorting Engine Processing
-    sort.addEventListener('change', () => {
-        const cards = Array.from(grid.querySelectorAll('.lab-card'));
+    <div class="container">
         
-        if (sort.value === 'popular') {
-            cards.sort((a, b) => parseInt(b.dataset.downloads || 0) - parseInt(a.dataset.downloads || 0));
-        } else if (sort.value === 'az') {
-            cards.sort((a, b) => a.getAttribute('data-lang').localeCompare(b.getAttribute('data-lang')));
-        } else {
-            // Default chronological layout reset
-            location.reload();
-            return;
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="hubSearch" placeholder="Search programs, concepts, algorithms (e.g. pointers, multithreading, triggers)..." oninput="processPipeline()">
+            </div>
+            <div class="select-wrapper">
+                <select id="filterType" onchange="processPipeline()">
+                    <option value="all">All Architecture Tiers</option>
+                    <option value="procedural">Procedural Core</option>
+                    <option value="oop">Object Oriented</option>
+                    <option value="database">Database Operations</option>
+                    <option value="frontend">Frontend Design</option>
+                </select>
+            </div>
+            <div class="select-wrapper">
+                <select id="hubSort" onchange="processPipeline()">
+                    <option value="default">Default Order</option>
+                    <option value="popular">Most Utilized</option>
+                    <option value="az">Subject A-Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="category-nav-bar" id="categoryNavBar">
+            <button class="nav-tab-btn active" onclick="filterCategoryTab(this, 'all')"><i class="fas fa-border-all"></i> All Subjects</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'c')">⚙️ C Core</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'c++')">🧩 C++ OOP</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'java')">☕ Java Enterprise</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'python')">🐍 Python Logic</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'sql')">🗄️ SQL &amp; DBMS</button>
+            <button class="nav-tab-btn" onclick="filterCategoryTab(this, 'web')">🌐 HTML &amp; CSS</button>
+        </div>
+
+        <div class="featured-row-wrapper" id="featuredWrapper">
+            <h2>Featured Lab Manuals This Semester</h2>
+            <div class="featured-chips-container">
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSubject('python')"><i class="fas fa-fire"></i> Python Programming Labs</a>
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSubject('sql')"><i class="fas fa-bolt"></i> SQL &amp; Relational Procedures</a>
+                <a href="#" class="featured-chip-link" onclick="openFeaturedSubject('java')"><i class="fas fa-star"></i> Java JDBC Connectivity</a>
+            </div>
+        </div>
+
+        <section class="learning-modules-section">
+            <div class="lab-grid" id="labGrid">
+                </div>
+            
+            <div class="empty-state-node" id="noResults">
+                <i class="fas fa-folder-open"></i>
+                <h4>No Practical Manuals Match Your Search</h4>
+                <p>Modify your character query input strings or reset your dropdown filter choices.</p>
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div><span>Syllabus Scope</span><strong>350+ Total Manuals</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div><span>Academic Target</span><strong>BCA / MCA Compiled Labs</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-unlock-alt"></i>
+                    <div><span>Access Frame</span><strong>100% Free Materials</strong></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+
+    <script>
+        /* ==========================================================================
+           📦 CENTRAL SINGLE SOURCE OF TRUTH LAB MANUAL DATABASE
+           ========================================================================== */
+        const LAB_DATABASE = [
+            { id: "c", name: "C Programming", lang: "c", tier: "procedural", classStyle: "lang-c", badge: "Procedural Core", glyph: "fa-terminal", downloads: 3100, path: "c-labs.html", desc: "Essential university lab structures: memory pointers arithmetic, data structures allocations, structures layouts, file stream systems operations, and sorting algorithms execution loops.", tags: "c procedural low level pointers structures sorting search files allocations macros arrays" },
+            { id: "cpp", name: "C++ Architecture", lang: "c++", tier: "oop", classStyle: "lang-cpp", badge: "Object Oriented", glyph: "fa-cubes", downloads: 3400, path: "cpp-labs.html", desc: "Practical implementation parameters of custom classes, constructors overloads, cascading inheritance trees, virtual methods runtime polymorphism, and class templates meta-programming.", tags: "cpp c++ oop classes objects inheritance polymorphism templates exceptions virtual streams virtual-table" },
+            { id: "java", name: "Java Mastery", lang: "java", tier: "oop", classStyle: "lang-java", badge: "Platform Independent", glyph: "fa-mug-hot", downloads: 4800, path: "java-labs.html", desc: "Enterprise asynchronous thread execution loops, deep try-catch exceptional tracking frameworks, remote relational JDBC database connectivity, and abstract window kit graphic interfaces applets.", tags: "java jdbc multithreading exceptions awt swing applets connectivity servers backends enterprise" },
+            { id: "python", name: "Python Labs", lang: "python", tier: "oop", classStyle: "lang-python", badge: "Logic Mastery", glyph: "fa-brands fa-python", downloads: 4100, path: "python-labs.html", desc: "Functional list mapping compressions, hash mapping dictionaries manipulation techniques, persistent filesystem handlers scripts, and structural core algorithm problem solving modules.", tags: "python lists loops logic file handling automation strings data structures comprehensions exceptions" },
+            { id: "sql", name: "SQL & DBMS", lang: "sql", tier: "database", classStyle: "lang-sql", badge: "Database Ops", glyph: "fa-database", downloads: 3900, path: "sql-labs.html", desc: "Database structural relational normalization anomalies elimination, high-performance inner/outer multi-table join operations, automation triggers execution, and compiled stored database procedures scripts.", tags: "sql dbms database normalization joins triggers procedures indexing relational tables keys rows queries" },
+            { id: "web", name: "HTML & CSS Examples", lang: "html css", tier: "frontend", classStyle: "lang-web", badge: "Frontend Design", glyph: "fa-compass", downloads: 5200, path: "web-labs.html", desc: "Responsive presentation layer layout grids formations utilizing Flexbox grids models, interactive entry registration form validations scripts, and reusable layout ui components blocks.", tags: "web html css flexbox grid validation responsive animation typography cards viewport panels forms layout" }
+        ];
+
+        let activeSubjectTabFilter = "all";
+
+        // Global Statistics Asset Auto-Initializer Count Hook
+        document.getElementById('statCount').innerText = `${LAB_DATABASE.length} Core Subject Areas`;
+
+        /* ==========================================================================
+           Real-time data processing pipeline engine
+           ========================================================================== */
+        function processPipeline() {
+            const query = document.getElementById('hubSearch').value.toLowerCase().trim();
+            const tierSelection = document.getElementById('filterType').value;
+            const sortSelection = document.getElementById('hubSort').value;
+            const gridContainer = document.getElementById('labGrid');
+            const noResultsNode = document.getElementById('noResults');
+
+            // Wipe out existing cards loops securely without destabilizing state selectors
+            document.querySelectorAll('.lab-card').forEach(c => c.remove());
+            let matchCount = 0;
+
+            // Pipeline Filter Logic Step Arrays Routing
+            let filteredManualsCache = LAB_DATABASE.filter(manual => {
+                const nameMatch = manual.name.toLowerCase().includes(query);
+                const descMatch = manual.desc.toLowerCase().includes(query);
+                const tagsMatch = manual.tags.toLowerCase().includes(query);
+                
+                const queryMatch = nameMatch || descMatch || tagsMatch;
+                const tierMatch = tierSelection === 'all' || manual.tier === tierSelection;
+                const categoryTabMatch = activeSubjectTabFilter === 'all' || manual.id === activeSubjectTabFilter;
+
+                return queryMatch && tierMatch && categoryTabMatch;
+            });
+
+            // Pipeline Sorting Logic Step Arrays Routing
+            if (sortSelection === 'popular') {
+                filteredManualsCache.sort((a, b) => b.downloads - a.downloads);
+            } else if (sortSelection === 'az') {
+                filteredManualsCache.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            // Paint Filtered Array Into Render Grid Canvas Block
+            if (filteredManualsCache.length === 0) {
+                noResultsNode.style.display = 'flex';
+                return;
+            } else {
+                noResultsNode.style.display = 'none';
+            }
+
+            filteredManualsCache.forEach(manual => {
+                matchCount++;
+                const shortUsesLabel = manual.downloads >= 1000 ? (manual.downloads / 1000).toFixed(1) + 'k' : manual.downloads;
+
+                const cardHTML = `
+                    <div class="lab-card ${manual.classStyle} show">
+                        <div>
+                            <span class="phase-tag">${manual.badge}</span>
+                            <div class="mod-identity-block">
+                                <div class="thumb"><i class="fas ${manual.glyph}"></i></div>
+                                <div class="mod-header-text">
+                                    <h3>${manual.name}</h3>
+                                    <div class="module-meta-chips">
+                                        <span class="meta-chip dl-count"><i class="fas fa-bolt"></i> ${shortUsesLabel} Uses</span>
+                                        <span class="meta-chip">BCA / MCA Manual</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 14px;">${manual.desc}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="${manual.path}" class="btn-view">Explore Manual</a>
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
         }
 
-        grid.innerHTML = '';
-        cards.forEach(card => grid.appendChild(card));
-    });
-</script>
+        /* --- Tab Filtration Controller Deck Routing --- */
+        function filterCategoryTab(btnElement, subjectIdToken) {
+            activeSubjectTabFilter = subjectIdToken;
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
 
-<script src="main.js"></script>
-<script src="footer.js"></script>
+            // Hide featured suggestions if navigating a precise subject category parameter view track
+            document.getElementById('featuredWrapper').style.display = (subjectIdToken === 'all') ? 'block' : 'none';
+
+            processPipeline();
+        }
+
+        function openFeaturedSubject(idKey) {
+            document.getElementById('hubSearch').value = "";
+            activeSubjectTabFilter = "all";
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.nav-tab-btn[onclick*="all"]').classList.add('active');
+            document.getElementById('featuredWrapper').style.display = 'block';
+            
+            // Highlight precisely targeted single entity node element
+            activeSubjectTabFilter = idKey;
+            const targetBtn = document.querySelector(`.nav-tab-btn[onclick*="'${idKey}'"]`);
+            if (targetBtn) {
+                document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+                targetBtn.classList.add('active');
+                document.getElementById('featuredWrapper').style.display = 'none';
+            }
+            
+            processPipeline();
+        }
+
+        // Boot-Up Initialization Execution Framework Sequences Loops
+        processPipeline();
+    </script>
 </body>
 </html>
