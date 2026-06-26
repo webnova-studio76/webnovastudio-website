@@ -293,4 +293,136 @@
                     <ul>
                         <li>Introduction to Horizontal Scaling &amp; Distributed CAP Theorem</li>
                         <li>Document Store Schemas (MongoDB BSON) vs Key-Value Pairs</li>
-                        <li>Structural Matrix Analysis:
+                        <li>Structural Matrix Analysis: Choosing NoSQL over Relational Stacks</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod4.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row track-nosql" data-category="nosql">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-shield-halved"></i></div>
+                        <div class="mod-header-text">
+                            <h3>05 // Advanced Data Ops</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">6 Lessons</span>
+                                <span class="meta-chip">SecOps</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>B-Tree Indexing Allocations &amp; Fast Query Optimization Planners</li>
+                        <li>Transaction Locking Paradigms &amp; Concurrency Isolation Levels</li>
+                        <li>Data Encryption Standards, Audit Trails &amp; Recovery Strategies</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="dbms-mod5.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="empty-state-node" id="noResults">
+                    <i class="fas fa-folder-open"></i>
+                    <h4>No Database Modules Found</h4>
+                    <p>Refine your search keyword tokens or choose another technology track above.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Syllabus Layout</span><strong>05 Core Blueprints</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-code"></i>
+                    <div><span>Target Languages</span><strong>SQL &amp; MongoDB API</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-server"></i>
+                    <div><span>Ecosystem Engines</span><strong>MySQL / NoSQL Hub</strong></div>
+                </div>
+            </div>
+
+            <div class="webnova-bottom-card">
+                <div>
+                    <h3>Download Practical Exercise Data</h3>
+                    <p>Unlock our complete SQL practice schemas dumps, raw sample JSON stores datasets, and university lab sheets at Code Craft Academic.</p>
+                </div>
+                <a href="courses.html" class="btn-cta">Browse Academy</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+    
+    <script>
+        // Calmed Mesh Background Animation Engine
+        const canvas = document.getElementById('header-canvas');
+        const ctx = canvas.getContext('2d');
+        function setCanvasSize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+        window.addEventListener('resize', setCanvasSize); setCanvasSize();
+
+        let dots = []; const dotCount = 35; const connectionDistance = 110;
+        for(let i=0; i < dotCount; i++) {
+            dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 });
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dots.forEach((d, i) => {
+                d.x += d.vx; d.y += d.vy;
+                if(d.x < 0 || d.x > canvas.width) d.vx *= -1; if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
+                for(let j = i + 1; j < dots.length; j++) {
+                    const d2 = dots[j]; const dist = Math.hypot(d.x - d2.x, d.y - d2.y);
+                    if(dist < connectionDistance) {
+                        ctx.beginPath(); ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 * (1 - dist / connectionDistance)})`;
+                        ctx.lineWidth = 1; ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Stable Non-Conflicting Category Filtering Logic 
+        let currentCategory = 'all';
+
+        function applyFilters() {
+            const query = document.getElementById('moduleSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.wide-list-row');
+            const noResults = document.getElementById('noResults');
+            let matchCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const content = card.querySelector('ul').innerText.toLowerCase();
+
+                const searchMatch = title.includes(query) || content.includes(query);
+                const categoryMatch = currentCategory === 'all' || card.dataset.category === currentCategory;
+
+                if (searchMatch && categoryMatch) {
+                    card.style.setProperty('display', 'grid', 'important');
+                    matchCount++;
+                } else {
+                    card.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            noResults.style.display = (matchCount === 0) ? 'flex' : 'none';
+        }
+
+        function filterCategory(btn, category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+            applyFilters();
+        }
+    </script>
+</body>
+</html>
