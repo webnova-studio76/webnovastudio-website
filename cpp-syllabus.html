@@ -3,195 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C++ Programming Mastery | WebNova Academy</title>
+    <title>C++ Programming Mastery | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ==========================================================================
+           ⚓ 1. DESIGN THEME VARIABLES & GLOBAL RESETS
+           ========================================================================== */
         :root {
-            /* Changed to Royal Blue for C++ branding */
-            --accent: #2563eb; 
-            --secondary: #0f172a;
-            --bg: #f8fafc;
+            --accent: #2563eb;         /* C++ Royal Blue Core */
+            --secondary: #0f172a;      /* Deep Space Slate */
+            --page-bg: #f8fafc;        /* Workspace Off-White Background */
+            --text-main: #0f172a;      /* High-Contrast Charcoal Headings */
+            --text-muted: #475569;     /* Deep Muted Blue-Gray Details */
+            --border-line: #e2e8f0;    /* Razor-Thin Separator Lines */
             --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
+            
+            /* Phase Complexity Track Colors */
+            --rank-beginner: #0ea5e9;
+            --rank-intermediate: #3b82f6;
+            --rank-advanced: #6366f1;
+            --rank-modern: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        body { background-color: var(--page-bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        /* --- Content Title Header Banner --- */
+        .course-header { padding: 35px 0; border-bottom: 1px solid var(--border-line); background: var(--white); }
+        .breadcrumb { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--accent); }
+        .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .course-header h1 span { color: var(--accent); }
+        .course-header p { color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-bottom: 14px; }
 
-        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
-        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--accent); }
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hero-stats span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--page-bg); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 4px; color: var(--text-muted); }
 
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+        .section-headline-bar { padding: 32px 0 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-line); }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        .track-total-count { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* ==========================================================================
+           ⚓ 2. IMMUNE WIDE HORIZONTAL LIST LAYOUT ENGINE
+           ========================================================================== */
+        .learning-modules-section { padding: 24px 0; }
+        .wide-list-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+        .wide-list-row {
+            background: var(--white); border: 1px solid var(--border-line); padding: 24px 32px; border-radius: 8px;
+            display: grid; grid-template-columns: 280px 1fr 160px; align-items: center; gap: 32px; width: 100%;
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
+        .wide-list-row:hover { border-color: #cbd5e1; transform: translateX(2px); }
 
-        .module-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            aspect-ratio: 1 / 1;
-            justify-content: space-between;
+        /* Complexity Colored Accent Rails */
+        .wide-list-row.level-beginner { border-left: 5px solid var(--rank-beginner); }
+        .wide-list-row.level-intermediate { border-left: 5px solid var(--rank-intermediate); }
+        .wide-list-row.level-advanced { border-left: 5px solid var(--rank-advanced); }
+        .wide-list-row.level-modern { border-left: 5px solid var(--rank-modern); }
+
+        .mod-identity-block { display: flex; align-items: center; gap: 14px; }
+        .mod-thumb-deck { width: 38px; height: 36px; background: var(--page-bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+        .wide-list-row.level-beginner .mod-thumb-deck { color: var(--rank-beginner); }
+        .wide-list-row.level-intermediate .mod-thumb-deck { color: var(--rank-intermediate); }
+        .wide-list-row.level-advanced .mod-thumb-deck { color: var(--rank-advanced); }
+        .wide-list-row.level-modern .mod-thumb-deck { color: var(--rank-modern); }
+
+        .mod-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--secondary); white-space: nowrap; }
+        .module-meta-chips { display: flex; gap: 6px; margin-top: 4px; }
+        .meta-chip { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); background: var(--page-bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-line); }
+
+        /* Balanced Dual-Column Grid System for Dense Topics List */
+        .wide-list-row ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 16px; }
+        .wide-list-row li { font-size: 0.85rem; color: var(--text-muted); padding-left: 18px; position: relative; font-weight: 500; text-align: left; }
+        .wide-list-row li::before { content: "\f121"; font-family: "Font Awesome 6 Free"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; font-size: 0.72rem; }
+
+        .download-btns { width: 160px; }
+        .btn-dl { 
+            width: 100%; text-align: center; padding: 10px 18px; border-radius: 4px; text-decoration: none; 
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; justify-content: center; background: var(--page-bg); border: 1px solid var(--border-line); color: var(--text-main); transition: all 0.2s ease;
         }
+        .btn-dl:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
 
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
+        /* --- 3. Value Outcomes Framework --- */
+        .outcomes-block { padding: 16px 0; margin-bottom: 16px; }
+        .outcomes-container { background: var(--white); border: 1px solid var(--border-line); border-radius: 8px; padding: 32px; }
+        .outcomes-container h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+        .outcome-item i { color: #10b981; margin-top: 3px; font-size: 0.85rem; }
+
+        /* --- 4. Summary Footer Statistics --- */
+        .syllabus-footer { padding: 16px 0 60px; }
+        .resource-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--white); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-line); width: 100%; margin-bottom: 24px; }
+        .summary-item { display: flex; align-items: center; gap: 12px; }
+        .summary-item i { font-size: 1rem; color: #10b981; }
+        .summary-item div { display: flex; flex-direction: column; }
+        .summary-item span { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-item strong { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
+
+        @media (max-width: 960px) {
+            .wide-list-row { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px !important; }
+            .wide-list-row ul { grid-template-columns: 1fr; }
+            .download-btns { width: 100%; }
+            .outcomes-grid { grid-template-columns: 1fr; }
+            .resource-summary { grid-template-columns: 1fr; gap: 16px; }
         }
-
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .module-card ul { list-style: none; flex-grow: 1; }
-        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
-        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
-
-        .download-zone {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-dl {
-            flex: 1;
-            padding: 8px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-align: center;
-            transition: 0.2s;
-        }
-        .btn-pdf { background: #f1f5f9; color: #475569; }
-        .btn-pdf:hover { background: var(--accent); color: white; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header class="syllabus-head">
-        <h1>C++ Systems <span>Evolution</span></h1>
-        <p>A 6-Phase masterclass in high-performance Object-Oriented development.</p>
-    </header>
+    <div id="global-header"></div>
 
-    <div class="module-grid">
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 01: Modern Syntax</p>
-                <h3>Foundations</h3>
-                <ul>
-                    <li><i class="fas fa-desktop"></i> Header Files & Namespaces (using std).</li>
-                    <li><i class="fas fa-desktop"></i> Stream I/O (cin & cout) vs C-style.</li>
-                    <li><i class="fas fa-desktop"></i> Reference Variables & Inline Functions.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Coming Soon</a>
+    <section class="course-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Home</a> / <a href="courses.html">Courses</a> / C++ Programming</div>
+            <h1>C++ Systems <span>Evolution Mastery</span></h1>
+            <p>A comprehensive masterclass in high-performance Object-Oriented systems application engineering across C++11, C++17, and C++20.</p>
+            <div class="hero-stats">
+                <span>07 Active Phases</span>
+                <span>120+ Code Exercises</span>
+                <span>60+ STL Patterns</span>
+                <span>20+ Capstones</span>
             </div>
         </div>
+    </section>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 02: Blueprinting</p>
-                <h3>Classes & Objects</h3>
-                <ul>
-                    <li><i class="fas fa-cube"></i> Access Modifiers (Public, Private).</li>
-                    <li><i class="fas fa-cube"></i> Constructors & Destructors.</li>
-                    <li><i class="fas fa-cube"></i> Member Functions & Static Data.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
-            </div>
+    <div class="container">
+        
+        <div class="section-headline-bar">
+            <h2>Modern C++ Curriculum Sequence</h2>
+            <span class="track-total-count">07 Linked Milestones</span>
         </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 03: Flex Code</p>
-                <h3>Function & Operator Overloading</h3>
-                <ul>
-                    <li><i class="fas fa-layer-group"></i> Default Arguments & Overloading.</li>
-                    <li><i class="fas fa-layer-group"></i> Operator Overloading (Unary & Binary).</li>
-                    <li><i class="fas fa-layer-group"></i> Friend Functions & Classes.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
-            </div>
-        </div>
+        <section class="learning-modules-section">
+            <div class="wide-list-container">
+                
+                <div class="wide-list-row level-beginner">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-desktop"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 01 // Modern Syntax</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">14 Lessons</span>
+                                <span class="meta-chip">★ Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>C++ Evolution &amp; Compilation Pipelines</li>
+                        <li>Header Files &amp; Scope Isolation Namespaces</li>
+                        <li>using namespace standard Directives</li>
+                        <li>Stream-Based I/O Operators (cin / cout)</li>
+                        <li>Data Typings Matrix &amp; Size Boundaries</li>
+                        <li>Reference Variables Mechanics (&amp;)</li>
+                        <li>Inline Function Optimization Rules</li>
+                        <li>Default Parameters Arguments Fallbacks</li>
+                        <li>Scope Resolution Processing (::)</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod1.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 04: Code Reuse</p>
-                <h3>Inheritance Mastery</h3>
-                <ul>
-                    <li><i class="fas fa-sitemap"></i> Single, Multiple & Multi-level.</li>
-                    <li><i class="fas fa-sitemap"></i> Virtual Base Classes.</li>
-                    <li><i class="fas fa-sitemap"></i> Visibility Modes & Initialization.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
-            </div>
-        </div>
+                <div class="wide-list-row level-beginner">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-cube"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 02 // Classes &amp; Objects</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">11 Lessons</span>
+                                <span class="meta-chip">★ Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Classes Blueprinting Definitions &amp; Objects</li>
+                        <li>Encapsulation Access: Public vs Private</li>
+                        <li>Instance Data Members &amp; Methods</li>
+                        <li>Constructors Methods Overloading Maps</li>
+                        <li>System Explicit Destructors Operations</li>
+                        <li>Deep vs Shallow Copy Constructors</li>
+                        <li>Shared Allocation Static Members Slots</li>
+                        <li>Constant Objects &amp; const Member Functions</li>
+                        <li>Implicit Object Instantiation via this Pointer</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod2.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 05: Polymorphism</p>
-                <h3>Virtual Mastery</h3>
-                <ul>
-                    <li><i class="fas fa-microchip"></i> Pointers to Objects & "this" pointer.</li>
-                    <li><i class="fas fa-microchip"></i> Pure Virtual Functions & Abstract Classes.</li>
-                    <li><i class="fas fa-microchip"></i> Runtime vs Compile-time Binding.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
-            </div>
-        </div>
+                <div class="wide-list-row level-intermediate">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-layer-group"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 03 // Overloading &amp; Memory</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">12 Lessons</span>
+                                <span class="meta-chip">★★ Inter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Compile-Time Function Overloading Logic</li>
+                        <li>Operator Overloading Foundational Rules</li>
+                        <li>Unary Operators Alterations Rules</li>
+                        <li>Binary Operators Expression Parsing</li>
+                        <li>Friend Functions Matrix Interventions</li>
+                        <li>Encapsulation Breaks via Friend Classes</li>
+                        <li>Dynamic Memory Pools: new Expression</li>
+                        <li>Manual Heap Disposal: delete Expression</li>
+                        <li>Dynamic Multi-Dimensional Allocation</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod3.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 06: Data Persistence</p>
-                <h3>Templates & STL</h3>
-                <ul>
-                    <li><i class="fas fa-database"></i> Exception Handling (Try, Catch).</li>
-                    <li><i class="fas fa-database"></i> Function & Class Templates.</li>
-                    <li><i class="fas fa-database"></i> STL Containers (Vectors, Maps).</li>
-                </ul>
+                <div class="wide-list-row level-intermediate">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-sitemap"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 04 // Inheritance Mastery</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Lessons</span>
+                                <span class="meta-chip">★★ Inter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Single Inheritance Derivation Rails</li>
+                        <li>Multiple Parent Tree Interconnections</li>
+                        <li>Multi-Level Class Hierarchies Lines</li>
+                        <li>Hierarchical &amp; Hybrid Extensions</li>
+                        <li>Protected Members Scope Visibility Modes</li>
+                        <li>Diamond Architecture Virtual Base Classes</li>
+                        <li>Constructor Invocations Chains Order</li>
+                        <li>Destructors Cascading Execution Sequence</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod4.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row level-advanced">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-microchip"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 05 // Virtual Mastery</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">10 Lessons</span>
+                                <span class="meta-chip">★★★ Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Pointers to Base &amp; Derived Instances</li>
+                        <li>Run-Time Dynamic Polymorphism Engine</li>
+                        <li>vTables &amp; Virtual Functions Resolution</li>
+                        <li>Pure Virtual Functions Interfaces Contracts</li>
+                        <li>Abstract Classes Operational Constraints</li>
+                        <li>Object Slicing Allocation Truncation</li>
+                        <li>Early Compile-Time vs Late Dynamic Binding</li>
+                        <li>Memory Safety via Virtual Destructors</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod5.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row level-advanced">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-database"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 06 // Templates &amp; STL</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">15 Lessons</span>
+                                <span class="meta-chip">★★★ Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Exception Handling Blocks (try, throw, catch)</li>
+                        <li>Generic Programming: Function Templates</li>
+                        <li>Class Templates Meta-Programming Blueprints</li>
+                        <li>Standard Template Library (STL) Overview</li>
+                        <li>Sequential: Vectors, Lists, Deques Blocks</li>
+                        <li>Associative Key-Value: Sets &amp; Maps Stores</li>
+                        <li>STL Iterators Routing Traversal Engine</li>
+                        <li>STL Algorithms API: Sorting &amp; Searching</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-mod6.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
+                <div class="wide-list-row level-modern">
+                    <div class="mod-identity-block">
+                        <div class="mod-thumb-deck"><i class="fas fa-sliders-h"></i></div>
+                        <div class="mod-header-text">
+                            <h3>Phase 07 // Modern C++ &amp; Projects</h3>
+                            <div class="module-meta-chips">
+                                <span class="meta-chip">20 Lessons</span>
+                                <span class="meta-chip">🚀 Modern C++</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Type Inference (auto) &amp; Type-Safe nullptr</li>
+                        <li>Range-Based for Loops &amp; Lambda Expressions</li>
+                        <li>Smart Pointers: unique_ptr &amp; shared_ptr</li>
+                        <li>Move Semantics Optimization Protocols</li>
+                        <li>Compile-Time Expressions Evaluation via constexpr</li>
+                        <li>Console Project: Custom Calculator Engine</li>
+                        <li>Console Project: Banking System Database</li>
+                        <li>Console Project: Real-time Parking Management</li>
+                    </ul>
+                    <div class="download-btns">
+                        <a href="cpp-projects.html" class="btn-dl">Open Notes</a>
+                    </div>
+                </div>
+
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Coming Soon</a>
+        </section>
+
+        <section class="outcomes-block">
+            <div class="outcomes-container">
+                <h3>Target C++ Architecture Competencies</h3>
+                <div class="outcomes-grid">
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Construct performant object-oriented applications utilizing strict memory cleanup pipelines.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Build run-time polymorphically extensible architectures leveraging clean interface classes.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Leverage the Standard Template Library (STL) containers to deploy fast data-processing modules.</span></div>
+                    <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Apply C++11/20 modern optimization schemes like move semantic scopes and smart pointers rules.</span></div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="syllabus-footer">
+            <div class="resource-summary">
+                <div class="summary-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div><span>Syllabus Breakdown</span><strong>07 Core Phases</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-code-branch"></i>
+                    <div><span>Curriculum Depth</span><strong>120+ Deep Topics</strong></div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-unlock-alt"></i>
+                    <div><span>Portal Access</span><strong>100% Free Materials</strong></div>
+                </div>
+            </div>
+        </section>
+
     </div>
-</div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
