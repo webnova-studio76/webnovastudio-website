@@ -4,294 +4,382 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebNova Studio | Code Craft Academic</title>
+    <!-- Linked Global Stylesheet (Untouched) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="homepage-root">
 
-    <!-- PROFESSIONAL WEEKLY ANNOUNCEMENT BANNER -->
-    <div class="weekly-alert" id="resourceAlert">
-        <div class="alert-content">
-            <span class="alert-tag">New Resources Weekly</span>
-            <p>PDF Notes | Web Templates | UI Designs are uploaded every Sunday.</p>
-            <a href="free-resources.html" class="alert-link">Explore Vault <i class="fas fa-arrow-right"></i></a>
+    <!-- Loaded Home Page Global Navigation Header Placeholder (Untouched) -->
+    <div id="global-header"></div>
+
+    <!-- 1. HIGH-CONVERSION HERO SECTION (DARK BACKGROUND) -->
+    <section class="hp-hero-canvas">
+        <div class="hp-container">
+            <div class="hp-hero-content">
+                <div class="hp-hero-slogan">
+                    <span>Web Development</span>
+                    <span class="hp-slogan-dot"></span>
+                    <span>Professional UI/UX</span>
+                    <span class="hp-slogan-dot"></span>
+                    <span>Free Education</span>
+                </div>
+                <h1>Building Websites.<br>Teaching Technology.<br><span>Creating Future Developers.</span></h1>
+                <p>Professional web development and creative interface design mixed with free structured computer education. All under one unified digital studio layout environment.</p>
+                <div class="hp-hero-btns-row">
+                    <a href="free-assets.html" class="hp-btn hp-btn-primary">View Our Work</a>
+                    <a href="practicals-library.html" class="hp-btn hp-btn-link">Start Learning Free &rarr;</a>
+                </div>
+            </div>
         </div>
-        <button class="alert-close" onclick="closeResourceAlert()">
-            <i class="fas fa-times"></i>
-        </button>
+    </section>
+
+    <!-- 2. SLENDER TRUST STRIP MARQUEE (WHITE BACKGROUND) -->
+    <div class="hp-trust-strip">
+        <div class="hp-container flex-strip">
+            <span class="strip-item"><i class="fas fa-laptop-code"></i> Web Development</span>
+            <span class="strip-item"><i class="fas fa-palette"></i> UI/UX Design</span>
+            <span class="strip-item"><i class="fas fa-graduation-cap"></i> Educational Resources</span>
+            <span class="strip-item"><i class="fas fa-terminal"></i> Programming</span>
+            <span class="strip-item"><i class="fas fa-cubes"></i> Project Development</span>
+            <span class="strip-item"><i class="fas fa-user-tie"></i> Freelancing Support</span>
+        </div>
     </div>
-        
-    <!-- GLOBAL APPLICATION HEADER -->
-    <header class="master-header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="webnova-logo.png" alt="WebNova Studio Logo" class="brand-logo">
-                <span class="logo-text">WebNova <span>Studio</span></span>
-            </a>
+
+    <!-- 3. UNIFIED ECOSYSTEM & BRAND SEPARATION (LIGHT GRAY BACKGROUND) -->
+    <section class="hp-section bg-gray">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Ecosystem Architecture</span>
+                <h2>WebNova Studio Layout Divisions</h2>
+                <p>We solve business challenges through modern front-end layouts while creating highly accessible coding resources for global student pools.</p>
+            </div>
             
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <ul class="nav-links">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
-                <li class="nav-item"><a href="practicals-library.html" class="nav-link">Practical Hub</a></li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown">
-                        <a href="our-story.html" class="dropdown-link">Our Story</a>
-                        <a href="mission.html" class="dropdown-link">Our Mission</a>
-                        <a href="team.html" class="dropdown-link">Meet the Team</a>
-                        <a href="why-choose-us.html" class="dropdown-link">Why Choose Us</a>
+            <div class="hp-brand-split-grid">
+                <!-- Creative Division Card -->
+                <div class="hp-brand-column border-amber">
+                    <div class="hp-brand-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>Creative Division</h3>
+                        <strong>RR Web Designers</strong>
                     </div>
-                </li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="requests.html" class="nav-link">Request vault</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- PREMIUM INTERACTIVE MESH HERO -->
-    <section class="hero-animated">
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-content">
-            <div class="hero-slogan">
-                <span>Learn Technology</span>
-                <span class="slogan-dot"></span>
-                <span>Build Projects</span>
-                <span class="slogan-dot"></span>
-                <span>Launch Careers</span>
-            </div>
-            <h1>Build Your Brand. <br><span>Master Your Craft.</span></h1>
-            <p>Free Notes, Real Projects, Web Development, Design, and Career Guidance — All Under One Ecosystem..</p>
-            <div class="hero-btns">
-                <a href="projects.html" class="btn-primary">Mini Projects</a>
-                <a href="#academy" class="link-free-text">Start Learning Free &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- VISUAL EFFECTS MARQUEE STRIP -->
-    <div class="animation-container">
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <i class="fab fa-react"></i>
-                <i class="fab fa-js"></i>
-                <i class="fab fa-python"></i>
-                <i class="fab fa-node-js"></i>
-                <i class="fab fa-html5"></i>
-                <i class="fab fa-css3-alt"></i>
-                <i class="fab fa-java"></i>
-                <i class="fab fa-php"></i>
-                <i class="fab fa-react"></i>
-                <i class="fab fa-js"></i>
-                <i class="fab fa-python"></i>
-                <i class="fab fa-node-js"></i>
-                <i class="fab fa-html5"></i>
-                <i class="fab fa-css3-alt"></i>
-                <i class="fab fa-java"></i>
-                <i class="fab fa-php"></i>
-            </div>
-        </div>
-        <div class="floating-box">
-            <i class="fas fa-rocket"></i>
-            <p>Ignite Your Career</p>
-        </div>
-    </div>
-
-    <!-- DOUBLE CHANNELS BRANDING SUBSECTION -->
-    <section class="branding-hub">
-        <h2 class="studio-name">WebNova <span>Studio</span></h2>
-        <div class="brand-flex">
-            <div class="sub-brand-box">
-                <div class="icon-wrapper"><i class="fas fa-palette"></i></div>
-                <h3>RR Web Designers</h3>
-                <div class="accent-bar"></div>
-                <p>Our creative design division dedicated to UI/UX excellence, visual storytelling, and high-conversion web aesthetics.</p>
-            </div>
-
-            <div class="sub-brand-box">
-                <div class="icon-wrapper"><i class="fas fa-code"></i></div>
-                <h3>Code Craft Academic</h3>
-                <div class="accent-bar"></div>
-                <p>The engineering core providing deep technical training in full-stack logic, system architecture, and C/C++ programming.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION CONNECTOR -->
-    <section class="about-section">
-        <div class="about-header">
-            <h2>About <span>WebNova Studio</span></h2>
-            <p>Bridging the gap between learning to code and launching a career.</p>
-        </div>
-
-        <div class="about-grid">
-            <div class="about-card">
-                <i class="fas fa-book-open"></i>
-                <h3>Our Story</h3>
-                <div class="divider"></div>
-                <p>Founded with the mission to provide structured, project-based learning. We started as a small mentorship group and grew into a full-scale digital academy.</p>
-            </div>
-            <div class="about-card">
-                <i class="fas fa-bullseye"></i>
-                <h3>Our Mission</h3>
-                <div class="divider"></div>
-                <p>To empower aspiring developers by providing high-quality, free resources and a clear 6-Phase roadmap to full-stack mastery.</p>
-            </div>
-            <div class="about-card">
-                <i class="fas fa-users"></i>
-                <h3>Meet the Team</h3>
-                <div class="divider"></div>
-                <p>Our mentors are industry-active developers, UI/UX designers, and freelance experts dedicated to student success.</p>
-            </div>
-            <div class="about-card">
-                <i class="fas fa-award"></i>
-                <h3>Why Choose Us</h3>
-                <div class="divider"></div>
-                <p>We don't just teach code; we teach the business of code. From PDF notes to career guides, we provide the complete ecosystem.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PREMIUM HIGH-CONTRAST MARKETING HIGHLIGHT -->
-    <section class="free-highlight">
-        <div class="container">
-            <div class="highlight-box">
-                <div class="highlight-content">
-                    <span class="badge">Exclusive 2026 Library</span>
-                    <h2>Grab Our Premium <span>Free Resources</span></h2>
-                    <p>Don't start from zero. Download professional website templates, PPT slides, and coding cheat sheets used by WebNova Studio developers—completely free.</p>
-                    
-                    <div class="mini-grid">
-                        <div class="mini-item"><i class="fas fa-check-circle"></i><span>10+ HTML Templates</span></div>
-                        <div class="mini-item"><i class="fas fa-check-circle"></i><span>50+ PPT Slides</span></div>
-                        <div class="mini-item"><i class="fas fa-check-circle"></i><span>Coding Cheat Sheets</span></div>
-                    </div>
-
-                    <a href="free-resources.html" class="btn-glow">Access Free Library <i class="fas fa-arrow-right"></i></a>
+                    <ul class="hp-brand-list">
+                        <li>High-conversion custom business landing pages</li>
+                        <li>High-fidelity vector interface wireframes &amp; layouts</li>
+                        <li>Aesthetic brand system graphics &amp; artwork assets</li>
+                    </ul>
+                    <a href="contact.html" class="hp-brand-action">Hire Creative Team &rarr;</a>
                 </div>
-                
-                <div class="highlight-visual">
-                    <div class="floating-icon icon-1"><i class="fas fa-file-code"></i></div>
-                    <div class="floating-icon icon-2"><i class="fas fa-file-powerpoint"></i></div>
-                    <div class="floating-icon icon-3"><i class="fas fa-download"></i></div>
+
+                <!-- Education Division Card -->
+                <div class="hp-brand-column border-emerald">
+                    <div class="hp-brand-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Education Division</h3>
+                        <strong>Code Craft Academic</strong>
+                    </div>
+                    <ul class="hp-brand-list">
+                        <li>Structured, university-aligned lecture reference notes</li>
+                        <li>Free downloadable code checklists and manual PDFs</li>
+                        <li>Practical full-stack logic workflows &amp; source code blocks</li>
+                    </ul>
+                    <a href="practicals-library.html" class="hp-brand-action">Access Library Hub &rarr;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CORE ACADEMY SECTOR -->
-    <section id="academy">
-        <div class="container">
-            <div class="academy-intro">
-                <h2>Code Craft Academy</h2>
-                <p>I believe in "Learning by Teaching." Explore my comprehensive, structured curriculum covering Computer Science, Python Programming, and Database Management.</p>
+    <!-- 4. CORE FUNCTIONAL SCOPE: WHAT WE DO (WHITE BACKGROUND) -->
+    <section class="hp-section bg-white">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Core Operations</span>
+                <h2>What We Actually Build</h2>
+                <p>Explore the specialized production surfaces and educational training modules handled inside our studio workspace daily.</p>
             </div>
-
-            <div class="academy-flex-grid">
-                <div class="academy-left-panel">
-                    <div class="academy-icon-box"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Full Curriculum Access</h3>
-                    <p>Access 15+ modules ranging from Hardware basics to Advanced Object-Oriented Programming and SQL.</p>
-                    <a href="courses.html" class="btn-primary">Explore Modules &rarr;</a>
-                </div>
-
-                <div class="academy-right-panel">
-                    <div class="track-row">
-                        <h4>3 Full Tracks</h4>
-                        <p>CS Fundamentals, Python, and DBMS.</p>
-                    </div>
-                    <div class="track-row">
-                        <h4>Hands-on Projects</h4>
-                        <p>Real-world Library and E-Commerce systems.</p>
-                    </div>
-                    <div class="track-row">
-                        <h4>Free Resources</h4>
-                        <p>Integrated PDF downloads for offline study.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-         NEW INTEGRATED LEADERSHIP PROFILE TRACK MODULE
-         ========================================================================== -->
-    <section class="homepage-team-section" style="padding: 90px 0; background: var(--card-surface, #ffffff); border-top: 1px solid rgba(148, 163, 184, 0.14); border-bottom: 1px solid rgba(148, 163, 184, 0.14); text-align: center;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             
-            <span class="team-badge" style="background: rgba(16, 185, 129, 0.06); color: #10b981; padding: 5px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 800; border: 1px solid rgba(16, 185, 129, 0.12); display: inline-block; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px;">Founding Matrix</span>
-            <h2 style="font-size: 2.4rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 12px;">The Team Behind <span>WebNova Studio</span></h2>
-            <p style="color: #64748b; font-size: 1.05rem; font-weight: 500; max-width: 650px; margin: 0 auto 55px; line-height: 1.6;">Passionate about technology, education, and helping students learn practical skills.</p>
-
-            <div class="team-split-deck" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%;">
-                
-                <!-- CO-FOUNDER NODE 01: Rakesh -->
-                <div class="home-member-node" style="display: flex; gap: 24px; align-items: center; text-align: left; background: #f8fafc; border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 16px; padding: 30px; transition: all 0.3s ease;">
-                    <div class="img-frame" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; background: #e2e8f0; flex-shrink: 0; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                        <img src="rakesh.png" alt="Rakesh Jadhav" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="meta-details">
-                        <h3 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Rakesh Jadhav</h3>
-                        <div style="font-size: 0.68rem; font-weight: 800; color: #2563eb; background: rgba(37, 99, 235, 0.05); padding: 2px 8px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Founder & Tech Lead</div>
-                        <p style="font-size: 0.85rem; color: #64748b; font-weight: 500; line-height: 1.5; margin: 0;">Specializing in full-stack orchestration and systems deployment tracks. Rakesh commands the codebase manual pipelines.</p>
-                    </div>
+            <div class="hp-grid-4">
+                <div class="hp-scope-card">
+                    <div class="scope-icon"><i class="fas fa-desktop"></i></div>
+                    <h4>Website Design</h4>
+                    <p>Clean, beautifully formatted responsive layouts custom-built for small businesses, startups, and portfolios.</p>
                 </div>
-
-                <!-- CO-FOUNDER NODE 02: Rashmi -->
-                <div class="home-member-node" style="display: flex; gap: 24px; align-items: center; text-align: left; background: #f8fafc; border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 16px; padding: 30px; transition: all 0.3s ease;">
-                    <div class="img-frame" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; background: #e2e8f0; flex-shrink: 0; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                        <img src="rashmi.png" alt="Rashmi Divantgi" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="meta-details">
-                        <h3 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Rashmi Divantgi</h3>
-                        <div style="font-size: 0.68rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.05); padding: 2px 8px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Co-Founder & Design Lead</div>
-                        <p style="font-size: 0.85rem; color: #64748b; font-weight: 500; line-height: 1.5; margin: 0;">Specializing in UI/UX architectures, component layouts, and design aesthetics. Rashmi directs the visual framework strategies.</p>
-                    </div>
+                <div class="hp-scope-card">
+                    <div class="scope-icon"><i class="fas fa-bezier-curve"></i></div>
+                    <h4>UI/UX Design</h4>
+                    <p>Professional interface composition wireframes prioritizing smooth navigation, conversion optimization, and visuals.</p>
                 </div>
-
-            </div>
-
-            <div style="margin-top: 40px; font-size: 0.88rem; font-weight: 700;">
-                Want to view our step-by-step blueprints? <a href="our-story.html" style="color: #10b981; text-decoration: none; margin-left: 4px;">Read Our Full Journey &rarr;</a>
+                <div class="hp-scope-card">
+                    <div class="scope-icon"><i class="fas fa-book"></i></div>
+                    <h4>Programming Education</h4>
+                    <p>Syllabus-aligned technical notes maps, logical data algorithms, and verified full-stack terminal exercises.</p>
+                </div>
+                <div class="hp-scope-card">
+                    <div class="scope-icon"><i class="fas fa-cloud-download-alt"></i></div>
+                    <h4>Free Learning Assets</h4>
+                    <p>A completely open library containing vector code cheat sheets, manual PDFs, website templates, and raw project code.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- EVALUATION SYSTEM MODAL POPUP -->
-    <div id="logicModal" class="logic-overlay">
-        <div class="logic-modal-card">
-            <div class="logic-modal-header">
-                <i class="fas fa-microchip"></i>
-                <h3>WebNova System Logic</h3>
+    <!-- 5. FEATURED CORE SECTOR SPECIALTIES (LIGHT GRAY BACKGROUND) -->
+    <section class="hp-section bg-gray">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <h2>Featured Studio Specialties</h2>
+                <p>Explore our clear baseline offerings structured across modern production environments.</p>
             </div>
-            <div class="logic-modal-body">
-                <p class="logic-main-text">Tired of 100+ boring, outdated modules?</p>
-                <div class="logic-feature-box">
-                    <div class="l-feat"><i class="fas fa-check-double"></i><span><b>Optimized:</b> Clean logic over legacy code.</span></div>
-                    <div class="l-feat"><i class="fas fa-check-double"></i><span><b>Zero Waste:</b> Learn in 1 hour what takes others 10.</span></div>
-                    <div class="l-feat"><i class="fas fa-graduation-cap"></i><span><b>Viva-Ready:</b> Minimal lines, max explanation.</span></div>
-                    <div class="l-feat"><i class="fas fa-check-double"></i><span><b>Industry DNA:</b> Code written for 2026, not 1996.</span></div>
+            
+            <div class="hp-grid-3">
+                <div class="hp-spec-card text-left">
+                    <h4>Website Engineering</h4>
+                    <span class="spec-sub-chip">Webnova Studio Core</span>
+                    <ul class="spec-bullets">
+                        <li>Custom Business Websites</li>
+                        <li>Responsive Landing Grids</li>
+                        <li>Deluxe Creative Portfolios</li>
+                        <li>Educational LMS Portals</li>
+                        <li>Admin Analytics Dashboards</li>
+                    </ul>
                 </div>
-                <p class="logic-sub-text">We provide the map, not just the forest.</p>
-            </div>
-            <div class="logic-modal-footer">
-                <label class="noshow-container">
-                    <input type="checkbox" id="dontShow"> Don't show again
-                </label>
-                <button class="logic-close-btn" onclick="handleLogicClose()">Start Learning</button>
+                <div class="hp-spec-card text-left">
+                    <h4>Graphic Design Assets</h4>
+                    <span class="spec-sub-chip">RR Web Designers</span>
+                    <ul class="spec-bullets">
+                        <li>Vector Brand Logos &amp; Identity</li>
+                        <li>High-Fidelity UI Layout Grids</li>
+                        <li>Digital Poster Prints &amp; Vectors</li>
+                        <li>Marketing Social Assets</li>
+                        <li>Media YouTube Thumbnails</li>
+                    </ul>
+                </div>
+                <div class="hp-spec-card text-left">
+                    <h4>Academic Solutions</h4>
+                    <span class="spec-sub-chip">Code Craft Academic</span>
+                    <ul class="spec-bullets">
+                        <li>University Semester Notes</li>
+                        <li>Programming Lab Manuals</li>
+                        <li>BCA / MCA Mini Projects</li>
+                        <li>Major Applications Architecture</li>
+                        <li>Full Source Files Code Bundles</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ACTION CHANNELS -->
-    <a href="https://t.me/CodeCraftAcademic" class="sticky-telegram" target="_blank"><i class="fab fa-telegram-plane"></i> Join Telegram</a>
+    <!-- 6. OPEN ASSETS VAULT SHOWCASE (WHITE BACKGROUND) -->
+    <section class="hp-section bg-white">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Premium Open Repository</span>
+                <h2>The Free Resources Library</h2>
+                <p>Skip the setup phase. Instantly download professional web layouts, vector cheat sheets, and course reference handouts.</p>
+            </div>
 
+            <div class="hp-grid-4 text-center">
+                <div class="vault-p-node"><i class="fab fa-html5 text-orange"></i><strong>HTML5 Pages</strong><span>10+ Layout Blocks</span></div>
+                <div class="vault-p-node"><i class="fab fa-css3-alt text-blue"></i><strong>CSS3 Styling</strong><span>Grid &amp; Flex Layouts</span></div>
+                <div class="vault-p-node"><i class="fab fa-js text-yellow"></i><strong>JavaScript Nodes</strong><span>Form Validations</span></div>
+                <div class="vault-p-node"><i class="fas fa-file-powerpoint text-red"></i><strong>PPT Slide Decks</strong><span>50+ Course Slides</span></div>
+                <div class="vault-p-node"><i class="fas fa-terminal text-slate"></i><strong>C Logic Manuals</strong><span>24+ Vetted Labs</span></div>
+                <div class="vault-p-node"><i class="fab fa-python text-navy"></i><strong>Python Blueprints</strong><span>OOP Exercise Scripts</span></div>
+                <div class="vault-p-node"><i class="fas fa-database text-green"></i><strong>DBMS SQL Tables</strong><span>Relational Schemas</span></div>
+                <div class="vault-p-node"><i class="fas fa-book-open text-emerald"></i><strong>Vector Cheat Sheets</strong><span>One-Page References</span></div>
+            </div>
+            
+            <div class="hp-center-btn-row">
+                <a href="free-assets.html" class="hp-btn hp-btn-primary">Unlock Free Library Vault &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SEVEN-PHASE STUDENT ROADMAP TIMELINE (LIGHT GRAY BACKGROUND) -->
+    <section class="hp-section bg-gray">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Full-Stack Curriculum Roadmap</span>
+                <h2>The Code Craft Core Strategy</h2>
+                <p>We map out the exact technological sequence required to transform abstract programming theory into freelance capability metrics.</p>
+            </div>
+
+            <div class="hp-timeline-rail">
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 01</div><div class="tl-text"><h4>Computer Science Basics</h4><p>Master operational hardware architecture configurations, memory allocations properties, and binary logic.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 02</div><div class="tl-text"><h4>Programming Foundations</h4><p>Dive deep into low-level logic, flow compilation chains, loops structural loops, and C/C++ memory pointers tracks.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 03</div><div class="tl-text"><h4>Core Web Design</h4><p>Architect professional layouts from scratch using semantic HTML5 structures and advanced fluid CSS3 Grid models.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 04</div><div class="tl-text"><h4>Advanced Frontend Engineering</h4><p>Inject real-time interactive functions via vanilla asynchronous JavaScript modules loops and declarative frameworks hooks.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 05</div><div class="tl-text"><h4>Backend Architecture &amp; DB Ops</h4><p>Deploy secure backend environment runtimes nodes alongside relational SQL normalization table schemas.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 06</div><div class="tl-text"><h4>Capstones &amp; Mini Projects</h4><p>Assemble custom standalone web apps, automated library databases, and banking mini-systems repositories.</p></div></div>
+                <div class="hp-timeline-card"><div class="tl-phase">Phase 07</div><div class="tl-text"><h4>Freelance Launch &amp; Production</h4><p>Package your source files, optimize site delivery, map client contract scopes, and open up production channels.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PRACTICAL HUB PREVIEW CONSOLE (WHITE BACKGROUND) -->
+    <section class="hp-section bg-white">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Laboratory Simulation Desk</span>
+                <h2>Practical Code Manuals Showcase</h2>
+                <p>Review clean, optimized solutions for academic course labs. Every single code file is tested against modern GCC and standard runtimes compilers parameters.</p>
+            </div>
+            
+            <div class="hp-console-preview-box">
+                <div class="console-tab-header">
+                    <div class="mac-buttons-row"><span class="m-dot r"></span><span class="m-dot y"></span><span class="m-dot g"></span></div>
+                    <div class="console-tab-label">practicals-hub // 200+ Compiled Solutions</div>
+                    <div></div>
+                </div>
+                <div class="console-inner-split">
+                    <div class="console-sidebar-preview">
+                        <span class="c-item-node active-item">⚙️ C Core Programming</span>
+                        <span class="c-item-node">🧩 C++ Object Oriented</span>
+                        <span class="c-item-node">☕ Java Enterprise Stacks</span>
+                        <span class="survey-p-link">Open Lab Engine Room &rarr;</span>
+                    </div>
+                    <div class="console-output-canvas">
+                        <pre><code>> gcc main.c -o solution
+> ./solution.out
+
+[COMPILING WORKSPACE DATA SEGMENTS]
+✔ C Programming Manuals: 24 Core Labs Active
+✔ Python Logic Frameworks: 40+ Exercise Scripts Verified
+✔ DBMS Joins & Triggers: 30+ Relational Blueprints Tested
+
+Status: 100% Operational In Production Base Base Environment.</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. MEET THE FOUNDERS PERSONAL CARD DECK (LIGHT GRAY BACKGROUND) -->
+    <section class="hp-section bg-gray">
+        <div class="hp-container">
+            <div class="hp-section-header">
+                <span class="hp-section-badge">Leadership Profile</span>
+                <h2>Meet the Founders</h2>
+                <p>Building high-fidelity educational notes while engineering modern digital interfaces for business owners worldwide.</p>
+            </div>
+
+            <div class="hp-founders-grid">
+                <!-- Rakesh Node -->
+                <div class="hp-founder-card border-slate-left">
+                    <div class="card-identity-block">
+                        <div class="avatar-box"><img src="rakesh.png" alt="Rakesh Jadhav Avatar Icon"></div>
+                        <div>
+                            <h3>Rakesh Jadhav</h3>
+                            <span class="f-sub-title">Founder • Web Developer • Programmer • Educator</span>
+                        </div>
+                    </div>
+                    <span class="f-edu-p">BCA Graduate // School Teacher</span>
+                    <p class="f-bio-paragraph">A highly passionate programmer blending over 15 years of web design learning and practice with real classroom teaching experience. Rakesh anchors the code manual pipelines and full-stack technical roadmap specifications across our learning hub.</p>
+                    <div class="f-micro-metrics"><span>15+ Yrs Web Design</span><span>2+ Yrs Software Projects</span></div>
+                </div>
+
+                <!-- Rashmi Node -->
+                <div class="hp-founder-card border-sky-left">
+                    <div class="card-identity-block">
+                        <div class="avatar-box"><img src="rashmi.png" alt="Rashmi Divantgi Avatar Icon"></div>
+                        <div>
+                            <h3>Rashmi Divantgi</h3>
+                            <span class="f-sub-title">Co-Founder • UI Designer • Web Developer</span>
+                        </div>
+                    </div>
+                    <span class="f-edu-p">MCA Candidate (Currently Pursuing)</span>
+                    <p class="f-bio-paragraph">Specializing in fluid layout aesthetics, clean interface frameworks, and structured academic content development. Rashmi integrates university computing concepts with active frontend design structures to establish a simple, highly accessible user journey.</p>
+                    <div class="f-micro-metrics"><span>2+ Yrs UI/UX Design</span><span>Responsive Grid Architecture</span></div>
+                </div>
+            </div>
+
+            <!-- Authentic Freelance Availability Signal Inset -->
+            <div class="freelance-availability-banner">
+                <div class="live-signal-pulse"></div>
+                <p>Our team is currently accepting selective freelance contracts for premium business landing pages, custom responsive websites, and specialized database-driven school portals applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. WHY WORK WITH WEBNOVA STUDIO (DARK BACKDROP BACKGROUND) -->
+    <section class="hp-section bg-dark">
+        <div class="hp-container">
+            <div class="hp-section-header dark-mode-header">
+                <span class="hp-section-badge bg-trans-emerald">Core Value Strategy</span>
+                <h2>Why Work With WebNova Studio?</h2>
+                <p>We discard over-engineered jargon to deliver crisp, accessible results optimized for both corporate clients and computing students.</p>
+            </div>
+
+            <div class="hp-grid-4">
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Real Industry Projects</strong><span>Learn on production setups, not templates.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Modern Interface Focus</strong><span>Clean layout aesthetics tailored for high-conversion.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Affordable Freelancing</strong><span>Premium technical agency quality at independent rates.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Student Friendly Assets</strong><span>Jargon-free notes maps built for quick exam parsing.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Clean, Maintainable Logic</strong><span>Minimal code footprint structural definitions.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Direct Founder Access</strong><span>Zero agency gatekeeping channels. Speak directly to us.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>100% Free Materials</strong><span>Open education model across Code Craft lines.</span></div>
+                <div class="value-prop-card"><i class="fas fa-check-circle text-emerald"></i><strong>Long Term Architecture Support</strong><span>Continuous codebase optimizations stability checks.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. TIMELY UPDATES LEDGER & TESTIMONIALS SECTIONS (WHITE BACKGROUND) -->
+    <section class="hp-section bg-white">
+        <div class="hp-container split-lower-layout">
+            <div class="lower-column">
+                <div class="hp-section-header text-left-h">
+                    <h3>Latest Ecosystem Uploads</h3>
+                </div>
+                <div class="updates-ledger-list">
+                    <div class="ledger-item"><span class="l-badge new">New</span><p>HTML5 &amp; CSS3 Layout Reference Sheets</p></div>
+                    <div class="ledger-item"><span class="l-badge updated">Sync</span><p>Java JDBC Connectivity Lab Solutions Bundle</p></div>
+                    <div class="ledger-item"><span class="l-badge tele">Telegram</span><p>Python Lambda Functions Syntax Reference Code</p></div>
+                    <div class="ledger-item"><span class="l-badge new">New</span><p>Responsive Portfolio Web Template Archive File</p></div>
+                </div>
+            </div>
+            
+            <div class="lower-column">
+                <div class="hp-section-header text-left-h">
+                    <h3>Community Verified Reviews</h3>
+                </div>
+                <div class="testimonial-scroller">
+                    <div class="review-card">
+                        <div class="stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"The structured lab manuals from Code Craft Academic helped me master my MCA assignments logic cleanly without walls of confusing text."</p>
+                        <strong>Academic Student Review // BCA - MCA Track</strong>
+                    </div>
+                    <div class="review-card placeholder-review">
+                        <i class="fas fa-layer-group"></i>
+                        <p>More student testimonials, project logs, and certified business client reviews are currently compiling inside upcoming updates frames.</p>
+                        <strong>Project Showcase // Verified Reviews Coming Soon</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. CLOSING CONVERSION PROTOCOL CTA BLOCK (DARK BACKDROP BACKGROUND) -->
+    <section class="hp-section bg-dark border-top-accent">
+        <div class="hp-container">
+            <div class="hp-section-header dark-mode-header max-w-large">
+                <h2>Ready to Build Something Meaningful Together?</h2>
+                <p>Whether you are a local commercial business looking to launch a performant site or an academic student searching for clean source files, WebNova is ready to assist.</p>
+                <div class="hp-hero-btns-row" style="margin-top: 24px;">
+                    <a href="contact.html" class="hp-btn hp-btn-primary">Contact Our Team</a>
+                    <a href="requests.html" class="hp-btn hp-btn-secondary">Request Custom Resource</a>
+                    <a href="free-assets.html" class="hp-btn hp-btn-link">Explore Free Library &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loaded Home Page Global Navigation Footer Placeholders (Untouched) -->
+    <div id="global-footer"></div>
+
+    <!-- Core App Injections Requirements Links -->
     <script src="main.js"></script>
     <script src="footer.js"></script>
 </body>
