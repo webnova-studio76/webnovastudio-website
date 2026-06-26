@@ -4,211 +4,433 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C-Labs Master Library | Code Craft Academic</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #64748b;
-            --secondary: #0f172a;
-            --accent: #10b981;
-            --bg: #f8fafc;
-            --code-bg: #1e293b;
+            --primary: #64748b;        /* Low-Level C Steel Slate Accent */
+            --secondary: #0f172a;      /* Deep Space Dark Matte */
+            --accent: #10b981;         /* Global Academic Emerald Green */
+            --bg: #f8fafc;             /* Clean Light Content Background */
+            --code-bg: #0f172a;        /* High-Contrast Dark Console */
             --white: #ffffff;
-            --border: #e2e8f0;
+            --border-line: #e2e8f0;    /* Light Framework Split Lines */
+            --text-main: #0f172a;     /* Dark Charcoal Main Typography */
+            --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
+            --card-radius: 8px;
+            --transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+        body { background: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; height: 100vh; overflow: hidden; padding-top: 72px; }
 
-        /* SIDEBAR */
+        /* ==========================================================================
+           ⚓ 1. CATEGORIZED SIDEBAR DIRECTORY ENGINE
+           ========================================================================== */
         .sidebar {
-            width: 320px; background: var(--secondary); color: white;
-            padding: 30px 15px; overflow-y: auto; display: flex;
-            flex-direction: column; border-right: 4px solid var(--primary);
-            flex-shrink: 0;
+            width: 320px; background: #1e293b; color: #f1f5f9;
+            padding: 24px 16px; overflow-y: auto; display: flex;
+            flex-direction: column; border-right: 1px solid var(--border-line);
+            flex-shrink: 0; height: 100%; gap: 16px;
         }
         .sidebar::-webkit-scrollbar { width: 4px; }
-        .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 
-        .sidebar h2 { font-size: 1rem; margin-bottom: 25px; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; padding-left: 10px; }
-        
-        .lab-list { list-style: none; flex-grow: 1; }
+        .sidebar-search-box { position: relative; width: 100%; }
+        .sidebar-search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; }
+        .sidebar-search-box input {
+            width: 100%; padding: 10px 12px 10px 34px; border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.08); background: #0f172a; outline: none;
+            font-size: 0.82rem; font-weight: 500; color: var(--white); transition: var(--transition);
+        }
+        .sidebar-search-box input:focus { border-color: var(--primary); }
+
+        .category-group-container { display: flex; flex-direction: column; gap: 4px; }
+        .category-header-toggle {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+            color: #94a3b8; letter-spacing: 0.5px; text-transform: uppercase; padding: 8px;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .category-header-toggle i { transition: transform 0.2s ease; }
+        .category-group-container.collapsed i { transform: rotate(-90deg); }
+        .category-group-container.collapsed .lab-list { display: none; }
+
+        .lab-list { list-style: none; display: flex; flex-direction: column; gap: 2px; padding-left: 4px; }
         .lab-item {
-            padding: 10px 15px; border-radius: 8px; margin-bottom: 5px;
-            cursor: pointer; font-size: 0.8rem; transition: 0.3s;
-            color: #94a3b8; border: 1px solid transparent;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
+            transition: var(--transition); color: #94a3b8; border: 1px solid transparent;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500;
         }
-        .lab-item:hover { background: rgba(255,255,255,0.05); color: white; }
-        .lab-item.active { background: var(--primary); color: white; font-weight: bold; border-color: rgba(255,255,255,0.2); }
+        .lab-item:hover { background: rgba(255,255,255,0.04); color: var(--white); }
+        .lab-item.active { background: var(--primary); color: var(--white); font-weight: 700; }
 
-        /* MAIN CONTENT */
-        .main-content { flex: 1; overflow-y: auto; padding: 40px; }
-        .header-box { margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .header-box h1 { font-size: 1.8rem; color: var(--secondary); letter-spacing: -0.02em; }
-        .tag { display: inline-block; padding: 4px 12px; background: #e2e8f0; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-top: 10px; color: var(--secondary); }
+        /* ==========================================================================
+           ⚓ 2. WORKSPACE CONTAINER PRESENTATION LAYOUT
+           ========================================================================== */
+        .main-content { flex: 1; overflow-y: auto; padding: 32px; height: 100%; }
+        
+        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 6px; }
+        .breadcrumb-trail span.active-node { color: var(--primary); }
 
-        /* BRAND BADGES */
-        .modern-notice {
-            margin-top: 15px; background: #f0fdf4; border: 1px solid #bbf7d0;
-            padding: 10px 15px; border-radius: 8px; display: flex;
-            align-items: center; gap: 10px; font-size: 0.8rem; color: #166534;
+        .header-box { margin-bottom: 24px; border-bottom: 1px solid var(--border-line); padding-bottom: 16px; }
+        .header-box h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--secondary); letter-spacing: -0.02em; }
+        
+        .meta-badges-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+        .meta-badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-line); background: var(--white); color: var(--text-muted); }
+        .meta-badge.verified-tag { color: var(--accent); background: rgba(16, 185, 129, 0.04); border-color: rgba(16, 185, 129, 0.15); }
+        .meta-badge.tier-pill { color: #3b82f6; background: rgba(59, 130, 246, 0.04); border-color: rgba(59, 130, 246, 0.15); }
+
+        /* Macro Content Split Grid Modules */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+        /* System Logic Breakdown Panels */
+        .logic-container { background: var(--white); border: 1px solid var(--border-line); border-radius: var(--card-radius); overflow: hidden; display: flex; flex-direction: column; }
+        .logic-header { background: var(--bg); border-bottom: 1px solid var(--border-line); padding: 12px 20px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .logic-body { padding: 20px; color: var(--text-muted); font-size: 0.85rem; flex-grow: 1; display: flex; flex-direction: column; gap: 12px; }
+        .logic-step { display: flex; gap: 10px; align-items: flex-start; line-height: 1.45; }
+        .step-num { background: var(--secondary); color: var(--white); width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+        /* Tabular Analysis Indicators */
+        .analysis-specs-box { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border-top: 1px dashed var(--border-line); padding-top: 12px; margin-top: auto; }
+        .spec-item-node { font-size: 0.78rem; font-weight: 500; color: var(--text-muted); }
+        .spec-item-node strong { color: var(--text-main); font-weight: 700; }
+
+        /* Terminal Execution Output Boxes */
+        .terminal-container { background: #020617; border: 1px solid #334155; border-radius: var(--card-radius); overflow: hidden; display: flex; flex-direction: column; }
+        .terminal-header { background: #1e293b; padding: 12px 20px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; }
+        .terminal-header .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .terminal-body { padding: 20px; color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 0.82rem; white-space: pre-wrap; line-height: 1.5; flex-grow: 1; text-align: left; }
+
+        /* ==========================================================================
+           ⚓ 3. CODE REPOSITORY PANEL BLOCK SUITE
+           ========================================================================== */
+        .code-container { background: var(--code-bg); border-radius: var(--card-radius); position: relative; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08); display: flex; flex-direction: column; }
+        .code-header { padding: 12px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .code-header-meta { display: flex; align-items: center; gap: 8px; font-family: 'Fira Code', monospace; font-size: 0.72rem; color: #64748b; font-weight: 600; }
+        
+        .code-actions-zone { display: flex; gap: 6px; }
+        .btn-code-action { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #cbd5e1; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+        .btn-code-action:hover { background: var(--white); color: var(--secondary); }
+        .btn-code-action.btn-copy { background: var(--accent); color: var(--white); border-color: var(--accent); }
+        .btn-code-action.btn-copy:hover { background: #059669; }
+
+        .editor-workspace-canvas { display: flex; width: 100%; overflow: hidden; }
+        .line-numbers-rail { padding: 20px 0 20px 16px; background: rgba(0,0,0,0.08); font-family: 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.6; color: #475569; text-align: right; width: 36px; user-select: none; }
+        pre { padding: 20px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.82rem; overflow-x: auto; line-height: 1.6; white-space: pre; flex-grow: 1; text-align: left; }
+
+        /* Unified Lower Flow Routing Buttons */
+        .navigation-row-deck { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 40px; border-top: 1px solid var(--border-line); margin-top: 24px; }
+        .btn-nav-trigger { padding: 10px 18px; border: 1px solid var(--border-line); background: var(--white); border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-main); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+        .btn-nav-trigger:hover { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+
+        /* Universal Toast Alerts System Node */
+        .toast-notification {
+            position: fixed; bottom: 24px; right: 24px; background: var(--secondary); color: var(--white);
+            padding: 12px 20px; border-radius: 4px; display: none; align-items: center; gap: 10px;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1); z-index: 10000;
+            border-left: 4px solid var(--accent); animation: toastSlide 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .modern-notice i { color: #22c55e; font-size: 0.9rem; }
-        .modern-badge {
-            margin-top: 12px; padding: 8px 15px; background: rgba(16, 185, 129, 0.1);
-            border-radius: 6px; border-left: 4px solid var(--accent);
-            display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--secondary);
-        }
+        @keyframes toastSlide { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-        /* TWO-COLUMN LAYOUT GRID */
-        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
-
-        /* LOGIC BREAKDOWN */
-        .logic-container { background: #fefce8; border: 1px solid #fef08a; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-        .logic-header { background: #fef08a; padding: 10px 20px; font-weight: 800; color: #854d0e; font-size: 0.8rem; text-transform: uppercase; }
-        .logic-body { padding: 20px; color: #713f12; font-size: 0.9rem; flex-grow: 1; }
-        .logic-step { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
-        .step-num { background: #854d0e; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; margin-top: 3px; }
-
-        /* TERMINAL PANEL */
-        .terminal-container { background: #020617; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-        .terminal-header { background: #1e293b; padding: 10px 20px; font-weight: 800; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
-        .terminal-header .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-        .terminal-body { padding: 20px; color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 0.85rem; white-space: pre-wrap; line-height: 1.5; flex-grow: 1; }
-
-        /* CODE BLOCK */
-        .code-container { background: var(--code-bg); border-radius: 12px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        .code-header { padding: 12px 20px; background: rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; border-radius: 12px 12px 0 0; }
-        .btn-copy { background: var(--accent); color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: bold; transition: 0.3s; }
-        .btn-copy:hover { background: #059669; }
-
-        pre { padding: 25px; color: #e2e8f0; font-family: 'Fira Code', monospace; font-size: 0.85rem; overflow-x: auto; line-height: 1.6; white-space: pre-wrap; }
-
-        @media (max-width: 1100px) { .content-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) {
+        @media (max-width: 960px) {
             body { flex-direction: column; overflow: auto; height: auto; }
-            .sidebar { width: 100%; height: 300px; }
-            .main-content { overflow: visible; }
+            .sidebar { width: 100%; height: 350px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .main-content { height: auto; }
         }
     </style>
 </head>
 <body>
 
+    <div id="global-header"></div>
+
     <aside class="sidebar">
-        <h2>C Practical Library</h2>
-        <ul class="lab-list" id="sidebar-list"></ul>
+        <div class="sidebar-search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="libSearch" placeholder="Search C programs, algorithms..." oninput="filterCatalogTree()">
+        </div>
+        <div class="category-group-container" id="catalogDirectory">
+            </div>
     </aside>
 
     <main class="main-content">
         <div id="content-display">
+            
+            <nav class="breadcrumb-trail">
+                <span>C Directory</span> / <span id="breadcrumbSection">Basic</span> / <span class="active-node" id="breadcrumbTitle">Hello World</span>
+            </nav>
+
             <div class="header-box">
-                <span class="tag" id="prog-tag">SECTION: BASIC</span>
                 <h1 id="prog-title">Program Title</h1>
-                
-                <div class="modern-notice">
-                    <i class="fas fa-bolt"></i> 
-                    <span><b>WebNova Standards:</b> Optimized for modern compilers. Minimal lines, maximum logic.</span>
-                </div>
-                <div class="modern-badge">
-                    <i class="fas fa-check-circle"></i>
-                    <span><b>Industry Standard:</b> Clean logic over lengthy code. Optimized for modern exams & Vivas.</span>
+                <div class="meta-badges-row">
+                    <span class="meta-badge tier-pill" id="metaTier">Beginner</span>
+                    <span class="meta-badge verified-tag"><i class="fas fa-check-circle"></i> Code Craft Audited</span>
+                    <span class="meta-badge"><i class="fas fa-microchip"></i> GCC C99 Ready</span>
                 </div>
             </div>
 
             <div class="content-grid">
+                
                 <div class="logic-container">
-                    <div class="logic-header"><i class="fas fa-brain"></i> System Logic Breakdown</div>
-                    <div class="logic-body" id="logic-text"></div>
+                    <div class="logic-header"><i class="fas fa-brain"></i> Dynamic System Logic Breakdown</div>
+                    <div class="logic-body">
+                        <div id="logic-text">
+                            </div>
+                        <div class="analysis-specs-box">
+                            <span class="spec-item-node">Time Complexity: <strong id="specTime">O(1)</strong></span>
+                            <span class="spec-item-node">Space Complexity: <strong id="specSpace">O(1)</strong></span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="terminal-container">
                     <div class="terminal-header">
-                        <span class="dot" style="background: #ef4444;"></span>
-                        <span class="dot" style="background: #eab308;"></span>
-                        <span class="dot" style="background: #22c55e;"></span>
-                        <span style="margin-left: 5px;"><i class="fas fa-terminal"></i> Terminal Compiled Output</span>
+                        <span class="dot" style="background: #ff5f56;"></span>
+                        <span class="dot" style="background: #ffbd2e;"></span>
+                        <span class="dot" style="background: #27c93f;"></span>
+                        <span style="margin-left: 6px;"><i class="fas fa-terminal"></i> Terminal Compiled Output</span>
                     </div>
                     <div class="terminal-body" id="output-text"></div>
                 </div>
+
             </div>
 
             <div class="code-container">
                 <div class="code-header">
-                    <span style="color: #64748b; font-size: 0.7rem; font-weight: bold;">main.c</span>
-                    <button class="btn-copy" onclick="copyCode()"><i class="far fa-copy"></i> Copy Code</button>
+                    <div class="code-header-meta">
+                        <i class="fas fa-file-code"></i> <span>main.c</span>
+                    </div>
+                    <div class="code-actions-zone">
+                        <button class="btn-code-action" onclick="openOnlineCompiler()"><i class="fas fa-play"></i> Run Online</button>
+                        <button class="btn-code-action btn-copy" onclick="copyCodeStack()"><i class="far fa-copy"></i> Copy Code</button>
+                    </div>
                 </div>
-                <pre id="code-block"></pre>
+                <div class="editor-workspace-canvas">
+                    <div class="line-numbers-rail" id="lineNumbersRail">
+                        </div>
+                    <pre><code id="code-block"></code></pre>
+                </div>
             </div>
+
+            <div class="navigation-row-deck">
+                <button class="btn-nav-trigger" id="prevBtn" onclick="navigateProgram(-1)">&larr; Previous Lab</button>
+                <button class="btn-nav-trigger" id="nextBtn" onclick="navigateProgram(1)">Next Lab &rarr;</button>
+            </div>
+
         </div>
     </main>
 
+    <div class="toast-notification" id="toastAlert">
+        <i class="fas fa-check"></i> Code block copied to workspace clipboard successfully!
+    </div>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+
     <script>
-        const labData = {
-            p1: { title: "01. Hello World", tag: "BASIC", code: `#include <stdio.h>\n\nint main() {\n    printf("Hello, World!");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Execution starts at <b>main()</b>. <b>printf</b> sends the string to standard output.</p></div>`, output: "Hello, World!" },
-            p2: { title: "02. Largest of Three", tag: "CONDITIONALS", code: `#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf("%d %d %d", &a, &b, &c);\n    if(a>=b && a>=c) printf("%d is largest", a);\n    else if(b>=a && b>=c) printf("%d is largest", b);\n    else printf("%d is largest", c);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Uses <b>Logical AND (&&)</b> to compare values efficiently.</p></div>`, output: "12 45 22\n45 is largest" },
-            p3: { title: "03. Prime Check", tag: "LOOPS", code: `#include <stdio.h>\n\nint main() {\n    int n, i, f=0;\n    scanf("%d", &n);\n    for(i=2; i<=n/2; ++i) { if(n%i==0){ f=1; break; } }\n    if(f==0) printf("Prime"); else printf("Not Prime");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Iterates to <b>N/2</b> to find factors. If none found, the number is prime.</p></div>`, output: "13\nPrime" },
-            p4: { title: "04. Compound Interest", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float p, r, t, ci;\n    scanf("%f %f %f", &p, &r, &t);\n    ci = p * (pow((1 + r / 100), t)) - p;\n    printf("%.2f", ci);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Applies standard formula using <b>pow()</b> function.</p></div>`, output: "5000 6 3\n955.08" },
-            p5: { title: "05. Swap (No Var)", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int a=10, b=20;\n    a=a+b; b=a-b; a=a-b;\n    printf("%d %d", a, b);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Arithmetic rotation of values between two variables.</p></div>`, output: "20 10" },
-            p6: { title: "06. Replace 0 with 1", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, p=1, d;\n    scanf("%d", &n);\n    while(n){ d=n%10; if(d==0) d=1; r=r+d*p; p*=10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Processes digits individually to substitute zeros.</p></div>`, output: "10203\n11213" },
-            p7: { title: "07. Binary to Decimal", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, dec=0, i=0;\n    scanf("%d", &n);\n    while(n){ dec+=(n%10)*pow(2,i++); n/=10; }\n    printf("%d", dec);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Converts base-2 to base-10 using positional weight.</p></div>`, output: "1010\n10" },
-            p8: { title: "08. Leap Year", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int y;\n    scanf("%d", &y);\n    if(y%400==0 || (y%4==0 && y%100!=0)) printf("Leap Year");\n    else printf("Not");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Evaluation of century and standard year divisibility.</p></div>`, output: "2024\nLeap Year" },
-            p9: { title: "09. Factorial", tag: "RECURSION", code: `#include <stdio.h>\nlong fact(int n){ return (n==0)?1:n*fact(n-1); }\nint main() {\n    int n; scanf("%d", &n);\n    printf("%ld", fact(n));\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Self-calling function using base case 0.</p></div>`, output: "5\n120" },
-            p10: { title: "10. Armstrong Num", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    int n, t, s=0, d;\n    scanf("%d", &n); t=n;\n    while(t){ d=t%10; s+=d*d*d; t/=10; }\n    if(s==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Cubic sum of individual digits.</p></div>`, output: "153\nYes" },
-            p11: { title: "11. Quadratic Eq", tag: "MATH", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float a,b,c,d,r1,r2;\n    scanf("%f %f %f",&a,&b,&c);\n    d=b*b-4*a*c;\n    if(d>=0){ r1=(-b+sqrt(d))/(2*a); r2=(-b-sqrt(d))/(2*a); printf("%.2f %.2f", r1, r2); }\n    else printf("Imaginary");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Root calculation via discriminant analysis.</p></div>`, output: "1 -5 6\n3.00 2.00" },
-            p12: { title: "12. Reverse Number", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0;\n    scanf("%d", &n);\n    while(n){ r=r*10+n%10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Iterative reconstruction using modulo and multiplication.</p></div>`, output: "12345\n54321" },
-            p13: { title: "13. Palindrome Check", tag: "LOGIC", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, t;\n    scanf("%d", &n); t=n;\n    while(t){ r=r*10+t%10; t/=10; }\n    if(r==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Comparison of original value vs reversed value.</p></div>`, output: "121\nYes" },
-            p14: { title: "14. GCD of Two", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    int a,b,i,g;\n    scanf("%d %d", &a, &b);\n    for(i=1; i<=a && i<=b; ++i){ if(a%i==0 && b%i==0) g=i; }\n    printf("%d", g);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Finding the highest common factor through iteration.</p></div>`, output: "12 18\n6" },
-            p15: { title: "15. Area of Circle", tag: "MATH", code: `#include <stdio.h>\n\nint main() {\n    float r;\n    scanf("%f", &r);\n    printf("%.2f", 3.14 * r * r);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Standard geometric area calculation.</p></div>`, output: "5\n78.50" },
-            p16: { title: "16. Pyramid Pattern", tag: "PATTERNS", code: `#include <stdio.h>\n\nint main() {\n    int i, j;\n    for(i=1; i<=5; i++){\n        for(j=1; j<=i; j++) printf("* ");\n        printf("\\n");\n    }\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Nested loop control for spatial distribution.</p></div>`, output: "* \n* * \n* * * \n* * * * \n* * * * * " },
-            p17: { title: "17. Reverse Array", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, t, i;\n    for(i=0; i<n/2; i++){\n        t=a[i]; a[i]=a[n-i-1]; a[n-i-1]=t;\n    }\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Two-Pointer Technique:</b> Swaps values until center is reached.</p></div>`, output: "5 4 3 2 1 " },
-            p18: { title: "18. Max/Min Array", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={10,5,20,8}, n=4, max=a[0], min=a[0], i;\n    for(i=1; i<n; i++){\n        if(a[i]>max) max=a[i];\n        if(a[i]<min) min=a[i];\n    }\n    printf("Max: %d Min: %d", max, min);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p><b>Linear Scan:</b> Compares each element against current champions.</p></div>`, output: "Max: 20 Min: 5" },
-            p19: { title: "19. Cyclic Rotation", tag: "ARRAYS", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, last, i;\n    last=a[n-1];\n    for(i=n-1; i>0; i--) a[i]=a[i-1];\n    a[0]=last;\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Single element offset with array-wide shifting.</p></div>`, output: "5 1 2 3 4 " },
-            p20: { title: "20. Matrix Multiply", tag: "MATRICES", code: `#include <stdio.h>\n\nint main() {\n    int a[2][2]={1,2,3,4}, b[2][2]={5,6,7,8}, c[2][2]={0}, i, j, k;\n    for(i=0; i<2; i++)\n        for(j=0; j<2; j++)\n            for(k=0; k<2; k++) c[i][j] += a[i][k] * b[k][j];\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Triple nested loop for row-by-column summation.</p></div>`, output: "[Matrix Multiplication Completed Successfully]" },
-            p21: { title: "21. Largest (DMA)", tag: "MEMORY", code: `#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, *p, max, i;\n    scanf("%d", &n);\n    p=(int*)malloc(n*sizeof(int));\n    for(i=0; i<n; i++) scanf("%d", p+i);\n    max=*p;\n    for(i=1; i<n; i++) if(*(p+i)>max) max=*(p+i);\n    printf("%d", max); free(p);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Heap memory management for flexible array sizing.</p></div>`, output: "3\n10 55 21\n55" },
-            p22: { title: "22. Vowel/Consonant", tag: "STRINGS", code: `#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char s[50], c;\n    int v=0, co=0, i;\n    scanf("%s", s);\n    for(i=0; s[i]; i++){\n        c=tolower(s[i]);\n        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') v++;\n        else if(c>='a'&&c<='z') co++;\n    }\n    printf("V:%d C:%d", v, co);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Character filtering with case normalization.</p></div>`, output: "WebNova\nV:3 C:4" },
-            p23: { title: "23. Student Info", tag: "STRUCTURES", code: `#include <stdio.h>\n\nstruct Student { char n[20]; int r; float m; };\nint main() {\n    struct Student s = {"Alex", 101, 85.5};\n    printf("%s %d %.1f", s.n, s.r, s.m);\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Logical grouping of multi-type variables.</p></div>`, output: "Alex 101 85.5" },
-            p24: { title: "24. String Palindrome", tag: "STRINGS", code: `#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[]="madam"; int n=strlen(s), i, f=0;\n    for(i=0; i<n/2; i++) { if(s[i]!=s[n-i-1]){ f=1; break; } }\n    if(f==0) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: `<div class="logic-step"><div class="step-num">1</div><p>Simultaneous string comparison from opposite ends.</p></div>`, output: "Yes" }
-        };
+        /* ==========================================================================
+           📦 CENTRAL SINGLE SOURCE OF TRUTH PLATFORM DIRECTORY DATABASE
+           ========================================================================== */
+        const LAB_DATABASE = [
+            { id: "p1", title: "01. Hello World", category: "Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    printf("Hello, World!");\n    return 0;\n}`, logic: "Execution starts precisely at main(). The standard printf library command macro sends the input character stream sequence straight into the standard console output interface buffer context parameters.", output: "> gcc main.c\n> ./a.out\nHello, World!" },
+            { id: "p2", title: "02. Largest of Three", category: "Conditionals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf("%d %d %d", &a, &b, &c);\n    if(a>=b && a>=c) printf("%d is largest", a);\n    else if(b>=a && b>=c) printf("%d is largest", b);\n    else printf("%d is largest", c);\n    return 0;\n}`, logic: "Utilizes non-nested short-circuit conditional evaluates routing structures and Logical AND (&&) operations blocks parameters to determine optimal values comparisons chains bounds.", output: "> gcc main.c\n> ./a.out\n12 45 22\n45 is largest" },
+            { id: "p3", title: "03. Prime Check", category: "Loops", tier: "Beginner", timeComp: "O(√N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int n, i, f=0;\n    scanf("%d", &n);\n    for(i=2; i<=n/2; ++i) { if(n%i==0){ f=1; break; } }\n    if(f==0) printf("Prime"); else printf("Not Prime");\n    return 0;\n}`, logic: "Iterates through sub-factors thresholds up to N/2 boundaries bounds. If any clean divisible modulo remainder evaluates to zero, a breakout flag trap triggers immediately.", output: "> gcc main.c\n> ./a.out\n13\nPrime" },
+            { id: "p4", title: "04. Compound Interest", category: "Math Stacks", tier: "Beginner", timeComp: "O(log T)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float p, r, t, ci;\n    scanf("%f %f %f", &p, &r, &t);\n    ci = p * (pow((1 + r / 100), t)) - p;\n    printf("%.2f", ci);\n    return 0;\n}`, logic: "Evaluates systemic exponential mathematical formulations trajectories by passing parameter rates variables tokens down straight into the core standard math library pow() execution module.", output: "> gcc main.c\n> ./a.out\n5000 6 3\n955.08" },
+            { id: "p5", title: "05. Swap (No Var)", category: "Logic Hub", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a=10, b=20;\n    a=a+b; b=a-b; a=a-b;\n    printf("%d %d", a, b);\n    return 0;\n}`, logic: "Executes pure vector arithmetic variable values rotations across dual channels memory allocations footprints structures without initializing auxiliary registers components blocks.", output: "> gcc main.c\n> ./a.out\n20 10" },
+            { id: "p6", title: "06. Replace 0 with 1", category: "Logic Hub", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, p=1, d;\n    scanf("%d", &n);\n    while(n){ d=n%10; if(d==0) d=1; r=r+d*p; p*=10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: "Parses integer numeric data streams digits individually via radix-10 math slicing operations loops, substituting targets zero markers values elements before dynamic positional reconstructions.", output: "> gcc main.c\n> ./a.out\n10203\n11213" },
+            { id: "p7", title: "07. Binary to Decimal", category: "Math Stacks", tier: "Intermediate", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, dec=0, i=0;\n    scanf("%d", &n);\n    while(n){ dec+=(n%10)*pow(2,i++); n/=10; }\n    printf("%d", dec);\n    return 0;\n}`, logic: "Converts binary base-2 notation streams back into standard base-10 numerical integers metrics fields using consecutive tracking positional weight calculations blocks paths.", output: "> gcc main.c\n> ./a.out\n1010\n10" },
+            { id: "p8", title: "08. Leap Year", category: "Logic Hub", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int y;\n    scanf("%d", &y);\n    if(y%400==0 || (y%4==0 && y%100!=0)) printf("Leap Year");\n    else printf("Not");\n    return 0;\n}`, logic: "Evaluates calendar grid parameters algorithms against Gregorian century synchronization constraints rules alongside standard 4-year factor tracking conditional logic structures blocks.", output: "> gcc main.c\n> ./a.out\n2024\nLeap Year" },
+            { id: "p9", title: "09. Factorial (Recursion)", category: "Recursion", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(N)", code: `#include <stdio.h>\nlong fact(int n){ return (n==0)?1:n*fact(n-1); }\nint main() {\n    int n; scanf("%d", &n);\n    printf("%ld", fact(n));\n    return 0;\n}`, logic: "Deploys a cascading functional call stack tree sequence utilizing a strict recursive evaluation line mapping down to the foundational terminal state base case zero flag token.", output: "> gcc main.c\n> ./a.out\n5\n120" },
+            { id: "p10", title: "10. Armstrong Num", category: "Math Stacks", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int n, t, s=0, d;\n    scanf("%d", &n); t=n;\n    while(t){ d=t%10; s+=d*d*d; t/=10; }\n    if(s==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: "Extracts individual numeric digit items variables sequentially, computes their respective cubic exponential factors values, and checks aggregate parameters matching bounds.", output: "> gcc main.c\n> ./a.out\n153\nYes" },
+            { id: "p11", title: "11. Quadratic Eq", category: "Math Stacks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float a,b,c,d,r1,r2;\n    scanf("%f %f %f",&a,&b,&c);\n    d=b*b-4*a*c;\n    if(d>=0){ r1=(-b+sqrt(d))/(2*a); r2=(-b-sqrt(d))/(2*a); printf("%.2f %.2f", r1, r2); }\n    else printf("Imaginary");\n    return 0;\n}`, logic: "Determines mathematical solution pathways tracks properties by processing equation parameters structures down straight into discriminant value testing channels.", output: "> gcc main.c\n> ./a.out\n1 -5 6\n3.00 2.00" },
+            { id: "p12", title: "12. Reverse Number", category: "Logic Hub", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0;\n    scanf("%d", &n);\n    while(n){ r=r*10+n%10; n/=10; }\n    printf("%d", r);\n    return 0;\n}`, logic: "Executes continuous base-10 numerical positional displacement shift loops, reversing digit placement fields via standard truncation arithmetic routes sequences.", output: "> gcc main.c\n> ./a.out\n12345\n54321" },
+            { id: "p13", title: "13. Palindrome Check", category: "Logic Hub", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int n, r=0, t;\n    scanf("%d", &n); t=n;\n    while(t){ r=r*10+t%10; t/=10; }\n    if(r==n) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: "Extracts an inverse clone copy matrix array allocation representation out of input values, executing confirmation checks against original state bounds variables.", output: "> gcc main.c\n> ./a.out\n121\nYes" },
+            { id: "p14", title: "14. GCD of Two", category: "Math Stacks", tier: "Beginner", timeComp: "O(min(A,B))", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a,b,i,g;\n    scanf("%d %d", &a, &b);\n    for(i=1; i<=a && i<=b; ++i){ if(a%i==0 && b%i==0) g=i; }\n    printf("%d", g);\n    return 0;\n}`, logic: "Traces consecutive shared modular factorization intervals markers limits across dual integer scopes to isolate the highest common scalar factor element.", output: "> gcc main.c\n> ./a.out\n12 18\n6" },
+            { id: "p15", title: "15. Area of Circle", category: "Math Stacks", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    float r;\n    scanf("%f", &r);\n    printf("%.2f", 3.14 * r * r);\n    return 0;\n}`, logic: "Evaluates classical geometric scaling equations equations metrics fields using hardcoded static approximations formulas for pi multipliers constants ratios tokens.", output: "> gcc main.c\n> ./a.out\n5\n78.50" },
+            { id: "p16", title: "16. Pyramid Pattern", category: "Patterns", tier: "Beginner", timeComp: "O(N²)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int i, j;\n    for(i=1; i<=5; i++){\n        for(j=1; j<=i; j++) printf("* ");\n        printf("\\n");\n    }\n    return 0;\n}`, logic: "Controls two-dimensional workspace spatial tracking alignments maps using double nested loop matrix variables structures parameters constraints coordinates loops.", output: "> gcc main.c\n> ./a.out\n* \n* * \n* * * \n* * * * \n* * * * * " },
+            { id: "p17", title: "17. Reverse Array", category: "Arrays", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, t, i;\n    for(i=0; i<n/2; i++){\n        t=a[i]; a[i]=a[n-i-1]; a[n-i-1]=t;\n    }\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: "Employs an optimized Two-Pointer convergence technique track methodology, mirroring symmetric element swaps boundaries inside structured contiguous memory arrays registers blocks.", output: "> gcc main.c\n> ./a.out\n5 4 3 2 1 " },
+            { id: "p18", title: "18. Max/Min Array", category: "Arrays", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a[]={10,5,20,8}, n=4, max=a[0], min=a[0], i;\n    for(i=1; i<n; i++){\n        if(a[i]>max) max=a[i];\n        if(a[i]<min) min=a[i];\n    }\n    printf("Max: %d Min: %d", max, min);\n    return 0;\n}`, logic: "Initiates sequential linear scanning passes across data blocks arrays allocations components, updating baseline reference extreme indicators flags on match checks conditions.", output: "> gcc main.c\n> ./a.out\nMax: 20 Min: 5" },
+            { id: "p19", title: "19. Cyclic Rotation", category: "Arrays", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nint main() {\n    int a[]={1,2,3,4,5}, n=5, last, i;\n    last=a[n-1];\n    for(i=n-1; i>0; i--) a[i]=a[i-1];\n    a[0]=last;\n    for(i=0; i<n; i++) printf("%d ", a[i]);\n    return 0;\n}`, logic: "Caches terminal boundaries markers elements objects parameters, shifts preceding data lines rightward via backward memory array address increments, re-injecting tokens values into base zero offset index slots.", output: "> gcc main.c\n> ./a.out\n5 1 2 3 4 " },
+            { id: "p20", title: "20. Matrix Multiply", category: "Matrices", tier: "Advanced", timeComp: "O(N³)", spaceComp: "O(N²)", code: `#include <stdio.h>\n\nint main() {\n    int a[2][2]={1,2,3,4}, b[2][2]={5,6,7,8}, c[2][2]={0}, i, j, k;\n    for(i=0; i<2; i++)\n        for(j=0; j<2; j++)\n            for(k=0; k<2; k++) c[i][j] += a[i][k] * b[k][j];\n    return 0;\n}`, logic: "Deploys multi-layered triple nested looping logic operations vectors to execute column-by-row matrix processing algorithms configurations allocations sums tracks blocks.", output: "> gcc main.c\n> ./a.out\n[Matrix Multiplication Completed Successfully]" },
+            { id: "p21", title: "21. Largest (DMA)", category: "Memory", tier: "Advanced", timeComp: "O(N)", spaceComp: "O(N)", code: `#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, *p, max, i;\n    scanf("%d", &n);\n    p=(int*)malloc(n*sizeof(int));\n    for(i=0; i<n; i++) scanf("%d", p+i);\n    max=*p;\n    for(i=1; i<n; i++) if(*(p+i)>max) max=*(p+i);\n    printf("%d", max); free(p);\n    return 0;\n}`, logic: "Allocates customizable sequential blocks structures tracking dimensions variables inside system heap fields memory spaces before clearing data tracks nodes via explicit free() instructions loops.", output: "> gcc main.c\n> ./a.out\n3\n10 55 21\n55" },
+            { id: "p22", title: "22. Vowel/Consonant", category: "Strings", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char s[50], c;\n    int v=0, co=0, i;\n    scanf("%s", s);\n    for(i=0; s[i]; i++){\n        c=tolower(s[i]);\n        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') v++;\n        else if(c>='a'&&c<='z') co++;\n    }\n    printf("V:%d C:%d", v, co);\n    return 0;\n}`, logic: "Parses target text string character allocations arrays arrays maps, converting casings variables dynamically via character-by-character validation criteria loops pathways.", output: "> gcc main.c\n> ./a.out\nWebNova\nV:3 C:4" },
+            { id: "p23", title: "23. Student Info", category: "Structures", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <stdio.h>\n\nstruct Student { char n[20]; int r; float m; };\nint main() {\n    struct Student s = {"Alex", 101, 85.5};\n    printf("%s %d %.1f", s.n, s.r, s.m);\n    return 0;\n}`, logic: "Composes user-defined custom data models wrapping heterogeneous structural properties variables tokens into a single unified record structural footprint representation slot.", output: "> gcc main.c\n> ./a.out\nAlex 101 85.5" },
+            { id: "p24", title: "24. String Palindrome", category: "Strings", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[]="madam"; int n=strlen(s), i, f=0;\n    for(i=0; i<n/2; i++) { if(s[i]!=s[n-i-1]){ f=1; break; } }\n    if(f==0) printf("Yes"); else printf("No");\n    return 0;\n}`, logic: "Traces opposite ends tracking boundaries coordinates indices inside targeted string allocations memory arrays simultaneously, analyzing symmetrical equivalence before flag breakout bounds.", output: "> gcc main.c\n> ./a.out\nYes" }
+        ];
 
-        function showCode(id, element) {
-            document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-            if (element) element.classList.add('active');
+        let activeTargetIndexId = "p1";
+        let localSearchQueryStringCache = "";
 
-            const data = labData[id];
-            document.getElementById('prog-title').innerText = data.title;
-            document.getElementById('prog-tag').innerText = "SECTION: " + data.tag;
-            document.getElementById('code-block').innerText = data.code;
-            document.getElementById('logic-text').innerHTML = data.logic;
-            document.getElementById('output-text').innerText = data.output;
+        /* ==========================================================================
+           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+           ========================================================================== */
+        function rebuildGroupedCatalogTree() {
+            const directoryMountContainer = document.getElementById('catalogDirectory');
+            directoryMountContainer.innerHTML = "";
+
+            // Group absolute database files objects matching unique category classification labels keys
+            const catalogGroupedTree = {};
+            LAB_DATABASE.forEach(item => {
+                const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
+                                    item.category.toLowerCase().includes(localSearchQueryStringCache) || 
+                                    item.tags.toLowerCase().includes(localSearchQueryStringCache);
+                
+                if (searchMatch) {
+                    if (!catalogGroupedTree[item.category]) {
+                        catalogGroupedTree[item.category] = [];
+                    }
+                    catalogGroupedTree[item.category].push(item);
+                }
+            });
+
+            const uniqueKeys = Object.keys(catalogGroupedTree);
+            
+            if (uniqueKeys.length === 0) {
+                directoryMountContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
+                return;
+            }
+
+            uniqueKeys.forEach((categoryKey, idx) => {
+                const isGroupActiveCollapsed = false; // Persistent folder view models state maps references
+                const collapseClassString = isGroupActiveCollapsed ? "collapsed" : "";
+                
+                let listElementsHTML = "";
+                catalogGroupedTree[categoryKey].forEach(item => {
+                    const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
+                    listElementsHTML += `<li class="lab-item ${activeStateClass}" data-id="${item.id}">${item.title}</li>`;
+                });
+
+                const groupHTML = `
+                    <div class="category-group-container ${collapseClassString}" data-cat-name="${categoryKey}">
+                        <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
+                            <span>▼ ${categoryKey}</span>
+                        </div>
+                        <ul class="lab-list">
+                            ${listElementsHTML}
+                        </ul>
+                    </div>
+                `;
+                directoryMountContainer.insertAdjacentHTML('beforeend', groupHTML);
+            });
+
+            // Bind click listeners parameters securely to fresh dynamic children nodes maps elements
+            document.querySelectorAll('.lab-item').forEach(itemNode => {
+                itemNode.addEventListener('click', () => {
+                    activeTargetIndexId = itemNode.dataset.id;
+                    document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+                    itemNode.classList.add('active');
+                    syncMainWorkspaceView();
+                });
+            });
+
+            // Adjust navigation control buttons state limits bounds parameters values
+            updateNavigationButtonsStateBounds();
         }
 
-        function initSidebar() {
-            const list = document.getElementById('sidebar-list');
-            Object.keys(labData).forEach((key, index) => {
-                const li = document.createElement('li');
-                li.className = `lab-item ${index === 0 ? 'active' : ''}`;
-                li.innerText = labData[key].title;
-                li.onclick = (e) => showCode(key, e.target);
-                list.appendChild(li);
+        function filterCatalogTree() {
+            localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
+            rebuildGroupedCatalogTree();
+        }
+
+        function toggleFolderViewBlock(headerNode) {
+            const parentContainerElement = headerNode.parentElement;
+            parentContainerElement.classList.toggle('collapsed');
+            const spanTextNode = headerNode.querySelector('span');
+            if (parentContainerElement.classList.contains('collapsed')) {
+                spanTextNode.innerText = spanTextNode.innerText.replace('▼', '▶');
+            } else {
+                spanTextNode.innerText = spanTextNode.innerText.replace('▶', '▼');
+            }
+        }
+
+        /* ==========================================================================
+           ⚓ 4. SYNCHRONIZED REPOSITORIES MAIN CONTENT WORKSPACE VIEW PUMP
+           ========================================================================== */
+        function syncMainWorkspaceView() {
+            const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
+            if (!dataNode) return;
+
+            // Sync Header Titles Elements Text Data Tokens
+            document.getElementById('prog-title').innerText = dataNode.title;
+            document.getElementById('breadcrumbSection').innerText = dataNode.category;
+            document.getElementById('breadcrumbTitle').innerText = dataNode.title;
+            document.getElementById('metaTier').innerText = dataNode.tier;
+
+            // Sync Multi-Dimensional Algorithm Complexity Metrics Text Values Nodes
+            document.getElementById('specTime').innerText = dataNode.timeComp;
+            document.getElementById('specSpace').innerText = dataNode.spaceComp;
+
+            // Inject Custom Descriptive Instructions Block Elements Markup Content
+            document.getElementById('logic-text').innerHTML = `
+                <div class="logic-step">
+                    <div class="step-num">i</div>
+                    <p>${dataNode.logic}</p>
+                </div>
+            `;
+
+            // Sync Local Terminal Emulator String Cache
+            document.getElementById('output-text').innerText = dataNode.output;
+
+            // Sync Editor Workspace Canvas & Core Syntax Lines
+            document.getElementById('code-block').innerText = dataNode.code;
+
+            // Generate Sequential Code Line Numbers Matrix dynamically matching target length arrays strings split
+            const lineCount = dataNode.code.split('\n').length;
+            let lineRailHTML = "";
+            for (let i = 1; i <= lineCount; i++) {
+                lineRailHTML += `${i}<br>`;
+            }
+            document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
+
+            // Dynamic safe tracking checks across sibling lists sets boundary indices properties values
+            updateNavigationButtonsStateBounds();
+        }
+
+        function updateNavigationButtonsStateBounds() {
+            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+            document.getElementById('prevBtn').disabled = (currentIndex === 0);
+            document.getElementById('nextBtn').disabled = (currentIndex === LAB_DATABASE.length - 1);
+        }
+
+        function navigateProgram(directionOffset) {
+            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+            const targetTargetIndex = currentIndex + directionOffset;
+            if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
+                activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
+                rebuildGroupedCatalogTree();
+                syncMainWorkspaceView();
+                
+                // Keep selected layout card focused visibly inside sidebar scroll framework
+                const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
+                if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        }
+
+        function copyCodeStack() {
+            const codeStringValue = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(codeStringValue).then(() => {
+                const toastAlert = document.getElementById('toastAlert');
+                toastAlert.style.display = 'flex';
+                setTimeout(() => { toastAlert.style.display = 'none'; }, 2500);
             });
         }
 
-        function copyCode() {
-            const code = document.getElementById('code-block').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.querySelector('.btn-copy');
-                btn.innerText = "Copied!";
-                btn.style.background = "#059669";
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="far fa-copy"></i> Copy Code';
-                    btn.style.background = "#10b981";
-                }, 2000);
-            });
+        function openOnlineCompiler() {
+            // Fires target workspace definitions down straight into global programming portals remote compilers links scripts
+            window.open("https://www.onlinegdb.com/online_c_compiler", "_blank");
         }
 
+        // Initialize Runtime Compilation Infrastructure Core Dashboard Loop On Boot Up Sequences Setup
         window.onload = () => {
-            initSidebar();
-            showCode('p1', document.querySelector('.lab-item'));
+            rebuildGroupedCatalogTree();
+            syncMainWorkspaceView();
         };
     </script>
 </body>
