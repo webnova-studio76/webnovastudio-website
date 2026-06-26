@@ -6,313 +6,458 @@
     <title>Contact Us | WebNova Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             /* High-Premium Soft Light Workspace Palette Tokens */
             --primary: #10b981;        /* Global Academic Emerald Green */
             --primary-glow: rgba(16, 185, 129, 0.08);
-            --secondary: #475569;     /* Soft Corporate Slate Blue-Gray */
+            --secondary: #2563eb;      /* Secondary Royal Blue Highlights */
             --card-surface: #ffffff;  /* Pure White Canvas Cards */
             --bg: #f8fafc;            /* Pristine Clean Workspace Canvas */
-            --text-main: #0f172a;     /* Deep Sapphire Slate Typography */
-            --text-muted: #64748b;    /* Muted Blue-Gray Secondary Details */
-            --border: rgba(148, 163, 184, 0.14); /* Soft structural outline */
-            --card-radius: 24px;      
+            --text-main: #0f172a;     /* Dark Slate Main Typography */
+            --text-muted: #475569;    /* Muted Blue-Gray Secondary Details */
+            --border-line: #e2e8f0;   /* Light Framework Split Lines */
             --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-
-            /* High-Performance Smooth Depth Shadows */
-            --tactile-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.04), 0 1px 3px rgba(37, 99, 235, 0.02);
-            --hover-shadow: 0 30px 50px -10px rgba(15, 23, 42, 0.06), 0 4px 20px -2px var(--primary-glow);
+            --card-radius: 12px;       /* Restrained Standardized Radius Corner */
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px; /* Clear fixed navigation bar spacing */
-            overflow-x: hidden;
-        }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* --- Ambient Backdrop Mesh Layer --- */
-        .bg-decoration {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; pointer-events: none; overflow: hidden;
-        }
-        .grid-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* --- Workspace Layout Structure --- */
-        .contact-hero { position: relative; padding: 80px 0 100px; z-index: 10; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; width: 100%; }
-        .contact-wrapper { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: stretch; }
-
-        /* Left Side Content Column */
-        .contact-info { display: flex; flex-direction: column; justify-content: center; }
+        /* --- 1. Hero Alignment Section --- */
+        .contact-hero { padding: 48px 0 32px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border-line); }
         .badge {
-            background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 6px 16px; 
-            border-radius: 50px; font-weight: 800; font-size: 0.72rem; margin-bottom: 24px; 
-            display: inline-block; text-transform: uppercase; letter-spacing: 1.5px; 
-            border: 1px solid rgba(16, 185, 129, 0.12); align-self: flex-start;
+            background: rgba(16, 185, 129, 0.06); color: var(--primary); padding: 4px 12px; 
+            border-radius: 4px; font-weight: 700; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.15);
+            margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
         }
-        .contact-info h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; color: #0f172a; margin-bottom: 20px; }
-        .contact-info h1 span { color: var(--primary); }
-        .contact-info p.lead-text { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 500; max-width: 580px; text-align: left; }
+        .contact-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .contact-hero h1 span { color: var(--primary); }
+        .contact-hero p.lead-text { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; max-width: 700px; margin: 0 auto; }
 
-        /* Quick Tags Feature Blocks */
-        .tag-headline { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 12px; text-align: left; }
-        .quick-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; max-width: 580px; }
+        /* Authentic Metrics Ribbon */
+        .stats-ribbon { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-line); }
+        .stat-node { display: flex; flex-direction: column; align-items: center; }
+        .stat-node strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .stat-node span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
+
+        /* --- 2. Ecosystem Department Grid Selection --- */
+        .section-headline-bar { padding: 32px 0 12px; border-bottom: 1px solid var(--border-line); margin-top: 16px; }
+        .section-headline-bar h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+        
+        .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 24px 0; }
+        .dept-card {
+            background: var(--white); border: 1px solid var(--border-line); padding: 24px; border-radius: var(--card-radius);
+            display: flex; flex-direction: column; align-items: flex-start; gap: 12px; cursor: pointer; transition: var(--transition);
+        }
+        .dept-card:hover, .dept-card.active { border-color: #cbd5e1; transform: translateY(-2px); box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.04); }
+        .dept-card.active { border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.01); }
+        .dept-card i { font-size: 1.25rem; color: var(--text-muted); }
+        .dept-card.active i { color: var(--primary); }
+        .dept-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+        .dept-card p { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; line-height: 1.45; text-align: left; }
+
+        /* --- 3. Dynamic Quick Interest Tags --- */
+        .tags-wrapper { padding: 8px 0 16px; }
+        .tag-headline { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 12px; text-align: left; }
+        .quick-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .quick-tag {
-            background: var(--white); border: 1px solid var(--border); padding: 8px 16px;
-            border-radius: 12px; font-size: 0.82rem; font-weight: 600; color: #334155;
-            cursor: pointer; transition: var(--transition); box-shadow: var(--tactile-shadow);
-            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--white); border: 1px solid var(--border-line); padding: 8px 16px;
+            border-radius: 4px; font-size: 0.82rem; font-weight: 600; color: var(--text-main);
+            cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px;
         }
-        .quick-tag:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); box-shadow: 0 8px 16px -4px var(--primary-glow); }
+        .quick-tag:hover { border-color: #cbd5e1; background: var(--bg); }
 
-        .info-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; max-width: 620px; }
-        .info-item { 
-            display: flex; flex-direction: column; align-items: flex-start;
-            background: var(--card-surface); border: 1px solid var(--border); 
-            padding: 24px; border-radius: 16px; box-shadow: var(--tactile-shadow); 
-            transition: var(--transition);
-        }
-        .info-item:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: rgba(16, 185, 129, 0.2); }
+        /* --- 4. Central Form Workstation --- */
+        .workspace-layout-block { display: grid; grid-template-columns: 1fr 340px; gap: 24px; padding: 24px 0; }
+        .form-panel { background: var(--white); border: 1px solid var(--border-line); padding: 32px; border-radius: var(--card-radius); }
         
-        .info-item i { 
-            width: 44px; height: 44px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.15rem; margin-bottom: 16px;
-        }
-        .item-email i { color: #2563eb; background: rgba(37, 99, 235, 0.05); }
-        .item-location i { color: #10b981; background: rgba(16, 185, 129, 0.05); }
-
-        .info-item h4 { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-        .info-item p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; font-weight: 500; text-align: left; }
-        
-        .info-link { font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: var(--transition); }
-        .info-item:hover .info-link { color: var(--primary); }
-
-        /* --- Frosted Dashboard Input Form Panel --- */
-        .contact-form-container { width: 100%; display: flex; align-items: center; }
-        .glass-form {
-            background: var(--card-surface);
-            border: 1px solid var(--border); padding: 45px; border-radius: var(--card-radius);
-            box-shadow: var(--tactile-shadow); width: 100%;
-        }
-        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; text-align: left; }
-        .form-group label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; }
-        
+        .form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; text-align: left; }
+        .form-group label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-main); }
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid transparent;
-            background: #f1f5f9; color: #0f172a; font-weight: 500; font-size: 0.92rem;
-            outline: none; transition: var(--transition);
+            width: 100%; padding: 10px 14px; border-radius: 4px; border: 1px solid var(--border-line);
+            background: var(--bg); color: var(--text-main); font-weight: 500; font-size: 0.88rem; outline: none; transition: var(--transition);
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px var(--primary-glow);
-        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--text-main); background: var(--white); }
 
-        .btn-glow-submit {
-            width: 100%; padding: 15px; border-radius: 10px; border: none; background: var(--primary);
-            color: var(--white); font-weight: 800; font-size: 0.88rem; text-transform: uppercase;
-            letter-spacing: 0.5px; cursor: pointer; transition: var(--transition);
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            box-shadow: 0 8px 20px -4px var(--primary-glow);
+        .btn-submit-action {
+            width: 100%; padding: 12px; border-radius: 4px; border: none; background: var(--secondary);
+            color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.82rem; text-transform: uppercase;
+            letter-spacing: 0.5px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-glow-submit:hover { background: #059669; transform: translateY(-1px); box-shadow: 0 12px 24px -4px rgba(5, 150, 105, 0.3); }
-        .btn-glow-submit i { font-size: 0.8rem; transition: var(--transition); }
-        .btn-glow-submit:hover i { transform: translateX(3px) translateY(-1px); }
+        .btn-submit-action:hover { background: var(--primary); }
 
-        /* Social Footbar Elements */
-        .social-tray-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 12px; text-align: left; }
-        .social-links-contact { display: flex; gap: 12px; }
+        /* --- 5. 2x2 Info Block & Channels Matrix --- */
+        .side-meta-column { display: flex; flex-direction: column; gap: 16px; }
+        .info-card-node {
+            background: var(--white); border: 1px solid var(--border-line); border-radius: var(--card-radius); padding: 20px;
+            display: flex; flex-direction: column; align-items: flex-start; gap: 8px; transition: var(--transition); text-decoration: none; color: inherit;
+        }
+        .info-card-node:hover { border-color: #cbd5e1; }
+        .info-card-node .icon-box { width: 32px; height: 30px; background: var(--bg); border: 1px solid var(--border-line); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+        .info-card-node.channel-email .icon-box { color: #3b82f6; }
+        .info-card-node.channel-hours .icon-box { color: #8b5cf6; }
+        .info-card-node.channel-location .icon-box { color: #10b981; }
+        .info-card-node.channel-response .icon-box { color: #f59e0b; }
+        
+        .info-card-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; }
+        .info-card-node p { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; text-align: left; line-height: 1.4; }
+        .info-card-node .info-link { font-size: 0.78rem; font-weight: 700; color: var(--primary); display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; }
+
+        .social-tray-box { background: var(--white); border: 1px solid var(--border-line); border-radius: var(--card-radius); padding: 20px; }
+        .social-tray-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 12px; }
+        .social-links-contact { display: flex; gap: 8px; }
         .social-links-contact a { 
-            width: 38px; height: 38px; background: var(--card-surface); border: 1px solid var(--border);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); text-decoration: none; transition: var(--transition); font-size: 0.95rem;
-            box-shadow: var(--tactile-shadow);
+            width: 36px; height: 34px; background: var(--bg); border: 1px solid var(--border-line);
+            border-radius: 4px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); text-decoration: none; transition: var(--transition); font-size: 0.9rem;
         }
-        .social-links-contact a:hover { color: var(--white); transform: translateY(-2px); }
-        .social-links-contact a.lnk-linkedin:hover { background: #0077b5; border-color: #0077b5; box-shadow: 0 4px 12px rgba(0, 119, 181, 0.2); }
-        .social-links-contact a.lnk-github:hover { background: #333333; border-color: #333333; box-shadow: 0 4px 12px rgba(51, 51, 51, 0.2); }
-        .social-links-contact a.lnk-instagram:hover { background: #e1306c; border-color: #e1306c; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.2); }
+        .social-links-contact a:hover { color: var(--white); background: var(--secondary); border-color: var(--secondary); }
 
-        /* --- Floating Success Response Popups --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;
+        /* --- 6. Comprehensive FAQ Accordion Section --- */
+        .faq-block { padding: 24px 0 40px; }
+        .faq-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border-line); border-radius: 6px; overflow: hidden; transition: var(--transition); }
+        .faq-trigger-btn {
+            width: 100%; padding: 18px 24px; background: none; border: none; outline: none;
+            display: flex; justify-content: space-between; align-items: center; gap: 20px;
+            cursor: pointer; text-align: left; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text-main);
         }
-        .modal-content {
-            background: var(--white); border: 1px solid var(--border);
-            padding: 40px; border-radius: 20px; text-align: center; max-width: 440px;
-            width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
-            animation: modalScale 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        @keyframes modalScale { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        
-        .modal-content h2 { font-size: 1.5rem; font-weight: 900; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.01em; }
-        .modal-content p { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 24px; }
-        
-        .btn-modal-close {
-            background: #0f172a; color: var(--white); border: none; width: 100%;
-            padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: var(--transition);
-            text-transform: uppercase; letter-spacing: 0.3px;
-        }
-        .btn-modal-close:hover { background: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+        .faq-trigger-btn i { font-size: 0.8rem; color: var(--text-muted); transition: transform 0.2s ease; }
+        .faq-content-panel { max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; background: var(--white); }
+        .faq-content-panel p { padding: 0 24px 24px 24px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; font-weight: 500; }
+        .faq-item.active .faq-trigger-btn i { transform: rotate(180deg); }
+        .faq-item.active .faq-content-panel { max-height: 200px; }
 
-        @media (max-width: 1024px) {
-            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
-            .contact-info h1 { font-size: 2.4rem; }
-            .glass-form { padding: 35px; }
-            .contact-hero { padding: 40px 0; }
-            .info-items { max-width: 100%; }
+        /* --- 7. Floating Toast Feedback --- */
+        .toast-notification {
+            position: fixed; top: 88px; right: 24px; background: var(--secondary); color: var(--white);
+            padding: 12px 20px; border-radius: 4px; display: none; align-items: center; gap: 10px;
+            font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1); z-index: 10000;
+            animation: toastSlide 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            border-left: 4px solid var(--primary);
         }
-        @media (max-width: 640px) {
-            .info-items { grid-template-columns: 1fr; }
+        @keyframes toastSlide { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        @media (max-width: 960px) {
+            .dept-grid, .workspace-layout-block { grid-template-columns: 1fr; gap: 16px; }
+            .form-group-row { grid-template-columns: 1fr; gap: 0; }
         }
     </style>
 </head>
 <body>
 
-<!-- Dynamic Universal Header Mount Component -->
-<div id="global-header"></div>
+    <div id="global-header"></div>
 
-<div class="bg-decoration">
-    <div class="grid-overlay"></div>
-</div>
-
-<section class="contact-hero">
-    <div class="container">
-        <div class="contact-wrapper">
+    <section class="contact-hero">
+        <div class="container">
+            <span class="badge">Contact Desk</span>
+            <h1>Let’s Architect Your <span>Digital Future</span></h1>
+            <p class="lead-text">Whether you are a commercial business partner looking to deploy secure full-stack layout nodes or an academic student needing lab reference blueprints, our routing desks are ready.</p>
             
-            <div class="contact-info">
-                <span class="badge">Get In Touch</span>
-                <h1>Let’s Architect Your <span>Digital Future.</span></h1>
-                <p class="lead-text">Whether you're an academic student looking to learn or a business partner ready to scale, Rakesh & Rashmi are here to help.</p>
-                
-                <h4 class="tag-headline">Select a Quick Interest Tag</h4>
-                <div class="quick-tags">
-                    <div class="quick-tag" onclick="fillQuickTag('Web Design', 'Hi Rakesh & Rashmi! I am looking to build a high-performance custom landing page layout for my business brand.')">🖥️ Web Layout Inquiry</div>
-                    <div class="quick-tag" onclick="fillQuickTag('Full-Stack', 'Hello WebNova! We need full-stack architecture support to build a robust, secure banking or financial dashboard app.')">⚡ Full-Stack Project</div>
-                    <div class="quick-tag" onclick="fillQuickTag('Academic', 'Hey instructors, I am an MCA/BCA student looking to access verified computer programming lab practical source files.')">📚 Academic Mentorship</div>
-                </div>
-
-                <div class="info-items">
-                    <div class="info-item item-email">
-                        <i class="fas fa-envelope-open-text"></i>
-                        <h4>Email Network</h4>
-                        <p>dev.webnovastudio@gmail.com</p>
-                        <a href="mailto:dev.webnovastudio@gmail.com" class="info-link">Launch Dispatcher &rarr;</a>
-                    </div>
-                    <div class="info-item item-location">
-                        <i class="fas fa-location-dot"></i>
-                        <h4>Headquarters</h4>
-                        <p>Karnataka, India (Global Remote Operation)</p>
-                        <a href="https://maps.google.com" target="_blank" class="info-link">View Workspace &rarr;</a>
-                    </div>
-                </div>
-
-                <h4 class="social-tray-label">Secure Channels</h4>
-                <div class="social-links-contact">
-                    <a href="#" class="lnk-linkedin" aria-label="LinkedIn Account Connection"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="lnk-github" aria-label="GitHub Repository Space"><i class="fab fa-github"></i></a>
-                    <a href="#" class="lnk-instagram" aria-label="Instagram Profile Portfolio"><i class="fab fa-instagram"></i></a>
-                </div>
+            <div class="stats-ribbon">
+                <div class="stat-node"><strong>24 Hours</strong><span>Avg Response</span></div>
+                <div class="stat-node"><strong>500+ Help</strong><span>Students Guided</span></div>
+                <div class="stat-node"><strong>100% Remote</strong><span>Global Support</span></div>
             </div>
+        </div>
+    </section>
 
-            <div class="contact-form-container">
-                <form id="contactForm" class="glass-form">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="contactName" placeholder="Your Name" required>
+    <div class="container">
+        
+        <div class="section-headline-bar">
+            <h2>1. Select Target Department</h2>
+        </div>
+        <div class="dept-grid">
+            <div class="dept-card active" data-dept="studio" onclick="switchDepartment(this, 'studio')">
+                <div class="mod-identity-block">
+                    <div class="icon-box"><i class="fas fa-browser"></i></div>
+                    <h3>WebNova Studio</h3>
+                </div>
+                <p>Commercial business layouts production, asymmetric responsive frontend landing nodes, and custom UI components architecture.</p>
+            </div>
+            <div class="dept-card" data-dept="academic" onclick="switchDepartment(this, 'academic')">
+                <div class="mod-identity-block">
+                    <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Code Craft Academic</h3>
+                </div>
+                <p>University computer applications study notes frameworks, lab manuals datasets, and verified practical problem source codes blocks.</p>
+            </div>
+            <div class="dept-card" data-dept="designers" onclick="switchDepartment(this, 'designers')">
+                <div class="mod-identity-block">
+                    <div class="icon-box"><i class="fas fa-palette"></i></div>
+                    <h3>RR Web Designers</h3>
+                </div>
+                <p>High-fidelity system wireframes composition, aesthetic vector asset branding packages, and presentation layer digital blueprints.</p>
+            </div>
+        </div>
+
+        <div class="tags-wrapper">
+            <h4 class="tag-headline">Or Select a Quick Interest Shortcut</h4>
+            <div class="quick-tags" id="tagsContainer">
+                </div>
+        </div>
+
+        <div class="section-headline-bar">
+            <h2>2. Dispatch Operational Lead Form Parameters</h2>
+        </div>
+
+        <div class="workspace-layout-block">
+            
+            <div class="form-panel">
+                <form id="contactForm">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label id="labelName">Full Name</label>
+                            <input type="text" id="contactName" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelContact">Email Address</label>
+                            <input type="email" id="contactEmail" placeholder="name@domain.com" required>
+                        </div>
                     </div>
+                    
+                    <div class="form-group-row" id="dynamicFieldsContainer">
+                        </div>
+
                     <div class="form-group">
-                        <label>Service Matrix Required</label>
-                        <select id="contactService">
-                            <option value="Web Design">Web Interface Layouts (WebNova Studio)</option>
-                            <option value="Full-Stack">Full-Stack Development (WebNova Studio)</option>
-                            <option value="Academic">Technical Mentorship (Code Craft Academic)</option>
-                        </select>
+                        <label id="labelMessage">Project Scope Description Message</label>
+                        <textarea id="contactMessage" rows="5" placeholder="Describe your operational targets or curriculum goals detail constraints..." required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Project Scope Message</label>
-                        <textarea id="contactMessage" rows="5" placeholder="Describe your deployment metrics or goals..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-glow-submit">
-                        Send Protocol Request <i class="fas fa-paper-plane"></i>
+                    <button type="submit" class="btn-submit-action">
+                        Send Lead Request Protocol <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
 
+            <div class="side-meta-column">
+                <a href="mailto:dev.webnovastudio@gmail.com" class="info-card-node channel-email">
+                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                    <h4>Email Dispatch</h4>
+                    <p>dev.webnovastudio<br>@gmail.com</p>
+                    <span class="info-link">Launch App &rarr;</span>
+                </a>
+                <div class="info-card-node channel-hours">
+                    <div class="icon-box"><i class="fas fa-clock"></i></div>
+                    <h4>Office Hours</h4>
+                    <p>Mon &ndash; Sat Operational<br>09:00 AM &ndash; 19:00 PM</p>
+                </div>
+                <div class="info-card-node channel-location">
+                    <div class="icon-box"><i class="fas fa-location-dot"></i></div>
+                    <h4>HQ Operations</h4>
+                    <p>Karnataka, India<br>Global Remote Node</p>
+                </div>
+                
+                <div class="social-tray-box">
+                    <h4>Secure Tracks</h4>
+                    <div class="social-links-contact">
+                        <a href="#" aria-label="LinkedIn Account Anchor"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub Repository Space"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Instagram Profile Link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-</section>
 
-<!-- Pop-up Response Modal Tracker Segment -->
-<div id="successModal" class="modal-overlay" style="display:none;">
-    <div class="modal-content" style="border-top: 4px solid var(--primary);">
-        <div class="success-icon" style="font-size: 3rem; color: var(--success); margin-bottom: 15px;">
-            <i class="fas fa-check-circle"></i>
+        <div class="faq-block">
+            <div class="section-headline-bar">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-trigger-btn" onclick="toggleFaq(this)">What is the standard production timeline for a custom design layout? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content-panel"><p>Standard landing page and UI component projects are prototyped and compiled into clean standalone code blocks within 3 to 7 working days, depending on operational scope parameters constraints.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger-btn" onclick="toggleFaq(this)">Are the university lab manuals checked against active college syllabi? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content-panel"><p>Yes, all curriculum files, text notes structures, and problem executable source code repositories blocks are updated every semester matching active parameters metrics used in computer applications programs.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger-btn" onclick="toggleFaq(this)">Can I request custom notes or a niche script automation build? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content-panel"><p>Absolutely. You can request specific resource sets or custom system script integrations by selecting the appropriate tracking department module inside our portal form above.</p></div>
+                </div>
+            </div>
         </div>
-        <h2>Email Composer Ready!</h2>
-        <p>Your request parameters have been generated. Click below if your local system mail dispatcher did not launch automatically.</p>
-        <button onclick="closeSuccessModal()" class="btn-modal-close">Got it!</button>
+
     </div>
-</div>
 
-<!-- Dynamic Universal Footer Mount Anchor Slot -->
-<div id="global-footer"></div>
+    <div class="toast-notification" id="toastAlert">
+        <i class="fas fa-envelope-open-text"></i> Opening local system mail client dispatcher...
+    </div>
 
-<!-- Core System Application Engine Injections -->
-<script src="main.js"></script>
-<script src="footer.js"></script>
-<script>
-    function fillQuickTag(serviceValue, messageText) {
-        document.getElementById('contactService').value = serviceValue;
-        document.getElementById('contactMessage').value = messageText;
-        
-        // Dynamic focus highlight animation on the message console
-        document.getElementById('contactMessage').focus();
-    }
+    <div id="global-footer"></div>
 
-    function closeSuccessModal() {
-        const modal = document.getElementById('successModal');
-        if (modal) { modal.style.display = 'none'; }
-    }
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    
+    <script>
+        /* ==========================================================================
+           📦 Curated Department Context Database Data Configuration Mapping
+           ========================================================================== */
+        const DEPARTMENT_MAP = {
+            studio: {
+                subject: "💼 WebNova Studio Inbound Lead",
+                fields: `
+                    <div class="form-group">
+                        <label>Service Interface Required</label>
+                        <select id="contactMeta1">
+                            <option value="Landing Layout">Custom Landing Page Layout</option>
+                            <option value="Full-Stack System">Full-Stack Application Node</option>
+                            <option value="UI Component Kit">Modular UI Reusable Elements</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Timeline Allocation</label>
+                        <select id="contactMeta2">
+                            <option value="Urgent Stack">Express Delivery (< 1 Week)</option>
+                            <option value="Standard Pipeline">Standard Frame (1-2 Weeks)</option>
+                            <option value="Flexible Schedule">Flexible Structural Scaling</option>
+                        </select>
+                    </div>
+                `,
+                tags: [
+                    { label: "🖥️ Web Layout Inquiry", fill1: "Landing Layout", msg: "Hi Rakesh & Rashmi! I am looking to build a high-performance custom landing page layout for my business brand." },
+                    { label: "⚡ Full-Stack Project", fill1: "Full-Stack System", msg: "Hello WebNova! We need full-stack architecture support to build a robust, secure data dashboard app application." },
+                    { label: "🎨 UI Component Request", fill1: "UI Component Kit", msg: "Hey team! I need reusable modular UI component design sheets configurations optimized for my interface stack." }
+                ]
+            },
+            academic: {
+                subject: "📚 Code Craft Academic Mentorship Request",
+                fields: `
+                    <div class="form-group">
+                        <label>Active University Course Track</label>
+                        <select id="contactMeta1">
+                            <option value="MCA Student">Master of Computer Applications (MCA)</option>
+                            <option value="BCA Student">Bachelor of Computer Applications (BCA)</option>
+                            <option value="Other Technology">B.Tech / Other Technical Degree</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Practical Syllabus Topic</label>
+                        <input type="text" id="contactMeta2" placeholder="e.g. C++ Pointers, Java JDBC, SQL Normalization" required>
+                    </div>
+                `,
+                tags: [
+                    { label: "📚 Academic Mentorship", fill1: "MCA Student", fill2: "Lab Practical Source Code Sheets", msg: "Hey instructors, I am a student looking to access verified computer programming lab practical source files directories." },
+                    { label: "🧪 Custom Code Request", fill1: "BCA Student", fill2: "Niche Data Algorithm Manuals", msg: "Hello Code Craft! I need specific structural logic solution checking manual scripts references regarding my semester assignments tracking." }
+                ]
+            },
+            designers: {
+                subject: "🎨 RR Web Designers Branding Inquiry",
+                fields: `
+                    <div class="form-group">
+                        <label>Branding Asset Domain</label>
+                        <select id="contactMeta1">
+                            <option value="Vector Logo Profile">Custom Corporate Logo &amp; Identity Pack</option>
+                            <option value="System Wireframes Grid">High-Fidelity UI Interface Wireframes</option>
+                            <option value="Graphics Portfolio Pack">Creative Digital Marketing Artwork Graphics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Aesthetic Theme Tone</label>
+                        <select id="contactMeta2">
+                            <option value="Minimalist Clean Light">Minimalist Clean Light System Space</option>
+                            <option value="Futuristic Cyber Tech">Futuristic Cyber Techno Bold Canvas</option>
+                            <option value="Classic Enterprise Formal">Classic Enterprise Elegant Profile</option>
+                        </select>
+                    </div>
+                `,
+                tags: [
+                    { label: "💎 Premium Brand System", fill1: "Vector Logo Profile", fill2: "Minimalist Clean Light", msg: "Hi RR Designers! I am looking to sculpt a minimalist vector identity bundle assets stack for our operational node." },
+                    { label: "✏️ UI Wireframe Grid Layout", fill1: "System Wireframes Grid", fill2: "Futuristic Cyber Tech", msg: "Hello! I need comprehensive interface skeleton wireframes vectors designed to lay out our platform flow parameters." }
+                ]
+            }
+        };
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+        let activeSelectedDepartment = "studio";
 
-        const name = document.getElementById('contactName').value;
-        const service = document.getElementById('contactService').value;
-        const message = document.getElementById('contactMessage').value;
-        const targetEmail = "dev.webnovastudio@gmail.com";
-        
-        const subject = encodeURIComponent(`💼 WebNova Lead - ${name} (${service})`);
-        const body = encodeURIComponent(
-            `NEW BUSINESS INQUIRY\n\n` +
-            `Client Name: ${name}\n` +
-            `Service Required: ${service}\n\n` +
-            `Message / Scope Details:\n${message}`
-        );
+        function switchDepartment(cardElement, deptKey) {
+            activeSelectedDepartment = deptKey;
+            document.querySelectorAll('.dept-card').forEach(c => c.classList.remove('active'));
+            cardElement.classList.add('active');
 
-        window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+            const targetsMap = DEPARTMENT_MAP[deptKey];
+            
+            // Re-render Dynamic Form Input Fields Stacks
+            document.getElementById('dynamicFieldsContainer').innerHTML = targetsMap.fields;
 
-        const modal = document.getElementById('successModal');
-        if(modal) { modal.style.display = 'flex'; }
-        
-        document.getElementById('contactForm').reset(); 
-        setTimeout(() => { closeSuccessModal(); }, 6000);
-    });
-</script>
+            // Re-render Dynamic Interconnected Quick Interest Tags
+            const tagsContainer = document.getElementById('tagsContainer');
+            tagsContainer.innerHTML = "";
+            targetsMap.tags.forEach(tag => {
+                const buttonTagHTML = `<div class="quick-tag" onclick="injectTagValues('${tag.fill1}', '${tag.fill2 || ''}', \`${tag.msg}\`)">${tag.label}</div>`;
+                tagsContainer.insertAdjacentHTML('beforeend', buttonTagHTML);
+            });
+        }
+
+        function injectTagValues(val1, val2, messageString) {
+            document.getElementById('contactMeta1').value = val1;
+            const targetMeta2 = document.getElementById('contactMeta2');
+            if (targetMeta2) targetMeta2.value = val2;
+            document.getElementById('contactMessage').value = messageString;
+            document.getElementById('contactMessage').focus();
+        }
+
+        function toggleFaq(btnElement) {
+            const currentFaqItem = btnElement.parentElement;
+            const activeState = currentFaqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!activeState) currentFaqItem.classList.add('active');
+        }
+
+        /* ==========================================================================
+           🧠 FORM DISPATCH PROTOCOL INTEGRATION PIPELINE
+           ========================================================================= */
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const senderEmail = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            const parameter1 = document.getElementById('contactMeta1').value;
+            const meta2Node = document.getElementById('contactMeta2');
+            const parameter2 = meta2Node ? meta2Node.value : "N/A";
+
+            const coreMap = DEPARTMENT_MAP[activeSelectedDepartment];
+            const targetEmail = "dev.webnovastudio@gmail.com";
+
+            const subjectString = encodeURIComponent(`${coreMap.subject} - ${name}`);
+            const bodyString = encodeURIComponent(
+                `WEBNOVA DATA INBOUND ROUTING SPECIFICATION\n` +
+                `=========================================\n\n` +
+                `Sender Identity: ${name}\n` +
+                `Direct Communication Node: ${senderEmail}\n` +
+                `Taxonomy Matrix: ${parameter1}\n` +
+                `Specification Parameter 2: ${parameter2}\n\n` +
+                ` लीड स्कोप संदेश (Message Body Details):\n` +
+                `-----------------------------------------\n` +
+                `${message}\n\n` +
+                `=========================================\n` +
+                `Generated Automated Dispatch Integration Sync System Matrix // June 2026.`
+            );
+
+            // Fire target dispatch protocols redirect strings arrays
+            window.location.href = `mailto:${targetEmail}?subject=${subjectString}&body=${bodyString}`;
+
+            // Launch localized toast warning alert confirmation loops
+            const toastAlert = document.getElementById('toastAlert');
+            toastAlert.style.display = 'flex';
+            
+            document.getElementById('contactForm').reset();
+            setTimeout(() => { toastAlert.style.display = 'none'; }, 5000);
+        });
+
+        // Initialize Runtime Configuration Maps Elements On Boot Sequence Loop
+        switchDepartment(document.querySelector('.dept-card.active'), 'studio');
+    </script>
 </body>
 </html>
