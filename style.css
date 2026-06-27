@@ -1426,3 +1426,123 @@ body.founders-page {
     .fd-cta-actions { flex-direction: column; width: 100%; gap: 12px; }
     .fd-action-btn { width: 100%; justify-content: center; }
 }
+
+/* ==========================================================================
+   ⚓ ISOLATED ADVANTAGE PORTAL LAYOUT SYSTEMS (Safe Extension)
+   ========================================================================== */
+body.why-choose-root {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+.wc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.wc-section { padding: 80px 0; text-align: center; }
+.wc-section.bg-white { background-color: #ffffff; }
+.wc-section.bg-gray { background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.wc-section.bg-dark { background-color: #0f172a; color: #ffffff; }
+
+.wc-section-header {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+.wc-section-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0f172a !important;
+}
+.wc-section.bg-dark .wc-section-header h2 { color: #ffffff !important; }
+.wc-section-header p {
+    font-size: 0.92rem !important;
+    color: #475569 !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    margin-top: 6px !important;
+}
+
+/* --- Hero Layout Configurations --- */
+.wc-hero-banner { padding: 56px 0 40px; text-align: center; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+.wc-badge {
+    background: rgba(16, 185, 129, 0.06); color: #10b981; padding: 3px 10px; border-radius: 4px;
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    display: inline-block; border: 1px solid rgba(16, 185, 129, 0.15); margin-bottom: 8px;
+}
+.wc-hero-banner h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; color: #0f172a !important; line-height: 1.2; }
+.wc-hero-banner h1 span { color: #10b981 !important; }
+.wc-hero-banner p { color: #475569 !important; font-size: 0.95rem !important; font-weight: 500; line-height: 1.6 !important; max-width: 720px !important; margin: 0 auto 24px !important; text-align: center !important; }
+
+.wc-hero-stats-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.wc-stat-pill { background: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 4px; font-size: 0.72rem; color: #475569; display: flex; align-items: center; gap: 6px; }
+.wc-stat-pill strong { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a !important; font-size: 0.75rem; }
+.wc-stat-pill span { text-transform: uppercase; font-weight: 700; letter-spacing: 0.3px; font-size: 0.65rem; }
+
+/* --- Three Target Segments Cards --- */
+.wc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
+.wc-target-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 28px 24px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.wc-target-card i { font-size: 1.15rem; color: #10b981; background: rgba(16, 185, 129, 0.04); width: 36px; height: 34px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; }
+.wc-target-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+.wc-target-card p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.5 !important; font-weight: 500 !important; text-align: left; }
+
+/* --- Four Horizontal Strategic Value Cards --- */
+.wc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+.wc-value-row { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; display: flex; align-items: flex-start; gap: 20px; }
+.value-icon-box { width: 36px; height: 34px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #10b981; flex-shrink: 0; }
+.value-text-box { display: flex; flex-direction: column; gap: 4px; }
+.value-text-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; text-align: left; }
+.value-text-box p { font-size: 0.82rem; color: #475569; line-height: 1.45; font-weight: 500; text-align: left; }
+
+/* --- Two Column Strategy Comparison Matrices --- */
+.wc-comparison-board { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+.comp-panel { padding: 32px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.comp-panel.standard-resource { background-color: #ffffff; border-top: 4px solid #ef4444; }
+.comp-panel.webnova-resource { background-color: #ffffff; border-top: 4px solid #10b981; }
+.comp-panel h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a !important; }
+.comp-panel ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.comp-panel li { font-size: 0.85rem; font-weight: 500; color: #475569; display: flex; align-items: center; gap: 10px; }
+.comp-panel.standard-resource i { color: #ef4444; }
+.comp-panel.webnova-resource i { color: #10b981; }
+
+/* --- Dual Column Process Flow Timelines --- */
+.split-workflow-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; text-align: left; }
+.workflow-column { display: flex; flex-direction: column; gap: 16px; }
+.workflow-title-header { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+.workflow-title-header i { font-size: 1rem; color: #10b981; }
+.workflow-title-header h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: #0f172a !important; }
+
+.workflow-steps-vertical { display: flex; flex-direction: column; gap: 12px; }
+.wf-step-node { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 6px; display: flex; align-items: flex-start; gap: 16px; }
+.wf-num { width: 22px; height: 20px; background: #0f172a; color: #ffffff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.wf-step-node h5 { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; color: #0f172a !important; margin-bottom: 2px; }
+.wf-step-node p { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+
+/* --- Premium Editorial Quote Section --- */
+.wc-editorial-quote { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 600; line-height: 1.5; color: #0f172a !important; text-align: center; max-width: 800px; margin: 0 auto; font-style: italic; }
+
+/* --- Dark Core System Action Conversion Panels --- */
+.wc-cta-container { max-width: 750px; margin: 0 auto; text-align: center; }
+.wc-section.bg-dark h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #ffffff !important; margin-bottom: 6px; }
+.wc-section.bg-dark p { font-size: 0.88rem !important; color: #94a3b8 !important; line-height: 1.5 !important; font-weight: 500 !important; text-align: center !important; margin-bottom: 24px !important; }
+.wc-cta-actions-row { display: flex; justify-content: center; gap: 16px; align-items: center; }
+.wc-action-btn { padding: 12px 20px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.2s ease; }
+.wc-action-btn.primary-btn { background: #10b981; color: #ffffff !important; }
+.wc-action-btn.primary-btn:hover { background: #059669; }
+.wc-action-btn.secondary-btn { background: #2563eb; color: #ffffff !important; }
+.wc-action-btn.secondary-btn:hover { background: #1d4ed8; }
+
+/* ==========================================================================
+   ⚓ SYSTEM RESPONSIVE MEDIA BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 960px) {
+    .wc-grid-3, .wc-grid-2, .wc-comparison-board, .split-workflow-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .wc-hero-banner h1 { font-size: 1.8rem; }
+    .wc-cta-actions-row { flex-direction: column; width: 100%; gap: 12px; }
+    .wc-action-btn { width: 100%; justify-content: center; }
+}
