@@ -1202,3 +1202,227 @@ body.mission-root {
     .m-bento-card.span-2 { grid-column: span 1; }
     .m-col-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ==========================================================================
+   ⚓ ISOLATED ABOUT PORTAL WORKSPACE STYLE COMPILATION (Safe Extension)
+   ========================================================================== */
+body.founders-page {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+.fd-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.fd-section {
+    padding: 80px 0;
+    text-align: center;
+}
+.fd-section.bg-white { background-color: #ffffff; }
+.fd-section.bg-gray { background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.fd-section.bg-dark { background-color: #0f172a; color: #ffffff; }
+
+.fd-section-header {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+.fd-section-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0f172a !important;
+}
+.fd-section-header p {
+    font-size: 0.92rem !important;
+    color: #475569 !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    margin-top: 6px !important;
+}
+
+/* --- Hero Layout Configurations --- */
+.fd-hero-section {
+    padding: 56px 0 40px;
+    text-align: center;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+.fd-badge {
+    background: rgba(16, 185, 129, 0.06);
+    color: #10b981;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    margin-bottom: 8px;
+}
+.fd-hero-section h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    color: #0f172a !important;
+    line-height: 1.2;
+}
+.fd-hero-section h1 span { color: #10b981 !important; }
+.fd-hero-section p {
+    color: #475569 !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+    max-width: 720px !important;
+    margin: 0 auto 24px !important;
+    text-align: center !important;
+}
+.fd-hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.fd-stat-pill {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fd-stat-pill strong { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a !important; font-size: 0.75rem; }
+.fd-stat-pill span { text-transform: uppercase; font-weight: 700; letter-spacing: 0.3px; font-size: 0.65rem; }
+
+/* --- Sharp Anti-Blur Personal Cards --- */
+.fd-cards-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+.fd-profile-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.fd-card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+}
+.fd-avatar-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #e2e8f0;
+}
+.fd-avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Locks square constraints preventing circle vector blur distortion */
+}
+.fd-identity-text h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a !important;
+}
+.fd-role { font-size: 0.82rem; color: #475569; font-weight: 600; display: block; }
+.fd-edu { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; display: inline-block; margin-top: 2px; }
+
+.fd-personal-quote {
+    font-size: 0.86rem !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+    text-align: left !important;
+    font-weight: 500 !important;
+    font-style: italic;
+    border-left: 3px solid #10b981;
+    padding-left: 14px;
+}
+
+.fd-metadata-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 16px;
+}
+.fd-meta-box { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.fd-meta-box h4, .fd-meta-box h5 { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a !important; }
+.fd-meta-box ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.fd-meta-box li { font-size: 0.82rem; color: #475569; font-weight: 500; padding-left: 12px; position: relative; text-align: left; }
+.fd-meta-box li::before { content: "•"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
+
+.fd-card-footer {
+    width: 100%;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fd-status-signal { font-size: 0.78rem; font-weight: 600; color: #475569; display: inline-flex; align-items: center; gap: 6px; }
+.pulse-dot { width: 6px; height: 6px; background-color: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #10b981; }
+.fd-socials a { width: 32px; height: 30px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #475569; text-decoration: none; font-size: 0.85rem; }
+.fd-socials a:hover { background: #0f172a; color: #ffffff !important; border-color: #0f172a; }
+
+/* --- Specialties Grid Array --- */
+.fd-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.fd-spec-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.fd-spec-card i { font-size: 1.15rem; color: #10b981; background: rgba(16, 185, 129, 0.04); width: 36px; height: 34px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; }
+.fd-spec-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+.fd-spec-card p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.45 !important; font-weight: 500 !important; text-align: left; }
+
+/* --- Value Indicators Layout --- */
+.fd-reasons-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; background: #ffffff; border: 1px solid #e2e8f0; padding: 32px; border-radius: 8px; margin-top: 16px; }
+.fd-reason-node { display: flex; align-items: center; gap: 10px; }
+.fd-reason-node i { color: #10b981; font-size: 0.95rem; }
+.fd-reason-node span { font-size: 0.85rem; color: #475569; font-weight: 600; text-align: left; }
+
+/* --- Dark Conversion Section Modules --- */
+.fd-cta-wrapper { max-width: 750px; margin: 0 auto; text-align: center; }
+.fd-section.bg-dark h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #ffffff !important; margin-bottom: 6px; }
+.fd-section.bg-dark p { font-size: 0.88rem !important; color: #94a3b8 !important; line-height: 1.5 !important; font-weight: 500 !important; text-align: center !important; margin-bottom: 24px !important; }
+.fd-cta-actions { display: flex; justify-content: center; gap: 16px; align-items: center; }
+.fd-action-btn { padding: 12px 20px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.2s ease; }
+.fd-action-btn.primary-btn { background: #2563eb; color: #ffffff !important; }
+.fd-action-btn.primary-btn:hover { background: #10b981; }
+.fd-action-btn.link-btn { background: transparent; color: #38bdf8 !important; }
+.fd-action-btn.link-btn:hover { text-decoration: underline !important; color: #ffffff !important; }
+
+/* ==========================================================================
+   ⚓ RESPONSIVE VIEWPORT BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 960px) {
+    .fd-metadata-grid, .fd-grid-3, .fd-reasons-matrix { grid-template-columns: 1fr; gap: 16px; }
+    .fd-hero-section h1 { font-size: 1.8rem; }
+    .fd-cta-actions { flex-direction: column; width: 100%; gap: 12px; }
+    .fd-action-btn { width: 100%; justify-content: center; }
+}
