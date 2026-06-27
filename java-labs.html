@@ -110,183 +110,180 @@
     <script src="footer.js"></script>
 
     <script>
-        /* ==========================================================================
-           📦 CENTRAL SINGLE SOURCE OF TRUTH COMPLETE SYSTEM REFERENCE DATABASE
-           ========================================================================== */
-        const LAB_DATABASE = [
-            // --- 1. LANGUAGE FUNDAMENTALS ---
-            { id: "p1", title: "01. Hello World", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`, logic: "Execution starts exactly at the public main() entry point. The static descriptor System.out triggers Java's native print stream console handler channels directly.", output: "$ javac Main.java\n$ java Main\nHello World", viva: [{ q: "What does 'public static void main' mean?", a: "public allows access from outside the package; static lets the JVM call the method without creating an object instance; void means it returns no value; main is the hardcoded entry string." }, { q: "What is String[] args?", a: "An array of String objects that stores command-line arguments passed to the application during initial startup execution." }] },
-            { id: "p2", title: "02. Add Two Numbers", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 10, b = 20;\n        System.out.println("Sum: " + (a + b));\n    }\n}`, logic: "Allocates two primitive integer cells on the localized execution thread stack frame. Computes sum values directly inside the stream string evaluation context.", output: "$ java Main\nSum: 30", viva: [{ q: "What is operator overloading in the context of String concatenation?", a: "The '+' symbol is the only overloaded operator in Java; it shifts behaviors to combine operands into strings when strings are present." }] },
-            { id: "p3", title: "03. Swap (3rd Var)", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 5, b = 10;\n        int t = a; a = b; b = t;\n        System.out.println(a + " " + b);\n    }\n}`, logic: "Allocates a temporary integer storage cell on the stack. Caches variable 'a' to safeguard data values before executing positional assignments loops.", output: "$ java Main\n10 5", viva: [{ q: "What is the space metrics overhead of this method?", a: "O(1) auxiliary space allocation because memory requirements remain constant regardless of data values scale." }] },
-            { id: "p4", title: "04. Swap (No Var)", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 5, b = 10;\n        a = a + b; b = a - b; a = a - b;\n        System.out.println(a + " " + b);\n    }\n}`, logic: "Executes mathematical inversion. Rotates register flags values using successive additions and differences configurations without initializing extra reference pointers.", output: "$ java Main\n10 5", viva: [{ q: "What is a potential trap when swapping without an interim variable?", a: "Integer overflow states can occur if the sum total (a + b) surpasses the absolute maximum limits of a 32-bit int datatype." }] },
-            { id: "p5", title: "05. Even or Odd", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int n = 15;\n        if(n % 2 == 0) System.out.println("Even");\n        else System.out.println("Odd");\n    }\n}`, logic: "Employs the mod (%) arithmetic operator to verify division parity remainders against zero targets within structural branches.", output: "$ java Main\nOdd", viva: [{ q: "Is there a faster bitwise alternative to checking parity configurations?", a: "Yes. Running bitwise AND (n & 1) isolates the least significant bit register directly, bypassing division math steps entirely." }] },
+    /* ==========================================================================
+       📦 CENTRAL SINGLE SOURCE OF TRUTH PLATFORM DIRECTORY DATABASE (ALL PROGRAMS)
+       ========================================================================== */
+    const LAB_DATABASE = [
+        // --- GROUP 1: LANGUAGE FUNDAMENTALS ---
+        { id: "p1", title: "01. Hello World", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World");\n    }\n}`, logic: "Output Matrix: Utilizes the static standard system out print stream descriptor to pipe strings to stdout console channels.", output: "$ javac Main.java\n$ java Main\nHello World", viva: [{ q: "What does 'public static void main' mean?", a: "public allows JVM access; static allows method invocation without instantiating objects; void means zero value return." }] },
+        { id: "p2", title: "02. Add Two Numbers", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 10, b = 20;\n        System.out.println("Sum: " + (a + b));\n    }\n}`, logic: "Binary Operators: Evaluates standard arithmetic sum additions inside statement execution tracks.", output: "$ java Main\nSum: 30", viva: [{ q: "Why wrap (a + b) inside parentheses parameters?", a: "To ensure mathematical computation compiles first before evaluating string string appending operations parameters." }] },
+        { id: "p3", title: "03. Swap (3rd Var)", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 5, b = 10;\n        int t = a; a = b; b = t;\n        System.out.println(a + " " + b);\n    }\n}`, logic: "Temporary Buffer: Allocates an interim stack variable tracker block to protect data values from overwritten sweeps.", output: "$ java Main\n10 5", viva: [{ q: "What memory space manages these primitive integers?", a: "Local primitive execution values variables are stored inside runtime thread stack frames." }] },
+        { id: "p4", title: "04. Swap (No Var)", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int a = 5, b = 10;\n        a = a + b; b = a - b; a = a - b;\n        System.out.println(a + " " + b);\n    }\n}`, logic: "Arithmetic Inversion: Runs logic accumulators and differences configurations to swap data states without space overhead scales.", output: "$ java Main\n10 5", viva: [{ q: "Can this cause values integer boundary leaks?", a: "Yes, exceeding standard Integer.MAX_VALUE limits causes bit overflow wrapping anomalies." }] },
+        { id: "p5", title: "05. Even or Odd", category: "Language Fundamentals", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `public class Main {\n    public static void main(String[] args) {\n        int n = 15;\n        if(n % 2 == 0) System.out.println("Even");\n        else System.out.println("Odd");\n    }\n}`, logic: "Modulo Operator: Computes conditional remainder metrics verifying if numerical divisions leave balances.", output: "$ java Main\nOdd", viva: [{ q: "What does the '%' operator track?", a: "Isolates the remaining mathematical remainder scalar left over following integer long division steps." }] },
 
-            // --- 2. CORE STRINGS & ALGORITHMS ---
-            { id: "p24", title: "24. String Palindrome", category: "Strings & Algorithms", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(N)", code: `public class Main {\n    public static void main(String[] args) {\n        String s = "racecar";\n        String r = new StringBuilder(s).reverse().toString();\n        System.out.println(s.equals(r));\n    }\n}`, logic: "Instantiates a mutable StringBuilder workspace container inside the system heap space. Executes characters pointer reverses before triggering equality validations rules.", output: "$ java Main\ntrue", viva: [{ q: "Why use StringBuilder instead of standard String for reversals?", a: "Standard Strings are immutable in Java. String modifications cause continuous heap allocations; StringBuilder avoids memory waste by altering data inside the same buffer block." }, { q: "What is the difference between equals() and '=='?", a: "equals() validates matching character content data on the heap, while '==' tests if two reference pointers point to the exact same memory address slot." }] },
-            { id: "p25", title: "25. Reverse String", category: "Strings & Algorithms", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(N)", code: `public class Main {\n    public static void main(String[] args) {\n        String s = "Nova", r = "";\n        for(int i = s.length()-1; i >= 0; i--) r += s.charAt(i);\n        System.out.println(r);\n    }\n}`, logic: "Iterates from the highest string array boundary down to zero index markers, extracting individual characters sequentially to compile an inverted destination block.", output: "$ java Main\navoN", viva: [{ q: "What is a major problem with concatenating strings inside a loop?", a: "It causes memory thrashing. Each loop iteration discards the old string and allocates an entirely new String object on the heap container." }] },
+        // --- GROUP 2: STRINGS & ALGORITHMS ---
+        { id: "p24", title: "24. String Palindrome", category: "Strings & Algorithms", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(N)", code: `public class Main {\n    public static void main(String[] args) {\n        String s = "racecar";\n        String r = new StringBuilder(s).reverse().toString();\n        System.out.println(s.equals(r));\n    }\n}`, logic: "Heap Allocation: Uses the mutable StringBuilder infrastructure class helper to execute fast structural characters flips operations safely.", output: "$ java Main\ntrue", viva: [{ q: "Why use StringBuilder over standard String variables references?", a: "Java Strings are immutable. Looping string edits creates garbage heap footprint clusters; StringBuilder alters memory data locally inside one buffer block." }] },
+        { id: "p25", title: "25. Reverse String", category: "Strings & Algorithms", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(N)", code: `public class Main {\n    public static void main(String[] args) {\n        String s = "Nova", r = "";\n        for(int i = s.length()-1; i >= 0; i--) r += s.charAt(i);\n        System.out.println(r);\n    }\n}`, logic: "Backward Extraction Loops: Loops through character string bounds backward to extract data and build alternative sequences.", output: "$ java Main\navoN", viva: [{ q: "What occurs inside memory frames during (r += s.charAt(i)) loops?", a: "Creates entirely distinct discarded String objects on each pass, degrading loop performance tracks metrics." }] },
 
-            // --- 3. OBJECT-ORIENTED PROGRAMMING ---
-            { id: "p32", title: "32. Class & Object", category: "Object Oriented Java", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `class Demo {\n    void hi() { System.out.println("Hi"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Demo obj = new Demo(); obj.hi();\n    }\n}`, logic: "Configures custom blueprints structures maps. Instantiates a dynamic reference segment inside the heap using new handles, pointing variable trackers from stack frames.", output: "$ java Main\nHi", viva: [{ q: "Where does an object instance live vs its reference tracker variable?", a: "The constructed object instance lives on the system heap, while the tracking pointer reference variable sits inside local thread stack frames." }] },
-            { id: "p35", title: "35. Method Override", category: "Object Oriented Java", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `class Parent { void show() { System.out.println("P"); } }\nclass Child extends Parent {\n    @Override void show() { System.out.println("C"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Parent obj = new Child(); obj.show();\n    }\n}`, logic: "Executes dynamic runtime polymorphism dispatch tracking. Resolves exact code execution paths at runtime using the underlying object type parameters.", output: "$ java Main\nC", viva: [{ q: "What is Dynamic Method Dispatch?", a: "It is the process where a call to an overridden method is resolved at runtime based on the actual object instance, rather than the reference type." }] },
+        // --- GROUP 3: OBJECT ORIENTED JAVA ---
+        { id: "p32", title: "32. Class & Object", category: "Object Oriented Java", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `class Demo {\n    void hi() { System.out.println("Hi"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Demo obj = new Demo(); obj.hi();\n    }\n}`, logic: "Object Construction: Reserves dynamic instance references data structures blocks inside system heap memory layers using explicitly allocated new operators markers.", output: "$ java Main\nHi", viva: [{ q: "What is an object in Java framework design?", a: "A real instance instantiation of a class blueprint template, carrying its own state fields registers." }] },
+        { id: "p35", title: "35. Method Override", category: "Object Oriented Java", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `class Parent { void show() { System.out.println("P"); } }\nclass Child extends Parent {\n    @Override void show() { System.out.println("C"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Parent obj = new Child(); obj.show();\n    }\n}`, logic: "Runtime Polymorphism: Resolves and fires sub-class code configurations overrides using dynamic dispatch lookups architectures maps.", output: "$ java Main\nC", viva: [{ q: "What conditions establish dynamic overriding rules parameters?", a: "Methods signatures must match identically across inheritance hierarchies parent-child lines." }] },
 
-            // --- 4. ADVANCED CONCURRENCY & JAVA 8 ---
-            { id: "p61", title: "61. Thread Pool Executor", category: "Advanced Concurrency & Streams", tier: "Advanced", timeComp: "O(N)", spaceComp: "O(K)", code: `import java.util.concurrent.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        ExecutorService pool = Executors.newFixedThreadPool(3);\n        for(int i=0; i<5; i++) {\n            pool.execute(() -> System.out.println(Thread.currentThread().getName()));\n        }\n        pool.shutdown();\n    }\n}`, logic: "Implements high-performance resource reuse architecture. Recycles a fixed set of worker threads from internal thread pools to process tasks, preventing system thrashing.", output: "$ java Main\npool-1-thread-1\npool-1-thread-2\npool-1-thread-3\npool-1-thread-1", viva: [{ q: "Why use thread pools instead of manually spawning native threads?", a: "Spawning threads incurs significant OS kernel allocation overhead. Thread pools keep worker threads alive to process tasks efficiently, saving system memory." }, { q: "What does pool.shutdown() execute?", a: "It stops the executor from accepting new tasks while allowing currently queued threads to finish their execution cycles safely." }] }
-        ];
+        // --- GROUP 4: ADVANCED CONCURRENCY & STREAMS ---
+        { id: "p61", title: "61. Thread Pool Executor", category: "Advanced Concurrency & Streams", tier: "Advanced", timeComp: "O(N)", spaceComp: "O(K)", code: `import java.util.concurrent.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        ExecutorService pool = Executors.newFixedThreadPool(3);\n        for(int i=0; i<5; i++) {\n            pool.execute(() -> System.out.println(Thread.currentThread().getName()));\n        }\n        pool.shutdown();\n    }\n}`, logic: "Functional Bi-Consumer Lambdas: Reuses a fixed pool of initialized threads to execute system tasks concurrently, preventing memory exhaustion bugs.", output: "$ java Main\npool-1-thread-1\npool-1-thread-2\npool-1-thread-3\npool-1-thread-1", viva: [{ q: "What risk accompanies un-pooled thread spawning pipelines?", a: "Continuous thread generation triggers severe OS kernel memory leaks and CPU context-switching thrashing constraints." }] }
+    ];
 
-        let activeTargetIndexId = "p1";
-        let localSearchQueryStringCache = "";
+    let activeTargetIndexId = "p1";
+    let localSearchQueryStringCache = "";
 
-        /* ==========================================================================
-           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
-           ========================================================================== */
-        function renderCatalogTree() {
-            const directoryContainer = document.getElementById('catalogDirectory');
-            directoryContainer.innerHTML = "";
+    /* ==========================================================================
+       🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+       ========================================================================== */
+    function renderCatalogTree() {
+        const directoryContainer = document.getElementById('catalogDirectory');
+        directoryContainer.innerHTML = "";
 
-            const catalogGroupedTree = {};
-            LAB_DATABASE.forEach(item => {
-                const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
-                                    item.category.toLowerCase().includes(localSearchQueryStringCache);
-                
-                if (searchMatch) {
-                    if (!catalogGroupedTree[item.category]) {
-                        catalogGroupedTree[item.category] = [];
-                    }
-                    catalogGroupedTree[item.category].push(item);
+        const catalogGroupedTree = {};
+        LAB_DATABASE.forEach(item => {
+            const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
+                                item.category.toLowerCase().includes(localSearchQueryStringCache);
+            
+            if (searchMatch) {
+                if (!catalogGroupedTree[item.category]) {
+                    catalogGroupedTree[item.category] = [];
                 }
+                catalogGroupedTree[item.category].push(item);
+            }
+        });
+
+        const uniqueKeys = Object.keys(catalogGroupedTree);
+        if (uniqueKeys.length === 0) {
+            directoryContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
+            return;
+        }
+
+        uniqueKeys.forEach(categoryKey => {
+            let listElementsHTML = "";
+            catalogGroupedTree[categoryKey].forEach(item => {
+                const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
+                listElementsHTML += `<li class="lab-item ${activeStateClass}" data-id="${item.id}">${item.title}</li>`;
             });
 
-            const uniqueKeys = Object.keys(catalogGroupedTree);
-            if (uniqueKeys.length === 0) {
-                directoryContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
-                return;
-            }
-
-            uniqueKeys.forEach(categoryKey => {
-                let listElementsHTML = "";
-                catalogGroupedTree[categoryKey].forEach(item => {
-                    const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
-                    listElementsHTML += `<li class="lab-item ${activeStateClass}" data-id="${item.id}">${item.title}</li>`;
-                });
-
-                const groupHTML = `
-                    <div class="category-group-container" data-cat-name="${categoryKey}">
-                        <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
-                            <span>▼ ${categoryKey}</span>
-                        </div>
-                        <ul class="lab-list">
-                            ${listElementsHTML}
-                        </ul>
+            const groupHTML = `
+                <div class="category-group-container" data-cat-name="${categoryKey}">
+                    <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
+                        <span>▼ ${categoryKey}</span>
                     </div>
-                `;
-                directoryContainer.insertAdjacentHTML('beforeend', groupHTML);
-            });
-
-            document.querySelectorAll('.lab-item').forEach(itemNode => {
-                itemNode.addEventListener('click', () => {
-                    activeTargetIndexId = itemNode.dataset.id;
-                    document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-                    itemNode.classList.add('active');
-                    syncMainWorkspaceView();
-                });
-            });
-
-            updateNavigationButtonsStateBounds();
-        }
-
-        function filterCatalogTree() {
-            localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
-            renderCatalogTree();
-        }
-
-        function toggleFolderViewBlock(headerNode) {
-            const parentContainerElement = headerNode.parentElement;
-            parentContainerElement.classList.toggle('collapsed');
-            const spanTextNode = headerNode.querySelector('span');
-            if (parentContainerElement.classList.contains('collapsed')) {
-                spanTextNode.innerText = spanTextNode.innerText.replace('▼', '▶');
-            } else {
-                spanTextNode.innerText = spanTextNode.innerText.replace('▶', '▼');
-            }
-        }
-
-        /* --- Workspace Views Synchronization Pump --- */
-        function syncMainWorkspaceView() {
-            const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
-            if (!dataNode) return;
-
-            document.getElementById('prog-title').innerText = dataNode.title;
-            document.getElementById('breadcrumbSection').innerText = dataNode.category;
-            document.getElementById('breadcrumbTitle').innerText = dataNode.title;
-            document.getElementById('metaTier').innerText = dataNode.tier;
-            document.getElementById('specTime').innerText = dataNode.timeComp;
-            document.getElementById('specSpace').innerText = dataNode.spaceComp;
-
-            document.getElementById('logic-text').innerHTML = `
-                <div class="logic-step">
-                    <div class="step-num">i</div>
-                    <p>${dataNode.logic}</p>
+                    <ul class="lab-list">
+                        ${listElementsHTML}
+                    </ul>
                 </div>
             `;
+            directoryContainer.insertAdjacentHTML('beforeend', groupHTML);
+        });
 
-            document.getElementById('output-text').innerText = dataNode.output;
-            document.getElementById('code-block').innerText = dataNode.code;
-
-            // Lines generator routine
-            const lineCount = dataNode.code.split('\n').length;
-            let lineRailHTML = "";
-            for (let i = 1; i <= lineCount; i++) {
-                lineRailHTML += `${i}<br>`;
-            }
-            document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
-
-            // Viva questions dynamic renderer mapping block
-            const vivaMount = document.getElementById('vivaListMount');
-            vivaMount.innerHTML = "";
-            dataNode.viva.forEach(item => {
-                const nodeHTML = `<li class="viva-node"><strong>Q: ${item.q}</strong><p>A: ${item.a}</p></li>`;
-                vivaMount.insertAdjacentHTML('beforeend', nodeHTML);
-            });
-
-            updateNavigationButtonsStateBounds();
-        }
-
-        function updateNavigationButtonsStateBounds() {
-            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
-            document.getElementById('prevBtn').disabled = (currentIndex === 0);
-            document.getElementById('nextBtn').disabled = (currentIndex === LAB_DATABASE.length - 1);
-        }
-
-        function navigateProgram(directionOffset) {
-            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
-            const targetTargetIndex = currentIndex + directionOffset;
-            if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
-                activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
-                renderCatalogTree();
+        document.querySelectorAll('.lab-item').forEach(itemNode => {
+            itemNode.addEventListener('click', () => {
+                activeTargetIndexId = itemNode.dataset.id;
+                document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+                itemNode.classList.add('active');
                 syncMainWorkspaceView();
-                
-                const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
-                if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }
-        }
-
-        function copyCodeStack() {
-            const codeStringValue = document.getElementById('code-block').innerText;
-            navigator.clipboard.writeText(codeStringValue).then(() => {
-                const toastAlert = document.getElementById('toastAlert');
-                toastAlert.style.display = 'flex';
-                setTimeout(() => { toastAlert.style.display = 'none'; }, 2500);
             });
-        }
+        });
 
-        function openOnlineCompiler() {
-            window.open("https://www.onlinegdb.com/online_java_compiler", "_blank");
-        }
+        updateNavigationButtonsStateBounds();
+    }
 
-        window.onload = () => {
+    function filterCatalogTree() {
+        localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
+        renderCatalogTree();
+    }
+
+    function toggleFolderViewBlock(headerNode) {
+        const parentContainerElement = headerNode.parentElement;
+        parentContainerElement.classList.toggle('collapsed');
+        const spanTextNode = headerNode.querySelector('span');
+        if (parentContainerElement.classList.contains('collapsed')) {
+            spanTextNode.innerText = spanTextNode.innerText.replace('▼', '▶');
+        } else {
+            spanTextNode.innerText = spanTextNode.innerText.replace('▶', '▼');
+        }
+    }
+
+    function syncMainWorkspaceView() {
+        const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
+        if (!dataNode) return;
+
+        document.getElementById('prog-title').innerText = dataNode.title;
+        document.getElementById('breadcrumbSection').innerText = dataNode.category;
+        document.getElementById('breadcrumbTitle').innerText = dataNode.title;
+        document.getElementById('metaTier').innerText = dataNode.tier;
+        document.getElementById('specTime').innerText = dataNode.timeComp;
+        document.getElementById('specSpace').innerText = dataNode.spaceComp;
+
+        document.getElementById('logic-text').innerHTML = `
+            <div class="logic-step">
+                <div class="step-num">i</div>
+                <p>${dataNode.logic}</p>
+            </div>
+        `;
+
+        document.getElementById('output-text').innerText = dataNode.output;
+        document.getElementById('code-block').innerText = dataNode.code;
+
+        const lineCount = dataNode.code.split('\n').length;
+        let lineRailHTML = "";
+        for (let i = 1; i <= lineCount; i++) {
+            lineRailHTML += `${i}<br>`;
+        }
+        document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
+
+        const vivaMount = document.getElementById('vivaListMount');
+        vivaMount.innerHTML = "";
+        dataNode.viva.forEach(item => {
+            const nodeHTML = `<li class="viva-node"><strong>Q: ${item.q}</strong><p>A: ${item.a}</p></li>`;
+            vivaMount.insertAdjacentHTML('beforeend', nodeHTML);
+        });
+
+        updateNavigationButtonsStateBounds();
+    }
+
+    function updateNavigationButtonsStateBounds() {
+        const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+        document.getElementById('prevBtn').disabled = (currentIndex === 0);
+        document.getElementById('nextBtn').disabled = (currentIndex === LAB_DATABASE.length - 1);
+    }
+
+    function navigateProgram(directionOffset) {
+        const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+        const targetTargetIndex = currentIndex + directionOffset;
+        if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
+            activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
             renderCatalogTree();
             syncMainWorkspaceView();
-        };
-    </script>
+            
+            const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
+            if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    function copyCodeStack() {
+        const codeStringValue = document.getElementById('code-block').innerText;
+        navigator.clipboard.writeText(codeStringValue).then(() => {
+            const toastAlert = document.getElementById('toastAlert');
+            toastAlert.style.display = 'flex';
+            setTimeout(() => { toastAlert.style.display = 'none'; }, 2500);
+        });
+    }
+
+    function openOnlineCompiler() {
+        window.open("https://www.onlinegdb.com/online_java_compiler", "_blank");
+    }
+
+    window.onload = () => {
+        renderCatalogTree();
+        syncMainWorkspaceView();
+    };
+</script>
 </body>
 </html>
