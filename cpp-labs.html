@@ -260,172 +260,253 @@
     <script src="footer.js"></script>
 
     <script>
-        /* ==========================================================================
-           📦 CENTRAL SINGLE SOURCE OF TRUTH COMPLETE SYSTEM REFERENCE DATABASE
-           ========================================================================== */
-        const LAB_DATABASE = [
-            { id: "p1", title: "01. Hello World", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello World";\n    return 0;\n}`, logic: "Execution starts precisely at main(). The standard cout stream combined with left shift insertion operators streams characters arrays directly to stdout buffers parameters.", output: "> g++ source.cpp\n> ./a.out\nHello World", viva: [{ q: "Why do we include <iostream>?", a: "It stands for Input/Output Stream. It provides the standard stream templates like cin and cout used to handle programmatic characters transfers rails values." }, { q: "What is the purpose of 'using namespace std'?", a: "It makes symbols like cout available inside the current global code frame without prefixing explicit std:: namespaces hooks scopes." }] },
-            { id: "p2", title: "02. Print Name Lines", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "WebNova Academy" << endl << "Student Name";\n    return 0;\n}`, logic: "Streams text lines onto sequential display levels. Employs the endl template helper macro to drop rows cleanly while flushing backend character buffer caches.", output: "> g++ source.cpp\n> ./a.out\nWebNova Academy\nStudent Name", viva: [{ q: "What is the difference between endl and '\\n'?", a: "endl flushes the output stream buffer immediately after breaking rows, whereas '\\n' only drops down to the next row line without forcing buffer clearance." }] },
-            { id: "p3", title: "03. Sum of Two", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 10, b = 20;\n    cout << "Sum: " << a + b;\n    return 0;\n}`, logic: "Performs basic mathematical additions inside the standard output pipeline stream boundaries channels without storing results in temporary variables allocations configurations.", output: "> g++ source.cpp\n> ./a.out\nSum: 30", viva: [{ q: "Can we mix datatypes inside the cout pipeline arithmetic?", a: "Yes. C++ automatically handles variable upcasting (e.g. promoting int to float metrics values tokens) during computation before output streaming." }] },
-            { id: "p17", title: "17. Fibonacci Sequence", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a = 0, b = 1, c; cin >> n;\n    for(int i = 0; i < n; i++) { cout << a << " "; c = a + b; a = b; b = c; }\n    return 0;\n}`, logic: "Tracks arithmetic growth sequences by swapping reference data markers. Loops continuously over current totals limits, updating pointers fields value scopes step-by-step.", output: "> g++ source.cpp\n> ./a.out\n4\n0 1 1 2 ", viva: [{ q: "How would you optimize Fibonacci searching paths down to O(log N)?", a: "By applying matrix exponentiation architectures or tracking Golden Ratio linear algebraic calculation formulas fields constants." }] },
-            { id: "p46", title: "46. Rectangle Class Area", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass Rect { public: int l, b; int area() { return l * b; } };\nint main() { Rect r; r.l = 10; r.b = 5; cout << r.area(); }`, logic: "Demonstrates object oriented encapsulation boundaries rules. Encapsulates properties length variables inside a single abstract entity frame exposing public validation tracks.", output: "> g++ source.cpp\n> ./a.out\n50", viva: [{ q: "What is encapsulation in C++ OOP models?", a: "It is the structural grouping of heterogeneous property variables and their corresponding interaction function methods into a unified class shell wrapper." }] },
-            { id: "p54", title: "54. Virtual Functions Dispatch", category: "Advanced OOP Tracks", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass B { public: virtual void s(){ cout << "B"; } };\nclass D : public B { public: void s(){ cout << "D"; } };\nint main() { B *p; D obj; p = &obj; p->s(); }`, logic: "Secures dynamic late-binding runtime polymorphism tracking. Leverages internal dynamic vtable reference logs to resolve method tracking metrics over overridden parameters routes.", output: "> g++ source.cpp\n> ./a.out\nD", viva: [{ q: "What is a vtable (Virtual Table)?", a: "It is an internal kernel-level array pointer structure generated by compilers to trace real function override override memory slots positions at runtime." }] }
-        ];
+    /* ==========================================================================
+       📦 CENTRAL SINGLE SOURCE OF TRUTH PLATFORM DIRECTORY DATABASE (ALL PROGRAMS)
+       ========================================================================== */
+    const LAB_DATABASE = [
+        // --- 1. BEGINNER BASICS ---
+        { id: "p1", title: "01. Hello World", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello World";\n    return 0;\n}`, logic: "Execution starts precisely at main(). The standard cout stream combined with left shift insertion operators streams characters arrays directly to stdout buffers parameters.", output: "> g++ source.cpp\n> ./a.out\nHello World", viva: [{ q: "Why do we include <iostream>?", a: "It stands for Input/Output Stream. It provides the standard stream templates like cin and cout used to handle programmatic characters transfers rails values." }, { q: "What is the purpose of 'using namespace std'?", a: "It makes symbols like cout available inside the current global code frame without prefixing explicit std:: namespaces hooks scopes." }] },
+        { id: "p2", title: "02. Print Name Lines", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "WebNova Academy" << endl << "Student Name";\n    return 0;\n}`, logic: "Streams text lines onto sequential display levels. Employs the endl template helper macro to drop rows cleanly while flushing backend character buffer caches.", output: "> g++ source.cpp\n> ./a.out\nWebNova Academy\nStudent Name", viva: [{ q: "What is the difference between endl and '\\n'?", a: "endl flushes the output stream buffer immediately after breaking rows, whereas '\\n' only drops down to the next row line without forcing buffer clearance." }] },
+        { id: "p3", title: "03. Sum of Two", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 10, b = 20;\n    cout << "Sum: " << a + b;\n    return 0;\n}`, logic: "Performs basic mathematical additions inside the standard output pipeline stream boundaries channels without storing results in temporary variables allocations configurations.", output: "> g++ source.cpp\n> ./a.out\nSum: 30", viva: [{ q: "Can we mix datatypes inside the cout pipeline arithmetic?", a: "Yes. C++ automatically handles variable upcasting (e.g. promoting int to float metrics values tokens) during computation before output streaming." }] },
+        { id: "p4", title: "04. Input Product", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b; cin >> a >> b;\n    cout << "Product: " << a * b;\n    return 0;\n}`, logic: "Input Streams: Employs cin with extraction operators (>>) to read terminal data entries into registers.", output: "> g++ source.cpp\n> ./a.out\n5 4\nProduct: 20", viva: [{ q: "What does cin stand for?", a: "Character Input. It is an object of class istream associated with the standard input device (keyboard)." }] },
+        { id: "p5", title: "05. Type Sizes", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "int: " << sizeof(int) << "\\nfloat: " << sizeof(float);\n    return 0;\n}`, logic: "Sizeof operator: Returns exact hardware allocation footprints assigned to datatypes in bytes.", output: "> g++ source.cpp\n> ./a.out\nint: 4\nfloat: 4", viva: [{ q: "Is sizeof a function or an operator?", a: "Sizeof is a compile-time operator, not a function. The compiler evaluates the memory size directly before runtime." }] },
+        { id: "p6", title: "06. Swap (3rd Var)", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 5, b = 10, t = a; a = b; b = t;\n    cout << a << " " << b;\n    return 0;\n}`, logic: "Temporary Buffering: Protects value cells using a third reference index during variable swaps.", output: "> g++ source.cpp\n> ./a.out\n10 5", viva: [{ q: "What is the space complexity of this swap method?", a: "O(1) auxiliary space because it only requires one single fixed integer memory cell regardless of input size." }] },
+        { id: "p7", title: "07. Swap (No Var)", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 5, b = 10;\n    a = a + b; b = a - b; a = a - b;\n    cout << a << " " << b;\n    return 0;\n}`, logic: "Mathematical Rotations: Alternates stack properties using sum accumulation rules without additional space allocations.", output: "> g++ source.cpp\n> ./a.out\n10 5", viva: [{ q: "What is a potential risk of swapping without a temporary variable?", a: "Integer overflow can occur if the sum (a + b) exceeds the maximum memory boundary capacity assigned to the integer datatype." }] },
+        { id: "p8", title: "08. Odd or Even", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    if(n % 2 == 0) cout << "Even"; else cout << "Odd";\n    return 0;\n}`, logic: "Remainder Checks: Utilizes mod operator % to scan for division balance states against zero offsets.", output: "> g++ source.cpp\n> ./a.out\n7\nOdd", viva: [{ q: "Is there a faster way to check for parity without using %?", a: "Yes, using bitwise operations: (n & 1) evaluates instantly by testing the lowest bit index register directly." }] },
+        { id: "p9", title: "09. Leap Year Check", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int y; cin >> y;\n    if(y % 400 == 0 || (y % 4 == 0 && y % 100 != 0)) cout << "Leap"; else cout << "Not";\n    return 0;\n}`, logic: "Combined Logic Gates: Tests modulo operations using short-circuit logical connectors (||, &&) to track centurial parameters matching calendar rules.", output: "> g++ source.cpp\n> ./a.out\n2024\nLeap", viva: [{ q: "What does short-circuit evaluation mean here?", a: "If the first statement (y % 400 == 0) evaluates to true, the browser/compiler skips checking the remaining conditions entirely to save clock cycles." }] },
+        { id: "p10", title: "10. Largest of Three", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, c; cin >> a >> b >> c;\n    if(a >= b && a >= c) cout << a; else if(b >= a && b >= c) cout << b; else cout << c;\n    return 0;\n}`, logic: "Logical Gates: Evaluates numerical attributes against multiple conditional boundaries simultaneously to isolate maximum scalars.", output: "> g++ source.cpp\n> ./a.out\n10 42 17\n42", viva: [{ q: "Can this loop logic be compacted further?", a: "Yes, by passing values inside standard algorithms helper utilities like max(a, max(b, c))." }] },
+        { id: "p11", title: "11. Quot & Rem", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b; cin >> a >> b;\n    cout << "Q: " << a / b << " R: " << a % b;\n    return 0;\n}`, logic: "Division Operators: Runs separate calculations to output integer quotients and arithmetic loop remainders cleanly.", output: "> g++ source.cpp\n> ./a.out\n13 4\nQ: 3 R: 1", viva: [{ q: "What happens if variable b is supplied as 0?", a: "It causes a critical runtime error (Division by Zero), crashing the active application execution thread instantly." }] },
+        { id: "p12", title: "12. ASCII Value", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char c; cin >> c;\n    cout << (int)c;\n    return 0;\n}`, logic: "Explicit Casts: Forces character symbols directly into type integers to extract base underlying ASCII integer metrics.", output: "> gcc main.c\n> ./a.out\nA\n65", viva: "What is type casting? Converting a variable from one data type configuration explicitly into another data slot format." },
+        { id: "p13", title: "13. Float Mult", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    float a, b; cin >> a >> b;\n    cout << a * b;\n    return 0;\n}`, logic: "Floating Point math: Multiplies decimal fractional attributes with standard IEEE-754 single precision arithmetic layouts.", output: "> gcc main.c\n> ./a.out\n2.5 1.5\n3.75", tags: "math basic float precision" },
+        { id: "p14", title: "14. Vowel/Consonant", category: "Beginner Basics", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char c; cin >> c;\n    if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') cout<<"Vowel"; else cout<<"Consonant";\n    return 0;\n}`, logic: "Set Intersections: Compares standard character symbols directly against baseline vowel set matches rules constraints.", output: "> g++ source.cpp\n> ./a.out\ne\nVowel", viva: [{ q: "Does this handle uppercase letters?", a: "No. To support uppercase letters, we must either add matching 'A', 'E' criteria paths or process input through the tolower() converter first." }] },
+        { id: "p15", title: "15. Quadratic Roots", category: "Beginner Basics", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <cmath>\nusing namespace std;\n\nint main() {\n    float a, b, c, d, r1, r2; cin >> a >> b >> c;\n    d = b * b - 4 * a * c;\n    if(d >= 0) {\n        r1 = (-b + sqrt(d)) / (2 * a);\n        r2 = (-b - sqrt(d)) / (2 * a);\n        cout << r1 << ", " << r2;\n    }\n    return 0;\n}`, logic: "Algebraic Formulas: Evaluates the system discriminant values via standard cmath sqrt tool paths to isolate structural real roots.", output: "> g++ source.cpp\n> ./a.out\n1 -5 6\n3, 2", viva: [{ q: "What happens if discriminant d evaluates to less than zero?", a: "The roots become imaginary numbers. The current code logic would skip printing; we would need an 'else' block for imaginary handles." }] },
+        { id: "p16", title: "16. 1 to N Loop", category: "Beginner Basics", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    for(int i = 1; i <= n; i++) cout << i << " ";\n    return 0;\n}`, logic: "Determined Iteration: Uses an explicit for loop execution pointer to step through values until structural upper limits are reached.", output: "> g++ source.cpp\n> ./a.out\n5\n1 2 3 4 5 ", viva: [{ q: "What is the three-part configuration layout inside a for statement loop?", a: "Initialization (int i = 1), Condition matching check (i <= n), and loop increment update tracking (i++)." }] },
 
-        let activeTargetIndexId = "p1";
-        let localSearchQueryStringCache = "";
+        // --- 2. INTERMEDIATE LOGIC ---
+        { id: "p17", title: "17. Fibonacci Sequence", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, a = 0, b = 1, c; cin >> n;\n    for(int i = 0; i < n; i++) { cout << a << " "; c = a + b; a = b; b = c; }\n    return 0;\n}`, logic: "Tracks arithmetic growth sequences by swapping reference data markers. Loops continuously over current totals limits, updating pointers fields value scopes step-by-step.", output: "> g++ source.cpp\n> ./a.out\n4\n0 1 1 2 ", viva: [{ q: "How would you optimize Fibonacci searching paths down to O(log N)?", a: "By applying matrix exponentiation architectures or tracking Golden Ratio linear algebraic calculation formulas fields constants." }] },
+        { id: "p18", title: "18. Factorial Logic", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, f = 1; cin >> n;\n    for(int i = 1; i <= n; i++) f *= i;\n    cout << f;\n    return 0;\n}`, logic: "Product Accumulation: Computes cumulative factor expansions using linear multiplication variables across fixed stack boundaries.", output: "> g++ source.cpp\n> ./a.out\n5\n120", viva: [{ q: "What is the maximum parameter limit for integer factorial storage?", a: "Standard 32-bit integers overflow at 13!. For larger calculations, we must scale storage to 'long long' or custom data strings." }] },
+        { id: "p19", title: "19. Prime Factors", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    for(int i = 2; n > 1; i++) while(n % i == 0) { cout << i << " "; n /= i; }\n    return 0;\n}`, logic: "Structural Reductions: Employs nested while loops checkpoints to continually strip down value factors inside standard register allocations.", output: "> g++ source.cpp\n> ./a.out\n12\n2 2 3 ", viva: [{ q: "Why does the outer loop check variable increment up safely without hitting non-primes?", a: "Because any composite numeric factor is already systematically exhausted by the inner loop execution cycles first." }] },
+        { id: "p20", title: "20. Prime Check", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(√N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, f = 0; cin >> n;\n    for(int i = 2; i <= n / 2; i++) if(n % i == 0) f = 1;\n    if(f == 0 && n > 1) cout << "Prime"; else cout << "Not";\n    return 0;\n}`, logic: "Divisibility checks: Monitors complete remainder outputs up to N/2 levels to detect shared factor occurrences.", output: "> g++ source.cpp\n> ./a.out\n13\nPrime", viva: [{ q: "How do you optimize loop bounds from N/2 down to √N?", a: "Change the conditional loop tracking statement to (i * i <= n). If no factors appear below the square root, the target is prime." }] },
+        { id: "p21", title: "21. GCD & LCM", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(log(min(A,B)))", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b, t, x, y; cin >> x >> y; a = x; b = y;\n    while(b) { t = b; b = a % b; a = t; }\n    cout << "GCD: " << a << " LCM: " << (x * y) / a;\n    return 0;\n}`, logic: "Euclidean Modulo rules: Continuously updates and reduces integer value metrics via remainder swaps to locate shared common divisions boundaries.", output: "> g++ source.cpp\n> ./a.out\n12 18\nGCD: 6 LCM: 36", viva: [{ q: "What mathematical logic connects GCD and LCM?", a: "The product of any two integers matches the exact product calculation of their respective GCD and LCM values." }] },
+        { id: "p22", title: "22. Reverse Num", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, r = 0; cin >> n;\n    while(n) { r = r * 10 + n % 10; n /= 10; }\n    cout << r;\n    return 0;\n}`, logic: "Base-10 Shifts: Extracts integers via remainder splits and stacks them into alternative column variables.", output: "> g++ source.cpp\n> ./a.out\n123\n321", viva: [{ q: "What does (n /= 10) execute here?", a: "It uses integer truncation rules to drop the lowest rightmost digit position from the active storage tracking register." }] },
+        { id: "p23", title: "23. Palindrome Check", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(log N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, r = 0, t; cin >> n; t = n;\n    while(t) { r = r * 10 + t % 10; t /= 10; }\n    if(r == n) cout << "Yes"; else cout << "No";\n    return 0;\n}`, logic: "Equivalence Check: Evaluates a reconstructed inverted cloned copy memory structure directly against the initial entry state parameters.", output: "> g++ source.cpp\n> ./a.out\n121\nYes", viva: [{ q: "Why do we copy variable n into variable t before executing loops?", a: "Because the tracking loop completely destroys and slashes the value down to zero; a copy preserves the baseline to run checking comparisons." }] },
+        { id: "p24", title: "24. Star Triangle", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N²)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    for(int i = 1; i <= 4; i++) { for(int j = 1; j <= i; j++) cout << "* "; cout << "\\n"; }\n    return 0;\n}`, logic: "Nested Grid loops: Maps coordinates distribution parameters via double loop boundaries configurations to generate uniform terminal matrices layout structures.", output: "> g++ source.cpp\n> ./a.out\n* \n* * \n* * * \n* * * * ", viva: [{ q: "What is handled by the outer loop vs the inner loop?", a: "The outer loop tracks vertical line generation drops, while the inner loop handles horizontal item printing counts." }] },
+        { id: "p25", title: "25. Pascal Triangle", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N²)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 4, c = 1;\n    for(int i = 0; i < n; i++) {\n        for(int k = 1; k <= n - i; k++) cout << " ";\n        for(int j = 0; j <= i; j++) {\n            if(j == 0 || i == 0) c = 1; else c = c * (i - j + 1) / j;\n            cout << c << " ";\n        } cout << "\\n";\n    } return 0;\n}`, logic: "Binomial Coefficients: Computes array value attributes dynamically using combinations ratios properties inside iterative spacer metrics pipelines.", output: "> g++ source.cpp\n> ./a.out\n    1 \n   1 1 \n  1 2 1 \n 1 3 3 1 ", viva: [{ q: "How are spacing blocks managed before number prints?", a: "The spacer loop prints down (n - i) empty spaces to center the rows and build a geometric pyramid look." }] },
+        { id: "p26", title: "26. Largest in Array", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[] = {1, 5, 3}, n = 3, m = a[0];\n    for(int i = 1; i < n; i++) if(a[i] > m) m = a[i];\n    cout << m; return 0;\n}`, logic: "Linear Scan framework: Scans across adjacent array targets, shifting tracking flags when higher values appear.", output: "> g++ source.cpp\n> ./a.out\n5", viva: [{ q: "Why do we initialize variable m to a[0] instead of zero?", a: "To make sure the calculation stays accurate even if the entire array dataset contains only negative values." }] },
+        { id: "p27", title: "27. 2nd Largest", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[] = {1, 5, 3, 9}, n = 4, l = 0, s = 0;\n    for(int i = 0; i < n; i++) if(a[i] > l){ s = l; l = a[i]; } else if(a[i] > s && a[i] != l) s = a[i];\n    cout << s; return 0;\n}`, logic: "Dual Value Tracking: Manages two tracking benchmarks concurrently to locate second tier values without complete sorts.", output: "> g++ source.cpp\n> ./a.out\n5", viva: [{ q: "Can this problem be solved by sorting the dataset array first?", a: "Yes, but sorting takes O(N log N) time; this linear approach isolates values much faster in a single O(N) pass." }] },
+        { id: "p28", title: "28. Sum & Average", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[] = {1, 2, 3}, s = 0; for(int i : a) s += i;\n    cout << "Sum: " << s << " Avg: " << s / 3.0;\n    return 0;\n}`, logic: "Range Loops: Iterates safely over elements to build totals without index pointer management.", output: "> g++ source.cpp\n> ./a.out\nSum: 6 Avg: 2.0", viva: [{ q: "Why do we use divider 3.0 instead of int 3?", a: "To force the compiler to perform a floating-point division, preserving accuracy for decimal components logs." }] },
+        { id: "p29", title: "29. Sort Array", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(N log N)", spaceComp: "O(1)", code: `#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int a[] = {5, 1, 9}, n = 3; sort(a, a + n);\n    for(int i : a) cout << i << " ";\n    return 0;\n}`, logic: "Introsort Engine: Triggers standard hybrid algorithms (Introsort) to deliver fast sorting performance.", output: "> g++ source.cpp\n> ./a.out\n1 5 9 ", viva: [{ q: "What hybrid algorithms sit behind std::sort?", a: "It balances QuickSort, HeapSort, and InsertionSort metrics depending on stack call depth configurations." }] },
+        { id: "p30", title: "30. Frequency Check", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[] = {1, 2, 1, 3}, k = 1, c = 0;\n    for(int i : a) if(i == k) c++;\n    cout << c; return 0;\n}`, logic: "Match Scanners: Counts matching occurrences inside datasets using linear iteration paths.", output: "> g++ source.cpp\n> ./a.out\n2", viva: [{ q: "How would you track the frequencies of all elements simultaneously?", a: "By mapping datasets inside an associative hash layout like std::map or an array-based lookup ledger." }] },
+        { id: "p31", title: "31. Matrix Addition", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(R*C)", spaceComp: "O(R*C)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2] = {{1, 1}, {1, 1}}, b[2][2] = {{2, 2}, {2, 2}}, c[2][2];\n    for(int i = 0; i < 2; i++) for(int j = 0; j < 2; j++) c[i][j] = a[i][j] + b[i][j];\n    return 0;\n}`, logic: "Coordinate Maps: Aggregates array entries matching nested matrix indices step-by-step.", output: "> g++ source.cpp\n> ./a.out\n[Matrix Addition Verified]", viva: [{ q: "What requirements must matrix configurations meet before addition?", a: "Both input multi-dimensional arrays must share the exact same row and column size dimensions metrics." }] },
+        { id: "p32", title: "32. Matrix Mult", category: "Intermediate Logic", tier: "Advanced", timeComp: "O(N³)", spaceComp: "O(N²)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2] = {{1, 2}, {3, 4}}, b[2][2] = {{5, 6}, {7, 8}}, c[2][2] = {0};\n    for(int i = 0; i < 2; i++) for(int j = 0; j < 2; j++) for(int k = 0; k < 2; k++) c[i][j] += a[i][k] * b[k][j];\n    return 0;\n}`, logic: "Dot Products: Processes nested vectors using triple loop structures to derive multiplication fields.", output: "> g++ source.cpp\n> ./a.out\n[Matrix Multiplication Verified]", viva: [{ q: "Why is variable array c initialized explicitly to zero values?", a: "To clear random garbage hardware records before running continuous sum accumulations computations." }] },
+        { id: "p33", title: "33. Str Length", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    char s[] = "WebNova"; int l = 0; while(s[l]) l++;\n    cout << l; return 0;\n}`, logic: "Sentinel Checks: Sweeps across low-level character arrays until hitting the null terminator symbol (\\0).", output: "> g++ source.cpp\n> ./a.out\n7", viva: [{ q: "What character signifies string termination inside low-level buffers?", a: "The null character character token '\\0', which evaluates straight to numerical value zero in loop checks." }] },
+        { id: "p34", title: "34. Concatenate", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N+M)", spaceComp: "O(N+M)", code: `#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s1 = "Hi ", s2 = "WebNova";\n    cout << s1 + s2; return 0;\n}`, logic: "Operator Overloads: Uses overloaded operators (+) to stitch character string segments together smoothly.", output: "> g++ source.cpp\n> ./a.out\nHi WebNova", viva: [{ q: "Does string concatenation modify the original input memory allocations?", a: "No. It comports an entirely new third string buffer on the heap layout without mutating parent segments tokens." }] },
+        { id: "p35", title: "35. Reverse String", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = "Nova"; reverse(s.begin(), s.end());\n    cout << s; return 0;\n}`, logic: "Iterator Flips: Reverses string sequences instantly using standardized reference iterators.", output: "> g++ source.cpp\n> ./a.out\navoN", viva: [{ q: "What parameters are passed inside std::reverse?", a: "Input-range tracking bidirectional boundary pointer coordinates tags (begin and end line markers)." }] },
+        { id: "p36", title: "36. String Palindrome", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s = "radar", t = s; reverse(t.begin(), t.end());\n    if(s == t) cout << "Yes"; else cout << "No";\n    return 0;\n}`, logic: "Symmetric Matching: Compares original text tracks directly against inverted string duplicates.", output: "> g++ source.cpp\n> ./a.out\nYes", viva: [{ q: "Can we run checks without cloning the string?", a: "Yes, by moving two index trackers simultaneously from opposite ends (left and right convergence framework)." }] },
+        { id: "p37", title: "37. Count V/C/D", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    string s = "Nova1"; int v=0, c=0, d=0;\n    for(char i : s) { if(isdigit(i)) d++; else if(isalpha(i)) v++; }\n    return 0;\n}`, logic: "Byte Classification: Checks string elements using validation operators to categorize characters.", output: "> g++ source.cpp\n> ./a.out\n[Character Metrics Logged]", viva: [{ q: "Where are functions like isdigit() defined inside standards header files?", a: "They are contained inside the standard library header <cctype> system file component." }] },
+        { id: "p38", title: "38. Array Pointers", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[] = {1, 2}, *p = a; cout << *p << " " << *(p + 1);\n    return 0;\n}`, logic: "Pointer Offsets: Navigates raw contiguous block addresses using standard pointer step adjustments.", output: "> g++ source.cpp\n> ./a.out\n1 2", viva: [{ q: "What does scaling an address pointer (p + 1) execute underneath?", a: "It increments the target tracking destination forward exactly by the byte size value matching its data classification (e.g. 4 bytes for integers)." }] },
+        { id: "p39", title: "39. Swap Pointers", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nvoid swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }\nint main() { int x = 5, y = 10; swap(&x, &y); return 0; }`, logic: "Pass by Address: Updates real storage cells directly by dereferencing incoming parameter addresses.", output: "> g++ source.cpp\n> ./a.out\n[Memory References Swapped]", viva: [{ q: "What is an alternative syntax layout to run pass-by-reference swaps?", a: "By applying standard references hooks: void swap(int &a, int &b), which simplifies references cleanup." }] },
+        { id: "p40", title: "40. Student Struct", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nstruct Student { string n; int r; float m; };\nint main() {\n    Student s = {"Alex", 1, 85.5};\n    cout << s.n; return 0;\n}`, logic: "Heterogeneous records: Groups distinct data classifications into a single layout block.", output: "> g++ source.cpp\n> ./a.out\nAlex", viva: [{ q: "What is the difference between a class and a struct structure in C++?", a: "A struct defaults its member accessibility permissions properties to public, whereas classes default them to private shields." }] },
+        { id: "p41", title: "41. Dynamic Array", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(N)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int *a = new int[5]; delete[] a;\n    return 0;\n}`, logic: "Heap Allocation: Requests runtime memory using new, explicitly dropping leaks with delete[].", output: "> g++ source.cpp\n> ./a.out\n[Heap Segment Managed Safely]", viva: [{ q: "What happens if we forget to declare the delete[] cleanup statement?", a: "It causes memory leak conditions, locking away unused heap blocks allocation blocks from OS recycling tracks." }] },
+        { id: "p42", title: "42. 2D Array Pointers", category: "Intermediate Logic", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2] = {{1, 2}, {3, 4}}; int (*p)[2] = a;\n    cout << p[0][0]; return 0;\n}`, logic: "Array Pointer Pointers: Connects row vectors to pointer networks designed for multidimensional operations.", output: "> g++ source.cpp\n> ./a.out\n1", viva: [{ q: "What does int (*p)[2] signify explicitly?", a: "It declares a single pointer tracker targeting a continuous array block composed exactly of two integers components." }] },
+        { id: "p43", title: "43. Transpose", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(R*C)", spaceComp: "O(R*C)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[2][2] = {{1, 2}, {3, 4}}, t[2][2];\n    for(int i = 0; i < 2; i++) for(int j = 0; j < 2; j++) t[j][i] = a[i][j];\n    return 0;\n}`, logic: "Coordinate Swaps: Flips multidimensional indices to translate row tracks into structural columns.", output: "> g++ source.cpp\n> ./a.out\n[Matrix Array Transposed]", viva: [{ q: "What happens to diagonal elements properties during a transposition run?", a: "Diagonal elements coordinates slots stay completely untouched because indices indexes i and j match identically." }] },
+        { id: "p44", title: "44. Menu Calc", category: "Intermediate Logic", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int op = 1; switch(op) { case 1: cout << "Add"; break; }\n    return 0;\n}`, logic: "Switch Branches: Routes execution straight to targeted code blocks using jump tables.", output: "> g++ source.cpp\n> ./a.out\nAdd", viva: [{ q: "What happens if a break script instruction is omitted from a matching branch case block?", a: "Execution control flows downward through following case options sequentially (fall-through anomaly) until hitting the next break target." }] },
+        { id: "p45", title: "45. Dec to Binary", category: "Intermediate Logic", tier: "Intermediate", timeComp: "O(log N)", spaceComp: "O(log N)", code: `#include <iostream>\nusing namespace std;\n\nvoid bin(int n) { if(n > 1) bin(n / 2); cout << n % 2; }\nint main() { bin(10); return 0; }`, logic: "Recursive Base-2 Splits: Divides values recursively to print standard binary bit positions backwards.", output: "> g++ source.cpp\n> ./a.out\n1010", viva: [{ q: "How does the print call execute inverse layouts correctly?", a: "The recursive functional calls down straight into the stack trace first; the trailing character printing operates exclusively during call stack unwind releases." }] },
 
-        /* ==========================================================================
-           🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
-           ========================================================================== */
-        function renderCatalogTree() {
-            const directoryContainer = document.getElementById('catalogDirectory');
-            directoryContainer.innerHTML = "";
+        // --- 3. ADVANCED (OOP/STL) ---
+        { id: "p46", title: "46. Rectangle Class Area", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass Rect { public: int l, b; int area() { return l * b; } };\nint main() { Rect r; r.l = 10; r.b = 5; cout << r.area(); }`, logic: "Demonstrates object oriented encapsulation boundaries rules. Encapsulates properties length variables inside a single abstract entity frame exposing public validation tracks.", output: "> g++ source.cpp\n> ./a.out\n50", viva: [{ q: "What is encapsulation in C++ OOP models?", a: "It is the structural grouping of heterogeneous property variables and their corresponding interaction function methods into a unified class shell wrapper." }] },
+        { id: "p47", title: "47. Constructor Overload", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass Box { public: Box(){ cout << "A"; } Box(int s){ cout << s; } };\nint main() { Box b1; Box b2(5); }`, logic: "Compile-Time Polymorphism: Sets up alternative object creation pipelines using unique parameter footprints.", output: "> g++ source.cpp\n> ./a.out\nA5", viva: [{ q: "Can a constructor declare an explicit type return value tracker parameter?", a: "No. Constructors possess zero return value parameters definitions; they match the exact parent class name keyword title." }] },
+        { id: "p48", title: "48. Destructors", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass X { public: ~X() { cout << "Gone"; } };\nint main() { X obj; }`, logic: "Resource Reclamation: Automatically runs cleanup steps when objects drop out of operational scopes.", output: "> g++ source.cpp\n> ./a.out\nGone", viva: [{ q: "Can a single class map out multiple overloaded destructor methods profiles?", a: "No. A class supports exactly one single destructor definition. It takes zero parameters values inputs and cannot be overloaded." }] },
+        { id: "p49", title: "49. Friend Function", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass A { int x = 10; friend void show(A); };\nvoid show(A obj) { cout << obj.x; }\nint main() { A o; show(o); }`, logic: "Friend Access bypass: Overrides encapsulation rules to let trusted external modules view private fields directly.", output: "> g++ source.cpp\n> ./a.out\n10", viva: [{ q: "Does a friend function definition break OOP encapsulation rules principles?", a: "Yes, it safely relaxes access barriers rules; it must be implemented conservatively to protect sensitive structural data." }] },
+        { id: "p50", title: "50. Single Inheritance", category: "Advanced OOP Tracks", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass P { public: void f() { cout << "P"; } };\nclass C : public P {};\nint main() { C obj; obj.f(); }`, logic: "Code Extension Paths: Links sub-classes to parent structures to reuse core properties cleanly.", output: "> g++ source.cpp\n> ./a.out\nP", viva: [{ q: "What happens to private parent fields inside a public child inheritance tree map?", a: "They are inherited into the structural child cell but remain completely un-viewable unless funneled through public getter methods channels." }] },
+        { id: "p51", title: "51. Multi Inheritance", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass A {}; class B {}; class C : public A, public B {};\nint main() { C obj; }`, logic: "Multiple Bases: Merges different parent layouts into a single derived child structural map.", output: "> g++ source.cpp\n> ./a.out\n[Multi-Inherited Object Compiled]", viva: [{ q: "What is the Diamond Problem anomaly in multi inheritance chains?", a: "It is an ambiguity issue that arises when a child class inherits from two parent classes that both share the same base grandparent node." }] },
+        { id: "p52", title: "52. Func Overloading", category: "Advanced OOP Tracks", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nvoid f(int i){ cout << i; } void f(double d){ cout << d; }\nint main() { f(5); f(5.5); }`, logic: "Signature Overloads: Matches calls to the correct function at compile time based on parameter traits.", output: "> g++ source.cpp\n> ./a.out\n55.5", viva: [{ q: "Can function overloading operate exclusively by changing the return type classification token?", a: "No. Overloading mechanics mandate changes directly across parameter list signatures footprints (type, number, or position)." }] },
+        { id: "p53", title: "53. Operator Overload", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass C { public: int r; C operator+(C o) { C t; t.r = r + o.r; return t; } };\nint main() { C c1, c2, c3; c1.r = 1; c2.r = 2; c3 = c1 + c2; }`, logic: "Custom Symbol Math: Overloads native operators (+) to extend custom math logic to objects.", output: "> g++ source.cpp\n> ./a.out\n[Operator Overload Handshake Success]", viva: [{ q: "Which core operators are barred from receiving custom operator overloads?", a: "Scope resolution operators (::), size calculators (sizeof), conditional operators (?:), and direct member dot targets (.) cannot be overloaded." }] },
+        { id: "p54", title: "54. Virtual Functions", category: "Advanced OOP Tracks", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass B { public: virtual void s(){ cout << "B"; } };\nclass D : public B { public: void s(){ cout << "D"; } };\nint main() { B *p; D obj; p = &obj; p->s(); }`, logic: "Dynamic Dispatch: Resolves overrides at runtime using vtables to secure runtime polymorphism targets.", output: "> g++ source.cpp\n> ./a.out\nD", viva: [{ q: "What is a vtable (Virtual Table)?", a: "It is an internal kernel-level array pointer structure generated by compilers to trace real function override override memory slots positions at runtime." }] },
+        { id: "p55", title: "55. Abstract Class", category: "Advanced OOP Tracks", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass S { public: virtual void draw() = 0; };\nclass C : public S { public: void draw(){ cout << "C"; } };\nint main() { C obj; obj.draw(); }`, logic: "Interface Contracts: Configures pure virtual functions (=0) to force derived classes to provide concrete overrides.", output: "> g++ source.cpp\n> ./a.out\nC", viva: [{ q: "Can you initialize an object variable directly from an abstract class type reference?", a: "No. Abstract classes act as interface guidelines. They cannot be instantiated directly; they can only handle pointer mappings targets." }] },
+        { id: "p56", title: "56. Copy Constructor", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass X { public: int a; X(int i){ a = i; } X(const X &o){ a = o.a; } };\nint main() { X x1(5); X x2 = x1; }`, logic: "Reference Clones: Initializes deep object copies safely by passing const reference monitors.", output: "> g++ source.cpp\n> ./a.out\n[Copy Lifecycle Sequence Verified]", viva: [{ q: "Why must the input parameter inside a copy constructor pass exclusively via reference?", a: "To prevent infinite loop recursive traps, as passing by value would invoke another copy lifecycle operation infinitely." }] },
+        { id: "p57", title: "57. Exceptions", category: "Advanced OOP Tracks", tier: "Beginner", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() { try { throw 5; } catch(int e) { cout << e; } }`, logic: "Error Separation: Isolates hazardous code zones using try-catch blocks to catch thrown system anomalies cleanly.", output: "> g++ source.cpp\n> ./a.out\n5", viva: [{ q: "What happens if a thrown system anomaly matches zero catch blocks loops filters?", a: "The application runtime execution drops out instantly, triggering the standard std::terminate() kernel stop instructions." }] },
+        { id: "p58", title: "58. STL Vector", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1) amortized", spaceComp: "O(N)", code: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() { vector<int> v = {1, 2}; v.push_back(3); cout << v.size(); }`, logic: "Dynamic Arrays: Automatically resizes arrays on the heap when storage hits size capacity updates.", output: "> g++ source.cpp\n> ./a.out\n3", viva: [{ q: "What is the difference between size() and capacity() inside vectors?", a: "size() measures the active element count currently stored; capacity() logs the total allocated memory pool slots on the heap." }] },
+        { id: "p59", title: "59. STL Map", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(log N)", spaceComp: "O(N)", code: `#include <iostream>\n#include <map>\nusing namespace std;\n\nint main() { map<string, int> m; m["A"] = 1; cout << m["A"]; }`, logic: "Balanced Binary Trees: Saves key-value listings inside balanced red-black trees to secure rapid searches.", output: "> g++ source.cpp\n> ./a.out\n1", viva: [{ q: "What data structures framework operates behind std::map?", a: "A self-balancing Red-Black binary search tree configuration layout." }] },
+        { id: "p60", title: "60. Linked List Node", category: "Advanced OOP Tracks", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nstruct N { int d; N *n; };\nint main() { N *h = new N; h->d = 1; h->n = NULL; cout << h->d; }`, logic: "Dynamic Node Links: Links separate heap allocations sequentially using structured address pointers.", output: "> g++ source.cpp\n> ./a.out\n1", viva: [{ q: "What is the primary advantage of a linked list over static datasets arrays?", a: "Dynamic resizing limits allocations; inserting or cutting nodes runs instantly in O(1) time without rebuilding array slots." }] },
+        { id: "p61", title: "61. Stack Class Flow", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass S { int a[10], t = -1; public: void p(int i){ a[++t] = i; } };\nint main() { S s; s.p(1); }`, logic: "LIFO Architecture: Restricts insertions and removals to the highest elements using a strict data stack flow.", output: "> g++ source.cpp\n> ./a.out\n[Data Stack Pushed Successfully]", viva: [{ q: "What logic state errors must be verified before pushing elements onto data stacks?", a: "Stack Overflow limits checking—testing if tracker variable t matches the maximum array allocation capacity bounds." }] },
+        { id: "p62", title: "62. Templates", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\ntemplate <typename T> T mx(T a, T b){ return a > b ? a : b; }\nint main() { cout << mx(5, 2); }`, logic: "Generic Macros: Instructs the compiler to generate type-specific functions automatically during initial compilation checks.", output: "> g++ source.cpp\n> ./a.out\n5", viva: [{ q: "Does leveraging template wrappers parameterization slow down application execution speeds?", a: "No. Code generation executes entirely at compile time; it behaves as fast as manual overloading sets at runtime." }] },
+        { id: "p63", title: "63. File Read Stream", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(N)", spaceComp: "O(1)", code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() { string s; ifstream f("a.txt"); if(f) getline(f, s); cout << s; }`, logic: "Input Streams: Maps target text lines into string objects via file system stream extractors.", output: "> g++ source.cpp\n> ./a.out\n[File Data Output Rendered]", viva: [{ q: "What state condition checklist should be tested before initializing file streams?", a: "Always verify file stream validity (.is_open() flags checkers) to protect pipelines if target files are missing on disk tracks." }] },
+        { id: "p64", title: "64. File Write Commit", category: "Advanced OOP Tracks", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <fstream>\nusing namespace std;\n\nint main() { ofstream f("a.txt"); f << "Hi"; f.close(); }`, logic: "Output Streams: Writes character streams onto disk files and safely flushes underlying kernel buffers.", output: "> g++ source.cpp\n> ./a.out\n[I/O Operational Commit Success]", viva: [{ q: "Why is explicit .close() handling highly recommended across output files structures?", a: "It flushes remaining internal characters memory chunks from volatile RAM straight onto persistent storage cells, locking the file reference safely." }] },
+        { id: "p65", title: "65. Bank Project Abstraction", category: "Advanced OOP Tracks", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nclass Bank { float b = 0; public: void d(float a){ b += a; } void s(){ cout << b; } };\nint main() { Bank u; u.d(500); u.s(); }`, logic: "Data Abstraction: Protects sensitive internal float properties behind robust public interaction interfaces.", output: "> g++ source.cpp\n> ./a.out\n500", viva: [{ q: "What is data abstraction principles parameters?", a: "Hiding inner system calculations logic details while exposing only clean, high-level structural configuration modules interfaces." }] },
 
-            const catalogGroupedTree = {};
-            LAB_DATABASE.forEach(item => {
-                const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
-                                    item.category.toLowerCase().includes(localSearchQueryStringCache);
-                
-                if (searchMatch) {
-                    if (!catalogGroupedTree[item.category]) {
-                        catalogGroupedTree[item.category] = [];
-                    }
-                    catalogGroupedTree[item.category].push(item);
+        // --- 4. EXPERT CORE & MEMORY ENGINEERING ---
+        { id: "p66", title: "66. Move Semantics", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <utility>\nusing namespace std;\n\nclass Vector { int* d; public:\n    Vector(Vector&& o) noexcept : d(o.d) { o.d = nullptr; }\n};\nint main() { Vector v1; Vector v2 = move(v1); }`, logic: "Resource Stealing: Avoids expensive allocations by safely stealing heap references from transient rvalue objects.", output: "> g++ source.cpp\n> ./a.out\n[Memory Allocation Stolen - Shallow Pointer Handover Complete]", viva: [{ q: "What does std::move execute explicitly under the hood?", a: "It casts a variable reference explicitly into an rvalue reference token, signaling that its heap resources can be safely stolen." }] },
+        { id: "p67", title: "67. Unique Pointer Layouts", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    unique_ptr<int> p = make_unique<int>(42);\n    cout << *p;\n}`, logic: "RAII Allocations: Enforces singular ownership of heap pointers, cleaning up memory instantly when scopes close.", output: "> g++ source.cpp\n> ./a.out\n42", viva: [{ q: "Can unique_ptr references be duplicated or copied?", a: "No. Duplication is strictly disabled by compilers; resources must pass exclusively via std::move ownership transfers." }] },
+        { id: "p68", title: "68. Shared Pointer Counters", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    shared_ptr<int> p1 = make_shared<int>(100);\n    shared_ptr<int> p2 = p1;\n    cout << p1.use_count();\n}`, logic: "Reference Counting: Tracks concurrent ownership of heap references using internally managed count monitors.", output: "> g++ source.cpp\n> ./a.out\n2", viva: [{ q: "When does shared_ptr trigger heap deletion routines?", a: "When its corresponding reference tracker gauge drops to exactly zero offsets pointers values." }] },
+        { id: "p69", title: "69. Weak Pointers Tracing", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    auto s = make_shared<int>(5);\n    weak_ptr<int> w = s;\n    if(auto l = w.lock()) cout << *l;\n}`, logic: "Non-Owning references: References shared data blocks cleanly without incrementing the primary reference counter, helping to prevent cyclic dependency leaks.", output: "> g++ source.cpp\n> ./a.out\n5", viva: [{ q: "How do you fetch properties elements from a weak_ptr tracker?", a: "Invoke the .lock() utility macro command to synthesize a valid shared_ptr reference link safely." }] },
+        { id: "p70", title: "70. C++20 Concepts Constraints", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <concepts>\nusing namespace std;\n\ntemplate<typename T> requires integral<T>\nT add(T a, T b) { return a + b; }\nint main() { cout << add(5, 10); }`, logic: "Compile-Time Filters: Sets strict validation rules directly on template type items during initial parsing loops.", output: "> g++ source.cpp\n> ./a.out\n15", viva: [{ q: "What advantages do C++20 concepts hold over historical template parameters patterns?", a: "They accelerate compile check routines and output readable error summaries instead of unreadable template tracing dumps." }] },
+        { id: "p71", title: "71. Lambda State Captures", category: "Expert Core & Memory", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int factor = 3;\n    auto mult = [factor](int x) { return x * factor; };\n    cout << mult(5);\n}`, logic: "Closure Architecture: Generates custom stack closures at runtime to pass external local parameters into local scope logic.", output: "> g++ source.cpp\n> ./a.out\n15", viva: [{ q: "What does capture symbol '[=]' signify inside lambdas?", a: "It instructs code frames to capture all outer scoped local variables automatically by copy value value tokens parameters." }] },
+        { id: "p72", title: "72. Thread Concurrency", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <thread>\nusing namespace std;\n\nvoid task() { cout << "Async Engine"; }\nint main() { thread t(task); t.join(); }`, logic: "Kernel-Level Threads: Launches asynchronous execution pipelines directly inside isolated OS threads, joining them safely before main closures.", output: "> g++ source.cpp\n> ./a.out\nAsync Engine", viva: [{ q: "What is the absolute requirement before main application exits regarding threads?", a: "Active background threads must call either .join() or .detach() instructions loops to protect system boundaries stacks configurations." }] },
+        { id: "p73", title: "73. Mutex Resource Locking", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <thread>\n#include <mutex>\nusing namespace std;\n\nmutex mtx; int total=0;\nvoid add() { lock_guard<mutex> lock(mtx); total++; }\nint main() { thread t1(add), t2(add); t1.join(); t2.join(); }`, logic: "Mutual Exclusion Locks: Locks access paths via lock_guards to prevent race condition issues across concurrent thread networks.", output: "> g++ source.cpp\n> ./a.out\n[Mutex Monitor Latched - Critical Section Secured]", viva: [{ q: "What protection does lock_guard deliver?", a: "It enforces strict RAII mutual exclusion locks safety, unlocking target resources automatically during lifecycle scopes drops loops." }] },
+        { id: "p74", title: "74. Variadic Parameter Expansion", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(N)", spaceComp: "O(N)", code: `#include <iostream>\nusing namespace std;\n\nvoid log() {}\ntemplate<typename T, typename... Args>\nvoid log(T first, Args... args) { cout << first << " "; log(args...); }\nint main() { log(1, 2.5, "Nova"); }`, logic: "Compile-Time Unpacking: Unpacks dynamic parameter packs recursively using customized compiler template checks.", output: "> g++ source.cpp\n> ./a.out\n1 2.5 Nova ", viva: [{ q: "What does symbol '...' signify inside variadic declarations?", a: "It declares a compiler template parameter pack configuration capable of parsing unbounded arguments types list matrices." }] },
+        { id: "p75", title: "75. Custom Namespace Segregation", category: "Expert Core & Memory", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nnamespace WebNova { int assetID = 76; }\nint main() {\n    cout << WebNova::assetID;\n}`, logic: "Symbol Isolation: Wraps variables and module definitions inside distinct namespace shields to eliminate naming conflicts across systems.", output: "> g++ source.cpp\n> ./a.out\n76", viva: [{ q: "Can namespaces declarations stretch across multiple distinct template file links records?", a: "Yes. Namespaces are open structures. Compilers automatically merge identical namespace namespaces definitions variables tags during compilation tracking checks." }] },
+        { id: "p76", title: "76. RTTI Type Tracking", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <typeinfo>\nusing namespace std;\n\nclass Base { virtual void f(){} };\nclass Derived : public Base {};\nint main() { Base* p = new Derived; cout << typeid(*p).name(); }`, logic: "Runtime Type tracking: Queries vtable metadata records at runtime to identify the true structural type of an object pointer.", output: "> g++ source.cpp\n> ./a.out\n7Derived", viva: [{ q: "What condition must base parent classes establish before RTTI type tracking can run?", a: "The base parent class must define at least one virtual function component to activate underlying polymorphic vtable logs tracks structures." }] },
+        { id: "p77", title: "77. Static Assert Validation", category: "Expert Core & Memory", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    static_assert(sizeof(void*) == 8, "Requires 64-bit OS Architecture Only");\n    cout << "64-bit Verified";\n}`, logic: "Compile-Time Halts: Validates system architectural constraints before code compilation, stopping builds immediately if rules fail.", output: "> g++ source.cpp\n> ./a.out\n64-bit Verified", viva: [{ q: "Does static_assert generate machine lines instructions code chunks inside operational outputs?", a: "No. It is processed exclusively by the compiler frontend parser. It leaves zero performance footprint footprints behind inside output binary files." }] },
+        { id: "p78", title: "78. Perfect Forwarding Matrix", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <utility>\nusing namespace std;\n\nvoid relay(int& x) { cout << "lvalue"; }\nvoid relay(int&& x) { cout << "rvalue"; }\ntemplate<typename T> void forwarder(T&& arg) { relay(forward<T>(arg)); }\nint main() { forwarder(5); }`, logic: "Reference Preservations: Employs std::forward macro rules to pass type references down to nested targets without altering their original rvalue/lvalue traits.", output: "> g++ source.cpp\n> ./a.out\nrvalue", viva: [{ q: "What logic design challenge does perfect forwarding solve?", a: "It allows generic wrapper templates to pass down incoming parameter traits references without inadvertently casting rvalues back into lvalues tracks blocks." }] },
+        { id: "p79", title: "79. Structured Bindings Maps", category: "Expert Core & Memory", tier: "Intermediate", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <tuple>\nusing namespace std;\n\nint main() {\n    tuple<int, string> asset(76, "Nova");\n    auto [id, name] = asset;\n    cout << name; \n}`, logic: "Inline Unpacking: Unpacks tuple variables into independent stack trackers instantly using modern C++17 binding mechanics.", output: "> g++ source.cpp\n> ./a.out\nNova", viva: [{ q: "Can structured binding declarations operate on custom structures records?", a: "Yes, provided that all tracking member property variables fields are left public inside structural definitions lines layouts." }] },
+        { id: "p80", title: "80. Chrono High-Res Clocks", category: "Expert Core & Memory", tier: "Advanced", timeComp: "O(1)", spaceComp: "O(1)", code: `#include <iostream>\n#include <chrono>\nusing namespace std;\n\nint main() {\n    auto start = chrono::high_resolution_clock::now();\n    // execution track\n    auto end = chrono::high_resolution_clock::now();\n    cout << chrono::duration_cast<chrono::nanoseconds>(end-start).count() << "ns";\n}`, logic: "Hardware Clock Tracking: Accesses low-level hardware timers directly to measure profile execution times down to precision nanosecond levels.", output: "> g++ source.cpp\n> ./a.out\n420ns", viva: [{ q: "Where are tracking time duration variables models mapped out inside standard systems?", a: "They pass through the standard <chrono> namespace system libraries component files." }] }
+    ];
+
+    let activeTargetIndexId = "p1";
+    let localSearchQueryStringCache = "";
+
+    /* ==========================================================================
+       🧠 REAL-TIME PROCESSING CORE PIPELINE ENGINE
+       ========================================================================== */
+    function renderCatalogTree() {
+        const directoryContainer = document.getElementById('catalogDirectory');
+        directoryContainer.innerHTML = "";
+
+        const catalogGroupedTree = {};
+        LAB_DATABASE.forEach(item => {
+            const searchMatch = item.title.toLowerCase().includes(localSearchQueryStringCache) || 
+                                item.category.toLowerCase().includes(localSearchQueryStringCache);
+            
+            if (searchMatch) {
+                if (!catalogGroupedTree[item.category]) {
+                    catalogGroupedTree[item.category] = [];
                 }
+                catalogGroupedTree[item.category].push(item);
+            }
+        });
+
+        const uniqueKeys = Object.keys(catalogGroupedTree);
+        if (uniqueKeys.length === 0) {
+            directoryContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
+            return;
+        }
+
+        uniqueKeys.forEach(categoryKey => {
+            let listElementsHTML = "";
+            catalogGroupedTree[categoryKey].forEach(item => {
+                const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
+                listElementsHTML += `<li class="lab-item ${activeStateClass}" data-id="${item.id}">${item.title}</li>`;
             });
 
-            const uniqueKeys = Object.keys(catalogGroupedTree);
-            if (uniqueKeys.length === 0) {
-                directoryContainer.innerHTML = `<p style="font-size: 0.78rem; padding: 12px; color: #94a3b8; font-weight: 500;">No matching labs found.</p>`;
-                return;
-            }
-
-            uniqueKeys.forEach(categoryKey => {
-                let listElementsHTML = "";
-                catalogGroupedTree[categoryKey].forEach(item => {
-                    const activeStateClass = item.id === activeTargetIndexId ? "active" : "";
-                    listElementsHTML += `<li class="lab-item ${activeStateClass}" data-id="${item.id}">${item.title}</li>`;
-                });
-
-                const groupHTML = `
-                    <div class="category-group-container" data-cat-name="${categoryKey}">
-                        <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
-                            <span>▼ ${categoryKey}</span>
-                        </div>
-                        <ul class="lab-list">
-                            ${listElementsHTML}
-                        </ul>
+            const groupHTML = `
+                <div class="category-group-container" data-cat-name="${categoryKey}">
+                    <div class="category-header-toggle" onclick="toggleFolderViewBlock(this)">
+                        <span>▼ ${categoryKey}</span>
                     </div>
-                `;
-                directoryContainer.insertAdjacentHTML('beforeend', groupHTML);
-            });
-
-            document.querySelectorAll('.lab-item').forEach(itemNode => {
-                itemNode.addEventListener('click', () => {
-                    activeTargetIndexId = itemNode.dataset.id;
-                    document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
-                    itemNode.classList.add('active');
-                    syncMainWorkspaceView();
-                });
-            });
-
-            updateNavigationButtonsStateBounds();
-        }
-
-        function filterCatalogTree() {
-            localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
-            renderCatalogTree();
-        }
-
-        function toggleFolderViewBlock(headerNode) {
-            const parentContainerElement = headerNode.parentElement;
-            parentContainerElement.classList.toggle('collapsed');
-            const spanTextNode = headerNode.querySelector('span');
-            if (parentContainerElement.classList.contains('collapsed')) {
-                spanTextNode.innerText = spanTextNode.innerText.replace('▼', '▶');
-            } else {
-                spanTextNode.innerText = spanTextNode.innerText.replace('▶', '▼');
-            }
-        }
-
-        /* --- Workspace Views Synchronization Pump --- */
-        function syncMainWorkspaceView() {
-            const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
-            if (!dataNode) return;
-
-            document.getElementById('prog-title').innerText = dataNode.title;
-            document.getElementById('breadcrumbSection').innerText = dataNode.category;
-            document.getElementById('breadcrumbTitle').innerText = dataNode.title;
-            document.getElementById('metaTier').innerText = dataNode.tier;
-            document.getElementById('specTime').innerText = dataNode.timeComp;
-            document.getElementById('specSpace').innerText = dataNode.spaceComp;
-
-            document.getElementById('logic-text').innerHTML = `
-                <div class="logic-step">
-                    <div class="step-num">i</div>
-                    <p>${dataNode.logic}</p>
+                    <ul class="lab-list">
+                        ${listElementsHTML}
+                    </ul>
                 </div>
             `;
+            directoryContainer.insertAdjacentHTML('beforeend', groupHTML);
+        });
 
-            document.getElementById('output-text').innerText = dataNode.output;
-            document.getElementById('code-block').innerText = dataNode.code;
-
-            // Lines generator routine
-            const lineCount = dataNode.code.split('\n').length;
-            let lineRailHTML = "";
-            for (let i = 1; i <= lineCount; i++) {
-                lineRailHTML += `${i}<br>`;
-            }
-            document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
-
-            // Viva questions dynamic renderer mapping block
-            const vivaMount = document.getElementById('vivaListMount');
-            vivaMount.innerHTML = "";
-            dataNode.viva.forEach(item => {
-                const nodeHTML = `<li class="viva-node"><strong>Q: ${item.q}</strong><p>A: ${item.a}</p></li>`;
-                vivaMount.insertAdjacentHTML('beforeend', nodeHTML);
-            });
-
-            updateNavigationButtonsStateBounds();
-        }
-
-        function updateNavigationButtonsStateBounds() {
-            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
-            document.getElementById('prevBtn').disabled = (currentIndex === 0);
-            document.getElementById('nextBtn').disabled = (currentIndex === LAB_DATABASE.length - 1);
-        }
-
-        function navigateProgram(directionOffset) {
-            const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
-            const targetTargetIndex = currentIndex + directionOffset;
-            if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
-                activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
-                renderCatalogTree();
+        document.querySelectorAll('.lab-item').forEach(itemNode => {
+            itemNode.addEventListener('click', () => {
+                activeTargetIndexId = itemNode.dataset.id;
+                document.querySelectorAll('.lab-item').forEach(el => el.classList.remove('active'));
+                itemNode.classList.add('active');
                 syncMainWorkspaceView();
-                
-                const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
-                if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }
-        }
-
-        function copyCodeStack() {
-            const codeStringValue = document.getElementById('code-block').innerText;
-            navigator.clipboard.writeText(codeStringValue).then(() => {
-                const toastAlert = document.getElementById('toastAlert');
-                toastAlert.style.display = 'flex';
-                setTimeout(() => { toastAlert.style.display = 'none'; }, 2500);
             });
-        }
+        });
 
-        function openOnlineCompiler() {
-            window.open("https://www.onlinegdb.com/online_c++_compiler", "_blank");
-        }
+        updateNavigationButtonsStateBounds();
+    }
 
-        window.onload = () => {
+    function filterCatalogTree() {
+        localSearchQueryStringCache = document.getElementById('libSearch').value.toLowerCase().trim();
+        renderCatalogTree();
+    }
+
+    function toggleFolderViewBlock(headerNode) {
+        const parentContainerElement = headerNode.parentElement;
+        parentContainerElement.classList.toggle('collapsed');
+        const spanTextNode = headerNode.querySelector('span');
+        if (parentContainerElement.classList.contains('collapsed')) {
+            spanTextNode.innerText = spanTextNode.innerText.replace('▼', '▶');
+        } else {
+            spanTextNode.innerText = spanTextNode.innerText.replace('▶', '▼');
+        }
+    }
+
+    /* --- Workspace Views Synchronization Pump --- */
+    function syncMainWorkspaceView() {
+        const dataNode = LAB_DATABASE.find(item => item.id === activeTargetIndexId);
+        if (!dataNode) return;
+
+        document.getElementById('prog-title').innerText = dataNode.title;
+        document.getElementById('breadcrumbSection').innerText = dataNode.category;
+        document.getElementById('breadcrumbTitle').innerText = dataNode.title;
+        document.getElementById('metaTier').innerText = dataNode.tier;
+        document.getElementById('specTime').innerText = dataNode.timeComp;
+        document.getElementById('specSpace').innerText = dataNode.spaceComp;
+
+        document.getElementById('logic-text').innerHTML = `
+            <div class="logic-step">
+                <div class="step-num">i</div>
+                <p>${dataNode.logic}</p>
+            </div>
+        `;
+
+        document.getElementById('output-text').innerText = dataNode.output;
+        document.getElementById('code-block').innerText = dataNode.code;
+
+        // Lines generator routine
+        const lineCount = dataNode.code.split('\n').length;
+        let lineRailHTML = "";
+        for (let i = 1; i <= lineCount; i++) {
+            lineRailHTML += `${i}<br>`;
+        }
+        document.getElementById('lineNumbersRail').innerHTML = lineRailHTML;
+
+        // Viva questions dynamic renderer mapping block
+        const vivaMount = document.getElementById('vivaListMount');
+        vivaMount.innerHTML = "";
+        dataNode.viva.forEach(item => {
+            const nodeHTML = `<li class="viva-node"><strong>Q: ${item.q}</strong><p>A: ${item.a}</p></li>`;
+            vivaMount.insertAdjacentHTML('beforeend', nodeHTML);
+        });
+
+        updateNavigationButtonsStateBounds();
+    }
+
+    function updateNavigationButtonsStateBounds() {
+        const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+        document.getElementById('prevBtn').disabled = (currentIndex === 0);
+        document.getElementById('nextBtn').disabled = (currentIndex === LAB_DATABASE.length - 1);
+    }
+
+    function navigateProgram(directionOffset) {
+        const currentIndex = LAB_DATABASE.findIndex(i => i.id === activeTargetIndexId);
+        const targetTargetIndex = currentIndex + directionOffset;
+        if (targetTargetIndex >= 0 && targetTargetIndex < LAB_DATABASE.length) {
+            activeTargetIndexId = LAB_DATABASE[targetTargetIndex].id;
             renderCatalogTree();
             syncMainWorkspaceView();
-        };
-    </script>
+            
+            const targetedListItemNode = document.querySelector(`.lab-item[data-id="${activeTargetIndexId}"]`);
+            if (targetedListItemNode) targetedListItemNode.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    function copyCodeStack() {
+        const codeStringValue = document.getElementById('code-block').innerText;
+        navigator.clipboard.writeText(codeStringValue).then(() => {
+            const toastAlert = document.getElementById('toastAlert');
+            toastAlert.style.display = 'flex';
+            setTimeout(() => { toastAlert.style.display = 'none'; }, 2500);
+        });
+    }
+
+    function openOnlineCompiler() {
+        window.open("https://www.onlinegdb.com/online_c++_compiler", "_blank");
+    }
+
+    window.onload = () => {
+        renderCatalogTree();
+        syncMainWorkspaceView();
+    };
+</script>
 </body>
 </html>
