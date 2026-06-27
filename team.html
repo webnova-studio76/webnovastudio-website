@@ -3,258 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet the Team | WebNova Studio</title>
+    <title>Meet the Founders | WebNova Studio</title>
+    <!-- Linked Global Stylesheet (Untouched) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Premium Professional Typography -->
+    <!-- Premium Professional Typography (Typo Restored Cleanly) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* High-End Minimalist Studio Tokens */
-            --primary: #10b981;        /* Global Academic Emerald Green */
-            --secondary: #0f172a;     /* Deep Jet Onyx */
-            --bg: #fafafa;            /* Premium Pure Gallery Off-White */
-            --text-main: #1c1917;     /* High-Contrast Editorial Charcoal */
-            --text-muted: #57534e;    /* Deep Muted Stone */
-            --border-line: #e7e5e4;   /* Structural Razor Fine Hairline */
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        h1, h2, h3, h4, .btn-studio { font-family: 'Space Grotesk', sans-serif; color: var(--secondary); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            -webkit-font-smoothing: antialiased; 
-            padding-top: 85px;
-            letter-spacing: -0.01em;
-        }
-
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 32px; width: 100%; }
-
-        /* --- 1. Institutional Hero Section --- */
-        .team-hero {
-            padding: 130px 0 90px;
-            border-bottom: 1px solid var(--border-line);
-            background: var(--white);
-        }
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: flex-end;
-        }
-        .hero-left h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; }
-        .hero-left h1 span { color: var(--primary); }
-        .hero-right p { color: var(--text-muted); font-size: 1.1rem; font-weight: 400; line-height: 1.65; max-width: 540px; }
-
-        /* --- 2. Editorial Leadership Grid Layout --- */
-        .team-grid-section { padding: 0; background: var(--white); }
-        .section-label { 
-            font-family: monospace; font-size: 0.72rem; font-weight: 700; 
-            color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; 
-            display: block; padding: 35px 50px 0; background: var(--white);
-        }
-        
-        .editorial-team-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-bottom: 1px solid var(--border-line);
-        }
-
-        .team-profile-cell {
-            padding: 70px 50px;
-            border-right: 1px solid var(--border-line);
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 40px;
-            align-items: flex-start;
-            transition: var(--transition);
-        }
-        .editorial-team-grid .team-profile-cell:nth-child(2n) { border-right: none; }
-        .team-profile-cell:hover { background: #fdfdfd; }
-
-        .image-frame-box {
-            width: 160px; height: 180px;
-            border-radius: 12px; overflow: hidden;
-            background: #f1f5f9; border: 1px solid var(--border-line);
-            box-shadow: 0 8px 20px -10px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-        .team-profile-cell:hover .image-frame-box { transform: translateY(-2px); }
-        .image-frame-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        .member-details { display: flex; flex-direction: column; align-items: flex-start; }
-        .member-details h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
-        .role-title { font-size: 0.92rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
-        
-        .edu-badge {
-            font-size: 0.7rem; font-weight: 700; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
-            background: #f1f5f9; padding: 3px 8px; border-radius: 4px; display: inline-block;
-        }
-        .team-profile-cell:nth-child(1):hover .edu-badge { background: rgba(37, 99, 235, 0.05); color: #2563eb; }
-        .team-profile-cell:nth-child(2):hover .edu-badge { background: rgba(16, 185, 129, 0.05); color: #059669; }
-
-        .member-details p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; text-align: left; }
-        .profile-socials { display: flex; gap: 12px; }
-        .profile-socials a { color: var(--text-muted); font-size: 0.95rem; transition: var(--transition); }
-        .profile-socials a:hover { color: var(--secondary); }
-
-        /* --- 3. Shared Mission Statement Deck --- */
-        .shared-mission-block { padding: 90px 0; border-bottom: 1px solid var(--border-line); }
-        .mission-split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
-        .mission-split h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
-        .mission-split h2 span { color: var(--primary); }
-        .mission-paragraphs p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; font-weight: 400; margin-bottom: 20px; }
-        .mission-paragraphs p:last-child { margin-bottom: 0; }
-
-        /* --- 4. Premium Studio Contributor Join Block --- */
-        .mentors-section { padding: 110px 0; background: var(--white); }
-        .join-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: flex-start; }
-        .join-left h2 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
-        .join-left p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 35px; }
-        
-        .matrix-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .matrix-item { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-line); }
-        .matrix-item i { color: var(--primary); font-size: 0.85rem; }
-        .matrix-item span { font-size: 0.88rem; font-weight: 600; color: var(--secondary); }
-
-        .btn-studio { 
-            padding: 14px 32px; border-radius: 6px; text-decoration: none; 
-            font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
-            letter-spacing: 1px; transition: var(--transition); display: inline-flex; 
-            align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent;
-            margin-top: 40px; background: var(--secondary); color: var(--white);
-        }
-        .btn-studio:hover { background: var(--primary); }
-
-        /* ==========================================================================
-           --- HIGH-PERFORMANCE RESPONSIVE MEDIA BREAKPOINTS ---
-           ========================================================================== */
-        @media (max-width: 1024px) {
-            .hero-layout, .editorial-team-grid, .mission-split, .join-layout { grid-template-columns: 1fr; gap: 40px; }
-            .hero-left h1 { font-size: 3rem; }
-            .section-label { padding: 35px 24px 0; }
-            .editorial-team-grid .team-profile-cell { border-right: none !important; border-bottom: 1px solid var(--border-line) !important; padding: 50px 24px; }
-            .editorial-team-grid .team-profile-cell:last-child { border-bottom: none !important; }
-            .matrix-list { grid-template-columns: 1fr; gap: 16px; }
-            .btn-studio { width: 100%; }
-        }
-        @media (max-width: 640px) {
-            .team-profile-cell { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 24px; }
-            .member-details { align-items: center; }
-            .member-details p { text-align: center; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="founders-page">
 
-<!-- Dynamic Universal Header Nav Anchor Mount -->
-<div id="global-header"></div>
+    <!-- Global Application Header Placeholder (Untouched) -->
+    <div id="global-header"></div>
 
-<section class="team-hero">
-    <div class="container">
-        <div class="hero-layout">
-            <div class="hero-left">
-                <h1>Meet the Minds Behind <br><span>WebNova Studio</span></h1>
-            </div>
-            <div class="hero-right">
-                <p>A passionate team of educators, developers, designers, and innovators dedicated to empowering learners, creators, and businesses through technology, design, and practical digital education.</p>
+    <!-- 1. AUTHENTIC HERO BANNER (WHITE BACKGROUND) -->
+    <section class="fd-hero-section bg-white">
+        <div class="fd-container">
+            <span class="fd-badge">Two Founders. One Vision.</span>
+            <h1>Meet the People Behind <br><span>WebNova Studio</span></h1>
+            <p>WebNova Studio was founded by two passionate developers with a clear goal—to make technology transparent, approachable, and actionable through professional client web layout architecture and open educational resources[cite: 1, 2].</p>
+            <div class="fd-hero-stats">
+                <div class="fd-stat-pill"><strong>17+ Years</strong> <span>Combined Practice</span></div>
+                <div class="fd-stat-pill"><strong>100+ Free Assets</strong> <span>Academic Resources</span></div>
+                <div class="fd-stat-pill"><strong>2 Divisions</strong> <span>Studio &amp; Academy</span></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<span class="section-label">01 // Executive Desk</span>
-<section class="team-grid-section">
-    <div class="container" style="padding:0;">
-        <div class="editorial-team-grid">
+    <!-- 2. SCANNAVBLE FOUNDER BIO CARDS (LIGHT GRAY BACKGROUND) -->
+    <section class="fd-section bg-gray">
+        <div class="fd-container fd-cards-flex">
             
-            <!-- RAKESH PROFILE CELL -->
-            <div class="team-profile-cell">
-                <div class="image-frame-box">
-                    <img src="rakesh.png" alt="Rakesh Jadhav">
+            <!-- RAKESH PROFILE CARD -->
+            <div class="fd-profile-card">
+                <div class="fd-card-header">
+                    <div class="fd-avatar-container">
+                        <img src="rakesh.png" alt="Rakesh Jadhav - Founder &amp; Web Developer[cite: 1, 2]">
+                    </div>
+                    <div class="fd-identity-text">
+                        <h3>Rakesh Jadhav</h3>
+                        <span class="fd-role">Founder • Web Developer • Programmer</span>
+                        <span class="fd-edu">BCA Graduate // School Teacher[cite: 1, 2]</span>
+                    </div>
                 </div>
-                <div class="member-details">
-                    <h3>Rakesh Jadhav</h3>
-                    <span class="role-title">Founder &amp; Chief Technical Architect</span>
-                    <span class="edu-badge">BCA Graduate</span>
-                    <p>Rakesh leads the technical vision of WebNova Studio and Code Craft Academic. His focus lies in software development, database systems, web technologies, programming education, and structured learning frameworks. He is committed to helping students build strong technical foundations and industry-ready development skills through practical, project-based learning.</p>
-                    <div class="profile-socials">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                
+                <p class="fd-personal-quote">"I started designing websites over 15 years ago out of curiosity[cite: 1, 2]. That passion gradually evolved into building academic software implementations, mastering frontend architectures, and teaching students practical programming languages[cite: 1, 2]. Today, my focus is creating clean, lightweight websites that load exceptionally fast, while helping students decode engineering fundamentals through real, hands-on projects[cite: 1, 2]."</p>
+                
+                <div class="fd-metadata-grid">
+                    <div class="fd-meta-box">
+                        <h5>Core Expertise</h5>
+                        <ul>
+                            <li>HTML5 / CSS3 Grid Layouts[cite: 1, 2]</li>
+                            <li>Vanilla JavaScript / PHP[cite: 1, 2]</li>
+                            <li>Relational Database SQL[cite: 1, 2]</li>
+                            <li>Responsive Architecture[cite: 1, 2]</li>
+                        </ul>
+                    </div>
+                    <div class="fd-meta-box">
+                        <h5>Current Focus</h5>
+                        <ul>
+                            <li>Freelance Business Sites[cite: 1, 2]</li>
+                            <li>Student Practical Code[cite: 1, 2]</li>
+                            <li>UI/UX Layout Systems[cite: 1, 2]</li>
+                            <li>Academic Document PDFs[cite: 1, 2]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fd-card-footer">
+                    <span class="fd-status-signal"><span class="pulse-dot"></span> Available for Freelance Contracts</span>
+                    <div class="fd-socials">
+                        <a href="https://github.com/webnova-studio76" target="_blank" aria-label="Rakesh Jadhav GitHub Profile"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
 
-            <!-- RASHMI PROFILE CELL -->
-            <div class="team-profile-cell">
-                <div class="image-frame-box">
-                    <img src="rashmi.png" alt="Rashmi Divantgi">
+            <!-- RASHMI PROFILE CARD -->
+            <div class="fd-profile-card">
+                <div class="fd-card-header">
+                    <div class="fd-avatar-container">
+                        <img src="rashmi.png" alt="Rashmi Divantgi - Co-Founder &amp; UI Designer[cite: 1, 2]">
+                    </div>
+                    <div class="fd-identity-text">
+                        <h3>Rashmi Divantgi</h3>
+                        <span class="fd-role">Co-Founder • UI Designer • Web Developer</span>
+                        <span class="fd-edu">MCA Candidate (Currently Pursuing)[cite: 1, 2]</span>
+                    </div>
                 </div>
-                <div class="member-details">
-                    <h3>Rashmi Divantgi</h3>
-                    <span class="role-title">Co-Founder &amp; Creative Director</span>
-                    <span class="edu-badge">MCA Scholar</span>
-                    <p>Rashmi drives the creative direction of WebNova Studio, overseeing user experience design, interface development, branding strategies, visual communication, and educational content presentation. Her goal is to create engaging, accessible, and user-centered digital experiences that combine creativity with functionality.</p>
-                    <div class="profile-socials">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                
+                <p class="fd-personal-quote">"Technology should be approachable, usable, and simple to navigate. I specialize in user interface wireframing, fluid responsive styling, and custom educational content taxonomy design[cite: 1, 2]. By combining active Master of Computer Applications research with modern design tools, my goal is to craft visual blueprints that help small businesses stand out and help students learn with complete confidence[cite: 1, 2]."</p>
+                
+                <div class="fd-metadata-grid">
+                    <div class="fd-meta-box">
+                        <h5>Core Expertise</h5>
+                        <ul>
+                            <li>UI/UX Design Systems[cite: 1, 2]</li>
+                            <li>Responsive Web Frameworks[cite: 1, 2]</li>
+                            <li>Aesthetic Vector Layouts[cite: 1, 2]</li>
+                            <li>Academic Syllabus Structuring[cite: 1, 2]</li>
+                        </ul>
+                    </div>
+                    <div class="fd-meta-box">
+                        <h5>Current Focus</h5>
+                        <ul>
+                            <li>Premium Landing Grids[cite: 1, 2]</li>
+                            <li>Visual Component Assets[cite: 1, 2]</li>
+                            <li>Curriculum Notes Layouts[cite: 1, 2]</li>
+                            <li>User Experience Auditing[cite: 1, 2]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fd-card-footer">
+                    <span class="fd-status-signal"><span class="pulse-dot"></span> Accepting Project Commissions</span>
+                    <div class="fd-socials">
+                        <a href="#" target="_blank" aria-label="Rashmi Divantgi LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
 
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="shared-mission-block">
-    <div class="container">
-        <div class="mission-split">
-            <div>
-                <h2>Our Shared<br><span>Mission.</span></h2>
+    <!-- 3. DETAILED CAPABILITIES & SPECIALIZATIONS (WHITE BACKGROUND) -->
+    <section class="fd-section bg-white">
+        <div class="fd-container">
+            <div class="fd-section-header">
+                <h2>Our Specialized Fields of Work</h2>
+                <p>From clean freelance business deployments to structured student practical code files, we build functional digital assets that deliver results[cite: 1, 2].</p>
             </div>
-            <div class="mission-paragraphs">
-                <p>Together, we strive to bridge the gap between academic knowledge and real-world implementation by building a collaborative ecosystem that supports learning, innovation, creativity, and professional growth.</p>
-                <p>Through WebNova Studio and Code Craft Academic, we aim to provide high-quality educational resources, practical development experiences, open-source contributions, and digital solutions that inspire the next generation of technology professionals.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="mentors-section">
-    <div class="container">
-        <div class="join-layout">
-            <div class="join-left">
-                <h2>Join Our Mission</h2>
-                <p>We welcome passionate learners, developers, designers, educators, system administrators, and technology enthusiasts who share our vision of creating accessible, practical, and community-driven learning experiences. Whether you're a BCA student, MCA scholar, web developer, UI/UX designer, content creator, or open-source contributor, there is a place for you in our growing community.</p>
-            </div>
-            <div class="join-right">
-                <div class="matrix-list">
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Collaborate on real-world projects</span></div>
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Contribute to open-source initiatives</span></div>
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Build practical industry experience</span></div>
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Expand your professional network</span></div>
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Learn from peers and mentors</span></div>
-                    <div class="matrix-item"><i class="fas fa-check"></i><span>Help shape digital education</span></div>
+            <div class="fd-grid-3">
+                <div class="fd-spec-card">
+                    <i class="fas fa-desktop"></i>
+                    <h4>Website Design</h4>
+                    <p>High-conversion responsive landing pages, creative developer portfolios, and clean interface website redesigns tailored to display beautifully across all screen profiles[cite: 1, 2].</p>
                 </div>
-                <a href="contact.html" class="btn-studio">Become a Contributor</a>
+                <div class="fd-spec-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Academic Resources</h4>
+                    <p>Vetted university reference lecture notes, complete practical lab programming manuals, and high-impact presentation slide decks engineered for computing students[cite: 1, 2].</p>
+                </div>
+                <div class="fd-spec-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Software &amp; Projects</h4>
+                    <p>Standalone BCA/MCA college software mini-projects, custom data schemas configurations, and direct step-by-step logic mentoring support[cite: 1, 2].</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Dynamic Universal Footer Mount Anchor Slot -->
-<div id="global-footer"></div>
+    <!-- 4. WHAT WE BELIEVE / VALUES SECTOR (LIGHT GRAY BACKGROUND) -->
+    <section class="fd-section bg-gray">
+        <div class="fd-container">
+            <div class="fd-section-header">
+                <h2>Why Work With WebNova Studio?</h2>
+                <p>We eliminate unnecessary jargon to build clear solutions focused strictly on usability, learning speed, and maintainable programming patterns[cite: 1, 2].</p>
+            </div>
+            <div class="fd-reasons-matrix">
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Clean, Modern Design Principles</span></div>
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Student-Friendly, Plain-Text Explanations</span></div>
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Mobile-First Responsive Frameworks</span></div>
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Affordable, Honest Freelance Rates</span></div>
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Fast, Direct Founder Communication Channels</span></div>
+                <div class="fd-reason-node"><i class="fas fa-check-circle"></i><span>Reliable, Long-Term Codebase Optimization Support</span></div>
+            </div>
+        </div>
+    </section>
 
-<!-- Core System Application Engine Injections -->
-<script src="main.js"></script>
-<script src="footer.js"></script>
+    <!-- 5. HIGH-CONVERSION DARKENED CTA BLOCK (DARK BACKGROUND) -->
+    <section class="fd-section bg-dark">
+        <div class="fd-container">
+            <div class="fd-cta-wrapper">
+                <h2>Let’s Build Something Meaningful Together</h2>
+                <p>Whether you are launching your first business webpage, requesting an academic tutorial file, or building a custom digital platform, our team is ready to map out your architecture[cite: 1, 2].</p>
+                <div class="fd-cta-actions">
+                    <a href="contact.html" class="fd-action-btn primary-btn">Contact Our Team</a>
+                    <a href="free-assets.html" class="fd-action-btn link-btn">Explore Free Assets Library &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Application Footer Placeholder (Untouched) -->
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>
