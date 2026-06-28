@@ -1679,3 +1679,195 @@ body.java-labs-page {
     .java-labs-page .content-grid { grid-template-columns: 1fr; }
     .java-labs-page .main-content { height: auto; }
 }
+/* ==========================================================================
+   ⚓ ISOLATED ACADEMIC PORTAL WORKSPACE NOTE CODES (Safe Extension)
+   ========================================================================== */
+body.notes-workspace-root {
+    background-color: #030712;
+    color: #f1f5f9;
+}
+
+.nt-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- 1. Institutional Hero Specification Banner --- */
+.nt-hero-header {
+    background: linear-gradient(135deg, #111827 0%, #090d16 100%);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.nt-pill-badge {
+    background: rgba(37, 99, 235, 0.1);
+    color: #38bdf8;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    display: inline-block;
+    margin-bottom: 8px;
+}
+.nt-hero-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff !important;
+    line-height: 1.2;
+}
+.nt-hero-header p {
+    color: #94a3b8 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+    margin-top: 8px !important;
+    margin-bottom: 16px !important;
+}
+
+.nt-roadmap-mini-rail { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.nt-roadmap-mini-rail .rm-node { font-size: 0.72rem; font-weight: 600; color: #64748b; }
+.nt-roadmap-mini-rail .rm-node.active { color: #38bdf8; font-weight: 700; }
+.nt-roadmap-mini-rail .rm-arrow { font-size: 0.72rem; color: #475569; }
+
+.nt-hero-right-specs { display: flex; flex-direction: column; gap: 8px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02); }
+.spec-tile { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #cbd5e1; }
+.spec-tile i { color: #38bdf8; width: 14px; }
+
+/* --- Prerequisites & Outcomes Metadata Deck --- */
+.nt-meta-split-deck { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; margin-top: 16px; }
+.meta-deck-card { background: #111827; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; }
+.meta-deck-card h5 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #ffffff !important; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.meta-deck-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.meta-deck-card li { font-size: 0.82rem; color: #94a3b8; padding-left: 16px; position: relative; text-align: left; line-height: 1.4; }
+.outcomes-card li::before { content: "✓"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
+.prereq-card li i { color: #38bdf8; position: absolute; left: 0; font-size: 0.75rem; top: 3px; }
+.prereq-card li { padding-left: 18px; }
+
+/* --- Tab Navigation Anchor Dock System --- */
+.nt-tabs-nav-dock { display: flex; gap: 8px; background: rgba(17, 24, 39, 0.6); padding: 6px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-top: 16px; }
+.nt-tab-trigger { flex: 1; padding: 12px; border: none; background: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; cursor: pointer; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease; }
+.nt-tab-trigger:hover { color: #ffffff; background: rgba(255,255,255,0.02); }
+.nt-tab-trigger.active { background: #2563eb; color: #ffffff; box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
+
+/* --- Core Volumetric Panel Canvas Sections --- */
+.nt-tab-panel { background: linear-gradient(135deg, #111827 0%, #1f2937 100%); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-top: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; }
+.nt-tab-panel.active { display: block; animation: ntFadeIn 0.3s ease; }
+@keyframes ntFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #ffffff !important; border-left: 4px solid #2563eb; padding-left: 12px; margin-bottom: 16px; text-align: left; }
+.nt-tab-panel p { color: #94a3b8 !important; font-size: 0.88rem !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+
+/* Timeline Structural Layout Maps */
+.nt-timeline-vertical-rail { display: flex; flex-direction: column; gap: 16px; position: relative; padding-left: 20px; border-left: 2px solid #1e293b; margin-top: 8px; text-align: left; }
+.tl-milestone { position: relative; }
+.tl-marker-year { font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 700; background: #2563eb; color: #ffffff; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+.tl-content-body h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 2px; }
+.tl-content-body p { font-size: 0.84rem !important; line-height: 1.45 !important; color: #94a3b8 !important; margin-bottom: 0 !important; }
+
+/* Categorization System Grids */
+.nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
+.nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; }
+
+.class-profile-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.03); padding: 24px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; }
+.card-icon-slot { width: 32px; height: 32px; background: rgba(37,99,235,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 0.9rem; }
+.class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #ffffff !important; }
+.scale-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; }
+.class-profile-card p { font-size: 0.8rem !important; color: #94a3b8 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+.inset-embedded-system-box { background: rgba(16, 185, 129, 0.02); border-left: 4px solid #10b981; border-top: 1px solid rgba(16,185,129,0.05); border-right: 1px solid rgba(16,185,129,0.05); border-bottom: 1px solid rgba(16,185,129,0.05); padding: 20px; border-radius: 0 6px 6px 0; display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; text-align: left; }
+.inset-embedded-system-box i { color: #10b981; font-size: 1rem; margin-top: 3px; }
+.inset-embedded-system-box strong { color: #ffffff !important; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+.inset-embedded-system-box p { font-size: 0.82rem !important; color: #94a3b8 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+
+/* Characteristic Bullet Arrays */
+.traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.traits-bullet-list li { font-size: 0.85rem; color: #94a3b8; padding-left: 20px; position: relative; }
+.traits-bullet-list li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+.traits-bullet-list strong { color: #ffffff !important; font-weight: 600; }
+
+.nt-pro-tip-box { background: rgba(245, 158, 11, 0.03); border-left: 4px solid #f59e0b; padding: 20px; border-radius: 0 8px 8px 0; margin-top: 24px; text-align: left; }
+.nt-pro-tip-box strong { color: #fbbf24 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; display: block; margin-bottom: 4px; }
+.nt-pro-tip-box p { font-size: 0.82rem !important; color: #94a3b8 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+/* Generations Matrices Elements */
+.generations-cards-deck { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.gen-deck-row { background: rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.02); padding: 14px 20px; border-radius: 6px; font-size: 0.84rem; line-height: 1.45; }
+.gen-deck-row strong { color: #38bdf8 !important; font-weight: 700; display: block; margin-bottom: 2px; }
+.gen-deck-row span { color: #94a3b8; font-weight: 500; }
+
+.mnemonic-learning-card { background: rgba(37, 99, 235, 0.02); border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 8px 8px 0; display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; text-align: left; }
+.mnemonic-learning-card i { color: #38bdf8; font-size: 1rem; margin-top: 3px; }
+.mnemonic-learning-card strong { color: #ffffff !important; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+.mnemonic-learning-card p { font-size: 0.82rem !important; color: #94a3b8 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+.mnemonic-learning-card b { color: #38bdf8; }
+
+/* --- 5. Examination Question Vault Components --- */
+.exam-qa-sub-block { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+.exam-qa-sub-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 4px; border-bottom: 1px solid #1e293b; padding-bottom: 4px; }
+.qa-item-card { background: rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.02); padding: 16px; border-radius: 6px; }
+.qa-item-card static, .qa-item-card strong { font-size: 0.88rem; color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; }
+.qa-item-card p { font-size: 0.84rem !important; line-height: 1.45 !important; color: #94a3b8 !important; margin-bottom: 0 !important; }
+
+/* Self-Testing Quiz Sandboxes */
+.interactive-mcq-sandbox { background: rgba(0,0,0,0.2); border: 1px solid #1e293b; padding: 24px; border-radius: 8px; margin-top: 24px; text-align: left; }
+.interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 12px; }
+.mcq-question-wrapper p { font-size: 0.88rem !important; color: #ffffff !important; font-weight: 600; margin-bottom: 12px !important; }
+.mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 500px; }
+.option-btn { background: #1f2937; border: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; padding: 10px 14px; border-radius: 4px; text-align: left; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s ease; }
+.option-btn:hover { background: #374151; color: #ffffff; }
+
+.quiz-feedback-box { padding: 14px; border-radius: 4px; font-size: 0.82rem; line-height: 1.4; margin-top: 12px; display: none; text-align: left; }
+.quiz-feedback-box.success-state { background: rgba(6, 95, 70, 0.2); border: 1px solid #059669; color: #a7f3d0; }
+.quiz-feedback-box.error-state { background: rgba(127, 29, 29, 0.2); border: 1px solid #dc2626; color: #fca5a5; }
+
+/* Lab Viva Bullets Lists */
+.viva-checklist-block { margin-top: 24px; text-align: left; }
+.viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 8px; }
+.viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.viva-bullets-list li { font-size: 0.82rem; color: #94a3b8; padding-left: 14px; position: relative; line-height: 1.4; }
+.viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 900; }
+.viva-bullets-list strong { color: #ffffff !important; font-weight: 600; }
+
+/* --- Download Materials Aggregator Panel --- */
+.download-portal-strip { background: #111827; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.dl-strip-text { text-align: left; }
+.dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: #ffffff !important; }
+.dl-strip-text p { font-size: 0.82rem !important; color: #94a3b8 !important; line-height: 1.4 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+
+.dl-buttons-matrix { display: flex; gap: 8px; flex-wrap: wrap; }
+.dl-action-node { padding: 8px 14px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+.dl-action-node.btn-pdf { background: rgba(16, 185, 129, 0.08); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.15); }
+.dl-action-node.btn-pdf:hover { background: #10b981; color: #ffffff; }
+.dl-action-node.btn-ppt { background: rgba(245, 158, 11, 0.08); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.15); }
+.dl-action-node.btn-ppt:hover { background: #f59e0b; color: #ffffff; }
+.dl-action-node.btn-cheat { background: rgba(37, 99, 235, 0.08); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.15); }
+.dl-action-node.btn-cheat:hover { background: #2563eb; color: #ffffff; }
+
+/* --- Routing Lower Flow Controls Sequencer --- */
+.notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 40px; border-top: 1px solid #1e293b; margin-top: 32px; }
+.route-center-summary { font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.route-center-summary strong { color: #10b981 !important; }
+.btn-next-module-trigger { padding: 10px 18px; border: 1px solid rgba(255,255,255,0.05); background: #111827; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #ffffff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+.btn-next-module-trigger:hover { background: #2563eb; }
+
+/* ==========================================================================
+   ⚓ RESPONSIVE SCREEN RESIZING MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 960px) {
+    .nt-hero-header, .nt-meta-split-deck, .nt-tabs-nav-dock, .nt-grid-3, .nt-grid-2, .nt-comparison-board, .split-workflow-layout, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .nt-tabs-nav-dock { padding: 8px; }
+    .nt-tab-trigger { width: 100%; justify-content: center; }
+    .dl-buttons-matrix { width: 100%; }
+    .dl-action-node { width: 100%; justify-content: center; }
+    .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+}
