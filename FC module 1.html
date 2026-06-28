@@ -3,267 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 01 Notes | Code Craft</title>
+    <title>Module 01 Notes | Code Craft Academic</title>
+    <!-- Linked Global Stylesheet (Untouched) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* ==========================================================================
-           1. CORE CYBER PALETTE VARIABLE DICTIONARY & OVERRIDES
-           ========================================================================== */
-        :root {
-            --primary: #2563eb;        /* WebNova Royal Blue */
-            --primary-glow: rgba(37, 99, 235, 0.25);
-            --secondary: #090d16;      /* Deep Space Dark Matte */
-            --card-surface: #111827;   /* High-Contrast Charcoal Slate */
-            --bg: #030712;             /* True Obsidian Background Canvas */
-            --accent: #10b981;         /* Emerald Green Action Token */
-            --white: #ffffff;
-            --text-main: #f1f5f9;      /* Off-White Crisp Typography */
-            --text-muted: #94a3b8;     /* Muted Cool Gray Details */
-            --border: rgba(255, 255, 255, 0.05);
-            
-            /* Skeuomorphic Shadow Layers */
-            --tactile-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            --hover-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -2px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 10; }
-
-        /* ==========================================================================
-           2. SKEUOMORPHIC LAB ACADEMIC HEADER
-           ========================================================================== */
-        .notes-header { 
-            text-align: center; 
-            margin-bottom: 40px; 
-            padding: 50px 40px; 
-            background: linear-gradient(135deg, var(--card-surface) 0%, var(--secondary) 100%); 
-            color: var(--white); 
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--tactile-shadow);
-        }
-        .notes-header h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 10px; }
-        .notes-header p { color: var(--text-muted); font-size: 1.05rem; font-weight: 500; }
-
-        /* ==========================================================================
-           3. ACCENTUATED TAB NAVIGATION DOCK
-           ========================================================================== */
-        .tabs-nav {
-            display: flex;
-            gap: 10px;
-            background: rgba(17, 24, 39, 0.6);
-            padding: 8px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            align-items: center;
-            border: 1px solid var(--border);
-            box-shadow: var(--tactile-shadow);
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 14px 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--text-muted);
-            border-radius: 12px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.88rem;
-        }
-        .tab-btn:hover { color: var(--white); background: rgba(255, 255, 255, 0.02); }
-        .tab-btn.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 14px var(--primary-glow); }
-
-        /* Glowing Emerald Download Trigger */
-        .tab-download {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: #34d399;
-            text-decoration: none;
-        }
-        .tab-download:hover { background: var(--accent); color: var(--white); border-color: var(--accent); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4); transform: translateY(-1px); }
-
-        /* ==========================================================================
-           4. FROSTED GLASS CONSOLE CONTENT MODULES
-           ========================================================================== */
-        .tab-content {
-            background: linear-gradient(135deg, var(--card-surface) 0%, #1f2937 100%);
-            padding: 45px;
-            border-radius: 24px;
-            box-shadow: var(--tactile-shadow);
-            border: 1px solid var(--border);
-            display: none;
-        }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { color: var(--white); font-weight: 900; font-size: 1.8rem; letter-spacing: -0.01em; margin-bottom: 25px; border-left: 5px solid var(--primary); padding-left: 15px; }
-        p { color: var(--text-muted); font-size: 1.02rem; margin-bottom: 25px; font-weight: 500; }
-
-        .history-box { 
-            background: rgba(3, 7, 18, 0.4); 
-            padding: 24px; 
-            border-radius: 14px; 
-            margin-bottom: 16px; 
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-        .history-box:hover { border-color: var(--primary); transform: translateX(4px); }
-        .history-box strong { color: var(--white); font-weight: 800; display: block; margin-bottom: 4px; }
-
-        ul { margin-bottom: 20px; list-style: none; }
-        li { margin-bottom: 14px; padding-left: 28px; position: relative; color: var(--text-muted); font-weight: 500; transition: var(--transition); }
-        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); font-size: 0.95rem; }
-        .tab-content:hover li { color: rgba(255, 255, 255, 0.85); }
-
-        /* High-Gloss Alert callout */
-        .pro-tip {
-            background: rgba(245, 158, 11, 0.04);
-            border-left: 5px solid #f59e0b;
-            padding: 24px;
-            margin: 35px 0 10px;
-            border-radius: 0 16px 16px 0;
-            border-top: 1px solid rgba(245,158,11,0.1);
-            border-right: 1px solid rgba(245,158,11,0.1);
-            border-bottom: 1px solid rgba(245,158,11,0.1);
-        }
-        .pro-tip strong { color: #fbbf24; font-weight: 800; font-size: 1.05rem; display: block; margin-bottom: 6px; }
-
-        /* Cyberpunk Table Formatting Core */
-        table { width: 100%; border-collapse: collapse; margin: 25px 0 10px; }
-        table th, table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-        table th { background: #0c101b; color: var(--white); font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.75rem; }
-        table td { color: var(--text-muted); font-weight: 500; }
-        table tr:hover td { color: var(--white); background: rgba(255,255,255,0.01); }
-
-        @media (max-width: 768px) { 
-            .tabs-nav { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 12px; } 
-            .tab-btn { padding: 12px; }
-            .tab-content { padding: 25px; }
-        }
-       
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="notes-workspace-root">
 
-<div class="container">
-    
-    <div class="notes-header">
-        <h1>Module 01: Introduction & History</h1>
-        <p>The roadmap from ancient calculation tools to the future of AI.</p>
-    </div>
+    <!-- Global Application Navigation Header Placeholder (Untouched) -->
+    <div id="global-header"></div>
 
-    <div class="tabs-nav">
-        <button class="tab-btn active" onclick="openTab(event, 'history')"><i class="fas fa-history"></i> Evolution</button>
-        <button class="tab-btn" onclick="openTab(event, 'classification')"><i class="fas fa-sitemap"></i> Classification</button>
-        <button class="tab-btn" onclick="openTab(event, 'characteristics')"><i class="fas fa-star"></i> Digital Traits</button>
-        <button class="tab-btn" onclick="openTab(event, 'generations')"><i class="fas fa-layer-group"></i> Generations</button>
-        <a href="downloads/module1-notes.pdf" class="tab-btn tab-download" download><i class="fas fa-file-pdf"></i> Download PDF</a>
-    </div>
-
-    <div id="history" class="tab-content active">
-        <h2>The Evolution of Computing</h2>
-        <p>Computers evolved through mechanical, electromechanical, and finally electronic phases.</p>
+    <div class="nt-container">
         
-        <div class="history-box">
-            <strong>Mechanical Tools:</strong> The Abacus (2500 BC) and Pascaline (1642) were the first tools to use physical logic for arithmetic.
+        <!-- 1. ACADEMIC MODULE HERO SPECIFICATION BANNER -->
+        <header class="nt-hero-header">
+            <div class="nt-hero-left">
+                <span class="nt-pill-badge">Computer Fundamentals</span>
+                <h1>Module 01: Introduction &amp; History</h1>
+                <p>The structured roadmap from ancient mechanical calculation tools straight to the frontier of Artificial Intelligence.</p>
+                
+                <div class="nt-roadmap-mini-rail">
+                    <div class="rm-node active">Overview</div>
+                    <div class="rm-arrow">&rarr;</div>
+                    <div class="rm-node">History</div>
+                    <div class="rm-arrow">&rarr;</div>
+                    <div class="rm-node">Classification</div>
+                    <div class="rm-arrow">&rarr;</div>
+                    <div class="rm-node">Traits</div>
+                    <div class="rm-arrow">&rarr;</div>
+                    <div class="rm-node">Generations</div>
+                </div>
+            </div>
+            
+            <div class="nt-hero-right-specs">
+                <div class="spec-tile"><i class="far fa-clock"></i> <span><b>Duration:</b> 45 Mins</span></div>
+                <div class="spec-tile"><i class="fas fa-list-ol"></i> <span><b>Topics:</b> 8 Core Segments</span></div>
+                <div class="spec-tile"><i class="fas fa-tasks"></i> <span><b>Quiz:</b> 20 MCQs Loaded</span></div>
+                <div class="spec-tile"><i class="fas fa-graduation-cap"></i> <span><b>Level:</b> University Core</span></div>
+            </div>
+        </header>
+
+        <!-- PRE-REQUISITES & EXPECTED OUTCOMES CARD AXIS -->
+        <div class="nt-meta-split-deck">
+            <div class="meta-deck-card outcomes-card">
+                <h5>Expected Learning Outcomes</h5>
+                <ul>
+                    <li>Map calculation tools chronologically from 2500 BC to modern architectures.</li>
+                    <li>Classify digital systems accurately by structural performance metrics scale.</li>
+                    <li>Apply the underlying logic of the GIGO processing rule inside computing tracks.</li>
+                    <li>Solve semester-end MCQs and clear university viva question checklists with confidence.</li>
+                </ul>
+            </div>
+            <div class="meta-deck-card prereq-card">
+                <h5>Module Prerequisites</h5>
+                <ul>
+                    <li><i class="fas fa-check"></i> Zero prior programming footprints required.</li>
+                    <li><i class="fas fa-check"></i> Standard intermediate reading comprehension.</li>
+                    <li><i class="fas fa-check"></i> Open logical curiosity regarding systems evolution.</li>
+                </ul>
+            </div>
         </div>
-        <div class="history-box">
-            <strong>The Analytical Engine:</strong> Charles Babbage designed this in 1837. It was the first design to include a CPU (Mill) and memory (Store), earning him the title "Father of Computers."
+
+        <!-- ACCENTUATED TAB NAVIGATION ACCELERATOR DOCK -->
+        <nav class="nt-tabs-nav-dock">
+            <button class="nt-tab-trigger active" onclick="switchContentTab(event, 'history')"><i class="fas fa-history"></i> Evolution Axis</button>
+            <button class="nt-tab-trigger" onclick="switchContentTab(event, 'classification')"><i class="fas fa-sitemap"></i> Classifications</button>
+            <button class="nt-tab-trigger" onclick="switchContentTab(event, 'characteristics')"><i class="fas fa-star"></i> Digital Traits</button>
+            <button class="nt-tab-trigger" onclick="switchContentTab(event, 'generations')"><i class="fas fa-layer-group"></i> Tech Generations</button>
+            <button class="nt-tab-trigger" onclick="switchContentTab(event, 'examination')"><i class="fas fa-user-graduate"></i> Exam Vault</button>
+        </nav>
+
+        <!-- ==========================================================================
+           ⚓ TAB VOLUMETRIC PANEL CONTENT BLOCKS
+           ========================================================================== */ -->
+        
+        <!-- PANEL 1: CHRONOLOGICAL HISTORY TIMELINE -->
+        <div id="history" class="nt-tab-panel active">
+            <h2>The Chronological Evolution of Computing</h2>
+            <p>System tracking profiles indicate that hardware computing transitioned through distinct mechanical, electromechanical, and solid-state electronic deployment frameworks.</p>
+            
+            <div class="nt-timeline-vertical-rail">
+                <div class="tl-milestone">
+                    <div class="tl-marker-year">2500 BC</div>
+                    <div class="tl-content-body">
+                        <h4>The Abacus (Ancient China)</h4>
+                        <p>The earliest known mechanical calculating architecture using physical bead spacing positional rules to execute primitive arithmetic operations loops.</p>
+                    </div>
+                </div>
+                <div class="tl-milestone">
+                    <div class="tl-marker-year">1642 AD</div>
+                    <div class="tl-content-body">
+                        <h4>The Pascaline (Blaise Pascal)</h4>
+                        <p>The first physical mechanical calculator utilizing complex interlocking gear trains to run automatic carry-over parameters calculations sums additions.</p>
+                    </div>
+                </div>
+                <div class="tl-milestone">
+                    <div class="tl-marker-year">1837 AD</div>
+                    <div class="tl-content-body">
+                        <h4>The Analytical Engine (Charles Babbage)</h4>
+                        <p>The foundational turning point in computer organization. This was the first conceptual blueprint to outline separate arithmetic computation zones (The Mill) and storage registers arrays (The Store)—rightfully earning Charles Babbage his historical title as the <b>"Father of Computers."</b></p>
+                    </div>
+                </div>
+                <div class="tl-milestone">
+                    <div class="tl-marker-year">1843 AD</div>
+                    <div class="tl-content-body">
+                        <h4>Ada Lovelace (The First Programmer)</h4>
+                        <p>Recognized globally as the first computer programmer, she documented the earliest complex mathematical algorithm matrix specifically designed to parse inside Babbage's structural engine loops templates.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="history-box">
-            <strong>Ada Lovelace:</strong> Considered the first computer programmer, she wrote the first algorithm intended for Babbage's machine.
+
+        <!-- PANEL 2: COMPACT CATEGORIZATION GRID LAYOUTS -->
+        <div id="classification" class="nt-tab-panel">
+            <h2>System Classification Matrices</h2>
+            <p>Modern operational systems are classified based on performance limitations scale boundaries, memory capacities data bounds, and targeted business application parameters.</p>
+            
+            <div class="nt-grid-3">
+                <div class="class-profile-card">
+                    <div class="card-icon-slot"><i class="fas fa-microchip"></i></div>
+                    <h4>Supercomputers</h4>
+                    <span class="scale-label">Massive Scaling // PetaFLOPs</span>
+                    <p>Designed for large-scale, high-concurrency floating-point workloads including weather forecasting simulations, molecular research models, and aerospace tracking operations fields.</p>
+                </div>
+                <div class="class-profile-card">
+                    <div class="card-icon-slot"><i class="fas fa-server"></i></div>
+                    <h4>Mainframes</h4>
+                    <span class="scale-label">Large Enterprise Scale</span>
+                    <p>Engineered to handle hundreds of thousands of simultaneous corporate data transactions, serving as centralized infrastructure blocks for international banking networks and transaction registers.</p>
+                </div>
+                <div class="class-profile-card">
+                    <div class="card-icon-slot"><i class="fas fa-laptop"></i></div>
+                    <h4>Microcomputers</h4>
+                    <span class="scale-label">Personal Computing Devices</span>
+                    <p>Consumer-facing devices utilizing integrated single-chip microprocessors. Covers daily desktops, laptops, and mobile communication platforms layouts.</p>
+                </div>
+            </div>
+
+            <div class="inset-embedded-system-box">
+                <i class="fas fa-server"></i>
+                <div>
+                    <strong>Specialized Focus: Embedded Systems</strong>
+                    <p>Unlike personal laptops, these are small, single-purpose microcontrollers embedded directly inside larger appliances (such as smart refrigerators, washing machines, or automotive ECUs) to execute fixed, dedicated control sequences loops continuously.</p>
+                </div>
+            </div>
         </div>
+
+        <!-- PANEL 3: DIGITAL CHARACTERISTICS & ACCURATE CALLOUTS -->
+        <div id="characteristics" class="nt-tab-panel">
+            <h2>Core Digital System Characteristics</h2>
+            <p>Computers do not evaluate attributes through intuition; they execute tasks strictly based on electronic synchronization parameters thresholds.</p>
+            
+            <ul class="traits-bullet-list">
+                <li><strong>Processing Speed:</strong> Operations calculations execute inside nano-second intervals ($10^{-9}$ seconds parameters).</li>
+                <li><strong>Absolute Accuracy:</strong> Assuming logical data parameters match correct checking entries, system outputs remain entirely mathematically flawless.</li>
+                <li><strong>Unfailing Diligence:</strong> Unlike human stacks, electronic components execute repetitive instruction sets continuously without exhaustion or concentration drops.</li>
+                <li><strong>Exabyte Storage:</strong> The capability to systematically write, partition, and retrieve vast arrays of digital reference records instantly from non-volatile fields.</li>
+            </ul>
+
+            <div class="nt-pro-tip-box">
+                <strong><i class="fas fa-exclamation-triangle"></i> The GIGO Principle (Garbage In, Garbage Out)</strong>
+                <p>This fundamental rule dictates that the reliability of a computer's output depends entirely on the validity of the input data parameters. If faulty logic or broken numbers enter the system compiler channels, the resulting output will be equally invalid. The computer executes pure code logic, not human intuition.</p>
+            </div>
+        </div>
+
+        <!-- PANEL 4: ARCHITECTURAL HARDWARE GENERATIONS -->
+        <div id="generations" class="nt-tab-panel">
+            <h2>Technological Architectural Generations</h2>
+            <p>Hardware evolutionary stages are traced directly by the primary switching components used to process information over time.</p>
+            
+            <div class="generations-cards-deck">
+                <div class="gen-deck-row"><strong>1st Gen (1940-56)</strong> <span>Vacuum Tubes // High heat footprint, massive warehouse footprints, primitive binary machine script code fields.</span></div>
+                <div class="gen-deck-row"><strong>2nd Gen (1956-63)</strong> <span>Transistors // Substantial sizing reductions, lower heat outputs, early introduction of structured assembly code logic tracks.</span></div>
+                <div class="gen-deck-row"><strong>3rd Gen (1964-71)</strong> <span>Integrated Circuits (ICs) // Hundreds of transistors tightly compiled onto single silicon semiconductor blocks blocks.</span></div>
+                <div class="gen-deck-row"><strong>4th Gen (1971-Pres)</strong> <span>Microprocessors (VLSI) // Very Large Scale Integration packing millions of circuits into a single chip. Initiated the personal desktop computing era.</span></div>
+                <div class="gen-deck-row"><strong>5th Gen (Future)</strong> <span>Artificial Intelligence // Advanced parallel processing grids, self-learning network models, and adaptive natural language interfaces.</span></div>
+            </div>
+
+            <div class="mnemonic-learning-card">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Exam Memory Shortcut (Mnemonic Trick)</strong>
+                    <p>To easily recall the core component order for university exams, remember this sentence: <b>V</b>ery <b>T</b>all <b>I</b>ntelligent <b>M</b>odern <b>A</b>ndroids &rarr; <b>V</b>acuum Tubes &bull; <b>T</b>ransistors &bull; <b>I</b>ntegrated Circuits &bull; <b>M</b>icroprocessors &bull; <b>A</b>rtificial Intelligence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 5: SYLLABUS EXAMINATION COMPILATION VAULT -->
+        <div id="examination" class="nt-tab-panel">
+            <h2>University Examination Vault</h2>
+            <p>Review frequently asked conceptual questions, viva evaluation criteria, and interactive self-assessment modules matching recent MCA/BCA framework parameters.</p>
+            
+            <!-- Section A: Frequently Asked Written Questions -->
+            <div class="exam-qa-sub-block">
+                <h4>Frequently Asked Written Questions</h4>
+                <div class="qa-item-card">
+                    <strong>Q: Define Charles Babbage's core contribution to system architecture organization.</strong>
+                    <p><b>A:</b> Babbage engineered the layout design for the Analytical Engine in 1837. It was the first historical machine layout to feature a separate processing zone called 'The Mill' (modern CPU) and a data record retention bank called 'The Store' (modern RAM memory layout), earning him the title 'Father of Computers.'</p>
+                </div>
+                <div class="qa-item-card">
+                    <strong>Q: Differentiate between a Standard Microcomputer and an Embedded System block.</strong>
+                    <p><b>A:</b> Microcomputers are general-purpose personal platforms meant to execute diverse task portfolios (like laptops). Embedded systems use dedicated microcontrollers to handle one single, unchangeable processing sequence inside a larger machine appliance continuously (such as automotive ECUs).</p>
+                </div>
+            </div>
+
+            <!-- Section B: Interactive Self-Testing MCQ Sandbox Module -->
+            <div class="interactive-mcq-sandbox">
+                <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
+                <div class="mcq-question-wrapper">
+                    <p class="mcq-prompt"><b>Question 01:</b> Which core computing architectural component block was historically designated as "The Mill" inside Babbage's Analytical Engine?</p>
+                    <div class="mcq-options-column">
+                        <button class="option-btn" onclick="evaluateQuizChoice(this, false)">A. The Non-Volatile Storage Bank</button>
+                        <button class="option-btn" onclick="evaluateQuizChoice(this, true)">B. The Central Processing Unit (CPU)</button>
+                        <button class="option-btn" onclick="evaluateQuizChoice(this, false)">C. The Peripherals Input Device Interface</button>
+                        <button class="option-btn" onclick="evaluateQuizChoice(this, false)">D. The Binary Instruction Punch Card</button>
+                    </div>
+                    <div class="quiz-feedback-box" id="quizFeedback"></div>
+                </div>
+            </div>
+
+            <!-- Section C: Direct Laboratory Viva Checking Lists Maps -->
+            <div class="viva-checklist-block">
+                <h4>Laboratory Viva Questions Checklist</h4>
+                <ul class="viva-bullets-list">
+                    <li><strong>What is the conversion metric for a standard nano-second?</strong> It translates exactly to $10^{-9}$ seconds metrics.</li>
+                    <li><strong>Who is acknowledged as the very first computer programmer?</strong> Ada Lovelace, who documented analytical instructions algorithms for Babbage's machine.</li>
+                    <li><strong>What does the acronym GIGO mean during code evaluations?</strong> Garbage In, Garbage Out; confirming that system calculation outputs depend entirely on the logical entry variables parameters supplied.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MULTI-TIER ACADEMIC MATERIAL DOWNLOAD PORTAL LINK CLUSTERS -->
+        <section class="download-portal-strip">
+            <div class="dl-strip-text">
+                <h3>Vetted Academic Download Center</h3>
+                <p>Access complete course handouts, presentation templates, and comprehensive examination question banks offline.</p>
+            </div>
+            <div class="dl-buttons-matrix">
+                <a href="downloads/module1-notes.pdf" class="dl-action-node btn-pdf" download><i class="fas fa-file-pdf"></i> Download Note PDFs</a>
+                <a href="downloads/module1-slides.pptx" class="dl-action-node btn-ppt" download><i class="fas fa-file-powerpoint"></i> Lecture Slidedecks</a>
+                <a href="downloads/module1-cheat.pdf" class="dl-action-node btn-cheat" download><i class="fas fa-bolt"></i> Revision Sheets</a>
+            </div>
+        </section>
+
+        <!-- ROUTING FLOW SEQUENCER FOOTER DECK LINK SYSTEM -->
+        <footer class="notes-routing-deck">
+            <div class="route-node-placeholder"></div>
+            <div class="route-center-summary">Module 01 Completion Tracker State: <strong>60% Logged</strong></div>
+            <a href="module2-notes.html" class="btn-next-module-trigger">Next Module: Organization &rarr;</a>
+        </footer>
+
     </div>
 
-    <div id="classification" class="tab-content">
-        <h2>System Classifications</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Class</th>
-                    <th>Scale</th>
-                    <th>Application</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Supercomputers</strong></td>
-                    <td>Massive</td>
-                    <td>NASA, Weather Forecasting, Nuclear Physics</td>
-                </tr>
-                <tr>
-                    <td><strong>Mainframes</strong></td>
-                    <td>Large</td>
-                    <td>Banking Transactions, Corporate Servers</td>
-                </tr>
-                <tr>
-                    <td><strong>Microcomputers</strong></td>
-                    <td>Personal</td>
-                    <td>Desktops, Laptops, Smartphones</td>
-                </tr>
-                <tr>
-                    <td><strong>Embedded Systems</strong></td>
-                    <td>Specific</td>
-                    <td>Smart Fridges, Car ECUs, Washing Machines</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- Global Application Footer Placeholder (Untouched) -->
+    <div id="global-footer"></div>
 
-    <div id="characteristics" class="tab-content">
-        <h2>Core Digital Characteristics</h2>
-        <ul>
-            <li><strong>Speed:</strong> Computers operate at Nano-seconds ($10^{-9}$ seconds).</li>
-            <li><strong>Accuracy:</strong> If the code is correct, the output is perfect. (GIGO Principle).</li>
-            <li><strong>Diligence:</strong> Machines don't get tired or lose concentration.</li>
-            <li><strong>Storage:</strong> The ability to store and retrieve Exabytes of data instantly.</li>
-            <li><strong>Versatility:</strong> Ability to perform totally different tasks simultaneously.</li>
-        </ul>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
 
-        <div class="pro-tip">
-            <strong><i class="fas fa-exclamation-triangle"></i> GIGO (Garbage In, Garbage Out):</strong> This rule states that if invalid data is entered, the output will also be invalid. The computer follows logic, not intuition!
-        </div>
-    </div>
-
-    <div id="generations" class="tab-content">
-        <h2>Generations of Technology</h2>
-        <ul>
-            <li><strong>1st Gen (1940-56):</strong> Vacuum Tubes. Huge, generated immense heat.</li>
-            <li><strong>2nd Gen (1956-63):</strong> Transistors. Birth of the compact computer.</li>
-            <li><strong>3rd Gen (1964-71):</strong> Integrated Circuits (ICs). Multiple transistors on a chip.</li>
-            <li><strong>4th Gen (1971-Present):</strong> Microprocessors (VLSI). The "PC Era."</li>
-            <li><strong>5th Gen (Future):</strong> Artificial Intelligence. Natural language and self-learning.</li>
-        </ul>
-    </div>
-</div>
-
-<script>
-    // CORE SYSTEM RUNTIME TAB ENGINE
-    function openTab(evt, tabName) {
-        var i, tabContent, tabBtns;
-        tabContent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";
+    <script>
+        /* ==========================================================================
+           🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
+           ========================================================================== */
+        function switchContentTab(clickEvent, targetPanelId) {
+            // Traverse and completely drop active visibility parameters flags across panel objects
+            const panelsArray = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].style.display = "none";
+                panelsArray[i].classList.remove("active");
+            }
+            
+            // Clean active class toggle status highlights across navigation elements
+            const triggersArray = document.getElementsByClassName("nt-tab-trigger");
+            for (let i = 0; i < triggersArray.length; i++) {
+                triggersArray[i].classList.remove("active");
+            }
+            
+            // Re-assert structural visibility conditions over target panel block elements
+            const dynamicTargetPanelNode = document.getElementById(targetPanelId);
+            if(dynamicTargetPanelNode) {
+                dynamicTargetPanelNode.style.display = "block";
+                dynamicTargetPanelNode.classList.add("active");
+            }
+            
+            clickEvent.currentTarget.classList.add("active");
         }
-        tabBtns = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].classList.remove("active");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.classList.add("active");
-    }
-</script>
 
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+        /* --- Quiz Validation Logic Sandbox Engine --- */
+        function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
+            const feedbackContainer = document.getElementById("quizFeedback");
+            const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
+            
+            // Lock out repeat clicks on alternative options parameters inputs strings loop
+            alternativeOptionButtons.forEach(btn => btn.disabled = true);
+            
+            if (isChoiceCorrectFlag) {
+                clickedButtonElement.style.background = "#065f46";
+                clickedButtonElement.style.borderColor = "#34d399";
+                clickedButtonElement.style.color = "#ffffff";
+                feedbackContainer.className = "quiz-feedback-box success-state";
+                feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> The Mill was explicitly designed by Charles Babbage to compute arithmetic values data operations, functioning exactly as the central CPU architecture.";
+            } else {
+                clickedButtonElement.style.background = "#7f1d1d";
+                clickedButtonElement.style.borderColor = "#f87171";
+                clickedButtonElement.style.color = "#ffffff";
+                feedbackContainer.className = "quiz-feedback-box error-state";
+                feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your History evolution notes! The Store was designed for memory retention; the Mill acted as the processing hub.";
+            }
+            feedbackContainer.style.display = "block";
+        }
+    </script>
 </body>
 </html>
