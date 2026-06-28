@@ -18,7 +18,7 @@
 
     <div class="nt-container">
         
-        <!-- 1. ACADEMIC MODULE HERO SPECIFICATION BANNER -->
+        <!-- 1. ACADEMIC MODULE HERO SPECIFICATION BANNER (LIGHT GRAPHITE THEME) -->
         <header class="nt-hero-header">
             <div class="nt-hero-left">
                 <span class="nt-pill-badge">Computer Fundamentals</span>
@@ -173,12 +173,12 @@
         <!-- PANEL 4: ARCHITECTURAL HARDWARE GENERATIONS -->
         <div id="generations" class="nt-tab-panel">
             <h2>Technological Architectural Generations</h2>
-            <p>Hardware evolutionary stages are traced directly by the primary switching components used to process information over time.</p>
+            <p>Hardware evolutionary stages are tracked directly by the primary switching components used to process information over time.</p>
             
             <div class="generations-cards-deck">
-                <div class="gen-deck-row"><strong>1st Gen (1940-56)</strong> <span>Vacuum Tubes // High heat footprint, massive warehouse footprints, primitive binary machine script code fields.</span></div>
+                <div class="gen-deck-row"><strong>1st Gen (1940-56)</strong> <span>Vacuum Tubes // High heat footprint, massive warehouse footprints, primitive machine script code fields.</span></div>
                 <div class="gen-deck-row"><strong>2nd Gen (1956-63)</strong> <span>Transistors // Substantial sizing reductions, lower heat outputs, early introduction of structured assembly code logic tracks.</span></div>
-                <div class="gen-deck-row"><strong>3rd Gen (1964-71)</strong> <span>Integrated Circuits (ICs) // Hundreds of transistors tightly compiled onto single silicon semiconductor blocks blocks.</span></div>
+                <div class="gen-deck-row"><strong>3rd Gen (1964-71)</strong> <span>Integrated Circuits (ICs) // Hundreds of transistors tightly compiled onto single silicon semiconductor blocks.</span></div>
                 <div class="gen-deck-row"><strong>4th Gen (1971-Pres)</strong> <span>Microprocessors (VLSI) // Very Large Scale Integration packing millions of circuits into a single chip. Initiated the personal desktop computing era.</span></div>
                 <div class="gen-deck-row"><strong>5th Gen (Future)</strong> <span>Artificial Intelligence // Advanced parallel processing grids, self-learning network models, and adaptive natural language interfaces.</span></div>
             </div>
@@ -270,20 +270,17 @@
            🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
            ========================================================================== */
         function switchContentTab(clickEvent, targetPanelId) {
-            // Traverse and completely drop active visibility parameters flags across panel objects
-            const panelsArray = document.getElementsByClassName("tab-content");
+            const panelsArray = document.getElementsByClassName("nt-tab-panel");
             for (let i = 0; i < panelsArray.length; i++) {
                 panelsArray[i].style.display = "none";
                 panelsArray[i].classList.remove("active");
             }
             
-            // Clean active class toggle status highlights across navigation elements
             const triggersArray = document.getElementsByClassName("nt-tab-trigger");
             for (let i = 0; i < triggersArray.length; i++) {
                 triggersArray[i].classList.remove("active");
             }
             
-            // Re-assert structural visibility conditions over target panel block elements
             const dynamicTargetPanelNode = document.getElementById(targetPanelId);
             if(dynamicTargetPanelNode) {
                 dynamicTargetPanelNode.style.display = "block";
@@ -298,19 +295,18 @@
             const feedbackContainer = document.getElementById("quizFeedback");
             const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
             
-            // Lock out repeat clicks on alternative options parameters inputs strings loop
             alternativeOptionButtons.forEach(btn => btn.disabled = true);
             
             if (isChoiceCorrectFlag) {
-                clickedButtonElement.style.background = "#065f46";
+                clickedButtonElement.style.background = "#e6f4ea";
                 clickedButtonElement.style.borderColor = "#34d399";
-                clickedButtonElement.style.color = "#ffffff";
+                clickedButtonElement.style.color = "#137333";
                 feedbackContainer.className = "quiz-feedback-box success-state";
                 feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> The Mill was explicitly designed by Charles Babbage to compute arithmetic values data operations, functioning exactly as the central CPU architecture.";
             } else {
-                clickedButtonElement.style.background = "#7f1d1d";
+                clickedButtonElement.style.background = "#fce8e6";
                 clickedButtonElement.style.borderColor = "#f87171";
-                clickedButtonElement.style.color = "#ffffff";
+                clickedButtonElement.style.color = "#c5221f";
                 feedbackContainer.className = "quiz-feedback-box error-state";
                 feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your History evolution notes! The Store was designed for memory retention; the Mill acted as the processing hub.";
             }
