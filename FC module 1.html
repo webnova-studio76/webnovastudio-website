@@ -12,11 +12,12 @@
     
     <style>
         /* ==========================================================================
-           ⚓ ISOLATED ACADEMIC PORTAL NOTE CODES (Safe Extension)
+           ⚓ ISOLATED LIGHT-THEME PEDAGOGICAL NOTE ENGINE (Safe Extension)
            ========================================================================== */
         body.notes-workspace-root {
-            background-color: #f4f7fe; /* Soft Royal Tinted Canvas Backdrop */
-            color: #334155; /* Anti-Halation Subpixel Typography Tones */
+            background-color: #f4f7fe; 
+            color: #334155;
+            font-family: 'Inter', sans-serif;
         }
 
         .nt-container {
@@ -26,7 +27,7 @@
             width: 100%;
         }
 
-        /* --- 1. Premium White Module Banner --- */
+        /* --- 1. Header Spec Banner --- */
         .nt-hero-header {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -76,7 +77,17 @@
         .spec-tile { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #475569; }
         .spec-tile i { color: #2563eb; width: 14px; }
 
-        /* --- 2. Outcomes & Checklists Strip --- */
+        /* --- 2. Dynamic Progress Indicators Deck --- */
+        .progress-indicator-bar {
+            background: #ffffff; border: 1px solid #e2e8f0; padding: 16px 24px; border-radius: 8px;
+            margin-top: 16px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .progress-label-box { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+        .progress-label-box span { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .progress-label-box h6 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a; }
+        .progress-visual-blocks { font-family: monospace; font-size: 1.1rem; letter-spacing: 2px; color: #10b981; font-weight: 700; }
+
+        /* Outcomes & Requirements Splits Map */
         .nt-meta-split-deck { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; margin-top: 16px; }
         .meta-deck-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
         .meta-deck-card h5 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -86,23 +97,28 @@
         .prereq-card li i { color: #2563eb; position: absolute; left: 0; font-size: 0.75rem; top: 3px; }
         .prereq-card li { padding-left: 18px; }
 
-        /* --- 3. Tab System Navigation Accelerator --- */
+        /* --- 3. Tab System Core Dock --- */
         .nt-tabs-nav-dock { display: flex; gap: 8px; background: #ffffff; padding: 6px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
         .nt-tab-trigger { flex: 1; padding: 12px; border: none; background: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; cursor: pointer; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease; }
         .nt-tab-trigger:hover { color: #0f172a; background: #f1f5f9; }
         .nt-tab-trigger.active { background: #2563eb; color: #ffffff; box-shadow: 0 4px 14px rgba(37,99,235,0.2); }
 
-        /* --- 4. Content Panels (Learn &rarr; Visualize &rarr; Practice) --- */
+        /* --- 4. Main Panel Blocks (Pedagogical Flow Engine) --- */
         .nt-tab-panel { background: #ffffff; padding: 40px; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 16px; box-shadow: 0 10px 30px rgba(15,23,42,0.01); display: none; }
         .nt-tab-panel.active { display: block; animation: ntFadeIn 0.3s ease; }
         @keyframes ntFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #0f172a !important; border-left: 4px solid #2563eb; padding-left: 12px; margin-bottom: 16px; text-align: left; }
-        .nt-tab-panel p { color: #475569 !important; font-size: 0.88rem !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #0f172a !important; border-left: 4px solid #2563eb; padding-left: 12px; margin-bottom: 4px; text-align: left; }
+        .nt-tab-panel p.section-sub-desc { color: #64748b !important; font-size: 0.88rem !important; line-height: 1.5 !important; text-align: left !important; margin-bottom: 24px !important; }
 
-        .learning-block-title { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #2563eb; margin-bottom: 8px; display: block; text-align: left; }
+        /* Pedagogical Sub-Block Headers */
+        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #2563eb; margin-bottom: 4px; display: block; text-align: left; }
+        .difficulty-indicator-row { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .diff-dot.green { background-color: #10b981; }
+        .diff-dot.amber { background-color: #f59e0b; }
 
-        /* Timeline Structural Layout Maps */
+        /* Vertical Timeline Map Elements */
         .nt-timeline-vertical-rail { display: flex; flex-direction: column; gap: 20px; position: relative; padding-left: 24px; border-left: 2px solid #e2e8f0; margin-top: 16px; text-align: left; }
         .tl-milestone { position: relative; }
         .tl-milestone::before { content: ''; width: 10px; height: 10px; background: #ffffff; border: 2px solid #2563eb; border-radius: 50%; position: absolute; left: -30px; top: 6px; }
@@ -110,8 +126,8 @@
         .tl-content-body h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 2px; }
         .tl-content-body p { font-size: 0.84rem !important; line-height: 1.45 !important; color: #475569 !important; margin-bottom: 0 !important; }
 
-        /* Categorization System Grids */
-        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; margin-top: 12px; }
+        /* Multi-Column Data Structural Grids */
+        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
         .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; }
 
         .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; }
@@ -125,20 +141,17 @@
         .inset-embedded-system-box strong { color: #0f172a !important; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
         .inset-embedded-system-box p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
 
-        /* Characteristic Bullet Arrays */
-        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 12px; text-align: left; }
-        .traits-bullet-list li { font-size: 0.85rem; color: #475569; padding-left: 24px; position: relative; }
+        /* Callout & Mnemonic Layout Panels */
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+        .traits-bullet-list li { font-size: 0.85rem; color: #475569; padding-left: 20px; position: relative; }
         .traits-bullet-list li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: #10b981; }
         .traits-bullet-list strong { color: #0f172a !important; font-weight: 600; }
 
-        /* System Context Callout Boxes */
-        .nt-pro-tip-box { background: rgba(245, 158, 11, 0.02); border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 20px; border-radius: 0 8px 8px 0; margin-top: 24px; text-align: left; }
+        .nt-pro-tip-box { background: rgba(245, 158, 11, 0.02); border-left: 4px solid #f59e0b; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 20px; border-radius: 0 8px 8px 0; margin-top: 24px; text-align: left; }
         .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; display: block; margin-bottom: 4px; }
         .nt-pro-tip-box p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
 
-        /* Generations Matrices Rows */
-        .generations-cards-deck { display: flex; flex-direction: column; gap: 8px; text-align: left; }
-        .gen-deck-row { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 20px; border-radius: 6px; font-size: 0.84rem; line-height: 1.45; }
+        .gen-deck-row { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 20px; border-radius: 6px; font-size: 0.84rem; line-height: 1.45; text-align: left; margin-bottom: 8px; }
         .gen-deck-row strong { color: #2563eb !important; font-weight: 700; display: block; margin-bottom: 2px; }
         .gen-deck-row span { color: #475569; font-weight: 500; }
 
@@ -148,28 +161,15 @@
         .mnemonic-learning-card p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
         .mnemonic-learning-card b { color: #2563eb; }
 
-        /* Comparison Data Matrix */
-        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin-top: 16px; border: 1px solid #e2e8f0; border-radius: 6px; }
-        table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
-        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 16px; font-size: 0.84rem; border-bottom: 1px solid #e2e8f0; }
-        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem; }
-        table.nt-comparison-table td { color: #475569; font-weight: 500; }
-        table.nt-comparison-table tr:last-child td { border-bottom: none; }
-
-        /* --- 5. Examination Question Vault Components --- */
+        /* --- 5. Real University Question Vault Layouts --- */
         .exam-qa-sub-block { display: flex; flex-direction: column; gap: 12px; text-align: left; }
         .exam-qa-sub-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 4px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
         .qa-item-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 6px; }
         .qa-item-card strong { font-size: 0.88rem; color: #2563eb !important; font-weight: 600; display: block; margin-bottom: 4px; }
         .qa-item-card p { font-size: 0.84rem !important; line-height: 1.45 !important; color: #475569 !important; margin-bottom: 0 !important; }
+        .marks-callout-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: #2563eb; background: rgba(37,99,235,0.04); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
 
-        /* Common Mistake Alert Card */
-        .mistake-warning-card { background: rgba(239, 68, 68, 0.02); border-left: 4px solid #ef4444; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 16px 20px; border-radius: 0 6px 6px 0; display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; text-align: left; }
-        .mistake-warning-card i { color: #ef4444; font-size: 0.95rem; margin-top: 3px; }
-        .mistake-warning-card strong { color: #991b1b !important; font-size: 0.88rem; font-weight: 700; }
-        .mistake-warning-card p { font-size: 0.82rem !important; color: #475569 !important; margin-bottom: 0 !important; }
-
-        /* Self-Testing Quiz Sandboxes */
+        /* Interactive Self Testing MCQ Sandbox Module */
         .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; border-radius: 8px; margin-top: 24px; text-align: left; }
         .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 12px; }
         .mcq-question-wrapper p { font-size: 0.88rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 12px !important; }
@@ -181,7 +181,7 @@
         .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
         .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
 
-        /* Lab Viva Bullets Lists */
+        /* Lab Viva Checking Lists Maps */
         .viva-checklist-block { margin-top: 24px; text-align: left; }
         .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 8px; }
         .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -212,7 +212,7 @@
         .btn-next-module-trigger:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
 
         @media (max-width: 960px) {
-            .nt-hero-header, .nt-meta-split-deck, .nt-tabs-nav-dock, .nt-grid-3, .nt-grid-2, .nt-comparison-table, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .nt-hero-header, .nt-meta-split-deck, .nt-tabs-nav-dock, .nt-grid-3, .nt-grid-2, .nt-comparison-board, .split-workflow-layout, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
             .nt-tabs-nav-dock { padding: 8px; }
             .nt-tab-trigger { width: 100%; justify-content: center; }
             .dl-buttons-matrix { width: 100%; }
@@ -231,7 +231,7 @@
             <div class="nt-hero-left">
                 <span class="nt-pill-badge">Computer Fundamentals</span>
                 <h1>Module 01: Introduction &amp; History</h1>
-                <p>The structured roadmap from ancient mechanical calculation tools straight to the frontier of Artificial Intelligence.</p>
+                <p>Computers have evolved over thousands of years. They started as simple mechanical tools like the Abacus and gradually became today's powerful electronic systems, laying down the core models that drive modern software engineering.</p>
                 
                 <div class="nt-roadmap-mini-rail">
                     <div class="rm-node active">Overview</div>
@@ -247,12 +247,26 @@
             </div>
             
             <div class="nt-hero-right-specs">
-                <div class="spec-tile"><i class="far fa-clock"></i> <span><b>Duration:</b> 45 Mins</span></div>
+                <div class="spec-tile"><i class="far fa-clock"></i> <span><b>Study Time:</b> 45 Mins</span></div>
                 <div class="spec-tile"><i class="fas fa-list-ol"></i> <span><b>Topics:</b> 8 Core Segments</span></div>
                 <div class="spec-tile"><i class="fas fa-tasks"></i> <span><b>Quiz:</b> 20 MCQs Loaded</span></div>
-                <div class="spec-tile"><i class="fas fa-graduation-cap"></i> <span><b>Level:</b> University Core</span></div>
+                <div class="spec-tile"><i class="fas fa-graduation-cap"></i> <span><b>Exam Weight:</b> High (5★)</span></div>
             </div>
         </header>
+
+        <div class="progress-indicator-bar">
+            <div class="progress-label-box">
+                <span>Ecosystem Progress</span>
+                <h6>Module Completion Status</h6>
+            </div>
+            <div class="progress-visual-blocks">■■■■■■░░░░ 60%</div>
+        </div>
+
+        <section class="meta-deck-card" style="margin-top: 16px; text-align: left;">
+            <span class="pedagogy-block-indicator">Context Blueprint</span>
+            <h5 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Why This Module Matters in Real Life</h5>
+            <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 0;">Every system you interact with today—whether it's an Android phone, an iPhone, a cloud server, or a global banking database—is built entirely on the foundational processing and memory principles introduced in this chapter. Understanding how hardware evolved from physical gear trains into silicon chips explains how modern operating systems manage resource layers parameters.</p>
+        </section>
 
         <div class="nt-meta-split-deck">
             <div class="meta-deck-card outcomes-card">
@@ -283,37 +297,38 @@
         </nav>
 
         <div id="history" class="nt-tab-panel active">
-            <span class="learning-block-title">📘 Learn &amp; Visualize</span>
+            <span class="pedagogy-block-indicator">01 // History</span>
+            <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy</span></div>
             <h2>The Chronological Evolution of Computing</h2>
-            <p>System tracking profiles indicate that hardware computing transitioned through distinct mechanical, electromechanical, and solid-state electronic deployment frameworks.</p>
+            <p class="section-sub-desc">Computers evolved over thousands of years, transitioning from simple mechanical tools that relied on physical logic to electronic solid-state processors.</p>
             
             <div class="nt-timeline-vertical-rail">
                 <div class="tl-milestone">
                     <div class="tl-marker-year">2500 BC</div>
                     <div class="tl-content-body">
                         <h4>The Abacus (Ancient China)</h4>
-                        <p>The earliest known mechanical calculating architecture using physical bead spacing positional rules to execute primitive arithmetic operations loops.</p>
+                        <p>The earliest known mechanical calculating tool. It used physical bead spacing to execute addition, subtraction, multiplication, and division processes manually.</p>
                     </div>
                 </div>
                 <div class="tl-milestone">
                     <div class="tl-marker-year">1642 AD</div>
                     <div class="tl-content-body">
                         <h4>The Pascaline (Blaise Pascal)</h4>
-                        <p>The first physical mechanical calculator utilizing complex interlocking gear trains to run automatic carry-over parameters calculations sums additions.</p>
+                        <p>The first physical gear-driven calculator. It utilized interlocking wheels to run addition and subtraction arithmetic loops automatically.</p>
                     </div>
                 </div>
                 <div class="tl-milestone">
                     <div class="tl-marker-year">1837 AD</div>
                     <div class="tl-content-body">
                         <h4>The Analytical Engine (Charles Babbage)</h4>
-                        <p>The foundational turning point in computer organization. This was the first conceptual blueprint to outline separate arithmetic computation zones (The Mill) and storage registers arrays (The Store)—rightfully earning Charles Babbage his historical title as the <b>"Father of Computers."</b></p>
+                        <p>The historical baseline for modern computer organization. Babbage designed a machine layout featuring a dedicated arithmetic unit called 'The Mill' (the parent model of our modern CPU) and a data retention unit called 'The Store' (the parent model of computer memory), earning him the title <b>"Father of Computers."</b></p>
                     </div>
                 </div>
                 <div class="tl-milestone">
                     <div class="tl-marker-year">1843 AD</div>
                     <div class="tl-content-body">
                         <h4>Ada Lovelace (The First Programmer)</h4>
-                        <p>Recognized globally as the first computer programmer, she documented the earliest complex mathematical algorithm matrix specifically designed to parse inside Babbage's structural engine loops templates.</p>
+                        <p>Documented the earliest complex mathematical algorithm specifically written to parse inside Babbage's structural engine loops templates, making her the first programmer in history.</p>
                     </div>
                 </div>
             </div>
@@ -328,9 +343,10 @@
         </div>
 
         <div id="classification" class="nt-tab-panel">
-            <span class="learning-block-title">📘 Categorization Matrix</span>
+            <span class="pedagogy-block-indicator">02 // Categorization Matrix</span>
+            <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy</span></div>
             <h2>System Classification Matrices</h2>
-            <p>Modern operational systems are classified based on performance limitations scale boundaries, memory capacities data bounds, and targeted business application parameters.</p>
+            <p class="section-sub-desc">Operational systems are classified based on performance limitations scale, memory capacities data bounds, and targeted applications parameters.</p>
             
             <div class="nt-grid-3">
                 <div class="class-profile-card">
@@ -368,19 +384,19 @@
                             <td><b>Microcomputer</b></td>
                             <td>Single Individual</td>
                             <td>Affordable / Consumer</td>
-                            <td>Personal coding, business bookkeeping, mobile tasks</td>
+                            <td>Personal coding, business bookkeeping, mobile tasks (smartphones, laptops)</td>
                         </tr>
                         <tr>
                             <td><b>Mainframe</b></td>
                             <td>Thousands Simultaneously</td>
                             <td>Enterprise Level</td>
-                            <td>ATM transaction switching networks, database ledgers</td>
+                            <td>ATM transaction switching networks, banking database ledgers</td>
                         </tr>
                         <tr>
                             <td><b>Supercomputer</b></td>
                             <td>Dedicated Research Teams</td>
                             <td>Multi-Million Dollar</td>
-                            <td>Climate tracing pipelines, structural physics, intelligence math</td>
+                            <td>Climate tracing pipelines, structural physics, space research (NASA, ISRO)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -389,21 +405,22 @@
             <div class="inset-embedded-system-box">
                 <i class="fas fa-server"></i>
                 <div>
-                    <strong>Specialized Focus: Embedded Systems</strong>
+                    <strong>Real Life Connection: Embedded Systems</strong>
                     <p>Unlike personal laptops, these are small, single-purpose microcontrollers embedded directly inside larger appliances (such as smart refrigerators, washing machines, or automotive ECUs) to execute fixed, dedicated control sequences loops continuously.</p>
                 </div>
             </div>
         </div>
 
         <div id="characteristics" class="nt-tab-panel">
-            <span class="learning-block-title">🧠 Core Digital Characteristics</span>
-            <h2>How Systems Process Instructions</h2>
-            <p>Computers do not evaluate attributes through intuition; they execute tasks strictly based on electronic synchronization parameters thresholds.</p>
+            <span class="pedagogy-block-indicator">03 // Traits</span>
+            <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium</span></div>
+            <h2>Core Digital System Characteristics</h2>
+            <p class="section-sub-desc">Computers follow clear logic, not intuition. They process data based on electronic synchronization parameters thresholds across four major criteria blocks.</p>
             
             <ul class="traits-bullet-list">
-                <li><strong>Processing Speed:</strong> Operations calculations execute inside nano-second intervals ($10^{-9}$ seconds parameters).</li>
-                <li><strong>Absolute Accuracy:</strong> Assuming logical data parameters match correct checking entries, system outputs remain entirely mathematically flawless.</li>
-                <li><strong>Unfailing Diligence:</strong> Unlike human stacks, electronic components execute repetitive instruction sets continuously without exhaustion or concentration drops.</li>
+                <li><strong>Processing Speed:</strong> Machine calculations execute inside nano-second intervals ($10^{-9}$ seconds parameters).</li>
+                <li><strong>Absolute Accuracy:</strong> If input entry code parameters are correct, system outputs remain entirely mathematically flawless.</li>
+                <li><strong>Unfailing Diligence:</strong> Electronic components execute repetitive loops continuously without exhaustion or concentration drops.</li>
                 <li><strong>Exabyte Storage:</strong> The capability to systematically write, partition, and retrieve vast arrays of digital reference records instantly from non-volatile fields.</li>
             </ul>
 
@@ -414,9 +431,10 @@
         </div>
 
         <div id="generations" class="nt-tab-panel">
-            <span class="learning-block-title">📌 Technical Memory Shortcuts</span>
+            <span class="pedagogy-block-indicator">04 // Hardware Generations</span>
+            <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium</span></div>
             <h2>Technological Architectural Generations</h2>
-            <p>Hardware evolutionary stages are tracked directly by the primary switching components used to process information over time.</p>
+            <p class="section-sub-desc">Hardware evolutionary stages are tracked directly by the primary switching components used to process information over time.</p>
             
             <div class="generations-cards-deck">
                 <div class="gen-deck-row"><strong>1st Gen (1940-56)</strong> <span>Vacuum Tubes // High heat footprint, massive warehouse footprints, primitive machine script code fields.</span></div>
@@ -436,17 +454,20 @@
         </div>
 
         <div id="examination" class="nt-tab-panel">
-            <span class="learning-block-title">🎯 Practice &amp; Verify</span>
+            <span class="pedagogy-block-indicator">05 // Practice &amp; Verify</span>
+            <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium</span></div>
             <h2>University Examination Vault</h2>
-            <p>Review frequently asked conceptual questions, viva evaluation criteria, and interactive self-assessment modules matching recent MCA/BCA framework parameters.</p>
+            <p class="section-sub-desc">Review frequently asked conceptual questions, viva evaluation criteria, and interactive self-assessment modules matching recent MCA/BCA framework parameters.</p>
             
             <div class="exam-qa-sub-block">
-                <h4>Frequently Asked Written Questions</h4>
+                <h4>Syllabus Question Bank</h4>
                 <div class="qa-item-card">
+                    <span class="marks-callout-tag">2 Marks // Repeated</span>
                     <strong>Q: Define Charles Babbage's core contribution to system architecture organization.</strong>
                     <p><b>A:</b> Babbage engineered the layout design for the Analytical Engine in 1837. It was the first historical machine layout to feature a separate processing zone called 'The Mill' (modern CPU) and a data record retention bank called 'The Store' (modern RAM memory layout), earning him the title 'Father of Computers.'</p>
                 </div>
                 <div class="qa-item-card">
+                    <span class="marks-callout-tag">5 Marks // Repeated</span>
                     <strong>Q: Differentiate between a Standard Microcomputer and an Embedded System block.</strong>
                     <p><b>A:</b> Microcomputers are general-purpose personal platforms meant to execute diverse task portfolios (like laptops). Embedded systems use dedicated microcontrollers to handle one single, unchangeable processing sequence inside a larger machine appliance continuously (such as automotive ECUs).</p>
                 </div>
@@ -552,3 +573,4 @@
     </script>
 </body>
 </html>
+, design like a website to convert student and download pdf or look premium design and do not remove single line code clean design language simplify words easy words to understand for students and add all features that I gave you above and keep it in page carefully everything and make sure style.css not get affected design inside code.
