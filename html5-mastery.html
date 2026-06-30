@@ -3,192 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML5 Mastery | WebNova Academy</title>
+    <title>HTML5 Architecture Masterclass | WebNova Academy</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --accent: #f97316; /* HTML5 Orange */
-            --secondary: #0f172a;
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
-        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--accent); }
-
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .module-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid var(--border);
+        /* ==========================================================================
+           ⚓ WEBNOVA ACADEMY THREE-COLUMN LIGHT INTERFACE (Protects style.css)
+           ========================================================================== */
+        body.w3-academy-workspace {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-            aspect-ratio: 1 / 1;
-            justify-content: space-between;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        }
-
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .module-card ul { list-style: none; flex-grow: 1; }
-        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
-        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
-
-        .download-zone {
+        /* App Framework Main Grid Splitter Layout */
+        .w3-app-frame-wrapper {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-dl {
             flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-align: center;
+            height: calc(100vh - 72px); /* Offsets global universal master navbar height */
+            overflow: hidden;
+            width: 100%;
         }
-        .btn-pdf { background: #fff7ed; color: #9a3412; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* --- 1. LEFT SIDEBAR: INTERACTIVE SYLLABUS DIRECTORY --- */
+        .w3-sidebar-rail {
+            width: 290px;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
+        .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        
+        .sidebar-section-group h5 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+            color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-left: 8px;
+        }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 3px; padding: 0; margin: 0; }
+        .sidebar-menu-item {
+            padding: 10px 14px; border-radius: 6px; font-size: 0.84rem; font-weight: 500;
+            color: #475569; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
+        .sidebar-menu-item:hover { background: #fff7ed; color: #0f172a; }
+        .sidebar-menu-item.active { background: rgba(249, 115, 22, 0.06); color: #f97316; font-weight: 700; border-left: 3px solid #f97316; padding-left: 11px; }
+        .sidebar-menu-item.active i { color: #f97316; }
 
-        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+        /* --- 2. CENTRAL WORKING LEARNING CANVAS --- */
+        .w3-central-viewport-canvas {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: #ffffff;
+            height: 100%;
+        }
+        .viewport-content-container { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px; text-align: left; }
+        .breadcrumb-trail span.active-node { color: #f97316; }
+
+        /* Premium Light Course Style Hero Section */
+        .w3-hero-course-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            text-align: left;
+            box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.02);
+            position: relative;
+        }
+        .w3-hero-course-card h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #0f172a !important; letter-spacing: -0.02em; line-height: 1.2; }
+        .w3-hero-course-card h1 span { color: #f97316; }
+        .w3-hero-course-card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-top: 8px; }
+        
+        /* Tab System View Controllers */
+        .nt-tab-panel { display: none; }
+        .nt-tab-panel.active { display: block; animation: w3Fade 0.2s ease-out; }
+        @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; text-align: left; border-left: 4px solid #f97316; padding-left: 12px; }
+        .nt-tab-panel h3 { margin: 24px 0 12px; color: #f97316; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .nt-tab-panel p.section-sub-desc { font-size: 0.92rem !important; color: #64748b !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+
+        /* Pedagogical Display Cards and Indicators */
+        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #f97316; margin-bottom: 4px; display: block; text-align: left; }
+        .difficulty-indicator-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .diff-dot.green { background-color: #10b981; }
+        .diff-dot.amber { background-color: #f59e0b; }
+        
+        .concept-learning-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(15,23,42,0.01); }
+        .concept-learning-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 4px; }
+        .concept-meta-strip { display: flex; gap: 12px; font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .concept-meta-strip span strong { color: #f97316; }
+
+        /* Modern Educational Diagram Frameworks (Light Vectors) */
+        .w3-visual-diagram-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .w3-diagram-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 12px; }
+        
+        .roadmap-flow-container { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 720px; flex-wrap: wrap; margin: 0 auto; text-align: left; }
+        .roadmap-step-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: #0f172a; text-align: center; min-width: 100px; flex: 1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .roadmap-step-card.active { border-color: #f97316; background: rgba(249, 115, 22, 0.04); color: #f97316; }
+        .roadmap-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 0.9rem; }
+
+        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; }
+        .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
+        .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+        .scale-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: #ffffff; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px; }
+
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 0; margin: 0; }
+        .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 24px; position: relative; }
+        .traits-bullet-list li i { position: absolute; left: 0; top: 4px; color: #f97316; font-size: 0.85rem; }
+        .traits-bullet-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .skill-tags-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .skill-hash-tag { font-size: 0.68rem; font-weight: 700; color: #f97316; background: rgba(249, 115, 22, 0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(249, 115, 22, 0.1); }
+
+        .nt-pro-tip-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 20px; text-align: left; }
+        .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+        .nt-pro-tip-box p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 6px; }
+        table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
+        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 14px; font-size: 0.82rem; border-bottom: 1px solid #e2e8f0; }
+        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.68rem; }
+        table.nt-comparison-table td { color: #475569; font-weight: 500; }
+
+        /* Integrated Code Workspace Shell Preview Inset */
+        .w3-code-snippet-shell { background: #0f172a; border-radius: 6px; width: 100%; overflow: hidden; margin-top: 12px; font-family: 'Fira Code', monospace; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .w3-code-shell-header { background: #1e293b; padding: 8px 16px; color: #94a3b8; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+        .w3-code-shell-header span { display: flex; align-items: center; gap: 6px; }
+        .w3-code-shell-body { padding: 16px; color: #cbd5e1; text-align: left; white-space: pre-wrap; line-height: 1.5; }
+        .w3-code-shell-body .tag-color { color: #f43f5e; }
+        .w3-code-shell-body .attr-color { color: #38bdf8; }
+        .w3-code-shell-body .val-color { color: #eab308; }
+
+        /* Project Assignment Milestone Panels */
+        .project-milestone-box { border: 1px dashed #f97316; background: rgba(249, 115, 22, 0.01); padding: 20px; border-radius: 8px; margin-top: 24px; text-align: left; }
+        .project-milestone-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .project-milestone-box h4 i { color: #f97316; }
+        .project-milestone-box p { font-size: 0.82rem; color: #475569; line-height: 1.45; margin-bottom: 0; }
+
+        /* Assessment Testing Components */
+        .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
+        .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; }
+        .mcq-question-wrapper p { font-size: 0.84rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 10px !important; }
+        .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
+        .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
+        .option-btn:hover { background: #f1f5f9; color: #0f172a; }
+
+        .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
+        .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
+        .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
+
+        .viva-checklist-block { margin-top: 20px; text-align: left; }
+        .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
+        .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #f97316; font-weight: 900; }
+        .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .mistake-warning-card { background: rgba(239, 68, 68, 0.01); border-left: 4px solid #ef4444; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 14px 18px; border-radius: 0 6px 6px 0; display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; text-align: left; }
+        .mistake-warning-card i { color: #ef4444; font-size: 0.9rem; margin-top: 3px; }
+        .mistake-warning-card strong { color: #991b1b !important; font-size: 0.84rem; font-weight: 700; }
+        .mistake-warning-card p { font-size: 0.78rem !important; color: #475569 !important; margin-bottom: 0 !important; }
+
+        .quick-revision-sheet { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 24px; text-align: left; }
+        .quick-revision-sheet h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .quick-revision-sheet h4 i { color: #f59e0b; }
+        .revision-nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .rev-node { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.35; }
+        .rev-node::before { content: "•"; position: absolute; left: 0; color: #f97316; font-weight: 900; }
+        .rev-node b { color: #0f172a; }
+
+        /* Downloader Center Card Strips */
+        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        .dl-strip-text { text-align: left; }
+        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+        .dl-strip-text p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.35 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+
+        .dl-buttons-matrix { display: flex; gap: 8px; flex-wrap: wrap; }
+        .dl-action-node { padding: 8px 14px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .dl-action-node.btn-pdf { background: rgba(249, 115, 22, 0.05); color: #9a3412; border: 1px solid rgba(249, 115, 22, 0.15); }
+        .dl-action-node.btn-pdf:hover { background: #f97316; color: #ffffff; border-color: #f97316; }
+        .dl-action-node.status-pending { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; cursor: not-allowed; }
+
+        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 40px; border-top: 1px solid #e2e8f0; margin-top: 32px; }
+        .btn-next-module-trigger { padding: 10px 18px; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .btn-next-module-trigger:hover { background: #f97316; color: #ffffff; border-color: #f97316; }
+
+        /* --- 3. RIGHT INFORMATION DESK (SIDEBAR COUNTER PACKS) --- */
+        .w3-info-desk-rail {
+            width: 280px;
+            background: #f8fafc;
+            border-left: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .info-card-widget { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .info-card-widget h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 0; }
+        
+        .info-card-widget ul { list-style: none !important; padding: 0 !important; margin: 0 !important; display: flex; flex-direction: column; gap: 10px; }
+        .info-card-widget li { font-size: 0.8rem; color: #475569; font-weight: 500; display: flex; justify-content: space-between; align-items: center; padding: 0 !important; margin: 0 !important; border: none !important; }
+        .info-card-widget li strong { color: #0f172a; font-weight: 700; }
+        .progress-block-tracker { font-family: monospace; font-size: 1rem; color: #10b981; font-weight: 700; letter-spacing: 1px; }
+
+        @media (max-width: 1100px) { .w3-info-desk-rail { display: none; } }
+        @media (max-width: 960px) {
+            .w3-app-frame-wrapper { flex-direction: column; overflow: auto; height: auto; }
+            .w3-sidebar-rail { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+            .nt-grid-2, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+        }
     </style>
 </head>
-<body>
+<body class="w3-docs-workspace">
 
-<div class="container">
-    <header class="syllabus-head">
-        <h1>HTML5 <span>Architecture</span></h1>
-        <p>A 6-Phase blueprint from basic tags to modern Web APIs.</p>
-    </header>
+    <div id="global-header"></div>
 
-    <div class="module-grid">
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 01: The Skeleton</p>
-                <h3>Foundations</h3>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> HTML DocType & Head Meta Tags.</li>
-                    <li><i class="fas fa-check-circle"></i> Text Tags (H1-H6, P, Span, Div).</li>
-                    <li><i class="fas fa-check-circle"></i> Lists, Links, and Image Attributes.</li>
+    <div class="w3-app-frame-wrapper">
+        
+        <aside class="w3-sidebar-rail">
+            <div class="sidebar-section-group">
+                <h5>HTML5 Architecture</h5>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'phase1')"><i class="fas fa-cubes"></i> 1. Document Foundations</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase2')"><i class="fas fa-table"></i> 2. Tables &amp; Data Grids</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase3')"><i class="fas fa-edit"></i> 3. Forms &amp; Inputs Logic</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase4')"><i class="fas fa-search"></i> 4. Semantic Web &amp; SEO</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase5')"><i class="fas fa-video"></i> 5. Multimedia Components</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase6')"><i class="fas fa-rocket"></i> 6. Modern Web APIs</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Module Exam Vault</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Download Pdf</a>
-            </div>
-        </div>
+        </aside>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 02: Information</p>
-                <h3>Tables & Data</h3>
+        <main class="w3-central-viewport-canvas">
+            <div class="viewport-content-container">
+                
+                <nav class="breadcrumb-trail">
+                    <span>Frontend Track</span> / <span>Web Architecture</span> / <span class="active-node" id="breadcrumbLabel">Document Foundations</span>
+                </nav>
+
+                <header class="w3-hero-course-card">
+                    <span class="nt-pill-badge">Core Frontend Web Development</span>
+                    <h1>HTML5 <span>Architecture Masterclass</span></h1>
+                    <p>Learn web structural engineering from scratch. This structured module spans from basic semantic structural elements, data matrices grids, inputs form processing logic, and high-performance HTML5 browser API systems configurations.</p>
+                </header>
+
+                <div class="w3-visual-diagram-box">
+                    <span class="w3-diagram-label">🧩 Full Web Development Technology Continuum Sequence Path</span>
+                    <div class="roadmap-flow-container">
+                        <div class="roadmap-step-card active">1. HTML Skeleton</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">2. CSS Styling</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">3. JavaScript Logic</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">4. Deployment</div>
+                    </div>
+                </div>
+
+                <div id="phase1" class="nt-tab-panel active">
+                    <span class="pedagogy-block-indicator">Phase 01 // The Document Skeleton</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>HTML Document Foundations</h2>
+                    <p class="section-sub-desc">HTML serves as the absolute baseline blueprint skeleton for every page on the internet. It maps out your content structure before CSS styling sheets handle visual layouts.</p>
+                    
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>The HTML Doctype &amp; Head Meta Framework</h4>
+                        <p>Every standard webpage must declare <code>&lt;!DOCTYPE html&gt;</code> on line 1. This signals the web browser that the incoming document uses modern HTML5 parsing models. Inside the hidden <code>&lt;head&gt;</code> card configuration block, we add <code>&lt;meta charset="UTF-8"&gt;</code> to turn on universal text symbols rendering, alongside viewport scale trackers to keep the layout mobile responsive.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#DocType</span><span class="skill-hash-tag">#MetaTags</span><span class="skill-hash-tag">#DOMStructure</span>
+                        </div>
+                    </div>
+
+                    <div class="w3-visual-diagram-box">
+                        <span class="w3-diagram-label">📐 Abstract Browser DOM Tree Layout Mapping Hierarchy</span>
+                        
+                        <p style="font-family: monospace; font-size: 0.8rem; font-weight: bold; background: #ffffff; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px;">
+                            html Document &rarr; head (Meta, Title) + body (Structural Content Elements)
+                        </p>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>Structural Blocks: Div vs. Span</h4>
+                        <p>Web elements behave differently on screens depending on their display configurations. <b>Block-level elements</b> (like <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>) start on a new row line and claim the full width available. <b>Inline elements</b> (like <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>) sit comfortably inside existing sentence rows without dropping lines, only wrapping the content size itself.</p>
+                    </div>
+
+                    <div class="w3-code-snippet-shell">
+                        <div class="w3-code-shell-header"><span><i class="fas fa-code"></i> basic-skeleton.html</span> <span>HTML5 Ready</span></div>
+                        <div class="w3-code-shell-body">&lt;!DOCTYPE html&gt;<br>&lt;<span class="tag-color">html</span> <span class="attr-color">lang</span>=<span class="val-color">"en"</span>&gt;<br>&lt;<span class="tag-color">head</span>&gt;<br>    &lt;<span class="tag-color">meta</span> <span class="attr-color">charset</span>=<span class="val-color">"UTF-8"</span>&gt;<br>    &lt;<span class="tag-color">title</span>&gt;My First Page&lt;/<span class="tag-color">title</span>&gt;<br>&lt;/<span class="tag-color">head</span>&gt;<br>&lt;<span class="tag-color">body</span>&gt;<br>    &lt;<span class="tag-color">h1</span>&gt;Hello World&lt;/<span class="tag-color">h1</span>&gt;<br>&lt;/<span class="tag-color">body</span>&gt;<br>&lt;/<span class="tag-color">html</span>&gt;</div>
+                    </div>
+
+                    <div class="project-milestone-box">
+                        <h4><i class="fas fa-code-branch"></i> Mini-Project Milestone Assignment</h4>
+                        <p><b>Task Challenge:</b> Assemble a clean, raw personal resume webpage. It must declare modern HTML5 doc-type models, utilize proper semantic title hierarchies from H1 to H3, and incorporate both nested ordered and unordered lists blocks.</p>
+                    </div>
+                </div>
+
+                <div id="phase2" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 02 // Tabular Information Grids</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 2 Hours</span></div>
+                    <h2>Tables &amp; Structured Data Grids</h2>
+                    <p class="section-sub-desc">Tables organize grid datasets cleanly. Modern HTML structures data inside clear rows, column partitions, and logical semantics wrappers.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Colspan &amp; Rowspan Attribute Layout Systems</h4>
+                        <p>When modeling complex university semester timetables or banking matrices records, we merge grid spaces across dimensions. The <code>colspan</code> attribute stretches a cell horizontally across multiple column positions. The <code>rowspan</code> attribute locks an entry box vertically down across multiple row tracks segments.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#DataTables</span><span class="skill-hash-tag">#Colspan</span><span class="skill-hash-tag">#TableSemantics</span>
+                        </div>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="nt-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Tag Token</th>
+                                    <th>Structural Semantic Role</th>
+                                    <th>Browser Layout Behavior</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>&lt;thead&gt;</code></td>
+                                    <td>Groups the primary descriptor labels of grid arrays columns.</td>
+                                    <td>Enables consistent header freezing during long dataset scrolls.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;tbody&gt;</code></td>
+                                    <td>Encapsulates the core transactional or scalar table rows.</td>
+                                    <td>Maintains core text tracking alignments across records lists.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;caption&gt;</code></td>
+                                    <td>Provides an official, accessible text title description card for the table.</td>
+                                    <td>Centers a single clear subtitle right on top of the parent grid grid block automatically.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="phase3" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 03 // Interaction &amp; Input Pipelines</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Forms &amp; Input Data Processing</h2>
+                    <p class="section-sub-desc">Forms serve as the active data collector pipelines connecting user input actions safely to backend cloud system engines servers platforms.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Input Field Configurations &amp; Form Methods</h4>
+                        <p>Modern HTML5 utilizes specific type trackers (like <code>type="email"</code>, <code>type="tel"</code>, or <code>type="date"</code>) to turn on instant validation checks directly in the browser before data leaves the page. Form operations pass variables tokens using two core methods: <b>GET</b> appends data attributes visibly to the browser URL address line (ideal for query sorting lookups), whereas <b>POST</b> packages data streams secretly inside the transactional message cargo block, making it mandatory for password changes and checkout balances workflows.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#FormHandling</span><span class="skill-hash-tag">#FormValidation</span><span class="skill-hash-tag">#POSTvsGET</span>
+                        </div>
+                    </div>
+
+                    <div class="nt-pro-tip-box">
+                        <strong><i class="fas fa-lock"></i> The Essential Field 'name' Attribute</strong>
+                        <p>Always register unique <code>name</code> attributes over every input element slot. Without a designated name attribute, the browser cannot package input values into the backend data payload stream during submit transitions, rendering fields completely invisible to servers.</p>
+                    </div>
+                </div>
+
+                <div id="phase4" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 04 // Content Semantics &amp; SEO Tracks</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>The Semantic Web Architecture</h2>
+                    <p class="section-sub-desc">Semantic HTML means using tags that explain what the content actually *is*, rather than just how it should look on screen templates.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Structural Scoping: Article, Section, and Aside Layouts</h4>
+                        <p>Older platforms modeled layout wireframes entirely using empty, un-indexed <code>&lt;div&gt;</code> buckets, blinding search engines. Modern HTML5 relies on structural containers: <code>&lt;article&gt;</code> encapsulates separate, standalone copy modules (like independent blog entries). <code>&lt;section&gt;</code> segments shared theme tracks inside an interface. <code>&lt;aside&gt;</code> shifts peripheral details, callout boxes, or sidebar links to secondary columns margins positions.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#SemanticHTML</span><span class="skill-hash-tag">#SEOOptimization</span><span class="skill-hash-tag">#Accessibility</span>
+                        </div>
+                    </div>
+
+                    <div class="mistake-warning-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong>⚠ Common Student SEO Mistake</strong>
+                            <p>Never rely on multiple `H1` tags across a single webpage to enlarge standard font rows. A clean page layout must preserve exactly one single primary `H1` element anchor as its architectural title root to maintain clear SEO crawling profiles rankings charts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phase5" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 05 // Dynamic Media Streaming Channels</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Multimedia Components</h2>
+                    <p class="section-sub-desc">HTML5 introduced native, plugin-free processing layers for complex streaming files, eliminating the need for ancient third-party flash engines utilities logs.</p>
+                    
+                    <ul class="traits-bullet-list">
+                        <li><strong>Native Audio &amp; Video Streams:</strong> Leveraging the <code>&lt;video controls&gt;</code> element pulls mp4 or webm channels onto canvas levels instantly with native tracking speed adjustments trackers.</li>
+                        <li><strong>Iframe Mapping Embeds:</strong> Using the <code>&lt;iframe&gt;</code> window template securely encapsulates interactive external assets widgets (like interactive maps location feeds or video portals links) right inside your viewport panel blocks rows.</li>
+                        <li><strong>Drawing Canvases:</strong> The <code>&lt;canvas&gt;</code> element exposes a scriptable 2D grid matrix used to render fluid animations, real-time games charts, or data graphs overlays directly via JavaScript streams.</li>
+                    </ul>
+                </div>
+
+                <div id="phase6" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 06 // Advanced Browser Logic Engines</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 5 Hours</span></div>
+                    <h2>Advanced Modern Web APIs</h2>
+                    <p class="section-sub-desc">HTML5 extends browser capacities into complete applications environments, handling data caching and client-side system services natively parameters rules.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Client Side Data Management: LocalStorage vs. SessionStorage</h4>
+                        <p>Modern applications preserve customer preferences and app states right inside local browser engines, bypassing slow database lookups. <b>LocalStorage</b> keeps configuration values permanently safe in browser memory caches with zero expiration dates, retaining details even if tabs close down. <b>SessionStorage</b> flushes its tracking memory buffers instantly the moment an individual workspace tab closes out, making it ideal for tracking singular checkout instances or security tokens parameters logs chains.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#WebStorage</span><span class="skill-hash-tag">#LocalStorage</span><span class="skill-hash-tag">#WebAPIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="examination" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">07 // Practice &amp; Assessment Master Center</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 15 Mins</span></div>
+                    <h2>University Examination Vault</h2>
+                    <p class="section-sub-desc">Review frequent conceptual problems questions, university written examination patterns weightage indicators, and track metrics records.</p>
+                    
+                    <div class="exam-qa-sub-block">
+                        <h4>Syllabus Question Bank</h4>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">2 Marks // Standard Core Metric</span>
+                            <strong>Q: Differentiate between a Block-level element and an Inline element in HTML.</strong>
+                            <p><b>A:</b> Block-level elements (such as <code>&lt;div&gt;</code> or <code>&lt;p&gt;</code>) start automatically on a new row line and stretch out horizontally to claim the maximum available container width. Inline elements (like <code>&lt;span&gt;</code> or <code>&lt;a&gt;</code>) pack around content locally inside sentence text strings rows, without dropping or forcing line breaks.</p>
+                        </div>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">5 Marks // Frequently Asked Paper Question</span>
+                            <strong>Q: Contrast the functional operations and security differences separating POST from GET form submittal methods.</strong>
+                            <p><b>A:</b> GET translates data inputs directly into alphanumeric query text strings appended visibly right onto the browser URL address bar line, which carries length limitations and exposes attributes to history logs. POST packages variables inside the hidden transaction payload body block securely, carrying no length boundaries, and is required for password handling pathways operations.</p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-mcq-sandbox">
+                        <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
+                        <div class="mcq-question-wrapper">
+                            <p class="mcq-prompt"><b>Question 01:</b> Which HTML5 web API storage layer retains its underlying values permanently across system reboots or browser tab closures?</p>
+                            <div class="mcq-options-column">
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">A. The transient, temporary SessionStorage register buffer</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, true)">B. The persistent client side LocalStorage system layer</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">C. The standard server side database query lookup schema</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">D. The basic temporary document viewport meta viewport block</button>
+                            </div>
+                            <div class="quiz-feedback-box" id="quizFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="viva-checklist-block">
+                        <h4>Laboratory Viva Evaluation Checklist</h4>
+                        <ul class="viva-bullets-list">
+                            <li><strong>What is the primary role of the <code>&lt;!DOCTYPE html&gt;</code> tag directive?</strong> It instructs the browser to parse code strictly matching international HTML5 standards.</li>
+                            <li><strong>Why are semantic elements like <code>&lt;article&gt;</code> highly prized for web platforms?</strong> Because they map structural layout meaning directly to external search engine bots, boosting automated SEO indexing.</li>
+                            <li><strong>What attribute lets a single table grid cell stretch out over multiple side-by-side columns?</strong> The <code>colspan</code> attribute variable.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quick-revision-sheet">
+                        <h4><i class="fas fa-bolt"></i> One-Minute Summary Revision Sheet</h4>
+                        <div class="revision-nodes-grid">
+                            <div class="rev-node"><b>HTML5 Skeleton:</b> Requires a modern doctype declaration, a head metadata configuration container, and an active visible body layout block.</div>
+                            <div class="rev-node"><b>Tabular Layouts:</b> Structured cleanly using row markers matching <code>colspan</code> or <code>rowspan</code> grid transformations parameters.</div>
+                            <div class="rev-node"><b>Forms Input System:</b> Managed using browser-validated field types that route payload vectors via POST or GET methods.</div>
+                            <div class="rev-node"><b>Semantic Frameworks:</b> Promotes clean accessibility benchmarks using structural content targets like Article or Section shields.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="download-portal-strip">
+                    <div class="dl-strip-text">
+                        <h3>Vetted Academic Download Center</h3>
+                        <p>Access complete course handouts, presentation templates, and comprehensive examination question banks offline.</p>
+                    </div>
+                    <div class="dl-buttons-matrix">
+                        <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" class="dl-action-node btn-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Handout PDF</a>
+                        <span class="dl-action-node status-pending"><i class="fas fa-lock"></i> Slidedeck &bull; Cheat Sheet Coming Soon</span>
+                    </div>
+                </section>
+
+                <footer class="notes-routing-deck">
+                    <div class="route-node-placeholder"></div>
+                    <div class="route-center-summary">Overall Syllabus Progress: <strong style="color: #10b981;">Active Track</strong></div>
+                    <a href="index.html" class="btn-next-module-trigger">Return to Academy Home <i class="fas fa-home"></i></a>
+                </footer>
+
+            </div>
+        </main>
+
+        <aside class="w3-info-desk-rail">
+            <div class="info-card-widget">
+                <h6>Module Logistics</h6>
                 <ul>
-                    <li><i class="fas fa-table"></i> Table Rows, Headers, and Bodies.</li>
-                    <li><i class="fas fa-table"></i> Colspan & Rowspan Mastery.</li>
-                    <li><i class="fas fa-table"></i> Semantic Table Captions.</li>
+                    <li>Total Topics: <strong>6 Core Units</strong></li>
+                    <li>Syllabus Code: <strong>WNA-HT101</strong></li>
+                    <li>Global Rating: <strong>5.0 ★ Core Standard</strong></li>
+                    <li>Est. Total Time: <strong>16 Hours</strong></li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="https://drive.google.com/file/d/1HBGA1gKcS1JQF2ZRRxVOMO9n_t2RaWjs/view?usp=sharing" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Download Pdf</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 03: Logic Input</p>
-                <h3>Forms & Inputs</h3>
+            <div class="info-card-widget">
+                <h6>Your Lesson Tracker</h6>
                 <ul>
-                    <li><i class="fas fa-edit"></i> Input Types (Text, Email, Tel, Date).</li>
-                    <li><i class="fas fa-edit"></i> Select Menus, Radio, and Checkboxes.</li>
-                    <li><i class="fas fa-edit"></i> Form Action, Method, and Validation.</li>
+                    <li>Current Status: <strong>Discovery Active</strong></li>
+                    <li>Completion Gauge: <strong style="color: #f97316;">Initializing</strong></li>
                 </ul>
+                <div class="progress-block-tracker">░░░░░░░░░░</div>
             </div>
-            <div class="download-zone">
-                <a href="https://drive.google.com/file/d/1FgJhk05oKM5rZNNMrxVNgegILp911hoY/view?usp=sharing" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Download Pdf</a>
-            </div>
-        </div>
+        </aside>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 04: SEO & Structure</p>
-                <h3>Semantic Web</h3>
-                <ul>
-                    <li><i class="fas fa-search"></i> Header, Footer, Nav, and Main.</li>
-                    <li><i class="fas fa-search"></i> Article, Section, and Aside tags.</li>
-                    <li><i class="fas fa-search"></i> Figure, Figcaption, and Time tags.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="https://drive.google.com/file/d/1GIV2mMaaCusvsCyes-0tUt8L6_tbEU3V/view?usp=sharing" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Download Pdf</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 05: Rich Media</p>
-                <h3>Multimedia</h3>
-                <ul>
-                    <li><i class="fas fa-video"></i> Video & Audio with Controls.</li>
-                    <li><i class="fas fa-video"></i> Embedding Iframes & Maps.</li>
-                    <li><i class="fas fa-video"></i> SVG & Canvas introduction.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 06: Modern APIs</p>
-                <h3>Advanced HTML5</h3>
-                <ul>
-                    <li><i class="fas fa-rocket"></i> LocalStorage & SessionStorage.</li>
-                    <li><i class="fas fa-rocket"></i> Geolocation & Drag-and-Drop.</li>
-                    <li><i class="fas fa-rocket"></i> Accessibility (ARIA) Roles.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
     </div>
-</div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+        /* ==========================================================================
+           🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
+           ========================================================================== */
+        function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
+            // Drop active visibility parameters flags across panel objects
+            const panelsArray = document.getElementsByClassName("nt-tab-panel");
+            for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].classList.remove("active");
+            }
+
+            // Un-assign selection states from all sidebar menu nodes
+            const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
+            for (let i = 0; i < menuItemsArray.length; i++) {
+                menuItemsArray[i].classList.remove("active");
+            }
+
+            // Activate the designated layout tracking target
+            const targetedPanelNode = document.getElementById(targetPanelId);
+            if(targetedPanelNode) {
+                targetedPanelNode.classList.add("active");
+            }
+
+            // Sync highlighted sidebar styles and dynamic text trackers
+            clickedSidebarLinkNode.classList.add("active");
+            
+            // Clean header label metrics allocations
+            const rawLabelText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '').trim();
+            document.getElementById("breadcrumbLabel").innerText = rawLabelText;
+        }
+
+        /* --- Quiz Validation Logic Sandbox Engine --- */
+        function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
+            const feedbackContainer = document.getElementById("quizFeedback");
+            const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
+            
+            alternativeOptionButtons.forEach(btn => btn.disabled = true);
+            
+            if (isChoiceCorrectFlag) {
+                clickedButtonElement.style.background = "#e6f4ea";
+                clickedButtonElement.style.borderColor = "#34d399";
+                clickedButtonElement.style.color = "#137333";
+                feedbackContainer.className = "quiz-feedback-box success-state";
+                feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> LocalStorage acts as a persistent client side key-value database engine built right into your browser runtime, preserving layout parameters variables safely across tabs closures or machine restarts.";
+            } else {
+                clickedButtonElement.style.background = "#fce8e6";
+                clickedButtonElement.style.borderColor = "#f87171";
+                clickedButtonElement.style.color = "#c5221f";
+                feedbackContainer.className = "quiz-feedback-box error-state";
+                feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your advanced HTML5 API systems criteria handlers! SessionStorage flushes automatically when tabs close out, document metadata elements configure parser behavior, and databases operate on distant servers infrastructure fields.";
+            }
+            feedbackContainer.style.display = "block";
+        }
+    </script>
 </body>
 </html>
