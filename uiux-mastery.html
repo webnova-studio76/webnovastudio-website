@@ -3,192 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX Mastery | WebNova Academy</title>
+    <title>UI/UX Design Masterclass Syllabus | WebNova Academy</title>
+    <!-- Linked Global Stylesheet (Untouched) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --accent: #6366f1; /* UI/UX Indigo */
-            --secondary: #1e1b4b; /* Midnight Navy */
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
-        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--accent); }
-
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .module-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid var(--border);
+        /* ==========================================================================
+           ⚓ WEBNOVA ACADEMY THREE-COLUMN LIGHT INTERFACE (Protects style.css)
+           ========================================================================== */
+        body.w3-academy-workspace {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-            aspect-ratio: 1 / 1;
-            justify-content: space-between;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.08);
-        }
-
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .module-card ul { list-style: none; flex-grow: 1; }
-        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
-        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
-
-        .download-zone {
+        /* App Framework Main Grid Splitter Layout */
+        .w3-app-frame-wrapper {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-dl {
             flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-align: center;
+            height: calc(100vh - 72px); /* Offsets global master header navbar */
+            overflow: hidden;
+            width: 100%;
         }
-        .btn-pdf { background: #eef2ff; color: #4338ca; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* --- 1. LEFT SIDEBAR: INTERACTIVE ROADMAP RAIL --- */
+        .w3-sidebar-rail {
+            width: 290px;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
+        .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        
+        .sidebar-section-group h5 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+            color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-left: 8px;
+        }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 3px; padding: 0; margin: 0; }
+        .sidebar-menu-item {
+            padding: 10px 14px; border-radius: 6px; font-size: 0.84rem; font-weight: 500;
+            color: #475569; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
+        .sidebar-menu-item:hover { background: #e0e7ff; color: #0f172a; }
+        .sidebar-menu-item.active { background: rgba(99, 102, 241, 0.06); color: #6366f1; font-weight: 700; border-left: 3px solid #6366f1; padding-left: 11px; }
+        .sidebar-menu-item.active i { color: #6366f1; }
 
-        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+        /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
+        .w3-central-viewport-canvas {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: #ffffff;
+            height: 100%;
+        }
+        .viewport-content-container { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px; text-align: left; }
+        .breadcrumb-trail span.active-node { color: #6366f1; }
+
+        /* Premium Light Hero Course Section */
+        .w3-hero-course-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            text-align: left;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.02);
+        }
+        .w3-hero-course-card h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1e1b4b !important; letter-spacing: -0.02em; line-height: 1.2; }
+        .w3-hero-course-card h1 span { color: #6366f1; }
+        .w3-hero-course-card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-top: 8px; }
+        
+        /* Tab System View Controllers */
+        .nt-tab-panel { display: none; }
+        .nt-tab-panel.active { display: block; animation: w3Fade 0.2s ease-out; }
+        @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #1e1b4b !important; margin-bottom: 6px; text-align: left; border-left: 4px solid #6366f1; padding-left: 12px; }
+        .nt-tab-panel h3 { margin: 24px 0 12px; color: #6366f1; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .nt-tab-panel p.section-sub-desc { font-size: 0.92rem !important; color: #64748b !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+
+        /* Pedagogical Display Cards and Indicators */
+        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #6366f1; margin-bottom: 4px; display: block; text-align: left; }
+        .difficulty-indicator-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .diff-dot.green { background-color: #10b981; }
+        .diff-dot.amber { background-color: #f59e0b; }
+        
+        .concept-learning-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(15,23,42,0.01); }
+        .concept-learning-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #1e1b4b !important; margin-bottom: 4px; }
+        .concept-meta-strip { display: flex; gap: 12px; font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .concept-meta-strip span strong { color: #6366f1; }
+
+        /* Visual Structural Mapping Connectors */
+        .w3-visual-diagram-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .w3-diagram-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 12px; }
+        
+        .roadmap-flow-container { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 720px; flex-wrap: wrap; margin: 0 auto; }
+        .roadmap-step-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: #1e1b4b; text-align: center; min-width: 100px; flex: 1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .roadmap-step-card.active { border-color: #6366f1; background: rgba(99, 102, 241, 0.04); color: #6366f1; }
+        .roadmap-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 0.9rem; }
+
+        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; }
+        .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1e1b4b !important; }
+        .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 0; margin: 0; }
+        .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 24px; position: relative; }
+        .traits-bullet-list li i { position: absolute; left: 0; top: 4px; color: #6366f1; font-size: 0.85rem; }
+        .traits-bullet-list strong { color: #1e1b4b !important; font-weight: 600; }
+
+        .skill-tags-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .skill-hash-tag { font-size: 0.68rem; font-weight: 700; color: #6366f1; background: rgba(99, 102, 241, 0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.1); }
+
+        .nt-pro-tip-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 20px; text-align: left; }
+        .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+        .nt-pro-tip-box p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 6px; }
+        table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
+        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 14px; font-size: 0.82rem; border-bottom: 1px solid #e2e8f0; }
+        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1e1b4b; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.68rem; }
+        table.nt-comparison-table td { color: #475569; font-weight: 500; }
+
+        /* Project Assignment Milestone Panels */
+        .project-milestone-box { border: 1px dashed #6366f1; background: rgba(99, 102, 241, 0.01); padding: 20px; border-radius: 8px; margin-top: 24px; text-align: left; }
+        .project-milestone-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #1e1b4b; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .project-milestone-box h4 i { color: #6366f1; }
+        .project-milestone-box p { font-size: 0.82rem; color: #475569; line-height: 1.45; margin-bottom: 0; }
+
+        /* Assessment Testing Components */
+        .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
+        .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1e1b4b !important; margin-bottom: 10px; }
+        .mcq-question-wrapper p { font-size: 0.84rem !important; color: #1e1b4b !important; font-weight: 600; margin-bottom: 10px !important; }
+        .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
+        .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
+        .option-btn:hover { background: #f1f5f9; color: #1e1b4b; }
+
+        .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
+        .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
+        .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
+
+        /* Downloader Center Card Strips */
+        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        .dl-strip-text { text-align: left; }
+        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #1e1b4b !important; }
+        .dl-strip-text p { font-size: 0.82rem !important; color: #475569 !important; line-height: 1.35 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+
+        .dl-buttons-matrix { display: flex; gap: 8px; flex-wrap: wrap; }
+        .dl-action-node { padding: 8px 14px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .dl-action-node.btn-pdf { background: rgba(99, 102, 241, 0.05); color: #4338ca; border: 1px solid rgba(99, 102, 241, 0.15); }
+        .dl-action-node.btn-pdf:hover { background: #6366f1; color: #ffffff; border-color: #6366f1; }
+        .dl-action-node.status-pending { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; cursor: not-allowed; }
+
+        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 40px; border-top: 1px solid #e2e8f0; margin-top: 32px; }
+        .btn-next-module-trigger { padding: 10px 18px; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #1e1b4b; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .btn-next-module-trigger:hover { background: #6366f1; color: #ffffff; border-color: #6366f1; }
+
+        /* --- 3. RIGHT INFORMATION DESK (SIDEBAR COUNTER PACKS) --- */
+        .w3-info-desk-rail {
+            width: 280px;
+            background: #f8fafc;
+            border-left: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .info-card-widget { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .info-card-widget h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: #1e1b4b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 0; }
+        
+        .info-card-widget ul { list-style: none !important; padding: 0 !important; margin: 0 !important; display: flex; flex-direction: column; gap: 10px; }
+        .info-card-widget li { font-size: 0.8rem; color: #475569; font-weight: 500; display: flex; justify-content: space-between; align-items: center; padding: 0 !important; margin: 0 !important; border: none !important; }
+        .info-card-widget li strong { color: #1e1b4b; font-weight: 700; }
+        .progress-block-tracker { font-family: monospace; font-size: 1rem; color: #10b981; font-weight: 700; letter-spacing: 1px; }
+
+        @media (max-width: 1100px) { .w3-info-desk-rail { display: none; } }
+        @media (max-width: 960px) {
+            .w3-app-frame-wrapper { flex-direction: column; overflow: auto; height: auto; }
+            .w3-sidebar-rail { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+            .nt-grid-2, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+        }
     </style>
 </head>
-<body>
+<body class="w3-docs-workspace">
 
-<div class="container">
-    <header class="syllabus-head">
-        <h1>UI/UX <span>Design Systems</span></h1>
-        <p>A 6-Phase blueprint from Design Thinking to high-fidelity prototyping.</p>
-    </header>
+    <!-- Global Application Navigation Header Placeholder (Untouched) -->
+    <div id="global-header"></div>
 
-    <div class="module-grid">
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 01: UX Research</p>
-                <h3>Design Thinking</h3>
-                <ul>
-                    <li><i class="fas fa-search"></i> User Personas & Empathy Mapping.</li>
-                    <li><i class="fas fa-search"></i> Problem Statements & Ideation.</li>
-                    <li><i class="fas fa-search"></i> User Journey & Experience Flows.</li>
+    <!-- MAIN INTERACTIVE APP WRAPPER FRAMEWORK -->
+    <div class="w3-app-frame-wrapper">
+        
+        <!-- SIDEBAR 1: LEFT HAND ROADMAP AXIS -->
+        <aside class="w3-sidebar-rail">
+            <div class="sidebar-section-group">
+                <h5>UI/UX Design Track</h5>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'phase1')"><i class="fas fa-search"></i> 1. Design Thinking</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase2')"><i class="fas fa-pencil-ruler"></i> 2. Wireframing Layouts</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase3')"><i class="fas fa-palette"></i> 3. Color &amp; Typography</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase4')"><i class="fas fa-layer-group"></i> 4. Design Systems</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase5')"><i class="fas fa-hand-pointer"></i> 5. Interactive Prototypes</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase6')"><i class="fas fa-file-export"></i> 6. Developer Handover</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
+        </aside>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 02: Information Architecture</p>
-                <h3>Wireframing</h3>
+        <!-- CANVAS 2: CENTRAL INTERACTIVE LESSON CANVAS -->
+        <main class="w3-central-viewport-canvas">
+            <div class="viewport-content-container">
+                
+                <nav class="breadcrumb-trail">
+                    <span>Masterclass Track</span> / <span>Design Systems</span> / <span class="active-node" id="breadcrumbLabel">Design Thinking</span>
+                </nav>
+
+                <!-- Premium Academic Module Cover Card -->
+                <header class="w3-hero-course-card">
+                    <span class="nt-pill-badge">Professional Certification</span>
+                    <h1>UI/UX <span>Design Systems Masterclass</span></h1>
+                    <p>Learn product design from the ground up. This curated 6-Phase blueprint breaks down user research loops, interface spatial structures, atomized wireframes components, and high-fidelity prototype flows.</p>
+                </header>
+
+                <div class="w3-visual-diagram-box">
+                    <span class="w3-diagram-label">🧩 General Product Delivery Roadmap Path</span>
+                    <div class="roadmap-flow-container">
+                        <div class="roadmap-step-card active">1. Research</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">2. Wireframe</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">3. Design</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">4. Prototype</div>
+                    </div>
+                </div>
+
+                <!-- PHASE 01: DESIGN THINKING -->
+                <div id="phase1" class="nt-tab-panel active">
+                    <span class="pedagogy-block-indicator">Phase 01 // UX Research Basics</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 2 Hours</span></div>
+                    <h2>Design Thinking &amp; Discovery</h2>
+                    <p class="section-sub-desc">UX Research helps us understand what target users truly need. Design Thinking ensures we fix actual user frustrations instead of guessing what might look nice.</p>
+                    
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>User Personas &amp; Empathy Mapping</h4>
+                        <p>A <b>User Persona</b> is a profile card representing your average target user. To create one, we run interviews to document a user's clear daily goals, technical background, and major frustrations. This maps directly into an <b>Empathy Map</b>, which splits user field research variables into four simple categories: What users Say, Think, Do, and Feel.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#UserResearch</span><span class="skill-hash-tag">#EmpathyMapping</span><span class="skill-hash-tag">#DesignThinking</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>Problem Statements &amp; User Journeys</h4>
+                        <p>Great designs start with a clear problem definition. We frame these as "How Might We" statements to guide ideation loops. This flows straight into a <b>User Journey Map</b>, which visually tracks every single step a user takes to hit a goal inside an application—recording their actions and emotional drops along the way.</p>
+                    </div>
+
+                    <div class="project-milestone-box">
+                        <h4><i class="fas fa-flask"></i> Mini-Project Milestone Assignment</h4>
+                        <p><b>Task Challenge:</b> Map out 2 explicit User Personas and an Empathy Profile layout for a local grocery delivery app. Document three primary customer pain points regarding checkout delays.</p>
+                    </div>
+                </div>
+
+                <!-- PHASE 02: WIREFRAMING -->
+                <div id="phase2" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 02 // Information Architecture</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>Wireframing &amp; Sitemaps</h2>
+                    <p class="section-sub-desc">Information Architecture means organizing data clearly so app users never get lost finding navigation links.</p>
+                    
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>Low-Fidelity Sketching &amp; Navigation Logic</h4>
+                        <p>Before jumping into digital design tools, engineers use low-fidelity paper sketching to quickly map out screen content distributions. This maps structural navigation layouts without getting distracted by custom brand colors or image assets.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Sitemaps</span><span class="skill-hash-tag">#Wireframing</span><span class="skill-hash-tag">#LayoutGrids</span>
+                        </div>
+                    </div>
+
+                    <div class="nt-pro-tip-box">
+                        <strong><i class="fas fa-th"></i> The Power of the 8pt Grid System</strong>
+                        <p>Modern UI layout relies completely on structural layout scales built around multiples of 8 pixels (8, 16, 24, 32, etc.). Using an 8pt layout grid ensures that spacings, paddings, and line heights scale cleanly across varying screen sizes without broken fractions.</p>
+                    </div>
+                </div>
+
+                <!-- PHASE 03: VISUAL IDENTITY -->
+                <div id="phase3" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 03 // Visual UI Properties</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 4 Hours</span></div>
+                    <h2>Color Theory &amp; Typographic Hierarchies</h2>
+                    <p class="section-sub-desc">Visual design blends aesthetic character blocks with mathematical accessibility standards to make screens clean and highly readable.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Color Psychology &amp; Accessibility Limits</h4>
+                        <p>Colors steer how users feel inside an interface. For example, secure banking interfaces use deep royal blues to build user trust, while medical systems prefer soft greens. According to global WCAG accessibility rules, text contrast ratios must hit at least a <b>4.5:1</b> scale against background cards so visually impaired users can read them clearly.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#ColorTheory</span><span class="skill-hash-tag">#Typography</span><span class="skill-hash-tag">#Accessibility</span>
+                        </div>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="nt-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Font Category</th>
+                                    <th>Visual Structural Character</th>
+                                    <th>Best Use Case Fit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>Serif</b> (e.g., Times New Roman)</td>
+                                    <td>Features small decorative feet or strokes on the tips of letters.</td>
+                                    <td>Editorial prints, heavy text blocks, traditional brand styleguides.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Sans-Serif</b> (e.g., Inter, Helvetica)</td>
+                                    <td>Clean, geometric letterforms with completely square, modern cuts.</td>
+                                    <td>Digital user interfaces, mobile screen applications, terminal outputs.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PHASE 04: DESIGN SYSTEMS -->
+                <div id="phase4" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 04 // Scalable UI Engineering</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 5 Hours</span></div>
+                    <h2>Atomic Design Systems</h2>
+                    <p class="section-sub-desc">A **Design System** is a centralized library of reusable code components and visual patterns that ensures massive applications remain uniform across production branches.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Atomic Design Principles</h4>
+                        <p>We build scalable interface assets by following the <b>Atomic Design</b> methodology. This structure scales interface elements across five clear layers:</p>
+                        <ul class="traits-bullet-list" style="margin-top: 10px;">
+                            <li><strong>Atoms:</strong> Individual, un-splittable UI elements (such as a single label, input field, or icon).</li>
+                            <li><strong>Molecules:</strong> Combinations of atoms bonded together to form a simple functional component (like pairing an input atom with a button atom to build a Search Box).</li>
+                            <li><strong>Organisms:</strong> Complex components formed by grouping multiple molecules together (such as a website Header navigation bar).</li>
+                        </ul>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#AtomicDesign</span><span class="skill-hash-tag">#AutoLayout</span><span class="skill-hash-tag">#ComponentLibraries</span>
+                        </div>
+                    </div>
+
+                    <div class="mistake-warning-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong>⚠ Common Student Design Mistake</strong>
+                            <p>Do not draw buttons as static vector rectangles. Always structure interface cards and buttons using <b>Auto-Layout dynamic wrappers</b>. This ensures text paddings scale dynamically when your content string changes across translated layouts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHASE 05: INTERACTIVE PROTOTYPING -->
+                <div id="phase5" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 05 // Motion Logic Matrices</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 6 Hours</span></div>
+                    <h2>High-Fidelity Prototyping &amp; Animation</h2>
+                    <p class="section-sub-desc">Prototypes simulate active application actions, letting design teams test interactions on real users before developers write any code.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Micro-interactions &amp; Smart Transitions</h4>
+                        <p>Micro-interactions provide clear visual feedback for user actions—like a button subtly lifting when hovered over, or a loading wheel spinning during a form submission. Using motion tools like Figma's Smart Animate lets you build high-fidelity interactive prototypes that look and feel just like real code environments.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#MicroInteractions</span><span class="skill-hash-tag">#SmartAnimate</span><span class="skill-hash-tag">#UserTesting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHASE 06: DEVELOPER HANDOVER -->
+                <div id="phase6" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 06 // Production Deployment Tracks</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Design-to-Code Engineering Handover</h2>
+                    <p class="section-sub-desc">The final stage translates completed screen layouts into raw developer assets, transforming layouts into functional production code fields.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Inspecting Styles for clean CSS Translation</h4>
+                        <p>To ensure pixel-perfect conversion, designers document design variables as standardized <b>Design Tokens</b>. These tokens bridge design files and frontend production by turning visual properties (like borders, drop shadows, and font values metrics) into clear, reusable CSS variable definitions.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#DesignTokens</span><span class="skill-hash-tag">#ResponsiveCSS</span><span class="skill-hash-tag">#HandoffSpecs</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Self-Testing MCQ Sandbox Module -->
+                    <div class="interactive-mcq-sandbox">
+                        <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
+                        <div class="mcq-question-wrapper">
+                            <p class="mcq-prompt"><b>Question 01:</b> What is the minimum text-to-background contrast ratio required by WCAG AA rules to ensure an interface is accessible?</p>
+                            <div class="mcq-options-column">
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">A. A basic low-contrast 2.0:1 layout scale option</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">B. A standard typographic 3.5:1 scaling block</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, true)">C. A clear, high-contrast 4.5:1 minimum safety index</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">D. An absolute maximum 8.0:1 contrast ratio ceiling</button>
+                            </div>
+                            <div class="quiz-feedback-box" id="quizFeedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MULTI-TIER ACADEMIC MATERIAL DOWNLOAD PORTAL LINK CLUSTERS -->
+                <section class="download-portal-strip">
+                    <div class="dl-strip-text">
+                        <h3>Vetted Academic Download Center</h3>
+                        <p>Access complete course handouts, design blueprints, and comprehensive examination question banks offline.</p>
+                    </div>
+                    <div class="dl-buttons-matrix">
+                        <a href="downloads/uiux-phase1.pdf" class="dl-action-node btn-pdf"><i class="fas fa-file-pdf"></i> Download Phase 01 Handout</a>
+                        <span class="dl-action-node status-pending"><i class="fas fa-lock"></i> Phase 02-06 Coming Soon</span>
+                    </div>
+                </section>
+
+                <!-- LOWER LEVEL BACK-AND-FORTH MODULE ROUTING AXIS ROW -->
+                <footer class="notes-routing-deck">
+                    <div class="route-node-placeholder"></div>
+                    <div class="route-center-summary">Overall Track Progress: <strong style="color: #10b981;">Active Base</strong></div>
+                    <a href="index.html" class="btn-next-module-trigger">Return to Academy Home <i class="fas fa-home"></i></a>
+                </footer>
+
+            </div>
+        </main>
+
+        <!-- SIDEBAR 3: RIGHT HAND SUMMARY DATA DESK PANEL (W3/GFG STYLE) -->
+        <aside class="w3-info-desk-rail">
+            <div class="info-card-widget">
+                <h6>Course Logistics</h6>
                 <ul>
-                    <li><i class="fas fa-pencil-ruler"></i> Low-Fidelity Sketching techniques.</li>
-                    <li><i class="fas fa-pencil-ruler"></i> Mastering Sitemaps & Nav Logic.</li>
-                    <li><i class="fas fa-pencil-ruler"></i> Grids & Structural Layouts.</li>
+                    <li>Total Modules: <strong>6 Phases Units</strong></li>
+                    <li>Syllabus Code: <strong>WNA-UIUX101</strong></li>
+                    <li>Global Rating: <strong>4.9 ★ Excellence</strong></li>
+                    <li>Est. Total Time: <strong>24 Hours</strong></li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 03: Visual Identity</p>
-                <h3>Color & Typography</h3>
+            <div class="info-card-widget">
+                <h6>Your Lesson Tracker</h6>
                 <ul>
-                    <li><i class="fas fa-palette"></i> Color Psychology & Accessibility.</li>
-                    <li><i class="fas fa-palette"></i> Type Hierarchies & Pairings.</li>
-                    <li><i class="fas fa-palette"></i> Creating Scalable Brand Styleguides.</li>
+                    <li>Current Status: <strong>Discovery Mode</strong></li>
+                    <li>Completion Gauge: <strong style="color: #6366f1;">Initializing</strong></li>
                 </ul>
+                <div class="progress-block-tracker">░░░░░░░░░░</div>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
+        </aside>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 04: UI Components</p>
-                <h3>Design Systems</h3>
-                <ul>
-                    <li><i class="fas fa-layer-group"></i> Atomic Design Principles.</li>
-                    <li><i class="fas fa-layer-group"></i> Buttons, Inputs, and Modal patterns.</li>
-                    <li><i class="fas fa-layer-group"></i> Spacing Systems & Auto-Layout.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 05: Motion Logic</p>
-                <h3>Interactive Prototyping</h3>
-                <ul>
-                    <li><i class="fas fa-hand-pointer"></i> Transitions & Smart Animate.</li>
-                    <li><i class="fas fa-hand-pointer"></i> Micro-interactions & Feedbacks.</li>
-                    <li><i class="fas fa-hand-pointer"></i> Creating User Testable Flows.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 06: Handover</p>
-                <h3>Design-to-Code</h3>
-                <ul>
-                    <li><i class="fas fa-file-export"></i> Inspecting Styles for CSS.</li>
-                    <li><i class="fas fa-file-export"></i> Responsive Design Breakpoints.</li>
-                    <li><i class="fas fa-file-export"></i> Usability Testing & Refinement.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i>Notes Coming Soon</a>
-            </div>
-        </div>
     </div>
-</div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <!-- Global Universal Footer Mount Anchor Slot (Untouched) -->
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+        /* ==========================================================================
+           🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
+           ========================================================================== */
+        function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
+            // Drop active visibility parameters flags across panel objects
+            const panelsArray = document.getElementsByClassName("nt-tab-panel");
+            for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].classList.remove("active");
+            }
+
+            // Un-assign selection states from all sidebar menu nodes
+            const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
+            for (let i = 0; i < menuItemsArray.length; i++) {
+                menuItemsArray[i].classList.remove("active");
+            }
+
+            // Activate the designated layout tracking target
+            const targetedPanelNode = document.getElementById(targetPanelId);
+            if(targetedPanelNode) {
+                targetedPanelNode.classList.add("active");
+            }
+
+            // Sync highlighted sidebar styles and dynamic text trackers
+            clickedSidebarLinkNode.classList.add("active");
+            
+            // Clean header label metrics allocations
+            const rawLabelText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '').trim();
+            document.getElementById("breadcrumbLabel").innerText = rawLabelText;
+        }
+
+        /* --- Quiz Validation Logic Sandbox Engine --- */
+        function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
+            const feedbackContainer = document.getElementById("quizFeedback");
+            const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
+            
+            alternativeOptionButtons.forEach(btn => btn.disabled = true);
+            
+            if (isChoiceCorrectFlag) {
+                clickedButtonElement.style.background = "#e6f4ea";
+                clickedButtonElement.style.borderColor = "#34d399";
+                clickedButtonElement.style.color = "#137333";
+                feedbackContainer.className = "quiz-feedback-box success-state";
+                feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> WCAG AA guidelines strictly state that standard paragraph text body elements must achieve a minimum contrast ratio of 4.5:1 against background cards to guarantee accessibility for visually impaired learners.";
+            } else {
+                clickedButtonElement.style.background = "#fce8e6";
+                clickedButtonElement.style.borderColor = "#f87171";
+                clickedButtonElement.style.color = "#c5221f";
+                feedbackContainer.className = "quiz-feedback-box error-state";
+                feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your visual UI properties panel inputs! Low contrast indexes drop readability thresholds below standard software compliance benchmarks fields.";
+            }
+            feedbackContainer.style.display = "block";
+        }
+    </script>
 </body>
 </html>
