@@ -1,378 +1,620 @@
-What I Would Change
-
-Now let's think like W3Schools, GeeksforGeeks, and MDN.
-
-1. Hero Section Needs More Information
-
-Current
-
-CSS3 Visual Mastery
-
-A 6-Phase journey...
-
-Too empty.
-
-I'd make
-
-CSS3 Complete Course
-
-Beginner → Advanced
-
-★★★★☆ 4.9
-
-150 Examples
-
-50 Exercises
-
-25 Projects
-
-30 Quizzes
-
-20 Hours
-
-
-Looks much more valuable.
-
-2. Add Search
-
-Students always search.
-
-________________________
-
-Search CSS Topic...
-
-________________________
-
-Instant filtering.
-
-3. Course Progress
-
-Instead of only
-
-Phase 1
-
-Use
-
-Module 1
-
-████████░░
-
-80%
-
-
-or
-
-✔ Completed
-
-● Current
-
-○ Locked
-
-4. Difficulty
-
-Example
-
-🟢 Beginner
-
-🟡 Intermediate
-
-🔴 Advanced
-5. Duration
-
-Each card
-
-📖 45 Minutes
-
-📝 20 Topics
-
-💻 12 Examples
-
-🧪 5 Exercises
-
-🏆 Quiz
-6. Better Buttons
-
-Currently
-
-Download PDF
-
-Instead
-
-Read Notes
-
-Examples
-
-Practice
-
-Quiz
-
-PDF
-
-
-This immediately makes the website more useful.
-
-7. Bigger Content
-
-Each module has only
-
-3 topics
-
-That is too little.
-
-I recommend
-
-10-15 Topics
-
-+
-
-Examples
-
-+
-
-Exercises
-
-+
-
-Interview Questions
-
-+
-
-Projects
-
-Example
-
-Instead of
-
-Selectors
-
-Colors
-
-Fonts
-
-I'd make
-
-Introduction to CSS
-
-Internal CSS
-
-External CSS
-
-Inline CSS
-
-Comments
-
-Selectors
-
-Universal Selector
-
-Class Selector
-
-ID Selector
-
-Attribute Selector
-
-Pseudo Classes
-
-Pseudo Elements
-
-Specificity
-
-Cascade
-
-Inheritance
-
-
-One card immediately becomes much more educational.
-
-Module Suggestions
-Module 1
-CSS Fundamentals
-What is CSS?
-CSS Syntax
-Comments
-Types of CSS
-Selectors
-Specificity
-Cascade
-Inheritance
-Units
-Colors
-Backgrounds
-Fonts
-Text
-Links
-Lists
-Module 2
-Box Model
-Width
-Height
-Margin
-Padding
-Border
-Outline
-Overflow
-Display
-Visibility
-Opacity
-Box-sizing
-Module 3
-Flexbox
-Flex Container
-Flex Items
-Direction
-Wrap
-Gap
-Grow
-Shrink
-Basis
-Order
-Align-self
-Navbar Example
-Card Layout
-Module 4
-Grid
-Grid Container
-Rows
-Columns
-Grid Area
-Auto Flow
-Repeat
-Minmax
-Fraction Units
-Dashboard Layout
-Responsive Grid
-Module 5
-Responsive Design
-Mobile First
-Media Queries
-Breakpoints
-Relative Units
-Responsive Images
-Responsive Typography
-Responsive Navigation
-Cards
-Forms
-Module 6
-Advanced CSS
-Variables
-Transition
-Animation
-Transform
-Keyframes
-Filter
-Gradient
-Blend Modes
-Clip-path
-Glassmorphism
-Neumorphism
-Dark Mode
-Performance
-8. Add Practical Projects
-
-Every module should end with
-
-Mini Project
-
-Example
-
-Module 1
-
-✔ Resume
-
-Module 2
-
-✔ Login Form
-
-Module 3
-
-✔ Responsive Navbar
-
-Module 4
-
-✔ Dashboard
-
-Module 5
-
-✔ Portfolio
-
-Module 6
-
-✔ Landing Page
-
-Students learn much faster by building.
-
-9. Add Learning Path
-
-Above cards
-
-HTML
-
-↓
-
-CSS
-
-↓
-
-JavaScript
-
-↓
-
-Bootstrap
-
-↓
-
-React
-
-↓
-
-Projects
-
-Very professional.
-
-10. Add Statistics
-📚 6 Modules
-
-🎥 120 Lessons
-
-📝 350 Examples
-
-💻 80 Exercises
-
-🏆 25 Projects
-
-❓ 300 Quiz Questions
-
-
-Looks much richer.
-
-11. Add a "What's Included" Section
-
-Between the hero and module grid, add a row of feature cards:
-
-📘 Detailed Notes
-💻 Live Code Examples
-🧪 Practice Exercises
-❓ Quiz & MCQs
-🎯 Mini Projects
-📄 PDF Downloads
-
-This helps visitors understand the value of the course before they scroll to the modules.
-
-12. Improve the Card Footer
-
-Instead of only a "Notes Coming Soon" button, show a quick status:
-
-✔ Notes Available
-✔ Examples Included
-🟡 Quiz Coming Soon
-🔒 Projects Locked
-
-When content is ready, the user immediately knows what each module offers.
-
-My Recommendation
-
-For WebNova Studio, I would not try to copy W3Schools exactly. Instead, I would build a platform with this flow:
-
-Home → Course Overview → Module Cards → Detailed Notes → Live Examples → Playground → Exercises → Mini Projects → Interview Questions → Quiz → PDF Download
-
-That approach gives learners a complete path from reading to practicing, and it will make your website feel like a modern learning platform rather than just a PDF repository. Given your goal of creating free educational content, this structure is likely to keep users engaged and encourage them to return for more courses.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Visual Mastery Masterclass | WebNova Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           ⚓ WEBNOVA ACADEMY THREE-COLUMN LIGHT INTERFACE (Protects style.css)
+           ========================================================================== */
+        body.w3-academy-workspace {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* App Framework Main Grid Splitter Layout */
+        .w3-app-frame-wrapper {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 72px); /* Offsets global master header navbar */
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* --- 1. LEFT SIDEBAR: INTERACTIVE SYLLABUS RAIL --- */
+        .w3-sidebar-rail {
+            width: 290px;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
+        .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        
+        .sidebar-section-group h5 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+            color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-left: 8px;
+        }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 3px; padding: 0; margin: 0; }
+        .sidebar-menu-item {
+            padding: 10px 14px; border-radius: 6px; font-size: 0.84rem; font-weight: 500;
+            color: #475569; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
+        .sidebar-menu-item:hover { background: #f0fdf4; color: #0f172a; }
+        .sidebar-menu-item.active { background: rgba(14, 165, 233, 0.06); color: #0ea5e9; font-weight: 700; border-left: 3px solid #0ea5e9; padding-left: 11px; }
+        .sidebar-menu-item.active i { color: #0ea5e9; }
+
+        /* Left Sidebar Central Download Button Dock */
+        .sidebar-download-block { margin-top: auto; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+        .sidebar-download-btn {
+            background: rgba(14, 165, 233, 0.05); color: #0369a1; border: 1px solid rgba(14, 165, 233, 0.15);
+            padding: 12px; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;
+        }
+        .sidebar-download-btn:hover { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15); }
+
+        /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
+        .w3-central-viewport-canvas {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: #ffffff;
+            height: 100%;
+        }
+        .viewport-content-container { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px; text-align: left; }
+        .breadcrumb-trail span.active-node { color: #0ea5e9; }
+
+        /* Premium Light Course Style Hero Section */
+        .w3-hero-course-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            text-align: left;
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.02);
+        }
+        .w3-hero-course-card h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #0f172a !important; letter-spacing: -0.02em; line-height: 1.2; }
+        .w3-hero-course-card h1 span { color: #0ea5e9; }
+        .w3-hero-course-card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-top: 8px; }
+        
+        /* Tab System View Panels */
+        .nt-tab-panel { display: none; }
+        .nt-tab-panel.active { display: block; animation: w3Fade 0.2s ease-out; }
+        @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; text-align: left; border-left: 4px solid #0ea5e9; padding-left: 12px; }
+        .nt-tab-panel h3 { margin: 24px 0 12px; color: #0ea5e9; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .nt-tab-panel p.section-sub-desc { font-size: 0.92rem !important; color: #64748b !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+
+        /* Pedagogical Display Cards and Indicators */
+        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #0ea5e9; margin-bottom: 4px; display: block; text-align: left; }
+        .difficulty-indicator-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .diff-dot.green { background-color: #10b981; }
+        .diff-dot.amber { background-color: #f59e0b; }
+        .diff-dot.red { background-color: #ef4444; }
+
+        .concept-learning-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(15,23,42,0.01); }
+        .concept-learning-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 4px; }
+        .concept-meta-strip { display: flex; gap: 12px; font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .concept-meta-strip span strong { color: #0ea5e9; }
+
+        /* Modern Educational Diagram Frameworks (Light Vectors) */
+        .w3-visual-diagram-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .w3-diagram-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 12px; }
+        
+        .roadmap-flow-container { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 720px; flex-wrap: wrap; margin: 0 auto; text-align: left; }
+        .roadmap-step-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: #0f172a; text-align: center; min-width: 100px; flex: 1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .roadmap-step-card.active { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.04); color: #0ea5e9; }
+        .roadmap-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 0.9rem; }
+
+        /* Content Layout Grids */
+        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        
+        .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; width: 100%; }
+        .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
+        .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+        .scale-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: #ffffff; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px; }
+
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 0; margin: 0; }
+        .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 24px; position: relative; }
+        .traits-bullet-list li::before { content: "✔"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
+        .traits-bullet-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .skill-tags-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .skill-hash-tag { font-size: 0.68rem; font-weight: 700; color: #0ea5e9; background: rgba(14, 165, 233, 0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(14, 165, 233, 0.1); }
+
+        .nt-pro-tip-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 20px; text-align: left; }
+        .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+        .nt-pro-tip-box p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 6px; }
+        table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
+        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 14px; font-size: 0.82rem; border-bottom: 1px solid #e2e8f0; }
+        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.68rem; }
+        table.nt-comparison-table td { color: #475569; font-weight: 500; }
+
+        /* Integrated Code Workspace Shell Insets */
+        .w3-code-snippet-shell { background: #0f172a; border-radius: 6px; width: 100%; overflow: hidden; margin-top: 12px; font-family: 'Fira Code', monospace; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .w3-code-shell-header { background: #1e293b; padding: 8px 16px; color: #94a3b8; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+        .w3-code-shell-body { padding: 16px; color: #cbd5e1; text-align: left; white-space: pre-wrap; line-height: 1.5; }
+        .w3-code-shell-body .selector-color { color: #38bdf8; }
+        .w3-code-shell-body .prop-color { color: #f43f5e; }
+        .w3-code-shell-body .val-color { color: #eab308; }
+
+        /* Project Assignment Panels */
+        .project-milestone-box { border: 1px dashed #0ea5e9; background: rgba(14, 165, 233, 0.01); padding: 20px; border-radius: 8px; margin-top: 24px; text-align: left; }
+        .project-milestone-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .project-milestone-box h4 i { color: #0ea5e9; }
+        .project-milestone-box p { font-size: 0.82rem; color: #475569; line-height: 1.45; margin-bottom: 0; }
+
+        /* Assessment Sandbox Frameworks */
+        .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
+        .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; }
+        .mcq-question-wrapper p { font-size: 0.84rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 10px !important; }
+        .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
+        .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
+        .option-btn:hover { background: #f1f5f9; color: #0ea5e9; }
+
+        .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
+        .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
+        .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
+
+        .viva-checklist-block { margin-top: 20px; text-align: left; }
+        .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
+        .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #0ea5e9; font-weight: 900; }
+        .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .mistake-warning-card { background: rgba(239, 68, 68, 0.01); border-left: 4px solid #ef4444; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 14px 18px; border-radius: 0 6px 6px 0; display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; text-align: left; }
+        .mistake-warning-card i { color: #ef4444; font-size: 0.9rem; margin-top: 3px; }
+        .mistake-warning-card strong { color: #991b1b !important; font-size: 0.84rem; font-weight: 700; }
+        .mistake-warning-card p { font-size: 0.78rem !important; color: #475569 !important; margin-bottom: 0 !important; }
+
+        .quick-revision-sheet { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 24px; text-align: left; }
+        .quick-revision-sheet h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .quick-revision-sheet h4 i { color: #f59e0b; }
+        .revision-nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .rev-node { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.35; }
+        .rev-node::before { content: "•"; position: absolute; left: 0; color: #0ea5e9; font-weight: 900; }
+        .rev-node b { color: #0f172a; }
+
+        /* Downloader Center Card Strips */
+        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        .dl-strip-text { text-align: left; }
+        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+        .dl-strip-text p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.35 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+
+        .dl-buttons-matrix { display: flex; gap: 8px; flex-wrap: wrap; }
+        .dl-action-node { padding: 8px 14px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .dl-action-node.btn-pdf { background: rgba(14, 165, 233, 0.05); color: #0369a1; border: 1px solid rgba(14, 165, 233, 0.15); }
+        .dl-action-node.btn-pdf:hover { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+        .dl-action-node.status-pending { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; cursor: not-allowed; }
+
+        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 40px; border-top: 1px solid #e2e8f0; margin-top: 32px; }
+        .btn-next-module-trigger { padding: 10px 18px; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .btn-next-module-trigger:hover { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+
+        /* --- 3. RIGHT INFORMATION DESK (SIDEBAR MODULE TELEMETRY) --- */
+        .w3-info-desk-rail {
+            width: 280px;
+            background: #f8fafc;
+            border-left: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .info-card-widget { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .info-card-widget h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 0; }
+        
+        .info-card-widget ul { list-style: none !important; padding: 0 !important; margin: 0 !important; display: flex; flex-direction: column; gap: 10px; }
+        .info-card-widget li { font-size: 0.8rem; color: #475569; font-weight: 500; display: flex; justify-content: space-between; align-items: center; padding: 0 !important; margin: 0 !important; border: none !important; }
+        .info-card-widget li strong { color: #0f172a; font-weight: 700; }
+        .progress-block-tracker { font-family: monospace; font-size: 1rem; color: #10b981; font-weight: 700; letter-spacing: 1px; }
+
+        @media (max-width: 1100px) { .w3-info-desk-rail { display: none; } }
+        @media (max-width: 960px) {
+            .w3-app-frame-wrapper { flex-direction: column; overflow: auto; height: auto; }
+            .w3-sidebar-rail { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+            .nt-grid-2, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body class="w3-docs-workspace">
+
+    <div id="global-header"></div>
+
+    <div class="w3-app-frame-wrapper">
+        
+        <aside class="w3-sidebar-rail">
+            <div class="sidebar-section-group">
+                <h5>CSS3 Visual Mastery</h5>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'phase1')"><i class="fas fa-paint-brush"></i> 1. CSS Foundations</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase2')"><i class="fas fa-box-open"></i> 2. Core Box Model</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase3')"><i class="fas fa-columns"></i> 3. Modern Flexbox</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase4')"><i class="fas fa-th"></i> 4. Grid Architecture</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase5')"><i class="fas fa-mobile-alt"></i> 5. Responsive Design</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase6')"><i class="fas fa-magic"></i> 6. Motion &amp; Keyframes</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Module Exam Vault</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-download-block">
+                <h5>Course Assets</h5>
+                <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" 
+                   target="_blank" 
+                   class="sidebar-download-btn">
+                   <i class="fas fa-file-pdf"></i> Download Complete Notes
+                </a>
+            </div>
+        </aside>
+
+        <main class="w3-central-viewport-canvas">
+            <div class="viewport-content-container">
+                
+                <nav class="breadcrumb-trail">
+                    <span>Frontend Track</span> / <span>Visual Design</span> / <span class="active-node" id="breadcrumbLabel">CSS Foundations</span>
+                </nav>
+
+                <header class="w3-hero-course-card">
+                    <span class="nt-pill-badge">Styling &amp; Interface Layouts</span>
+                    <h1>CSS3 <span>Visual Mastery Masterclass</span></h1>
+                    <p>Master modern responsive web layouts. This structured module walks through style cascade rules, spatial box modeling parameters, fluid layout distributions, and high-performance keyframe motion logic configurations.</p>
+                </header>
+
+                <div class="w3-visual-diagram-box">
+                    <span class="w3-diagram-label">🧩 Full Design Rendering Lifecycle Sequence</span>
+                    <div class="roadmap-flow-container">
+                        <div class="roadmap-step-card active">1. HTML Tree Parse</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">2. CSS Style Mapping</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">3. Layout Geometry</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">4. Screen Painting</div>
+                    </div>
+                </div>
+
+                <div id="phase1" class="nt-tab-panel active">
+                    <span class="pedagogy-block-indicator">Phase 01 // Global Syntax &amp; Rules</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>CSS Document Foundations</h2>
+                    <p class="section-sub-desc">Cascading Style Sheets (CSS) determine the presentation of web pages. They map cosmetic properties over raw HTML bones by calculating rule priorities across cascade branches.</p>
+                    
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <h4>Selectors, Specificity, and the Cascade</h4>
+                        <p>When multiple contradictory styles target a single HTML element, the browser runs the <b>Cascade rule</b> to pick a winner. It measures <b>Specificity</b> using an explicit hierarchy score weight: Inline style attributes win completely, followed by ID selectors (weight: 100), Class attributes (weight: 10), and raw Element tags (weight: 1). If scores tie, the latest rule declared at the bottom of the style sheet wins automatically.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Selectors</span><span class="skill-hash-tag">#Specificity</span><span class="skill-hash-tag">#StyleCascade</span>
+                        </div>
+                    </div>
+
+                    <div class="w3-code-snippet-shell">
+                        <div class="w3-code-shell-header"><span><i class="fas fa-code"></i> core-rules.css</span> <span>CSS3 Standard</span></div>
+                        <div class="w3-code-shell-body"><span class="tag-color">#profile-card</span> { <br>    <span class="prop-color">background-color</span>: <span class="val-color">#ffffff</span>;<br>    <span class="prop-color">border-radius</span>: <span class="val-color">12px</span>;<br>}<br><span class="tag-color">.text-title</span> {<br>    <span class="prop-color">font-family</span>: <span class="val-color">'Inter', sans-serif</span>;<br>    <span class="prop-color">color</span>: <span class="val-color">#0ea5e9</span>;<br>}</div>
+                    </div>
+
+                    <div class="project-milestone-box">
+                        <h4><i class="fas fa-code-branch"></i> Mini-Project Milestone Assignment</h4>
+                        <p><b>Task Challenge:</b> Build a clean, styled landing profile page. Utilize explicit external style sheets, declare class selectors matching custom web fonts hierarchies, and structure cascade parameters rules cleanly without lazy high-priority hacks.</p>
+                    </div>
+                </div>
+
+                <div id="phase2" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 02 // Element Spatial Geometry</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 2 Hours</span></div>
+                    <h2>The Core Box Model</h2>
+                    <p class="section-sub-desc">Every element inside a web document browser window behaves as a separate rectangular box layout block wrapping content spaces boundaries.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Box-Sizing Formulas: Content-Box vs. Border-Box</h4>
+                        <p>By default, browser layouts compute sizes using <code>content-box</code>, adding padding and borders *on top* of width declarations, often causing element sizes to burst container boxes. Modern interface engineers override this globally using <code>box-sizing: border-box</code>. This formula folds borders and paddings *inside* your declared dimensions, keeping element sizes perfectly accurate.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#BoxModel</span><span class="skill-hash-tag">#BorderBox</span><span class="skill-hash-tag">#DisplayRules</span>
+                        </div>
+                    </div>
+
+                    <div class="w3-visual-diagram-box">
+                        <span class="w3-diagram-label">📐 Layered Structural Breakdown of Box Model Dimensions</span>
+                        
+                        <p style="font-family: monospace; font-size: 0.8rem; font-weight: bold; background: #ffffff; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px;">
+                            Margin (Outer Space) &rarr; Border (Outline Boundary) &rarr; Padding (Inner Breathing Room) &rarr; Content Core
+                        </p>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="nt-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Display Property</th>
+                                    <th>Line Break Generation</th>
+                                    <th>Width / Height Allotments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>display: block</code></td>
+                                    <td>Forces an automatic line break, starting a fresh row.</td>
+                                    <td>Claims 100% container width natively, respects manual sizes.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>display: inline</code></td>
+                                    <td>Sits inside line strings without forcing any breaks.</td>
+                                    <td>Ignores width/height codes completely, wraps around content sizes.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>display: inline-block</code></td>
+                                    <td>Sits inside string rows smoothly without breaks.</td>
+                                    <td>Honors manual structural sizing dimensions perfectly.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="phase3" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 03 // 1D Fluid Alignment Interfaces</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Modern Flexbox Layout Engines</h2>
+                    <p class="section-sub-desc">Flexbox acts as a one-dimensional fluid layout engine designed to distribute elements accurately across either a singular row or column track lane.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Justify-Content vs. Align-Items Alignment Rules</h4>
+                        <p>Flex arrangements manipulate layouts along alternative axis lines. <code>justify-content</code> governs item packaging along the main flow axis (e.g., packing elements to the left, right, center, or spacing them out uniformly). <code>align-items</code> governs layout balancing orthogonally across the cross axis row (e.g., centering item content heights vertically inside a global navigation header).</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Flexbox</span><span class="skill-hash-tag">#AxisAlignment</span><span class="skill-hash-tag">#FluidLayouts</span>
+                        </div>
+                    </div>
+
+                    <div class="nt-pro-tip-box">
+                        <strong><i class="fas fa-columns"></i> Flex-Basis, Grow, and Shrink Parameters</strong>
+                        <p>Use the combined <code>flex</code> shorthand (e.g., <code>flex: 1 0 200px</code>) to control fluid items. This maps item behavior: Grow (1 allows items to expand to claim leftover space), Shrink (0 blocks items from squeezing down below boundaries), and Basis (sets the fallback structural starter width size).</p>
+                    </div>
+                </div>
+
+                <div id="phase4" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 04 // 2D Grid Design Platforms</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>CSS Grid Layout Architecture</h2>
+                    <p class="section-sub-desc">CSS Grid provides a powerful, two-dimensional layout matrix engineered to arrange content rows and columns concurrently.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Fractional Units (fr) &amp; Grid Template Frameworks</h4>
+                        <p>Grid environments introduce the fractional unit (<code>fr</code>), which represents a fluid slice of leftover layout space. Declaring <code>grid-template-columns: repeat(3, 1fr)</code> slices a container canvas into three perfectly equal columns positions. This pairs with <code>grid-gap</code> parameters to separate grid cards without traditional margin collapse blocks bugs.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#CSSGrid</span><span class="skill-hash-tag">#2DLayouts</span><span class="skill-hash-tag">#FractionalUnits</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phase5" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 05 // Device Optimization Frameworks</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>Responsive Web Adaptation</h2>
+                    <p class="section-sub-desc">Responsive development uses media query conditional hooks to alter visual parameters smoothly across different devices.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Relative Unit Architecture: rem and em metrics</h4>
+                        <p>To avoid rigid, broken pixel structures on small mobile screens, scalable platforms utilize fluid relative sizing metrics. The <code>rem</code> unit computes sizes proportionally from the root font properties of the document canvas (usually <code>16px</code>). The <code>em</code> unit calculates values recursively from its immediate parent container element, making card paddings scale automatically with font variations.</p>
+                    </div>
+
+                    <div class="mistake-warning-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong>⚠ Common Student Responsive Design Mistake</strong>
+                            <p>Never start coding layouts from large desktop monitor sizes using high max-width parameters. Always implement a <b>Mobile-First design loop</b>, establishing clean baseline rules for small viewports first, then layering up expansions via min-width media queries.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phase6" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 06 // High Performance Presentation Matrix</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Motion Graphics &amp; Keyframes Animation</h2>
+                    <p class="section-sub-desc">CSS animations run hardware-accelerated loops directly in browser engines to deliver fluid interface micro-interactions.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Keyframe Intersections &amp; Transition Interpolations</h4>
+                        <p>Transitions interpolate color values or scale translations smoothly during interface shifts (like hover actions) using custom cubic-bezier timing curves. For complex loops, <code>@keyframes</code> declarations script advanced animation intervals across timeline percentages markers, allowing animations to run endlessly without heavy JavaScript dependencies.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Keyframes</span><span class="skill-hash-tag">#CSSTransitions</span><span class="skill-hash-tag">#UIAnimations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="examination" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">07 // Practice &amp; Assessment Master Center</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 15 Mins</span></div>
+                    <h2>University Examination Vault</h2>
+                    <p class="section-sub-desc">Review frequent conceptual problems questions, university written examination patterns weightage indicators, and track metrics records.</p>
+                    
+                    <div class="exam-qa-sub-block">
+                        <h4>Syllabus Question Bank</h4>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">2 Marks // Standard Core Metric</span>
+                            <strong>Q: Explain the explicit layout behavior achieved via the rule box-sizing: border-box.</strong>
+                            <p><b>A:</b> The <code>box-sizing: border-box</code> rule forces the web browser to compute an element's total layout width and height by including padding and borders *inside* the declared dimensions. This prevents cells from expanding or bursting container boundaries when inner spatial margins change.</p>
+                        </div>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">5 Marks // Frequently Asked Paper Question</span>
+                            <strong>Q: Contrast the architectural layout design goals separating CSS Flexbox from CSS Grid engines.</strong>
+                            <p><b>A:</b> CSS Flexbox is a one-dimensional fluid layout engine designed to arrange items sequentially along a single axis lane (either a horizontal row or a vertical column). CSS Grid is a two-dimensional layout system engineered to manage both alignment rows and column card frameworks simultaneously across a structured grid matrix.</p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-mcq-sandbox">
+                        <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
+                        <div class="mcq-question-wrapper">
+                            <p class="mcq-prompt"><b>Question 01:</b> Which CSS specificity selection path scores the highest priority level tier during browser cascade calculation routines?</p>
+                            <div class="mcq-options-column">
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">A. A unique custom class selector rule block (weight: 10)</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">B. A standalone target ID attribute marker link (weight: 100)</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, true)">C. An inline HTML style tag attribute override declaration</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">D. A basic universal tag element container token selector</button>
+                            </div>
+                            <div class="quiz-feedback-box" id="quizFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="viva-checklist-block">
+                        <h4>Laboratory Viva Evaluation Checklist</h4>
+                        <ul class="viva-bullets-list">
+                            <li><strong>What specificity calculation weight belongs to a standard class selector path?</strong> It scores exactly a value weight of 10.</li>
+                            <li><strong>Why are rem relative units favored over absolute pixels for font sizing definitions?</strong> Because rem units scale fluidly from root preferences, ensuring user accessibility configurations are honored across screens.</li>
+                            <li><strong>What component terminates infinite loops or clipping edge overflows on elements?</strong> The <code>overflow: hidden</code> property variable.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quick-revision-sheet">
+                        <h4><i class="fas fa-bolt"></i> One-Minute Summary Revision Sheet</h4>
+                        <div class="revision-nodes-grid">
+                            <div class="rev-node"><b>Cascade specificity:</b> Priorities scale sequentially from element (1) to class (10), ID (100), up to inline HTML style overrides.</div>
+                            <div class="rev-node"><b>Box Model layers:</b> Outer margin spaces separate outlines, while inner padding cells push content text strings away from border bands.</div>
+                            <div class="rev-node"><b>Flexbox 1D paths:</b> Controls main axis alignment flows using justify-content and handles matching cross axes via align-items.</div>
+                            <div class="rev-node"><b>Grid 2D matrices:</b> Organizes complex application dashboards securely by partitioning fraction unit column tracks.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="download-portal-strip">
+                    <div class="dl-strip-text">
+                        <h3>Vetted Academic Download Center</h3>
+                        <p>Access complete course handouts, presentation templates, and comprehensive examination question banks offline.</p>
+                    </div>
+                    <div class="dl-buttons-matrix">
+                        <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" class="dl-action-node btn-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Handout PDF</a>
+                        <span class="dl-action-node status-pending"><i class="fas fa-lock"></i> Slidedeck &bull; Cheat Sheet Coming Soon</span>
+                    </div>
+                </section>
+
+                <footer class="notes-routing-deck">
+                    <a href="html5-academy.html" class="btn-next-module-trigger">&larr; Previous Module: HTML5</a>
+                    <div class="route-center-summary">Overall Syllabus Progress: <strong style="color: #10b981;">Active Track</strong></div>
+                    <a href="index.html" class="btn-next-module-trigger">Return to Academy Home <i class="fas fa-home"></i></a>
+                </footer>
+
+            </div>
+        </main>
+
+        <aside class="w3-info-desk-rail">
+            <div class="info-card-widget">
+                <h6>Module Logistics</h6>
+                <ul>
+                    <li>Total Topics: <strong>6 Core Units</strong></li>
+                    <li>Syllabus Code: <strong>WNA-CS202</strong></li>
+                    <li>Global Rating: <strong>4.9 ★ Visual Excellence</strong></li>
+                    <li>Est. Total Time: <strong>20 Hours</strong></li>
+                </ul>
+            </div>
+            <div class="info-card-widget">
+                <h6>Your Lesson Tracker</h6>
+                <ul>
+                    <li>Current Status: <strong>Discovery Active</strong></li>
+                    <li>Completion Gauge: <strong style="color: #0ea5e9;">Active Base</strong></li>
+                </ul>
+                <div class="progress-block-tracker">■■■░░░░░░░ 30%</div>
+            </div>
+        </aside>
+
+    </div>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+        /* ==========================================================================
+           🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
+           ========================================================================== */
+        function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
+            // Drop active visibility parameters flags across panel objects
+            const panelsArray = document.getElementsByClassName("nt-tab-panel");
+            for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].style.display = "none";
+                panelsArray[i].classList.remove("active");
+            }
+
+            // Un-assign selection states from all sidebar menu nodes
+            const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
+            for (let i = 0; i < menuItemsArray.length; i++) {
+                menuItemsArray[i].classList.remove("active");
+            }
+
+            // Activate the designated layout tracking target
+            const targetedPanelNode = document.getElementById(targetPanelId);
+            if(targetedPanelNode) {
+                targetedPanelNode.style.display = "block";
+                targetedPanelNode.classList.add("active");
+            }
+
+            // Sync highlighted sidebar styles and dynamic text trackers
+            clickedSidebarLinkNode.classList.add("active");
+            
+            const rawLabelText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '').trim();
+            document.getElementById("breadcrumbLabel").innerText = rawLabelText;
+        }
+
+        /* --- Quiz Validation Logic Sandbox Engine --- */
+        function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
+            const feedbackContainer = document.getElementById("quizFeedback");
+            const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
+            
+            alternativeOptionButtons.forEach(btn => btn.disabled = true);
+            
+            if (isChoiceCorrectFlag) {
+                clickedButtonElement.style.background = "#e6f4ea";
+                clickedButtonElement.style.borderColor = "#34d399";
+                clickedButtonElement.style.color = "#137333";
+                feedbackContainer.className = "quiz-feedback-box success-state";
+                feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> Inline HTML style attributes injected directly over individual structural tag tokens possess absolute priority, overscoring ID selectors, class declarations, and external stylesheet files rules during cascade metrics checks.";
+            } else {
+                clickedButtonElement.style.background = "#fce8e6";
+                clickedButtonElement.style.borderColor = "#f87171";
+                clickedButtonElement.style.color = "#c5221f";
+                feedbackContainer.className = "quiz-feedback-box error-state";
+                feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your Cascade priority indices! Class markers carry an evaluation score of 10, ID roots calculate a priority score of 100, and element markers score a baseline priority weight of 1.";
+            }
+            feedbackContainer.style.display = "block";
+        }
+    </script>
+</body>
+</html>
