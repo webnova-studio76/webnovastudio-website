@@ -3,194 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Mastery | WebNova Academy</title>
+    <title>JavaScript Logic Journey | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght=400;500;600&family=Inter:wght=400;500;600;700&family=Space+Grotesk:wght=600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --accent: #eab308; /* JS Gold */
-            --secondary: #0f172a;
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        .syllabus-head { text-align: center; margin-bottom: 50px; animation: fadeIn 0.8s ease-out; }
-        .syllabus-head h1 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
-        .syllabus-head h1 span { color: var(--accent); }
-
-        /* The Square Grid */
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .module-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid var(--border);
+        /* ==========================================================================
+           ⚓ W3SCHOOLS & GEEKSFORGEEKS THREE-COLUMN LIGHT ACADEMIC STYLE
+           ========================================================================== */
+        body.w3-academy-workspace {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-            aspect-ratio: 1 / 1;
-            justify-content: space-between;
-            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .module-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        }
-
-        .phase-tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .module-card h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 15px; }
-        .module-card ul { list-style: none; flex-grow: 1; }
-        .module-card li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #64748b; }
-        .module-card li i { color: var(--accent); margin-top: 4px; font-size: 0.8rem; }
-
-        .download-zone {
+        /* App Framework Main Grid Splitter Layout */
+        .w3-app-frame-wrapper {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-dl {
             flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-align: center;
+            height: calc(100vh - 72px); /* Offsets global master header navbar */
+            overflow: hidden;
+            width: 100%;
         }
-        .btn-pdf { background: #fefce8; color: #854d0e; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* --- 1. LEFT SIDEBAR: INTERACTIVE SYLLABUS RAIL --- */
+        .w3-sidebar-rail {
+            width: 290px;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
+        .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        
+        .sidebar-section-group h5 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+            color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-left: 8px;
+        }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 3px; padding: 0; margin: 0; }
+        .sidebar-menu-item {
+            padding: 10px 14px; border-radius: 6px; font-size: 0.84rem; font-weight: 500;
+            color: #475569; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
+        .sidebar-menu-item:hover { background: #fffde6; color: #0f172a; }
+        .sidebar-menu-item.active { background: rgba(234, 179, 8, 0.06); color: #eab308; font-weight: 700; border-left: 3px solid #eab308; padding-left: 11px; }
+        .sidebar-menu-item.active i { color: #eab308; }
 
-        @media (max-width: 768px) { .module-card { aspect-ratio: auto; } }
+        /* Left Sidebar Central Download Button Dock */
+        .sidebar-download-block { margin-top: auto; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+        .sidebar-download-btn {
+            background: rgba(234, 179, 8, 0.05); color: #854d0e; border: 1px solid rgba(234, 179, 8, 0.15);
+            padding: 12px; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;
+        }
+        .sidebar-download-btn:hover { background: #eab308; color: #ffffff; border-color: #eab308; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15); }
+
+        /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
+        .w3-central-viewport-canvas {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: #ffffff;
+            height: 100%;
+        }
+        .viewport-content-container { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px; text-align: left; }
+        .breadcrumb-trail span.active-node { color: #eab308; }
+
+        /* Premium Light Course Style Hero Section */
+        .w3-hero-course-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            text-align: left;
+            box-shadow: 0 10px 25px -5px rgba(234, 179, 8, 0.02);
+        }
+        .w3-hero-course-card h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #0f172a !important; letter-spacing: -0.02em; line-height: 1.2; }
+        .w3-hero-course-card h1 span { color: #eab308; }
+        .w3-hero-course-card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-top: 8px; }
+        
+        /* Tab System View Panels */
+        .nt-tab-panel { display: none; }
+        .nt-tab-panel.active { display: block; animation: w3Fade 0.2s ease-out; }
+        @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; text-align: left; border-left: 4px solid #eab308; padding-left: 12px; }
+        .nt-tab-panel h3 { margin: 24px 0 12px; color: #854d0e; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .nt-tab-panel p.section-sub-desc { font-size: 0.92rem !important; color: #64748b !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
+
+        /* Pedagogical Display Cards and Indicators */
+        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #eab308; margin-bottom: 4px; display: block; text-align: left; }
+        .difficulty-indicator-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .diff-dot.green { background-color: #10b981; }
+        .diff-dot.amber { background-color: #f59e0b; }
+        .diff-dot.red { background-color: #ef4444; }
+
+        .concept-learning-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(15,23,42,0.01); }
+        .concept-learning-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 4px; }
+        .concept-meta-strip { display: flex; gap: 12px; font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .concept-meta-strip span strong { color: #eab308; }
+
+        /* Modern Educational Diagram Frameworks (Light Vectors) */
+        .w3-visual-diagram-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .w3-diagram-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 12px; }
+        
+        .roadmap-flow-container { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 720px; flex-wrap: wrap; margin: 0 auto; text-align: left; }
+        .roadmap-step-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: #0f172a; text-align: center; min-width: 100px; flex: 1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .roadmap-step-card.active { border-color: #eab308; background: rgba(234, 179, 8, 0.04); color: #854d0e; }
+        .roadmap-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 0.9rem; }
+
+        /* Content Layout Grids */
+        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        
+        .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; width: 100%; }
+        .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
+        .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+        .scale-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: #ffffff; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px; }
+
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 0; margin: 0; }
+        .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 24px; position: relative; }
+        .traits-bullet-list li::before { content: "✔"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
+        .traits-bullet-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .skill-tags-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .skill-hash-tag { font-size: 0.68rem; font-weight: 700; color: #b45309; background: rgba(234, 179, 8, 0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(234, 179, 8, 0.1); }
+
+        .nt-pro-tip-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 20px; text-align: left; }
+        .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
+        .nt-pro-tip-box p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+
+        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 6px; }
+        table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
+        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 14px; font-size: 0.82rem; border-bottom: 1px solid #e2e8f0; }
+        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.68rem; }
+        table.nt-comparison-table td { color: #475569; font-weight: 500; }
+
+        /* Integrated Code Workspace Shell Insets */
+        .w3-code-snippet-shell { background: #0f172a; border-radius: 6px; width: 100%; overflow: hidden; margin-top: 12px; font-family: 'Fira Code', monospace; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .w3-code-shell-header { background: #1e293b; padding: 8px 16px; color: #94a3b8; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+        .w3-code-shell-body { padding: 16px; color: #cbd5e1; text-align: left; white-space: pre-wrap; line-height: 1.5; }
+        .w3-code-shell-body .keyword-color { color: #f43f5e; }
+        .w3-code-shell-body .var-color { color: #38bdf8; }
+        .w3-code-shell-body .val-color { color: #eab308; }
+
+        /* Project Assignment Panels */
+        .project-milestone-box { border: 1px dashed #eab308; background: rgba(234, 179, 8, 0.01); padding: 20px; border-radius: 8px; margin-top: 24px; text-align: left; }
+        .project-milestone-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .project-milestone-box h4 i { color: #eab308; }
+        .project-milestone-box p { font-size: 0.82rem; color: #475569; line-height: 1.45; margin-bottom: 0; }
+
+        /* Assessment Sandbox Frameworks */
+        .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
+        .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; }
+        .mcq-question-wrapper p { font-size: 0.84rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 10px !important; }
+        .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
+        .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
+        .option-btn:hover { background: #f1f5f9; color: #eab308; }
+
+        .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
+        .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
+        .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
+
+        .viva-checklist-block { margin-top: 20px; text-align: left; }
+        .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
+        .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #eab308; font-weight: 900; }
+        .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
+
+        .mistake-warning-card { background: rgba(239, 68, 68, 0.01); border-left: 4px solid #ef4444; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 14px 18px; border-radius: 0 6px 6px 0; display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; text-align: left; }
+        .mistake-warning-card i { color: #ef4444; font-size: 0.9rem; margin-top: 3px; }
+        .mistake-warning-card strong { color: #991b1b !important; font-size: 0.84rem; font-weight: 700; }
+        .mistake-warning-card p { font-size: 0.78rem !important; color: #475569 !important; margin-bottom: 0 !important; }
+
+        .quick-revision-sheet { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 24px; text-align: left; }
+        .quick-revision-sheet h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .quick-revision-sheet h4 i { color: #f59e0b; }
+        .revision-nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .rev-node { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.35; }
+        .rev-node::before { content: "•"; position: absolute; left: 0; color: #eab308; font-weight: 900; }
+        .rev-node b { color: #0f172a; }
+
+        /* Downloader Center Card Strips */
+        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .dl-strip-text { text-align: left; }
+        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
+        .dl-strip-text p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.35 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+
+        .dl-buttons-matrix { display: flex; gap: 8px; flex-wrap: wrap; }
+        .dl-action-node { padding: 8px 14px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .dl-action-node.btn-pdf { background: rgba(234, 179, 8, 0.05); color: #854d0e; border: 1px solid rgba(234, 179, 8, 0.15); }
+        .dl-action-node.btn-pdf:hover { background: #eab308; color: #ffffff; border-color: #eab308; }
+        .dl-action-node.status-pending { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; cursor: not-allowed; }
+
+        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 32px; border-top: 1px solid #e2e8f0; margin-top: 32px; }
+        .btn-next-module-trigger { padding: 8px 14px; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s ease; }
+        .btn-next-module-trigger:hover { background: #eab308; color: #ffffff; border-color: #eab308; }
+
+        /* --- 3. RIGHT INFORMATION DESK (SIDEBAR MODULE TELEMETRY) --- */
+        .w3-info-desk-rail {
+            width: 280px;
+            background: #f8fafc;
+            border-left: 1px solid #e2e8f0;
+            padding: 24px 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
+        }
+        .info-card-widget { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
+        .info-card-widget h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 0; }
+        
+        .info-card-widget ul { list-style: none !important; padding: 0 !important; margin: 0 !important; display: flex; flex-direction: column; gap: 10px; }
+        .info-card-widget li { font-size: 0.8rem; color: #475569; font-weight: 500; display: flex; justify-content: space-between; align-items: center; padding: 0 !important; margin: 0 !important; border: none !important; }
+        .info-card-widget li strong { color: #0f172a; font-weight: 700; }
+        .progress-block-tracker { font-family: monospace; font-size: 1rem; color: #10b981; font-weight: 700; letter-spacing: 1px; }
+
+        @media (max-width: 1100px) { .w3-info-desk-rail { display: none; } }
+        @media (max-width: 960px) {
+            .w3-app-frame-wrapper { flex-direction: column; overflow: auto; height: auto; }
+            .w3-sidebar-rail { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+            .nt-grid-2, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+        }
     </style>
 </head>
-<body>
+<body class="w3-docs-workspace">
 
-<div class="container">
-    <header class="syllabus-head">
-        <h1>JavaScript <span>Logic Journey</span></h1>
-        <p>A 6-Phase path from variables to advanced functional architecture.</p>
-    </header>
+    <div id="global-header"></div>
 
-    <div class="module-grid">
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 01: The Basics</p>
-                <h3>Foundations</h3>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Variables (let, const) & Scope.</li>
-                    <li><i class="fas fa-check-circle"></i> Data Types & Type Conversion.</li>
-                    <li><i class="fas fa-check-circle"></i> Basic Math & String Methods.</li>
+    <div class="w3-app-frame-wrapper">
+        
+        <aside class="w3-sidebar-rail">
+            <div class="sidebar-section-group">
+                <h5>JavaScript Core</h5>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'phase1')"><i class="fas fa-cubes"></i> 1. Syntax Foundations</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase2')"><i class="fas fa-code-branch"></i> 2. Decision &amp; Loops</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase3')"><i class="fas fa-bolt"></i> 3. Functional Architecture</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase4')"><i class="fas fa-list-ol"></i> 4. Arrays &amp; Collections</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase5')"><i class="fas fa-mouse-pointer"></i> 5. DOM Manipulation</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'phase6')"><i class="fas fa-sync"></i> 6. Async &amp; Web Engines</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Module Exam Vault</li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 02: Decision Making</p>
-                <h3>Control Flow</h3>
+            <div class="sidebar-download-block">
+                <h5>Course Assets</h5>
+                <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" 
+                   target="_blank" 
+                   class="sidebar-download-btn">
+                   <i class="fas fa-file-pdf"></i> Download Complete Notes
+                </a>
+            </div>
+        </aside>
+
+        <main class="w3-central-viewport-canvas">
+            <div class="viewport-content-container">
+                
+                <nav class="breadcrumb-trail">
+                    <span>Frontend Track</span> / <span>Logic Scripting</span> / <span class="active-node" id="breadcrumbLabel">Syntax Foundations</span>
+                </nav>
+
+                <header class="w3-hero-course-card">
+                    <span class="nt-pill-badge">Dynamic Client Side Scripting</span>
+                    <h1>JavaScript <span>Logic Journey Masterclass</span></h1>
+                    <p>Learn web script engineering from scratch. This structured module spans basic execution variables, algorithm logical control loops, DOM interface synchronization, and asynchronous server transaction routines.</p>
+                </header>
+
+                <div class="w3-visual-diagram-box">
+                    <span class="w3-diagram-label">🧩 Script Compilation and Execution Sequence Lifecycle</span>
+                    <div class="roadmap-flow-container">
+                        <div class="roadmap-step-card active">1. Script Parse</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">2. Scope Memory Allot</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">3. Call Stack Process</div>
+                        <div class="roadmap-flow-arrow">&rarr;</div>
+                        <div class="roadmap-step-card">4. Browser Update</div>
+                    </div>
+                </div>
+
+                <div id="phase1" class="nt-tab-panel active">
+                    <span class="pedagogy-block-indicator">Phase 01 // Syntax &amp; Base Datatypes</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>JavaScript Foundations</h2>
+                    <p class="section-sub-desc">JavaScript brings static web pages to life. While HTML creates the document skeleton and CSS handles the layout design, JavaScript runs the core programming logic, mathematical equations, and interactive actions inside the browser engine.</p>
+                    
+                    <div class="concept-learning-node">
+                        <span class="pedagogy-block-indicator">Sub-topic // Memory Slots</span>
+                        <h4>Modern Variables: let vs. const</h4>
+                        <p>Variables are temporary storage slots used to hold programming data values. Modern JavaScript uses two main keywords to register values: <code>let</code> defines a variable whose data value can be updated or rewritten later during execution. <code>const</code> defines a constant whose data value is permanently locked and cannot be rewritten once assigned, preventing accidental overrides.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Variables</span><span class="skill-hash-tag">#BlockScope</span><span class="skill-hash-tag">#DataTypeSystem</span>
+                        </div>
+                    </div>
+
+                    <div class="w3-code-snippet-shell">
+                        <div class="w3-code-shell-header"><span><i class="fas fa-code"></i> variables.js</span> <span>ES6 Standard</span></div>
+                        <div class="w3-code-shell-body"><span class="keyword-color">let</span> userScore = <span class="val-color">42</span>;<br>userScore = <span class="val-color">50</span>; <span class="var-color">// Allowed: value updates perfectly</span><br><br><span class="keyword-color">const</span> systemPi = <span class="val-color">3.14</span>;<br>systemPi = <span class="val-color">5</span>; <span class="var-color">// Throws Error: cannot rewrite constants</span></div>
+                    </div>
+
+                    <div class="project-milestone-box">
+                        <h4><i class="fas fa-code-branch"></i> Mini-Project Milestone Assignment</h4>
+                        <p><b>Task Challenge:</b> Write a script that declares student registration profile items. Protect constant system parameters using block scope values, parse input datatypes cleanly, and run string concatenation logs inside the developer console panel views.</p>
+                    </div>
+                </div>
+
+                <div id="phase2" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 02 // Conditional Tracks &amp; Loop Intervals</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
+                    <h2>Control Flow &amp; Program Decisions</h2>
+                    <p class="section-sub-desc">Control flow expressions guide how programs make decisions, steering calculations along alternative pathways depending on conditional values matches.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Conditional Blocks and Iteration Loops</h4>
+                        <p>Programs execute actions based on true/false conditional criteria. <code>if/else</code> statements evaluate specific parameters to route operations, while <code>switch</code> blocks run clear matches against a known list of index keys. To repeat tasks efficiently without writing identical code rows, loops like <code>for</code> and <code>while</code> run code intervals continuously until an exit threshold is met.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#Loops</span><span class="skill-hash-tag">#Conditionals</span><span class="skill-hash-tag">#LogicalOperators</span>
+                        </div>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="nt-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Loop Structure</th>
+                                    <th>Best Practical Deployment Use Case</th>
+                                    <th>Termination Logic Premise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>for</code> Loop</td>
+                                    <td>When you know exactly how many times a loop interval should run beforehand.</td>
+                                    <td>Stops automatically when a counter variable crosses your set target number.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>while</code> Loop</td>
+                                    <td>When a code routine must repeat until an unpredicted external event happens.</td>
+                                    <td>Stops only when its monitored target condition changes from true to false.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="phase3" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 03 // Reusable Architecture Blocks</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 4 Hours</span></div>
+                    <h2>Functional Architecture</h2>
+                    <p class="section-sub-desc">Functions are self-contained blocks of reusable code designed to perform a single specific operation, eliminating the need to write redundant code blocks across your files.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Arrow Functions and Functional Returns</h4>
+                        <p>Modern JavaScript uses clean, abbreviated <b>Arrow Functions</b> (<code>const action = () => {}</code>) to handle scope parameters cleanly. Functions receive input variables called arguments, perform processing sequences, and pass final calculated values back out to your main code path using explicit <code>return</code> statements.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#ArrowFunctions</span><span class="skill-hash-tag">#ReturnValues</span><span class="skill-hash-tag">#HoistingRules</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phase4" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 04 // Complex Data Arrays Manipulation</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
+                    <h2>Arrays &amp; Data Collections</h2>
+                    <p class="section-sub-desc">Arrays act as structured digital index lists, keeping multiple data files or values bundled together inside a single organized variable name.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Advanced Higher-Order Iteration: Map, Filter, and Reduce</h4>
+                        <p>Instead of using raw, manual loops to update arrays data records, modern frontend platforms use powerful higher-order methods:</p>
+                        <ul class="traits-bullet-list" style="margin-top: 10px; margin-bottom: 12px;">
+                            <li><strong>Map:</strong> Loops through an existing array to transform each value, automatically outputting a brand new list.</li>
+                            <li><strong>Filter:</strong> Inspects each list item against a true/false condition, stripping out matching records into a new subset list.</li>
+                            <li><strong>Reduce:</strong> Sifts through an array to combine all its values down into one single final result (like calculating an invoice total).</li>
+                        </ul>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#MapFilterReduce</span><span class="skill-hash-tag">#Destructuring</span><span class="skill-hash-tag">#SpreadOperator</span>
+                        </div>
+                    </div>
+
+                    <div class="w3-code-snippet-shell">
+                        <div class="w3-code-shell-header"><span><i class="fas fa-code"></i> array-methods.js</span> <span>Higher Order Array Ops</span></div>
+                        <div class="w3-code-shell-body"><span class="keyword-color">const</span> samplePrices = [<span class="val-color">100</span>, <span class="val-color">200</span>, <span class="val-color">300</span>];<br><span class="keyword-color">const</span> cheapItems = samplePrices.<span class="var-color">filter</span>(p => p &lt; <span class="val-color">250</span>); <span class="var-color">// Outputs: [100, 200]</span></div>
+                    </div>
+                </div>
+
+                <div id="phase5" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 05 // Dynamic Browser View Updates</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 5 Hours</span></div>
+                    <h2>Document Object Model (DOM) Manipulation</h2>
+                    <p class="section-sub-desc">The **DOM** is the live structural map of your webpage created by the browser. JavaScript uses the DOM to change text, styles, and web content on the fly in response to user actions.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Query Selectors &amp; Interactive Event Listeners</h4>
+                        <p>JavaScript hooks into HTML layouts using target commands like <code>document.querySelector(".class-name")</code>. Once an element is connected, you can apply an **Event Listener** to monitor specific user behavior (like clicks, form inputs, or keystrokes), executing real-time design adjustments or script calculations instantly.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#DOMManipulation</span><span class="skill-hash-tag">#EventListeners</span><span class="skill-hash-tag">#DynamicCSS</span>
+                        </div>
+                    </div>
+
+                    <div class="mistake-warning-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong>⚠ Common Student Event Mistake</strong>
+                            <p>Never assign a separate click listener to 100 table row cells individually. Use <b>Event Delegation</b>: attach a single click listener to the parent element, and check which specific child cell was clicked inside the event target logs to save memory space.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phase6" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">Phase 06 // Asynchronous Server Communications</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 5 Hours</span></div>
+                    <h2>Asynchronous JavaScript &amp; Web Engines</h2>
+                    <p class="section-sub-desc">Asynchronous architecture allows browsers to complete heavy database requests or external API loops in the background without freezing the webpage interface lines.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4>Promises, Async, and Await Pipelines</h4>
+                        <p>A <b>Promise</b> is a JavaScript placeholder object representing data that will arrive from a server in the future. To manage these server timelines cleanly without nesting messy callbacks, we use modern <code>async/await</code> syntax. This writes asynchronous operations in a clean, vertical format that looks exactly like traditional synchronous code, making error handling straightforward.</p>
+                        <div class="skill-tags-row">
+                            <span class="skill-hash-tag">#AsyncAwait</span><span class="skill-hash-tag">#Promises</span><span class="skill-hash-tag">#FetchAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="examination" class="nt-tab-panel">
+                    <span class="pedagogy-block-indicator">07 // Practice &amp; Assessment Master Center</span>
+                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 15 Mins</span></div>
+                    <h2>University Examination Vault</h2>
+                    <p class="section-sub-desc">Review frequent conceptual problems questions, university written examination patterns weightage indicators, and track metrics records.</p>
+                    
+                    <div class="exam-qa-sub-block">
+                        <h4>Syllabus Question Bank</h4>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">2 Marks // Standard Core Metric</span>
+                            <strong>Q: Explain the structural difference separating let from const keywords.</strong>
+                            <p><b>A:</b> Variables declared using <code>let</code> can have their underlying value data re-assigned or updated during program execution loops. Variables declared using <code>const</code> are completely read-only constants; any attempt to overwrite their memory address parameters after assignment throws a runtime error.</p>
+                        </div>
+                        <div class="qa-item-card">
+                            <span class="marks-callout-tag">5 Marks // Frequently Asked Paper Question</span>
+                            <strong>Q: Detail the data processing behavior defining the Array.map() higher-order method.</strong>
+                            <p><b>A:</b> The <code>Array.map()</code> method loops through an existing array to transform each value step-by-step based on an inline function. It automatically generates and returns a completely new array containing the updated output values, leaving the original source array completely untouched.</p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-mcq-sandbox">
+                        <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
+                        <div class="mcq-question-wrapper">
+                            <p class="mcq-prompt"><b>Question 01:</b> Which higher-order array method evaluates items against true/false filter criteria to compile a subset list of matching elements?</p>
+                            <div class="mcq-options-column">
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">A. The value transforming Array.prototype.map() method</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, true)">B. The value selecting Array.prototype.filter() method</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">C. The calculation folding Array.prototype.reduce() method</button>
+                                <button class="option-btn" onclick="evaluateQuizChoice(this, false)">D. The structural scope parsing block let statement execution</button>
+                            </div>
+                            <div class="quiz-feedback-box" id="quizFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="viva-checklist-block">
+                        <h4>Laboratory Viva Evaluation Checklist</h4>
+                        <ul class="viva-bullets-list">
+                            <li><strong>What behavior describes a function callback sequence inside array operations?</strong> A function passed into another method as an argument, waiting to be triggered later.</li>
+                            <li><strong>Why is Event Delegation preferred for dynamic layout grids interfaces?</strong> Because it uses a single listener on a parent element, drastically reducing memory usage compared to adding listeners to separate children.</li>
+                            <li><strong>What syntax manages modern background network requests safely?</strong> The <code>async/await</code> pipeline using the global browser Fetch API.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quick-revision-sheet">
+                        <h4><i class="fas fa-bolt"></i> One-Minute Summary Revision Sheet</h4>
+                        <div class="revision-nodes-grid">
+                            <div class="rev-node"><b>Memory Slots:</b> Values are managed through block-scoped let pointers and protected const read-only declarations.</div>
+                            <div class="rev-node"><b>Higher-Order Arrays:</b> Functional pipelines process arrays through map transformations, filter cleanups, and reduce math folding actions.</div>
+                            <div class="rev-node"><b>DOM Interactions:</b> Web elements are targeted via querySelector hooks and synchronized using active addEventListener frameworks.</div>
+                            <div class="rev-node"><b>Async Workflows:</b> Background network request operations run through non-blocking async/await loops to keep browser interfaces fluid.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="download-portal-strip">
+                    <div class="dl-strip-text">
+                        <h3>Vetted Academic Download Center</h3>
+                        <p>Access complete course handouts, presentation templates, and comprehensive examination question banks offline.</p>
+                    </div>
+                    <div class="dl-buttons-matrix">
+                        <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" class="dl-action-node btn-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Handout PDF</a>
+                        <span class="dl-action-node status-pending"><i class="fas fa-lock"></i> Slidedeck &bull; Cheat Sheet Coming Soon</span>
+                    </div>
+                </section>
+
+                <footer class="notes-routing-deck">
+                    <a href="css3-academy.html" class="btn-next-module-trigger">&larr; Previous Module: CSS3</a>
+                    <div class="route-center-summary">Overall Syllabus Progress: <strong style="color: #10b981;">Active Track</strong></div>
+                    <a href="index.html" class="btn-next-module-trigger">Return to Academy Home <i class="fas fa-home"></i></a>
+                </footer>
+
+            </div>
+        </main>
+
+        <aside class="w3-info-desk-rail">
+            <div class="info-card-widget">
+                <h6>Module Logistics</h6>
                 <ul>
-                    <li><i class="fas fa-code-branch"></i> If/Else & Switch Statements.</li>
-                    <li><i class="fas fa-code-branch"></i> Loops (For, While, forEach).</li>
-                    <li><i class="fas fa-code-branch"></i> Truthy/Falsy & Logical Ops.</li>
+                    <li>Total Topics: <strong>6 Core Units</strong></li>
+                    <li>Syllabus Code: <strong>WNA-JS303</strong></li>
+                    <li>Global Rating: <strong>4.9 ★ Logic Standard</strong></li>
+                    <li>Est. Total Time: <strong>18 Hours</strong></li>
                 </ul>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 03: Interaction</p>
-                <h3>DOM & Events</h3>
+            <div class="info-card-widget">
+                <h6>Your Lesson Tracker</h6>
                 <ul>
-                    <li><i class="fas fa-mouse-pointer"></i> Document Query Selectors.</li>
-                    <li><i class="fas fa-mouse-pointer"></i> Event Listeners & Delegation.</li>
-                    <li><i class="fas fa-mouse-pointer"></i> Dynamic Class & Style Injection.</li>
+                    <li>Current Status: <strong>Discovery Active</strong></li>
+                    <li>Completion Gauge: <strong style="color: #eab308;">Active Base</strong></li>
                 </ul>
+                <div class="progress-block-tracker">■■░░░░░░░░ 20%</div>
             </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
+        </aside>
 
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 04: Logic Mastery</p>
-                <h3>Functions & Arrays</h3>
-                <ul>
-                    <li><i class="fas fa-bolt"></i> Arrow Functions & Return values.</li>
-                    <li><i class="fas fa-bolt"></i> Map, Filter, and Reduce.</li>
-                    <li><i class="fas fa-bolt"></i> Array Destructuring & Spread.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 05: The Web Engine</p>
-                <h3>Async Operations</h3>
-                <ul>
-                    <li><i class="fas fa-sync"></i> Promises & Error Handling.</li>
-                    <li><i class="fas fa-sync"></i> Async / Await Architecture.</li>
-                    <li><i class="fas fa-sync"></i> Fetching External API Data.</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
-
-        <div class="module-card">
-            <div>
-                <p class="phase-tag">Phase 06: Professional</p>
-                <h3>Adv. Architecture</h3>
-                <ul>
-                    <li><i class="fas fa-microchip"></i> Closures & High-Order Logic.</li>
-                    <li><i class="fas fa-microchip"></i> ES6 Classes & OOP Basics.</li>
-                    <li><i class="fas fa-microchip"></i> Modular JS (Import/Export).</li>
-                </ul>
-            </div>
-            <div class="download-zone">
-                <a href="#" class="btn-dl btn-pdf"><i class="fas fa-file-pdf"></i> Notes Coming Soon</a>
-            </div>
-        </div>
     </div>
-</div>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+    <div id="global-footer"></div>
+
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+        /* ==========================================================================
+           🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
+           ========================================================================== */
+        function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
+            // Drop active visibility parameters flags across panel objects
+            const panelsArray = document.getElementsByClassName("nt-tab-panel");
+            for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].style.display = "none";
+                panelsArray[i].classList.remove("active");
+            }
+
+            // Un-assign selection states from all sidebar menu nodes
+            const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
+            for (let i = 0; i < menuItemsArray.length; i++) {
+                menuItemsArray[i].classList.remove("active");
+            }
+
+            // Activate the designated layout tracking target
+            const targetedPanelNode = document.getElementById(targetPanelId);
+            if(targetedPanelNode) {
+                targetedPanelNode.style.display = "block";
+                targetedPanelNode.classList.add("active");
+            }
+
+            // Sync highlighted sidebar styles and dynamic text trackers
+            clickedSidebarLinkNode.classList.add("active");
+            
+            const rawLabelText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '').trim();
+            document.getElementById("breadcrumbLabel").innerText = rawLabelText;
+        }
+
+        /* --- Quiz Validation Logic Sandbox Engine --- */
+        function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
+            const feedbackContainer = document.getElementById("quizFeedback");
+            const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
+            
+            alternativeOptionButtons.forEach(btn => btn.disabled = true);
+            
+            if (isChoiceCorrectFlag) {
+                clickedButtonElement.style.background = "#e6f4ea";
+                clickedButtonElement.style.borderColor = "#34d399";
+                clickedButtonElement.style.color = "#137333";
+                feedbackContainer.className = "quiz-feedback-box success-state";
+                feedbackContainer.innerHTML = "<strong>✓ Correct Answer Selection!</strong> LocalStorage acts as a persistent client side key-value database engine built right into your browser runtime, preserving layout parameters variables safely across tabs closures or machine restarts.";
+            } else {
+                clickedButtonElement.style.background = "#fce8e6";
+                clickedButtonElement.style.borderColor = "#f87171";
+                clickedButtonElement.style.color = "#c5221f";
+                feedbackContainer.className = "quiz-feedback-box error-state";
+                feedbackContainer.innerHTML = "<strong>✕ Incorrect Choice Option.</strong> Review your advanced JavaScript framework criteria handlers! SessionStorage flushes automatically when tabs close out, document metadata elements configure viewport behaviors, and standard database systems run query rows over remote servers fields.";
+            }
+            feedbackContainer.style.display = "block";
+        }
+    </script>
 </body>
 </html>
