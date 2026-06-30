@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML5 Architecture Masterclass | WebNova Academy</title>
+    <!-- Linked Global Stylesheet (Untouched) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,7 +130,6 @@
         .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; }
         .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
         .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
-        .scale-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: #ffffff; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px; }
 
         .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 0; margin: 0; }
         .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 24px; position: relative; }
@@ -244,10 +244,13 @@
 </head>
 <body class="w3-docs-workspace">
 
+    <!-- Global Application Navigation Header Placeholder (Untouched) -->
     <div id="global-header"></div>
 
+    <!-- MAIN INTERACTIVE THREE COLUMN FRAME DISPATCHER -->
     <div class="w3-app-frame-wrapper">
         
+        <!-- SIDEBAR 1: LEFT NAVIGATION RAIL (TOPICS CURRICULUM TREE) -->
         <aside class="w3-sidebar-rail">
             <div class="sidebar-section-group">
                 <h5>HTML5 Architecture</h5>
@@ -261,8 +264,20 @@
                     <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Module Exam Vault</li>
                 </ul>
             </div>
+
+            <!-- NEW PERSISTENT SIDEBAR ASSETS CELL DOCK LINK (Left Pane Download) -->
+            <div class="sidebar-section-group" style="margin-top: auto; padding-top: 16px; border-top: 1px solid #e2e8f0;">
+                <h5>Course Assets</h5>
+                <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" 
+                   target="_blank" 
+                   class="dl-action-node btn-pdf" 
+                   style="width: 100%; justify-content: center; padding: 12px; font-size: 0.75rem; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.05);">
+                   <i class="fas fa-file-pdf"></i> Download Complete Notes
+                </a>
+            </div>
         </aside>
 
+        <!-- CANVAS 2: CENTRAL INTERACTIVE SCROLL VIEW CANVAS -->
         <main class="w3-central-viewport-canvas">
             <div class="viewport-content-container">
                 
@@ -270,25 +285,27 @@
                     <span>Frontend Track</span> / <span>Web Architecture</span> / <span class="active-node" id="breadcrumbLabel">Document Foundations</span>
                 </nav>
 
+                <!-- Premium Academic Cover Card Block -->
                 <header class="w3-hero-course-card">
                     <span class="nt-pill-badge">Core Frontend Web Development</span>
                     <h1>HTML5 <span>Architecture Masterclass</span></h1>
-                    <p>Learn web structural engineering from scratch. This structured module spans from basic semantic structural elements, data matrices grids, inputs form processing logic, and high-performance HTML5 browser API systems configurations.</p>
+                    <p>Learn web structural engineering from scratch. This structured module spans from basic semantic structural elements, data matrices grids, inputs form processing logic units, and core web traffic protocol suites.</p>
                 </header>
 
                 <div class="w3-visual-diagram-box">
-                    <span class="w3-diagram-label">🧩 Full Web Development Technology Continuum Sequence Path</span>
+                    <span class="w3-diagram-label">🧩 General Product Delivery Roadmap Path</span>
                     <div class="roadmap-flow-container">
-                        <div class="roadmap-step-card active">1. HTML Skeleton</div>
+                        <div class="roadmap-step-card active">1. Research</div>
                         <div class="roadmap-flow-arrow">&rarr;</div>
-                        <div class="roadmap-step-card">2. CSS Styling</div>
+                        <div class="roadmap-step-card">2. Wireframe</div>
                         <div class="roadmap-flow-arrow">&rarr;</div>
-                        <div class="roadmap-step-card">3. JavaScript Logic</div>
+                        <div class="roadmap-step-card">3. Design</div>
                         <div class="roadmap-flow-arrow">&rarr;</div>
-                        <div class="roadmap-step-card">4. Deployment</div>
+                        <div class="roadmap-step-card">4. Prototype</div>
                     </div>
                 </div>
 
+                <!-- PHASE 01: FOUNDATIONS -->
                 <div id="phase1" class="nt-tab-panel active">
                     <span class="pedagogy-block-indicator">Phase 01 // The Document Skeleton</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
@@ -329,6 +346,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 2: TABLES -->
                 <div id="phase2" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">Phase 02 // Tabular Information Grids</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 2 Hours</span></div>
@@ -373,6 +391,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 3: FORMS & INPUTS -->
                 <div id="phase3" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">Phase 03 // Interaction &amp; Input Pipelines</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
@@ -393,6 +412,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 4: SEMANTIC WEB -->
                 <div id="phase4" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">Phase 04 // Content Semantics &amp; SEO Tracks</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Level: Beginner &bull; Study Time: 3 Hours</span></div>
@@ -416,6 +436,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 5: MULTIMEDIA -->
                 <div id="phase5" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">Phase 05 // Dynamic Media Streaming Channels</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Level: Intermediate &bull; Study Time: 4 Hours</span></div>
@@ -429,6 +450,7 @@
                     </ul>
                 </div>
 
+                <!-- PANEL 6: WEBSPACE APIS -->
                 <div id="phase6" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">Phase 06 // Advanced Browser Logic Engines</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 5 Hours</span></div>
@@ -444,6 +466,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 7: REAL UNIVERSITY EXAMINATION REPOSITORY SANDBOX CORE -->
                 <div id="examination" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">07 // Practice &amp; Assessment Master Center</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Level: Advanced &bull; Study Time: 15 Mins</span></div>
@@ -464,6 +487,7 @@
                         </div>
                     </div>
 
+                    <!-- Interactive Self-Testing MCQ Sandbox Module -->
                     <div class="interactive-mcq-sandbox">
                         <h4><i class="fas fa-vial"></i> Live Self-Assessment Check Node</h4>
                         <div class="mcq-question-wrapper">
@@ -487,6 +511,7 @@
                         </ul>
                     </div>
 
+                    <!-- One-Page Quick Revision Sheet -->
                     <div class="quick-revision-sheet">
                         <h4><i class="fas fa-bolt"></i> One-Minute Summary Revision Sheet</h4>
                         <div class="revision-nodes-grid">
@@ -498,6 +523,7 @@
                     </div>
                 </div>
 
+                <!-- UNTOUCHED CENTRALIZED ACADEMIC MATERIAL DOWNLOAD PORTAL LINK CLUSTERS (Bottom Download) -->
                 <section class="download-portal-strip">
                     <div class="dl-strip-text">
                         <h3>Vetted Academic Download Center</h3>
@@ -509,6 +535,7 @@
                     </div>
                 </section>
 
+                <!-- LOWER LEVEL BACK-AND-FORTH MODULE ROUTING AXIS ROW -->
                 <footer class="notes-routing-deck">
                     <div class="route-node-placeholder"></div>
                     <div class="route-center-summary">Overall Syllabus Progress: <strong style="color: #10b981;">Active Track</strong></div>
@@ -518,6 +545,7 @@
             </div>
         </main>
 
+        <!-- SIDEBAR 3: RIGHT HAND SUMMARY DATA DESK PANEL (W3/GFG STYLE) -->
         <aside class="w3-info-desk-rail">
             <div class="info-card-widget">
                 <h6>Module Logistics</h6>
@@ -540,6 +568,7 @@
 
     </div>
 
+    <!-- Global Universal Footer Mount Anchor Slot (Untouched) -->
     <div id="global-footer"></div>
 
     <script src="main.js"></script>
@@ -551,28 +580,23 @@
            🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
            ========================================================================== */
         function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
-            // Drop active visibility parameters flags across panel objects
             const panelsArray = document.getElementsByClassName("nt-tab-panel");
             for (let i = 0; i < panelsArray.length; i++) {
                 panelsArray[i].classList.remove("active");
             }
 
-            // Un-assign selection states from all sidebar menu nodes
             const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
             for (let i = 0; i < menuItemsArray.length; i++) {
                 menuItemsArray[i].classList.remove("active");
             }
 
-            // Activate the designated layout tracking target
             const targetedPanelNode = document.getElementById(targetPanelId);
             if(targetedPanelNode) {
                 targetedPanelNode.classList.add("active");
             }
 
-            // Sync highlighted sidebar styles and dynamic text trackers
             clickedSidebarLinkNode.classList.add("active");
             
-            // Clean header label metrics allocations
             const rawLabelText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '').trim();
             document.getElementById("breadcrumbLabel").innerText = rawLabelText;
         }
