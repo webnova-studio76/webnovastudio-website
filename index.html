@@ -11,6 +11,72 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
+    <style>
+    /* --- Marquee Layout Frame --- */
+    .wn-marquee-viewport {
+        width: 100%;
+        max-width: 1200px;
+        margin: 40px auto;
+        overflow: hidden;
+        position: relative;
+        padding: 10px 0;
+        /* Sleek gradient edges that fade elements out on the sides */
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+        mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+
+    .wn-marquee-track {
+        display: flex;
+        width: max-content;
+        flex-wrap: nowrap;
+    }
+
+    .wn-marquee-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 24px;
+        padding-right: 24px;
+        /* Runs the translation animation continuously loop */
+        animation: wnMarqueeRun 25s linear infinite;
+    }
+
+    /* Elegant, premium light card tokens matching your academy aesthetic */
+    .tech-card {
+        width: 80px;
+        height: 80px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Subtle hover effect to match your user preferences */
+    .tech-card:hover {
+        transform: scale(1.08);
+        border-color: #cbd5e1;
+    }
+
+    /* Pauses marquee sliding instantly when a student hovers over an icon */
+    .wn-marquee-viewport:hover .wn-marquee-group {
+        animation-play-state: paused;
+    }
+
+    /* --- Core Translation Logic Axis --- */
+    @keyframes wnMarqueeRun {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+</style>
 <body class="homepage-root">
 
     <!-- Loaded Home Page Global Navigation Header Placeholder (Untouched) -->
@@ -37,6 +103,36 @@
         </div>
     </section>
 
+    <div class="wn-marquee-viewport">
+    <div class="wn-marquee-track">
+        
+        <!-- 🔴 ORIGINAL CAROUSEL TRACK SEGMENT -->
+        <div class="wn-marquee-group">
+            <div class="tech-card"><i class="fab fa-react" style="color: #61dafb;"></i></div>
+            <div class="tech-card"><i class="fab fa-node-js" style="color: #339933;"></i></div>
+            <div class="tech-card"><i class="fab fa-html5" style="color: #e34f26;"></i></div>
+            <div class="tech-card"><i class="fab fa-css3-alt" style="color: #1572b6;"></i></div>
+            <div class="tech-card"><i class="fab fa-js" style="color: #f7df1e;"></i></div>
+            <div class="tech-card"><i class="fab fa-python" style="color: #3776ab;"></i></div>
+            <div class="tech-card"><i class="fab fa-docker" style="color: #2496ed;"></i></div>
+            <div class="tech-card"><i class="fab fa-figma" style="color: #f24e1e;"></i></div>
+        </div>
+
+        <!-- 🔄 DUPLICATED SEGMENT (Creates the flawless, infinite wrap-around loop) -->
+        <div class="wn-marquee-group" aria-hidden="true">
+            <div class="tech-card"><i class="fab fa-react" style="color: #61dafb;"></i></div>
+            <div class="tech-card"><i class="fab fa-node-js" style="color: #339933;"></i></div>
+            <div class="tech-card"><i class="fab fa-html5" style="color: #e34f26;"></i></div>
+            <div class="tech-card"><i class="fab fa-css3-alt" style="color: #1572b6;"></i></div>
+            <div class="tech-card"><i class="fab fa-js" style="color: #f7df1e;"></i></div>
+            <div class="tech-card"><i class="fab fa-python" style="color: #3776ab;"></i></div>
+            <div class="tech-card"><i class="fab fa-docker" style="color: #2496ed;"></i></div>
+            <div class="tech-card"><i class="fab fa-figma" style="color: #f24e1e;"></i></div>
+        </div>
+
+    </div>
+</div>
+    
     <!-- 2. SLENDER TRUST STRIP MARQUEE (WHITE BACKGROUND) -->
     <div class="hp-trust-strip">
         <div class="hp-container flex-strip">
