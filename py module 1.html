@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Fundamentals Module 01 | Code Craft Academic</title>
+    <title>Python Fundamentals Module 01 Notes | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght=600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================================================
@@ -28,7 +28,7 @@
         .w3-app-frame-wrapper {
             display: flex;
             flex: 1;
-            height: calc(100vh - 85px); /* Perfectly balances master-header height offsets */
+            height: calc(100vh - 72px); /* Perfectly balances master-header height offsets */
             overflow: hidden;
             width: 100%;
         }
@@ -53,14 +53,26 @@
             font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
             color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; padding-left: 8px;
         }
-        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 2px; padding: 0; margin: 0; }
         .sidebar-menu-item {
             padding: 8px 12px; border-radius: 4px; font-size: 0.82rem; font-weight: 500;
             color: #475569; cursor: pointer; transition: all 0.15s ease;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 8px;
         }
+        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
         .sidebar-menu-item:hover { background: #cbd5e1; color: #0f172a; }
         .sidebar-menu-item.active { background: rgba(37, 99, 235, 0.06); color: #2563eb; font-weight: 700; border-left: 3px solid #2563eb; padding-left: 9px; }
+
+        /* Left Sidebar Central Download Button Dock */
+        .sidebar-download-block { margin-top: auto; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+        .sidebar-download-btn {
+            background: rgba(37, 99, 235, 0.05); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.15);
+            padding: 12px; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;
+        }
+        .sidebar-download-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
 
         /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
         .w3-central-viewport-canvas {
@@ -77,6 +89,7 @@
 
         .w3-section-title-box { border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 24px; text-align: left; }
         .w3-section-title-box h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #0f172a !important; letter-spacing: -0.02em; }
+        .w3-section-title-box h1 span { color: #2563eb; }
         .w3-section-title-box p { font-size: 0.95rem; color: #475569; line-height: 1.5; margin-top: 6px; }
 
         /* Pedagogical Panel Visibility Control Animators */
@@ -84,7 +97,7 @@
         .nt-tab-panel.active { display: block; animation: w3Fade 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
         @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.45rem; font-weight: 700; color: #0f172a !important; margin-bottom: 12px; text-align: left; }
+        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.45rem; font-weight: 700; color: #0f172a !important; margin-bottom: 12px; text-align: left; border-left: 4px solid #2563eb; padding-left: 12px; }
         .nt-tab-panel p.section-sub-desc { font-size: 0.9rem !important; color: #475569 !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
 
         /* Concept Block Layout Structure */
@@ -179,7 +192,7 @@
         .mcq-question-wrapper p { font-size: 0.84rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 10px !important; }
         .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
         .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
-        .option-btn:hover { background: #f1f5f9; color: #0f172a; }
+        .option-btn:hover { background: #f1f5f9; color: #2563eb; }
 
         .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
         .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
@@ -187,7 +200,7 @@
 
         .viva-checklist-block { margin-top: 20px; text-align: left; }
         .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
-        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; padding: 0; margin: 0; }
         .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
         .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 900; }
         .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
@@ -201,8 +214,6 @@
         .dl-action-node { padding: 6px 12px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s ease; }
         .dl-action-node.btn-pdf { background: rgba(16, 185, 129, 0.04); color: #059669; border: 1px solid rgba(16, 185, 129, 0.12); }
         .dl-action-node.btn-pdf:hover { background: #10b981; color: #ffffff; }
-        .dl-action-node.btn-ppt { background: rgba(245, 158, 11, 0.04); color: #b45309; border: 1px solid rgba(245, 158, 11, 0.12); }
-        .dl-action-node.btn-ppt:hover { background: #f59e0b; color: #ffffff; }
         .dl-action-node.btn-cheat { background: rgba(37, 99, 235, 0.04); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.12); }
         .dl-action-node.btn-cheat:hover { background: #2563eb; color: #ffffff; }
 
@@ -226,7 +237,7 @@
             text-align: left;
         }
         .meta-group-tile { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; }
-        .meta-group-tile h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #2563eb; margin-bottom: 8px; }
+        .meta-group-tile h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #2563eb; margin-bottom: 8px; margin-top: 0; }
         .meta-group-tile ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
         .meta-group-tile li { font-size: 0.78rem; color: #475569; font-weight: 500; display: flex; justify-content: space-between; }
         .meta-group-tile li strong { color: #0f172a; font-weight: 700; }
@@ -258,21 +269,18 @@
             <div class="sidebar-section-group">
                 <h5>01 // Python Core</h5>
                 <ul class="sidebar-menu-list">
-                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'overview')">1. Overview Philosophy</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'env')">2. Workspace Setup</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'vars')">3. Pointer Variables</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'datatypes')">4. Class System</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'io')">5. Stream IO Handling</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'strings')">6. String Operations</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')">7. Examination Vault</li>
+                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'overview')"><i class="fas fa-book-open"></i> 1. Overview Philosophy</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'env')"><i class="fas fa-desktop"></i> 2. Workspace Setup</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'vars')"><i class="fas fa-box"></i> 3. Pointer Variables</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'datatypes')"><i class="fas fa-cubes"></i> 4. Class System</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'io')"><i class="fas fa-exchange-alt"></i> 5. Stream IO Handling</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'strings')"><i class="fas fa-font"></i> 6. String Operations</li>
+                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Examination Vault</li>
                 </ul>
             </div>
-            <div class="sidebar-section-group">
-                <h5>Next Material Units</h5>
-                <ul class="sidebar-menu-list">
-                    <li class="sidebar-menu-item">Module 02: Decisions &amp; Loops</li>
-                    <li class="sidebar-menu-item">Module 03: Functions &amp; Modules</li>
-                </ul>
+            <div class="sidebar-download-block">
+                <h5>Course Assets</h5>
+                <a href="#" class="sidebar-download-btn"><i class="fas fa-file-pdf"></i> Download Complete Notes</a>
             </div>
         </aside>
 
@@ -295,7 +303,7 @@
                     <p class="section-sub-desc">Conceived by Guido van Rossum in 1991, Python emphasizes unmatched code legibility and software engineering efficiency, evolving into the industry standard for cloud automation, data pipelines, and AI system design.</p>
                     
                     <div class="concept-learning-node">
-                        <span class="pedagogy-block-indicator">📖 Learn &amp; Understand</span>
+                        <span class="pedagogy-block-indicator">Sub-topic // Execution Models</span>
                         <h4>Interpreted Execution vs Dynamic Typing</h4>
                         <div class="concept-meta-strip">
                             <span>Core Strategy: <strong>Step-by-Step Parse</strong></span>
@@ -353,14 +361,12 @@
                         <p>Python references object locations seamlessly. Call the global <code>type()</code> function to verify object class structures, and execute <code>id()</code> to access the unique physical address tracker registry number code:</p>
                         
                         <div class="w3-code-snippet-shell">
-                            <div class="w3-code-snippet-shell">
-                                <div class="w3-code-shell-header"><span>variable_binding.py</span> <span>Python Runtime</span></div>
-                                <div class="w3-code-shell-body"><span class="var-color">user_score</span> = <span class="val-color">100</span><br>print(type(<span class="var-color">user_score</span>))<br>print(id(<span class="var-color">user_score</span>))<br><br><span class="comment-color"># Dynamic reassignment changes trajectory instantly</span><br><span class="var-color">user_score</span> = <span class="val-color">"Passed"</span><br>print(type(<span class="var-color">user_score</span>))</div>
-                                <div class="w3-code-shell-output">
-                                    <span>&lt;class 'int'&gt;</span>
-                                    <span>140735749326464</span>
-                                    <span>&lt;class 'str'&gt;</span>
-                                </div>
+                            <div class="w3-code-shell-header"><span>variable_binding.py</span> <span>Python Runtime</span></div>
+                            <div class="w3-code-shell-body"><span class="var-color">user_score</span> = <span class="val-color">100</span><br>print(type(<span class="var-color">user_score</span>))<br>print(id(<span class="var-color">user_score</span>))<br><br><span class="comment-color"># Dynamic reassignment changes trajectory instantly</span><br><span class="var-color">user_score</span> = <span class="val-color">"Passed"</span><br>print(type(<span class="var-color">user_score</span>))</div>
+                            <div class="w3-code-shell-output">
+                                <span>&lt;class 'int'&gt;</span>
+                                <span>140735749326464</span>
+                                <span>&lt;class 'str'&gt;</span>
                             </div>
                         </div>
                     </div>
@@ -447,12 +453,9 @@
                         </div>
                     </div>
 
-                    <div class="inset-embedded-system-box">
-                        <i class="fas fa-laptop-code"></i>
-                        <div>
-                            <strong>🎯 Practical Milestone Challenge Assignment</strong>
-                            <p><b>Student Registration Pipeline Script:</b> Create a script that prompts users to input their Identity Name, Age, and College Marks. Cast numerical components explicitly, evaluate an adjusted score baseline, and output the total summary block using a single comprehensive literal f-string template structure.</p>
-                        </div>
+                    <div class="project-milestone-box">
+                        <h4><i class="fas fa-laptop-code"></i> Practical Milestone Challenge Assignment</h4>
+                        <p><b>Student Registration Pipeline Script:</b> Create a script that prompts users to input their Identity Name, Age, and College Marks. Cast numerical components explicitly, evaluate an adjusted score baseline, and output the total summary block using a single comprehensive literal f-string template structure.</p>
                     </div>
                 </div>
 
@@ -522,6 +525,16 @@
                             <li><strong>What outcome follows referencing variable names matching locked Python keywords?</strong> The syntax compiler halts execution lines instantly, returning an unalterable SyntaxError anomaly code block.</li>
                         </ul>
                     </div>
+
+                    <div class="quick-revision-sheet">
+                        <h4><i class="fas fa-bolt"></i> One-Minute Summary Revision Sheet</h4>
+                        <div class="revision-nodes-grid">
+                            <div class="rev-node"><b>Memory Slots:</b> Managed through dynamically bound labels pointing directly to memory addresses.</div>
+                            <div class="rev-node"><b>Built-In Types:</b> Leverages uncapped int scaling, double-precision float, and immutable str.</div>
+                            <div class="rev-node"><b>Stream I/O:</b> Captures inputs using standard input() strings and formats logs with f-strings.</div>
+                            <div class="rev-node"><b>Slicing Matrix:</b> Targets segments safely via bracket ranges mapping parameters inversely.</div>
+                        </div>
+                    </div>
                 </div>
 
                 <section class="download-portal-strip">
@@ -580,6 +593,7 @@
             // Traverse and drop active classes across all content view panels
             const panelsArray = document.getElementsByClassName("nt-tab-panel");
             for (let i = 0; i < panelsArray.length; i++) {
+                panelsArray[i].style.display = "none";
                 panelsArray[i].classList.remove("active");
             }
             
@@ -592,6 +606,7 @@
             // Activate the designated layout tracking target
             const targetedPanelNode = document.getElementById(targetPanelId);
             if(targetedPanelNode) {
+                targetedPanelNode.style.display = "block";
                 targetedPanelNode.classList.add("active");
             }
             
