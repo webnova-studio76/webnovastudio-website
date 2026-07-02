@@ -3,247 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Module 01 | Code Craft Academic</title>
+    <title>Python Fundamentals Masterclass | Code Craft Academic</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --primary: #3776ab; /* Python Blue */
-            --secondary: #0f172a;
-            --accent: #ffd43b;  /* Python Gold */
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-            --code-bg: #1e293b;
+        /* ==========================================================================
+           ⚓ SYSTEM LAYOUT FRAME WORKSPACE EXTENSIONS
+           ========================================================================== */
+        .java-labs-page .app-workspace-wrapper {
+            height: calc(100vh - 85px); /* Safely offsets master-header height variables */
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.7; }
-
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-
-        .notes-header { 
-            text-align: center; 
-            margin-bottom: 40px; 
-            padding: 40px; 
-            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
-            color: white; 
-            border-radius: 20px;
-        }
-
-        .tabs-nav {
-            display: flex;
-            gap: 10px;
-            background: #e2e8f0;
-            padding: 8px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            align-items: center;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--secondary);
-            border-radius: 10px;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-
-        .tab-download {
-            background: #10b981;
-            color: white !important;
-            text-decoration: none !important;
-        }
-
-        .tab-content {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: none;
-        }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { color: var(--secondary); margin-bottom: 20px; border-left: 5px solid var(--primary); padding-left: 15px; }
-        h3 { margin: 25px 0 10px; color: var(--primary); }
-
-        code { 
-            background: var(--code-bg); 
-            color: #f8f8f2; 
-            padding: 2px 6px; 
-            border-radius: 4px; 
+        
+        /* Interactive Panel Switcher State Rules */
+        .nt-tab-panel { display: none; }
+        .nt-tab-panel.active { display: block; animation: ntFadeIn 0.25s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        /* Execution Output Visual Simulator Units */
+        .w3-code-shell-output { 
+            background: #020617; 
+            border-top: 1px solid #334155; 
+            padding: 14px 20px; 
+            color: #38bdf8; 
             font-family: 'Fira Code', monospace; 
+            font-size: 0.78rem; 
+        }
+        .w3-code-shell-output::before { 
+            content: "🖥️ SYSTEM EXECUTION CONSOLE OUTPUT:"; 
+            font-size: 0.62rem; 
+            font-weight: 700; 
+            color: #64748b; 
+            display: block; 
+            margin-bottom: 4px; 
         }
 
-        .code-block {
-            background: var(--code-bg);
-            color: #f8f8f2;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-family: 'Fira Code', monospace;
-            position: relative;
-            overflow-x: auto;
+        /* Practice Area Component Blocks */
+        .practice-card-node {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 12px;
         }
+        .practice-card-node ul { list-style: none !important; padding: 0 !important; }
+        .practice-card-node li { font-size: 0.82rem; color: #475569; position: relative; padding-left: 16px; margin-bottom: 4px; }
+        .practice-card-node li::before { content: "⚡"; position: absolute; left: 0; color: #f59e0b; }
 
-        .pro-tip {
-            background: #fffbeb;
-            border-left: 5px solid var(--accent);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
+        .try-btn-trigger {
+            margin-top: 10px;
+            background: #0f172a;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
-
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
-        table th { background: #f1f5f9; }
-
-        @media (max-width: 768px) { .tabs-nav { flex-direction: column; } }
+        .try-btn-trigger:hover { background: #3776ab; }
     </style>
 </head>
-<body>
+<body class="java-labs-page text-rendering">
 
-<div class="container">
-    <div class="notes-header">
-        <h1>Python Module 01: Fundamentals</h1>
-        <p>Setting up your environment and mastering the core syntax of Python.</p>
-    </div>
+    <div id="global-header"></div>
 
-    <div class="tabs-nav">
-        <button class="tab-btn active" onclick="openTab(event, 'env')"><i class="fas fa-terminal"></i> Environment</button>
-        <button class="tab-btn" onclick="openTab(event, 'vars')"><i class="fas fa-box"></i> Variables & Types</button>
-        <button class="tab-btn" onclick="openTab(event, 'io')"><i class="fas fa-exchange-alt"></i> I/O & Strings</button>
+    <div class="app-workspace-wrapper">
         
-        <a href="downloads/python-module1.pdf" class="tab-btn tab-download" download>
-            <i class="fas fa-file-pdf"></i>PDF Coming Soon
-        </a>
+        <aside class="sidebar">
+            <div class="sidebar-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search module syntax...">
+            </div>
+
+            <div class="category-group-container">
+                <div class="category-header-toggle">
+                    <span>📋 Course Syllabus Index</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="lab-list">
+                    <li class="lab-item active" onclick="triggerPythonSection(this, 'overview')"><i class="fas fa-book-open"></i> Overview &amp; History</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'env')"><i class="fas fa-desktop"></i> Environment Setup</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'vars')"><i class="fas fa-box"></i> Variables &amp; Keywords</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'datatypes')"><i class="fas fa-cubes"></i> Data Type System</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'io')"><i class="fas fa-exchange-alt"></i> Stream Input / Output</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'strings')"><i class="font-icon" style="font-weight:800;font-size:0.75rem;font-style:normal;">str</i> Slicing &amp; Methods</li>
+                    <li class="lab-item" onclick="triggerPythonSection(this, 'assessment')"><i class="fas fa-user-graduate"></i> Examination Vault</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-download-block" style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <div class="category-header-toggle" style="padding: 0 0 8px 0; cursor: default;">
+                    <span>📂 Download Assets</span>
+                </div>
+                <div class="dl-buttons-matrix" style="display: flex; flex-direction: column; gap: 6px;">
+                    <a href="#" class="dl-action-node btn-pdf" style="width: 100%; justify-content: center;"><i class="fas fa-file-pdf"></i> Handout PDF</a>
+                    <a href="#" class="dl-action-node btn-cheat" style="width: 100%; justify-content: center;"><i class="fas fa-code"></i> Syntax Cheat Sheet</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="viewport-content-container" style="max-width: 860px; margin: 0 auto;">
+                
+                <nav class="breadcrumb-trail">
+                    <span>Python Core Track</span> / <span>Module 01</span> / <span class="active-node" id="breadcrumbLabel">Overview &amp; History</span>
+                </nav>
+
+                <header class="header-box" style="margin-bottom: 30px;">
+                    <div class="meta-badges-row">
+                        <span class="meta-badge tier-pill">Module 1 of 12</span>
+                        <span class="meta-badge verified-tag">Syllabus Code: WNA-PY101</span>
+                    </div>
+                    <h1 style="margin-top: 8px;">Python Fundamentals: <span>Core Syntax Architecture</span></h1>
+                    
+                    <div style="margin-top: 16px; background: #e2e8f0; border-radius: 4px; height: 6px; width: 100%; overflow: hidden;">
+                        <div id="pythonProgressGauge" style="background: #10b981; height: 100%; width: 15%; transition: width 0.3s ease;"></div>
+                    </div>
+                </header>
+
+                <section class="inset-embedded-system-box" style="margin-top: 0; margin-bottom: 32px;">
+                    <i class="fas fa-bullseye" style="color: #10b981;"></i>
+                    <div>
+                        <strong>🎯 Direct Target Learning Outcomes</strong>
+                        <p style="font-size: 0.84rem; margin-top: 4px;">By the completion of this structural module unit, you will confidently run virtualized runtime environments via pip/conda shells, manage object pointers through dynamic reference assignments, and serialize advanced stream formatting blocks utilizing literal f-string pipelines.</p>
+                    </div>
+                </section>
+
+                <div id="overview" class="nt-tab-panel active">
+                    <h2>Python History &amp; Core Philosophy</h2>
+                    <p>Conceived by Guido van Rossum in 1991, Python was engineered with a clear, singular design priority: maximizing code legibility and software engineering efficiency. Today, it stands as the industry-vetted backbone for machine learning orchestration, system automation, and high-performance cloud data pipelines.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-brain"></i> Concept: Interpreted Execution vs Dynamic Typing</h4>
+                        <p>Unlike languages that require manual ahead-of-time machine compilation (like C++ or Java), Python runs via an <b>Interpreted Runtime Interpreter</b>. The source text parses sequentially step-by-step at execution runtime. Combined with its structural <b>Dynamic Type Resolution</b>, development engineering speed is maximized because variables automatically map memory bounds cleanly without static compiler roadblocks.</p>
+                    </div>
+
+                    <div class="nt-pro-tip-box">
+                        <strong>💡 Core Core Paradigm: Why Python Over Lower-Level Systems?</strong>
+                        <p>Python discards heavy visual boilerplate configurations (like manual brackets and explicit typing scopes), forcing structured code blocks via strict semantic indentation lines. This dramatically drives down technical debt footprints inside global cross-collaborative engineering teams.</p>
+                    </div>
+                </div>
+
+                <div id="env" class="nt-tab-panel">
+                    <h2>Environment Setup &amp; Package Management</h2>
+                    <p>Before launching high-fidelity applications logic scripts, engineers must establish isolated, version-controlled virtual runtimes to safely prevent package state corruption anomalies.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-terminal"></i> 1. Pip &amp; Virtual Environments (venv)</h4>
+                        <p>The standard distribution package manager for Python is <code>pip</code>. To avoid global project version collisions (often called dependency conflicts), you can configure a separate directory containment matrix manually using the system command terminal:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> terminal_setup.sh</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Script</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code><span class="comment-color"># 1. Initialize a localized virtual tracking folder named 'venv'</span>
+python -m venv venv
+
+<span class="comment-color"># 2. Activate the tracking constraints safely (Mac / Linux)</span>
+source venv/bin/activate
+
+<span class="comment-color"># 3. Activate the tracking constraints safely (Windows PowerShell)</span>
+.\venv\Scripts\Activate.ps1</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-filter"></i> 2. Conda (Anaconda &amp; Miniconda Frameworks)</h4>
+                        <p>Widely adopted within professional Data Science channels, Conda manages non-Python binary objects along with library records. It isolates multi-version workspaces concurrently through separate virtual environmental container slots:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> conda_runtime.sh</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Script</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code>conda create --name machine-learning-node python=3.10
+conda activate machine-learning-node</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="practice-card-node">
+                        <h4>💻 Practice Sandbox Lab</h4>
+                        <ul>
+                            <li>Isolate a clean local directory and switch it active using your system terminal.</li>
+                            <li>Initialize a localized <code>venv</code> block tracker, activate the scope, and execute <code>pip install requests</code>.</li>
+                            <li>Dump your active configuration requirements down to a verification state file using <code>pip freeze &gt; requirements.txt</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="vars" class="nt-tab-panel">
+                    <h2>Dynamic Variables &amp; Binding Pointer Allocation</h2>
+                    <p>In Python, variables do not act as concrete physical storage boxes. Instead, they operate as lightweight, named reference pointers that target structured data objects residing inside the system's memory allocation layout.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-fingerprint"></i> Concept Exploration: Type Inference &amp; Address Keys</h4>
+                        <p>Because Python resolves objects dynamically, calling variables overwrites reference trajectories immediately. Use <code>type()</code> to view an active evaluation class framework, and use <code>id()</code> to display the raw internal memory space reference number tracking the targeted object:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> memory_binding.py</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Code</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code><span class="var-color">user_score</span> = <span class="val-color">100</span>
+print(type(<span class="var-color">user_score</span>))
+print(id(<span class="var-color">user_score</span>))
+
+<span class="comment-color"># Re-assign references targets seamlessly</span>
+<span class="var-color">user_score</span> = <span class="val-color">"Passed"</span>
+print(type(<span class="var-color">user_score</span>))</code></pre>
+                            </div>
+                            <div class="w3-code-shell-output">
+                                <span>&lt;class 'int'&gt;</span>
+                                <span>140735749326464</span>
+                                <span>&lt;class 'str'&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nt-pro-tip-box" style="border-left-color: #ef4444; background: rgba(239, 68, 68, 0.01);">
+                        <strong style="color: #991b1b;"><i class="fas fa-exclamation-triangle"></i> Strict PEP8 Token Guidelines &amp; Name Space Blocks</strong>
+                        <p>Variable tags must strictly start with letters or standard underscores; digit indices cannot prefix names. Use clean, clear <code>snake_case</code> formats consistently across reference lines. Reserved compiler tokens (such as <code>del</code>, <code>global</code>, or <code>pass</code>) are permanently locked and cannot function as custom labels.</p>
+                    </div>
+
+                    <div class="m-comparison-table" style="margin-top: 16px;">
+                        <div class="comp-column column-old" style="padding: 16px;">
+                            <h4>❌ Wrong Code Structure</h4>
+                            <code style="display:block; margin: 4px 0;">1st_user = "Alex"</code>
+                            <code style="display:block; margin: 4px 0;">userScoreVal = 99</code>
+                        </div>
+                        <div class="comp-column column-new" style="padding: 16px;">
+                            <h4>✔ PEP8 Correct standard</h4>
+                            <code style="display:block; margin: 4px 0;">user_1 = "Alex"</code>
+                            <code style="display:block; margin: 4px 0;">user_score_val = 99</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="datatypes" class="nt-tab-panel">
+                    <h2>The Built-In Class Classifier System</h2>
+                    <p>Python maintains code logic parameters across a highly reliable, built-in structural data framework classification system.</p>
+                    
+                    <div class="comparison-table-wrapper">
+                        <table class="nt-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Icon</th>
+                                    <th>Data Type Class</th>
+                                    <th>Code Architecture Syntax</th>
+                                    <th>Core Operational Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🔢</td>
+                                    <td><strong>int</strong></td>
+                                    <td><code>system_port = 8080</code></td>
+                                    <td>Whole numeric objects with uncapped scaling limitations.</td>
+                                </tr>
+                                <tr>
+                                    <td>📐</td>
+                                    <td><strong>float</strong></td>
+                                    <td><code>invoice_total = 299.95</code></td>
+                                    <td>64-bit precision floating fractional metrics.</td>
+                                </tr>
+                                <tr>
+                                    <td>🔤</td>
+                                    <td><strong>str</strong></td>
+                                    <td><code>node_id = "ALPHA_01"</code></td>
+                                    <td>Immutable sequence maps storing characters arrays.</td>
+                                </tr>
+                                <tr>
+                                    <td>⚙</td>
+                                    <td><strong>bool</strong></td>
+                                    <td><code>is_encrypted = True</code></td>
+                                    <td>Binary evaluation states strictly tracking True or False.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-random"></i> Explicit Type Casting Conversions</h4>
+                        <p>Because input handlers parse parameters into generic text arrays by default, you must explicitly enforce constructor transformations manually to securely lock down accurate data calculations:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> data_casting.py</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Code</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code><span class="var-color">captured_string</span> = <span class="val-color">"450"</span>
+<span class="var-color">sanitized_integer</span> = int(<span class="var-color">captured_string</span>)
+
+print(<span class="var-color">sanitized_integer</span> + <span class="val-color">50</span>)</code></pre>
+                            </div>
+                            <div class="w3-code-shell-output">
+                                <span>500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="io" class="nt-tab-panel">
+                    <h2>Console Stream I/O Handling &amp; Interpolation</h2>
+                    <p>Capture real-time user arguments from standard input streams cleanly and process them down to interactive evaluation console displays.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-keyboard"></i> 1. Input Interceptions &amp; Separation Arguments</h4>
+                        <p>The <code>input()</code> routine halts thread operations and accepts arguments strictly into string records. Inside your output terminal, customize standard spacing using <code>sep</code> and override line terminations using the <code>end</code> instruction keyword parameter:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> stream_io.py</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Code</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code>print(<span class="val-color">"A"</span>, <span class="val-color">"B"</span>, <span class="val-color">"C"</span>, sep=<span class="val-color">"-"</span>, end=<span class="val-color">" // "</span>)
+print(<span class="val-color">"Stream Terminates"</span>)</code></pre>
+                            </div>
+                            <div class="w3-code-shell-output">
+                                <span>A-B-C // Stream Terminates</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-bolt"></i> 2. Modern Literal F-String Interpolation</h4>
+                        <p>Modern Python uses expressions prefixed with an <code>f</code> literal token flag to parse inside inline block strings directly using curly braces <code>{}</code> tracking lines:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> string_interpolation.py</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Code</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code><span class="var-color">client_identity</span> = <span class="val-color">"Rakesh"</span>
+<span class="var-color">pending_tasks</span> = <span class="val-color">4</span>
+
+print(<span class="keyword-color">f</span><span class="val-color">"Alert: {client_identity} must execute {pending_tasks} lab modules."</span>)</code></pre>
+                            </div>
+                            <div class="w3-code-shell-output">
+                                <span>Alert: Rakesh must execute 4 lab modules.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="practice-card-node" style="border-color: #10b981; background: rgba(16, 185, 129, 0.01);">
+                        <h4 style="color: #059669 !important;"><i class="fas fa-laptop-code"></i> Core Project Challenge Target</h4>
+                        <p style="font-size: 0.84rem; font-weight: 600; margin-bottom: 6px;">Student Information Pipeline Script:</p>
+                        <p style="font-size: 0.82rem; color: #475569; line-height: 1.45;">Write an application script that prompts students to enter their Full Identity Name, Current Age, and Tuition Score. Explicitly cast incoming age records, compute an updated numeric baseline projection value, and structure the total profile output cleanly using a single literal f-string block tracking sequence layout.</p>
+                    </div>
+                </div>
+
+                <div id="strings" class="nt-tab-panel">
+                    <h2>String Array Indexing &amp; Object Methods Matrix</h2>
+                    <p>Strings function as highly precise, immutable character index lists allowing specific slicing window calculations.</p>
+                    
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-scissors"></i> Character Array Slicing Mechanics [Start : Stop : Step]</h4>
+                        <p>Extract subsets using range brackets. Negative metrics resolve element coordinates inversely from the array end-bounds:</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <div class="code-header-meta"><i class="fas fa-code"></i> string_slicing.py</div>
+                                <button class="btn-code-action" onclick="copySnippetCode(this)">Copy Code</button>
+                            </div>
+                            <div class="editor-workspace-canvas">
+                                <pre><code><span class="var-color">platform_token</span> = <span class="val-color">"CodeCraftAcademic"</span>
+
+print(<span class="var-color">platform_token</span>[<span class="val-color">0</span>:<span class="val-color">4</span>])   <span class="comment-color"># Pull positions 0 through 3</span>
+print(<span class="var-color">platform_token</span>[::-<span class="val-color">1</span>])  <span class="comment-color"># Inverse inversion manipulation tracking</span></code></pre>
+                            </div>
+                            <div class="w3-code-shell-output">
+                                <span>Code</span>
+                                <span>cimedacAftarfedoC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-learning-node">
+                        <h4><i class="fas fa-toolbox"></i> Highly Deployed Core Data Transformation Methods</h4>
+                        <p>Because strings are strictly immutable data layers, these functional execution helper routines generate independent output records rather than altering original variables:</p>
+                        <ul class="traits-bullet-list" style="margin-top: 10px;">
+                            <li><code>.strip()</code> - Scrubs off trailing and leading space gaps cleanly.</li>
+                            <li><code>.replace("old", "new")</code> - Alternates characters across designated configurations.</li>
+                            <li><code>.split(",")</code> - Cuts string segments down into data list clusters.</li>
+                            <li><code>.startswith("X")</code> / <code>.endswith("Y")</code> - Resolves direct Boolean matches.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="assessment" class="nt-tab-panel">
+                    <h2>Module Evaluation &amp; Verification Center</h2>
+                    <p class="section-sub-desc">Verify your architecture knowledge and structural code parsing rules instantly before continuing tracking progressions parameters.</p>
+
+                    <div class="interactive-mcq-sandbox">
+                        <h4><i class="fas fa-vial"></i> Interactive Concept Check Node</h4>
+                        <div class="mcq-question-wrapper">
+                            <p>What structural type is assigned to variables holding user feedback returned directly from a standard input() execution call before casting operations are parsed?</p>
+                            <div class="mcq-options-column">
+                                <button class="option-btn" onclick="evaluatePythonQuiz(this, false)">A. The class tracks as a flexible integer reference dynamically.</button>
+                                <button class="option-btn" onclick="evaluatePythonQuiz(this, true)">B. The stream strictly processes elements as an immutable &lt;class 'str'&gt; sequence.</button>
+                                <button class="option-btn" onclick="evaluatePythonQuiz(this, false)">C. The interpreter crashes and returns a fatal runtime operational type failure.</button>
+                            </div>
+                            <div class="quiz-feedback-box" id="pythonQuizFeedbackBox"></div>
+                        </div>
+                    </div>
+
+                    <div class="viva-checklist-block">
+                        <h4>Laboratory Viva Interview Preparation</h4>
+                        <ul class="viva-bullets-list">
+                            <li><strong>What distinguishes int type constraints inside Python environments?</strong> Python integers scale infinitely to absorb full numerical capacities dynamically, capped exclusively by available system RAM variables bounds.</li>
+                            <li><strong>Why are virtual environments prioritized across production configurations?</strong> They bypass dependency version conflicts by maintaining separate isolated library directory instances for every separate code repo codebase.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <footer class="notes-routing-deck">
+                    <a href="index.html" class="btn-nav-trigger">&larr; Return Studio Home</a>
+                    <div class="route-center-summary">Active Curriculum Track: <strong>Python 101</strong></div>
+                    <a href="#" class="btn-nav-trigger" style="background: #3776ab; color: #ffffff; border-color: #3776ab;">Next Unit: Decision Controls &rarr;</a>
+                </footer>
+
+            </div>
+        </main>
+
+        <aside class="wn-info-desk-rail">
+            <div class="info-card-widget">
+                <h6>Academic Parameters</h6>
+                <ul>
+                    <li>Difficulty Track: <strong style="color: #10b981;">🟢 Beginner</strong></li>
+                    <li>Reading Estimate: <strong>35 Minutes</strong></li>
+                    <li>Syllabus Node: <strong>WNA-PY101</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-card-widget">
+                <h6>Active Deliverables</h6>
+                <ul>
+                    <li>Code Snippets: <strong>20 Vetted Units</strong></li>
+                    <li>Practice Exercises: <strong>15 Labs</strong></li>
+                    <li>Capstones: <strong>1 Pipeline Project</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-card-widget">
+                <h6>Workspace Status</h6>
+                <ul>
+                    <li>Tracker Mode: <strong style="color: #3776ab;">Discovery Active</strong></li>
+                    <li>Completed Weight: <strong id="telemetryPercentage" style="color: #10b981;">15%</strong></li>
+                </ul>
+                <div id="telemetryBlocks" class="progress-block-tracker">■░░░░░░░░░ 15%</div>
+            </div>
+        </aside>
+
     </div>
 
-    <div id="env" class="tab-content active">
-        <h2>Installation & Package Management</h2>
-        <p>Before coding, you need a Python interpreter and a way to manage libraries.</p>
-        
-        <h3>1. Pip (Python Package Index)</h3>
-        <p>The standard package manager for Python. Use it to install external libraries.</p>
-        <div class="code-block">pip install requests</div>
+    <div id="global-footer"></div>
 
-        <h3>2. Conda (Anaconda/Miniconda)</h3>
-        <p>A powerful environment manager used primarily in Data Science. It allows you to create isolated "containers" for different projects to avoid version conflicts.</p>
-        <div class="code-block">
-            conda create --name my-project python=3.10<br>
-            conda activate my-project
-        </div>
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
 
-        <div class="pro-tip">
-            <strong>Why use environments?</strong> They prevent "Dependency Hell"—where one project requires Version A of a library and another project requires Version B.
-        </div>
-    </div>
+    <script>
+        function triggerPythonSection(menuNodeItem, segmentPanelId) {
+            // Drop visibility flags safely across panel array frames
+            const panelSets = document.getElementsByClassName("nt-tab-panel");
+            for (let i = 0; i < panelSets.length; i++) {
+                panelSets[i].style.display = "none";
+                panelSets[i].classList.remove("active");
+            }
 
-    <div id="vars" class="tab-content">
-        <h2>Variables & Data Types</h2>
-        <p>Python is <strong>dynamically typed</strong>, meaning you don't need to declare a variable's type explicitly.</p>
+            // Un-assign highlights on list strings elements manually
+            const navItems = document.querySelectorAll(".lab-item");
+            navItems.forEach(item => item.classList.remove("active"));
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Data Type</th>
-                    <th>Example</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>int</strong></td>
-                    <td><code>age = 25</code></td>
-                    <td>Whole numbers</td>
-                </tr>
-                <tr>
-                    <td><strong>float</strong></td>
-                    <td><code>price = 99.99</code></td>
-                    <td>Decimal numbers</td>
-                </tr>
-                <tr>
-                    <td><strong>str</strong></td>
-                    <td><code>name = "Alice"</code></td>
-                    <td>Text characters</td>
-                </tr>
-                <tr>
-                    <td><strong>bool</strong></td>
-                    <td><code>is_valid = True</code></td>
-                    <td>Logical True/False</td>
-                </tr>
-            </tbody>
-        </table>
+            // Route execution targets directly to live panel tags
+            const matchedPanel = document.getElementById(segmentPanelId);
+            if (matchedPanel) {
+                matchedPanel.style.display = "block";
+                matchedPanel.classList.add("active");
+            }
 
-        <h3>Type Casting</h3>
-        <p>Converting one data type to another manually.</p>
-        <div class="code-block">
-            x = "10" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# This is a string<br>
-            y = int(x) &nbsp;&nbsp;&nbsp;&nbsp;# Now y is an integer 10
-        </div>
-    </div>
+            // Synchronize selected structural layout design accents
+            menuNodeItem.classList.add("active");
 
-    <div id="io" class="tab-content">
-        <h2>Input, Output & String Formatting</h2>
-        
-        <h3>Handling User Input</h3>
-        <p>The <code>input()</code> function always returns a <strong>string</strong>.</p>
-        <div class="code-block">
-            name = input("Enter your name: ")<br>
-            age = int(input("Enter your age: ")) # Casting to int immediately
-        </div>
+            // Re-render breadcrumb tracking tokens cleanly
+            const parsedTextValue = menuNodeItem.innerText.replace(/^\d+\.\s*/, '').trim();
+            document.getElementById("breadcrumbLabel").innerText = parsedTextValue;
 
-        <h3>String Formatting (f-strings)</h3>
-        <p>The modern and most readable way to format strings in Python 3.6+.</p>
-        <div class="code-block">
-            name = "John"<br>
-            score = 95<br>
-            print(f"Hello {name}, your score is {score}%")
-        </div>
-
-        <h3>String Methods</h3>
-        <ul>
-            <li><code>.upper()</code> - Converts to uppercase.</li>
-            <li><code>.strip()</code> - Removes leading/trailing whitespace.</li>
-            <li><code>.replace("old", "new")</code> - Swaps text segments.</li>
-        </ul>
-    </div>
-</div>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, tabContent, tabBtns;
-        tabContent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";
+            // Trigger Dynamic Metric Telemetry Calculation Updates
+            computeTelemetryMetrics(segmentPanelId);
         }
-        tabBtns = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].classList.remove("active");
+
+        function computeTelemetryMetrics(panelId) {
+            let percentage = "15%";
+            let blocks = "■░░░░░░░░░ 15%";
+            let gaugeWidth = "15%";
+
+            switch(panelId) {
+                case 'overview':    percentage = "15%";  blocks = "■░░░░░░░░░ 15%"; gaugeWidth = "15%"; break;
+                case 'env':         percentage = "30%";  blocks = "■■■░░░░░░░ 30%"; gaugeWidth = "30%"; break;
+                case 'vars':        percentage = "45%";  blocks = "■■■■░░░░░░ 45%"; gaugeWidth = "45%"; break;
+                case 'datatypes':   percentage = "60%";  blocks = "■■■■■■░░░░ 60%"; gaugeWidth = "60%"; break;
+                case 'io':          percentage = "75%";  blocks = "■■■■■■■░░░ 75%"; gaugeWidth = "75%"; break;
+                case 'strings':     percentage = "90%";  blocks = "■■■■■■■■■░ 90%"; gaugeWidth = "90%"; break;
+                case 'assessment':  percentage = "100%"; blocks = "■■■■■■■■■■ 100%"; gaugeWidth = "100%"; break;
+            }
+
+            document.getElementById("pythonProgressGauge").style.width = gaugeWidth;
+            document.getElementById("telemetryPercentage").innerText = percentage;
+            document.getElementById("telemetryBlocks").innerText = blocks;
         }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.classList.add("active");
-    }
-</script>
-<script src="header.js"></script>
-<script src="footer.js"></script>
-<script src="animations.js"></script>
+
+        function evaluatePythonQuiz(clickedButtonNode, outcomeFlag) {
+            const feedbackBox = document.getElementById("pythonQuizFeedbackBox");
+            const choiceButtons = clickedButtonNode.parentElement.querySelectorAll(".option-btn");
+            
+            choiceButtons.forEach(btn => btn.disabled = true);
+            
+            if (outcomeFlag) {
+                clickedButtonNode.style.background = "#e6f4ea";
+                clickedButtonNode.style.borderColor = "#34d399";
+                clickedButtonNode.style.color = "#137333";
+                feedbackBox.className = "quiz-feedback-box success-state";
+                feedbackBox.innerHTML = "<strong>✓ Certified Concept Verification!</strong> The python scripting environment safely routes standard user entries into string objects uniformly. Developers enforce manual casting wrappers explicitly like <code>int()</code> or <code>float()</code> to ensure math equations process flawlessly without crashes.";
+            } else {
+                clickedButtonNode.style.background = "#fce8e6";
+                clickedButtonNode.style.borderColor = "#f87171";
+                clickedButtonNode.style.color = "#c5221f";
+                feedbackBox.className = "quiz-feedback-box error-state";
+                feedbackBox.innerHTML = "<strong>✕ Mismatched Logic Selection.</strong> Re-verify engine traits! The interpreter will never apply background assumptions or run dynamic data conversions on keyboard values independently; all incoming data parses as characters until explicit constructors resolve lines.";
+            }
+            feedbackBox.style.display = "block";
+        }
+
+        function copySnippetCode(buttonElement) {
+            const containerBox = buttonElement.parentElement.parentElement;
+            const textToCopy = containerBox.querySelector("pre code").innerText;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = buttonElement.innerText;
+                buttonElement.innerText = "Copied! ✓";
+                buttonElement.style.background = "#10b981";
+                setTimeout(() => {
+                    buttonElement.innerText = originalText;
+                    buttonElement.style.background = "";
+                }, 1500);
+            });
+        }
+    </script>
 </body>
 </html>
