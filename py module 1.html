@@ -64,15 +64,19 @@
         .sidebar-menu-item:hover { background: #cbd5e1; color: #0f172a; }
         .sidebar-menu-item.active { background: rgba(37, 99, 235, 0.06); color: #2563eb; font-weight: 700; border-left: 3px solid #2563eb; padding-left: 9px; }
 
-        /* Left Sidebar Central Download Button Dock */
-        .sidebar-download-block { margin-top: auto; padding-top: 16px; border-top: 1px solid #e2e8f0; }
-        .sidebar-download-btn {
-            background: rgba(37, 99, 235, 0.05); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.15);
-            padding: 12px; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;
-        }
-        .sidebar-download-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
+     /* Left Sidebar Central Download Button Dock - Sticky Implementation */
+.sidebar-download-block { 
+    margin-top: auto; 
+    padding-top: 16px; 
+    border-top: 1px solid #e2e8f0; 
+    
+    /* Enforces constant visibility during sidebar scrolling sessions */
+    position: sticky;
+    bottom: 0;
+    background: #f8fafc; /* Matches your exact sidebar background color perfectly to prevent sub-text overlap */
+    z-index: 10;         /* Keeps the block layered cleanly above scrolling text elements */
+    padding-bottom: 4px; /* Tiny buffer gap spacing protection at the very bottom */
+}
 
         /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
         .w3-central-viewport-canvas {
