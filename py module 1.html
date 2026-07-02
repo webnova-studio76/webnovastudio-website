@@ -45,6 +45,7 @@
             gap: 16px;
             flex-shrink: 0;
             text-align: left;
+            position: relative;
         }
         .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
         .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -64,19 +65,24 @@
         .sidebar-menu-item:hover { background: #cbd5e1; color: #0f172a; }
         .sidebar-menu-item.active { background: rgba(37, 99, 235, 0.06); color: #2563eb; font-weight: 700; border-left: 3px solid #2563eb; padding-left: 9px; }
 
-     /* Left Sidebar Central Download Button Dock - Sticky Implementation */
-.sidebar-download-block { 
-    margin-top: auto; 
-    padding-top: 16px; 
-    border-top: 1px solid #e2e8f0; 
-    
-    /* Enforces constant visibility during sidebar scrolling sessions */
-    position: sticky;
-    bottom: 0;
-    background: #f8fafc; /* Matches your exact sidebar background color perfectly to prevent sub-text overlap */
-    z-index: 10;         /* Keeps the block layered cleanly above scrolling text elements */
-    padding-bottom: 4px; /* Tiny buffer gap spacing protection at the very bottom */
-}
+        /* Left Sidebar Central Download Block - Sticky Configuration Implementation */
+        .sidebar-download-block { 
+            margin-top: auto; 
+            padding-top: 16px; 
+            border-top: 1px solid #e2e8f0;
+            position: sticky;
+            bottom: 0;
+            background: #f8fafc; /* Matches sidebar rail color explicitly to obscure overlapping content lines */
+            z-index: 10;
+            padding-bottom: 4px;
+        }
+        .sidebar-download-btn {
+            background: rgba(37, 99, 235, 0.05); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.15);
+            padding: 12px; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;
+        }
+        .sidebar-download-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
 
         /* --- 2. CENTRAL LEARNING CANVASES CONTENT AREA --- */
         .w3-central-viewport-canvas {
@@ -158,6 +164,7 @@
 
         /* Integrated Code Workspace Shell Insets */
         .w3-code-snippet-shell { background: #0f172a; border-radius: 6px; width: 100%; overflow: hidden; margin-top: 12px; font-family: 'Fira Code', monospace; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .w3-code-snippet-shell pre { margin: 0; padding: 0; }
         .w3-code-shell-header { background: #1e293b; padding: 8px 16px; color: #94a3b8; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
         .w3-code-shell-body { padding: 16px; color: #cbd5e1; text-align: left; white-space: pre-wrap; line-height: 1.5; }
         
@@ -280,6 +287,13 @@
                     <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'io')"><i class="fas fa-exchange-alt"></i> 5. Stream IO Handling</li>
                     <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'strings')"><i class="fas fa-font"></i> 6. String Operations</li>
                     <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 7. Examination Vault</li>
+                </ul>
+            </div>
+            <div class="sidebar-section-group">
+                <h5>Next Material Units</h5>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">Module 02: Decisions &amp; Loops</li>
+                    <li class="sidebar-menu-item">Module 03: Functions &amp; Modules</li>
                 </ul>
             </div>
             <div class="sidebar-download-block">
