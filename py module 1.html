@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Fundamentals Module 01 Notes | Code Craft Academic</title>
+    <!-- Linked Global Stylesheet (Untouched Production Baseline) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +29,7 @@
         .w3-app-frame-wrapper {
             display: flex;
             flex: 1;
-            height: calc(100vh - 72px); /* Perfectly balances master-header height offsets */
+            height: calc(100vh - 85px); /* Perfectly balances master-header height offsets */
             overflow: hidden;
             width: 100%;
         }
@@ -38,7 +39,7 @@
             width: 280px;
             background: #f8fafc;
             border-right: 1px solid #e2e8f0;
-            padding: 20px 12px;
+            padding: 20px 12px 0 12px; /* Opened padding to handle sticky container transitions smoothly */
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -65,16 +66,16 @@
         .sidebar-menu-item:hover { background: #cbd5e1; color: #0f172a; }
         .sidebar-menu-item.active { background: rgba(37, 99, 235, 0.06); color: #2563eb; font-weight: 700; border-left: 3px solid #2563eb; padding-left: 9px; }
 
-        /* Left Sidebar Central Download Block - Sticky Configuration Implementation */
+        /* Left Sidebar Central Download Block - Sticky Configuration (Matches image_5109b7.png) */
         .sidebar-download-block { 
             margin-top: auto; 
             padding-top: 16px; 
             border-top: 1px solid #e2e8f0;
-            position: sticky;
-            bottom: 0;
-            background: #f8fafc; /* Matches sidebar rail color explicitly to obscure overlapping content lines */
-            z-index: 10;
-            padding-bottom: 4px;
+            position: sticky !important;
+            bottom: 0 !important;
+            background: #f8fafc !important; /* Solid backdrop hides scrolling content lines underneath */
+            z-index: 100 !important;
+            padding-bottom: 20px;
         }
         .sidebar-download-btn {
             background: rgba(37, 99, 235, 0.05); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.15);
@@ -211,7 +212,7 @@
 
         .viva-checklist-block { margin-top: 20px; text-align: left; }
         .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
-        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; padding: 0; margin: 0; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0; }
         .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
         .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 900; }
         .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
@@ -272,10 +273,13 @@
 </head>
 <body class="w3-docs-workspace">
 
+    <!-- Global Universal Navigation Header Mount Anchor Slot (Untouched) -->
     <div id="global-header"></div>
 
+    <!-- Production Grade Three Column Architecture Partition Frame -->
     <div class="w3-app-frame-wrapper">
         
+        <!-- SIDEBAR COMPONENT: LEFT HAND INTERACTIVE SYLLABUS CATALOG -->
         <aside class="w3-sidebar-rail">
             <div class="sidebar-section-group">
                 <h5>01 // Python Core</h5>
@@ -296,12 +300,14 @@
                     <li class="sidebar-menu-item">Module 03: Functions &amp; Modules</li>
                 </ul>
             </div>
+            <!-- Sticky Constrained Asset Downloader Container (Perfect Match with image_5109b7.png) -->
             <div class="sidebar-download-block">
                 <h5>Course Assets</h5>
                 <a href="#" class="sidebar-download-btn"><i class="fas fa-file-pdf"></i> Download Complete Notes</a>
             </div>
         </aside>
 
+        <!-- CENTRAL COMPONENT: INTERACTIVE CORE DOCUMENTATION CANVAS -->
         <main class="w3-central-viewport-canvas">
             <div class="viewport-content-container">
                 
@@ -314,6 +320,7 @@
                     <p>Master execution runtimes, memory pointer assignments, dynamic built-in type classifiers systems, and structured string stream parsing mechanics from square one.</p>
                 </div>
 
+                <!-- PANEL 1: OVERVIEW PHILOSOPHY -->
                 <div id="overview" class="nt-tab-panel active">
                     <span class="pedagogy-block-indicator">01 // Runtime Architecture</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Time: 25 Mins</span></div>
@@ -336,6 +343,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 2: WORKSPACE SETUP -->
                 <div id="env" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">02 // Environment Setup</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Time: 40 Mins</span></div>
@@ -368,6 +376,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 3: POINTER VARIABLES -->
                 <div id="vars" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">03 // Memory Pointers</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Time: 30 Mins</span></div>
@@ -398,6 +407,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 4: CLASS SYSTEM -->
                 <div id="datatypes" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">04 // Built-In Types</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Time: 45 Mins</span></div>
@@ -439,6 +449,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 5: STREAM IO HANDLING -->
                 <div id="io" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">05 // Stream Operations</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Time: 35 Mins</span></div>
@@ -473,10 +484,11 @@
 
                     <div class="project-milestone-box">
                         <h4><i class="fas fa-laptop-code"></i> Practical Milestone Challenge Assignment</h4>
-                        <p><b>Student Registration Pipeline Script:</b> Create a script that prompts users to input their Identity Name, Age, and College Marks. Cast numerical components explicitly, evaluate an adjusted score baseline, and output the total summary block using a single comprehensive literal f-string template structure.</p>
+                        <p><b>Student Registration Pipeline Script:</b> Create a script that prompts users to input their Identity Name, Age, and College Marks[cite: 1]. Cast numerical components explicitly, evaluate an adjusted score baseline, and output the total summary block using a single comprehensive literal f-string template structure.</p>
                     </div>
                 </div>
 
+                <!-- PANEL 6: STRING OPERATIONS -->
                 <div id="strings" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">06 // Character Arrays</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium &bull; Time: 32 Mins</span></div>
@@ -489,7 +501,7 @@
                         
                         <div class="w3-code-snippet-shell">
                             <div class="w3-code-shell-header"><span>array_slicing.py</span> <span>Range Windows</span></div>
-                            <div class="w3-code-shell-body"><span class="var-color">brand_token</span> = <span class="val-color">"CodeCraftAcademic"</span><br><br>print(<span class="var-color">brand_token</span>[<span class="val-color">0</span>:<span class="val-color">4</span>])<br>print(<span class="var-color">brand_token</span>[::-<span class="val-color">1</span>])</div>
+                            <div class="w3-code-shell-body"><span class="var-color">brand_token</span> = <span class="val-color">"CodeCraftAcademic"</span><br><br>print(<span class="var-color">brand_token</span>[<span class="val-color">0</span>:<span class="val-color">4</span>])<br>print(<span class="var-token">brand_token</span>[::-<span class="val-color">1</span>])</div>
                             <div class="w3-code-shell-output">
                                 <span>Code</span>
                                 <span>cimedacAftarfedoC</span>
@@ -508,6 +520,7 @@
                     </div>
                 </div>
 
+                <!-- PANEL 7: SYLLABUS EXAMINATION COMPILATION VAULT -->
                 <div id="examination" class="nt-tab-panel">
                     <span class="pedagogy-block-indicator">07 // Practice &amp; Assessment</span>
                     <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium &bull; Time: 15 Mins</span></div>
@@ -555,6 +568,7 @@
                     </div>
                 </div>
 
+                <!-- MULTI-TIER ACADEMIC MATERIAL DOWNLOAD PORTAL LINK CLUSTERS -->
                 <section class="download-portal-strip">
                     <div class="dl-strip-text">
                         <h3>Vetted Academic Download Center</h3>
@@ -566,6 +580,7 @@
                     </div>
                 </section>
 
+                <!-- ROUTING FLOW SEQUENCER FOOTER DECK LINK SYSTEM -->
                 <footer class="notes-routing-deck">
                     <div class="route-node-placeholder"></div>
                     <div class="route-center-summary">Module 01 Tracker: <strong>Active Discovery</strong></div>
@@ -575,6 +590,7 @@
             </div>
         </main>
 
+        <!-- METADATA COMPONENT: RIGHT HAND PLATFORM TRACKER CONSOLE PANEL -->
         <aside class="w3-metadata-sidebar">
             <div class="meta-group-tile">
                 <h6>Module Logistics</h6>
@@ -597,6 +613,7 @@
 
     </div>
 
+    <!-- Global Universal Footer Mount Anchor Slot (Untouched) -->
     <div id="global-footer"></div>
 
     <script src="main.js"></script>
