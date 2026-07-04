@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Poster Notes Library | Code Craft Academic</title>
+    <!-- Linked Global Stylesheet Baseline Requirements -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           ⚓ CLEAN STANDALONE WORKSPACE STYLES (Aligns with style.css Variables)
+           ========================================================================== */
+        body.w3-docs-workspace {
+            background-color: #f8fafc; /* Reuses light academic neutral backdrop canvas */
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 85px; /* Safely offsets master-header height variables */
+        }
+
+        .visual-library-container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 50px 24px;
+            flex: 1;
+        }
+
+        /* Deluxe Centralized Header Component */
+        .library-center-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+        .library-center-header .nt-pill-badge {
+            background: rgba(16, 185, 129, 0.06);
+            color: #10b981;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            margin-bottom: 12px;
+        }
+        .library-center-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0f172a !important;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+        .library-center-header h1 span {
+            color: #10b981;
+        }
+        .library-center-header p {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+
+        /* 🚀 SCALABLE PRODUCTION 4-COLUMN GRID MATRIX */
+        .poster-showcase-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Enforces exactly 4 cards per row on desktop viewports */
+            gap: 24px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        /* Volumetric Book Card Elements */
+        .poster-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .poster-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Premium Handbook Cover Simulator Card Box */
+        .poster-cover-canvas {
+            width: 100%;
+            height: 240px;
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            border-radius: 8px;
+            position: relative;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(15, 23, 42, 0.02);
+        }
+        
+        /* Notebook Graph-Grid Subpixel Blueprint Line Overlays */
+        .poster-cover-canvas::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 14px 15px;
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cover-header { display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+        .cover-header i { font-size: 1.4rem; color: #0f172a; }
+        
+        .cover-badge-tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            background: #0f172a;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        .cover-title-area { text-align: left; z-index: 2; margin-top: auto; margin-bottom: auto; }
+        .cover-title-area h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a !important;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+        .cover-title-area span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            display: block;
+        }
+
+        .cover-footer-branding { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #0f172a; padding-top: 6px; z-index: 2; }
+        .cover-footer-branding span { font-family: 'Space Grotesk', sans-serif; font-size: 0.52rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: #0f172a; }
+
+        /* Chromatic Brand Overrides */
+        .poster-card.emerald-division .poster-cover-canvas { border-color: #10b981; }
+        .poster-card.emerald-division .cover-badge-tag { background: #10b981; }
+        .poster-card.emerald-division .cover-footer-branding { border-top-color: #10b981; }
+        .poster-card.emerald-division .btn-download-redirect:hover { background: #10b981; }
+
+        .poster-card.amber-division .poster-cover-canvas { border-color: #f59e0b; }
+        .poster-card.amber-division .cover-badge-tag { background: #f59e0b; }
+        .poster-card.amber-division .cover-footer-branding { border-top-color: #f59e0b; }
+        .poster-card.amber-division .btn-download-redirect:hover { background: #f59e0b; }
+
+        .poster-card.blue-division .poster-cover-canvas { border-color: #2563eb; }
+        .poster-card.blue-division .cover-badge-tag { background: #2563eb; }
+        .poster-card.blue-division .cover-footer-branding { border-top-color: #2563eb; }
+        .poster-card.blue-division .btn-download-redirect:hover { background: #2563eb; }
+
+        .poster-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-top: 4px; }
+        .poster-card p { font-size: 0.8rem !important; color: #64748b !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+        
+        .poster-meta-badge-row { display: flex; gap: 4px; flex-wrap: wrap; }
+        .poster-badge { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; padding: 2px 6px; border-radius: 4px; background: #f8fafc; border: 1px solid #e2e8f0; color: #64748b; }
+
+        .btn-download-redirect {
+            width: 100%;
+            background: #0f172a;
+            color: #ffffff !important;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: auto;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        /* Bottom Global Resource Strip Accent */
+        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.005); }
+        .dl-strip-text { text-align: left; }
+        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: #0f172a !important; }
+        .dl-strip-text p { font-size: 0.85rem !important; color: #475569 !important; line-height: 1.4 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+        .dl-action-node { padding: 10px 18px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease; background: rgba(16, 185, 129, 0.04); color: #059669; border: 1px solid rgba(16, 185, 129, 0.12); }
+        .dl-action-node:hover { background: #10b981; color: #ffffff !important; }
+
+        /* ==========================================================================
+           ⚓ SYSTEM RESPONSIVE MEDIA BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1200px) { .poster-showcase-matrix-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .poster-showcase-matrix-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { 
+            .poster-showcase-matrix-grid { grid-template-columns: 1fr; } 
+            .download-portal-strip { flex-direction: column; text-align: center; }
+            .dl-strip-text { text-align: center; }
+            .dl-action-node { width: 100%; justify-content: center; }
+            .library-center-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body class="w3-docs-workspace">
+
+    <!-- Loaded Global Header Anchor Mount (Untouched Baseline System) -->
+    <div id="global-header"></div>
+
+    <!-- Centered Content Grid Container -->
+    <div class="visual-library-container">
+        
+        <!-- Beautiful Centralized Heading Section -->
+        <header class="library-center-header">
+            <span class="nt-pill-badge">Premium Learning Repository</span>
+            <h1>Infographic Poster Notes <span>Library</span></h1>
+            <p>Access high-fidelity, hand-drawn notebook layouts engineered for ultra-fast chapter revisions, phone-optimized scrolling reviews, and fluid university semester test preparations.</p>
+        </header>
+
+        <!-- 🚀 4-COLUMN CARD CONTAINER GRID MATRIX (Future Expandable Slot Zone) -->
+        <div class="poster-showcase-matrix-grid">
+            
+            <!-- CARD 1: COMPUTER FUNDAMENTALS (EMERALD GREEN DESIGN) -->
+            <div class="poster-card emerald-division">
+                <div class="poster-cover-canvas">
+                    <div class="cover-header">
+                        <span class="cover-badge-tag">Classroom Notes</span>
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="cover-title-area">
+                        <span>Computer Science</span>
+                        <h2>Computer<br>Fundamentals</h2>
+                        <span>Part 01 Baseline Map</span>
+                    </div>
+                    <div class="cover-footer-branding">
+                        <span>WebNova Studio</span>
+                        <span>Code Craft Academic</span>
+                    </div>
+                </div>
+                <div class="poster-meta-badge-row">
+                    <span class="poster-badge">Module 01</span>
+                    <span class="poster-badge">PDF Pack</span>
+                </div>
+                <h4>Computer Fundamentals (Part 1)</h4>
+                <p>Covers Generations, System Architecture, Classifications, History, and Peripherals.</p>
+                <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" target="_blank" class="btn-download-redirect">
+                    <i class="fas fa-external-link-alt"></i> Get From Drive
+                </a>
+            </div>
+
+            <!-- CARD 2: COMPUTER ARCHITECTURE (EMERALD GREEN DESIGN) -->
+            <div class="poster-card emerald-division">
+                <div class="poster-cover-canvas">
+                    <div class="cover-header">
+                        <span class="cover-badge-tag">Hardware Layout</span>
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="cover-title-area">
+                        <span>Architecture Maps</span>
+                        <h2>Computer<br>Architecture</h2>
+                        <span>CPU Internal Logic</span>
+                    </div>
+                    <div class="cover-footer-branding">
+                        <span>WebNova Studio</span>
+                        <span>Code Craft Academic</span>
+                    </div>
+                </div>
+                <div class="poster-meta-badge-row">
+                    <span class="poster-badge">Module 02</span>
+                    <span class="poster-badge">Poster Set</span>
+                </div>
+                <h4>CPU Processor Architecture</h4>
+                <p>Detailed architectural visualization mapping the exact logic loops of the ALU and Control Unit blocks.</p>
+                <a href="https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_LINK_2/view" target="_blank" class="btn-download-redirect">
+                    <i class="fas fa-external-link-alt"></i> Get From Drive
+                </a>
+            </div>
+
+            <!-- CARD 3: PYTHON CORE (AMBER GOLD DESIGN) -->
+            <div class="poster-card amber-division">
+                <div class="poster-cover-canvas">
+                    <div class="cover-header">
+                        <span class="cover-badge-tag">Syntax Reference</span>
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="cover-title-area">
+                        <span>Core Scripting</span>
+                        <h2>Python 101<br>Foundations</h2>
+                        <span>Syntax Cheat Map</span>
+                    </div>
+                    <div class="cover-footer-branding">
+                        <span>WebNova Studio</span>
+                        <span>Code Craft Academic</span>
+                    </div>
+                </div>
+                <div class="poster-meta-badge-row">
+                    <span class="poster-badge">Python</span>
+                    <span class="poster-badge">Cheat Sheet</span>
+                </div>
+                <h4>Python Core Reference Poster</h4>
+                <p>Quick lookup reference tracking variable token limits, dynamic casting protocols, and common stream rules.</p>
+                <a href="https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_LINK_3/view" target="_blank" class="btn-download-redirect">
+                    <i class="fas fa-external-link-alt"></i> Get From Drive
+                </a>
+            </div>
+
+            <!-- CARD 4: WEB ARCHITECTURE (ROYAL BLUE DESIGN) -->
+            <div class="poster-card blue-division">
+                <div class="poster-cover-canvas">
+                    <div class="cover-header">
+                        <span class="cover-badge-tag">Style System</span>
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="cover-title-area">
+                        <span>UI/UX Interface</span>
+                        <h2>CSS Flexbox<br>&amp; Grid Layouts</h2>
+                        <span>Spatial Blueprint Maps</span>
+                    </div>
+                    <div class="cover-footer-branding">
+                        <span>WebNova Studio</span>
+                        <span>Code Craft Academic</span>
+                    </div>
+                </div>
+                <div class="poster-meta-badge-row">
+                    <span class="poster-badge">CSS3 Layouts</span>
+                    <span class="poster-badge">Poster Sheet</span>
+                </div>
+                <h4>CSS Flexbox &amp; Grid Visual Maps</h4>
+                <p>Tactile micro-diagrams displaying layout wraps properties, cross-axis item aligning directions, and grid spacers fields.</p>
+                <a href="https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_LINK_4/view" target="_blank" class="btn-download-redirect">
+                    <i class="fas fa-external-link-alt"></i> Get From Drive
+                </a>
+            </div>
+
+            <!-- 💡 FUTURE EXPANSION SLOT NOTICE:
+                 To add Card 5, Card 6, etc., copy one of the "poster-card" blocks above,
+                 paste it directly below this comment, and update the internal text details. 
+                 The CSS grid will automatically handle alignment loops perfectly! -->
+
+        </div>
+
+        <!-- LOWER GLOBAL AGGREGATOR DOWNLOAD STRIP -->
+        <section class="download-portal-strip">
+            <div class="dl-strip-text">
+                <h3>Download Complete Infographics Poster Bundle</h3>
+                <p>Instantly access the complete high-resolution cloud directory containing all our specialized visual notebook prints offline completely free.</p>
+            </div>
+            <a href="https://drive.google.com/file/d/1MW1_2yZKQaw0a2VrNmqpuvSZOjqyh1-M/view?usp=sharing" target="_blank" class="dl-action-node">
+                <i class="fas fa-file-pdf"></i> Download Full Pack Archive
+            </a>
+        </section>
+
+    </div>
+
+    <!-- Loaded Global Footer Anchor Mount (Untouched Baseline System) -->
+    <div id="global-footer"></div>
+
+    <!-- Core App Injections Requirement Links -->
+    <script src="main.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>
