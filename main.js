@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
                         <li class="nav-item"><a href="free-resources.html" class="nav-link">Resources</a></li>
                         <li class="nav-item"><a href="practicals-library.html" class="nav-link">Practical Hub</a></li>
+                        <li class="nav-item"><a href="visual-posters.html" class="nav-link">Infographic Poster Notes</a></li>
                         
                         <li class="nav-item">
                             <a href="#" class="nav-link">About <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
@@ -38,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </li>
                         
                         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                        <li class="nav-item"><a href="visual-posters.html" class="nav-link">Infographic Poster Notes</a></li>
+                        <li class="nav-item"><a href="requests.html" class="nav-link">Request Vault</a></li>
+                        
                     </ul>
                 </div>
             </header>
