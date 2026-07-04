@@ -191,6 +191,5 @@ function closeResourceAlert() {
         particles.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     }
-
     createParticles(); animate();
 })();
