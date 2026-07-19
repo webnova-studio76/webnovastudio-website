@@ -13,267 +13,286 @@
     
     <style>
         /* ==========================================================================
-           ⚓ W3SCHOOLS & GEEKSFORGEEKS THREE-COLUMN LIGHT ACADEMIC STYLE
+           💎 PREMIUM INTERACTIVE EDUCATIONAL PLATFORM STYLE ENGINE (MODULE 02)
            ========================================================================== */
-        body.w3-docs-workspace {
-            background-color: #ffffff;
-            color: #334155;
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
+        :root {
+            --primary-blue: #2563eb;
+            --primary-blue-glow: rgba(37, 99, 235, 0.05);
+            --success-green: #10b981;
+            --success-light: rgba(16, 185, 129, 0.05);
+            --warning-amber: #f59e0b;
+            --warning-light: #fffbeb;
+            --purple-trend: #8b5cf6;
+            --purple-glow: rgba(139, 92, 246, 0.05);
+            --danger-red: #ef4444;
+            --danger-light: rgba(239, 68, 68, 0.03);
+            
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-900: #0f172a;
+            
+            /* Dynamic Section Theme Default */
+            --theme-color: var(--primary-blue);
+            --theme-glow: var(--primary-blue-glow);
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* App Framework Main Grid Splitter */
+        body.w3-docs-workspace {
+            background-color: #fafbfc;
+            color: var(--slate-700);
+            font-family: var(--font-body);
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .w3-app-frame-wrapper {
             display: flex;
-            flex: 1;
-            height: calc(100vh - 72px); /* Offsets global master header navbar */
-            overflow: hidden;
+            min-height: calc(100vh - 72px);
             width: 100%;
         }
 
-        /* --- 1. LEFT NAVIGATION SIDEBAR (FLOATING CATALOG) --- */
+        /* --- 1. MODERN HIGH-CONTRAST MODULE NAVIGATION --- */
         .w3-sidebar-rail {
-            width: 290px;
-            background: #f8fafc;
-            border-right: 1px solid #e2e8f0;
-            padding: 24px 16px;
-            overflow-y: auto;
+            width: 300px;
+            background: #ffffff;
+            border-right: 1px solid var(--slate-200);
+            padding: 32px 16px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 28px;
             flex-shrink: 0;
-            text-align: left;
+            box-sizing: border-box;
+            position: sticky;
+            top: 72px;
+            height: calc(100vh - 72px);
+            overflow-y: auto;
         }
-        .w3-sidebar-rail::-webkit-scrollbar { width: 4px; }
-        .w3-sidebar-rail::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         
         .sidebar-section-group h5 {
-            font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
-            color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-left: 8px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 12px 12px;
         }
-        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+        .sidebar-menu-list { list-style: none; display: flex; flex-direction: column; gap: 6px; padding: 0; margin: 0; }
         .sidebar-menu-item {
-            padding: 10px 14px; border-radius: 6px; font-size: 0.84rem; font-weight: 500;
-            color: #475569; cursor: pointer; transition: all 0.2s ease;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            display: flex; align-items: center; gap: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--slate-600);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid transparent;
         }
-        .sidebar-menu-item i { width: 14px; text-align: center; font-size: 0.85rem; color: #94a3b8; }
-        .sidebar-menu-item:hover { background: #e0e7ff; color: #0f172a; }
-        .sidebar-menu-item.active { background: rgba(37, 99, 235, 0.06); color: #2563eb; font-weight: 700; border-left: 3px solid #2563eb; padding-left: 11px; }
-        .sidebar-menu-item.active i { color: #2563eb; }
+        .sidebar-menu-item i.item-icon { margin-right: 10px; font-size: 1rem; color: #64748b; transition: var(--transition-smooth); }
+        .sidebar-menu-item:hover { background: var(--slate-50); color: var(--slate-900); }
+        
+        .sidebar-menu-item.active {
+            font-weight: 700;
+            background: var(--theme-glow);
+            color: var(--theme-color);
+            border-color: rgba(0,0,0,0.02);
+        }
+        .sidebar-menu-item.active i.item-icon { color: var(--theme-color); }
+        .sidebar-menu-item .status-badge { font-size: 0.75rem; opacity: 0.5; }
+        .sidebar-menu-item.active .status-badge { opacity: 1; color: var(--theme-color); }
 
-        /* --- 2. CENTRAL WORKING LEARNING CANVAS --- */
+        /* --- 2. HERO HEADER SECTION --- */
+        .premium-learning-hero {
+            background: radial-gradient(100% 100% at 0% 0%, #1e293b 0%, var(--slate-900) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 32px;
+            align-items: center;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-info-pane h1 { font-family: var(--font-display); font-size: 3rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: -0.03em; line-height: 1.1; }
+        .hero-info-pane p { font-size: 1.06rem; color: #94a3b8; line-height: 1.6; margin: 0 0 32px 0; font-weight: 400; }
+        
+        .hero-metrics-pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+        .metric-pill { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.08); padding: 8px 16px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; color: #cbd5e1; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-pill i { color: var(--success-green); }
+
+        /* Structural Dynamic Blueprint Visuals */
+        .hero-graphic-pane { position: relative; height: 100%; min-height: 240px; display: flex; align-items: center; justify-content: center; }
+        .blueprint-canvas-mockup { width: 100%; height: 100%; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.05)); border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 16px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .blueprint-canvas-mockup i.bg-icon { font-size: 8rem; color: rgba(255, 255, 255, 0.03); position: absolute; }
+        .blueprint-grid-lines { position: absolute; inset: 0; background-size: 20px 20px; background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px); }
+        .blueprint-hardware-shape { width: 140px; height: 140px; border: 2px solid rgba(255,255,255,0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(255,255,255,0.8); background: rgba(15, 23, 42, 0.6); box-shadow: 0 0 30px rgba(37, 99, 235, 0.2); animation: floatAnimation 4s ease-in-out infinite; }
+        @keyframes floatAnimation { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- 3. CORE DOCUMENTATION LEARNING CANVASES --- */
         .w3-central-viewport-canvas {
             flex: 1;
             overflow-y: auto;
             padding: 40px;
-            background: #ffffff;
-            height: 100%;
+            box-sizing: border-box;
         }
-        .viewport-content-container { max-width: 820px; margin: 0 auto; width: 100%; }
+        .viewport-content-container { max-width: 900px; margin: 0 auto; width: 100%; }
 
-        .breadcrumb-trail { display: flex; gap: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px; text-align: left; }
-        .breadcrumb-trail span.active-node { color: #2563eb; }
+        .section-header-block { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid var(--slate-200); }
+        .section-header-block h2 { font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; color: var(--slate-900); margin: 0 0 6px 0; letter-spacing: -0.02em; }
+        .section-header-block p.section-sub-desc { font-size: 1.05rem; color: var(--slate-600); line-height: 1.5; margin: 0; }
 
-        /* Premium Light Course Style Hero Section */
-        .w3-hero-course-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 32px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-            text-align: left;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.02);
-        }
-        .w3-hero-course-card h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #0f172a !important; letter-spacing: -0.02em; line-height: 1.2; }
-        .w3-hero-course-card p { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-top: 8px; }
+        /* Resource Download Links Strip */
+        .download-resource-cards-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+        .resource-download-card { background: #ffffff; border: 1px solid var(--slate-200); padding: 20px; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--slate-900); transition: var(--transition-smooth); }
+        .resource-download-card:hover { border-color: var(--theme-color); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .res-card-meta-text { display: flex; flex-direction: column; gap: 2px; }
+        .res-card-title { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
+        .res-card-extension { font-family: var(--font-mono); font-size: 0.72rem; color: var(--slate-600); text-transform: uppercase; }
+        .resource-download-card i.download-icon-badge { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
         
+        .resource-download-card.pdf i { background: rgba(239, 68, 68, 0.08); color: var(--danger-red); }
+        .resource-download-card.ppt i { background: rgba(245, 158, 11, 0.08); color: var(--warning-amber); }
+        .resource-download-card.cheat i { background: rgba(37, 99, 235, 0.08); color: var(--primary-blue); }
+
         .nt-tab-panel { display: none; }
-        .nt-tab-panel.active { display: block; animation: w3Fade 0.2s ease-out; }
-        @keyframes w3Fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .nt-tab-panel.active { display: block; }
 
-        .nt-tab-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; text-align: left; border-left: 4px solid #2563eb; padding-left: 12px; }
-        .nt-tab-panel h3 { margin: 24px 0 12px; color: #2563eb; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; text-align: left; display: flex; align-items: center; gap: 8px; }
-        .nt-tab-panel p.section-sub-desc { font-size: 0.92rem !important; color: #64748b !important; line-height: 1.6 !important; text-align: left !important; margin-bottom: 24px !important; }
-
-        /* Structural Learning Blocks & Cards */
-        .pedagogy-block-indicator { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #2563eb; margin-bottom: 4px; display: block; text-align: left; }
-        .difficulty-indicator-row { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
-        .diff-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-        .diff-dot.green { background-color: #10b981; }
-        .diff-dot.amber { background-color: #f59e0b; }
-        .diff-dot.red { background-color: #ef4444; }
-
-        .concept-learning-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(15,23,42,0.01); }
-        .concept-learning-node h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a !important; margin-bottom: 4px; }
+        /* Chunked Concept Modular Profiles */
+        .chunked-concept-node { background: #ffffff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); position: relative; }
+        .chunked-concept-node h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--slate-900); margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px; }
+        .chunked-concept-node h3 i { color: var(--theme-color); }
         
-        /* Modern Educational Diagram Frameworks (Light Vectors) */
-        .w3-visual-diagram-box {
-            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .w3-diagram-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .micro-field-box { display: grid; grid-template-columns: 170px 1fr; border-bottom: 1px solid var(--slate-100); padding: 14px 0; align-items: flex-start; }
+        .micro-field-box:last-child { border-bottom: none; }
+        .field-label-tag { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-600); display: flex; align-items: center; gap: 6px; padding-top: 2px; }
+        .field-label-tag i { color: var(--theme-color); font-size: 0.9rem; }
+        .field-content-data { font-size: 0.95rem; line-height: 1.6; color: var(--slate-700); }
+        .field-content-data b { color: var(--slate-900); }
+
+        /* Premium Media Vector Displays */
+        .w3-visual-diagram-box { background: #ffffff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 32px; margin: 24px 0; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        .w3-diagram-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--slate-600); letter-spacing: 1px; margin-bottom: 20px; display: block; }
         
-        /* Memory Hierarchy Pyramid Card Grid */
-        .w3-pyramid-container { display: flex; flex-direction: column; gap: 4px; width: 100%; max-width: 420px; margin: 0 auto; }
-        .pyramid-tier { background: #ffffff; border: 1px solid #2563eb; padding: 8px; font-size: 0.78rem; font-weight: 700; color: #2563eb; text-align: center; border-radius: 4px; transition: all 0.2s ease; }
-        .pyramid-tier:hover { background: #2563eb; color: #ffffff; transform: scale(1.02); }
-        .tier-1 { width: 40%; margin: 0 auto; background: rgba(37,99,235,0.05); }
-        .tier-2 { width: 60%; margin: 0 auto; background: rgba(37,99,235,0.1); }
-        .tier-3 { width: 80%; margin: 0 auto; background: rgba(37,99,235,0.15); }
-        .tier-4 { width: 100%; background: rgba(37,99,235,0.2); }
+        /* Interactive Process Flow Systems */
+        .cycle-flow-container { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; flex-wrap: wrap; }
+        .cycle-step-card { background: var(--slate-50); border: 1px solid var(--slate-200); padding: 14px 24px; border-radius: 10px; font-family: var(--font-display); font-size: 0.92rem; font-weight: 700; color: var(--slate-900); text-align: center; min-width: 120px; transition: var(--transition-smooth); }
+        .cycle-step-card.active { border-color: var(--theme-color); background: var(--theme-glow); color: var(--theme-color); box-shadow: 0 0 15px var(--theme-glow); }
+        .cycle-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 1.1rem; }
 
-        /* Cycle Path Visual Layout */
-        .cycle-flow-container { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 600px; flex-wrap: wrap; margin: 0 auto; }
-        .cycle-step-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; color: #0f172a; text-align: center; min-width: 110px; flex: 1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-        .cycle-step-card.active { border-color: #2563eb; background: rgba(37,99,235,0.04); color: #2563eb; }
-        .cycle-flow-arrow { color: #cbd5e1; font-weight: 900; font-size: 0.9rem; }
+        /* Interactive Dynamic Hardware Pyramid */
+        .w3-pyramid-container { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 500px; margin: 0 auto; }
+        .pyramid-tier { background: var(--slate-50); border: 2px solid var(--slate-200); padding: 12px; font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--slate-700); text-align: center; border-radius: 8px; transition: var(--transition-smooth); cursor: pointer; }
+        .pyramid-tier:hover { background: var(--theme-color); border-color: var(--theme-color); color: #ffffff; transform: scale(1.03); box-shadow: 0 10px 20px -5px var(--theme-glow); }
+        .tier-1 { width: 50%; margin: 0 auto; border-color: #f87171; color: #ef4444; }
+        .tier-2 { width: 68%; margin: 0 auto; border-color: #fbbf24; color: #d97706; }
+        .tier-3 { width: 84%; margin: 0 auto; border-color: #60a5fa; color: #2563eb; }
+        .tier-4 { width: 100%; border-color: #34d399; color: #059669; }
 
-        /* Categorization Data Elements */
-        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
-        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 12px; }
+        /* Color-Coded Structural Callout Alerts */
+        .custom-card-alert { border-radius: 12px; padding: 20px; margin: 24px 0; display: flex; gap: 16px; align-items: flex-start; border: 1px solid transparent; }
+        .custom-card-alert i { font-size: 1.25rem; margin-top: 3px; }
+        .custom-card-alert h5 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin: 0 0 4px 0; }
+        .custom-card-alert p { font-size: 0.9rem; line-height: 1.5; margin: 0; }
         
-        .class-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; }
-        .class-profile-card.card-gpu { border-top: 3px solid #10b981; }
-        .class-profile-card.card-cpu { border-top: 3px solid #2563eb; }
-        .card-icon-slot { width: 30px; height: 30px; background: rgba(37,99,235,0.06); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #2563eb; font-size: 0.85rem; }
-        .class-profile-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; }
-        .scale-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; background: #ffffff; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px; }
-        .class-profile-card p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
+        .custom-card-alert.type-learn { background: var(--primary-blue-glow); border-color: rgba(37, 99, 235, 0.15); color: var(--slate-900); }
+        .custom-card-alert.type-learn i { color: var(--primary-blue); }
+        .custom-card-alert.type-tip { background: var(--warning-light); border-color: rgba(245, 158, 11, 0.2); color: #78350f; }
+        .custom-card-alert.type-tip i { color: var(--warning-amber); }
+        .custom-card-alert.type-mistake { background: var(--danger-light); border-color: rgba(239, 68, 68, 0.15); color: #7f1d1d; }
+        .custom-card-alert.type-mistake i { color: var(--danger-red); }
 
-        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .nt-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; margin: 24px 0; }
+        .nt-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; width: 100%; margin: 24px 0; }
+        
+        .premium-educational-profile-card { background: #ffffff; border: 1px solid var(--slate-200); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: var(--transition-smooth); }
+        .premium-educational-profile-card:hover { transform: translateY(-4px); border-color: var(--theme-color); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.05); }
+        .edu-card-icon-frame { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: var(--theme-color); background: var(--theme-glow); }
+        .premium-educational-profile-card h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--slate-900); margin: 0; }
+        .premium-educational-profile-card p { font-size: 0.88rem; line-height: 1.55; color: var(--slate-600); margin: 0; }
+        
+        .premium-educational-profile-card.card-cpu { border-top: 3px solid var(--primary-blue); }
+        .premium-educational-profile-card.card-gpu { border-top: 3px solid var(--success-green); }
+
+        .comparison-table-wrapper { width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid var(--slate-200); border-radius: 14px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
         table.nt-comparison-table { width: 100%; border-collapse: collapse; text-align: left; }
-        table.nt-comparison-table th, table.nt-comparison-table td { padding: 12px 14px; font-size: 0.82rem; border-bottom: 1px solid #e2e8f0; }
-        table.nt-comparison-table th { background: #f8fafc; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.68rem; }
-        table.nt-comparison-table td { color: #475569; font-weight: 500; }
+        table.nt-comparison-table th, table.nt-comparison-table td { padding: 16px 20px; font-size: 0.9rem; border-bottom: 1px solid var(--slate-200); }
+        table.nt-comparison-table th { background: var(--slate-50); font-family: var(--font-display); font-weight: 700; color: var(--slate-900); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem; }
+        table.nt-comparison-table td { color: var(--slate-600); font-weight: 500; }
 
-        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; }
-        .traits-bullet-list li { font-size: 0.84rem; color: #475569; padding-left: 20px; position: relative; }
-        .traits-bullet-list li::before { content: "✔"; position: absolute; left: 0; color: #10b981; font-weight: 900; }
-        .traits-bullet-list strong { color: #0f172a !important; font-weight: 600; }
+        .traits-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 14px; padding: 0; margin: 24px 0; }
+        .traits-bullet-list li { font-size: 0.92rem; color: #475569; padding-left: 28px; position: relative; line-height: 1.6; }
+        .traits-bullet-list li::before { content: "✓"; position: absolute; left: 0; color: var(--success-green); font-weight: 900; }
+        .traits-bullet-list strong { color: var(--slate-900); font-weight: 600; }
 
-        .nt-pro-tip-box { background: #fffbeb; border-left: 4px solid #f59e0b; border-top: 1px solid #fef3c7; border-right: 1px solid #fef3c7; border-bottom: 1px solid #fef3c7; padding: 16px 20px; border-radius: 0 6px 6px 0; margin-top: 20px; text-align: left; }
-        .nt-pro-tip-box strong { color: #b45309 !important; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 2px; }
-        .nt-pro-tip-box p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.45 !important; margin-bottom: 0 !important; }
+        /* Premium Exam Vault Elements */
+        .exam-qa-sub-block { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+        .qa-item-card { background: #ffffff; border: 1px solid var(--slate-200); padding: 24px; border-radius: 14px; }
+        .qa-item-card strong { font-family: var(--font-display); font-size: 1.1rem; color: var(--slate-900); font-weight: 700; display: block; margin: 8px 0 10px 0; }
+        .qa-item-card p { font-size: 0.95rem; line-height: 1.6; color: var(--slate-600); margin: 0; background: var(--slate-50); padding: 16px; border-radius: 8px; border: 1px dashed var(--slate-200); }
+        .marks-callout-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--theme-color); background: var(--theme-glow); padding: 4px 10px; border-radius: 6px; display: inline-block; }
 
-        .gen-deck-row { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 6px; font-size: 0.82rem; line-height: 1.45; text-align: left; margin-bottom: 6px; }
-        .gen-deck-row strong { color: #2563eb !important; font-weight: 700; display: block; margin-bottom: 2px; }
-        .gen-deck-row span { color: #475569; font-weight: 500; }
+        .interactive-mcq-sandbox { background: #ffffff; border: 1px solid var(--slate-200); padding: 32px; border-radius: 16px; margin-top: 32px; }
+        .interactive-mcq-sandbox h4 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--slate-900); margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px; }
+        .mcq-question-wrapper p { font-size: 1.05rem; color: var(--slate-900); font-weight: 600; margin: 0 0 20px 0; }
+        .mcq-options-column { display: flex; flex-direction: column; gap: 10px; max-width: 600px; }
+        .option-btn { background: var(--slate-50); border: 1px solid var(--slate-200); color: var(--slate-700); padding: 14px 20px; border-radius: 10px; text-align: left; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: var(--transition-smooth); }
+        .option-btn:hover { background: var(--slate-100); color: var(--slate-900); border-color: #cbd5e1; }
 
-        .mnemonic-learning-card { background: rgba(37, 99, 235, 0.01); border-left: 4px solid #2563eb; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 16px 20px; border-radius: 0 6px 6px 0; display: flex; gap: 14px; align-items: flex-start; margin-top: 20px; text-align: left; }
-        .mnemonic-learning-card i { color: #2563eb; font-size: 0.95rem; margin-top: 3px; }
-        .mnemonic-learning-card strong { color: #0f172a !important; font-size: 0.88rem; font-weight: 700; display: block; margin-bottom: 2px; }
-        .mnemonic-learning-card p { font-size: 0.8rem !important; color: #475569 !important; line-height: 1.4 !important; margin-bottom: 0 !important; }
-
-        /* Exam Revision Containers */
-        .exam-qa-sub-block { display: flex; flex-direction: column; gap: 10px; text-align: left; }
-        .exam-qa-sub-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 2px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
-        .qa-item-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 6px; }
-        .qa-item-card strong { font-size: 0.84rem; color: #2563eb !important; font-weight: 600; display: block; margin-bottom: 4px; }
-        .qa-item-card p { font-size: 0.8rem !important; line-height: 1.45 !important; color: #475569 !important; margin-bottom: 0 !important; }
-        .marks-callout-tag { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: #2563eb; background: rgba(37,99,235,0.04); padding: 2px 4px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
-
-        .mistake-warning-card { background: rgba(239, 68, 68, 0.01); border-left: 4px solid #ef4444; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2; padding: 14px 18px; border-radius: 0 6px 6px 0; display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; text-align: left; }
-        .mistake-warning-card i { color: #ef4444; font-size: 0.9rem; margin-top: 3px; }
-        .mistake-warning-card strong { color: #991b1b !important; font-size: 0.84rem; font-weight: 700; }
-        .mistake-warning-card p { font-size: 0.78rem !important; color: #475569 !important; margin-bottom: 0 !important; }
-
-        .quick-revision-sheet { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 24px; text-align: left; }
-        .quick-revision-sheet h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-        .quick-revision-sheet h4 i { color: #f59e0b; }
-        .revision-nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .rev-node { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.35; }
-        .rev-node::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 900; }
-        .rev-node b { color: #0f172a; }
-
-        .interactive-mcq-sandbox { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
-        .interactive-mcq-sandbox h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 10px; }
-        .mcq-question-wrapper p { font-size: 0.84rem !important; color: #0f172a !important; font-weight: 600; margin-bottom: 10px !important; }
-        .mcq-options-column { display: flex; flex-direction: column; gap: 6px; max-width: 480px; }
-        .option-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; padding: 8px 12px; border-radius: 4px; text-align: left; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.1s ease; }
-        .option-btn:hover { background: #f1f5f9; color: #0f172a; }
-
-        .quiz-feedback-box { padding: 12px; border-radius: 4px; font-size: 0.78rem; line-height: 1.4; margin-top: 10px; display: none; text-align: left; }
+        .quiz-feedback-box { padding: 16px; border-radius: 10px; font-size: 0.92rem; line-height: 1.6; margin-top: 20px; display: none; }
         .quiz-feedback-box.success-state { background: #e6f4ea; border: 1px solid #34d399; color: #137333; }
         .quiz-feedback-box.error-state { background: #fce8e6; border: 1px solid #f87171; color: #c5221f; }
 
-        .viva-checklist-block { margin-top: 20px; text-align: left; }
-        .viva-checklist-block h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a !important; margin-bottom: 6px; }
-        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-        .viva-bullets-list li { font-size: 0.78rem; color: #475569; padding-left: 12px; position: relative; line-height: 1.4; }
-        .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: 900; }
-        .viva-bullets-list strong { color: #0f172a !important; font-weight: 600; }
+        .quick-revision-sheet { background: #ffffff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 32px; margin-top: 32px; }
+        .quick-revision-sheet h4 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--slate-900); margin: 0 0 20px 0; display: flex; align-items: center; gap: 8px; }
+        .quick-revision-sheet h4 i { color: var(--warning-amber); }
+        .revision-nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .rev-node { font-size: 0.92rem; color: var(--slate-600); padding-left: 18px; position: relative; line-height: 1.55; }
+        .rev-node::before { content: "•"; position: absolute; left: 0; color: var(--theme-color); font-weight: 900; font-size: 1.2rem; top: -2px; }
+        .rev-node b { color: var(--slate-900); }
 
-        .download-portal-strip { background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-        .dl-strip-text { text-align: left; }
-        .dl-strip-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a !important; }
-        .dl-strip-text p { font-size: 0.78rem !important; color: #475569 !important; line-height: 1.35 !important; margin-top: 2px !important; margin-bottom: 0 !important; }
+        .viva-checklist-block { margin-top: 32px; }
+        .viva-checklist-block h4 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--slate-900); margin: 0 0 16px 0; }
+        .viva-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0; }
+        .viva-bullets-list li { font-size: 0.88rem; color: var(--slate-600); padding-left: 16px; position: relative; line-height: 1.55; }
+        .viva-bullets-list li::before { content: "•"; position: absolute; left: 0; color: var(--theme-color); font-weight: 900; }
+        .viva-bullets-list strong { color: var(--slate-900); font-weight: 600; }
 
-        .dl-buttons-matrix { display: flex; gap: 6px; flex-wrap: wrap; }
-        .dl-action-node { padding: 6px 12px; border-radius: 4px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s ease; }
-        .dl-action-node.btn-pdf { background: rgba(16, 185, 129, 0.04); color: #059669; border: 1px solid rgba(16, 185, 129, 0.12); }
-        .dl-action-node.btn-pdf:hover { background: #10b981; color: #ffffff; }
-        .dl-action-node.btn-ppt { background: rgba(245, 158, 11, 0.04); color: #b45309; border: 1px solid rgba(245, 158, 11, 0.12); }
-        .dl-action-node.btn-ppt:hover { background: #f59e0b; color: #ffffff; }
-        .dl-action-node.btn-cheat { background: rgba(37, 99, 235, 0.04); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.12); }
-        .dl-action-node.btn-cheat:hover { background: #2563eb; color: #ffffff; }
+        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 32px 0 0 0; border-top: 1px solid var(--slate-200); margin-top: 48px; }
+        .route-center-summary { font-size: 0.82rem; color: var(--slate-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .route-center-summary strong { color: var(--success-green); }
+        .btn-next-module-trigger { padding: 12px 24px; border: 1px solid var(--slate-200); background: #ffffff; border-radius: 8px; font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-900); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition-smooth); }
+        .btn-next-module-trigger:hover { background: var(--slate-900); color: #ffffff; border-color: var(--slate-900); }
 
-        .notes-routing-deck { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 32px; border-top: 1px solid #e2e8f0; margin-top: 32px; }
-        .route-center-summary { font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .route-center-summary strong { color: #10b981 !important; }
-        .btn-next-module-trigger { padding: 8px 14px; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s ease; }
-        .btn-next-module-trigger:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
-
-        /* --- 3. RIGHT INFORMATION DESK (SIDEBAR SPECS - FIXED OVERLAP BUG) --- */
-        .w3-info-desk-rail {
-            width: 280px;
-            background: #f8fafc;
-            border-left: 1px solid #e2e8f0;
-            padding: 24px 16px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex-shrink: 0;
-            text-align: left;
+        /* Media Viewports Configuration Setup Rules */
+        @media (max-width: 1100px) {
+            .premium-learning-hero { grid-template-columns: 1fr; padding: 32px; text-align: center; }
+            .hero-metrics-pill-row { justify-content: center; }
+            .hero-graphic-pane { display: none; }
         }
-        .info-card-widget { background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01); }
-        .info-card-widget h6 { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 0; }
-        
-        /* Fixed list styles to purge raw browser bullet overlaps completely */
-        .info-card-widget ul {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .info-card-widget li {
-            font-size: 0.8rem;
-            color: #475569;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 !important;
-            margin: 0 !important;
-            border: none !important;
-        }
-        .info-card-widget li::before { display: none !important; }
-        .info-card-widget li strong { color: #0f172a; font-weight: 700; }
-
-        .progress-block-tracker { font-family: monospace; font-size: 1rem; color: #10b981; font-weight: 700; letter-spacing: 1px; }
-
-        @media (max-width: 1100px) { .w3-info-desk-rail { display: none; } }
-        @media (max-width: 960px) {
-            .w3-app-frame-wrapper { flex-direction: column; overflow: auto; height: auto; }
-            .w3-sidebar-rail { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
-            .nt-grid-3, .nt-grid-2, .download-portal-strip { grid-template-columns: 1fr !important; gap: 16px !important; }
-            .notes-routing-deck { flex-direction: column; gap: 16px; text-align: center; }
+        @media (max-width: 840px) {
+            .w3-app-frame-wrapper { flex-direction: column; }
+            .w3-sidebar-rail { width: 100%; height: auto; position: sticky; top: 0; z-index: 100; border-right: none; border-bottom: 1px solid var(--slate-200); padding: 12px 16px; }
+            .sidebar-menu-list { flex-direction: row; overflow-x: auto; gap: 8px; }
+            .sidebar-menu-item { white-space: nowrap; padding: 8px 14px; }
+            .w3-central-viewport-canvas { padding: 24px 16px; }
+            .download-resource-cards-strip { grid-template-columns: 1fr; }
+            .nt-grid-3, .nt-grid-2 { grid-template-columns: 1fr; }
+            .revision-nodes-grid { grid-template-columns: 1fr; }
+            .micro-field-box { grid-template-columns: 1fr; gap: 4px; }
+            .notes-routing-deck { flex-direction: column; gap: 18px; text-align: center; }
         }
     </style>
 </head>
@@ -285,88 +304,171 @@
     <!-- MAIN INTERACTIVE APP AXIS CONTAINER WRAPPER -->
     <div class="w3-app-frame-wrapper">
         
-        <!-- SIDEBAR 1: LEFT NAVIGATION RAIL (TOPICS DIRECTORY) -->
-        <aside class="w3-sidebar-rail">
+        <!-- SIDEBAR 1: LEFT NAVIGATION RAIL (TOPICS DIRECTORY)[cite: 5] -->
+        <aside class="w3-sidebar-rail" id="platformSidebar">
             <div class="sidebar-section-group">
                 <h5>02 // Architecture Core</h5>
                 <ul class="sidebar-menu-list">
-                    <li class="sidebar-menu-item active" onclick="triggerTabDisplaySwitch(this, 'logic')"><i class="fas fa-microchip"></i> 1. CPU Core Logic</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'memory')"><i class="fas fa-memory"></i> 2. Memory Flow System</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'physical')"><i class="fas fa-project-diagram"></i> 3. Physical Infrastructure</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'modern')"><i class="fas fa-bolt"></i> 4. Modern System Trends</li>
-                    <li class="sidebar-menu-item" onclick="triggerTabDisplaySwitch(this, 'examination')"><i class="fas fa-user-graduate"></i> 5. Module Exam Vault</li>
+                    <li class="sidebar-menu-item active" data-theme="#2563eb" data-glow="rgba(37,99,235,0.05)" onclick="triggerTabDisplaySwitch(this, 'logic')">
+                        <span><i class="fas fa-microchip item-icon"></i> CPU Core Logic</span>
+                        <span class="status-badge">✓</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-theme="#10b981" data-glow="rgba(16,185,129,0.05)" onclick="triggerTabDisplaySwitch(this, 'memory')">
+                        <span><i class="fas fa-memory item-icon"></i> Memory Flow System</span>
+                        <span class="status-badge">●</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-theme="#f59e0b" data-glow="rgba(245,158,11,0.05)" onclick="triggerTabDisplaySwitch(this, 'physical')">
+                        <span><i class="fas fa-project-diagram item-icon"></i> Physical Infrastructure</span>
+                        <span class="status-badge">●</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-theme="#8b5cf6" data-glow="rgba(139,92,246,0.05)" onclick="triggerTabDisplaySwitch(this, 'modern')">
+                        <span><i class="fas fa-bolt item-icon"></i> Modern System Trends</span>
+                        <span class="status-badge">●</span>
+                    </li>
+                    <li class="sidebar-menu-item" data-theme="#ef4444" data-glow="rgba(239,68,68,0.05)" onclick="triggerTabDisplaySwitch(this, 'examination')">
+                        <span><i class="fas fa-user-graduate item-icon"></i> Module Exam Vault</span>
+                        <span class="status-badge">●</span>
+                    </li>
                 </ul>
             </div>
         </aside>
 
-        <!-- CANVAS 2: CENTRAL INTERACTIVE NOTES SCREEN CONTENT -->
+        <!-- CANVAS 2: CENTRAL INTERACTIVE NOTES SCREEN CONTENT[cite: 5] -->
         <main class="w3-central-viewport-canvas">
             <div class="viewport-content-container">
                 
+                <!-- NEW PLATFORM HERO INFRASTRUCTURE SECTION -->
+                <section class="premium-learning-hero">
+                    <div class="hero-info-pane">
+                        <h1>Advanced Architecture</h1>
+                        <p>Explore central processing logic pipelines, internal caching structures systems hierarchies, hardware communication buses, and modern processing trends engineered for beginners.</p>
+                        <div class="hero-metrics-pill-row">
+                            <div class="metric-pill stars"><i class="fas fa-star"></i> Rated Notes</div>
+                            <div class="metric-pill"><i class="fas fa-clock"></i> 45 Mins Read</div>
+                            <div class="metric-pill"><i class="fas fa-book"></i> 4 Core Units</div>
+                        </div>
+                    </div>
+                    <div class="hero-graphic-pane">
+                        <div class="blueprint-canvas-mockup">
+                            <div class="blueprint-grid-lines"></div>
+                            <i class="fas fa-server bg-icon"></i>
+                            <div class="blueprint-hardware-shape">
+                                <i class="fas fa-cpu"></i>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <nav class="breadcrumb-trail">
                     <span>Course Curriculum</span> / <span>Computer Architecture</span> / <span class="active-node" id="breadcrumbLabel">CPU Core Logic</span>
                 </nav>
 
-                <!-- Premium Academic Module Cover -->
-                <header class="w3-hero-course-card">
-                    <span class="nt-pill-badge">Computer Organization</span>
-                    <h1>Module 02: Advanced Architecture</h1>
-                    <p>A structured, student-friendly exploration mapping central processing logic units, internal caching systems hierarchies, hardware bus registers communication lines, and modern processor design tracks.</p>
-                </header>
+                <!-- EXPLICIT SEPARATE DOWNLOAD LINK PORTAL BADGES MATRICES[cite: 5] -->
+                <div class="download-resource-cards-strip">
+                    <a href="downloads/module2-notes.pdf" class="resource-download-card pdf" download>
+                        <div class="res-card-meta-text">
+                            <span class="res-card-title">Handout PDF</span>
+                            <span class="res-card-extension">PDF Document</span>
+                        </div>
+                        <i class="fas fa-file-pdf download-icon-badge"></i>
+                    </a>
+                    <a href="downloads/module2-slides.pptx" class="resource-download-card ppt" download>
+                        <div class="res-card-meta-text">
+                            <span class="res-card-title">Slidedeck</span>
+                            <span class="res-card-extension">Powerpoint PPTX</span>
+                        </div>
+                        <i class="fas fa-file-powerpoint download-icon-badge"></i>
+                    </a>
+                    <a href="downloads/module2-cheat.pdf" class="resource-download-card cheat" download>
+                        <div class="res-card-meta-text">
+                            <span class="res-card-title">Cheat Sheet</span>
+                            <span class="res-card-extension">Quick Sheet</span>
+                        </div>
+                        <i class="fas fa-bolt download-icon-badge"></i>
+                    </a>
+                </div>
 
-                <!-- TAB MODULE PANEL 1: CPU LOGIC -->
+                <!-- TAB MODULE PANEL 1: CPU LOGIC[cite: 5] -->
                 <div id="logic" class="nt-tab-panel active">
-                    <span class="pedagogy-block-indicator">01 // Processing Blueprints</span>
-                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Study Time: 12 Mins</span></div>
-                    <h2>CPU &amp; Processing Logic</h2>
-                    <p class="section-sub-desc">The Central Processing Unit (CPU) executes all software calculations. It follows the <b>Von Neumann Architecture</b> model, which states that computer data and software instructions share the exact same physical memory space.</p>
+                    <div class="section-header-block">
+                        <h2>CPU &amp; Processing Logic</h2>
+                        <p class="section-sub-desc">The Central Processing Unit (CPU) executes all software calculations based on foundational processing blueprints rules.</p>
+                    </div>
                     
-                    <h3>The Fetch-Decode-Execute Cycle</h3>
-                    <p class="section-sub-desc">Every instruction processed by a machine runs through an endless four-step cycle managed by the core chip components:</p>
-                    
-                    <div class="w3-visual-diagram-box">
-                        <span class="w3-diagram-label">🧩 Interactive Process Flow Diagram</span>
-                        <div class="cycle-flow-container">
-                            <div class="cycle-step-card active">1. Fetch</div>
-                            <div class="cycle-flow-arrow">&rarr;</div>
-                            <div class="cycle-step-card">2. Decode</div>
-                            <div class="cycle-flow-arrow">&rarr;</div>
-                            <div class="cycle-step-card">3. Execute</div>
-                            <div class="cycle-flow-arrow">&rarr;</div>
-                            <div class="cycle-step-card">4. Store</div>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-microchip"></i> Von Neumann Architecture</h3>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Core Premise?</span>
+                            <span class="field-content-data">A unified general-purpose structural model dictating that computer processing data and software instructions command blocks share the <b>exact same physical memory space</b>.</span>
                         </div>
                     </div>
 
-                    <ul class="traits-bullet-list">
-                        <li><strong>Fetch:</strong> The Control Unit (CU) retrieves the next instruction waiting in line from the RAM module.</li>
-                        <li><strong>Decode:</strong> The Control Unit translates that instruction into simple binary commands the machine logic understands.</li>
-                        <li><strong>Execute:</strong> The Arithmetic Logic Unit (ALU) steps in to perform the actual math calculations or true/false logic comparisons.</li>
-                        <li><strong>Store:</strong> The final calculation results are instantly written back into fast internal slots called registers.</li>
-                    </ul>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-sync"></i> The Fetch-Decode-Execute Cycle</h3>
+                        <p class="section-sub-desc">Every instruction processed by a machine runs through an endless four-step cycle managed by the core chip components:</p>
+                        
+                        <div class="w3-visual-diagram-box">
+                            <span class="w3-diagram-label">🧩 Interactive Process Flow Diagram</span>
+                            <div class="cycle-flow-container">
+                                <div class="cycle-step-card active">1. Fetch</div>
+                                <div class="cycle-flow-arrow">&rarr;</div>
+                                <div class="cycle-step-card">2. Decode</div>
+                                <div class="cycle-flow-arrow">&rarr;</div>
+                                <div class="cycle-step-card">3. Execute</div>
+                                <div class="cycle-flow-arrow">&rarr;</div>
+                                <div class="cycle-step-card">4. Store</div>
+                            </div>
+                        </div>
 
-                    <h3>Pipelining System Mechanics</h3>
-                    <p class="section-sub-desc">Modern chips do not wait for one instruction to finish the entire cycle before starting the next one. They use **Pipelining**, which sets up an instruction assembly line. While instruction 1 is executing, instruction 2 is decoding, and instruction 3 is fetching simultaneously, dramatically accelerating system speeds.</p>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 1. Fetch</span>
+                            <span class="field-content-data">The <b>Control Unit (CU)</b> retrieves the next instruction waiting in line from the RAM module cells.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 2. Decode</span>
+                            <span class="field-content-data">The Control Unit translates that instruction into simple binary commands the machine logic entirely understands.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 3. Execute</span>
+                            <span class="field-content-data">The <b>Arithmetic Logic Unit (ALU)</b> steps in to perform the actual math calculations or true/false logic comparisons.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 4. Store</span>
+                            <span class="field-content-data">The final calculation results are instantly written back into fast internal slots called <b>registers</b>.</span>
+                        </div>
+                    </div>
 
-                    <div class="nt-pro-tip-box">
-                        <strong><i class="fas fa-lightbulb"></i> Real World Speed Connection</strong>
-                        <p>A higher processor clock speed (like 4.2 GHz) means the chip runs more internal calculation cycles per second. However, architectural efficiency—or Instructions Per Cycle (IPC)—determines how much true work gets accomplished. An optimized chip with a lower clock speed can easily outperform an unoptimized processor running at higher gigahertz scales.</p>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-stream"></i> Pipelining Mechanics</h3>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 How it works?</span>
+                            <span class="field-content-data">Sets up an instruction assembly line. Modern chips do not wait for one instruction to finish the entire cycle before starting the next one. While instruction 1 is executing, instruction 2 is decoding, and instruction 3 is fetching simultaneously, dramatically accelerating system throughput speeds.</span>
+                        </div>
+                    </div>
+
+                    <div class="custom-card-alert type-learn">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <h5>Real World Speed Connection</h5>
+                            <p>A higher processor clock speed (like 4.2 GHz) means the chip runs more internal calculation cycles per second. However, architectural efficiency—or Instructions Per Cycle (IPC)—determines how much true work gets accomplished. An optimized chip with a lower clock speed can easily outperform an unoptimized processor running at higher gigahertz scales.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- TAB MODULE PANEL 2: MEMORY HIERARCHY -->
+                <!-- TAB MODULE PANEL 2: MEMORY HIERARCHY[cite: 5] -->
                 <div id="memory" class="nt-tab-panel">
-                    <span class="pedagogy-block-indicator">02 // Sizing &amp; Memory Layouts</span>
-                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium &bull; Study Time: 8 Mins</span></div>
-                    <h2>Memory Hierarchy &amp; Speed Systems</h2>
-                    <p class="section-sub-desc">Computer memory balances cost, capacity, and processing response speeds. Fast memory components are highly expensive and tiny, while cheaper components hold huge data footprints at slower access rates.</p>
-                    
+                    <div class="section-header-block">
+                        <h2>Memory Hierarchy &amp; Speed Systems</h2>
+                        <p class="section-sub-desc">Computer memory balances cost, capacity, and processing response speeds across sizing and memory layouts.</p>
+                    </div>
+
                     <div class="w3-visual-diagram-box">
-                        <span class="w3-diagram-label">📐 The Hardware Memory Speed Pyramid</span>
+                        <span class="w3-diagram-label">📐 Hover to Inspect: The Hardware Memory Speed Pyramid</span>
                         <div class="w3-pyramid-container">
                             <div class="pyramid-tier tier-1">Registers (Fastest / Tiny)</div>
                             <div class="pyramid-tier tier-2">Cache Memory (L1, L2, L3)</div>
-                            <div class="pyramid-tier tier-3">RAM Memory (Active Work)</div>
-                            <div class="pyramid-tier tier-4">NVMe SSD Storage (Permanent File Cabinet)</div>
+                            <div class="pyramid-tier tier-3">RAM Memory (Active Work Desk)</div>
+                            <div class="pyramid-tier tier-4">NVMe SSD Storage (Permanent Cabinet)</div>
                         </div>
                     </div>
 
@@ -404,75 +506,99 @@
                         </table>
                     </div>
 
-                    <h3>Understanding Virtual Memory Layouts</h3>
-                    <p class="section-sub-desc">When your active software workloads completely fill up your physical RAM capacity limits, the Operating System allocates a hidden portion of your secondary storage device (SSD) to act as temporary **Virtual Memory**. This prevents software from crashing immediately, but degrades responsiveness since storage device read/write buses are significantly slower than dedicated system RAM lanes.</p>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-clone"></i> Virtual Memory Layouts</h3>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 What is it?</span>
+                            <span class="field-content-data">When active software workloads completely fill up your physical RAM capacity limits, the Operating System allocates a hidden portion of your secondary storage device (SSD) to act as temporary virtual memory.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Pitfall Note</span>
+                            <span class="field-content-data">This prevents software from crashing immediately, but degrades responsiveness since storage device read/write buses are significantly slower than dedicated system RAM lanes.</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- TAB MODULE PANEL 3: BUS SYSTEMS & THERMALS -->
+                <!-- TAB MODULE PANEL 3: BUS SYSTEMS & THERMALS[cite: 5] -->
                 <div id="physical" class="nt-tab-panel">
-                    <span class="pedagogy-block-indicator">03 // System Interconnect Physics</span>
-                    <div class="difficulty-indicator-row"><span class="diff-dot green"></span> <span>Difficulty: Easy &bull; Study Time: 6 Mins</span></div>
-                    <h2>The Physical Infrastructure</h2>
-                    <p class="section-sub-desc">Data cannot leap between hardware points on its own; it requires hardwired pathway trace channels to move bits across silicon boards safely.</p>
-                    
-                    <h3>The System Bus Architecture</h3>
-                    <p class="section-sub-desc">The motherboard links computing hardware together using three separate internal communication bus lines:</p>
-                    
-                    <ul class="traits-bullet-list">
-                        <li><strong>Data Bus:</strong> The structural data highway that carries the actual content or values bits between system components.</li>
-                        <li><strong>Address Bus:</strong> The locator pipeline that specifies exactly which index cell address in RAM is sending or receiving information.</li>
-                        <li><strong>Control Bus:</strong> The gatekeeper channel that carries signals from the Control Unit to specify operations (such as Read or Write tasks).</li>
-                    </ul>
+                    <div class="section-header-block">
+                        <h2>The Physical Infrastructure</h2>
+                        <p class="section-sub-desc">Data cannot leap between hardware points on its own; it requires hardwired pathway trace channels to move bits safely across system interconnect physics blocks.</p>
+                    </div>
 
-                    <h3>Thermal Management &amp; Throttling Limits</h3>
-                    <p class="section-sub-desc">Processing billions of bit fluctuations every second produces extreme friction and operational heat inside computing chips. To prevent the hardware from burning out, systems enforce active safeguard protocols:</p>
-                    
-                    <ul class="traits-bullet-list">
-                        <li><strong>Thermal Throttling:</strong> The chip automatically forces its own operating clock speed down if internal heat metrics cross critical safety ceilings.</li>
-                        <li><strong>Heatsinks &amp; Thermal Paste:</strong> Conductive metal wings combined with chemical paste designed to rapidly draw operational heat away from delicate silicon surfaces.</li>
-                        <li><strong>Active Cooling:</strong> Driven mechanical fans or liquid-cooling loop channels designed to expel lingering high temperatures from the system container chassis.</li>
-                    </ul>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-road"></i> The System Bus Architecture</h3>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Data Bus</span>
+                            <span class="field-content-data">The structural data highway that carries the actual content or values bits between system components.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Address Bus</span>
+                            <span class="field-content-data">The locator pipeline that specifies exactly which index cell address in RAM is sending or receiving information.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Control Bus</span>
+                            <span class="field-content-data">The gatekeeper channel that carries signals from the Control Unit to specify operations (such as Read or Write tasks).</span>
+                        </div>
+                    </div>
+
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-temperature-high"></i> Thermal Management &amp; Throttling Limits</h3>
+                        <p class="section-sub-desc">Processing billions of bit fluctuations every second produces extreme friction and operational heat inside computing chips. Active protection safeguard protocols are automatically enforced:</p>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Throttling</span>
+                            <span class="field-content-data">The chip automatically forces its own operating clock speed down if internal heat metrics cross critical safety ceilings.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 Paste &amp; Fins</span>
+                            <span class="field-content-data">Conductive metal heatsinks combined with chemical paste designed to rapidly draw operational heat away from delicate silicon surfaces.</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- TAB MODULE PANEL 4: MODERN INFRASTRUCTURE TRENDS -->
+                <!-- TAB MODULE PANEL 4: MODERN INFRASTRUCTURE TRENDS[cite: 5] -->
                 <div id="modern" class="nt-tab-panel">
-                    <span class="pedagogy-block-indicator">04 // Hardware Trends [2026 Architectural Metrics]</span>
-                    <div class="difficulty-indicator-row"><span class="diff-dot amber"></span> <span>Difficulty: Medium &bull; Study Time: 9 Mins</span></div>
-                    <h2>Modern Trends in Architecture</h2>
-                    <p class="section-sub-desc">The modern hardware computing ecosystem balances alternative processing designs to maximize execution efficiency across different environments.</p>
-                    
-                    <h3>CPU vs. GPU Architectures (Sequential vs. Parallel processing)</h3>
+                    <div class="section-header-block">
+                        <h2>Modern Trends in Architecture</h2>
+                        <p class="section-sub-desc">The modern hardware computing ecosystem balances alternative processing designs to maximize execution efficiency across different environments.</p>
+                    </div>
+
                     <div class="nt-grid-2">
-                        <div class="class-profile-card card-cpu">
-                            <div class="card-icon-slot"><i class="fas fa-microchip"></i></div>
+                        <div class="premium-educational-profile-card card-cpu">
+                            <div class="edu-card-icon-frame"><i class="fas fa-microchip"></i></div>
                             <h4>Central Processing Units (CPUs)</h4>
-                            <span class="scale-label">Sequential Logic Core</span>
+                            <div><span class="scale-label">Sequential Logic Core</span></div>
                             <p>Features a small pool of large, highly powerful processing cores engineered to run complex, step-by-step logic decisions sequentially.</p>
                         </div>
-                        <div class="class-profile-card card-gpu">
-                            <div class="card-icon-slot"><i class="fas fa-brain"></i></div>
+                        <div class="premium-educational-profile-card card-gpu">
+                            <div class="edu-card-icon-frame"><i class="fas fa-brain"></i></div>
                             <h4>Graphics Processing Units (GPUs)</h4>
-                            <span class="scale-label">Massive Parallel Tracks</span>
+                            <div><span class="scale-label">Massive Parallel Tracks</span></div>
                             <p>Features thousands of smaller, simpler cores optimized to process massive streams of simple data simultaneously, such as AI workloads and 3D textures.</p>
                         </div>
                     </div>
 
-                    <h3>Instruction Sets Architecture: x86 vs. ARM</h3>
-                    <ul class="traits-bullet-list" style="margin-top: 16px;">
-                        <li><strong>x86 Architecture (Intel / AMD):</strong> Follows Complex Instruction Set Computer (CISC) rules. It targets absolute maximum peak processing performance, making it standard for industrial workstations, but consumes high power limits.</li>
-                        <li><strong>ARM Architecture (Apple Silicon / Snapdragon):</strong> Follows Reduced Instruction Set Computer (RISC) rules. It optimizes efficiency by running simplified instructions, consuming minimal battery life, which makes it perfect for portable laptops and smartphones.</li>
-                    </ul>
+                    <div class="chunked-concept-node">
+                        <h3><i class="fas fa-code"></i> x86 vs. ARM Instruction Sets</h3>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 x86 Setup</span>
+                            <span class="field-content-data">Follows Complex Instruction Set Computer (CISC) rules. It targets absolute maximum peak processing performance, making it standard for industrial workstations, but consumes high power limits.</span>
+                        </div>
+                        <div class="micro-field-box">
+                            <span class="field-label-tag">📌 ARM Setup</span>
+                            <span class="field-content-data">Follows Reduced Instruction Set Computer (RISC) rules. It optimizes efficiency by running simplified instructions, consuming minimal battery life, which makes it perfect for portable laptops and smartphones.</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- TAB MODULE PANEL 5: REAL UNIVERSITY STUDY EXAMINATION BOX -->
+                <!-- TAB MODULE PANEL 5: REAL UNIVERSITY STUDY EXAMINATION BOX[cite: 5] -->
                 <div id="examination" class="nt-tab-panel">
-                    <span class="pedagogy-block-indicator">05 // Practice &amp; Verify</span>
-                    <div class="difficulty-indicator-row"><span class="diff-dot red"></span> <span>Difficulty: Advanced &bull; Study Time: 15 Mins</span></div>
-                    <h2>University Examination Vault</h2>
-                    <p class="section-sub-desc">Review standard university evaluation questions, common pitfalls to avoid in exams, and test your comprehension using our live checking box.</p>
+                    <div class="section-header-block">
+                        <h2>University Examination Vault</h2>
+                        <p class="section-sub-desc">Review standard university evaluation questions, common pitfalls to avoid in exams, and test your comprehension using our live checking box.</p>
+                    </div>
                     
                     <div class="exam-qa-sub-block">
-                        <h4>Syllabus Question Bank</h4>
                         <div class="qa-item-card">
                             <span class="marks-callout-tag">2 Marks // Frequently Asked</span>
                             <strong>Q: Explain the basic operational premise of the John von Neumann architecture model.</strong>
@@ -482,6 +608,14 @@
                             <span class="marks-callout-tag">5 Marks // Core Syllabus Metric</span>
                             <strong>Q: Differentiate between Pipelining and Sequential processing tracks.</strong>
                             <p><b>A:</b> Sequential systems execute one full instruction completely through all processing stages before fetching the next one. Pipelining builds an instruction assembly line. While instruction 1 is executing inside the ALU, instruction 2 is already decoding inside the CU, allowing multiple instructions to move through different stages concurrently to optimize throughput speed.</p>
+                        </div>
+                    </div>
+
+                    <div class="custom-card-alert type-mistake">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <h5>⚠ High-Frequency Exam Trap</h5>
+                            <p>When asked about clock speeds, don't forget that Instructions Per Cycle (IPC) determines raw operational efficiency. A processor running at lower GHz limits with highly optimized instruction branches can completely outperform older layouts tracking higher frequencies scale.</p>
                         </div>
                     </div>
 
@@ -510,20 +644,7 @@
                     </div>
                 </div>
 
-                <!-- DOWNLOAD MATRIX PORTAL PANEL STRIP CARD -->
-                <section class="download-portal-strip">
-                    <div class="dl-strip-text">
-                        <h3>Vetted Academic Download Center</h3>
-                        <p>Access complete course handouts, presentation templates, and comprehensive examination question banks offline.</p>
-                    </div>
-                    <div class="dl-buttons-matrix">
-                        <a href="downloads/module2-notes.pdf" class="dl-action-node btn-pdf" download><i class="fas fa-file-pdf"></i> Handout PDF</a>
-                        <a href="downloads/module2-slides.pptx" class="dl-action-node btn-ppt" download><i class="fas fa-file-powerpoint"></i> Slidedeck</a>
-                        <a href="downloads/module2-cheat.pdf" class="dl-action-node btn-cheat" download><i class="fas fa-bolt"></i> Cheat Sheet</a>
-                    </div>
-                </section>
-
-                <!-- LOWER LEVEL BACK-AND-FORTH MODULE ROUTING AXIS ROW -->
+                <!-- LOWER LEVEL MODULE ROUTING DECK AXIS ROW[cite: 5] -->
                 <footer class="notes-routing-deck">
                     <a href="module1-notes.html" class="btn-next-module-trigger">&larr; Module 01: History</a>
                     <div class="route-center-summary">Progress Tracking State: <strong style="color: #10b981;">60% Logged</strong></div>
@@ -532,27 +653,6 @@
 
             </div>
         </main>
-
-        <!-- SIDEBAR 3: RIGHT HAND SUMMARY DATA DESK PANEL (W3/GFG STYLE) -->
-        <aside class="w3-info-desk-rail">
-            <div class="info-card-widget">
-                <h6>Module Logistics</h6>
-                <ul>
-                    <li>Total Topics: <strong>4 Core Units</strong></li>
-                    <li>Syllabus Code: <strong>MCA-AR202</strong></li>
-                    <li>Exam Importance: <strong>High (5★)</strong></li>
-                    <li>Est. Reading: <strong>45 Mins</strong></li>
-                </ul>
-            </div>
-            <div class="info-card-widget">
-                <h6>Your Lesson Tracker</h6>
-                <ul>
-                    <li>Status: <strong>Active Study</strong></li>
-                    <li>Completion Gauge: <strong style="color:#10b981;">60%</strong></li>
-                </ul>
-                <div class="progress-block-tracker">■■■■■■░░░░</div>
-            </div>
-        </aside>
 
     </div>
 
@@ -567,47 +667,38 @@
         /* ==========================================================================
            🧠 CORE ACADEMIC CONSOLE TAB RUNTIME PIPELINE CONTROLLER
            ========================================================================== */
-        function switchContentTab(clickEvent, targetPanelId) {
+        function triggerTabDisplaySwitch(clickedItemNode, targetPanelId) {
             const panelsArray = document.getElementsByClassName("nt-tab-panel");
             for (let i = 0; i < panelsArray.length; i++) {
                 panelsArray[i].classList.remove("active");
             }
             
-            const triggersArray = document.getElementsByClassName("nt-tab-trigger");
-            for (let i = 0; i < triggersArray.length; i++) {
-                triggersArray[i].classList.remove("active");
-            }
-            
-            const dynamicTargetPanelNode = document.getElementById(targetPanelId);
-            if(dynamicTargetPanelNode) {
-                dynamicTargetPanelNode.classList.add("active");
-            }
-            
-            clickEvent.currentTarget.classList.add("active");
-        }
-
-        /* --- Sidebar Redirectional Interceptors (W3Schools Mapping Handlers) --- */
-        function triggerTabDisplaySwitch(clickedSidebarLinkNode, targetPanelId) {
-            const panelsArray = document.getElementsByClassName("nt-tab-panel");
-            for (let i = 0; i < panelsArray.length; i++) {
-                panelsArray[i].classList.remove("active");
-            }
-
             const menuItemsArray = document.querySelectorAll(".sidebar-menu-item");
             for (let i = 0; i < menuItemsArray.length; i++) {
                 menuItemsArray[i].classList.remove("active");
             }
-
+            
             const targetedPanelNode = document.getElementById(targetPanelId);
             if(targetedPanelNode) {
                 targetedPanelNode.classList.add("active");
             }
-
-            clickedSidebarLinkNode.classList.add("active");
-            document.getElementById("breadcrumbLabel").innerText = clickedSidebarLinkNode.innerText.replace(/^\d+\.\s*/, '');
+            
+            clickedItemNode.classList.add("active");
+            
+            // Sync theme custom variable codes configurations dynamically[cite: 5]
+            const targetColorHex = clickedItemNode.getAttribute('data-theme');
+            const targetGlowStyle = clickedItemNode.getAttribute('data-glow');
+            document.documentElement.style.setProperty('--theme-color', targetColorHex);
+            document.documentElement.style.setProperty('--theme-glow', targetGlowStyle);
+            
+            document.getElementById("breadcrumbLabel").innerText = clickedItemNode.querySelector('span').innerText;
+            
+            if(window.innerWidth <= 840) {
+                document.querySelector('.w3-central-viewport-canvas').scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        /* --- Quiz Validation Logic Sandbox Engine --- */
+        /* --- Quiz Validation Logic Sandbox Engine[cite: 5] --- */
         function evaluateQuizChoice(clickedButtonElement, isChoiceCorrectFlag) {
             const feedbackContainer = document.getElementById("quizFeedback");
             const alternativeOptionButtons = clickedButtonElement.parentElement.querySelectorAll(".option-btn");
